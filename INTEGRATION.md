@@ -7,8 +7,10 @@ This guide will help you integrate and use `shadcn-solid-components` in your Sol
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
 - [TailwindCSS Configuration](#tailwindcss-configuration)
+- [Theme Selection](#theme-selection)
 - [Basic Usage](#basic-usage)
 - [Theming](#theming)
+- [Available Components](#available-components)
 - [Complete Examples](#complete-examples)
 - [FAQ](#faq)
 
@@ -76,10 +78,12 @@ In your main CSS file (usually `src/index.css` or `src/app.css`):
 
 ```css
 @import "tailwindcss";
-@import "shadcn-solid-components/tailwind.preset.css";
+@import "shadcn-solid-components/themes/default.preset.css";
 
 /* Your custom styles */
 ```
+
+> **Note:** You can also use the `mira-inter.preset.css` theme instead of `default.preset.css` for a different design system.
 
 #### Step 4: Import CSS in Entry File
 
@@ -110,10 +114,12 @@ In your main CSS file (usually `src/index.css` or `src/app.css`):
 
 ```css
 @import "tailwindcss";
-@import "shadcn-solid-components/tailwind.preset.css";
+@import "shadcn-solid-components/themes/default.preset.css";
 
 /* Your custom styles */
 ```
+
+> **Note:** You can also use the `mira-inter.preset.css` theme instead of `default.preset.css` for a different design system.
 
 #### Step 3: Configure PostCSS
 
@@ -129,13 +135,47 @@ export default {
 
 > **Note:** TailwindCSS v4 no longer requires a `tailwind.config.js` file. Configuration is done through CSS using `@theme` and `@config` directives.
 
+## Theme Selection
+
+The library provides two theme presets:
+
+- **`default.preset.css`** - The default theme with standard design tokens
+- **`mira-inter.preset.css`** - An alternative theme with the Mira Inter design system
+
+You can switch themes by changing the import in your CSS file:
+
+```css
+/* Use default theme */
+@import "shadcn-solid-components/themes/default.preset.css";
+
+/* Or use mira-inter theme */
+@import "shadcn-solid-components/themes/mira-inter.preset.css";
+```
+
+Both themes include all necessary CSS variables and design tokens for the components. You only need to import one theme preset.
+
 ## Basic Usage
 
 ### Import Components
 
+You can import components in two ways:
+
+#### Option 1: Import from the main package
+
 ```typescript
 import { Button, Alert, AlertDialog, Accordion } from 'shadcn-solid-components'
 ```
+
+#### Option 2: Import individual components (recommended for better tree-shaking)
+
+```typescript
+import { Button } from 'shadcn-solid-components/button'
+import { Alert } from 'shadcn-solid-components/alert'
+import { AlertDialog } from 'shadcn-solid-components/alert-dialog'
+import { Accordion } from 'shadcn-solid-components/accordion'
+```
+
+Individual imports ensure optimal tree-shaking and smaller bundle sizes.
 
 ### Using the Button Component
 
@@ -252,7 +292,7 @@ The component library uses CSS variables for theming. You can override these var
 
 ```css
 @import "tailwindcss";
-@import "shadcn-solid-components/tailwind.preset.css";
+@import "shadcn-solid-components/themes/default.preset.css";
 
 :root {
   /* Base Colors */
@@ -324,6 +364,27 @@ You can also use TailwindCSS's arbitrary value syntax:
 </Button>
 ```
 
+## Available Components
+
+The library includes a comprehensive set of components:
+
+- **Layout & Navigation**: Accordion, Breadcrumbs, Navigation Menu, Sidebar, Tabs, Separator
+- **Overlays**: Alert Dialog, Dialog, Drawer, Popover, Tooltip, Hover Card, Context Menu, Dropdown Menu, Menubar
+- **Forms**: Button, Button Group, Checkbox, File Field, Number Field, OTP Field, Radio Group, Select, Switch, Text Field, Toggle Button, Toggle Group, Combobox, Command, Search
+- **Data Display**: Alert, Badge, Card, KBD, Progress, Skeleton, Table, Chart
+- **Feedback**: Sonner (Toast notifications)
+- **Media**: Carousel
+- **Date & Time**: Calendar, Date Picker
+- **Utilities**: Collapsible, Pagination, Resizable, Segmented Control, Slider, Icons
+
+Each component can be imported individually for optimal tree-shaking. For example:
+
+```typescript
+import { Button } from 'shadcn-solid-components/button'
+import { Card } from 'shadcn-solid-components/card'
+import { Dialog } from 'shadcn-solid-components/dialog'
+```
+
 ## Complete Examples
 
 ### Example 1: Basic App Structure
@@ -349,7 +410,7 @@ export default App
 ```css
 /* src/index.css */
 @import "tailwindcss";
-@import "shadcn-solid-components/tailwind.preset.css";
+@import "shadcn-solid-components/themes/default.preset.css";
 ```
 
 ```typescript
@@ -421,9 +482,9 @@ function App() {
 
 **A:** Make sure:
 
-1. You've correctly imported the `tailwind.preset.css` file using `@import "shadcn-solid-components/tailwind.preset.css"`
+1. You've correctly imported a theme preset file using `@import "shadcn-solid-components/themes/default.preset.css"` (or `mira-inter.preset.css`)
 2. TailwindCSS v4 is properly configured (using `@tailwindcss/vite` for Vite or `@tailwindcss/postcss` for PostCSS)
-3. Your main CSS file includes `@import "tailwindcss"` before importing the preset
+3. Your main CSS file includes `@import "tailwindcss"` before importing the theme preset
 4. The CSS file is imported in your entry file
 5. Your build tool is properly configured
 
@@ -451,12 +512,23 @@ function App() {
 
 ### Q: How to import only specific components?
 
-**A:** The library supports tree-shaking. You can directly import the components you need:
+**A:** The library supports tree-shaking. You can import components in two ways:
+
+**Option 1:** Import from the main package (if exported)
 
 ```typescript
-import { Button } from 'shadcn-solid-components'
-// Only Button is imported, other components won't be included
+import { Button, Alert, Accordion } from 'shadcn-solid-components'
 ```
+
+**Option 2:** Import individual components directly (recommended for better tree-shaking)
+
+```typescript
+import { Button } from 'shadcn-solid-components/button'
+import { Alert } from 'shadcn-solid-components/alert'
+import { Accordion } from 'shadcn-solid-components/accordion'
+```
+
+All components are available as individual exports, which ensures optimal tree-shaking and smaller bundle sizes.
 
 ### Q: Is it compatible with TailwindCSS v3?
 
@@ -498,15 +570,18 @@ Then use it in components:
 ## Next Steps
 
 - Check the [Component API documentation](./README.md) to learn about all available components
-- Explore the [examples repository](https://github.com/your-username/shadcn-solid-components-examples) for more examples
-- Submit an [Issue](https://github.com/your-username/shadcn-solid-components/issues) to report problems or suggestions
-
-> **Note:** Replace `your-username` with your actual GitHub username in the links above.
+- Explore the [GitHub repository](https://github.com/vgerbot-libraries/shadcn-solid-components) for source code and examples
+- Submit an [Issue](https://github.com/vgerbot-libraries/shadcn-solid-components/issues) to report problems or suggestions
 
 ## Getting Help
 
 If you encounter issues:
 
 1. Check the FAQ section in this document
-2. Search [GitHub Issues](https://github.com/your-username/shadcn-solid-components/issues)
-3. Create a new Issue describing your problem
+2. Search [GitHub Issues](https://github.com/vgerbot-libraries/shadcn-solid-components/issues)
+3. Create a new Issue describing your problem with:
+   - Your Node.js version
+   - Your build tool (Vite, PostCSS, etc.)
+   - TailwindCSS version
+   - A minimal reproduction example
+   - Error messages or screenshots if applicable
