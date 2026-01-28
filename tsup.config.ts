@@ -1,16 +1,50 @@
 import { defineConfig } from 'tsup'
 import * as preset from 'tsup-preset-solid'
+import { readdirSync, statSync } from 'fs'
+import { join } from 'path'
+
+// Dynamically read all component directories
+function getComponentEntries() {
+  const componentsDir = join(process.cwd(), 'src/components')
+  const entries: preset.PresetOptions['entries'] = []
+
+  try {
+    const items = readdirSync(componentsDir)
+
+    for (const item of items) {
+      const itemPath = join(componentsDir, item)
+      const stat = statSync(itemPath)
+
+      // Only process directories (skip index.ts)
+      if (stat.isDirectory()) {
+        const entryFile = join(itemPath, 'index.tsx')
+        entries.push({
+          entry: `src/components/${item}/index.tsx`,
+          name: item,
+        })
+      }
+    }
+  } catch (error) {
+    console.warn('Failed to read components directory:', error)
+  }
+
+  return entries
+}
 
 const preset_options: preset.PresetOptions = {
-  // array or single object
   entries: [
-    // default entry (index)
+    // Main entry
     {
-      // entries with '.tsx' extension will have `solid` export condition generated
       entry: 'src/index.tsx',
-      // will generate a separate development entry
-      dev_entry: true,
+      name: 'index'
     },
+    // Lib utilities
+    {
+      entry: 'src/lib/index.ts',
+      name: 'lib',
+    },
+    // Dynamically add all components
+    ...getComponentEntries(),
   ],
   // Set to `true` to remove all `console.*` calls and `debugger` statements in prod builds
   drop_console: true,
