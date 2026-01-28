@@ -1,17 +1,17 @@
 {
-  "name": "{{name_of_lib}}",
+  "name": "shadcn-solid-components",
   "version": "0.0.0",
   "description": "{{desc_of_lib}}",
   "license": "MIT",
-  "author": "{{me}}",
+  "author": "vgerbot-libraries",
   "contributors": [],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/{{me}}/{{name_of_lib}}.git"
+    "url": "git+https://github.com/vgerbot-libraries/shadcn-solid-components.git"
   },
-  "homepage": "https://github.com/{{me}}/{{name_of_lib}}#readme",
+  "homepage": "https://github.com/vgerbot-libraries/shadcn-solid-components#readme",
   "bugs": {
-    "url": "https://github.com/{{me}}/{{name_of_lib}}/issues"
+    "url": "https://github.com/vgerbot-libraries/shadcn-solid-components/issues"
   },
   "files": [
     "dist",
