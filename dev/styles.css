@@ -2,6 +2,8 @@
 
 @import "tw-animate-css";
 
+@config "./tailwind.config.js";
+
 @custom-variant dark (&:is([data-kb-theme="dark"] *));
 
 @theme inline {

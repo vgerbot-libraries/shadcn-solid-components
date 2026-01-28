@@ -86,7 +86,7 @@ export const AccordionContent = <T extends ValidComponent = "div">(
   return (
     <AccordionPrimitive.Content
       data-slot="accordion-content"
-      class="data-[closed]:animate-accordion-up data-[expanded]:animate-accordion-down overflow-hidden text-sm"
+      class="data-closed:animate-accordion-up data-expanded:animate-accordion-down overflow-hidden text-sm"
       {...rest}
     >
       <div class={cx("pt-0 pb-4", props.class)}>{props.children}</div>

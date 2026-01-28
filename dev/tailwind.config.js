@@ -4,8 +4,8 @@ const { fontFamily } = require("tailwindcss/defaultTheme");
 export default {
   darkMode: ["class", '[data-kb-theme="dark"]'],
   content: [
-    "./dev/**/*.{ts,tsx}",
-    "./src/**/*.{ts,tsx}",
+    "./**/*.{ts,tsx}",
+    "../src/**/*.{ts,tsx}",
   ],
   theme: {
     extend: {
@@ -85,5 +85,5 @@ export default {
       }
     }
   },
-  plugins: [require("tailwindcss-animate")]
+  // plugins: [require("tailwindcss-animate")]
 };
