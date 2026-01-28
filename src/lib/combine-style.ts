@@ -8,10 +8,14 @@ export function stringStyleToObject(style: string): JSX.CSSProperties {
   const object: Record<string, string> = {}
   let match: RegExpExecArray | null
   while ((match = extractCSSregex.exec(style))) {
-    object[match[1]] = match[2]
+    if (match[1] && match[2]) {
+      object[match[1]] = match[2]
+    }
   }
   return object
 }
+
+type StyleProperties = JSX.CSSProperties | string | undefined;
 
 export function combineStyle(a: string, b: string): string
 export function combineStyle(
@@ -19,12 +23,12 @@ export function combineStyle(
   b: JSX.CSSProperties | undefined,
 ): JSX.CSSProperties
 export function combineStyle(
-  a: JSX.CSSProperties | string | undefined,
-  b: JSX.CSSProperties | string | undefined,
+  a: StyleProperties,
+  b: StyleProperties,
 ): JSX.CSSProperties
 export function combineStyle(
-  a: JSX.CSSProperties | string | undefined,
-  b: JSX.CSSProperties | string | undefined,
+  a: StyleProperties,
+  b: StyleProperties,
 ): JSX.CSSProperties | string {
   if (typeof a === "string") {
     if (typeof b === "string") return `${a};${b}`
