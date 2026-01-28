@@ -1,35 +1,10 @@
 import { defineConfig } from 'tsup'
 import * as preset from 'tsup-preset-solid'
-import { readdirSync, statSync } from 'fs'
-import { join } from 'path'
-
-// Dynamically read all component directories
-function getComponentEntries() {
-  const componentsDir = join(process.cwd(), 'src/components')
-  const entries: preset.PresetOptions['entries'] = []
-
-  try {
-    const items = readdirSync(componentsDir)
-
-    for (const item of items) {
-      const itemPath = join(componentsDir, item)
-      const stat = statSync(itemPath)
-
-      // Only process directories (skip index.ts)
-      if (stat.isDirectory()) {
-        const entryFile = join(itemPath, 'index.tsx')
-        entries.push({
-          entry: `src/components/${item}/index.tsx`,
-          name: item,
-        })
-      }
-    }
-  } catch (error) {
-    console.warn('Failed to read components directory:', error)
-  }
-
-  return entries
-}
+import {
+  getComponentEntries,
+  copyThemesToDist,
+  updatePackageJsonFiles,
+} from './scripts'
 
 const preset_options: preset.PresetOptions = {
   entries: [
@@ -72,5 +47,43 @@ export default defineConfig(config => {
     preset.writePackageJson(package_fields)
   }
 
-  return preset.generateTsupOptions(parsed_options)
+  const tsupOptions = preset.generateTsupOptions(parsed_options)
+
+  // Handle both array and object return types from generateTsupOptions
+  if (Array.isArray(tsupOptions)) {
+    // If it's an array, add onSuccess to each option
+    return tsupOptions.map((option: any) => ({
+      ...option,
+      onSuccess: async () => {
+        // Copy themes directory
+        copyThemesToDist()
+
+        // Update package.json files field
+        updatePackageJsonFiles()
+
+        // Call original onSuccess if it exists
+        if (typeof option.onSuccess === 'function') {
+          await option.onSuccess()
+        }
+      },
+    }))
+  } else {
+    // If it's a single object, add onSuccess to it
+    const options = tsupOptions as any
+    return {
+      ...options,
+      onSuccess: async () => {
+        // Copy themes directory
+        copyThemesToDist()
+
+        // Update package.json files field
+        updatePackageJsonFiles()
+
+        // Call original onSuccess if it exists
+        if (typeof options.onSuccess === 'function') {
+          await options.onSuccess()
+        }
+      },
+    }
+  }
 })

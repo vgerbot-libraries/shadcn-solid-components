@@ -15,7 +15,7 @@
   },
   "files": [
     "dist",
-    "tailwind.preset.css"
+    "dist/themes"
   ],
   "private": false,
   "sideEffects": false,
@@ -184,6 +184,13 @@
       "import": {
         "types": "./dist/hover-card/index.d.ts",
         "default": "./dist/hover-card/index.js"
+      }
+    },
+    "./icons": {
+      "solid": "./dist/icons/index.jsx",
+      "import": {
+        "types": "./dist/icons/index.d.ts",
+        "default": "./dist/icons/index.js"
       }
     },
     "./kbd": {
@@ -506,6 +513,9 @@
       ],
       "hover-card": [
         "./dist/hover-card/index.d.ts"
+      ],
+      "icons": [
+        "./dist/icons/index.d.ts"
       ],
       "kbd": [
         "./dist/kbd/index.d.ts"
