@@ -1,10 +1,19 @@
 import type { Component } from 'solid-js'
 import styles from './App.module.css'
-import { Button } from 'src'
+import { Button } from '@/components/button'
+import ModeToggle from '@/hoc/mode-toggle'
+import { ModeToggleDropdown } from '@/hoc/mode-toggle-dropdown'
 
 const App: Component = () => {
   return (
     <div class={styles.App}>
+        <div class="">
+        {/* <ModeToggle /> */}
+        <ModeToggleDropdown trigger={{
+          size: "icon",
+          variant: "ghost",
+        }} />
+        </div>
     <Button variant="destructive">Destructive</Button>
      <Button variant="outline" size="sm">
       <svg
