@@ -1,5 +1,5 @@
 @import "tailwindcss";
-@import "../src/themes/mira-inter.preset.css";
+@import '../src/themes/nova.preset.css';
 
 /* Dev-specific configuration */
 /* @config is a TailwindCSS v4 directive - CSS linter may show a warning but it's valid */
