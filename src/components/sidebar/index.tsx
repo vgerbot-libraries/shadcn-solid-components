@@ -25,6 +25,7 @@ import type { PolymorphicProps } from "@kobalte/core/polymorphic"
 import type { VariantProps } from "cva"
 
 import { useIsMobile } from "@/lib/use-mobile"
+import { useRadiusClassWithPrefix } from "@/lib/theme-helpers"
 import { callHandler } from "@/registry/lib/call-handler"
 import { combineStyle } from "@/registry/lib/combine-style"
 import { cva, cx } from "@/registry/lib/cva"
@@ -385,12 +386,15 @@ export type SidebarInsetProps = ComponentProps<"main">
 export const SidebarInset = (props: SidebarInsetProps) => {
   const [, rest] = splitProps(props, ["class"])
 
+  const conditionalRadiusClass = useRadiusClassWithPrefix('navigation', 'md:peer-data-[variant=inset]:')
+
   return (
     <main
       data-slot="sidebar-inset"
       class={cx(
         "bg-background relative flex w-full flex-1 flex-col",
-        "md:peer-data-[variant=inset]:m-2 md:peer-data-[variant=inset]:ml-0 md:peer-data-[variant=inset]:rounded-xl md:peer-data-[variant=inset]:shadow-sm md:peer-data-[variant=inset]:peer-data-[state=collapsed]:ml-2",
+        "md:peer-data-[variant=inset]:m-2 md:peer-data-[variant=inset]:ml-0 md:peer-data-[variant=inset]:shadow-sm md:peer-data-[variant=inset]:peer-data-[state=collapsed]:ml-2",
+        conditionalRadiusClass,
         props.class,
       )}
       {...rest}

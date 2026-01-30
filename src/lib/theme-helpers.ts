@@ -91,3 +91,33 @@ export function useRadiusClassPartial(
   const radiusValue = fullRadiusClass.replace('rounded-', '')
   return side === 'top' ? `rounded-t-${radiusValue}` : `rounded-b-${radiusValue}`
 }
+
+/**
+ * Map radius classes to conditional classes with a prefix.
+ * Useful for components that need radius classes with conditional prefixes (e.g., Tailwind responsive/state variants).
+ */
+const radiusClassMap: Record<string, string> = {
+  'rounded-none': 'rounded-none',
+  'rounded-sm': 'rounded-sm',
+  'rounded-md': 'rounded-md',
+  'rounded-lg': 'rounded-lg',
+  'rounded-xl': 'rounded-xl',
+  'rounded-2xl': 'rounded-2xl',
+  'rounded-3xl': 'rounded-3xl',
+  'rounded-full': 'rounded-full',
+}
+
+/**
+ * Get the radius class for a component category with an optional prefix.
+ * The prefix will be prepended to the radius class (e.g., 'md:peer-data-[variant=inset]:' + 'rounded-lg').
+ * Useful for components that need conditional radius classes.
+ */
+export function useRadiusClassWithPrefix(
+  category: ComponentCategory,
+  prefix: string = '',
+): string {
+  const radiusClass = useRadiusClass(category)
+  const baseClass = radiusClassMap[radiusClass] || 'rounded-xl' // fallback
+
+  return prefix ? `${prefix}${baseClass}` : baseClass
+}
