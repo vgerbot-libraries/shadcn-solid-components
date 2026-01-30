@@ -3,6 +3,7 @@ import { splitProps } from "solid-js"
 import { Combobox as ComboboxPrimitive } from "@kobalte/core/combobox"
 
 import { cx } from "@/registry/lib/cva"
+import { useRadiusClass } from "@/lib/theme-helpers"
 
 export const ComboboxPortal = ComboboxPrimitive.Portal
 
@@ -113,11 +114,14 @@ export const ComboboxContent = <T extends ValidComponent = "div">(
 ) => {
   const [, rest] = splitProps(props as ComboboxContentProps, ["class"])
 
+  const radiusClass = useRadiusClass('overlay')
+
   return (
     <ComboboxPrimitive.Content
       data-slot="combobox-content"
       class={cx(
-        "bg-popover text-popover-foreground data-[expanded]:animate-in data-[closed]:animate-out data-[closed]:fade-out-0 data-[expanded]:fade-in-0 data-[closed]:zoom-out-95 data-[expanded]:zoom-in-95 relative z-50 min-w-[8rem] origin-(--kb-combobox-content-transform-origin) overflow-x-hidden overflow-y-auto rounded-md border shadow-md",
+        "bg-popover text-popover-foreground data-[expanded]:animate-in data-[closed]:animate-out data-[closed]:fade-out-0 data-[expanded]:fade-in-0 data-[closed]:zoom-out-95 data-[expanded]:zoom-in-95 relative z-50 min-w-[8rem] origin-(--kb-combobox-content-transform-origin) overflow-x-hidden overflow-y-auto border shadow-md",
+        radiusClass,
         "[[data-popper-positioner][style*='--kb-popper-content-transform-origin:_top']>[data-slot=combobox-content]]:slide-in-from-top-2 [[data-popper-positioner][style*='--kb-popper-content-transform-origin:_bottom']>[data-slot=combobox-content]]:slide-in-from-bottom-2 [[data-popper-positioner][style*='--kb-popper-content-transform-origin:_left']>[data-slot=combobox-content]]:slide-in-from-left-2 [[data-popper-positioner][style*='--kb-popper-content-transform-origin:_right']>[data-slot=combobox-content]]:slide-in-from-right-2",
         props.class,
       )}

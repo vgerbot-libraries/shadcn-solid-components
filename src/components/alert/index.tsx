@@ -4,9 +4,10 @@ import { Alert as AlertPrimitive } from "@kobalte/core/alert"
 import type { VariantProps } from "cva"
 
 import { cva, cx } from "@/lib/cva"
+import { useRadiusClass } from "@/lib/theme-helpers"
 
 export const alertVariants = cva({
-  base: "relative w-full rounded-lg border px-4 py-3 text-sm grid has-[>svg]:grid-cols-[calc(var(--spacing)*4)_1fr] grid-cols-[0_1fr] has-[>svg]:gap-x-3 gap-y-0.5 items-start [&>svg]:size-4 [&>svg]:translate-y-0.5 [&>svg]:text-current",
+  base: "relative w-full border px-4 py-3 text-sm grid has-[>svg]:grid-cols-[calc(var(--spacing)*4)_1fr] grid-cols-[0_1fr] has-[>svg]:gap-x-3 gap-y-0.5 items-start [&>svg]:size-4 [&>svg]:translate-y-0.5 [&>svg]:text-current",
   variants: {
     variant: {
       default: "bg-card text-card-foreground",
@@ -29,13 +30,18 @@ export const Alert = <T extends ValidComponent = "button">(
 ) => {
   const [, rest] = splitProps(props as AlertProps, ["class", "variant"])
 
+  const radiusClass = useRadiusClass('display')
+
   return (
     <AlertPrimitive
       data-slot="alert"
-      class={alertVariants({
-        variant: props.variant,
-        class: props.class,
-      })}
+      class={cx(
+        alertVariants({
+          variant: props.variant,
+        }),
+        radiusClass,
+        props.class
+      )}
       {...rest}
     />
   )

@@ -2,17 +2,21 @@ import type { ComponentProps } from "solid-js"
 import { splitProps } from "solid-js"
 
 import { cx } from "@/lib/cva"
+import { useRadiusClass } from "@/lib/theme-helpers"
 
 export type CardProps = ComponentProps<"div">
 
 export const Card = (props: CardProps) => {
   const [, rest] = splitProps(props, ["class"])
 
+  const radiusClass = useRadiusClass('display')
+
   return (
     <div
       data-slot="card"
       class={cx(
-        "bg-card text-card-foreground flex flex-col gap-6 rounded-xl border py-6 shadow-sm",
+        "bg-card text-card-foreground flex flex-col gap-6 border py-6 shadow-sm",
+        radiusClass,
         props.class,
       )}
       {...rest}

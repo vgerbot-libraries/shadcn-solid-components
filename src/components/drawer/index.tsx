@@ -4,6 +4,7 @@ import type { DynamicProps } from "@corvu/drawer"
 import DrawerPrimitive from "@corvu/drawer"
 
 import { cx } from "@/registry/lib/cva"
+import { useRadiusClassPartial } from "@/lib/theme-helpers"
 
 export const DrawerPortal = DrawerPrimitive.Portal
 
@@ -49,6 +50,9 @@ export const DrawerContent = <T extends ValidComponent = "div">(
   )
   const [, rest] = splitProps(merge, ["class", "children", "withHandle"])
 
+  const radiusTopClass = useRadiusClassPartial('overlay', 'top')
+  const radiusBottomClass = useRadiusClassPartial('overlay', 'bottom')
+
   return (
     <>
       <DrawerPrimitive.Overlay
@@ -63,11 +67,13 @@ export const DrawerContent = <T extends ValidComponent = "div">(
         class={cx(
           "bg-background fixed z-50 flex h-auto flex-col after:absolute after:bg-inherit data-[transitioning]:transition-transform data-[transitioning]:duration-500 data-[transitioning]:ease-[cubic-bezier(0.32,0.72,0,1)]",
           context.side() === "bottom" && [
-            "inset-x-0 bottom-0 mt-24 max-h-[80vh] rounded-t-lg border-t",
+            "inset-x-0 bottom-0 mt-24 max-h-[80vh] border-t",
+            radiusTopClass,
             "after:inset-x-0 after:top-[calc(100%-1px)] after:h-1/2",
           ],
           context.side() === "top" && [
-            "inset-x-0 top-0 mb-24 max-h-[80vh] rounded-b-lg border-b",
+            "inset-x-0 top-0 mb-24 max-h-[80vh] border-b",
+            radiusBottomClass,
             "after:inset-x-0 after:bottom-[calc(100%-1px)] after:h-1/2",
           ],
           context.side() === "left" && [

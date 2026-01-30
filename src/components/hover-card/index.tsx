@@ -3,6 +3,7 @@ import { splitProps } from "solid-js"
 import { HoverCard as HoverCardPrimitive } from "@kobalte/core/hover-card"
 
 import { cx } from "@/registry/lib/cva"
+import { useRadiusClass } from "@/lib/theme-helpers"
 
 export const HoverCardPortal = HoverCardPrimitive.Portal
 
@@ -31,11 +32,14 @@ export const HoverCardContent = <T extends ValidComponent = "div">(
 ) => {
   const [, rest] = splitProps(props as HoverCardContentProps, ["class"])
 
+  const radiusClass = useRadiusClass('overlay')
+
   return (
     <HoverCardPrimitive.Content
       data-slot="hover-card-content"
       class={cx(
-        "bg-popover text-popover-foreground data-[expanded]:animate-in data-[closed]:animate-out data-[closed]:fade-out-0 data-[expanded]:fade-in-0 data-[closed]:zoom-out-95 data-[expanded]:zoom-in-95 z-50 w-64 origin-(--kb-hovercard-content-transform-origin) rounded-md border p-4 shadow-md outline-hidden",
+        "bg-popover text-popover-foreground data-[expanded]:animate-in data-[closed]:animate-out data-[closed]:fade-out-0 data-[expanded]:fade-in-0 data-[closed]:zoom-out-95 data-[expanded]:zoom-in-95 z-50 w-64 origin-(--kb-hovercard-content-transform-origin) border p-4 shadow-md outline-hidden",
+        radiusClass,
         "[[data-popper-positioner][style*='--kb-popper-content-transform-origin:_top']>[data-slot=hover-card-content]]:slide-in-from-top-2 [[data-popper-positioner][style*='--kb-popper-content-transform-origin:_bottom']>[data-slot=hover-card-content]]:slide-in-from-bottom-2 [[data-popper-positioner][style*='--kb-popper-content-transform-origin:_left']>[data-slot=hover-card-content]]:slide-in-from-left-2 [[data-popper-positioner][style*='--kb-popper-content-transform-origin:_right']>[data-slot=hover-card-content]]:slide-in-from-right-2",
         props.class,
       )}
