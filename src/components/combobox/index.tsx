@@ -3,7 +3,8 @@ import { splitProps } from "solid-js"
 import { Combobox as ComboboxPrimitive } from "@kobalte/core/combobox"
 
 import { cx } from "@/registry/lib/cva"
-import { useRadiusClass } from "@/lib/theme-helpers"
+import { useRadiusClass, useComponentClass } from "@/lib/theme-helpers"
+import { ComponentName } from "@/lib/theme-context"
 
 export const ComboboxPortal = ComboboxPrimitive.Portal
 
@@ -93,6 +94,7 @@ export const ComboboxControl = <Option, T extends ValidComponent = "div">(
 ) => {
   const [, rest] = splitProps(props as ComboboxControlProps<Option>, ["class"])
   const radiusClass = useRadiusClass('form-control')
+  const componentClass = useComponentClass(ComponentName.Combobox, props as ComboboxProps<any>)
 
   return (
     <ComboboxPrimitive.Control
@@ -101,6 +103,7 @@ export const ComboboxControl = <Option, T extends ValidComponent = "div">(
         "dark:bg-input/30 border-input flex h-9 w-full min-w-0 border bg-transparent px-3 py-1 text-base shadow-xs transition-[color,box-shadow] data-[disabled]:pointer-events-none data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50 md:text-sm",
         "data-[invalid]:ring-destructive/20 dark:data-[invalid]:ring-destructive/40 data-[invalid]:border-destructive",
         radiusClass,
+        componentClass,
         props.class,
       )}
       {...rest}
@@ -117,6 +120,7 @@ export const ComboboxContent = <T extends ValidComponent = "div">(
   const [, rest] = splitProps(props as ComboboxContentProps, ["class"])
 
   const radiusClass = useRadiusClass('overlay')
+  const componentClass = useComponentClass(ComponentName.Combobox, props as ComboboxProps<any>)
 
   return (
     <ComboboxPrimitive.Content
@@ -124,6 +128,7 @@ export const ComboboxContent = <T extends ValidComponent = "div">(
       class={cx(
         "bg-popover text-popover-foreground data-[expanded]:animate-in data-[closed]:animate-out data-[closed]:fade-out-0 data-[expanded]:fade-in-0 data-[closed]:zoom-out-95 data-[expanded]:zoom-in-95 relative z-50 min-w-[8rem] origin-(--kb-combobox-content-transform-origin) overflow-x-hidden overflow-y-auto border shadow-md",
         radiusClass,
+        componentClass,
         "[[data-popper-positioner][style*='--kb-popper-content-transform-origin:_top']>[data-slot=combobox-content]]:slide-in-from-top-2 [[data-popper-positioner][style*='--kb-popper-content-transform-origin:_bottom']>[data-slot=combobox-content]]:slide-in-from-bottom-2 [[data-popper-positioner][style*='--kb-popper-content-transform-origin:_left']>[data-slot=combobox-content]]:slide-in-from-left-2 [[data-popper-positioner][style*='--kb-popper-content-transform-origin:_right']>[data-slot=combobox-content]]:slide-in-from-right-2",
         props.class,
       )}
@@ -142,6 +147,7 @@ export const ComboboxItem = <T extends ValidComponent = "div">(
 ) => {
   const [, rest] = splitProps(props as ComboboxItemProps, ["class", "children"])
   const radiusClass = useRadiusClass('menu-item')
+  const componentClass = useComponentClass(ComponentName.Combobox, props as ComboboxProps<any>)
 
   return (
     <ComboboxPrimitive.Item
@@ -149,6 +155,7 @@ export const ComboboxItem = <T extends ValidComponent = "div">(
       class={cx(
         "data-[highlighted]:bg-accent data-[highlighted]:text-accent-foreground [&_svg:not([class*='text-'])]:text-muted-foreground relative flex w-full cursor-default items-center justify-between gap-2 px-2 py-1.5 text-sm outline-hidden select-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
         radiusClass,
+        componentClass,
         props.class,
       )}
       {...rest}

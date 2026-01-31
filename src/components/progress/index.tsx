@@ -13,6 +13,7 @@ export const Progress = <T extends ValidComponent = "div">(
 ) => {
   const [, rest] = splitProps(props as ProgressProps, ["class", "children"])
   const radiusClass = useRadiusClass('special')
+  const componentClass = useComponentClass(ComponentName.Progress, props)
 
   return (
     <ProgressPrimitive
@@ -23,7 +24,7 @@ export const Progress = <T extends ValidComponent = "div">(
       {props.children}
       <ProgressPrimitive.Track
         data-slot="progress-track"
-        class={cx("bg-primary/20 relative h-2 w-full overflow-hidden", radiusClass)}
+        class={cx("bg-primary/20 relative h-2 w-full overflow-hidden", radiusClass, componentClass)}
       >
         <ProgressPrimitive.Fill
           data-slot="progress-fill"

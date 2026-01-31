@@ -7,7 +7,8 @@ import {
 import { Menubar as MenubarPrimitive } from "@kobalte/core/menubar"
 
 import { cx } from "@/registry/lib/cva"
-import { useRadiusClass } from "@/lib/theme-helpers"
+import { useRadiusClass, useComponentClass } from "@/lib/theme-helpers"
+import { ComponentName } from "@/lib/theme-context"
 
 export const MenubarPortal = MenubarPrimitive.Portal
 

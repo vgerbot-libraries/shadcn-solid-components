@@ -3,7 +3,8 @@ import { splitProps, type ComponentProps } from "solid-js"
 import { NumberField as NumberFieldPrimitive } from "@kobalte/core/number-field"
 
 import { cx } from "@/registry/lib/cva"
-import { useRadiusClass } from "@/lib/theme-helpers"
+import { useRadiusClass, useComponentClass } from "@/lib/theme-helpers"
+import { ComponentName } from "@/lib/theme-context"
 
 export type NumberFieldProps<T extends ValidComponent = "div"> = ComponentProps<
   typeof NumberFieldPrimitive<T>
@@ -28,6 +29,7 @@ export type NumberFieldGroupProps = ComponentProps<"div">
 export const NumberFieldGroup = (props: NumberFieldGroupProps) => {
   const [, rest] = splitProps(props, ["class"])
   const radiusClass = useRadiusClass('form-control')
+  const componentClass = useComponentClass(ComponentName.NumberField, props as NumberFieldProps)
 
   return (
     <div
@@ -35,6 +37,7 @@ export const NumberFieldGroup = (props: NumberFieldGroupProps) => {
       class={cx(
         "focus-within:border-ring focus-within:ring-ring/50 border-input has-aria-invalid:ring-destructive/20 dark:has-aria-invalid:ring-destructive/40 has-aria-invalid:border-destructive relative border transition-shadow focus-within:ring-[3px]",
         radiusClass,
+        componentClass,
         props.class,
       )}
       {...rest}
@@ -70,6 +73,7 @@ export const NumberFieldInput = <T extends ValidComponent = "input">(
 ) => {
   const [, rest] = splitProps(props as NumberFieldInputProps, ["class"])
   const radiusClass = useRadiusClass('form-control')
+  const componentClass = useComponentClass(ComponentName.NumberField, props as NumberFieldProps)
 
   return (
     <NumberFieldPrimitive.Input
@@ -77,6 +81,7 @@ export const NumberFieldInput = <T extends ValidComponent = "input">(
       class={cx(
         "placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground dark:bg-input/30 flex h-9 w-full min-w-0 bg-transparent px-3 py-1 text-center text-base shadow-xs transition-colors outline-none disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm",
         radiusClass,
+        componentClass,
         props.class,
       )}
       {...rest}

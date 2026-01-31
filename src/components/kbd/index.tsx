@@ -1,13 +1,15 @@
 import { splitProps, type ComponentProps } from "solid-js"
 
 import { cx } from "@/registry/lib/cva"
-import { useRadiusClass } from "@/lib/theme-helpers"
+import { useRadiusClass, useComponentClass } from "@/lib/theme-helpers"
+import { ComponentName } from "@/lib/theme-context"
 
 export type KbdProps = ComponentProps<"kbd">
 
 export const Kbd = (props: KbdProps) => {
   const [, rest] = splitProps(props, ["class"])
   const radiusClass = useRadiusClass('display')
+  const componentClass = useComponentClass(ComponentName.Kbd, props)
 
   return (
     <kbd
@@ -17,6 +19,7 @@ export const Kbd = (props: KbdProps) => {
         "[&_svg:not([class*='size-'])]:size-3",
         "[[data-slot=tooltip-content]_&]:bg-background/20 [[data-slot=tooltip-content]_&]:text-background dark:[[data-slot=tooltip-content]_&]:bg-background/10",
         radiusClass,
+        componentClass,
         props.class,
       )}
       {...rest}

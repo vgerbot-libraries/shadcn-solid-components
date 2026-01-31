@@ -11,7 +11,8 @@ import {
 } from "@kobalte/core/search"
 
 import { cx } from "@/registry/lib/cva"
-import { useRadiusClass } from "@/lib/theme-helpers"
+import { useRadiusClass, useComponentClass } from "@/lib/theme-helpers"
+import { ComponentName } from "@/lib/theme-context"
 
 export const SearchPortal = SearchPrimitive.Portal
 
@@ -163,6 +164,7 @@ export const SearchContent = <T extends ValidComponent = "div">(
   const [, rest] = splitProps(props as SearchContentProps, ["class"])
 
   const radiusClass = useRadiusClass('overlay')
+  const componentClass = useComponentClass(ComponentName.Search, props as SearchProps<any>)
 
   return (
     <SearchPrimitive.Content
@@ -170,6 +172,7 @@ export const SearchContent = <T extends ValidComponent = "div">(
       class={cx(
         "bg-popover text-popover-foreground data-[expanded]:animate-in data-[closed]:animate-out data-[closed]:fade-out-0 data-[expanded]:fade-in-0 data-[closed]:zoom-out-95 data-[expanded]:zoom-in-95 relative z-50 min-w-[8rem] origin-(--kb-search-content-transform-origin) overflow-x-hidden overflow-y-auto border shadow-md",
         radiusClass,
+        componentClass,
         "[[data-popper-positioner][style*='--kb-popper-content-transform-origin:_top']>[data-slot=search-content]]:slide-in-from-top-2 [[data-popper-positioner][style*='--kb-popper-content-transform-origin:_bottom']>[data-slot=search-content]]:slide-in-from-bottom-2 [[data-popper-positioner][style*='--kb-popper-content-transform-origin:_left']>[data-slot=search-content]]:slide-in-from-left-2 [[data-popper-positioner][style*='--kb-popper-content-transform-origin:_right']>[data-slot=search-content]]:slide-in-from-right-2",
         // TODO: remove when maintainer found a fix
         "data-[closed]:hidden",
@@ -209,6 +212,7 @@ export const SearchItem = <T extends ValidComponent = "li">(
 ) => {
   const [, rest] = splitProps(props as SearchItemProps, ["class"])
   const radiusClass = useRadiusClass('menu-item')
+  const componentClass = useComponentClass(ComponentName.Search, props as SearchProps<any>)
 
   return (
     <SearchPrimitive.Item
@@ -216,6 +220,7 @@ export const SearchItem = <T extends ValidComponent = "li">(
       class={cx(
         "data-[highlighted]:bg-accent data-[highlighted]:text-accent-foreground [&_svg:not([class*='text-'])]:text-muted-foreground relative flex w-full cursor-default items-center justify-between gap-2 px-2 py-1.5 text-sm outline-hidden select-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
         radiusClass,
+        componentClass,
         props.class,
       )}
       {...rest}

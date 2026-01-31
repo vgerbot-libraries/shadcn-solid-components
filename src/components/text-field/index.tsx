@@ -3,7 +3,8 @@ import { For, Match, Switch, splitProps } from "solid-js"
 import { TextField as TextFieldPrimitive } from "@kobalte/core/text-field"
 
 import { cx } from "@/registry/lib/cva"
-import { useRadiusClass } from "@/lib/theme-helpers"
+import { useRadiusClass, useComponentClass } from "@/lib/theme-helpers"
+import { ComponentName } from "@/lib/theme-context"
 
 export type TextFieldProps<T extends ValidComponent = "div"> = ComponentProps<
   typeof TextFieldPrimitive<T>
@@ -32,6 +33,7 @@ export const TextFieldInput = <T extends ValidComponent = "input">(
   const [, rest] = splitProps(props as TextFieldInputProps, ["class"])
 
   const radiusClass = useRadiusClass('form-control')
+  const componentClass = useComponentClass(ComponentName.TextField, props as TextFieldProps)
 
   return (
     <TextFieldPrimitive.Input
@@ -42,6 +44,7 @@ export const TextFieldInput = <T extends ValidComponent = "input">(
         "aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive",
         "file:text-foreground file:inline-flex file:h-7 file:border-0 file:bg-transparent file:text-sm file:font-medium",
         radiusClass,
+        componentClass,
         props.class,
       )}
       {...rest}
@@ -58,6 +61,7 @@ export const TextFieldTextArea = <T extends ValidComponent = "textarea">(
   const [, rest] = splitProps(props as TextFieldTextAreaProps, ["class"])
 
   const radiusClass = useRadiusClass('form-control')
+  const componentClass = useComponentClass(ComponentName.TextField, props as TextFieldProps)
 
   return (
     <TextFieldPrimitive.TextArea
@@ -67,6 +71,7 @@ export const TextFieldTextArea = <T extends ValidComponent = "textarea">(
         "focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]",
         "aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive",
         radiusClass,
+        componentClass,
         props.class,
       )}
       {...rest}

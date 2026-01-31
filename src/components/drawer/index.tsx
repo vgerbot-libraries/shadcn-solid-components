@@ -4,7 +4,8 @@ import type { DynamicProps } from "@corvu/drawer"
 import DrawerPrimitive from "@corvu/drawer"
 
 import { cx } from "@/registry/lib/cva"
-import { useRadiusClassPartial } from "@/lib/theme-helpers"
+import { useRadiusClassPartial, useComponentClass } from "@/lib/theme-helpers"
+import { ComponentName } from "@/lib/theme-context"
 
 export const DrawerPortal = DrawerPrimitive.Portal
 

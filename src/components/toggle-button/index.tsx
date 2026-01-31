@@ -3,7 +3,8 @@ import { ToggleButton as ToggleButtonPrimitive } from "@kobalte/core/toggle-butt
 import type { VariantProps } from "cva"
 
 import { cva, cx } from "@/registry/lib/cva"
-import { useRadiusClass } from "@/lib/theme-helpers"
+import { useRadiusClass, useComponentClass } from "@/lib/theme-helpers"
+import { ComponentName } from "@/lib/theme-context"
 
 export const toggleButtonVariants = cva({
   base: "inline-flex items-center justify-center gap-2 text-sm font-medium hover:bg-muted hover:text-muted-foreground disabled:pointer-events-none disabled:opacity-50 data-[pressed]:bg-accent data-[pressed]:text-accent-foreground [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 [&_svg]:shrink-0 focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] outline-none transition-[color,background-color,box-shadow] whitespace-nowrap",
@@ -38,6 +39,7 @@ export const ToggleButton = <T extends ValidComponent = "button">(
     "size",
   ])
   const radiusClass = useRadiusClass('form-control')
+  const componentClass = useComponentClass(ComponentName.ToggleButton, props as ToggleButtonProps)
 
   return (
     <ToggleButtonPrimitive
@@ -45,7 +47,7 @@ export const ToggleButton = <T extends ValidComponent = "button">(
       class={toggleButtonVariants({
         variant: props.variant,
         size: props.size,
-        class: cx(radiusClass, props.class),
+        class: cx(radiusClass, componentClass, props.class),
       })}
       {...rest}
     />

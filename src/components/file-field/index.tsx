@@ -4,7 +4,8 @@ import { FileField as FileFieldPrimitive } from "@kobalte/core/file-field"
 import type { VariantProps } from "cva"
 
 import { cx } from "@/registry/lib/cva"
-import { useRadiusClass } from "@/lib/theme-helpers"
+import { useRadiusClass, useComponentClass } from "@/lib/theme-helpers"
+import { ComponentName } from "@/lib/theme-context"
 
 import { buttonVariants } from "../button"
 

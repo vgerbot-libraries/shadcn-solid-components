@@ -7,7 +7,8 @@ import {
 import { NavigationMenu as NavigationMenuPrimitive } from "@kobalte/core/navigation-menu"
 
 import { cva, cx } from "@/registry/lib/cva"
-import { useRadiusClass } from "@/lib/theme-helpers"
+import { useRadiusClass, useComponentClass } from "@/lib/theme-helpers"
+import { ComponentName } from "@/lib/theme-context"
 
 export const NavigationMenuPortal = NavigationMenuPrimitive.Portal
 

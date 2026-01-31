@@ -3,7 +3,8 @@ import { mergeProps, splitProps } from "solid-js"
 import { Tooltip as TooltipPrimitive } from "@kobalte/core/tooltip"
 
 import { cx } from "@/registry/lib/cva"
-import { useRadiusClass } from "@/lib/theme-helpers"
+import { useRadiusClass, useComponentClass } from "@/lib/theme-helpers"
+import { ComponentName } from "@/lib/theme-context"
 
 export type TooltipProps = ComponentProps<typeof TooltipPrimitive>
 
@@ -43,6 +44,7 @@ export const TooltipContent = <T extends ValidComponent = "button">(
   ])
 
   const radiusClass = useRadiusClass('overlay')
+  const componentClass = useComponentClass(ComponentName.Tooltip, props as TooltipProps)
 
   return (
     <TooltipPrimitive.Content
@@ -50,6 +52,7 @@ export const TooltipContent = <T extends ValidComponent = "button">(
       class={cx(
         "bg-primary text-primary-foreground animate-in fade-in-0 zoom-in-95 data-[closed]:animate-out data-[closed]:fade-out-0 data-[closed]:zoom-out-95 z-50 w-fit origin-(--kb-tooltip-content-transform-origin) px-3 py-1.5 text-xs text-balance",
         radiusClass,
+        componentClass,
         "[[data-popper-positioner][style*='--kb-popper-content-transform-origin:_top']>[data-slot=tooltip-content]]:slide-in-from-top-2 [[data-popper-positioner][style*='--kb-popper-content-transform-origin:_bottom']>[data-slot=tooltip-content]]:slide-in-from-bottom-2 [[data-popper-positioner][style*='--kb-popper-content-transform-origin:_left']>[data-slot=tooltip-content]]:slide-in-from-left-2 [[data-popper-positioner][style*='--kb-popper-content-transform-origin:_right']>[data-slot=tooltip-content]]:slide-in-from-right-2",
         props.class,
       )}

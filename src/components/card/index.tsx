@@ -2,7 +2,8 @@ import type { ComponentProps } from "solid-js"
 import { splitProps } from "solid-js"
 
 import { cx } from "@/lib/cva"
-import { useRadiusClass } from "@/lib/theme-helpers"
+import { useRadiusClass, useComponentClass } from "@/lib/theme-helpers"
+import { ComponentName } from "@/lib/theme-context"
 
 export type CardProps = ComponentProps<"div">
 
@@ -10,6 +11,7 @@ export const Card = (props: CardProps) => {
   const [, rest] = splitProps(props, ["class"])
 
   const radiusClass = useRadiusClass('display')
+  const componentClass = useComponentClass(ComponentName.Card, props)
 
   return (
     <div
@@ -17,6 +19,7 @@ export const Card = (props: CardProps) => {
       class={cx(
         "bg-card text-card-foreground flex flex-col gap-6 border py-6 shadow-sm",
         radiusClass,
+        componentClass,
         props.class,
       )}
       {...rest}

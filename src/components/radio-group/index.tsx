@@ -3,7 +3,8 @@ import { splitProps, type ComponentProps, type ValidComponent } from "solid-js"
 import { RadioGroup as RadioGroupPrimitive } from "@kobalte/core/radio-group"
 
 import { cx } from "@/registry/lib/cva"
-import { useRadiusClass } from "@/lib/theme-helpers"
+import { useRadiusClass, useComponentClass } from "@/lib/theme-helpers"
+import { ComponentName } from "@/lib/theme-context"
 
 export type RadioGroupProps<T extends ValidComponent = "div"> = ComponentProps<
   typeof RadioGroupPrimitive<T>
@@ -85,6 +86,7 @@ export const RadioGroupItemControl = <T extends ValidComponent = "div">(
 ) => {
   const [, rest] = splitProps(props as RadioGroupItemControlProps, ["class"])
   const radiusClass = useRadiusClass('special')
+  const componentClass = useComponentClass(ComponentName.RadioGroup, props as RadioGroupProps)
 
   return (
     <RadioGroupPrimitive.ItemControl
@@ -94,6 +96,7 @@ export const RadioGroupItemControl = <T extends ValidComponent = "div">(
         "data-[invalid]:ring-destructive/20 dark:data-[invalid]:ring-destructive/40 data-[invalid]:border-destructive",
         "peer-focus-visible/radio-group:ring-ring/50 peer-focus-visible/radio-group:border-ring peer-focus-visible/radio-group:ring-[3px]",
         radiusClass,
+        componentClass,
         props.class,
       )}
       {...rest}
@@ -109,12 +112,13 @@ export const RadioGroupItemIndicator = <T extends ValidComponent = "div">(
 ) => {
   const [, rest] = splitProps(props as RadioGroupItemIndicatorProps, ["class"])
   const radiusClass = useRadiusClass('special')
+  const componentClass = useComponentClass(ComponentName.RadioGroup, props as RadioGroupProps)
 
   return (
     <RadioGroupPrimitive.ItemIndicator
       forceMount
       data-slot="radio-group-item-indicator"
-      class={cx("data-[checked]:bg-primary size-2", radiusClass, props.class)}
+      class={cx("data-[checked]:bg-primary size-2", radiusClass, componentClass, props.class)}
       {...rest}
     />
   )

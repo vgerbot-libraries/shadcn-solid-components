@@ -3,7 +3,8 @@ import { splitProps } from "solid-js"
 import { ContextMenu as ContextMenuPrimitive } from "@kobalte/core/context-menu"
 
 import { cx } from "@/registry/lib/cva"
-import { useRadiusClass } from "@/lib/theme-helpers"
+import { useRadiusClass, useComponentClass } from "@/lib/theme-helpers"
+import { ComponentName } from "@/lib/theme-context"
 
 export const ContextMenuPortal = ContextMenuPrimitive.Portal
 
@@ -71,6 +72,7 @@ export const ContextMenuSubTrigger = <T extends ValidComponent = "div">(
     "inset",
   ])
   const radiusClass = useRadiusClass('menu-item')
+  const componentClass = useComponentClass(ComponentName.ContextMenu, props as ContextMenuProps)
 
   return (
     <ContextMenuPrimitive.SubTrigger
@@ -79,6 +81,7 @@ export const ContextMenuSubTrigger = <T extends ValidComponent = "div">(
       class={cx(
         "data-[highlighted]:bg-accent data-[highlighted]:text-accent-foreground data-[expanded]:bg-accent data-[expanded]:text-accent-foreground flex cursor-default items-center px-2 py-1.5 text-sm outline-hidden select-none data-[inset]:pl-8 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
         radiusClass,
+        componentClass,
         props.class,
       )}
       {...rest}
@@ -111,6 +114,7 @@ export const ContextMenuSubContent = <T extends ValidComponent = "div">(
   const [, rest] = splitProps(props as ContextMenuSubContentProps, ["class"])
 
   const radiusClass = useRadiusClass('overlay')
+  const componentClass = useComponentClass(ComponentName.ContextMenu, props as ContextMenuProps)
 
   return (
     <ContextMenuPrimitive.SubContent
@@ -118,6 +122,7 @@ export const ContextMenuSubContent = <T extends ValidComponent = "div">(
       class={cx(
         "bg-popover text-popover-foreground data-[expanded]:animate-in data-[closed]:animate-out data-[closed]:fade-out-0 data-[expanded]:fade-in-0 data-[closed]:zoom-out-95 data-[expanded]:zoom-in-95 z-50 min-w-[8rem] origin-(--kb-menu-content-transform-origin) overflow-hidden border p-1 shadow-lg outline-none",
         radiusClass,
+        componentClass,
         "[[data-popper-positioner][style*='--kb-popper-content-transform-origin:_top']>[data-slot=context-menu-sub-content]]:slide-in-from-top-2 [[data-popper-positioner][style*='--kb-popper-content-transform-origin:_bottom']>[data-slot=context-menu-sub-content]]:slide-in-from-bottom-2 [[data-popper-positioner][style*='--kb-popper-content-transform-origin:_left']>[data-slot=context-menu-sub-content]]:slide-in-from-left-2 [[data-popper-positioner][style*='--kb-popper-content-transform-origin:_right']>[data-slot=context-menu-sub-content]]:slide-in-from-right-2",
         props.class,
       )}
@@ -135,6 +140,7 @@ export const ContextMenuContent = <T extends ValidComponent = "div">(
   const [, rest] = splitProps(props as ContextMenuContentProps, ["class"])
 
   const radiusClass = useRadiusClass('overlay')
+  const componentClass = useComponentClass(ComponentName.ContextMenu, props as ContextMenuProps)
 
   return (
     <ContextMenuPrimitive.Content
@@ -142,6 +148,7 @@ export const ContextMenuContent = <T extends ValidComponent = "div">(
       class={cx(
         "bg-popover text-popover-foreground data-[expanded]:animate-in data-[closed]:animate-out data-[closed]:fade-out-0 data-[expanded]:fade-in-0 data-[closed]:zoom-out-95 data-[expanded]:zoom-in-95 z-50 min-w-[8rem] origin-(--kb-menu-content-transform-origin) overflow-x-hidden overflow-y-auto border p-1 shadow-md outline-none",
         radiusClass,
+        componentClass,
         "[[data-popper-positioner][style*='--kb-popper-content-transform-origin:_top']>[data-slot=context-menu-content]]:slide-in-from-top-2 [[data-popper-positioner][style*='--kb-popper-content-transform-origin:_bottom']>[data-slot=context-menu-content]]:slide-in-from-bottom-2 [[data-popper-positioner][style*='--kb-popper-content-transform-origin:_left']>[data-slot=context-menu-content]]:slide-in-from-left-2 [[data-popper-positioner][style*='--kb-popper-content-transform-origin:_right']>[data-slot=context-menu-content]]:slide-in-from-right-2",
         props.class,
       )}
@@ -165,6 +172,7 @@ export const ContextMenuItem = <T extends ValidComponent = "div">(
     "variant",
   ])
   const radiusClass = useRadiusClass('menu-item')
+  const componentClass = useComponentClass(ComponentName.ContextMenu, props as ContextMenuProps)
 
   return (
     <ContextMenuPrimitive.Item
@@ -174,6 +182,7 @@ export const ContextMenuItem = <T extends ValidComponent = "div">(
       class={cx(
         "data-[highlighted]:bg-accent data-[highlighted]:text-accent-foreground data-[variant=destructive]:text-destructive data-[variant=destructive]:data-[highlighted]:bg-destructive/10 dark:data-[variant=destructive]:data-[highlighted]:bg-destructive/20 data-[variant=destructive]:data-[highlighted]:text-destructive data-[variant=destructive]:*:[svg]:!text-destructive [&_svg:not([class*='text-'])]:text-muted-foreground relative flex cursor-default items-center gap-2 px-2 py-1.5 text-sm outline-hidden select-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 data-[inset]:pl-8 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
         radiusClass,
+        componentClass,
         props.class,
       )}
       {...rest}
@@ -192,6 +201,7 @@ export const ContextMenuCheckboxItem = <T extends ValidComponent = "div">(
     "children",
   ])
   const radiusClass = useRadiusClass('menu-item')
+  const componentClass = useComponentClass(ComponentName.ContextMenu, props as ContextMenuProps)
 
   return (
     <ContextMenuPrimitive.CheckboxItem
@@ -199,6 +209,7 @@ export const ContextMenuCheckboxItem = <T extends ValidComponent = "div">(
       class={cx(
         "data-[highlighted]:bg-accent data-[highlighted]:text-accent-foreground relative flex cursor-default items-center gap-2 py-1.5 pr-2 pl-8 text-sm outline-hidden select-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
         radiusClass,
+        componentClass,
         props.class,
       )}
       {...rest}
@@ -236,6 +247,7 @@ export const ContextMenuRadioItem = <T extends ValidComponent = "div">(
     "children",
   ])
   const radiusClass = useRadiusClass('menu-item')
+  const componentClass = useComponentClass(ComponentName.ContextMenu, props as ContextMenuProps)
 
   return (
     <ContextMenuPrimitive.RadioItem
@@ -243,6 +255,7 @@ export const ContextMenuRadioItem = <T extends ValidComponent = "div">(
       class={cx(
         "data-[highlighted]:bg-accent data-[highlighted]:text-accent-foreground relative flex cursor-default items-center gap-2 py-1.5 pr-2 pl-8 text-sm outline-hidden select-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
         radiusClass,
+        componentClass,
         props.class,
       )}
       {...rest}

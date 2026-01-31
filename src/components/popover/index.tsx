@@ -7,7 +7,8 @@ import {
 import { Popover as PopoverPrimitive } from "@kobalte/core/popover"
 
 import { cx } from "@/registry/lib/cva"
-import { useRadiusClass } from "@/lib/theme-helpers"
+import { useRadiusClass, useComponentClass } from "@/lib/theme-helpers"
+import { ComponentName } from "@/lib/theme-context"
 
 export const PopoverPortal = PopoverPrimitive.Portal
 
@@ -42,6 +43,7 @@ export const PopoverContent = <T extends ValidComponent = "div">(
   const [, rest] = splitProps(props as PopoverContentProps, ["class"])
 
   const radiusClass = useRadiusClass('overlay')
+  const componentClass = useComponentClass(ComponentName.Popover, props as PopoverProps)
 
   return (
     <PopoverPrimitive.Content
@@ -49,6 +51,7 @@ export const PopoverContent = <T extends ValidComponent = "div">(
       class={cx(
         "bg-popover text-popover-foreground data-[expanded]:animate-in data-[closed]:animate-out data-[closed]:fade-out-0 data-[expanded]:fade-in-0 data-[closed]:zoom-out-95 data-[expanded]:zoom-in-95 z-50 w-72 origin-(--kb-popover-content-transform-origin) border p-4 shadow-md outline-hidden",
         radiusClass,
+        componentClass,
         "[[data-popper-positioner][style*='--kb-popper-content-transform-origin:_top']>[data-slot=popover-content]]:slide-in-from-top-2 [[data-popper-positioner][style*='--kb-popper-content-transform-origin:_bottom']>[data-slot=popover-content]]:slide-in-from-bottom-2 [[data-popper-positioner][style*='--kb-popper-content-transform-origin:_left']>[data-slot=popover-content]]:slide-in-from-left-2 [[data-popper-positioner][style*='--kb-popper-content-transform-origin:_right']>[data-slot=popover-content]]:slide-in-from-right-2",
         props.class,
       )}

@@ -3,7 +3,8 @@ import { splitProps, type ComponentProps, type ValidComponent } from "solid-js"
 import { Slider as SliderPrimitive } from "@kobalte/core/slider"
 
 import { cx } from "@/registry/lib/cva"
-import { useRadiusClass } from "@/lib/theme-helpers"
+import { useRadiusClass, useComponentClass } from "@/lib/theme-helpers"
+import { ComponentName } from "@/lib/theme-context"
 
 export type SliderProps<T extends ValidComponent = "div"> = ComponentProps<
   typeof SliderPrimitive<T>
@@ -35,6 +36,7 @@ export const SliderTrack = <T extends ValidComponent = "div">(
 ) => {
   const [, rest] = splitProps(props as SliderTrackProps, ["class"])
   const radiusClass = useRadiusClass('special')
+  const componentClass = useComponentClass(ComponentName.Slider, props as SliderProps)
 
   return (
     <SliderPrimitive.Track
@@ -42,6 +44,7 @@ export const SliderTrack = <T extends ValidComponent = "div">(
       class={cx(
         "bg-muted relative data-[orientation=horizontal]:h-1.5 data-[orientation=horizontal]:w-full data-[orientation=vertical]:h-[inherit] data-[orientation=vertical]:min-h-[inherit] data-[orientation=vertical]:w-1.5",
         radiusClass,
+        componentClass,
         props.class,
       )}
       {...rest}
@@ -58,6 +61,7 @@ export const SliderFill = <T extends ValidComponent = "div">(
 ) => {
   const [, rest] = splitProps(props as SliderFillProps, ["class"])
   const radiusClass = useRadiusClass('special')
+  const componentClass = useComponentClass(ComponentName.Slider, props as SliderProps)
 
   return (
     <SliderPrimitive.Fill
@@ -65,6 +69,7 @@ export const SliderFill = <T extends ValidComponent = "div">(
       class={cx(
         "bg-primary absolute data-[orientation=horizontal]:h-full data-[orientation=vertical]:w-full",
         radiusClass,
+        componentClass,
         props.class,
       )}
       {...rest}
@@ -81,6 +86,7 @@ export const SliderThumb = <T extends ValidComponent = "span">(
 ) => {
   const [, rest] = splitProps(props as SliderThumbProps, ["class"])
   const radiusClass = useRadiusClass('special')
+  const componentClass = useComponentClass(ComponentName.Slider, props as SliderProps)
 
   return (
     <SliderPrimitive.Thumb
@@ -88,6 +94,7 @@ export const SliderThumb = <T extends ValidComponent = "span">(
       class={cx(
         "border-primary bg-background ring-ring/50 size-4 border shadow-sm transition-[color,box-shadow] hover:ring-4 focus-visible:ring-4 focus-visible:outline-hidden disabled:pointer-events-none disabled:opacity-50 data-[orientation=horizontal]:-top-1 data-[orientation=vertical]:-left-1",
         radiusClass,
+        componentClass,
         props.class,
       )}
       {...rest}
