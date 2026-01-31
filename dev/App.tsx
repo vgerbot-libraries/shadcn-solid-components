@@ -51,6 +51,12 @@ const chartData = [
   { month: 'Apr', visitors: 273 },
   { month: 'May', visitors: 209 },
   { month: 'Jun', visitors: 214 },
+  { month: 'Jul', visitors: 314 },
+  { month: 'Aug', visitors: 265 },
+  { month: 'Sep', visitors: 287 },
+  { month: 'Oct', visitors: 134 },
+  { month: 'Nov', visitors: 189 },
+  { month: 'Dec', visitors: 400 },
 ]
 
 const chartConfig = {
@@ -554,7 +560,7 @@ const App: Component = () => {
               <CardDescription>Total for the last 3 months</CardDescription>
             </CardHeader>
             <CardContent>
-              <ChartContainer config={chartConfig} type="xy" data={[chartData]} class="h-[300px]">
+              <ChartContainer<ChartDataPoint> config={chartConfig} type="xy" data={chartData} class="h-[300px] w-full">
                 <ChartCrosshair />
                 <VisArea<ChartDataPoint>
                   x={(d: ChartDataPoint, i: number) => i}

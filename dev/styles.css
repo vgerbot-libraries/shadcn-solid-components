@@ -1,5 +1,6 @@
 @import "tailwindcss";
-@import '../src/themes/lyra.preset.css';
+@import '../src/themes/default.preset.css';
+@import '../src/components/chart/index.css';
 
 /* Dev-specific configuration */
 /* @config is a TailwindCSS v4 directive - CSS linter may show a warning but it's valid */
