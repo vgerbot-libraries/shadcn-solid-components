@@ -1,11 +1,78 @@
 import { createContext } from 'solid-js'
+import type { ComponentPropsMap, ComponentPropsFor } from './component-props-map'
 
 export type RadiusValue = 'none' | 'sm' | 'md' | 'lg' | 'xl' | 'full'
+
+/**
+ * Component names enum for theme configuration.
+ * Used to identify components in the componentClass callback.
+ */
+export const ComponentName = {
+  Accordion: 'Accordion',
+  Alert: 'Alert',
+  AlertDialog: 'AlertDialog',
+  Badge: 'Badge',
+  Breadcrumbs: 'Breadcrumbs',
+  Button: 'Button',
+  ButtonGroup: 'ButtonGroup',
+  Calendar: 'Calendar',
+  Card: 'Card',
+  Carousel: 'Carousel',
+  Chart: 'Chart',
+  Checkbox: 'Checkbox',
+  Collapsible: 'Collapsible',
+  Combobox: 'Combobox',
+  Command: 'Command',
+  ContextMenu: 'ContextMenu',
+  DatePicker: 'DatePicker',
+  Dialog: 'Dialog',
+  Drawer: 'Drawer',
+  DropdownMenu: 'DropdownMenu',
+  FileField: 'FileField',
+  HoverCard: 'HoverCard',
+  Icons: 'Icons',
+  Kbd: 'Kbd',
+  Menubar: 'Menubar',
+  NavigationMenu: 'NavigationMenu',
+  NumberField: 'NumberField',
+  OtpField: 'OtpField',
+  Pagination: 'Pagination',
+  Popover: 'Popover',
+  Progress: 'Progress',
+  RadioGroup: 'RadioGroup',
+  Resizable: 'Resizable',
+  Search: 'Search',
+  SegmentedControl: 'SegmentedControl',
+  Select: 'Select',
+  Separator: 'Separator',
+  Sidebar: 'Sidebar',
+  Skeleton: 'Skeleton',
+  Slider: 'Slider',
+  Sonner: 'Sonner',
+  Switch: 'Switch',
+  Table: 'Table',
+  Tabs: 'Tabs',
+  TextField: 'TextField',
+  Theme: 'Theme',
+  ToggleButton: 'ToggleButton',
+  ToggleGroup: 'ToggleGroup',
+  Tooltip: 'Tooltip',
+} as const
+
+export type ComponentName = typeof ComponentName[keyof typeof ComponentName]
 
 export interface ThemeConfig {
   base: {
     radius: RadiusValue
   }
+  // 组件级别的 class 配置
+  // 可以是函数形式：(componentName: ComponentName, props: ComponentPropsFor<ComponentName>) => string | undefined
+  // 也可以是对象形式：Record<ComponentName, (props: ComponentPropsFor<ComponentName>) => string | undefined>
+  componentClass?:
+    | (<N extends ComponentName>(componentName: N, props: ComponentPropsFor<N>) => string | undefined)
+    | {
+        [K in ComponentName]?: (props: ComponentPropsFor<K>) => string | undefined
+      }
   // Future: dark and light mode specific overrides
   dark?: {
     // theme-specific dark mode settings

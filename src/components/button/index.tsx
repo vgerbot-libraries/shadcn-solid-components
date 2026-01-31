@@ -4,7 +4,8 @@ import { Root as ButtonPrimitive } from "@kobalte/core/button"
 import type { VariantProps } from "cva"
 
 import { cva, cx } from "@/lib/cva"
-import { useRadiusClass } from "@/lib/theme-helpers"
+import { useRadiusClass, useComponentClass } from "@/lib/theme-helpers"
+import { ComponentName } from "@/lib/theme-context"
 
 export const buttonVariants = cva({
   base: [
@@ -57,6 +58,7 @@ export const Button = <T extends ValidComponent = "button">(
   ])
 
   const radiusClass = useRadiusClass('form-control')
+  const componentClass = useComponentClass(ComponentName.Button, props as ButtonProps)
 
   return (
     <ButtonPrimitive
@@ -67,6 +69,7 @@ export const Button = <T extends ValidComponent = "button">(
           size: props.size,
         }),
         radiusClass,
+        componentClass,
         props.class
       )}
       {...rest}

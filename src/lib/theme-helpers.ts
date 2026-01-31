@@ -1,6 +1,7 @@
 import { useContext } from 'solid-js'
-import { ThemeContext, type RadiusValue } from './theme-context'
+import { ThemeContext, type RadiusValue, type ComponentName } from './theme-context'
 import type { ComponentCategory } from './use-theme'
+import type { ComponentPropsFor } from './component-props-map'
 
 // Radius mapping for different component categories
 const radiusMapping: Record<RadiusValue, Record<ComponentCategory, string>> = {
@@ -127,4 +128,37 @@ export function useRadiusClassWithPrefix(
   const baseClass = radiusClassMap[radiusClass] || 'rounded-xl' // fallback
 
   return prefix ? `${prefix}${baseClass}` : baseClass
+}
+
+/**
+ * Get component-specific classes from theme config.
+ * Supports both function and object form of componentClass.
+ * @param componentName - The name of the component (use ComponentName enum)
+ * @param props - The props received by the component (type-safe based on componentName)
+ * @returns The tailwindcss class list returned by the callback, or undefined if not configured
+ */
+export function useComponentClass<N extends ComponentName>(
+  componentName: N,
+  props: ComponentPropsFor<N>
+): string | undefined {
+  const context = useContext(ThemeContext)
+
+  if (!context) {
+    return undefined
+  }
+
+  const componentClass = context.theme.componentClass
+
+  if (!componentClass) {
+    return undefined
+  }
+
+  // 如果是函数形式
+  if (typeof componentClass === 'function') {
+    return componentClass(componentName, props)
+  }
+
+  // 如果是对象形式
+  const classFn = componentClass[componentName]
+  return classFn ? classFn(props) : undefined
 }
