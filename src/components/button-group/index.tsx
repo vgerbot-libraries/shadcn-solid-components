@@ -8,6 +8,7 @@ import {
 import type { VariantProps } from "cva"
 
 import { cva, cx } from "@/lib/cva"
+import { useRadiusClass } from "@/lib/theme-helpers"
 
 import { Separator, type SeparatorProps } from "../separator"
 
@@ -57,12 +58,14 @@ export const ButtonText = <T extends ValidComponent = "div">(
 ) => {
   const merge = mergeProps({ as: "div" }, props)
   const [, rest] = splitProps(merge, ["as", "class"])
+  const radiusClass = useRadiusClass('form-control')
 
   return (
     <Polymorphic
       as={merge.as}
       class={cx(
-        "bg-muted flex items-center gap-2 rounded-md border px-4 text-sm font-medium shadow-xs [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4",
+        "bg-muted flex items-center gap-2 border px-4 text-sm font-medium shadow-xs [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4",
+        radiusClass,
         merge.class,
       )}
       {...rest}

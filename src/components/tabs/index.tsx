@@ -3,6 +3,7 @@ import { splitProps } from "solid-js"
 import { Tabs as TabsPrimitive } from "@kobalte/core/tabs"
 
 import { cx } from "@/registry/lib/cva"
+import { useRadiusClass } from "@/lib/theme-helpers"
 
 export type TabsProps<T extends ValidComponent = "div"> = ComponentProps<
   typeof TabsPrimitive<T>
@@ -32,13 +33,15 @@ export const TabsList = <T extends ValidComponent = "div">(
   props: TabsListProps<T>,
 ) => {
   const [, rest] = splitProps(props as TabsListProps, ["class"])
+  const radiusClass = useRadiusClass('navigation')
 
   return (
     <TabsPrimitive.List
       data-slot="tabs-list"
       class={cx(
-        "bg-muted text-muted-foreground ring-muted relative flex h-[calc(var(--spacing)*7.5)] w-fit items-center justify-center rounded-lg ring-[3px]",
+        "bg-muted text-muted-foreground ring-muted relative flex h-[calc(var(--spacing)*7.5)] w-fit items-center justify-center ring-[3px]",
         "data-[orientation=vertical]:mt-[3px] data-[orientation=vertical]:size-full data-[orientation=vertical]:flex-col",
+        radiusClass,
         props.class,
       )}
       {...rest}
@@ -91,12 +94,14 @@ export const TabsIndicator = <T extends ValidComponent = "div">(
   props: TabsIndicatorProps<T>,
 ) => {
   const [, rest] = splitProps(props as TabsIndicatorProps, ["class"])
+  const radiusClass = useRadiusClass('navigation')
 
   return (
     <TabsPrimitive.Indicator
       data-slot="tabs-indicator"
       class={cx(
-        "bg-background dark:bg-input/30 dark:border-input peer-focus-visible:border-ring peer-focus-visible:ring-ring/50 peer-focus-visible:outline-ring absolute inset-0 rounded-lg border border-transparent shadow-sm transition-[box-shadow,transform,width,height] duration-200 peer-focus-visible:ring-[3px] peer-focus-visible:outline-1",
+        "bg-background dark:bg-input/30 dark:border-input peer-focus-visible:border-ring peer-focus-visible:ring-ring/50 peer-focus-visible:outline-ring absolute inset-0 border border-transparent shadow-sm transition-[box-shadow,transform,width,height] duration-200 peer-focus-visible:ring-[3px] peer-focus-visible:outline-1",
+        radiusClass,
         props.class,
       )}
       {...rest}

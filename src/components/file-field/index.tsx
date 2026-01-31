@@ -4,6 +4,7 @@ import { FileField as FileFieldPrimitive } from "@kobalte/core/file-field"
 import type { VariantProps } from "cva"
 
 import { cx } from "@/registry/lib/cva"
+import { useRadiusClass } from "@/lib/theme-helpers"
 
 import { buttonVariants } from "../button"
 
@@ -37,15 +38,17 @@ export const FileFieldDropzone = <T extends ValidComponent = "div">(
   props: FileFieldDropzoneProps<T>,
 ) => {
   const [, rest] = splitProps(props as FileFieldDropzoneProps, ["class"])
+  const radiusClass = useRadiusClass('display')
 
   return (
     <FileFieldPrimitive.Dropzone
       data-slot="file-field-dropzone"
       class={cx(
-        "text-muted-foreground flex size-full min-h-[200px] flex-col items-center justify-center gap-2 rounded-lg border border-dashed outline-none",
+        "text-muted-foreground flex size-full min-h-[200px] flex-col items-center justify-center gap-2 border border-dashed outline-none",
         "focus-visible:border-ring focus-visible:ring-ring/50 transition-[color,box-shadow] focus-visible:ring-[3px]",
         "disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50",
         "group-[[data-invalid]]/file-field:ring-destructive/20 dark:group-[[data-invalid]]/file-field:ring-destructive/40 group-[[data-invalid]]/file-field:border-destructive",
+        radiusClass,
         props.class,
       )}
       {...rest}
@@ -103,13 +106,15 @@ export const FileFieldItem = <T extends ValidComponent = "li">(
   props: FileFieldItemProps<T>,
 ) => {
   const [, rest] = splitProps(props as FileFieldItemProps, ["class"])
+  const radiusClass = useRadiusClass('display')
 
   return (
     <FileFieldPrimitive.Item
       data-slot="file-field-item"
       class={cx(
-        "bg-secondary/30 text-secondary-foreground grid grid-cols-[auto_1fr_auto] rounded-lg border p-2 text-sm transition-colors [grid-template-areas:'preview_name_delete''preview_size_delete']",
+        "bg-secondary/30 text-secondary-foreground grid grid-cols-[auto_1fr_auto] border p-2 text-sm transition-colors [grid-template-areas:'preview_name_delete''preview_size_delete']",
         "gap-2 [&>div:has([data-slot=file-field-item-preview-image])]:[grid-area:preview]",
+        radiusClass,
         props.class,
       )}
       {...rest}
@@ -126,12 +131,14 @@ export const FileFieldItemPreviewImage = <T extends ValidComponent = "img">(
   const [, rest] = splitProps(props as FileFieldItemPreviewImageProps, [
     "class",
   ])
+  const radiusClass = useRadiusClass('display')
 
   return (
     <FileFieldPrimitive.ItemPreviewImage
       data-slot="file-field-item-preview-image"
       class={cx(
-        "aspect-[1] h-auto w-14 self-center rounded-md object-cover",
+        "aspect-[1] h-auto w-14 self-center object-cover",
+        radiusClass,
         props.class,
       )}
       {...rest}
@@ -184,12 +191,14 @@ export const FileFieldItemDeleteTrigger = <T extends ValidComponent = "button">(
     "class",
     "children",
   ])
+  const radiusClass = useRadiusClass('menu-item')
 
   return (
     <FileFieldPrimitive.ItemDeleteTrigger
       data-slot="file-field-item-delete-trigger"
       class={cx(
-        "focus-visible:ring-destructive/50 cursor-pointer self-center rounded-sm p-0.5 transition-[color,box-shadow] outline-none [grid-area:delete] focus-visible:ring-[1.5px] [&_svg:not([class*='size-'])]:size-4",
+        "focus-visible:ring-destructive/50 cursor-pointer self-center p-0.5 transition-[color,box-shadow] outline-none [grid-area:delete] focus-visible:ring-[1.5px] [&_svg:not([class*='size-'])]:size-4",
+        radiusClass,
         props.class,
       )}
       {...rest}

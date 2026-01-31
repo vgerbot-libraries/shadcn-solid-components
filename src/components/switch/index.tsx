@@ -2,6 +2,7 @@ import { splitProps, type ComponentProps, type ValidComponent } from "solid-js"
 import { Switch as SwitchPrimitive } from "@kobalte/core/switch"
 
 import { cx } from "@/registry/lib/cva"
+import { useRadiusClass } from "@/lib/theme-helpers"
 
 export type SwitchProps<T extends ValidComponent = "div"> = ComponentProps<
   typeof SwitchPrimitive<T>
@@ -20,15 +21,17 @@ export const SwitchControl = <T extends ValidComponent = "div">(
   props: SwitchControlProps<T>,
 ) => {
   const [, rest] = splitProps(props as SwitchControlProps, ["class"])
+  const radiusClass = useRadiusClass('special')
 
   return (
     <SwitchPrimitive.Control
       data-slot="switch-control"
       class={cx(
-        "bg-input inline-flex h-4.5 w-8 items-center rounded-full border border-transparent shadow-xs transition-all",
+        "bg-input inline-flex h-4.5 w-8 items-center border border-transparent shadow-xs transition-all",
         "data-[checked]:bg-primary",
         "peer-focus-visible/switch-input:border-ring peer-focus-visible/switch-input:ring-ring/50 peer-focus-visible/switch-input:ring-[3px]",
         "data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50",
+        radiusClass,
         props.class,
       )}
       {...rest}
@@ -44,13 +47,15 @@ export const SwitchThumb = <T extends ValidComponent = "div">(
   props: SwitchThumbProps<T>,
 ) => {
   const [, rest] = splitProps(props as SwitchThumbProps, ["class"])
+  const radiusClass = useRadiusClass('special')
 
   return (
     <SwitchPrimitive.Thumb
       data-slot="switch-thumb"
       class={cx(
-        "bg-background dark:bg-foreground pointer-events-none size-4 rounded-full transition-transform data-[checked]:translate-x-[calc(100%-2px)]",
+        "bg-background dark:bg-foreground pointer-events-none size-4 transition-transform data-[checked]:translate-x-[calc(100%-2px)]",
         "dark:data-[checked]:bg-primary-foreground dark:bg-foreground",
+        radiusClass,
         props.class,
       )}
       {...rest}

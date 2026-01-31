@@ -25,7 +25,7 @@ import type { PolymorphicProps } from "@kobalte/core/polymorphic"
 import type { VariantProps } from "cva"
 
 import { useIsMobile } from "@/lib/use-mobile"
-import { useRadiusClassWithPrefix } from "@/lib/theme-helpers"
+import { useRadiusClass, useRadiusClassWithPrefix } from "@/lib/theme-helpers"
 import { callHandler } from "@/registry/lib/call-handler"
 import { combineStyle } from "@/registry/lib/combine-style"
 import { cva, cx } from "@/registry/lib/cva"
@@ -198,6 +198,8 @@ export const Sidebar = (props: SidebarProps) => {
 
   const { isMobile, state, openMobile, setOpenMobile } = useSidebar()
 
+  const floatingRadiusClass = useRadiusClassWithPrefix('navigation', 'group-data-[variant=floating]:')
+
   return (
     <Switch
       fallback={
@@ -239,7 +241,10 @@ export const Sidebar = (props: SidebarProps) => {
             <div
               data-sidebar="sidebar"
               data-slot="sidebar-inner"
-              class="bg-sidebar group-data-[variant=floating]:border-sidebar-border flex h-full w-full flex-col group-data-[variant=floating]:rounded-lg group-data-[variant=floating]:border group-data-[variant=floating]:shadow-sm"
+              class={cx(
+                "bg-sidebar group-data-[variant=floating]:border-sidebar-border flex h-full w-full flex-col group-data-[variant=floating]:border group-data-[variant=floating]:shadow-sm",
+                floatingRadiusClass,
+              )}
             >
               {merge.children}
             </div>
@@ -501,6 +506,7 @@ export const SidebarGroupLabel = <T extends ValidComponent = "div">(
     props,
   )
   const [, rest] = splitProps(merge, ["as", "class"])
+  const radiusClass = useRadiusClass('navigation')
 
   return (
     <Polymorphic
@@ -508,8 +514,9 @@ export const SidebarGroupLabel = <T extends ValidComponent = "div">(
       data-slot="sidebar-group-label"
       data-sidebar="group-label"
       class={cx(
-        "text-sidebar-foreground/70 ring-sidebar-ring flex h-8 shrink-0 items-center rounded-md px-2 text-xs font-medium outline-hidden transition-[margin,opacity] duration-200 ease-linear focus-visible:ring-2 [&>svg]:size-4 [&>svg]:shrink-0",
+        "text-sidebar-foreground/70 ring-sidebar-ring flex h-8 shrink-0 items-center px-2 text-xs font-medium outline-hidden transition-[margin,opacity] duration-200 ease-linear focus-visible:ring-2 [&>svg]:size-4 [&>svg]:shrink-0",
         "group-data-[collapsible=icon]:-mt-8 group-data-[collapsible=icon]:opacity-0",
+        radiusClass,
         merge.class,
       )}
       {...rest}
@@ -537,6 +544,7 @@ export const SidebarGroupAction = <T extends ValidComponent = "button">(
     props,
   )
   const [, rest] = splitProps(merge, ["as", "class"])
+  const radiusClass = useRadiusClass('navigation')
 
   return (
     <Polymorphic
@@ -544,10 +552,11 @@ export const SidebarGroupAction = <T extends ValidComponent = "button">(
       data-slot="sidebar-group-action"
       data-sidebar="group-action"
       class={cx(
-        "text-sidebar-foreground ring-sidebar-ring hover:bg-sidebar-accent hover:text-sidebar-accent-foreground absolute top-3.5 right-3 flex aspect-square w-5 items-center justify-center rounded-md p-0 outline-hidden transition-transform focus-visible:ring-2 [&>svg]:size-4 [&>svg]:shrink-0",
+        "text-sidebar-foreground ring-sidebar-ring hover:bg-sidebar-accent hover:text-sidebar-accent-foreground absolute top-3.5 right-3 flex aspect-square w-5 items-center justify-center p-0 outline-hidden transition-transform focus-visible:ring-2 [&>svg]:size-4 [&>svg]:shrink-0",
         // Increases the hit area of the button on mobile.
         "after:absolute after:-inset-2 md:after:hidden",
         "group-data-[collapsible=icon]:hidden",
+        radiusClass,
         merge.class,
       )}
       {...rest}
@@ -601,7 +610,7 @@ export const SidebarMenuItem = (props: SidebarMenuItemProps) => {
 }
 
 export const SidebarMenuButtonVariants = cva({
-  base: "peer/menu-button flex w-full items-center gap-2 overflow-hidden rounded-md p-2 text-left text-sm outline-hidden ring-sidebar-ring transition-[width,height,padding] hover:bg-sidebar-accent hover:text-sidebar-accent-foreground focus-visible:ring-2 active:bg-sidebar-accent active:text-sidebar-accent-foreground disabled:pointer-events-none disabled:opacity-50 group-has-data-[sidebar=menu-action]/menu-item:pr-8 aria-disabled:pointer-events-none aria-disabled:opacity-50 data-[active=true]:bg-sidebar-accent data-[active=true]:font-medium data-[active=true]:text-sidebar-accent-foreground data-[state=open]:hover:bg-sidebar-accent data-[state=open]:hover:text-sidebar-accent-foreground group-data-[collapsible=icon]:size-8! group-data-[collapsible=icon]:p-2! [&>span:last-child]:truncate [&>svg]:size-4 [&>svg]:shrink-0",
+  base: "peer/menu-button flex w-full items-center gap-2 overflow-hidden p-2 text-left text-sm outline-hidden ring-sidebar-ring transition-[width,height,padding] hover:bg-sidebar-accent hover:text-sidebar-accent-foreground focus-visible:ring-2 active:bg-sidebar-accent active:text-sidebar-accent-foreground disabled:pointer-events-none disabled:opacity-50 group-has-data-[sidebar=menu-action]/menu-item:pr-8 aria-disabled:pointer-events-none aria-disabled:opacity-50 data-[active=true]:bg-sidebar-accent data-[active=true]:font-medium data-[active=true]:text-sidebar-accent-foreground data-[state=open]:hover:bg-sidebar-accent data-[state=open]:hover:text-sidebar-accent-foreground group-data-[collapsible=icon]:size-8! group-data-[collapsible=icon]:p-2! [&>span:last-child]:truncate [&>svg]:size-4 [&>svg]:shrink-0",
   variants: {
     variant: {
       default: "hover:bg-sidebar-accent hover:text-sidebar-accent-foreground",
@@ -655,6 +664,7 @@ export const SidebarMenuButton = <T extends ValidComponent = "button">(
     "tooltip",
   ])
   const { isMobile, state } = useSidebar()
+  const radiusClass = useRadiusClass('navigation')
 
   return (
     <Show
@@ -670,7 +680,7 @@ export const SidebarMenuButton = <T extends ValidComponent = "button">(
             class={SidebarMenuButtonVariants({
               size: merge.size,
               variant: merge.variant,
-              class: merge.class,
+              class: cx(radiusClass, merge.class),
             })}
             {...rest}
           />
@@ -694,7 +704,7 @@ export const SidebarMenuButton = <T extends ValidComponent = "button">(
         class={SidebarMenuButtonVariants({
           size: merge.size,
           variant: merge.variant,
-          class: merge.class,
+          class: cx(radiusClass, merge.class),
         })}
         {...rest}
       />
@@ -726,6 +736,7 @@ export const SidebarMenuAction = <T extends ValidComponent = "button">(
     props,
   )
   const [, rest] = splitProps(merge, ["as", "class", "showOnHover"])
+  const radiusClass = useRadiusClass('navigation')
 
   return (
     <Polymorphic
@@ -733,7 +744,7 @@ export const SidebarMenuAction = <T extends ValidComponent = "button">(
       data-slot="sidebar-menu-action"
       data-sidebar="menu-action"
       class={cx(
-        "text-sidebar-foreground ring-sidebar-ring hover:bg-sidebar-accent hover:text-sidebar-accent-foreground peer-hover/menu-button:text-sidebar-accent-foreground absolute top-1.5 right-1 flex aspect-square w-5 items-center justify-center rounded-md p-0 outline-hidden transition-transform focus-visible:ring-2 [&>svg]:size-4 [&>svg]:shrink-0",
+        "text-sidebar-foreground ring-sidebar-ring hover:bg-sidebar-accent hover:text-sidebar-accent-foreground peer-hover/menu-button:text-sidebar-accent-foreground absolute top-1.5 right-1 flex aspect-square w-5 items-center justify-center p-0 outline-hidden transition-transform focus-visible:ring-2 [&>svg]:size-4 [&>svg]:shrink-0",
         // Increases the hit area of the button on mobile.
         "after:absolute after:-inset-2 md:after:hidden",
         "peer-data-[size=sm]/menu-button:top-1",
@@ -742,6 +753,7 @@ export const SidebarMenuAction = <T extends ValidComponent = "button">(
         "group-data-[collapsible=icon]:hidden",
         merge.showOnHover &&
           "peer-data-[active=true]/menu-button:text-sidebar-accent-foreground group-focus-within/menu-item:opacity-100 group-hover/menu-item:opacity-100 data-[state=open]:opacity-100 md:opacity-0",
+        radiusClass,
         merge.class,
       )}
       {...rest}
@@ -756,18 +768,20 @@ export const SidebarMenuBadge = <T extends ValidComponent = "span">(
   props: SidebarMenuBadgeProps<T>,
 ) => {
   const [, rest] = splitProps(props as SidebarMenuBadgeProps, ["class"])
+  const radiusClass = useRadiusClass('navigation')
 
   return (
     <Badge
       data-slot="sidebar-menu-badge"
       data-sidebar="menu-badge"
       class={cx(
-        "text-sidebar-foreground pointer-events-none absolute right-1 flex h-5 min-w-5 items-center justify-center rounded-md px-1 text-xs font-medium tabular-nums select-none",
+        "text-sidebar-foreground pointer-events-none absolute right-1 flex h-5 min-w-5 items-center justify-center px-1 text-xs font-medium tabular-nums select-none",
         "peer-hover/menu-button:text-sidebar-accent-foreground peer-data-[active=true]/menu-button:text-sidebar-accent-foreground",
         "peer-data-[size=sm]/menu-button:top-1",
         "peer-data-[size=default]/menu-button:top-1.5",
         "peer-data-[size=lg]/menu-button:top-2.5",
         "group-data-[collapsible=icon]:hidden",
+        radiusClass,
         props.class,
       )}
       {...rest}
@@ -787,6 +801,7 @@ export const SidebarMenuSkeleton = (props: SidebarMenuSkeletonProps) => {
     props,
   )
   const [, rest] = splitProps(merge, ["class", "showIcon"])
+  const radiusClass = useRadiusClass('navigation')
 
   const width = createMemo(() => `${Math.floor(Math.random() * 40) + 50}%`)
 
@@ -794,11 +809,11 @@ export const SidebarMenuSkeleton = (props: SidebarMenuSkeletonProps) => {
     <div
       data-slot="sidebar-menu-skeleton"
       data-sidebar="menu-skeleton"
-      class={cx("flex h-8 items-center gap-2 rounded-md px-2", props.class)}
+      class={cx("flex h-8 items-center gap-2 px-2", radiusClass, props.class)}
       {...rest}
     >
       <Show when={merge.showIcon}>
-        <Skeleton class="size-4 rounded-md" data-sidebar="menu-skeleton-icon" />
+        <Skeleton class={cx("size-4", radiusClass)} data-sidebar="menu-skeleton-icon" />
       </Show>
       <Skeleton
         class="h-4 max-w-(--skeleton-width) flex-1"
@@ -872,6 +887,7 @@ export const SidebarMenuSubButton = <T extends ValidComponent = "a">(
     props,
   )
   const [, rest] = splitProps(merge, ["as", "class", "isActive", "size"])
+  const radiusClass = useRadiusClass('navigation')
 
   return (
     <Polymorphic
@@ -881,11 +897,12 @@ export const SidebarMenuSubButton = <T extends ValidComponent = "a">(
       data-size={merge.size}
       data-active={merge.isActive}
       class={cx(
-        "text-sidebar-foreground ring-sidebar-ring hover:bg-sidebar-accent hover:text-sidebar-accent-foreground active:bg-sidebar-accent active:text-sidebar-accent-foreground [&>svg]:text-sidebar-accent-foreground flex h-7 min-w-0 -translate-x-px items-center gap-2 overflow-hidden rounded-md px-2 outline-hidden focus-visible:ring-2 disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50 [&>span:last-child]:truncate [&>svg]:size-4 [&>svg]:shrink-0",
+        "text-sidebar-foreground ring-sidebar-ring hover:bg-sidebar-accent hover:text-sidebar-accent-foreground active:bg-sidebar-accent active:text-sidebar-accent-foreground [&>svg]:text-sidebar-accent-foreground flex h-7 min-w-0 -translate-x-px items-center gap-2 overflow-hidden px-2 outline-hidden focus-visible:ring-2 disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50 [&>span:last-child]:truncate [&>svg]:size-4 [&>svg]:shrink-0",
         "data-[active=true]:bg-sidebar-accent data-[active=true]:text-sidebar-accent-foreground",
         merge.size === "sm" && "text-xs",
         merge.size === "md" && "text-sm",
         "group-data-[collapsible=icon]:hidden",
+        radiusClass,
         merge.class,
       )}
       {...rest}

@@ -9,12 +9,14 @@ export type CommandProps = ComponentProps<typeof CommandPrimitive>
 
 export const Command = (props: CommandProps) => {
   const [, rest] = splitProps(props, ["class"])
+  const radiusClass = useRadiusClass('overlay')
 
   return (
     <CommandPrimitive
       data-slot="command"
       class={cx(
-        "bg-popover text-popover-foreground flex h-full w-full flex-col overflow-hidden rounded-md",
+        "bg-popover text-popover-foreground flex h-full w-full flex-col overflow-hidden",
+        radiusClass,
         props.class,
       )}
       {...rest}
@@ -64,6 +66,7 @@ export type CommandInputProps = ComponentProps<typeof CommandPrimitive.Input>
 
 export const CommandInput = (props: CommandInputProps) => {
   const [, rest] = splitProps(props, ["class"])
+  const radiusClass = useRadiusClass('form-control')
 
   return (
     <div
@@ -89,7 +92,8 @@ export const CommandInput = (props: CommandInputProps) => {
       <CommandPrimitive.Input
         data-slot="command-input"
         class={cx(
-          "placeholder:text-muted-foreground flex h-10 w-full rounded-md bg-transparent py-3 text-sm outline-hidden disabled:cursor-not-allowed disabled:opacity-50",
+          "placeholder:text-muted-foreground flex h-10 w-full bg-transparent py-3 text-sm outline-hidden disabled:cursor-not-allowed disabled:opacity-50",
+          radiusClass,
           props.class,
         )}
         {...rest}
@@ -166,12 +170,14 @@ export type CommandItemProps = ComponentProps<typeof CommandPrimitive.Item>
 
 export const CommandItem = (props: CommandItemProps) => {
   const [, rest] = splitProps(props, ["class"])
+  const radiusClass = useRadiusClass('menu-item')
 
   return (
     <CommandPrimitive.Item
       data-slot="command-item"
       class={cx(
-        "data-[selected=true]:bg-accent data-[selected=true]:text-accent-foreground [&_svg:not([class*='text-'])]:text-muted-foreground relative flex cursor-default items-center gap-2 rounded-sm px-2 py-1.5 text-sm outline-hidden select-none data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+        "data-[selected=true]:bg-accent data-[selected=true]:text-accent-foreground [&_svg:not([class*='text-'])]:text-muted-foreground relative flex cursor-default items-center gap-2 px-2 py-1.5 text-sm outline-hidden select-none data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+        radiusClass,
         props.class,
       )}
       {...rest}

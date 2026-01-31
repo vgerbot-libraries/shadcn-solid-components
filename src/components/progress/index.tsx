@@ -2,6 +2,7 @@ import { splitProps, type ComponentProps, type ValidComponent } from "solid-js"
 import { Progress as ProgressPrimitive } from "@kobalte/core/progress"
 
 import { cx } from "@/registry/lib/cva"
+import { useRadiusClass } from "@/lib/theme-helpers"
 
 export type ProgressProps<T extends ValidComponent = "div"> = ComponentProps<
   typeof ProgressPrimitive<T>
@@ -11,6 +12,7 @@ export const Progress = <T extends ValidComponent = "div">(
   props: ProgressProps<T>,
 ) => {
   const [, rest] = splitProps(props as ProgressProps, ["class", "children"])
+  const radiusClass = useRadiusClass('special')
 
   return (
     <ProgressPrimitive
@@ -21,7 +23,7 @@ export const Progress = <T extends ValidComponent = "div">(
       {props.children}
       <ProgressPrimitive.Track
         data-slot="progress-track"
-        class="bg-primary/20 relative h-2 w-full overflow-hidden rounded-full"
+        class={cx("bg-primary/20 relative h-2 w-full overflow-hidden", radiusClass)}
       >
         <ProgressPrimitive.Fill
           data-slot="progress-fill"

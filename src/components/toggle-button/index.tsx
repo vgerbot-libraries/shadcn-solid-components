@@ -2,10 +2,11 @@ import { splitProps, type ComponentProps, type ValidComponent } from "solid-js"
 import { ToggleButton as ToggleButtonPrimitive } from "@kobalte/core/toggle-button"
 import type { VariantProps } from "cva"
 
-import { cva } from "@/registry/lib/cva"
+import { cva, cx } from "@/registry/lib/cva"
+import { useRadiusClass } from "@/lib/theme-helpers"
 
 export const toggleButtonVariants = cva({
-  base: "inline-flex items-center justify-center gap-2 rounded-md text-sm font-medium hover:bg-muted hover:text-muted-foreground disabled:pointer-events-none disabled:opacity-50 data-[pressed]:bg-accent data-[pressed]:text-accent-foreground [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 [&_svg]:shrink-0 focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] outline-none transition-[color,background-color,box-shadow] whitespace-nowrap",
+  base: "inline-flex items-center justify-center gap-2 text-sm font-medium hover:bg-muted hover:text-muted-foreground disabled:pointer-events-none disabled:opacity-50 data-[pressed]:bg-accent data-[pressed]:text-accent-foreground [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 [&_svg]:shrink-0 focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] outline-none transition-[color,background-color,box-shadow] whitespace-nowrap",
   variants: {
     variant: {
       default: "bg-transparent",
@@ -36,6 +37,7 @@ export const ToggleButton = <T extends ValidComponent = "button">(
     "variant",
     "size",
   ])
+  const radiusClass = useRadiusClass('form-control')
 
   return (
     <ToggleButtonPrimitive
@@ -43,7 +45,7 @@ export const ToggleButton = <T extends ValidComponent = "button">(
       class={toggleButtonVariants({
         variant: props.variant,
         size: props.size,
-        class: props.class,
+        class: cx(radiusClass, props.class),
       })}
       {...rest}
     />

@@ -7,6 +7,7 @@ import {
 import { Menubar as MenubarPrimitive } from "@kobalte/core/menubar"
 
 import { cx } from "@/registry/lib/cva"
+import { useRadiusClass } from "@/lib/theme-helpers"
 
 export const MenubarPortal = MenubarPrimitive.Portal
 
@@ -18,12 +19,14 @@ export const Menubar = <T extends ValidComponent = "div">(
   props: MenubarProps<T>,
 ) => {
   const [, rest] = splitProps(props as MenubarProps, ["class"])
+  const radiusClass = useRadiusClass('navigation')
 
   return (
     <MenubarPrimitive
       data-slot="menubar"
       class={cx(
-        "bg-background flex h-9 items-center gap-1 rounded-md border p-1 shadow-xs",
+        "bg-background flex h-9 items-center gap-1 border p-1 shadow-xs",
+        radiusClass,
         props.class,
       )}
       {...rest}
@@ -67,12 +70,14 @@ export const MenubarTrigger = <T extends ValidComponent = "button">(
   props: MenubarTriggerProps<T>,
 ) => {
   const [, rest] = splitProps(props as MenubarTriggerProps, ["class"])
+  const radiusClass = useRadiusClass('menu-item')
 
   return (
     <MenubarPrimitive.Trigger
       data-slot="menubar-trigger"
       class={cx(
-        "focus:bg-accent focus:text-accent-foreground data-[expanded]:bg-accent data-[expanded]:text-accent-foreground flex items-center rounded-sm px-2 py-1 text-sm font-medium outline-hidden select-none",
+        "focus:bg-accent focus:text-accent-foreground data-[expanded]:bg-accent data-[expanded]:text-accent-foreground flex items-center px-2 py-1 text-sm font-medium outline-hidden select-none",
+        radiusClass,
         props.class,
       )}
       {...rest}
@@ -87,12 +92,14 @@ export const MenubarContent = <T extends ValidComponent = "div">(
   props: MenubarContentProps<T>,
 ) => {
   const [, rest] = splitProps(props as MenubarContentProps, ["class"])
+  const radiusClass = useRadiusClass('overlay')
 
   return (
     <MenubarPrimitive.Content
       data-slot="menubar-content"
       class={cx(
-        "bg-popover text-popover-foreground data-[expanded]:animate-in data-[closed]:fade-out-0 data-[expanded]:fade-in-0 data-[closed]:zoom-out-95 data-[expanded]:zoom-in-95 z-50 min-w-[12rem] origin-(--kb-menu-content-transform-origin) overflow-hidden rounded-md border p-1 shadow-md focus-visible:outline-none",
+        "bg-popover text-popover-foreground data-[expanded]:animate-in data-[closed]:fade-out-0 data-[expanded]:fade-in-0 data-[closed]:zoom-out-95 data-[expanded]:zoom-in-95 z-50 min-w-[12rem] origin-(--kb-menu-content-transform-origin) overflow-hidden border p-1 shadow-md focus-visible:outline-none",
+        radiusClass,
         "[[data-popper-positioner][style*='--kb-popper-content-transform-origin:_top']>[data-slot=menubar-content]]:slide-in-from-top-2 [[data-popper-positioner][style*='--kb-popper-content-transform-origin:_bottom']>[data-slot=menubar-content]]:slide-in-from-bottom-2 [[data-popper-positioner][style*='--kb-popper-content-transform-origin:_left']>[data-slot=menubar-content]]:slide-in-from-left-2 [[data-popper-positioner][style*='--kb-popper-content-transform-origin:_right']>[data-slot=menubar-content]]:slide-in-from-right-2",
         props.class,
       )}
@@ -118,6 +125,7 @@ export const MenubarItem = <T extends ValidComponent = "div">(
     props,
   )
   const [, rest] = splitProps(merge, ["class", "inset", "variant"])
+  const radiusClass = useRadiusClass('menu-item')
 
   return (
     <MenubarPrimitive.Item
@@ -125,8 +133,9 @@ export const MenubarItem = <T extends ValidComponent = "div">(
       data-inset={props.inset}
       data-variant={props.variant}
       class={cx(
-        "focus:bg-accent focus:text-accent-foreground [&_svg:not([class*='text-'])]:text-muted-foreground relative flex cursor-default items-center gap-2 rounded-sm px-2 py-1.5 text-sm outline-hidden select-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 data-[inset]:pl-8 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+        "focus:bg-accent focus:text-accent-foreground [&_svg:not([class*='text-'])]:text-muted-foreground relative flex cursor-default items-center gap-2 px-2 py-1.5 text-sm outline-hidden select-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 data-[inset]:pl-8 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
         "data-[variant=destructive]:text-destructive data-[variant=destructive]:focus:bg-destructive/10 dark:data-[variant=destructive]:focus:bg-destructive/20 data-[variant=destructive]:focus:text-destructive data-[variant=destructive]:*:[svg]:!text-destructive",
+        radiusClass,
         props.class,
       )}
       {...rest}

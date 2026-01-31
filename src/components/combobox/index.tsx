@@ -92,13 +92,15 @@ export const ComboboxControl = <Option, T extends ValidComponent = "div">(
   props: ComboboxControlProps<Option, T>,
 ) => {
   const [, rest] = splitProps(props as ComboboxControlProps<Option>, ["class"])
+  const radiusClass = useRadiusClass('form-control')
 
   return (
     <ComboboxPrimitive.Control
       data-slot="combobox-control"
       class={cx(
-        "dark:bg-input/30 border-input flex h-9 w-full min-w-0 rounded-md border bg-transparent px-3 py-1 text-base shadow-xs transition-[color,box-shadow] data-[disabled]:pointer-events-none data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50 md:text-sm",
+        "dark:bg-input/30 border-input flex h-9 w-full min-w-0 border bg-transparent px-3 py-1 text-base shadow-xs transition-[color,box-shadow] data-[disabled]:pointer-events-none data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50 md:text-sm",
         "data-[invalid]:ring-destructive/20 dark:data-[invalid]:ring-destructive/40 data-[invalid]:border-destructive",
+        radiusClass,
         props.class,
       )}
       {...rest}
@@ -139,12 +141,14 @@ export const ComboboxItem = <T extends ValidComponent = "div">(
   props: ComboboxItemProps<T>,
 ) => {
   const [, rest] = splitProps(props as ComboboxItemProps, ["class", "children"])
+  const radiusClass = useRadiusClass('menu-item')
 
   return (
     <ComboboxPrimitive.Item
       data-slot="combobox-item"
       class={cx(
-        "data-[highlighted]:bg-accent data-[highlighted]:text-accent-foreground [&_svg:not([class*='text-'])]:text-muted-foreground relative flex w-full cursor-default items-center justify-between gap-2 rounded-sm px-2 py-1.5 text-sm outline-hidden select-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+        "data-[highlighted]:bg-accent data-[highlighted]:text-accent-foreground [&_svg:not([class*='text-'])]:text-muted-foreground relative flex w-full cursor-default items-center justify-between gap-2 px-2 py-1.5 text-sm outline-hidden select-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+        radiusClass,
         props.class,
       )}
       {...rest}

@@ -3,6 +3,7 @@ import { splitProps, type ComponentProps, type ValidComponent } from "solid-js"
 import { RadioGroup as RadioGroupPrimitive } from "@kobalte/core/radio-group"
 
 import { cx } from "@/registry/lib/cva"
+import { useRadiusClass } from "@/lib/theme-helpers"
 
 export type RadioGroupProps<T extends ValidComponent = "div"> = ComponentProps<
   typeof RadioGroupPrimitive<T>
@@ -83,14 +84,16 @@ export const RadioGroupItemControl = <T extends ValidComponent = "div">(
   props: RadioGroupItemControlProps<T>,
 ) => {
   const [, rest] = splitProps(props as RadioGroupItemControlProps, ["class"])
+  const radiusClass = useRadiusClass('special')
 
   return (
     <RadioGroupPrimitive.ItemControl
       data-slot="radio-group-item-control"
       class={cx(
-        "border-input dark:bg-input/30 flex size-4 items-center justify-center rounded-full border shadow-xs transition-[color,box-shadow] outline-none disabled:cursor-not-allowed disabled:opacity-50",
+        "border-input dark:bg-input/30 flex size-4 items-center justify-center border shadow-xs transition-[color,box-shadow] outline-none disabled:cursor-not-allowed disabled:opacity-50",
         "data-[invalid]:ring-destructive/20 dark:data-[invalid]:ring-destructive/40 data-[invalid]:border-destructive",
         "peer-focus-visible/radio-group:ring-ring/50 peer-focus-visible/radio-group:border-ring peer-focus-visible/radio-group:ring-[3px]",
+        radiusClass,
         props.class,
       )}
       {...rest}
@@ -105,12 +108,13 @@ export const RadioGroupItemIndicator = <T extends ValidComponent = "div">(
   props: RadioGroupItemIndicatorProps<T>,
 ) => {
   const [, rest] = splitProps(props as RadioGroupItemIndicatorProps, ["class"])
+  const radiusClass = useRadiusClass('special')
 
   return (
     <RadioGroupPrimitive.ItemIndicator
       forceMount
       data-slot="radio-group-item-indicator"
-      class={cx("data-[checked]:bg-primary size-2 rounded-full", props.class)}
+      class={cx("data-[checked]:bg-primary size-2", radiusClass, props.class)}
       {...rest}
     />
   )

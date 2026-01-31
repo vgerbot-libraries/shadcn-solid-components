@@ -3,6 +3,7 @@ import { splitProps, type ComponentProps } from "solid-js"
 import { NumberField as NumberFieldPrimitive } from "@kobalte/core/number-field"
 
 import { cx } from "@/registry/lib/cva"
+import { useRadiusClass } from "@/lib/theme-helpers"
 
 export type NumberFieldProps<T extends ValidComponent = "div"> = ComponentProps<
   typeof NumberFieldPrimitive<T>
@@ -26,12 +27,14 @@ export type NumberFieldGroupProps = ComponentProps<"div">
 
 export const NumberFieldGroup = (props: NumberFieldGroupProps) => {
   const [, rest] = splitProps(props, ["class"])
+  const radiusClass = useRadiusClass('form-control')
 
   return (
     <div
       data-slot="number-field-group"
       class={cx(
-        "focus-within:border-ring focus-within:ring-ring/50 border-input has-aria-invalid:ring-destructive/20 dark:has-aria-invalid:ring-destructive/40 has-aria-invalid:border-destructive relative rounded-md border transition-shadow focus-within:ring-[3px]",
+        "focus-within:border-ring focus-within:ring-ring/50 border-input has-aria-invalid:ring-destructive/20 dark:has-aria-invalid:ring-destructive/40 has-aria-invalid:border-destructive relative border transition-shadow focus-within:ring-[3px]",
+        radiusClass,
         props.class,
       )}
       {...rest}
@@ -66,12 +69,14 @@ export const NumberFieldInput = <T extends ValidComponent = "input">(
   props: NumberFieldInputProps<T>,
 ) => {
   const [, rest] = splitProps(props as NumberFieldInputProps, ["class"])
+  const radiusClass = useRadiusClass('form-control')
 
   return (
     <NumberFieldPrimitive.Input
       data-slot="number-field-input"
       class={cx(
-        "placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground dark:bg-input/30 flex h-9 w-full min-w-0 rounded-md bg-transparent px-3 py-1 text-center text-base shadow-xs transition-colors outline-none disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm",
+        "placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground dark:bg-input/30 flex h-9 w-full min-w-0 bg-transparent px-3 py-1 text-center text-base shadow-xs transition-colors outline-none disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm",
+        radiusClass,
         props.class,
       )}
       {...rest}

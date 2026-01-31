@@ -3,6 +3,7 @@ import { splitProps, type ComponentProps, type ValidComponent } from "solid-js"
 import { Slider as SliderPrimitive } from "@kobalte/core/slider"
 
 import { cx } from "@/registry/lib/cva"
+import { useRadiusClass } from "@/lib/theme-helpers"
 
 export type SliderProps<T extends ValidComponent = "div"> = ComponentProps<
   typeof SliderPrimitive<T>
@@ -33,12 +34,14 @@ export const SliderTrack = <T extends ValidComponent = "div">(
   props: SliderTrackProps<T>,
 ) => {
   const [, rest] = splitProps(props as SliderTrackProps, ["class"])
+  const radiusClass = useRadiusClass('special')
 
   return (
     <SliderPrimitive.Track
       data-slot="slider-track"
       class={cx(
-        "bg-muted relative rounded-full data-[orientation=horizontal]:h-1.5 data-[orientation=horizontal]:w-full data-[orientation=vertical]:h-[inherit] data-[orientation=vertical]:min-h-[inherit] data-[orientation=vertical]:w-1.5",
+        "bg-muted relative data-[orientation=horizontal]:h-1.5 data-[orientation=horizontal]:w-full data-[orientation=vertical]:h-[inherit] data-[orientation=vertical]:min-h-[inherit] data-[orientation=vertical]:w-1.5",
+        radiusClass,
         props.class,
       )}
       {...rest}
@@ -54,12 +57,14 @@ export const SliderFill = <T extends ValidComponent = "div">(
   props: SliderFillProps<T>,
 ) => {
   const [, rest] = splitProps(props as SliderFillProps, ["class"])
+  const radiusClass = useRadiusClass('special')
 
   return (
     <SliderPrimitive.Fill
       data-slot="slider-fill"
       class={cx(
-        "bg-primary absolute rounded-full data-[orientation=horizontal]:h-full data-[orientation=vertical]:w-full",
+        "bg-primary absolute data-[orientation=horizontal]:h-full data-[orientation=vertical]:w-full",
+        radiusClass,
         props.class,
       )}
       {...rest}
@@ -75,12 +80,14 @@ export const SliderThumb = <T extends ValidComponent = "span">(
   props: SliderThumbProps<T>,
 ) => {
   const [, rest] = splitProps(props as SliderThumbProps, ["class"])
+  const radiusClass = useRadiusClass('special')
 
   return (
     <SliderPrimitive.Thumb
       data-slot="slider-thumb"
       class={cx(
-        "border-primary bg-background ring-ring/50 size-4 rounded-full border shadow-sm transition-[color,box-shadow] hover:ring-4 focus-visible:ring-4 focus-visible:outline-hidden disabled:pointer-events-none disabled:opacity-50 data-[orientation=horizontal]:-top-1 data-[orientation=vertical]:-left-1",
+        "border-primary bg-background ring-ring/50 size-4 border shadow-sm transition-[color,box-shadow] hover:ring-4 focus-visible:ring-4 focus-visible:outline-hidden disabled:pointer-events-none disabled:opacity-50 data-[orientation=horizontal]:-top-1 data-[orientation=vertical]:-left-1",
+        radiusClass,
         props.class,
       )}
       {...rest}

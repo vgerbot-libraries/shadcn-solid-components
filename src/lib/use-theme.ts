@@ -6,6 +6,7 @@ export type ComponentCategory =
   | 'display'         // Card, Alert
   | 'overlay'         // Dialog, AlertDialog, Drawer, Popover
   | 'navigation'      // Tabs, Sidebar
+  | 'menu-item'       // Menu items in dropdown-menu, context-menu, command, select, combobox, search
   | 'special'         // Switch, Slider (always returns 'rounded-full')
 
 export interface UseThemeReturn {
@@ -22,6 +23,7 @@ const radiusMapping: Record<RadiusValue, Record<ComponentCategory, string>> = {
     'display': 'rounded-none',
     'overlay': 'rounded-none',
     'navigation': 'rounded-none',
+    'menu-item': 'rounded-none',
     'special': 'rounded-none',
   },
   sm: {
@@ -29,6 +31,7 @@ const radiusMapping: Record<RadiusValue, Record<ComponentCategory, string>> = {
     'display': 'rounded-md',
     'overlay': 'rounded-sm',
     'navigation': 'rounded-sm',
+    'menu-item': 'rounded-sm',
     'special': 'rounded-sm',
   },
   md: {
@@ -36,6 +39,7 @@ const radiusMapping: Record<RadiusValue, Record<ComponentCategory, string>> = {
     'display': 'rounded-lg',
     'overlay': 'rounded-md',
     'navigation': 'rounded-md',
+    'menu-item': 'rounded-sm',
     'special': 'rounded-md',
   },
   lg: {
@@ -43,6 +47,7 @@ const radiusMapping: Record<RadiusValue, Record<ComponentCategory, string>> = {
     'display': 'rounded-xl',
     'overlay': 'rounded-lg',
     'navigation': 'rounded-lg',
+    'menu-item': 'rounded-sm',
     'special': 'rounded-lg',
   },
   xl: {
@@ -50,6 +55,7 @@ const radiusMapping: Record<RadiusValue, Record<ComponentCategory, string>> = {
     'display': 'rounded-2xl',
     'overlay': 'rounded-xl',
     'navigation': 'rounded-xl',
+    'menu-item': 'rounded-sm',
     'special': 'rounded-xl',
   },
   full: {
@@ -57,6 +63,7 @@ const radiusMapping: Record<RadiusValue, Record<ComponentCategory, string>> = {
     'display': 'rounded-3xl',
     'overlay': 'rounded-2xl',
     'navigation': 'rounded-2xl',
+    'menu-item': 'rounded-sm',
     'special': 'rounded-full',
   },
 }

@@ -7,6 +7,7 @@ import {
 import { NavigationMenu as NavigationMenuPrimitive } from "@kobalte/core/navigation-menu"
 
 import { cva, cx } from "@/registry/lib/cva"
+import { useRadiusClass } from "@/lib/theme-helpers"
 
 export const NavigationMenuPortal = NavigationMenuPrimitive.Portal
 
@@ -18,6 +19,7 @@ export const NavigationMenu = <T extends ValidComponent = "ul">(
 ) => {
   const merge = mergeProps({ gutter: 6 } as NavigationMenuProps, props)
   const [, rest] = splitProps(merge, ["class", "children"])
+  const radiusClass = useRadiusClass('overlay')
 
   return (
     <NavigationMenuPrimitive
@@ -29,7 +31,7 @@ export const NavigationMenu = <T extends ValidComponent = "ul">(
       {...rest}
     >
       {props.children}
-      <NavigationMenuPrimitive.Viewport class="data-[expanded]:animate-in data-[closed]:animate-out data-[closed]:zoom-out-95 data-[expanded]:zoom-in-90 data-[expanded]:fade-in-0 data-[closed]:fade-out-0 bg-popover text-popover-foreground z-50 h-(--kb-navigation-menu-viewport-height) w-(--kb-navigation-menu-viewport-width) origin-(--kb-menu-content-transform-origin) overflow-x-clip overflow-y-visible rounded-md border shadow transition-[width,height] duration-300 data-[orientation=vertical]:overflow-x-visible data-[orientation=vertical]:overflow-y-clip" />
+      <NavigationMenuPrimitive.Viewport class={cx("data-[expanded]:animate-in data-[closed]:animate-out data-[closed]:zoom-out-95 data-[expanded]:zoom-in-90 data-[expanded]:fade-in-0 data-[closed]:fade-out-0 bg-popover text-popover-foreground z-50 h-(--kb-navigation-menu-viewport-height) w-(--kb-navigation-menu-viewport-width) origin-(--kb-menu-content-transform-origin) overflow-x-clip overflow-y-visible border shadow transition-[width,height] duration-300 data-[orientation=vertical]:overflow-x-visible data-[orientation=vertical]:overflow-y-clip", radiusClass)} />
     </NavigationMenuPrimitive>
   )
 }
@@ -51,12 +53,14 @@ export const NavigationMenuItem = <T extends ValidComponent = "a">(
   props: NavigationMenuItemProps<T>,
 ) => {
   const [, rest] = splitProps(props as NavigationMenuItemProps, ["class"])
+  const radiusClass = useRadiusClass('menu-item')
 
   return (
     <NavigationMenuPrimitive.Item
       data-slot="navigation-menu-item"
       class={cx(
-        "data-[expanded]:focus:bg-accent data-[expanded]:hover:bg-accent data-[expanded]:bg-accent/50 data-[expanded]:text-accent-foreground hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus-visible:ring-ring/50 [&_svg:not([class*='text-'])]:text-muted-foreground flex flex-col gap-1 rounded-sm p-2 text-sm transition-all outline-none focus-visible:ring-[3px] focus-visible:outline-1 [&_svg:not([class*='size-'])]:size-4",
+        "data-[expanded]:focus:bg-accent data-[expanded]:hover:bg-accent data-[expanded]:bg-accent/50 data-[expanded]:text-accent-foreground hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus-visible:ring-ring/50 [&_svg:not([class*='text-'])]:text-muted-foreground flex flex-col gap-1 p-2 text-sm transition-all outline-none focus-visible:ring-[3px] focus-visible:outline-1 [&_svg:not([class*='size-'])]:size-4",
+        radiusClass,
         props.class,
       )}
       {...rest}
@@ -66,7 +70,7 @@ export const NavigationMenuItem = <T extends ValidComponent = "a">(
 
 export const navigationButtonVariant = cva({
   base: [
-    "group inline-flex h-9 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium disabled:pointer-events-none disabled:opacity-50 transition-[color,background-color,box-shadow] outline-none",
+    "group inline-flex h-9 w-max items-center justify-center bg-background px-4 py-2 text-sm font-medium disabled:pointer-events-none disabled:opacity-50 transition-[color,background-color,box-shadow] outline-none",
     "not-hover:data-[expanded]:text-accent-foreground not-hover:data-[expanded]:bg-accent/50",
     "data-[highlighted]:bg-accent data-[highlighted]:text-accent-foreground",
   ],
@@ -82,12 +86,13 @@ export const NavigationMenuTrigger = <T extends ValidComponent = "button">(
     "class",
     "children",
   ])
+  const radiusClass = useRadiusClass('navigation')
 
   return (
     <NavigationMenuPrimitive.Trigger
       data-slot="navigation-menu-trigger"
       class={navigationButtonVariant({
-        class: props.class,
+        class: cx(radiusClass, props.class),
       })}
       {...rest}
     >
