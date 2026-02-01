@@ -20,15 +20,7 @@
 			"correctness": { "noUnusedVariables": "warn" },
 			"style": { "useConst": "warn" },
 			"suspicious": { "noConsole": "warn", "noDebugger": "warn" }
-		},
-		"includes": [
-			"**",
-			"**/node_modules",
-			"**/dist",
-			"**/dev",
-			"**/tsup.config.ts",
-			"**/vitest.config.ts"
-		]
+		}
 	},
 	"javascript": {
 		"formatter": {
@@ -47,6 +39,11 @@
 		"formatter": {
 			"indentScriptAndStyle": false,
 			"selfCloseVoidElements": "always"
+		}
+	},
+	"css": {
+		"parser": {
+			"tailwindDirectives": true
 		}
 	}
 }

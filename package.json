@@ -386,9 +386,9 @@
     "test:client": "vitest",
     "test:ssr": "pnpm run test:client --mode ssr",
     "prepublishOnly": "pnpm build",
-    "format": "biome format --write \"src/**/*.{js,ts,tsx,jsx}\" \"dev/**/*.{js,ts,tsx,jsx}\"",
+    "format": "biome format --write ./src ./dev",
     "lint": "concurrently pnpm:lint:*",
-    "lint:code": "biome check --write src/**/*.{js,ts,tsx,jsx}",
+    "lint:code": "biome check --write ./src",
     "lint:types": "tsc --noEmit",
     "update-deps": "pnpm up -Li"
   },
