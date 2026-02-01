@@ -1,7 +1,6 @@
 import type { ComponentProps, ValidComponent } from 'solid-js'
 import type { ComponentName } from './theme-context'
 
-// 导入所有组件的 Props 类型
 import type { AccordionProps } from '../components/accordion'
 import type { AlertProps } from '../components/alert'
 import type { AlertDialogProps } from '../components/alert-dialog'
@@ -50,8 +49,8 @@ import type { ToggleGroupProps } from '../components/toggle-group'
 import type { TooltipProps } from '../components/tooltip'
 
 /**
- * 组件 Props 类型映射
- * 将 ComponentName 映射到对应的 Props 类型
+ * Component Props type mapping
+ * Maps ComponentName to corresponding Props type
  */
 export interface ComponentPropsMap {
   [ComponentName.Accordion]: AccordionProps
@@ -106,7 +105,7 @@ export interface ComponentPropsMap {
 }
 
 /**
- * 根据 ComponentName 获取对应的 Props 类型
+ * Get the corresponding Props type based on ComponentName
  */
 export type ComponentPropsFor<N extends ComponentName> = ComponentPropsMap[N]
 

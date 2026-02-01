@@ -1,4 +1,10 @@
 import { For, Show, type Accessor, type JSX } from "solid-js"
+import { cx } from "@/lib/cva"
+import {
+  useCurrentUrl,
+  type UrlInfo,
+  type UrlInfoInput,
+} from "@/lib/use-current-url"
 
 import {
   Collapsible,
@@ -14,6 +20,18 @@ import {
   SidebarMenuSubItem,
 } from "@/components/sidebar"
 
+export type UrlMatchStrategy =
+  | "exact"
+  | "startsWith"
+  | "endsWith"
+  | RegExp
+
+export type UrlMatchConfig = {
+  pathname?: UrlMatchStrategy
+  hash?: UrlMatchStrategy
+  searchParams?: Record<string, string | RegExp | true>
+}
+
 export type SidebarMenuTreeItem = {
   collapsible?: boolean
   title: string
@@ -22,47 +40,260 @@ export type SidebarMenuTreeItem = {
   icon?: Accessor<JSX.Element>
   isActive?: boolean
   items?: SidebarMenuTreeItem[]
+  disabled?: boolean
+  visible?: boolean
+  class?: string
+  // Supports simple string matching (backward compatible) or detailed config object
+  urlMatch?: UrlMatchStrategy | UrlMatchConfig
+  loading?: boolean
+  open?: boolean
+  defaultOpen?: boolean
 }
 
 export type SidebarMenuTreeProps = {
   items: SidebarMenuTreeItem[]
+  currentUrl?: UrlInfoInput
 }
 
-const renderSubItem = (subItem: SidebarMenuTreeItem) => {
+const parseItemUrl = (itemUrl: string): UrlInfo => {
+  if (typeof window === "undefined") {
+    // Return basic structure for SSR environment
+    const hashIndex = itemUrl.indexOf("#")
+    const queryIndex = itemUrl.indexOf("?")
+    const hashPart = hashIndex >= 0 ? itemUrl.substring(hashIndex) : ""
+    const queryPart =
+      queryIndex >= 0
+        ? itemUrl.substring(queryIndex + 1, hashIndex >= 0 ? hashIndex : undefined)
+        : ""
+    return {
+      pathname: itemUrl.split("?")[0]?.split("#")[0] || "",
+      hash: hashPart,
+      searchParams: new URLSearchParams(queryPart),
+      href: itemUrl,
+    }
+  }
+
+  try {
+    const url = new URL(itemUrl, window.location.origin)
+    return {
+      pathname: url.pathname,
+      hash: url.hash,
+      searchParams: url.searchParams,
+      href: url.href,
+    }
+  } catch {
+    // Use current location as base for relative paths
+    const url = new URL(itemUrl, window.location.href)
+    return {
+      pathname: url.pathname,
+      hash: url.hash,
+      searchParams: url.searchParams,
+      href: url.href,
+    }
+  }
+}
+
+const matchString = (
+  value: string,
+  pattern: string,
+  strategy: UrlMatchStrategy
+): boolean => {
+  if (strategy === "exact") {
+    return value === pattern
+  } else if (strategy === "startsWith") {
+    return value.startsWith(pattern)
+  } else if (strategy === "endsWith") {
+    return value.endsWith(pattern)
+  } else if (strategy instanceof RegExp) {
+    return strategy.test(value)
+  }
+  return false
+}
+
+const matchUrl = (
+  itemUrl: string | undefined,
+  currentUrl: UrlInfo,
+  matchConfig?: UrlMatchStrategy | UrlMatchConfig
+): boolean => {
+  if (!itemUrl) return false
+
+  const itemUrlInfo = parseItemUrl(itemUrl)
+
+  // Default to pathname exact match for backward compatibility
+  if (!matchConfig) {
+    return itemUrlInfo.pathname === currentUrl.pathname
+  }
+
+  // Simple string matching strategy (backward compatible) - only match pathname
+  if (
+    typeof matchConfig === "string" ||
+    matchConfig instanceof RegExp
+  ) {
+    return matchString(
+      currentUrl.pathname,
+      itemUrlInfo.pathname,
+      matchConfig
+    )
+  }
+
+  // Detailed config object
+  const config = matchConfig as UrlMatchConfig
+  let matches = true
+
+  if (config.pathname !== undefined) {
+    matches =
+      matches &&
+      matchString(
+        currentUrl.pathname,
+        itemUrlInfo.pathname,
+        config.pathname
+      )
+  }
+
+  if (config.hash !== undefined) {
+    matches =
+      matches &&
+      matchString(currentUrl.hash, itemUrlInfo.hash, config.hash)
+  }
+
+  if (config.searchParams !== undefined) {
+    for (const [key, value] of Object.entries(config.searchParams)) {
+      const currentValue = currentUrl.searchParams.get(key)
+      const itemValue = itemUrlInfo.searchParams.get(key)
+
+      if (value === true) {
+        // Only check if parameter exists
+        matches = matches && currentValue !== null
+      } else if (typeof value === "string") {
+        // Exact string value match
+        matches = matches && currentValue === value
+      } else if (value instanceof RegExp) {
+        // Regex match
+        matches = matches && currentValue !== null && value.test(currentValue)
+      }
+    }
+  }
+
+  return matches
+}
+
+// Recursively check if menu item and its children match URL
+const checkItemMatch = (
+  item: SidebarMenuTreeItem,
+  currentUrl: UrlInfo
+): boolean => {
+  // Check if current item matches URL
+  const urlMatches =
+    item.url && matchUrl(item.url, currentUrl, item.urlMatch)
+
+  // Recursively check if children match
+  const childMatches =
+    item.items && item.items.length > 0
+      ? item.items.some((subItem) => checkItemMatch(subItem, currentUrl))
+      : false
+
+  // Activate if URL matches or child matches
+  if (urlMatches || childMatches) {
+    return true
+  }
+
+  // Use explicit isActive if set
+  if (item.isActive !== undefined) {
+    return item.isActive
+  }
+
+  return false
+}
+
+const LoadingIcon = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    class="size-4 animate-spin"
+    viewBox="0 0 24 24"
+  >
+    <path
+      fill="none"
+      stroke="currentColor"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      d="M12 2v4m4.2 1.8l2.9-2.9M18 12h4m-5.8 4.2l2.9 2.9M12 18v4m-7.1-2.9l2.9-2.9M2 12h4M4.9 4.9l2.9 2.9"
+    />
+  </svg>
+)
+
+const renderSubItem = (
+  subItem: SidebarMenuTreeItem,
+  currentUrl: Accessor<UrlInfo>
+) => {
+  const isVisible = subItem.visible !== false
+
+  // URL matching automatically activates (reactive)
+  const isActive = () => checkItemMatch(subItem, currentUrl())
+
   const hasSubItems = () => subItem.items && subItem.items.length > 0
   const isSubCollapsible = () => subItem.collapsible !== false && hasSubItems()
 
+  // Open state: prioritize controlled 'open', then 'defaultOpen', finally 'isActive'
+  const getOpenState = () => {
+    if (subItem.open !== undefined) {
+      return { open: subItem.open }
+    }
+    if (subItem.defaultOpen !== undefined) {
+      return { defaultOpen: subItem.defaultOpen }
+    }
+    return { defaultOpen: isActive() }
+  }
+
   const subButtonProps = () => {
     const props: any = {
-      isActive: subItem.isActive,
+      isActive: isActive(),
+      disabled: subItem.disabled || subItem.loading,
+      "aria-disabled": subItem.disabled || subItem.loading,
     }
 
-    if (subItem.url) {
+    if (subItem.url && !subItem.disabled && !subItem.loading) {
       props.as = "a"
       props.href = subItem.url
     }
 
-    if (subItem.onClick) {
+    if (subItem.onClick && !subItem.disabled && !subItem.loading) {
       props.onClick = subItem.onClick
     }
 
     return props
   }
 
+  if (!isVisible) {
+    return null
+  }
+
   if (isSubCollapsible()) {
     return (
       <Collapsible<typeof SidebarMenuSubItem>
-        defaultOpen={subItem.isActive}
+        {...getOpenState()}
         as={(props) => (
-          <SidebarMenuSubItem {...props}>
+          <SidebarMenuSubItem
+            {...props}
+            class={cx(subItem.class, props.class)}
+          >
             <CollapsibleTrigger<typeof SidebarMenuSubButton>
               as={(props) => (
                 <SidebarMenuSubButton
                   {...props}
                   {...subButtonProps()}
-                  class="[&>svg:last-of-type]:aria-expanded:rotate-90"
+                  class={cx(
+                    "[&>svg:last-of-type]:aria-expanded:rotate-90",
+                    subItem.class,
+                    props.class
+                  )}
                 >
-                  <Show when={subItem.icon}>{subItem.icon!()}</Show>
+                  <Show when={subItem.loading}>
+                    <LoadingIcon />
+                  </Show>
+                  <Show when={!subItem.loading && subItem.icon}>
+                    {subItem.icon!()}
+                  </Show>
                   <span>{subItem.title}</span>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -84,7 +315,7 @@ const renderSubItem = (subItem: SidebarMenuTreeItem) => {
             <CollapsibleContent>
               <SidebarMenuSub>
                 <For each={subItem.items}>
-                  {(nestedItem) => renderSubItem(nestedItem)}
+                  {(nestedItem) => renderSubItem(nestedItem, currentUrl)}
                 </For>
               </SidebarMenuSub>
             </CollapsibleContent>
@@ -96,14 +327,19 @@ const renderSubItem = (subItem: SidebarMenuTreeItem) => {
 
   if (hasSubItems()) {
     return (
-      <SidebarMenuSubItem>
+      <SidebarMenuSubItem class={subItem.class}>
         <SidebarMenuSubButton {...subButtonProps()}>
-          <Show when={subItem.icon}>{subItem.icon!()}</Show>
+          <Show when={subItem.loading}>
+            <LoadingIcon />
+          </Show>
+          <Show when={!subItem.loading && subItem.icon}>
+            {subItem.icon!()}
+          </Show>
           <span>{subItem.title}</span>
         </SidebarMenuSubButton>
         <SidebarMenuSub>
           <For each={subItem.items}>
-            {(nestedItem) => renderSubItem(nestedItem)}
+            {(nestedItem) => renderSubItem(nestedItem, currentUrl)}
           </For>
         </SidebarMenuSub>
       </SidebarMenuSubItem>
@@ -111,32 +347,60 @@ const renderSubItem = (subItem: SidebarMenuTreeItem) => {
   }
 
   return (
-    <SidebarMenuSubItem>
+    <SidebarMenuSubItem class={subItem.class}>
       <SidebarMenuSubButton {...subButtonProps()}>
-        <Show when={subItem.icon}>{subItem.icon!()}</Show>
+        <Show when={subItem.loading}>
+          <LoadingIcon />
+        </Show>
+        <Show when={!subItem.loading && subItem.icon}>
+          {subItem.icon!()}
+        </Show>
         <span>{subItem.title}</span>
       </SidebarMenuSubButton>
     </SidebarMenuSubItem>
   )
 }
 
-const SidebarMenuTreeItem = (item: SidebarMenuTreeItem) => {
+const SidebarMenuTreeItem = (props: {
+  item: SidebarMenuTreeItem
+  currentUrl: Accessor<UrlInfo>
+}) => {
+  const { item, currentUrl } = props
+
+  const isVisible = item.visible !== false
+
+  // URL matching automatically activates (reactive)
+  const isActive = () => checkItemMatch(item, currentUrl())
+
   const hasItems = () => item.items && item.items.length > 0
   const isCollapsible = () => item.collapsible !== false && hasItems()
+
+  // Open state: prioritize controlled 'open', then 'defaultOpen', finally 'isActive'
+  const getOpenState = () => {
+    if (item.open !== undefined) {
+      return { open: item.open }
+    }
+    if (item.defaultOpen !== undefined) {
+      return { defaultOpen: item.defaultOpen }
+    }
+    return { defaultOpen: isActive() }
+  }
 
   const buttonProps = (excludeClickAndRef = false) => {
     const props: any = {
       tooltip: item.title,
-      isActive: item.isActive,
+      isActive: isActive(),
+      disabled: item.disabled || item.loading,
+      "aria-disabled": item.disabled || item.loading,
     }
 
-    if(!excludeClickAndRef) {
-      if (item.url) {
+    if (!excludeClickAndRef) {
+      if (item.url && !item.disabled && !item.loading) {
         props.as = "a"
         props.href = item.url
       }
 
-      if (item.onClick) {
+      if (item.onClick && !item.disabled && !item.loading) {
         props.onClick = item.onClick
       }
     }
@@ -150,26 +414,42 @@ const SidebarMenuTreeItem = (item: SidebarMenuTreeItem) => {
     return (
       <SidebarMenuSub>
         <For each={item.items}>
-          {(subItem) => renderSubItem(subItem)}
+          {(subItem) => renderSubItem(subItem, currentUrl)}
         </For>
       </SidebarMenuSub>
     )
   }
 
+  if (!isVisible) {
+    return null
+  }
+
   if (isCollapsible()) {
     return (
       <Collapsible<typeof SidebarMenuItem>
-        defaultOpen={item.isActive}
+        {...getOpenState()}
         as={(props) => (
-          <SidebarMenuItem {...props}>
+          <SidebarMenuItem
+            {...props}
+            class={cx(item.class, props.class)}
+          >
             <CollapsibleTrigger<typeof SidebarMenuButton>
               as={(props) => (
                 <SidebarMenuButton
                   {...props}
                   {...buttonProps(true)}
-                  class="[&>svg:last-of-type]:aria-expanded:rotate-90"
+                  class={cx(
+                    "[&>svg:last-of-type]:aria-expanded:rotate-90",
+                    item.class,
+                    props.class
+                  )}
                 >
-                  <Show when={item.icon}>{item.icon!()}</Show>
+                  <Show when={item.loading}>
+                    <LoadingIcon />
+                  </Show>
+                  <Show when={!item.loading && item.icon}>
+                    {item.icon!()}
+                  </Show>
                   <span>{item.title}</span>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -197,9 +477,14 @@ const SidebarMenuTreeItem = (item: SidebarMenuTreeItem) => {
 
   if (hasItems()) {
     return (
-      <SidebarMenuItem>
+      <SidebarMenuItem class={item.class}>
         <SidebarMenuButton {...buttonProps()}>
-          <Show when={item.icon}>{item.icon!()}</Show>
+          <Show when={item.loading}>
+            <LoadingIcon />
+          </Show>
+          <Show when={!item.loading && item.icon}>
+            {item.icon!()}
+          </Show>
           <span>{item.title}</span>
         </SidebarMenuButton>
         {renderSubItems()}
@@ -208,9 +493,14 @@ const SidebarMenuTreeItem = (item: SidebarMenuTreeItem) => {
   }
 
   return (
-    <SidebarMenuItem>
+    <SidebarMenuItem class={item.class}>
       <SidebarMenuButton {...buttonProps()}>
-        <Show when={item.icon}>{item.icon!()}</Show>
+        <Show when={item.loading}>
+          <LoadingIcon />
+        </Show>
+        <Show when={!item.loading && item.icon}>
+          {item.icon!()}
+        </Show>
         <span>{item.title}</span>
       </SidebarMenuButton>
     </SidebarMenuItem>
@@ -218,10 +508,14 @@ const SidebarMenuTreeItem = (item: SidebarMenuTreeItem) => {
 }
 
 export const SidebarMenuTree = (props: SidebarMenuTreeProps) => {
+  const currentUrl = useCurrentUrl(props.currentUrl)
+
   return (
     <SidebarMenu>
       <For each={props.items}>
-        {(item) => <SidebarMenuTreeItem {...item} />}
+        {(item) => (
+          <SidebarMenuTreeItem item={item} currentUrl={currentUrl} />
+        )}
       </For>
     </SidebarMenu>
   )

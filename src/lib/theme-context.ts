@@ -65,9 +65,9 @@ export interface ThemeConfig {
   base: {
     radius: RadiusValue
   }
-  // 组件级别的 class 配置
-  // 可以是函数形式：(componentName: ComponentName, props: ComponentPropsFor<ComponentName>) => string | undefined
-  // 也可以是对象形式：Record<ComponentName, (props: ComponentPropsFor<ComponentName>) => string | undefined>
+  // Component-level class configuration
+  // Can be a function: (componentName: ComponentName, props: ComponentPropsFor<ComponentName>) => string | undefined
+  // Or an object: Record<ComponentName, (props: ComponentPropsFor<ComponentName>) => string | undefined>
   componentClass?:
     | (<N extends ComponentName>(componentName: N, props: ComponentPropsFor<N>) => string | undefined)
     | {

@@ -153,12 +153,10 @@ export function useComponentClass<N extends ComponentName>(
     return undefined
   }
 
-  // 如果是函数形式
   if (typeof componentClass === 'function') {
     return componentClass(componentName, props)
   }
 
-  // 如果是对象形式
   const classFn = componentClass[componentName]
   return classFn ? classFn(props) : undefined
 }
