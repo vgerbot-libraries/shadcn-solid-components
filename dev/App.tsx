@@ -60,6 +60,10 @@ const menus: AppSidebarMenuGroup[] = [
       {
         icon: () => <TeamIcon />,
         title: 'Team',
+        badge: {
+          content: 10,
+          variant: 'destructive'
+        },
         onClick: () => {},
       },
     ],

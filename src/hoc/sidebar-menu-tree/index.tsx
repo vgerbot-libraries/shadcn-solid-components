@@ -1,4 +1,5 @@
 import { type Accessor, createMemo, For, type JSX, Show } from 'solid-js'
+import { Badge, type BadgeProps } from '@/components/badge'
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/collapsible'
 import {
   SidebarMenu,
@@ -44,6 +45,15 @@ export type SidebarMenuTreeItem = {
   loading?: boolean
   open?: boolean
   defaultOpen?: boolean
+  // Badge/notification count support
+  badge?:
+    | string
+    | number
+    | {
+        content: string | number
+        variant?: BadgeProps['variant']
+        class?: string
+      }
 }
 
 export type SidebarMenuTreeProps = {
@@ -195,6 +205,24 @@ const LoadingIcon = () => (
   </svg>
 )
 
+const renderBadge = (badge: SidebarMenuTreeItem['badge']) => {
+  if (!badge) return null
+
+  if (typeof badge === 'string' || typeof badge === 'number') {
+    return (
+      <Badge variant="secondary" class="ml-auto">
+        {badge}
+      </Badge>
+    )
+  }
+
+  return (
+    <Badge variant={badge.variant || 'secondary'} class={cx('ml-auto', badge.class)}>
+      {badge.content}
+    </Badge>
+  )
+}
+
 const renderSubItem = (subItem: SidebarMenuTreeItem, currentUrl: Accessor<UrlInfo>) => {
   const isVisible = subItem.visible !== false
 
@@ -260,6 +288,7 @@ const renderSubItem = (subItem: SidebarMenuTreeItem, currentUrl: Accessor<UrlInf
                   </Show>
                   <Show when={!subItem.loading && subItem.icon}>{subItem.icon!()}</Show>
                   <span>{subItem.title}</span>
+                  {renderBadge(subItem.badge)}
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     class="ml-auto transition-transform duration-200"
@@ -299,6 +328,7 @@ const renderSubItem = (subItem: SidebarMenuTreeItem, currentUrl: Accessor<UrlInf
           </Show>
           <Show when={!subItem.loading && subItem.icon}>{subItem.icon!()}</Show>
           <span>{subItem.title}</span>
+          {renderBadge(subItem.badge)}
         </SidebarMenuSubButton>
         <SidebarMenuSub>
           <For each={subItem.items}>{nestedItem => renderSubItem(nestedItem, currentUrl)}</For>
@@ -315,6 +345,7 @@ const renderSubItem = (subItem: SidebarMenuTreeItem, currentUrl: Accessor<UrlInf
         </Show>
         <Show when={!subItem.loading && subItem.icon}>{subItem.icon!()}</Show>
         <span>{subItem.title}</span>
+        {renderBadge(subItem.badge)}
       </SidebarMenuSubButton>
     </SidebarMenuSubItem>
   )
@@ -403,6 +434,7 @@ const SidebarMenuTreeItem = (props: {
                   </Show>
                   <Show when={!item.loading && item.icon}>{item.icon!()}</Show>
                   <span>{item.title}</span>
+                  {renderBadge(item.badge)}
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     class="ml-auto transition-transform duration-200"
@@ -436,6 +468,7 @@ const SidebarMenuTreeItem = (props: {
           </Show>
           <Show when={!item.loading && item.icon}>{item.icon!()}</Show>
           <span>{item.title}</span>
+          {renderBadge(item.badge)}
         </SidebarMenuButton>
         {renderSubItems()}
       </SidebarMenuItem>
@@ -450,6 +483,7 @@ const SidebarMenuTreeItem = (props: {
         </Show>
         <Show when={!item.loading && item.icon}>{item.icon!()}</Show>
         <span>{item.title}</span>
+        {renderBadge(item.badge)}
       </SidebarMenuButton>
     </SidebarMenuItem>
   )
