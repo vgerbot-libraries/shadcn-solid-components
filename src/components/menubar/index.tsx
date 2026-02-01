@@ -1,32 +1,24 @@
-import {
-  mergeProps,
-  splitProps,
-  type ComponentProps,
-  type ValidComponent,
-} from "solid-js"
-import { Menubar as MenubarPrimitive } from "@kobalte/core/menubar"
-
-import { cx } from "@/registry/lib/cva"
-import { useRadiusClass, useComponentClass } from "@/lib/theme-helpers"
-import { ComponentName } from "@/lib/theme-context"
+import { Menubar as MenubarPrimitive } from '@kobalte/core/menubar'
+import { type ComponentProps, mergeProps, splitProps, type ValidComponent } from 'solid-js'
+import { ComponentName } from '@/lib/theme-context'
+import { useComponentClass, useRadiusClass } from '@/lib/theme-helpers'
+import { cx } from '@/registry/lib/cva'
 
 export const MenubarPortal = MenubarPrimitive.Portal
 
-export type MenubarProps<T extends ValidComponent = "div"> = ComponentProps<
+export type MenubarProps<T extends ValidComponent = 'div'> = ComponentProps<
   typeof MenubarPrimitive<T>
 >
 
-export const Menubar = <T extends ValidComponent = "div">(
-  props: MenubarProps<T>,
-) => {
-  const [, rest] = splitProps(props as MenubarProps, ["class"])
+export const Menubar = <T extends ValidComponent = 'div'>(props: MenubarProps<T>) => {
+  const [, rest] = splitProps(props as MenubarProps, ['class'])
   const radiusClass = useRadiusClass('navigation')
 
   return (
     <MenubarPrimitive
       data-slot="menubar"
       class={cx(
-        "bg-background flex h-9 items-center gap-1 border p-1 shadow-xs",
+        'bg-background flex h-9 items-center gap-1 border p-1 shadow-xs',
         radiusClass,
         props.class,
       )}
@@ -54,30 +46,27 @@ export const MenubarGroup = (props: MenubarGroupProps) => {
   return <MenubarPrimitive.Group data-slot="menubar-group" {...props} />
 }
 
-export type MenubarRadioGroupProps = ComponentProps<
-  typeof MenubarPrimitive.RadioGroup
->
+export type MenubarRadioGroupProps = ComponentProps<typeof MenubarPrimitive.RadioGroup>
 
 export const MenubarRadioGroup = (props: MenubarRadioGroupProps) => {
-  return (
-    <MenubarPrimitive.RadioGroup data-slot="menubar-radio-group" {...props} />
-  )
+  return <MenubarPrimitive.RadioGroup data-slot="menubar-radio-group" {...props} />
 }
 
-export type MenubarTriggerProps<T extends ValidComponent = "button"> =
-  ComponentProps<typeof MenubarPrimitive.Trigger<T>>
+export type MenubarTriggerProps<T extends ValidComponent = 'button'> = ComponentProps<
+  typeof MenubarPrimitive.Trigger<T>
+>
 
-export const MenubarTrigger = <T extends ValidComponent = "button">(
+export const MenubarTrigger = <T extends ValidComponent = 'button'>(
   props: MenubarTriggerProps<T>,
 ) => {
-  const [, rest] = splitProps(props as MenubarTriggerProps, ["class"])
+  const [, rest] = splitProps(props as MenubarTriggerProps, ['class'])
   const radiusClass = useRadiusClass('menu-item')
 
   return (
     <MenubarPrimitive.Trigger
       data-slot="menubar-trigger"
       class={cx(
-        "focus:bg-accent focus:text-accent-foreground data-[expanded]:bg-accent data-[expanded]:text-accent-foreground flex items-center px-2 py-1 text-sm font-medium outline-hidden select-none",
+        'focus:bg-accent focus:text-accent-foreground data-[expanded]:bg-accent data-[expanded]:text-accent-foreground flex items-center px-2 py-1 text-sm font-medium outline-hidden select-none',
         radiusClass,
         props.class,
       )}
@@ -86,20 +75,19 @@ export const MenubarTrigger = <T extends ValidComponent = "button">(
   )
 }
 
-export type MenubarContentProps<T extends ValidComponent = "div"> =
-  ComponentProps<typeof MenubarPrimitive.Content<T>>
+export type MenubarContentProps<T extends ValidComponent = 'div'> = ComponentProps<
+  typeof MenubarPrimitive.Content<T>
+>
 
-export const MenubarContent = <T extends ValidComponent = "div">(
-  props: MenubarContentProps<T>,
-) => {
-  const [, rest] = splitProps(props as MenubarContentProps, ["class"])
+export const MenubarContent = <T extends ValidComponent = 'div'>(props: MenubarContentProps<T>) => {
+  const [, rest] = splitProps(props as MenubarContentProps, ['class'])
   const radiusClass = useRadiusClass('overlay')
 
   return (
     <MenubarPrimitive.Content
       data-slot="menubar-content"
       class={cx(
-        "bg-popover text-popover-foreground data-[expanded]:animate-in data-[closed]:fade-out-0 data-[expanded]:fade-in-0 data-[closed]:zoom-out-95 data-[expanded]:zoom-in-95 z-50 min-w-[12rem] origin-(--kb-menu-content-transform-origin) overflow-hidden border p-1 shadow-md focus-visible:outline-none",
+        'bg-popover text-popover-foreground data-[expanded]:animate-in data-[closed]:fade-out-0 data-[expanded]:fade-in-0 data-[closed]:zoom-out-95 data-[expanded]:zoom-in-95 z-50 min-w-[12rem] origin-(--kb-menu-content-transform-origin) overflow-hidden border p-1 shadow-md focus-visible:outline-none',
         radiusClass,
         "[[data-popper-positioner][style*='--kb-popper-content-transform-origin:_top']>[data-slot=menubar-content]]:slide-in-from-top-2 [[data-popper-positioner][style*='--kb-popper-content-transform-origin:_bottom']>[data-slot=menubar-content]]:slide-in-from-bottom-2 [[data-popper-positioner][style*='--kb-popper-content-transform-origin:_left']>[data-slot=menubar-content]]:slide-in-from-left-2 [[data-popper-positioner][style*='--kb-popper-content-transform-origin:_right']>[data-slot=menubar-content]]:slide-in-from-right-2",
         props.class,
@@ -109,23 +97,21 @@ export const MenubarContent = <T extends ValidComponent = "div">(
   )
 }
 
-export type MenubarItemProps<T extends ValidComponent = "div"> = ComponentProps<
+export type MenubarItemProps<T extends ValidComponent = 'div'> = ComponentProps<
   typeof MenubarPrimitive.Item<T>
 > & {
   inset?: boolean
-  variant?: "default" | "destructive"
+  variant?: 'default' | 'destructive'
 }
 
-export const MenubarItem = <T extends ValidComponent = "div">(
-  props: MenubarItemProps<T>,
-) => {
+export const MenubarItem = <T extends ValidComponent = 'div'>(props: MenubarItemProps<T>) => {
   const merge = mergeProps(
     {
-      variant: "default",
+      variant: 'default',
     } as MenubarItemProps,
     props,
   )
-  const [, rest] = splitProps(merge, ["class", "inset", "variant"])
+  const [, rest] = splitProps(merge, ['class', 'inset', 'variant'])
   const radiusClass = useRadiusClass('menu-item')
 
   return (
@@ -135,7 +121,7 @@ export const MenubarItem = <T extends ValidComponent = "div">(
       data-variant={props.variant}
       class={cx(
         "focus:bg-accent focus:text-accent-foreground [&_svg:not([class*='text-'])]:text-muted-foreground relative flex cursor-default items-center gap-2 px-2 py-1.5 text-sm outline-hidden select-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 data-[inset]:pl-8 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
-        "data-[variant=destructive]:text-destructive data-[variant=destructive]:focus:bg-destructive/10 dark:data-[variant=destructive]:focus:bg-destructive/20 data-[variant=destructive]:focus:text-destructive data-[variant=destructive]:*:[svg]:!text-destructive",
+        'data-[variant=destructive]:text-destructive data-[variant=destructive]:focus:bg-destructive/10 dark:data-[variant=destructive]:focus:bg-destructive/20 data-[variant=destructive]:focus:text-destructive data-[variant=destructive]:*:[svg]:!text-destructive',
         radiusClass,
         props.class,
       )}
@@ -144,16 +130,14 @@ export const MenubarItem = <T extends ValidComponent = "div">(
   )
 }
 
-export type MenubarCheckboxItemProps<T extends ValidComponent = "div"> =
-  ComponentProps<typeof MenubarPrimitive.CheckboxItem<T>>
+export type MenubarCheckboxItemProps<T extends ValidComponent = 'div'> = ComponentProps<
+  typeof MenubarPrimitive.CheckboxItem<T>
+>
 
-export const MenubarCheckboxItem = <T extends ValidComponent = "div">(
+export const MenubarCheckboxItem = <T extends ValidComponent = 'div'>(
   props: MenubarCheckboxItemProps<T>,
 ) => {
-  const [, rest] = splitProps(props as MenubarCheckboxItemProps, [
-    "class",
-    "children",
-  ])
+  const [, rest] = splitProps(props as MenubarCheckboxItemProps, ['class', 'children'])
 
   return (
     <MenubarPrimitive.CheckboxItem
@@ -166,11 +150,7 @@ export const MenubarCheckboxItem = <T extends ValidComponent = "div">(
     >
       <span class="pointer-events-none absolute left-2 flex size-3.5 items-center justify-center">
         <MenubarPrimitive.ItemIndicator>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="size-4"
-            viewBox="0 0 24 24"
-          >
+          <svg xmlns="http://www.w3.org/2000/svg" class="size-4" viewBox="0 0 24 24">
             <path
               fill="none"
               stroke="currentColor"
@@ -187,16 +167,14 @@ export const MenubarCheckboxItem = <T extends ValidComponent = "div">(
   )
 }
 
-export type MenubarRadioItemProps<T extends ValidComponent = "div"> =
-  ComponentProps<typeof MenubarPrimitive.RadioItem<T>>
+export type MenubarRadioItemProps<T extends ValidComponent = 'div'> = ComponentProps<
+  typeof MenubarPrimitive.RadioItem<T>
+>
 
-export const MenubarRadioItem = <T extends ValidComponent = "div">(
+export const MenubarRadioItem = <T extends ValidComponent = 'div'>(
   props: MenubarRadioItemProps<T>,
 ) => {
-  const [, rest] = splitProps(props as MenubarRadioItemProps, [
-    "class",
-    "children",
-  ])
+  const [, rest] = splitProps(props as MenubarRadioItemProps, ['class', 'children'])
 
   return (
     <MenubarPrimitive.RadioItem
@@ -209,17 +187,8 @@ export const MenubarRadioItem = <T extends ValidComponent = "div">(
     >
       <span class="pointer-events-none absolute left-2 flex size-3.5 items-center justify-center">
         <MenubarPrimitive.ItemIndicator>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            class="size-2"
-          >
-            <g
-              fill="none"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-            >
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="size-2">
+            <g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
               <path d="M0 0h24v24H0z" />
               <path
                 fill="currentColor"
@@ -234,87 +203,75 @@ export const MenubarRadioItem = <T extends ValidComponent = "div">(
   )
 }
 
-export type MenubarGroupLabelProps<T extends ValidComponent = "span"> =
-  ComponentProps<typeof MenubarPrimitive.GroupLabel<T>> & {
-    inset?: boolean
-  }
+export type MenubarGroupLabelProps<T extends ValidComponent = 'span'> = ComponentProps<
+  typeof MenubarPrimitive.GroupLabel<T>
+> & {
+  inset?: boolean
+}
 
-export const MenubarGroupLabel = <T extends ValidComponent = "span">(
+export const MenubarGroupLabel = <T extends ValidComponent = 'span'>(
   props: MenubarGroupLabelProps<T>,
 ) => {
-  const [, rest] = splitProps(props as MenubarGroupLabelProps, [
-    "class",
-    "inset",
-  ])
+  const [, rest] = splitProps(props as MenubarGroupLabelProps, ['class', 'inset'])
 
   return (
     <MenubarPrimitive.GroupLabel
       data-slot="menubar-group-label"
       data-inset={props.inset}
-      class={cx(
-        "px-2 py-1.5 text-sm font-medium data-[inset]:pl-8",
-        props.class,
-      )}
+      class={cx('px-2 py-1.5 text-sm font-medium data-[inset]:pl-8', props.class)}
       {...rest}
     />
   )
 }
 
-export type MenubarItemLabelProps<T extends ValidComponent = "div"> =
-  ComponentProps<typeof MenubarPrimitive.ItemLabel<T>> & {
-    inset?: boolean
-  }
+export type MenubarItemLabelProps<T extends ValidComponent = 'div'> = ComponentProps<
+  typeof MenubarPrimitive.ItemLabel<T>
+> & {
+  inset?: boolean
+}
 
-export const MenubarItemLabel = <T extends ValidComponent = "div">(
+export const MenubarItemLabel = <T extends ValidComponent = 'div'>(
   props: MenubarItemLabelProps<T>,
 ) => {
-  const [, rest] = splitProps(props as MenubarItemLabelProps, [
-    "class",
-    "inset",
-  ])
+  const [, rest] = splitProps(props as MenubarItemLabelProps, ['class', 'inset'])
 
   return (
     <MenubarPrimitive.ItemLabel
       data-slot="menubar-item-label"
       data-inset={props.inset}
-      class={cx(
-        "px-2 py-1.5 text-sm font-medium data-[inset]:pl-8",
-        props.class,
-      )}
+      class={cx('px-2 py-1.5 text-sm font-medium data-[inset]:pl-8', props.class)}
       {...rest}
     />
   )
 }
 
-export type MenubarSeparatorProps<T extends ValidComponent = "hr"> =
-  ComponentProps<typeof MenubarPrimitive.Separator<T>>
+export type MenubarSeparatorProps<T extends ValidComponent = 'hr'> = ComponentProps<
+  typeof MenubarPrimitive.Separator<T>
+>
 
-export const MenubarSeparator = <T extends ValidComponent = "hr">(
+export const MenubarSeparator = <T extends ValidComponent = 'hr'>(
   props: MenubarSeparatorProps<T>,
 ) => {
-  const [, rest] = splitProps(props as MenubarSeparatorProps, ["class"])
+  const [, rest] = splitProps(props as MenubarSeparatorProps, ['class'])
 
   return (
     <MenubarPrimitive.Separator
       data-slot="menubar-separator"
-      class={cx("bg-border -mx-1 my-1 h-px", props.class)}
+      class={cx('bg-border -mx-1 my-1 h-px', props.class)}
       {...rest}
     />
   )
 }
 
-export type MenubarShortcut = ComponentProps<"span">
+export type MenubarShortcut = ComponentProps<'span'>
 
 export const MenubarShortcut = (props: MenubarShortcut) => {
-  const [, rest] = splitProps(props, ["class"])
+  const [, rest] = splitProps(props, ['class'])
 
   return (
     <span
       data-slot="menubar-shortcut"
-      class={cx(
-        "text-muted-foreground ml-auto text-xs tracking-widest",
-        props.class,
-      )}
+      class={cx('text-muted-foreground ml-auto text-xs tracking-widest', props.class)}
       {...rest}
     />
   )
@@ -326,36 +283,29 @@ export const MenubarSub = (props: MenubarSubProps) => {
   return <MenubarPrimitive.Sub data-slot="menubar-sub" {...props} />
 }
 
-export type MenubarSubTriggerProps<T extends ValidComponent = "div"> =
-  ComponentProps<typeof MenubarPrimitive.SubTrigger<T>> & {
-    inset?: boolean
-  }
+export type MenubarSubTriggerProps<T extends ValidComponent = 'div'> = ComponentProps<
+  typeof MenubarPrimitive.SubTrigger<T>
+> & {
+  inset?: boolean
+}
 
-export const MenubarSubTrigger = <T extends ValidComponent = "div">(
+export const MenubarSubTrigger = <T extends ValidComponent = 'div'>(
   props: MenubarSubTriggerProps<T>,
 ) => {
-  const [, rest] = splitProps(props as MenubarSubTriggerProps, [
-    "class",
-    "inset",
-    "children",
-  ])
+  const [, rest] = splitProps(props as MenubarSubTriggerProps, ['class', 'inset', 'children'])
 
   return (
     <MenubarPrimitive.SubTrigger
       data-slot="menubar-sub-trigger"
       data-inset={props.inset}
       class={cx(
-        "focus:bg-accent focus:text-accent-foreground data-[expanded]:bg-accent data-[expanded]:text-accent-foreground flex cursor-default items-center rounded-sm px-2 py-1.5 text-sm outline-none select-none data-[inset]:pl-8",
+        'focus:bg-accent focus:text-accent-foreground data-[expanded]:bg-accent data-[expanded]:text-accent-foreground flex cursor-default items-center rounded-sm px-2 py-1.5 text-sm outline-none select-none data-[inset]:pl-8',
         props.class,
       )}
       {...rest}
     >
       {props.children}
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        class="ml-auto size-4"
-        viewBox="0 0 24 24"
-      >
+      <svg xmlns="http://www.w3.org/2000/svg" class="ml-auto size-4" viewBox="0 0 24 24">
         <path
           fill="none"
           stroke="currentColor"
@@ -369,19 +319,20 @@ export const MenubarSubTrigger = <T extends ValidComponent = "div">(
   )
 }
 
-export type MenubarSubContentProps<T extends ValidComponent = "div"> =
-  ComponentProps<typeof MenubarPrimitive.SubContent<T>>
+export type MenubarSubContentProps<T extends ValidComponent = 'div'> = ComponentProps<
+  typeof MenubarPrimitive.SubContent<T>
+>
 
-export const MenubarSubContent = <T extends ValidComponent = "div">(
+export const MenubarSubContent = <T extends ValidComponent = 'div'>(
   props: MenubarSubContentProps<T>,
 ) => {
-  const [, rest] = splitProps(props as MenubarSubContentProps, ["class"])
+  const [, rest] = splitProps(props as MenubarSubContentProps, ['class'])
 
   return (
     <MenubarPrimitive.SubContent
       data-slot="menubar-sub-content"
       class={cx(
-        "bg-popover text-popover-foreground data-[expanded]:animate-in data-[closed]:animate-out data-[closed]:fade-out-0 data-[expanded]:fade-in-0 data-[closed]:zoom-out-95 z-50 min-w-[8rem] origin-(--kb-menu-content-transform-origin) overflow-hidden rounded-md border p-1 shadow-lg focus-visible:outline-none",
+        'bg-popover text-popover-foreground data-[expanded]:animate-in data-[closed]:animate-out data-[closed]:fade-out-0 data-[expanded]:fade-in-0 data-[closed]:zoom-out-95 z-50 min-w-[8rem] origin-(--kb-menu-content-transform-origin) overflow-hidden rounded-md border p-1 shadow-lg focus-visible:outline-none',
         "[[data-popper-positioner][style*='--kb-popper-content-transform-origin:_top']>[data-slot=menubar-sub-content]]:slide-in-from-top-2 [[data-popper-positioner][style*='--kb-popper-content-transform-origin:_bottom']>[data-slot=menubar-sub-content]]:slide-in-from-bottom-2 [[data-popper-positioner][style*='--kb-popper-content-transform-origin:_left']>[data-slot=menubar-sub-content]]:slide-in-from-left-2 [[data-popper-positioner][style*='--kb-popper-content-transform-origin:_right']>[data-slot=menubar-sub-content]]:slide-in-from-right-2",
         props.class,
       )}

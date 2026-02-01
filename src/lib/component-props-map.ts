@@ -1,5 +1,5 @@
 import type { ComponentProps, ValidComponent } from 'solid-js'
-import type { ComponentName } from './theme-context'
+import { Toaster as Sonner } from 'somoto'
 
 import type { AccordionProps } from '../components/accordion'
 import type { AlertProps } from '../components/alert'
@@ -39,7 +39,6 @@ import type { SeparatorProps } from '../components/separator'
 import type { SidebarProps } from '../components/sidebar'
 import type { SkeletonProps } from '../components/skeleton'
 import type { SliderProps } from '../components/slider'
-import { Toaster as Sonner } from 'somoto'
 import type { SwitchProps } from '../components/switch'
 import type { TableProps } from '../components/table'
 import type { TabsProps } from '../components/tabs'
@@ -47,6 +46,7 @@ import type { TextFieldProps } from '../components/text-field'
 import type { ToggleButtonProps } from '../components/toggle-button'
 import type { ToggleGroupProps } from '../components/toggle-group'
 import type { TooltipProps } from '../components/tooltip'
+import type { ComponentName } from './theme-context'
 
 /**
  * Component Props type mapping
@@ -108,4 +108,3 @@ export interface ComponentPropsMap {
  * Get the corresponding Props type based on ComponentName
  */
 export type ComponentPropsFor<N extends ComponentName> = ComponentPropsMap[N]
-

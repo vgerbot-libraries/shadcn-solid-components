@@ -1,17 +1,13 @@
-import type { ValidComponent } from "solid-js"
-import { mergeProps, splitProps, type ComponentProps } from "solid-js"
-import {
-  Polymorphic,
-  type ElementOf,
-  type PolymorphicProps,
-} from "@kobalte/core"
-import type { VariantProps } from "cva"
+import { type ElementOf, Polymorphic, type PolymorphicProps } from '@kobalte/core'
+import type { VariantProps } from 'cva'
+import type { ValidComponent } from 'solid-js'
+import { type ComponentProps, mergeProps, splitProps } from 'solid-js'
 
-import { cva, cx } from "@/lib/cva"
-import { useRadiusClass, useComponentClass } from "@/lib/theme-helpers"
-import { ComponentName } from "@/lib/theme-context"
+import { cva, cx } from '@/lib/cva'
+import { ComponentName } from '@/lib/theme-context'
+import { useComponentClass, useRadiusClass } from '@/lib/theme-helpers'
 
-import { Separator, type SeparatorProps } from "../separator"
+import { Separator, type SeparatorProps } from '../separator'
 
 export const buttonGroupVariants = cva({
   base: [
@@ -20,21 +16,20 @@ export const buttonGroupVariants = cva({
   variants: {
     orientation: {
       horizontal:
-        "[&>*:not(:first-child)]:rounded-l-none [&>*:not(:first-child)]:border-l-0 [&>*:not(:last-child)]:rounded-r-none",
+        '[&>*:not(:first-child)]:rounded-l-none [&>*:not(:first-child)]:border-l-0 [&>*:not(:last-child)]:rounded-r-none',
       vertical:
-        "flex-col [&>*:not(:first-child)]:rounded-t-none [&>*:not(:first-child)]:border-t-0 [&>*:not(:last-child)]:rounded-b-none",
+        'flex-col [&>*:not(:first-child)]:rounded-t-none [&>*:not(:first-child)]:border-t-0 [&>*:not(:last-child)]:rounded-b-none',
     },
   },
   defaultVariants: {
-    orientation: "horizontal",
+    orientation: 'horizontal',
   },
 })
 
-export type ButtonGroupProps = ComponentProps<"div"> &
-  VariantProps<typeof buttonGroupVariants>
+export type ButtonGroupProps = ComponentProps<'div'> & VariantProps<typeof buttonGroupVariants>
 
 export const ButtonGroup = (props: ButtonGroupProps) => {
-  const [, rest] = splitProps(props, ["class", "orientation"])
+  const [, rest] = splitProps(props, ['class', 'orientation'])
 
   return (
     <div
@@ -50,15 +45,13 @@ export const ButtonGroup = (props: ButtonGroupProps) => {
   )
 }
 
-export type ButtonTextProps<T extends ValidComponent = "div"> = Partial<
-  ElementOf<T>
->
+export type ButtonTextProps<T extends ValidComponent = 'div'> = Partial<ElementOf<T>>
 
-export const ButtonText = <T extends ValidComponent = "div">(
+export const ButtonText = <T extends ValidComponent = 'div'>(
   props: PolymorphicProps<T, ButtonTextProps<T>>,
 ) => {
-  const merge = mergeProps({ as: "div" }, props)
-  const [, rest] = splitProps(merge, ["as", "class"])
+  const merge = mergeProps({ as: 'div' }, props)
+  const [, rest] = splitProps(merge, ['as', 'class'])
   const radiusClass = useRadiusClass('form-control')
   const componentClass = useComponentClass(ComponentName.ButtonGroup, props as ButtonGroupProps)
 
@@ -76,19 +69,18 @@ export const ButtonText = <T extends ValidComponent = "div">(
   )
 }
 
-export type ButtonSeparatorProps<T extends ValidComponent = "hr"> =
-  SeparatorProps<T>
+export type ButtonSeparatorProps<T extends ValidComponent = 'hr'> = SeparatorProps<T>
 
-export const ButtonSeparator = <T extends ValidComponent = "hr">(
+export const ButtonSeparator = <T extends ValidComponent = 'hr'>(
   props: ButtonSeparatorProps<T>,
 ) => {
-  const [, rest] = splitProps(props as ButtonSeparatorProps, ["class"])
+  const [, rest] = splitProps(props as ButtonSeparatorProps, ['class'])
 
   return (
     <Separator
       data-slot="button-group-separator"
       class={cx(
-        "bg-input relative !m-0 self-stretch data-[orientation=vertical]:h-auto",
+        'bg-input relative !m-0 self-stretch data-[orientation=vertical]:h-auto',
         props.class,
       )}
       {...rest}

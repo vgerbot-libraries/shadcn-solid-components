@@ -1,20 +1,7 @@
 import type { Component } from 'solid-js'
 import { For, createSignal } from 'solid-js'
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from '@/components/card'
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from '@/components/table'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/card'
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/table'
 import { Badge } from '@/components/badge'
 import { Button } from '@/components/button'
 import {
@@ -64,7 +51,7 @@ const chartConfig = {
   },
 }
 
-type ChartDataPoint = typeof chartData[0]
+type ChartDataPoint = (typeof chartData)[0]
 
 // Table data
 const tableData = [
@@ -154,7 +141,7 @@ export const Main: Component = () => {
   const [selectedRows, setSelectedRows] = createSignal<Set<number>>(new Set())
 
   const toggleRow = (index: number) => {
-    setSelectedRows((prev) => {
+    setSelectedRows(prev => {
       const next = new Set(prev)
       if (next.has(index)) {
         next.delete(index)
@@ -254,7 +241,12 @@ export const Main: Component = () => {
             <CardDescription>Total for the last 3 months</CardDescription>
           </CardHeader>
           <CardContent>
-            <ChartContainer<ChartDataPoint> config={chartConfig} type="xy" data={chartData} class="h-[300px] w-full">
+            <ChartContainer<ChartDataPoint>
+              config={chartConfig}
+              type="xy"
+              data={chartData}
+              class="h-[300px] w-full"
+            >
               <ChartCrosshair />
               <VisArea<ChartDataPoint>
                 x={(d: ChartDataPoint, i: number) => i}
@@ -301,7 +293,7 @@ export const Main: Component = () => {
                       type="checkbox"
                       class="size-4 rounded border-gray-300"
                       checked={selectedRows().size === tableData.length}
-                      onChange={(e) => {
+                      onChange={e => {
                         if (e.currentTarget.checked) {
                           setSelectedRows(new Set(tableData.map((_, i) => i)))
                         } else {
@@ -322,9 +314,7 @@ export const Main: Component = () => {
               <TableBody>
                 <For each={tableData}>
                   {(row, index) => (
-                    <TableRow
-                      data-state={selectedRows().has(index()) ? 'selected' : undefined}
-                    >
+                    <TableRow data-state={selectedRows().has(index()) ? 'selected' : undefined}>
                       <TableCell>
                         <input
                           type="checkbox"
@@ -377,9 +367,7 @@ export const Main: Component = () => {
               </TableBody>
             </Table>
             <div class="flex items-center justify-between border-t px-2 py-4">
-              <div class="text-sm text-muted-foreground">
-                Rows per page
-              </div>
+              <div class="text-sm text-muted-foreground">Rows per page</div>
               <div class="flex items-center gap-2">
                 <Button variant="outline" size="sm">
                   <ChevronLeftDoubleIcon />
@@ -396,4 +384,3 @@ export const Main: Component = () => {
     </>
   )
 }
-

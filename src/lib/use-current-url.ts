@@ -1,9 +1,4 @@
-import {
-  createSignal,
-  createMemo,
-  onCleanup,
-  type Accessor,
-} from "solid-js"
+import { type Accessor, createMemo, createSignal, onCleanup } from 'solid-js'
 
 export type UrlInfo = {
   pathname: string
@@ -15,17 +10,15 @@ export type UrlInfo = {
 export type UrlInfoInput = string | UrlInfo | Accessor<string | UrlInfo>
 
 export const parseUrl = (input: string): UrlInfo => {
-  if (typeof window === "undefined") {
+  if (typeof window === 'undefined') {
     // Manual parsing for SSR environment
-    const hashIndex = input.indexOf("#")
-    const queryIndex = input.indexOf("?")
-    const hashPart = hashIndex >= 0 ? input.substring(hashIndex) : ""
+    const hashIndex = input.indexOf('#')
+    const queryIndex = input.indexOf('?')
+    const hashPart = hashIndex >= 0 ? input.substring(hashIndex) : ''
     const queryPart =
-      queryIndex >= 0
-        ? input.substring(queryIndex + 1, hashIndex >= 0 ? hashIndex : undefined)
-        : ""
+      queryIndex >= 0 ? input.substring(queryIndex + 1, hashIndex >= 0 ? hashIndex : undefined) : ''
     return {
-      pathname: input.split("?")[0]?.split("#")[0] || "",
+      pathname: input.split('?')[0]?.split('#')[0] || '',
       hash: hashPart,
       searchParams: new URLSearchParams(queryPart),
       href: input,
@@ -62,28 +55,26 @@ const getCurrentUrlInfo = (): UrlInfo => {
   }
 }
 
-export const useCurrentUrl = (
-  customUrl?: UrlInfoInput
-): Accessor<UrlInfo> => {
+export const useCurrentUrl = (customUrl?: UrlInfoInput): Accessor<UrlInfo> => {
   if (customUrl !== undefined) {
-    if (typeof customUrl === "function") {
+    if (typeof customUrl === 'function') {
       // Create memo to parse Accessor values reactively
       return createMemo(() => {
         const value = customUrl()
-        return typeof value === "string" ? parseUrl(value) : value
+        return typeof value === 'string' ? parseUrl(value) : value
       })
     }
-    const parsed = typeof customUrl === "string" ? parseUrl(customUrl) : customUrl
+    const parsed = typeof customUrl === 'string' ? parseUrl(customUrl) : customUrl
     return () => parsed
   }
 
   // Listen to window.location changes
-  if (typeof window === "undefined") {
+  if (typeof window === 'undefined') {
     return () => ({
-      pathname: "",
-      hash: "",
+      pathname: '',
+      hash: '',
       searchParams: new URLSearchParams(),
-      href: "",
+      href: '',
     })
   }
 
@@ -113,16 +104,15 @@ export const useCurrentUrl = (
     setUrl(getCurrentUrlInfo())
   }
 
-  window.addEventListener("popstate", handlePopState)
-  window.addEventListener("hashchange", handleHashChange)
+  window.addEventListener('popstate', handlePopState)
+  window.addEventListener('hashchange', handleHashChange)
 
   onCleanup(() => {
-    window.removeEventListener("popstate", handlePopState)
-    window.removeEventListener("hashchange", handleHashChange)
+    window.removeEventListener('popstate', handlePopState)
+    window.removeEventListener('hashchange', handleHashChange)
     history.pushState = originalPushState
     history.replaceState = originalReplaceState
   })
 
   return url
 }
-

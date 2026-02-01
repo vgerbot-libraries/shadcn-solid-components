@@ -1,48 +1,43 @@
-import type { ComponentProps, ValidComponent } from "solid-js"
-import { splitProps } from "solid-js"
-import { Accordion as AccordionPrimitive } from "@kobalte/core/accordion"
+import { Accordion as AccordionPrimitive } from '@kobalte/core/accordion'
+import type { ComponentProps, ValidComponent } from 'solid-js'
+import { splitProps } from 'solid-js'
 
-import { cx } from "@/lib/cva"
-import { useRadiusClass, useComponentClass } from "@/lib/theme-helpers"
-import { ComponentName } from "@/lib/theme-context"
+import { cx } from '@/lib/cva'
+import { ComponentName } from '@/lib/theme-context'
+import { useComponentClass, useRadiusClass } from '@/lib/theme-helpers'
 
-export type AccordionProps<T extends ValidComponent = "div"> = ComponentProps<
+export type AccordionProps<T extends ValidComponent = 'div'> = ComponentProps<
   typeof AccordionPrimitive<T>
 >
 
-export const Accordion = <T extends ValidComponent = "div">(
-  props: AccordionProps<T>,
-) => {
+export const Accordion = <T extends ValidComponent = 'div'>(props: AccordionProps<T>) => {
   return <AccordionPrimitive data-slot="accordion" {...props} />
 }
 
-export type AccordionItemProps<T extends ValidComponent = "div"> =
-  ComponentProps<typeof AccordionPrimitive.Item<T>>
+export type AccordionItemProps<T extends ValidComponent = 'div'> = ComponentProps<
+  typeof AccordionPrimitive.Item<T>
+>
 
-export const AccordionItem = <T extends ValidComponent = "div">(
-  props: AccordionItemProps<T>,
-) => {
-  const [, rest] = splitProps(props as AccordionItemProps, ["class"])
+export const AccordionItem = <T extends ValidComponent = 'div'>(props: AccordionItemProps<T>) => {
+  const [, rest] = splitProps(props as AccordionItemProps, ['class'])
 
   return (
     <AccordionPrimitive.Item
       data-slot="accordion-item"
-      class={cx("border-b last:border-b-0", props.class)}
+      class={cx('border-b last:border-b-0', props.class)}
       {...rest}
     />
   )
 }
 
-export type AccordionTriggerProps<T extends ValidComponent = "button"> =
-  ComponentProps<typeof AccordionPrimitive.Trigger<T>>
+export type AccordionTriggerProps<T extends ValidComponent = 'button'> = ComponentProps<
+  typeof AccordionPrimitive.Trigger<T>
+>
 
-export const AccordionTrigger = <T extends ValidComponent = "button">(
+export const AccordionTrigger = <T extends ValidComponent = 'button'>(
   props: AccordionTriggerProps<T>,
 ) => {
-  const [, rest] = splitProps(props as AccordionTriggerProps, [
-    "class",
-    "children",
-  ])
+  const [, rest] = splitProps(props as AccordionTriggerProps, ['class', 'children'])
   const radiusClass = useRadiusClass('display')
   const componentClass = useComponentClass(ComponentName.Accordion, props as AccordionProps)
 
@@ -51,7 +46,7 @@ export const AccordionTrigger = <T extends ValidComponent = "button">(
       <AccordionPrimitive.Trigger
         data-slot="accordion-trigger"
         class={cx(
-          "focus-visible:border-ring focus-visible:ring-ring/50 flex flex-1 items-start justify-between gap-4 py-4 text-left text-sm font-medium transition-all outline-none hover:underline focus-visible:ring-[3px] disabled:pointer-events-none disabled:opacity-50 [&[data-expanded]>svg]:rotate-180",
+          'focus-visible:border-ring focus-visible:ring-ring/50 flex flex-1 items-start justify-between gap-4 py-4 text-left text-sm font-medium transition-all outline-none hover:underline focus-visible:ring-[3px] disabled:pointer-events-none disabled:opacity-50 [&[data-expanded]>svg]:rotate-180',
           radiusClass,
           componentClass,
           props.class,
@@ -78,16 +73,14 @@ export const AccordionTrigger = <T extends ValidComponent = "button">(
   )
 }
 
-export type AccordionContentProps<T extends ValidComponent = "div"> =
-  ComponentProps<typeof AccordionPrimitive.Content<T>>
+export type AccordionContentProps<T extends ValidComponent = 'div'> = ComponentProps<
+  typeof AccordionPrimitive.Content<T>
+>
 
-export const AccordionContent = <T extends ValidComponent = "div">(
+export const AccordionContent = <T extends ValidComponent = 'div'>(
   props: AccordionContentProps<T>,
 ) => {
-  const [, rest] = splitProps(props as AccordionContentProps, [
-    "class",
-    "children",
-  ])
+  const [, rest] = splitProps(props as AccordionContentProps, ['class', 'children'])
 
   return (
     <AccordionPrimitive.Content
@@ -95,7 +88,7 @@ export const AccordionContent = <T extends ValidComponent = "div">(
       class="data-closed:animate-accordion-up data-expanded:animate-accordion-down overflow-hidden text-sm"
       {...rest}
     >
-      <div class={cx("pt-0 pb-4", props.class)}>{props.children}</div>
+      <div class={cx('pt-0 pb-4', props.class)}>{props.children}</div>
     </AccordionPrimitive.Content>
   )
 }

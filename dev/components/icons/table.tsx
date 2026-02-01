@@ -31,4 +31,3 @@ export const ChevronRightDoubleIcon: Component = () => (
     <polyline points="6 17 11 12 6 7" />
   </svg>
 )
-

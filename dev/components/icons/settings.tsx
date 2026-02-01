@@ -32,4 +32,3 @@ export const GetHelpIcon: Component = () => (
     <path d="M12 8h.01" />
   </svg>
 )
-

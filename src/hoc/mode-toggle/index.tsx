@@ -1,6 +1,6 @@
-import { useColorMode } from "@kobalte/core"
+import { useColorMode } from '@kobalte/core'
 
-import { Button } from "@/components/button"
+import { Button } from '@/components/button'
 
 const ModeToggle = () => {
   const { toggleColorMode } = useColorMode()

@@ -1,11 +1,11 @@
-import { splitProps, type ComponentProps } from "solid-js"
+import { type ComponentProps, splitProps } from 'solid-js'
 
-import { cx } from "@/lib/cva"
+import { cx } from '@/lib/cva'
 
-type IconProps = ComponentProps<"svg">
+type IconProps = ComponentProps<'svg'>
 
 const Icon = (props: IconProps) => {
-  const [, rest] = splitProps(props, ["class"])
+  const [, rest] = splitProps(props, ['class'])
   return (
     <svg
       viewBox="0 0 24 24"
@@ -14,7 +14,7 @@ const Icon = (props: IconProps) => {
       stroke-width="2"
       stroke-linecap="round"
       stroke-linejoin="round"
-      class={cx("size-4", props.class)}
+      class={cx('size-4', props.class)}
       {...rest}
     />
   )

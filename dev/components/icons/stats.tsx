@@ -64,4 +64,3 @@ export const GrowthRateIcon: Component = () => (
     <path d="m19 9-5 5-4-4-3 3" />
   </svg>
 )
-

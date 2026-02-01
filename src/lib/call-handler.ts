@@ -1,11 +1,10 @@
 // https://github.com/kobaltedev/kobalte/blob/main/packages/utils/src/assertion.ts
 // https://github.com/kobaltedev/kobalte/blob/main/packages/utils/src/events.ts
 
-import type { JSX } from "solid-js"
+import type { JSX } from 'solid-js'
 
 // Function assertions
-export const isFunction = (value: unknown): value is Function =>
-  typeof value === "function"
+export const isFunction = (value: unknown): value is Function => typeof value === 'function'
 
 /** Call a JSX.EventHandlerUnion with the event. */
 export const callHandler = <T, E extends Event>(

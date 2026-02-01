@@ -1,13 +1,13 @@
-import { useContext, createMemo } from 'solid-js'
-import { ThemeContext, type ThemeConfig, type RadiusValue } from './theme-context'
+import { createMemo, useContext } from 'solid-js'
+import { type RadiusValue, type ThemeConfig, ThemeContext } from './theme-context'
 
 export type ComponentCategory =
-  | 'form-control'    // Button, Input, Select, Search, Combobox, Toggle Button, Badge, Tooltip
-  | 'display'         // Card, Alert
-  | 'overlay'         // Dialog, AlertDialog, Drawer, Popover
-  | 'navigation'      // Tabs, Sidebar
-  | 'menu-item'       // Menu items in dropdown-menu, context-menu, command, select, combobox, search
-  | 'special'         // Switch, Slider (always returns 'rounded-full')
+  | 'form-control' // Button, Input, Select, Search, Combobox, Toggle Button, Badge, Tooltip
+  | 'display' // Card, Alert
+  | 'overlay' // Dialog, AlertDialog, Drawer, Popover
+  | 'navigation' // Tabs, Sidebar
+  | 'menu-item' // Menu items in dropdown-menu, context-menu, command, select, combobox, search
+  | 'special' // Switch, Slider (always returns 'rounded-full')
 
 export interface UseThemeReturn {
   theme: ThemeConfig
@@ -20,51 +20,51 @@ export interface UseThemeReturn {
 const radiusMapping: Record<RadiusValue, Record<ComponentCategory, string>> = {
   none: {
     'form-control': 'rounded-none',
-    'display': 'rounded-none',
-    'overlay': 'rounded-none',
-    'navigation': 'rounded-none',
+    display: 'rounded-none',
+    overlay: 'rounded-none',
+    navigation: 'rounded-none',
     'menu-item': 'rounded-none',
-    'special': 'rounded-none',
+    special: 'rounded-none',
   },
   sm: {
     'form-control': 'rounded-sm',
-    'display': 'rounded-md',
-    'overlay': 'rounded-sm',
-    'navigation': 'rounded-sm',
+    display: 'rounded-md',
+    overlay: 'rounded-sm',
+    navigation: 'rounded-sm',
     'menu-item': 'rounded-sm',
-    'special': 'rounded-sm',
+    special: 'rounded-sm',
   },
   md: {
     'form-control': 'rounded-md',
-    'display': 'rounded-lg',
-    'overlay': 'rounded-md',
-    'navigation': 'rounded-md',
+    display: 'rounded-lg',
+    overlay: 'rounded-md',
+    navigation: 'rounded-md',
     'menu-item': 'rounded-sm',
-    'special': 'rounded-md',
+    special: 'rounded-md',
   },
   lg: {
     'form-control': 'rounded-lg',
-    'display': 'rounded-xl',
-    'overlay': 'rounded-lg',
-    'navigation': 'rounded-lg',
+    display: 'rounded-xl',
+    overlay: 'rounded-lg',
+    navigation: 'rounded-lg',
     'menu-item': 'rounded-sm',
-    'special': 'rounded-lg',
+    special: 'rounded-lg',
   },
   xl: {
     'form-control': 'rounded-xl',
-    'display': 'rounded-2xl',
-    'overlay': 'rounded-xl',
-    'navigation': 'rounded-xl',
+    display: 'rounded-2xl',
+    overlay: 'rounded-xl',
+    navigation: 'rounded-xl',
     'menu-item': 'rounded-sm',
-    'special': 'rounded-xl',
+    special: 'rounded-xl',
   },
   full: {
     'form-control': 'rounded-full',
-    'display': 'rounded-3xl',
-    'overlay': 'rounded-2xl',
-    'navigation': 'rounded-2xl',
+    display: 'rounded-3xl',
+    overlay: 'rounded-2xl',
+    navigation: 'rounded-2xl',
     'menu-item': 'rounded-sm',
-    'special': 'rounded-full',
+    special: 'rounded-full',
   },
 }
 

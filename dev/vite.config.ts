@@ -3,7 +3,7 @@ import path from 'node:path'
 import solidPlugin from 'vite-plugin-solid'
 import tsConfigPaths from 'vite-tsconfig-paths'
 import tailwindcss from '@tailwindcss/vite'
-import devtools from 'solid-devtools/vite';
+import devtools from 'solid-devtools/vite'
 
 export default defineConfig({
   resolve: {
@@ -14,7 +14,7 @@ export default defineConfig({
   plugins: [
     tsConfigPaths(),
     devtools({
-      autoname: true
+      autoname: true,
     }),
     solidPlugin(),
     tailwindcss(),

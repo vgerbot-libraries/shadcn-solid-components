@@ -1,10 +1,9 @@
-import type { ComponentProps, ValidComponent } from "solid-js"
-import { splitProps } from "solid-js"
-import { ContextMenu as ContextMenuPrimitive } from "@kobalte/core/context-menu"
-
-import { cx } from "@/registry/lib/cva"
-import { useRadiusClass, useComponentClass } from "@/lib/theme-helpers"
-import { ComponentName } from "@/lib/theme-context"
+import { ContextMenu as ContextMenuPrimitive } from '@kobalte/core/context-menu'
+import type { ComponentProps, ValidComponent } from 'solid-js'
+import { splitProps } from 'solid-js'
+import { ComponentName } from '@/lib/theme-context'
+import { useComponentClass, useRadiusClass } from '@/lib/theme-helpers'
+import { cx } from '@/registry/lib/cva'
 
 export const ContextMenuPortal = ContextMenuPrimitive.Portal
 
@@ -14,63 +13,52 @@ export const ContextMenu = (props: ContextMenuProps) => {
   return <ContextMenuPrimitive data-slot="context-menu" {...props} />
 }
 
-export type ContextMenuTriggerProps<T extends ValidComponent = "div"> =
-  ComponentProps<typeof ContextMenuPrimitive.Trigger<T>>
+export type ContextMenuTriggerProps<T extends ValidComponent = 'div'> = ComponentProps<
+  typeof ContextMenuPrimitive.Trigger<T>
+>
 
-export const ContextMenuTrigger = <T extends ValidComponent = "div">(
+export const ContextMenuTrigger = <T extends ValidComponent = 'div'>(
   props: ContextMenuTriggerProps<T>,
 ) => {
-  return (
-    <ContextMenuPrimitive.Trigger data-slot="context-menu-trigger" {...props} />
-  )
+  return <ContextMenuPrimitive.Trigger data-slot="context-menu-trigger" {...props} />
 }
 
-export type ContextMenuGroupProps<T extends ValidComponent = "div"> =
-  ComponentProps<typeof ContextMenuPrimitive.Group<T>>
+export type ContextMenuGroupProps<T extends ValidComponent = 'div'> = ComponentProps<
+  typeof ContextMenuPrimitive.Group<T>
+>
 
-export const ContextMenuGroup = <T extends ValidComponent = "div">(
+export const ContextMenuGroup = <T extends ValidComponent = 'div'>(
   props: ContextMenuGroupProps<T>,
 ) => {
-  return (
-    <ContextMenuPrimitive.Group data-slot="context-menu-group" {...props} />
-  )
+  return <ContextMenuPrimitive.Group data-slot="context-menu-group" {...props} />
 }
 
-export type ContextMenuSubProps = ComponentProps<
-  typeof ContextMenuPrimitive.Sub
->
+export type ContextMenuSubProps = ComponentProps<typeof ContextMenuPrimitive.Sub>
 
 export const ContextMenuSub = (props: ContextMenuSubProps) => {
   return <ContextMenuPrimitive.Sub data-slot="context-menu-sub" {...props} />
 }
 
-export type ContextMenuRadioGroupProps<T extends ValidComponent = "div"> =
-  ComponentProps<typeof ContextMenuPrimitive.RadioGroup<T>>
+export type ContextMenuRadioGroupProps<T extends ValidComponent = 'div'> = ComponentProps<
+  typeof ContextMenuPrimitive.RadioGroup<T>
+>
 
-export const ContextMenuRadioGroup = <T extends ValidComponent = "div">(
+export const ContextMenuRadioGroup = <T extends ValidComponent = 'div'>(
   props: ContextMenuRadioGroupProps<T>,
 ) => {
-  return (
-    <ContextMenuPrimitive.RadioGroup
-      data-slot="context-menu-radio-group"
-      {...props}
-    />
-  )
+  return <ContextMenuPrimitive.RadioGroup data-slot="context-menu-radio-group" {...props} />
 }
 
-export type ContextMenuSubTriggerProps<T extends ValidComponent = "div"> =
-  ComponentProps<typeof ContextMenuPrimitive.SubTrigger<T>> & {
-    inset?: boolean
-  }
+export type ContextMenuSubTriggerProps<T extends ValidComponent = 'div'> = ComponentProps<
+  typeof ContextMenuPrimitive.SubTrigger<T>
+> & {
+  inset?: boolean
+}
 
-export const ContextMenuSubTrigger = <T extends ValidComponent = "div">(
+export const ContextMenuSubTrigger = <T extends ValidComponent = 'div'>(
   props: ContextMenuSubTriggerProps<T>,
 ) => {
-  const [, rest] = splitProps(props as ContextMenuSubTriggerProps, [
-    "class",
-    "children",
-    "inset",
-  ])
+  const [, rest] = splitProps(props as ContextMenuSubTriggerProps, ['class', 'children', 'inset'])
   const radiusClass = useRadiusClass('menu-item')
   const componentClass = useComponentClass(ComponentName.ContextMenu, props as ContextMenuProps)
 
@@ -87,11 +75,7 @@ export const ContextMenuSubTrigger = <T extends ValidComponent = "div">(
       {...rest}
     >
       {props.children}
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        class="ml-auto"
-        viewBox="0 0 24 24"
-      >
+      <svg xmlns="http://www.w3.org/2000/svg" class="ml-auto" viewBox="0 0 24 24">
         <path
           fill="none"
           stroke="currentColor"
@@ -105,13 +89,14 @@ export const ContextMenuSubTrigger = <T extends ValidComponent = "div">(
   )
 }
 
-export type ContextMenuSubContentProps<T extends ValidComponent = "div"> =
-  ComponentProps<typeof ContextMenuPrimitive.SubContent<T>>
+export type ContextMenuSubContentProps<T extends ValidComponent = 'div'> = ComponentProps<
+  typeof ContextMenuPrimitive.SubContent<T>
+>
 
-export const ContextMenuSubContent = <T extends ValidComponent = "div">(
+export const ContextMenuSubContent = <T extends ValidComponent = 'div'>(
   props: ContextMenuSubContentProps<T>,
 ) => {
-  const [, rest] = splitProps(props as ContextMenuSubContentProps, ["class"])
+  const [, rest] = splitProps(props as ContextMenuSubContentProps, ['class'])
 
   const radiusClass = useRadiusClass('overlay')
   const componentClass = useComponentClass(ComponentName.ContextMenu, props as ContextMenuProps)
@@ -120,7 +105,7 @@ export const ContextMenuSubContent = <T extends ValidComponent = "div">(
     <ContextMenuPrimitive.SubContent
       data-slot="context-menu-sub-content"
       class={cx(
-        "bg-popover text-popover-foreground data-[expanded]:animate-in data-[closed]:animate-out data-[closed]:fade-out-0 data-[expanded]:fade-in-0 data-[closed]:zoom-out-95 data-[expanded]:zoom-in-95 z-50 min-w-[8rem] origin-(--kb-menu-content-transform-origin) overflow-hidden border p-1 shadow-lg outline-none",
+        'bg-popover text-popover-foreground data-[expanded]:animate-in data-[closed]:animate-out data-[closed]:fade-out-0 data-[expanded]:fade-in-0 data-[closed]:zoom-out-95 data-[expanded]:zoom-in-95 z-50 min-w-[8rem] origin-(--kb-menu-content-transform-origin) overflow-hidden border p-1 shadow-lg outline-none',
         radiusClass,
         componentClass,
         "[[data-popper-positioner][style*='--kb-popper-content-transform-origin:_top']>[data-slot=context-menu-sub-content]]:slide-in-from-top-2 [[data-popper-positioner][style*='--kb-popper-content-transform-origin:_bottom']>[data-slot=context-menu-sub-content]]:slide-in-from-bottom-2 [[data-popper-positioner][style*='--kb-popper-content-transform-origin:_left']>[data-slot=context-menu-sub-content]]:slide-in-from-left-2 [[data-popper-positioner][style*='--kb-popper-content-transform-origin:_right']>[data-slot=context-menu-sub-content]]:slide-in-from-right-2",
@@ -131,13 +116,14 @@ export const ContextMenuSubContent = <T extends ValidComponent = "div">(
   )
 }
 
-export type ContextMenuContentProps<T extends ValidComponent = "div"> =
-  ComponentProps<typeof ContextMenuPrimitive.Content<T>>
+export type ContextMenuContentProps<T extends ValidComponent = 'div'> = ComponentProps<
+  typeof ContextMenuPrimitive.Content<T>
+>
 
-export const ContextMenuContent = <T extends ValidComponent = "div">(
+export const ContextMenuContent = <T extends ValidComponent = 'div'>(
   props: ContextMenuContentProps<T>,
 ) => {
-  const [, rest] = splitProps(props as ContextMenuContentProps, ["class"])
+  const [, rest] = splitProps(props as ContextMenuContentProps, ['class'])
 
   const radiusClass = useRadiusClass('overlay')
   const componentClass = useComponentClass(ComponentName.ContextMenu, props as ContextMenuProps)
@@ -146,7 +132,7 @@ export const ContextMenuContent = <T extends ValidComponent = "div">(
     <ContextMenuPrimitive.Content
       data-slot="context-menu-content"
       class={cx(
-        "bg-popover text-popover-foreground data-[expanded]:animate-in data-[closed]:animate-out data-[closed]:fade-out-0 data-[expanded]:fade-in-0 data-[closed]:zoom-out-95 data-[expanded]:zoom-in-95 z-50 min-w-[8rem] origin-(--kb-menu-content-transform-origin) overflow-x-hidden overflow-y-auto border p-1 shadow-md outline-none",
+        'bg-popover text-popover-foreground data-[expanded]:animate-in data-[closed]:animate-out data-[closed]:fade-out-0 data-[expanded]:fade-in-0 data-[closed]:zoom-out-95 data-[expanded]:zoom-in-95 z-50 min-w-[8rem] origin-(--kb-menu-content-transform-origin) overflow-x-hidden overflow-y-auto border p-1 shadow-md outline-none',
         radiusClass,
         componentClass,
         "[[data-popper-positioner][style*='--kb-popper-content-transform-origin:_top']>[data-slot=context-menu-content]]:slide-in-from-top-2 [[data-popper-positioner][style*='--kb-popper-content-transform-origin:_bottom']>[data-slot=context-menu-content]]:slide-in-from-bottom-2 [[data-popper-positioner][style*='--kb-popper-content-transform-origin:_left']>[data-slot=context-menu-content]]:slide-in-from-left-2 [[data-popper-positioner][style*='--kb-popper-content-transform-origin:_right']>[data-slot=context-menu-content]]:slide-in-from-right-2",
@@ -157,20 +143,17 @@ export const ContextMenuContent = <T extends ValidComponent = "div">(
   )
 }
 
-export type ContextMenuItemProps<T extends ValidComponent = "div"> =
-  ComponentProps<typeof ContextMenuPrimitive.Item<T>> & {
-    inset?: boolean
-    variant?: "default" | "destructive"
-  }
+export type ContextMenuItemProps<T extends ValidComponent = 'div'> = ComponentProps<
+  typeof ContextMenuPrimitive.Item<T>
+> & {
+  inset?: boolean
+  variant?: 'default' | 'destructive'
+}
 
-export const ContextMenuItem = <T extends ValidComponent = "div">(
+export const ContextMenuItem = <T extends ValidComponent = 'div'>(
   props: ContextMenuItemProps<T>,
 ) => {
-  const [, rest] = splitProps(props as ContextMenuItemProps, [
-    "class",
-    "inset",
-    "variant",
-  ])
+  const [, rest] = splitProps(props as ContextMenuItemProps, ['class', 'inset', 'variant'])
   const radiusClass = useRadiusClass('menu-item')
   const componentClass = useComponentClass(ComponentName.ContextMenu, props as ContextMenuProps)
 
@@ -190,16 +173,14 @@ export const ContextMenuItem = <T extends ValidComponent = "div">(
   )
 }
 
-export type ContextMenuCheckboxItemProps<T extends ValidComponent = "div"> =
-  ComponentProps<typeof ContextMenuPrimitive.CheckboxItem<T>>
+export type ContextMenuCheckboxItemProps<T extends ValidComponent = 'div'> = ComponentProps<
+  typeof ContextMenuPrimitive.CheckboxItem<T>
+>
 
-export const ContextMenuCheckboxItem = <T extends ValidComponent = "div">(
+export const ContextMenuCheckboxItem = <T extends ValidComponent = 'div'>(
   props: ContextMenuCheckboxItemProps<T>,
 ) => {
-  const [, rest] = splitProps(props as ContextMenuCheckboxItemProps, [
-    "class",
-    "children",
-  ])
+  const [, rest] = splitProps(props as ContextMenuCheckboxItemProps, ['class', 'children'])
   const radiusClass = useRadiusClass('menu-item')
   const componentClass = useComponentClass(ComponentName.ContextMenu, props as ContextMenuProps)
 
@@ -236,16 +217,14 @@ export const ContextMenuCheckboxItem = <T extends ValidComponent = "div">(
   )
 }
 
-export type ContextMenuRadioItemProps<T extends ValidComponent = "div"> =
-  ComponentProps<typeof ContextMenuPrimitive.RadioItem<T>>
+export type ContextMenuRadioItemProps<T extends ValidComponent = 'div'> = ComponentProps<
+  typeof ContextMenuPrimitive.RadioItem<T>
+>
 
-export const ContextMenuRadioItem = <T extends ValidComponent = "div">(
+export const ContextMenuRadioItem = <T extends ValidComponent = 'div'>(
   props: ContextMenuRadioItemProps<T>,
 ) => {
-  const [, rest] = splitProps(props as ContextMenuRadioItemProps, [
-    "class",
-    "children",
-  ])
+  const [, rest] = splitProps(props as ContextMenuRadioItemProps, ['class', 'children'])
   const radiusClass = useRadiusClass('menu-item')
   const componentClass = useComponentClass(ComponentName.ContextMenu, props as ContextMenuProps)
 
@@ -284,88 +263,76 @@ export const ContextMenuRadioItem = <T extends ValidComponent = "div">(
   )
 }
 
-export type ContextMenuGroupLabelProps<T extends ValidComponent = "span"> =
-  ComponentProps<typeof ContextMenuPrimitive.GroupLabel<T>> & {
-    inset?: boolean
-  }
+export type ContextMenuGroupLabelProps<T extends ValidComponent = 'span'> = ComponentProps<
+  typeof ContextMenuPrimitive.GroupLabel<T>
+> & {
+  inset?: boolean
+}
 
-export const ContextMenuGroupLabel = <T extends ValidComponent = "span">(
+export const ContextMenuGroupLabel = <T extends ValidComponent = 'span'>(
   props: ContextMenuGroupLabelProps<T>,
 ) => {
-  const [, rest] = splitProps(props as ContextMenuGroupLabelProps, [
-    "class",
-    "inset",
-  ])
+  const [, rest] = splitProps(props as ContextMenuGroupLabelProps, ['class', 'inset'])
 
   return (
     <ContextMenuPrimitive.GroupLabel
       as="div"
       data-slot="context-menu-group-label"
       data-inset={props.inset}
-      class={cx(
-        "text-foreground my-1.5 px-2 text-sm font-medium data-[inset]:pl-8",
-        props.class,
-      )}
+      class={cx('text-foreground my-1.5 px-2 text-sm font-medium data-[inset]:pl-8', props.class)}
       {...rest}
     />
   )
 }
 
-export type ContextMenuItemLabelProps<T extends ValidComponent = "div"> =
-  ComponentProps<typeof ContextMenuPrimitive.ItemLabel<T>> & {
-    inset?: boolean
-  }
+export type ContextMenuItemLabelProps<T extends ValidComponent = 'div'> = ComponentProps<
+  typeof ContextMenuPrimitive.ItemLabel<T>
+> & {
+  inset?: boolean
+}
 
-export const ContextMenuItemLabel = <T extends ValidComponent = "div">(
+export const ContextMenuItemLabel = <T extends ValidComponent = 'div'>(
   props: ContextMenuItemLabelProps<T>,
 ) => {
-  const [, rest] = splitProps(props as ContextMenuItemLabelProps, [
-    "class",
-    "inset",
-  ])
+  const [, rest] = splitProps(props as ContextMenuItemLabelProps, ['class', 'inset'])
 
   return (
     <ContextMenuPrimitive.ItemLabel
       data-slot="context-menu-item-label"
       data-inset={props.inset}
-      class={cx(
-        "text-foreground px-2 py-1.5 text-sm font-medium data-[inset]:pl-8",
-        props.class,
-      )}
+      class={cx('text-foreground px-2 py-1.5 text-sm font-medium data-[inset]:pl-8', props.class)}
       {...rest}
     />
   )
 }
 
-export type ContextMenuSeparatorProps<T extends ValidComponent = "hr"> =
-  ComponentProps<typeof ContextMenuPrimitive.Separator<T>>
+export type ContextMenuSeparatorProps<T extends ValidComponent = 'hr'> = ComponentProps<
+  typeof ContextMenuPrimitive.Separator<T>
+>
 
-export const ContextMenuSeparator = <T extends ValidComponent = "hr">(
+export const ContextMenuSeparator = <T extends ValidComponent = 'hr'>(
   props: ContextMenuSeparatorProps<T>,
 ) => {
-  const [, rest] = splitProps(props as ContextMenuSeparatorProps, ["class"])
+  const [, rest] = splitProps(props as ContextMenuSeparatorProps, ['class'])
 
   return (
     <ContextMenuPrimitive.Separator
       data-slot="context-menu-separator"
-      class={cx("bg-border -mx-1 my-1 h-px", props.class)}
+      class={cx('bg-border -mx-1 my-1 h-px', props.class)}
       {...rest}
     />
   )
 }
 
-export type ContextMenuShortcutProps = ComponentProps<"span">
+export type ContextMenuShortcutProps = ComponentProps<'span'>
 
 export const ContextMenuShortcut = (props: ContextMenuShortcutProps) => {
-  const [, rest] = splitProps(props, ["class"])
+  const [, rest] = splitProps(props, ['class'])
 
   return (
     <span
       data-slot="context-menu-shortcut"
-      class={cx(
-        "text-muted-foreground ml-auto text-xs tracking-widest",
-        props.class,
-      )}
+      class={cx('text-muted-foreground ml-auto text-xs tracking-widest', props.class)}
       {...rest}
     />
   )

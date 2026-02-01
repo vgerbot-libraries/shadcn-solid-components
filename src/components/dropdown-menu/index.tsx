@@ -1,10 +1,9 @@
-import type { ComponentProps, ValidComponent } from "solid-js"
-import { mergeProps, splitProps } from "solid-js"
-import { DropdownMenu as DropdownMenuPrimitive } from "@kobalte/core/dropdown-menu"
-
-import { cx } from "@/registry/lib/cva"
-import { useRadiusClass, useComponentClass } from "@/lib/theme-helpers"
-import { ComponentName } from "@/lib/theme-context"
+import { DropdownMenu as DropdownMenuPrimitive } from '@kobalte/core/dropdown-menu'
+import type { ComponentProps, ValidComponent } from 'solid-js'
+import { mergeProps, splitProps } from 'solid-js'
+import { ComponentName } from '@/lib/theme-context'
+import { useComponentClass, useRadiusClass } from '@/lib/theme-helpers'
+import { cx } from '@/registry/lib/cva'
 
 export const DropdownMenuPortal = DropdownMenuPrimitive.Portal
 
@@ -21,66 +20,52 @@ export const DropdownMenu = (props: DropdownMenuProps) => {
   return <DropdownMenuPrimitive data-slot="dropdown-menu" {...merge} />
 }
 
-export type DropdownMenuTriggerProps<T extends ValidComponent = "div"> =
-  ComponentProps<typeof DropdownMenuPrimitive.Trigger<T>>
+export type DropdownMenuTriggerProps<T extends ValidComponent = 'div'> = ComponentProps<
+  typeof DropdownMenuPrimitive.Trigger<T>
+>
 
-export const DropdownMenuTrigger = <T extends ValidComponent = "div">(
+export const DropdownMenuTrigger = <T extends ValidComponent = 'div'>(
   props: DropdownMenuTriggerProps<T>,
 ) => {
-  return (
-    <DropdownMenuPrimitive.Trigger
-      data-slot="dropdown-menu-trigger"
-      {...props}
-    />
-  )
+  return <DropdownMenuPrimitive.Trigger data-slot="dropdown-menu-trigger" {...props} />
 }
 
-export type DropdownMenuGroupProps<T extends ValidComponent = "div"> =
-  ComponentProps<typeof DropdownMenuPrimitive.Group<T>>
+export type DropdownMenuGroupProps<T extends ValidComponent = 'div'> = ComponentProps<
+  typeof DropdownMenuPrimitive.Group<T>
+>
 
-export const DropdownMenuGroup = <T extends ValidComponent = "div">(
+export const DropdownMenuGroup = <T extends ValidComponent = 'div'>(
   props: DropdownMenuGroupProps<T>,
 ) => {
-  return (
-    <DropdownMenuPrimitive.Group data-slot="dropdown-menu-group" {...props} />
-  )
+  return <DropdownMenuPrimitive.Group data-slot="dropdown-menu-group" {...props} />
 }
 
-export type DropdownMenuSubProps = ComponentProps<
-  typeof DropdownMenuPrimitive.Sub
->
+export type DropdownMenuSubProps = ComponentProps<typeof DropdownMenuPrimitive.Sub>
 
 export const DropdownMenuSub = (props: DropdownMenuSubProps) => {
   return <DropdownMenuPrimitive.Sub data-slot="dropdown-menu-sub" {...props} />
 }
 
-export type DropdownMenuRadioGroupProps<T extends ValidComponent = "div"> =
-  ComponentProps<typeof DropdownMenuPrimitive.RadioGroup<T>>
+export type DropdownMenuRadioGroupProps<T extends ValidComponent = 'div'> = ComponentProps<
+  typeof DropdownMenuPrimitive.RadioGroup<T>
+>
 
-export const DropdownMenuRadioGroup = <T extends ValidComponent = "div">(
+export const DropdownMenuRadioGroup = <T extends ValidComponent = 'div'>(
   props: DropdownMenuRadioGroupProps<T>,
 ) => {
-  return (
-    <DropdownMenuPrimitive.RadioGroup
-      data-slot="dropdown-menu-radio-group"
-      {...props}
-    />
-  )
+  return <DropdownMenuPrimitive.RadioGroup data-slot="dropdown-menu-radio-group" {...props} />
 }
 
-export type DropdownMenuSubTriggerProps<T extends ValidComponent = "div"> =
-  ComponentProps<typeof DropdownMenuPrimitive.SubTrigger<T>> & {
-    inset?: boolean
-  }
+export type DropdownMenuSubTriggerProps<T extends ValidComponent = 'div'> = ComponentProps<
+  typeof DropdownMenuPrimitive.SubTrigger<T>
+> & {
+  inset?: boolean
+}
 
-export const DropdownMenuSubTrigger = <T extends ValidComponent = "div">(
+export const DropdownMenuSubTrigger = <T extends ValidComponent = 'div'>(
   props: DropdownMenuSubTriggerProps<T>,
 ) => {
-  const [, rest] = splitProps(props as DropdownMenuSubTriggerProps, [
-    "class",
-    "children",
-    "inset",
-  ])
+  const [, rest] = splitProps(props as DropdownMenuSubTriggerProps, ['class', 'children', 'inset'])
   const radiusClass = useRadiusClass('menu-item')
   const componentClass = useComponentClass(ComponentName.DropdownMenu, props as DropdownMenuProps)
 
@@ -97,11 +82,7 @@ export const DropdownMenuSubTrigger = <T extends ValidComponent = "div">(
       {...rest}
     >
       {props.children}
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        class="ml-auto"
-        viewBox="0 0 24 24"
-      >
+      <svg xmlns="http://www.w3.org/2000/svg" class="ml-auto" viewBox="0 0 24 24">
         <path
           fill="none"
           stroke="currentColor"
@@ -115,13 +96,14 @@ export const DropdownMenuSubTrigger = <T extends ValidComponent = "div">(
   )
 }
 
-export type DropdownMenuSubContentProps<T extends ValidComponent = "div"> =
-  ComponentProps<typeof DropdownMenuPrimitive.SubContent<T>>
+export type DropdownMenuSubContentProps<T extends ValidComponent = 'div'> = ComponentProps<
+  typeof DropdownMenuPrimitive.SubContent<T>
+>
 
-export const DropdownMenuSubContent = <T extends ValidComponent = "div">(
+export const DropdownMenuSubContent = <T extends ValidComponent = 'div'>(
   props: DropdownMenuSubContentProps<T>,
 ) => {
-  const [, rest] = splitProps(props as DropdownMenuSubContentProps, ["class"])
+  const [, rest] = splitProps(props as DropdownMenuSubContentProps, ['class'])
 
   const radiusClass = useRadiusClass('overlay')
 
@@ -129,7 +111,7 @@ export const DropdownMenuSubContent = <T extends ValidComponent = "div">(
     <DropdownMenuPrimitive.SubContent
       data-slot="dropdown-menu-sub-content"
       class={cx(
-        "bg-popover text-popover-foreground data-[expanded]:animate-in data-[closed]:animate-out data-[closed]:fade-out-0 data-[expanded]:fade-in-0 data-[closed]:zoom-out-95 data-[expanded]:zoom-in-95 z-50 min-w-[8rem] origin-(--kb-menu-content-transform-origin) overflow-hidden border p-1 shadow-lg outline-none",
+        'bg-popover text-popover-foreground data-[expanded]:animate-in data-[closed]:animate-out data-[closed]:fade-out-0 data-[expanded]:fade-in-0 data-[closed]:zoom-out-95 data-[expanded]:zoom-in-95 z-50 min-w-[8rem] origin-(--kb-menu-content-transform-origin) overflow-hidden border p-1 shadow-lg outline-none',
         radiusClass,
         "[[data-popper-positioner][style*='--kb-popper-content-transform-origin:_top']>[data-slot=dropdown-menu-sub-content]]:slide-in-from-top-2 [[data-popper-positioner][style*='--kb-popper-content-transform-origin:_bottom']>[data-slot=dropdown-menu-sub-content]]:slide-in-from-bottom-2 [[data-popper-positioner][style*='--kb-popper-content-transform-origin:_left']>[data-slot=dropdown-menu-sub-content]]:slide-in-from-left-2 [[data-popper-positioner][style*='--kb-popper-content-transform-origin:_right']>[data-slot=dropdown-menu-sub-content]]:slide-in-from-right-2",
         props.class,
@@ -139,13 +121,14 @@ export const DropdownMenuSubContent = <T extends ValidComponent = "div">(
   )
 }
 
-export type DropdownMenuContentProps<T extends ValidComponent = "div"> =
-  ComponentProps<typeof DropdownMenuPrimitive.Content<T>>
+export type DropdownMenuContentProps<T extends ValidComponent = 'div'> = ComponentProps<
+  typeof DropdownMenuPrimitive.Content<T>
+>
 
-export const DropdownMenuContent = <T extends ValidComponent = "div">(
+export const DropdownMenuContent = <T extends ValidComponent = 'div'>(
   props: DropdownMenuContentProps<T>,
 ) => {
-  const [, rest] = splitProps(props as DropdownMenuContentProps, ["class"])
+  const [, rest] = splitProps(props as DropdownMenuContentProps, ['class'])
 
   const radiusClass = useRadiusClass('overlay')
 
@@ -153,7 +136,7 @@ export const DropdownMenuContent = <T extends ValidComponent = "div">(
     <DropdownMenuPrimitive.Content
       data-slot="dropdown-menu-content"
       class={cx(
-        "bg-popover text-popover-foreground data-[expanded]:animate-in data-[closed]:animate-out data-[closed]:fade-out-0 data-[expanded]:fade-in-0 data-[closed]:zoom-out-95 data-[expanded]:zoom-in-95 z-50 min-w-[8rem] origin-(--kb-menu-content-transform-origin) overflow-x-hidden overflow-y-auto border p-1 shadow-md outline-none",
+        'bg-popover text-popover-foreground data-[expanded]:animate-in data-[closed]:animate-out data-[closed]:fade-out-0 data-[expanded]:fade-in-0 data-[closed]:zoom-out-95 data-[expanded]:zoom-in-95 z-50 min-w-[8rem] origin-(--kb-menu-content-transform-origin) overflow-x-hidden overflow-y-auto border p-1 shadow-md outline-none',
         radiusClass,
         "[[data-popper-positioner][style*='--kb-popper-content-transform-origin:_top']>[data-slot=dropdown-menu-content]]:slide-in-from-top-2 [[data-popper-positioner][style*='--kb-popper-content-transform-origin:_bottom']>[data-slot=dropdown-menu-content]]:slide-in-from-bottom-2 [[data-popper-positioner][style*='--kb-popper-content-transform-origin:_left']>[data-slot=dropdown-menu-content]]:slide-in-from-left-2 [[data-popper-positioner][style*='--kb-popper-content-transform-origin:_right']>[data-slot=dropdown-menu-content]]:slide-in-from-right-2",
         props.class,
@@ -163,20 +146,17 @@ export const DropdownMenuContent = <T extends ValidComponent = "div">(
   )
 }
 
-export type DropdownMenuItemProps<T extends ValidComponent = "div"> =
-  ComponentProps<typeof DropdownMenuPrimitive.Item<T>> & {
-    inset?: boolean
-    variant?: "default" | "destructive"
-  }
+export type DropdownMenuItemProps<T extends ValidComponent = 'div'> = ComponentProps<
+  typeof DropdownMenuPrimitive.Item<T>
+> & {
+  inset?: boolean
+  variant?: 'default' | 'destructive'
+}
 
-export const DropdownMenuItem = <T extends ValidComponent = "div">(
+export const DropdownMenuItem = <T extends ValidComponent = 'div'>(
   props: DropdownMenuItemProps<T>,
 ) => {
-  const [, rest] = splitProps(props as DropdownMenuItemProps, [
-    "class",
-    "inset",
-    "variant",
-  ])
+  const [, rest] = splitProps(props as DropdownMenuItemProps, ['class', 'inset', 'variant'])
   const radiusClass = useRadiusClass('menu-item')
 
   return (
@@ -194,16 +174,14 @@ export const DropdownMenuItem = <T extends ValidComponent = "div">(
   )
 }
 
-export type DropdownMenuCheckboxItemProps<T extends ValidComponent = "div"> =
-  ComponentProps<typeof DropdownMenuPrimitive.CheckboxItem<T>>
+export type DropdownMenuCheckboxItemProps<T extends ValidComponent = 'div'> = ComponentProps<
+  typeof DropdownMenuPrimitive.CheckboxItem<T>
+>
 
-export const DropdownMenuCheckboxItem = <T extends ValidComponent = "div">(
+export const DropdownMenuCheckboxItem = <T extends ValidComponent = 'div'>(
   props: DropdownMenuCheckboxItemProps<T>,
 ) => {
-  const [, rest] = splitProps(props as DropdownMenuCheckboxItemProps, [
-    "class",
-    "children",
-  ])
+  const [, rest] = splitProps(props as DropdownMenuCheckboxItemProps, ['class', 'children'])
   const radiusClass = useRadiusClass('menu-item')
   const componentClass = useComponentClass(ComponentName.DropdownMenu, props as DropdownMenuProps)
 
@@ -240,16 +218,14 @@ export const DropdownMenuCheckboxItem = <T extends ValidComponent = "div">(
   )
 }
 
-export type DropdownMenuRadioItemProps<T extends ValidComponent = "div"> =
-  ComponentProps<typeof DropdownMenuPrimitive.RadioItem<T>>
+export type DropdownMenuRadioItemProps<T extends ValidComponent = 'div'> = ComponentProps<
+  typeof DropdownMenuPrimitive.RadioItem<T>
+>
 
-export const DropdownMenuRadioItem = <T extends ValidComponent = "div">(
+export const DropdownMenuRadioItem = <T extends ValidComponent = 'div'>(
   props: DropdownMenuRadioItemProps<T>,
 ) => {
-  const [, rest] = splitProps(props as DropdownMenuRadioItemProps, [
-    "class",
-    "children",
-  ])
+  const [, rest] = splitProps(props as DropdownMenuRadioItemProps, ['class', 'children'])
   const radiusClass = useRadiusClass('menu-item')
   const componentClass = useComponentClass(ComponentName.DropdownMenu, props as DropdownMenuProps)
 
@@ -288,88 +264,76 @@ export const DropdownMenuRadioItem = <T extends ValidComponent = "div">(
   )
 }
 
-export type DropdownMenuGroupLabelProps<T extends ValidComponent = "span"> =
-  ComponentProps<typeof DropdownMenuPrimitive.GroupLabel<T>> & {
-    inset?: boolean
-  }
+export type DropdownMenuGroupLabelProps<T extends ValidComponent = 'span'> = ComponentProps<
+  typeof DropdownMenuPrimitive.GroupLabel<T>
+> & {
+  inset?: boolean
+}
 
-export const DropdownMenuGroupLabel = <T extends ValidComponent = "span">(
+export const DropdownMenuGroupLabel = <T extends ValidComponent = 'span'>(
   props: DropdownMenuGroupLabelProps<T>,
 ) => {
-  const [, rest] = splitProps(props as DropdownMenuGroupLabelProps, [
-    "class",
-    "inset",
-  ])
+  const [, rest] = splitProps(props as DropdownMenuGroupLabelProps, ['class', 'inset'])
 
   return (
     <DropdownMenuPrimitive.GroupLabel
       as="div"
       data-slot="dropdown-menu-group-label"
       data-inset={props.inset}
-      class={cx(
-        "text-foreground my-1.5 px-2 text-sm font-medium data-[inset]:pl-8",
-        props.class,
-      )}
+      class={cx('text-foreground my-1.5 px-2 text-sm font-medium data-[inset]:pl-8', props.class)}
       {...rest}
     />
   )
 }
 
-export type DropdownMenuItemLabelProps<T extends ValidComponent = "div"> =
-  ComponentProps<typeof DropdownMenuPrimitive.ItemLabel<T>> & {
-    inset?: boolean
-  }
+export type DropdownMenuItemLabelProps<T extends ValidComponent = 'div'> = ComponentProps<
+  typeof DropdownMenuPrimitive.ItemLabel<T>
+> & {
+  inset?: boolean
+}
 
-export const DropdownMenuItemLabel = <T extends ValidComponent = "div">(
+export const DropdownMenuItemLabel = <T extends ValidComponent = 'div'>(
   props: DropdownMenuItemLabelProps<T>,
 ) => {
-  const [, rest] = splitProps(props as DropdownMenuItemLabelProps, [
-    "class",
-    "inset",
-  ])
+  const [, rest] = splitProps(props as DropdownMenuItemLabelProps, ['class', 'inset'])
 
   return (
     <DropdownMenuPrimitive.ItemLabel
       data-slot="dropdown-menu-item-label"
       data-inset={props.inset}
-      class={cx(
-        "text-foreground px-2 py-1.5 text-sm font-medium data-[inset]:pl-8",
-        props.class,
-      )}
+      class={cx('text-foreground px-2 py-1.5 text-sm font-medium data-[inset]:pl-8', props.class)}
       {...rest}
     />
   )
 }
 
-export type DropdownMenuSeparatorProps<T extends ValidComponent = "hr"> =
-  ComponentProps<typeof DropdownMenuPrimitive.Separator<T>>
+export type DropdownMenuSeparatorProps<T extends ValidComponent = 'hr'> = ComponentProps<
+  typeof DropdownMenuPrimitive.Separator<T>
+>
 
-export const DropdownMenuSeparator = <T extends ValidComponent = "hr">(
+export const DropdownMenuSeparator = <T extends ValidComponent = 'hr'>(
   props: DropdownMenuSeparatorProps<T>,
 ) => {
-  const [, rest] = splitProps(props as DropdownMenuSeparatorProps, ["class"])
+  const [, rest] = splitProps(props as DropdownMenuSeparatorProps, ['class'])
 
   return (
     <DropdownMenuPrimitive.Separator
       data-slot="dropdown-menu-separator"
-      class={cx("bg-border -mx-1 my-1 h-px", props.class)}
+      class={cx('bg-border -mx-1 my-1 h-px', props.class)}
       {...rest}
     />
   )
 }
 
-export type DropdownMenuShortcutProps = ComponentProps<"span">
+export type DropdownMenuShortcutProps = ComponentProps<'span'>
 
 export const DropdownMenuShortcut = (props: DropdownMenuShortcutProps) => {
-  const [, rest] = splitProps(props, ["class"])
+  const [, rest] = splitProps(props, ['class'])
 
   return (
     <span
       data-slot="dropdown-menu-shortcut"
-      class={cx(
-        "text-muted-foreground ml-auto text-xs tracking-widest",
-        props.class,
-      )}
+      class={cx('text-muted-foreground ml-auto text-xs tracking-widest', props.class)}
       {...rest}
     />
   )

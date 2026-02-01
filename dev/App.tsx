@@ -15,8 +15,7 @@ import {
   HeaderIcon,
 } from './components/icons'
 import { Main } from './components/Main'
-import { SidebarMenuTreeItem } from '@/hoc/sidebar-menu-tree';
-
+import { SidebarMenuTreeItem } from '@/hoc/sidebar-menu-tree'
 
 // Menu configuration
 const menus: AppSidebarMenuGroup[] = [
@@ -33,7 +32,7 @@ const menus: AppSidebarMenuGroup[] = [
         icon: () => <LifecycleIcon />,
         title: 'Lifecycle',
         onClick: () => {
-          alert('Lifecycle');
+          alert('Lifecycle')
         },
       },
       {
@@ -55,8 +54,8 @@ const menus: AppSidebarMenuGroup[] = [
             title: 'Project 2',
             icon: () => <ProjectsIcon />,
             onClick: () => {},
-          }
-        ]
+          },
+        ],
       },
       {
         icon: () => <TeamIcon />,
@@ -104,7 +103,6 @@ const footerMenus: SidebarMenuTreeItem[] = [
     onClick: () => {},
   },
 ]
-
 
 const App: Component = () => {
   return (

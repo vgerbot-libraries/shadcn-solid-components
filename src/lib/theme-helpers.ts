@@ -1,68 +1,68 @@
 import { useContext } from 'solid-js'
-import { ThemeContext, type RadiusValue, type ComponentName } from './theme-context'
-import type { ComponentCategory } from './use-theme'
 import type { ComponentPropsFor } from './component-props-map'
+import { type ComponentName, type RadiusValue, ThemeContext } from './theme-context'
+import type { ComponentCategory } from './use-theme'
 
 // Radius mapping for different component categories
 const radiusMapping: Record<RadiusValue, Record<ComponentCategory, string>> = {
   none: {
     'form-control': 'rounded-none',
-    'display': 'rounded-none',
-    'overlay': 'rounded-none',
-    'navigation': 'rounded-none',
+    display: 'rounded-none',
+    overlay: 'rounded-none',
+    navigation: 'rounded-none',
     'menu-item': 'rounded-none',
-    'special': 'rounded-none',
+    special: 'rounded-none',
   },
   sm: {
     'form-control': 'rounded-sm',
-    'display': 'rounded-md',
-    'overlay': 'rounded-sm',
-    'navigation': 'rounded-sm',
+    display: 'rounded-md',
+    overlay: 'rounded-sm',
+    navigation: 'rounded-sm',
     'menu-item': 'rounded-sm',
-    'special': 'rounded-sm',
+    special: 'rounded-sm',
   },
   md: {
     'form-control': 'rounded-md',
-    'display': 'rounded-lg',
-    'overlay': 'rounded-md',
-    'navigation': 'rounded-md',
+    display: 'rounded-lg',
+    overlay: 'rounded-md',
+    navigation: 'rounded-md',
     'menu-item': 'rounded-sm',
-    'special': 'rounded-md',
+    special: 'rounded-md',
   },
   lg: {
     'form-control': 'rounded-lg',
-    'display': 'rounded-xl',
-    'overlay': 'rounded-lg',
-    'navigation': 'rounded-lg',
+    display: 'rounded-xl',
+    overlay: 'rounded-lg',
+    navigation: 'rounded-lg',
     'menu-item': 'rounded-sm',
-    'special': 'rounded-lg',
+    special: 'rounded-lg',
   },
   xl: {
     'form-control': 'rounded-xl',
-    'display': 'rounded-2xl',
-    'overlay': 'rounded-xl',
-    'navigation': 'rounded-xl',
+    display: 'rounded-2xl',
+    overlay: 'rounded-xl',
+    navigation: 'rounded-xl',
     'menu-item': 'rounded-sm',
-    'special': 'rounded-xl',
+    special: 'rounded-xl',
   },
   full: {
     'form-control': 'rounded-full',
-    'display': 'rounded-3xl',
-    'overlay': 'rounded-2xl',
-    'navigation': 'rounded-2xl',
+    display: 'rounded-3xl',
+    overlay: 'rounded-2xl',
+    navigation: 'rounded-2xl',
     'menu-item': 'rounded-sm',
-    'special': 'rounded-full',
+    special: 'rounded-full',
   },
 }
 
 // Default radius values when ThemeProvider is not used
 const defaultRadius: Record<ComponentCategory, string> = {
   'form-control': 'rounded-md',
-  'display': 'rounded-lg',
-  'overlay': 'rounded-md',
-  'navigation': 'rounded-md',
+  display: 'rounded-lg',
+  overlay: 'rounded-md',
+  navigation: 'rounded-md',
   'menu-item': 'rounded-sm',
-  'special': 'rounded-md',
+  special: 'rounded-md',
 }
 
 /**
@@ -85,10 +85,7 @@ export function useRadiusClass(category: ComponentCategory): string {
  * Get the partial radius class for a component category (top or bottom only).
  * Useful for components like drawer that only need partial rounding.
  */
-export function useRadiusClassPartial(
-  category: ComponentCategory,
-  side: 'top' | 'bottom',
-): string {
+export function useRadiusClassPartial(category: ComponentCategory, side: 'top' | 'bottom'): string {
   const fullRadiusClass = useRadiusClass(category)
 
   // Convert full radius class to partial (e.g., rounded-lg -> rounded-t-lg or rounded-b-lg)
@@ -120,10 +117,7 @@ const radiusClassMap: Record<string, string> = {
  * The prefix will be prepended to the radius class (e.g., 'md:peer-data-[variant=inset]:' + 'rounded-lg').
  * Useful for components that need conditional radius classes.
  */
-export function useRadiusClassWithPrefix(
-  category: ComponentCategory,
-  prefix: string = '',
-): string {
+export function useRadiusClassWithPrefix(category: ComponentCategory, prefix: string = ''): string {
   const radiusClass = useRadiusClass(category)
   const baseClass = radiusClassMap[radiusClass] || 'rounded-xl' // fallback
 
@@ -139,7 +133,7 @@ export function useRadiusClassWithPrefix(
  */
 export function useComponentClass<N extends ComponentName>(
   componentName: N,
-  props: ComponentPropsFor<N>
+  props: ComponentPropsFor<N>,
 ): string | undefined {
   const context = useContext(ThemeContext)
 

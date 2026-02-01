@@ -1,5 +1,5 @@
-import { useColorMode } from "@kobalte/core"
-import { Toaster as Sonner } from "somoto"
+import { useColorMode } from '@kobalte/core'
+import { Toaster as Sonner } from 'somoto'
 
 export const Toaster = (props: Parameters<typeof Sonner>[0]) => {
   const { colorMode } = useColorMode()
@@ -9,11 +9,7 @@ export const Toaster = (props: Parameters<typeof Sonner>[0]) => {
       theme={colorMode()}
       icons={{
         success: (
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="size-4"
-            viewBox="0 0 24 24"
-          >
+          <svg xmlns="http://www.w3.org/2000/svg" class="size-4" viewBox="0 0 24 24">
             <g
               fill="none"
               stroke="currentColor"
@@ -27,11 +23,7 @@ export const Toaster = (props: Parameters<typeof Sonner>[0]) => {
           </svg>
         ),
         info: (
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="size-4"
-            viewBox="0 0 24 24"
-          >
+          <svg xmlns="http://www.w3.org/2000/svg" class="size-4" viewBox="0 0 24 24">
             <g
               fill="none"
               stroke="currentColor"
@@ -45,11 +37,7 @@ export const Toaster = (props: Parameters<typeof Sonner>[0]) => {
           </svg>
         ),
         warning: (
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="size-4"
-            viewBox="0 0 24 24"
-          >
+          <svg xmlns="http://www.w3.org/2000/svg" class="size-4" viewBox="0 0 24 24">
             <path
               fill="none"
               stroke="currentColor"
@@ -61,11 +49,7 @@ export const Toaster = (props: Parameters<typeof Sonner>[0]) => {
           </svg>
         ),
         error: (
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="size-4"
-            viewBox="0 0 24 24"
-          >
+          <svg xmlns="http://www.w3.org/2000/svg" class="size-4" viewBox="0 0 24 24">
             <path
               fill="none"
               stroke="currentColor"
@@ -77,11 +61,7 @@ export const Toaster = (props: Parameters<typeof Sonner>[0]) => {
           </svg>
         ),
         loading: (
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="size-4 animate-spin"
-            viewBox="0 0 24 24"
-          >
+          <svg xmlns="http://www.w3.org/2000/svg" class="size-4 animate-spin" viewBox="0 0 24 24">
             <path
               fill="none"
               stroke="currentColor"
@@ -94,10 +74,10 @@ export const Toaster = (props: Parameters<typeof Sonner>[0]) => {
         ),
       }}
       style={{
-        "--normal-bg": "var(--popover)",
-        "--normal-text": "var(--popover-foreground)",
-        "--normal-border": "var(--border)",
-        "--border-radius": "var(--radius)",
+        '--normal-bg': 'var(--popover)',
+        '--normal-text': 'var(--popover-foreground)',
+        '--normal-border': 'var(--border)',
+        '--border-radius': 'var(--radius)',
       }}
       {...props}
     />

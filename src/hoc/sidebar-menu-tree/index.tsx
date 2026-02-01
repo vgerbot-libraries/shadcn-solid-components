@@ -1,17 +1,5 @@
-import { For, Show, createMemo, type Accessor, type JSX } from "solid-js"
-import { cx } from "@/lib/cva"
-import {
-  useCurrentUrl,
-  type UrlInfo,
-  type UrlInfoInput,
-  parseUrl,
-} from "@/lib/use-current-url"
-
-import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger,
-} from "@/components/collapsible"
+import { type Accessor, createMemo, For, type JSX, Show } from 'solid-js'
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/collapsible'
 import {
   SidebarMenu,
   SidebarMenuButton,
@@ -19,13 +7,11 @@ import {
   SidebarMenuSub,
   SidebarMenuSubButton,
   SidebarMenuSubItem,
-} from "@/components/sidebar"
+} from '@/components/sidebar'
+import { cx } from '@/lib/cva'
+import { parseUrl, type UrlInfo, type UrlInfoInput, useCurrentUrl } from '@/lib/use-current-url'
 
-export type UrlMatchStrategy =
-  | "exact"
-  | "startsWith"
-  | "endsWith"
-  | RegExp
+export type UrlMatchStrategy = 'exact' | 'startsWith' | 'endsWith' | RegExp
 
 export type SearchParamMatchValue =
   | string // Exact value match against currentUrl
@@ -51,7 +37,10 @@ export type SidebarMenuTreeItem = {
   visible?: boolean
   class?: string
   // Supports simple string matching (backward compatible), detailed config object, or custom callback
-  urlMatch?: UrlMatchStrategy | UrlMatchConfig | ((currentUrl: UrlInfo, itemUrl: UrlInfo) => boolean)
+  urlMatch?:
+    | UrlMatchStrategy
+    | UrlMatchConfig
+    | ((currentUrl: UrlInfo, itemUrl: UrlInfo) => boolean)
   loading?: boolean
   open?: boolean
   defaultOpen?: boolean
@@ -62,17 +51,12 @@ export type SidebarMenuTreeProps = {
   currentUrl?: UrlInfoInput
 }
 
-
-const matchString = (
-  value: string,
-  pattern: string,
-  strategy: UrlMatchStrategy
-): boolean => {
-  if (strategy === "exact") {
+const matchString = (value: string, pattern: string, strategy: UrlMatchStrategy): boolean => {
+  if (strategy === 'exact') {
     return value === pattern
-  } else if (strategy === "startsWith") {
+  } else if (strategy === 'startsWith') {
     return value.startsWith(pattern)
-  } else if (strategy === "endsWith") {
+  } else if (strategy === 'endsWith') {
     return value.endsWith(pattern)
   } else if (strategy instanceof RegExp) {
     return strategy.test(value)
@@ -83,7 +67,10 @@ const matchString = (
 const matchUrl = (
   itemUrl: string | undefined,
   currentUrl: UrlInfo,
-  matchConfig?: UrlMatchStrategy | UrlMatchConfig | ((currentUrl: UrlInfo, itemUrl: UrlInfo) => boolean)
+  matchConfig?:
+    | UrlMatchStrategy
+    | UrlMatchConfig
+    | ((currentUrl: UrlInfo, itemUrl: UrlInfo) => boolean),
 ): boolean => {
   if (!itemUrl) return false
 
@@ -95,20 +82,13 @@ const matchUrl = (
   }
 
   // Custom callback function
-  if (typeof matchConfig === "function") {
+  if (typeof matchConfig === 'function') {
     return matchConfig(currentUrl, itemUrlInfo)
   }
 
   // Simple string matching strategy (backward compatible) - only match pathname
-  if (
-    typeof matchConfig === "string" ||
-    matchConfig instanceof RegExp
-  ) {
-    return matchString(
-      currentUrl.pathname,
-      itemUrlInfo.pathname,
-      matchConfig
-    )
+  if (typeof matchConfig === 'string' || matchConfig instanceof RegExp) {
+    return matchString(currentUrl.pathname, itemUrlInfo.pathname, matchConfig)
   }
 
   // Detailed config object
@@ -116,19 +96,11 @@ const matchUrl = (
   let matches = true
 
   if (config.pathname !== undefined) {
-    matches =
-      matches &&
-      matchString(
-        currentUrl.pathname,
-        itemUrlInfo.pathname,
-        config.pathname
-      )
+    matches = matches && matchString(currentUrl.pathname, itemUrlInfo.pathname, config.pathname)
   }
 
   if (config.hash !== undefined) {
-    matches =
-      matches &&
-      matchString(currentUrl.hash, itemUrlInfo.hash, config.hash)
+    matches = matches && matchString(currentUrl.hash, itemUrlInfo.hash, config.hash)
   }
 
   if (config.searchParams !== undefined) {
@@ -139,10 +111,10 @@ const matchUrl = (
       if (value === true) {
         // Check if parameter exists in currentUrl
         matches = matches && currentValue !== null
-      } else if (typeof value === "object" && "matchItemValue" in value) {
+      } else if (typeof value === 'object' && 'matchItemValue' in value) {
         // Match currentUrl parameter value against item.url parameter value
         matches = matches && currentValue !== null && currentValue === itemValue
-      } else if (typeof value === "string") {
+      } else if (typeof value === 'string') {
         // Exact string value match against currentUrl
         matches = matches && currentValue === value
       } else if (value instanceof RegExp) {
@@ -158,19 +130,18 @@ const matchUrl = (
 // Recursively check if menu item and its children match URL (memoized)
 const createItemMatcher = (
   item: SidebarMenuTreeItem,
-  currentUrl: Accessor<UrlInfo>
+  currentUrl: Accessor<UrlInfo>,
 ): Accessor<boolean> => {
   return createMemo(() => {
     const url = currentUrl()
 
     // Check if current item matches URL
-    const urlMatches =
-      item.url && matchUrl(item.url, url, item.urlMatch)
+    const urlMatches = item.url && matchUrl(item.url, url, item.urlMatch)
 
     // Recursively check if children match
     const childMatches =
       item.items && item.items.length > 0
-        ? item.items.some((subItem) => checkItemMatch(subItem, url))
+        ? item.items.some(subItem => checkItemMatch(subItem, url))
         : false
 
     // Activate if URL matches or child matches
@@ -188,18 +159,14 @@ const createItemMatcher = (
 }
 
 // Non-memoized version for recursive checks
-const checkItemMatch = (
-  item: SidebarMenuTreeItem,
-  currentUrl: UrlInfo
-): boolean => {
+const checkItemMatch = (item: SidebarMenuTreeItem, currentUrl: UrlInfo): boolean => {
   // Check if current item matches URL
-  const urlMatches =
-    item.url && matchUrl(item.url, currentUrl, item.urlMatch)
+  const urlMatches = item.url && matchUrl(item.url, currentUrl, item.urlMatch)
 
   // Recursively check if children match
   const childMatches =
     item.items && item.items.length > 0
-      ? item.items.some((subItem) => checkItemMatch(subItem, currentUrl))
+      ? item.items.some(subItem => checkItemMatch(subItem, currentUrl))
       : false
 
   // Activate if URL matches or child matches
@@ -216,11 +183,7 @@ const checkItemMatch = (
 }
 
 const LoadingIcon = () => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    class="size-4 animate-spin"
-    viewBox="0 0 24 24"
-  >
+  <svg xmlns="http://www.w3.org/2000/svg" class="size-4 animate-spin" viewBox="0 0 24 24">
     <path
       fill="none"
       stroke="currentColor"
@@ -232,10 +195,7 @@ const LoadingIcon = () => (
   </svg>
 )
 
-const renderSubItem = (
-  subItem: SidebarMenuTreeItem,
-  currentUrl: Accessor<UrlInfo>
-) => {
+const renderSubItem = (subItem: SidebarMenuTreeItem, currentUrl: Accessor<UrlInfo>) => {
   const isVisible = subItem.visible !== false
 
   // URL matching automatically activates (reactive with memoization)
@@ -259,11 +219,11 @@ const renderSubItem = (
     const props: any = {
       isActive: isActive(),
       disabled: subItem.disabled || subItem.loading,
-      "aria-disabled": subItem.disabled || subItem.loading,
+      'aria-disabled': subItem.disabled || subItem.loading,
     }
 
     if (subItem.url && !subItem.disabled && !subItem.loading) {
-      props.as = "a"
+      props.as = 'a'
       props.href = subItem.url
     }
 
@@ -282,28 +242,23 @@ const renderSubItem = (
     return (
       <Collapsible<typeof SidebarMenuSubItem>
         {...getOpenState()}
-        as={(props) => (
-          <SidebarMenuSubItem
-            {...props}
-            class={cx(subItem.class, props.class)}
-          >
+        as={props => (
+          <SidebarMenuSubItem {...props} class={cx(subItem.class, props.class)}>
             <CollapsibleTrigger<typeof SidebarMenuSubButton>
-              as={(props) => (
+              as={props => (
                 <SidebarMenuSubButton
                   {...props}
                   {...subButtonProps()}
                   class={cx(
-                    "[&>svg:last-of-type]:aria-expanded:rotate-90",
+                    '[&>svg:last-of-type]:aria-expanded:rotate-90',
                     subItem.class,
-                    props.class
+                    props.class,
                   )}
                 >
                   <Show when={subItem.loading}>
                     <LoadingIcon />
                   </Show>
-                  <Show when={!subItem.loading && subItem.icon}>
-                    {subItem.icon!()}
-                  </Show>
+                  <Show when={!subItem.loading && subItem.icon}>{subItem.icon!()}</Show>
                   <span>{subItem.title}</span>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -325,7 +280,7 @@ const renderSubItem = (
             <CollapsibleContent>
               <SidebarMenuSub>
                 <For each={subItem.items}>
-                  {(nestedItem) => renderSubItem(nestedItem, currentUrl)}
+                  {nestedItem => renderSubItem(nestedItem, currentUrl)}
                 </For>
               </SidebarMenuSub>
             </CollapsibleContent>
@@ -342,15 +297,11 @@ const renderSubItem = (
           <Show when={subItem.loading}>
             <LoadingIcon />
           </Show>
-          <Show when={!subItem.loading && subItem.icon}>
-            {subItem.icon!()}
-          </Show>
+          <Show when={!subItem.loading && subItem.icon}>{subItem.icon!()}</Show>
           <span>{subItem.title}</span>
         </SidebarMenuSubButton>
         <SidebarMenuSub>
-          <For each={subItem.items}>
-            {(nestedItem) => renderSubItem(nestedItem, currentUrl)}
-          </For>
+          <For each={subItem.items}>{nestedItem => renderSubItem(nestedItem, currentUrl)}</For>
         </SidebarMenuSub>
       </SidebarMenuSubItem>
     )
@@ -362,9 +313,7 @@ const renderSubItem = (
         <Show when={subItem.loading}>
           <LoadingIcon />
         </Show>
-        <Show when={!subItem.loading && subItem.icon}>
-          {subItem.icon!()}
-        </Show>
+        <Show when={!subItem.loading && subItem.icon}>{subItem.icon!()}</Show>
         <span>{subItem.title}</span>
       </SidebarMenuSubButton>
     </SidebarMenuSubItem>
@@ -401,12 +350,12 @@ const SidebarMenuTreeItem = (props: {
       tooltip: item.title,
       isActive: isActive(),
       disabled: item.disabled || item.loading,
-      "aria-disabled": item.disabled || item.loading,
+      'aria-disabled': item.disabled || item.loading,
     }
 
     if (!excludeClickAndRef) {
       if (item.url && !item.disabled && !item.loading) {
-        props.as = "a"
+        props.as = 'a'
         props.href = item.url
       }
 
@@ -423,9 +372,7 @@ const SidebarMenuTreeItem = (props: {
 
     return (
       <SidebarMenuSub>
-        <For each={item.items}>
-          {(subItem) => renderSubItem(subItem, currentUrl)}
-        </For>
+        <For each={item.items}>{subItem => renderSubItem(subItem, currentUrl)}</For>
       </SidebarMenuSub>
     )
   }
@@ -438,28 +385,23 @@ const SidebarMenuTreeItem = (props: {
     return (
       <Collapsible<typeof SidebarMenuItem>
         {...getOpenState()}
-        as={(props) => (
-          <SidebarMenuItem
-            {...props}
-            class={cx(item.class, props.class)}
-          >
+        as={props => (
+          <SidebarMenuItem {...props} class={cx(item.class, props.class)}>
             <CollapsibleTrigger<typeof SidebarMenuButton>
-              as={(props) => (
+              as={props => (
                 <SidebarMenuButton
                   {...props}
                   {...buttonProps(true)}
                   class={cx(
-                    "[&>svg:last-of-type]:aria-expanded:rotate-90",
+                    '[&>svg:last-of-type]:aria-expanded:rotate-90',
                     item.class,
-                    props.class
+                    props.class,
                   )}
                 >
                   <Show when={item.loading}>
                     <LoadingIcon />
                   </Show>
-                  <Show when={!item.loading && item.icon}>
-                    {item.icon!()}
-                  </Show>
+                  <Show when={!item.loading && item.icon}>{item.icon!()}</Show>
                   <span>{item.title}</span>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -492,9 +434,7 @@ const SidebarMenuTreeItem = (props: {
           <Show when={item.loading}>
             <LoadingIcon />
           </Show>
-          <Show when={!item.loading && item.icon}>
-            {item.icon!()}
-          </Show>
+          <Show when={!item.loading && item.icon}>{item.icon!()}</Show>
           <span>{item.title}</span>
         </SidebarMenuButton>
         {renderSubItems()}
@@ -508,9 +448,7 @@ const SidebarMenuTreeItem = (props: {
         <Show when={item.loading}>
           <LoadingIcon />
         </Show>
-        <Show when={!item.loading && item.icon}>
-          {item.icon!()}
-        </Show>
+        <Show when={!item.loading && item.icon}>{item.icon!()}</Show>
         <span>{item.title}</span>
       </SidebarMenuButton>
     </SidebarMenuItem>
@@ -523,9 +461,7 @@ export const SidebarMenuTree = (props: SidebarMenuTreeProps) => {
   return (
     <SidebarMenu>
       <For each={props.items}>
-        {(item) => (
-          <SidebarMenuTreeItem item={item} currentUrl={currentUrl} />
-        )}
+        {item => <SidebarMenuTreeItem item={item} currentUrl={currentUrl} />}
       </For>
     </SidebarMenu>
   )

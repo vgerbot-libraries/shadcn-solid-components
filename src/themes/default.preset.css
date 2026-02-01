@@ -5,23 +5,39 @@
 @custom-variant dark (&:is([data-kb-theme="dark"] *));
 
 @keyframes accordion-down {
-  from { height: 0; }
-  to { height: var(--kb-accordion-content-height); }
+  from {
+    height: 0;
+  }
+  to {
+    height: var(--kb-accordion-content-height);
+  }
 }
 
 @keyframes accordion-up {
-  from { height: var(--kb-accordion-content-height); }
-  to { height: 0; }
+  from {
+    height: var(--kb-accordion-content-height);
+  }
+  to {
+    height: 0;
+  }
 }
 
 @keyframes collapsible-down {
-  from { height: 0; }
-  to { height: var(--kb-collapsible-content-height); }
+  from {
+    height: 0;
+  }
+  to {
+    height: var(--kb-collapsible-content-height);
+  }
 }
 
 @keyframes collapsible-up {
-  from { height: var(--kb-collapsible-content-height); }
-  to { height: 0; }
+  from {
+    height: var(--kb-collapsible-content-height);
+  }
+  to {
+    height: 0;
+  }
 }
 
 @theme inline {
@@ -73,7 +89,9 @@
   --color-chart-5: var(--chart-5);
 
   /* Font Family */
-  --font-sans: "Inter Variable", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-sans:
+    "Inter Variable", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol", "Noto Color Emoji";
 
   /* Animations */
   --animate-accordion-down: accordion-down 0.2s ease-out;
@@ -160,4 +178,3 @@
     @apply bg-background text-foreground;
   }
 }
-

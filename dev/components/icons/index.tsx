@@ -22,9 +22,7 @@ export {
 } from './settings'
 
 // Header icons
-export {
-  HeaderIcon,
-} from './header'
+export { HeaderIcon } from './header'
 
 // Stats icons
 export {
@@ -39,4 +37,3 @@ export {
   ChevronLeftDoubleIcon,
   ChevronRightDoubleIcon,
 } from './table'
-

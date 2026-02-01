@@ -1,15 +1,14 @@
-import type { ComponentProps } from "solid-js"
-import { splitProps } from "solid-js"
-import { Command as CommandPrimitive } from "cmdk-solid"
-
-import { cx } from "@/registry/lib/cva"
-import { useRadiusClass, useComponentClass } from "@/lib/theme-helpers"
-import { ComponentName } from "@/lib/theme-context"
+import { Command as CommandPrimitive } from 'cmdk-solid'
+import type { ComponentProps } from 'solid-js'
+import { splitProps } from 'solid-js'
+import { ComponentName } from '@/lib/theme-context'
+import { useComponentClass, useRadiusClass } from '@/lib/theme-helpers'
+import { cx } from '@/registry/lib/cva'
 
 export type CommandProps = ComponentProps<typeof CommandPrimitive>
 
 export const Command = (props: CommandProps) => {
-  const [, rest] = splitProps(props, ["class"])
+  const [, rest] = splitProps(props, ['class'])
   const radiusClass = useRadiusClass('overlay')
   const componentClass = useComponentClass(ComponentName.Command, props)
 
@@ -17,7 +16,7 @@ export const Command = (props: CommandProps) => {
     <CommandPrimitive
       data-slot="command"
       class={cx(
-        "bg-popover text-popover-foreground flex h-full w-full flex-col overflow-hidden",
+        'bg-popover text-popover-foreground flex h-full w-full flex-col overflow-hidden',
         radiusClass,
         componentClass,
         props.class,
@@ -27,19 +26,13 @@ export const Command = (props: CommandProps) => {
   )
 }
 
-export type CommandDialogProps = ComponentProps<
-  typeof CommandPrimitive.Dialog
-> & {
+export type CommandDialogProps = ComponentProps<typeof CommandPrimitive.Dialog> & {
   title?: string
   description?: string
 }
 
 export const CommandDialog = (props: CommandDialogProps) => {
-  const [, rest] = splitProps(props, [
-    "contentClassName",
-    "overlayClassName",
-    "class",
-  ])
+  const [, rest] = splitProps(props, ['contentClassName', 'overlayClassName', 'class'])
 
   const radiusClass = useRadiusClass('overlay')
   const componentClass = useComponentClass(ComponentName.Command, props as CommandProps)
@@ -48,17 +41,17 @@ export const CommandDialog = (props: CommandDialogProps) => {
     <CommandPrimitive.Dialog
       data-slot="command-dialog"
       contentClassName={cx(
-        "bg-popover data-[expanded]:animate-in data-[closed]:animate-out data-[closed]:fade-out-0 data-[expanded]:fade-in-0 data-[closed]:zoom-out-95 data-[expanded]:zoom-in-95 fixed left-[50%] top-[50%] z-50 grid w-full max-w-[calc(100%-2rem)] translate-x-[-50%] translate-y-[-50%] gap-4 shadow-lg duration-200 sm:max-w-lg overflow-hidden",
+        'bg-popover data-[expanded]:animate-in data-[closed]:animate-out data-[closed]:fade-out-0 data-[expanded]:fade-in-0 data-[closed]:zoom-out-95 data-[expanded]:zoom-in-95 fixed left-[50%] top-[50%] z-50 grid w-full max-w-[calc(100%-2rem)] translate-x-[-50%] translate-y-[-50%] gap-4 shadow-lg duration-200 sm:max-w-lg overflow-hidden',
         radiusClass,
         componentClass,
         props.contentClassName,
       )}
       overlayClassName={cx(
-        "data-[expanded]:animate-in data-[closed]:animate-out data-[closed]:fade-out-0 data-[expanded]:fade-in-0 fixed inset-0 z-50 bg-black/50",
+        'data-[expanded]:animate-in data-[closed]:animate-out data-[closed]:fade-out-0 data-[expanded]:fade-in-0 fixed inset-0 z-50 bg-black/50',
         props.overlayClassName,
       )}
       class={cx(
-        "bg-popover text-popover-foreground [&_[cmdk-group-heading]]:text-muted-foreground flex h-full w-full flex-col overflow-hidden **:data-[slot=command-input-wrapper]:h-12 [&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:font-medium [&_[cmdk-group]]:px-2 [&_[cmdk-group]:not([hidden])_~[cmdk-group]]:pt-0 [&_[cmdk-input-wrapper]_svg]:h-5 [&_[cmdk-input-wrapper]_svg]:w-5 [&_[cmdk-input]]:h-12 [&_[cmdk-item]]:px-2 [&_[cmdk-item]]:py-3 [&_[cmdk-item]_svg]:h-5 [&_[cmdk-item]_svg]:w-5",
+        'bg-popover text-popover-foreground [&_[cmdk-group-heading]]:text-muted-foreground flex h-full w-full flex-col overflow-hidden **:data-[slot=command-input-wrapper]:h-12 [&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:font-medium [&_[cmdk-group]]:px-2 [&_[cmdk-group]:not([hidden])_~[cmdk-group]]:pt-0 [&_[cmdk-input-wrapper]_svg]:h-5 [&_[cmdk-input-wrapper]_svg]:w-5 [&_[cmdk-input]]:h-12 [&_[cmdk-item]]:px-2 [&_[cmdk-item]]:py-3 [&_[cmdk-item]_svg]:h-5 [&_[cmdk-item]_svg]:w-5',
         radiusClass,
         componentClass,
         props.class,
@@ -71,15 +64,12 @@ export const CommandDialog = (props: CommandDialogProps) => {
 export type CommandInputProps = ComponentProps<typeof CommandPrimitive.Input>
 
 export const CommandInput = (props: CommandInputProps) => {
-  const [, rest] = splitProps(props, ["class"])
+  const [, rest] = splitProps(props, ['class'])
   const radiusClass = useRadiusClass('form-control')
   const componentClass = useComponentClass(ComponentName.Command, props as CommandProps)
 
   return (
-    <div
-      data-slot="command-input-wrapper"
-      class="flex h-9 items-center gap-2 border-b px-3"
-    >
+    <div data-slot="command-input-wrapper" class="flex h-9 items-center gap-2 border-b px-3">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         class="size-4 shrink-0 opacity-50"
@@ -99,7 +89,7 @@ export const CommandInput = (props: CommandInputProps) => {
       <CommandPrimitive.Input
         data-slot="command-input"
         class={cx(
-          "placeholder:text-muted-foreground flex h-10 w-full bg-transparent py-3 text-sm outline-hidden disabled:cursor-not-allowed disabled:opacity-50",
+          'placeholder:text-muted-foreground flex h-10 w-full bg-transparent py-3 text-sm outline-hidden disabled:cursor-not-allowed disabled:opacity-50',
           radiusClass,
           componentClass,
           props.class,
@@ -113,15 +103,12 @@ export const CommandInput = (props: CommandInputProps) => {
 export type CommandListProps = ComponentProps<typeof CommandPrimitive.List>
 
 export const CommandList = (props: CommandListProps) => {
-  const [, rest] = splitProps(props, ["class"])
+  const [, rest] = splitProps(props, ['class'])
 
   return (
     <CommandPrimitive.List
       data-slot="command-list"
-      class={cx(
-        "max-h-[300px] scroll-py-1 overflow-x-hidden overflow-y-auto",
-        props.class,
-      )}
+      class={cx('max-h-[300px] scroll-py-1 overflow-x-hidden overflow-y-auto', props.class)}
       {...rest}
     />
   )
@@ -130,12 +117,12 @@ export const CommandList = (props: CommandListProps) => {
 export type CommandEmptyProps = ComponentProps<typeof CommandPrimitive.Empty>
 
 export const CommandEmpty = (props: CommandEmptyProps) => {
-  const [, rest] = splitProps(props, ["class"])
+  const [, rest] = splitProps(props, ['class'])
 
   return (
     <CommandPrimitive.Empty
       data-slot="command-empty"
-      class={cx("py-6 text-center text-sm", props.class)}
+      class={cx('py-6 text-center text-sm', props.class)}
       {...rest}
     />
   )
@@ -144,13 +131,13 @@ export const CommandEmpty = (props: CommandEmptyProps) => {
 export type CommandGroupProps = ComponentProps<typeof CommandPrimitive.Group>
 
 export const CommandGroup = (props: CommandGroupProps) => {
-  const [, rest] = splitProps(props, ["class"])
+  const [, rest] = splitProps(props, ['class'])
 
   return (
     <CommandPrimitive.Group
       data-slot="command-group"
       class={cx(
-        "text-foreground [&_[cmdk-group-heading]]:text-muted-foreground overflow-hidden p-1 [&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:py-1.5 [&_[cmdk-group-heading]]:text-xs [&_[cmdk-group-heading]]:font-medium",
+        'text-foreground [&_[cmdk-group-heading]]:text-muted-foreground overflow-hidden p-1 [&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:py-1.5 [&_[cmdk-group-heading]]:text-xs [&_[cmdk-group-heading]]:font-medium',
         props.class,
       )}
       {...rest}
@@ -158,17 +145,15 @@ export const CommandGroup = (props: CommandGroupProps) => {
   )
 }
 
-export type CommandSeparatorProps = ComponentProps<
-  typeof CommandPrimitive.Separator
->
+export type CommandSeparatorProps = ComponentProps<typeof CommandPrimitive.Separator>
 
 export const CommandSeparator = (props: CommandSeparatorProps) => {
-  const [, rest] = splitProps(props, ["class"])
+  const [, rest] = splitProps(props, ['class'])
 
   return (
     <CommandPrimitive.Separator
       data-slot="command-separator"
-      class={cx("bg-border -mx-1 h-px", props.class)}
+      class={cx('bg-border -mx-1 h-px', props.class)}
       {...rest}
     />
   )
@@ -177,7 +162,7 @@ export const CommandSeparator = (props: CommandSeparatorProps) => {
 export type CommandItemProps = ComponentProps<typeof CommandPrimitive.Item>
 
 export const CommandItem = (props: CommandItemProps) => {
-  const [, rest] = splitProps(props, ["class"])
+  const [, rest] = splitProps(props, ['class'])
   const radiusClass = useRadiusClass('menu-item')
   const componentClass = useComponentClass(ComponentName.Command, props as CommandProps)
 
@@ -195,18 +180,15 @@ export const CommandItem = (props: CommandItemProps) => {
   )
 }
 
-export type CommandShortcutProps = ComponentProps<"span">
+export type CommandShortcutProps = ComponentProps<'span'>
 
 export const CommandShortcut = (props: CommandShortcutProps) => {
-  const [, rest] = splitProps(props, ["class"])
+  const [, rest] = splitProps(props, ['class'])
 
   return (
     <span
       data-slot="command-shortcut"
-      class={cx(
-        "text-muted-foreground ml-auto text-xs tracking-widest",
-        props.class,
-      )}
+      class={cx('text-muted-foreground ml-auto text-xs tracking-widest', props.class)}
       {...rest}
     />
   )

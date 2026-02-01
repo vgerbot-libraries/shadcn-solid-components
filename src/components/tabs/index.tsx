@@ -1,39 +1,30 @@
-import type { ComponentProps, ValidComponent } from "solid-js"
-import { splitProps } from "solid-js"
-import { Tabs as TabsPrimitive } from "@kobalte/core/tabs"
+import { Tabs as TabsPrimitive } from '@kobalte/core/tabs'
+import type { ComponentProps, ValidComponent } from 'solid-js'
+import { splitProps } from 'solid-js'
+import { ComponentName } from '@/lib/theme-context'
+import { useComponentClass, useRadiusClass } from '@/lib/theme-helpers'
+import { cx } from '@/registry/lib/cva'
 
-import { cx } from "@/registry/lib/cva"
-import { useRadiusClass, useComponentClass } from "@/lib/theme-helpers"
-import { ComponentName } from "@/lib/theme-context"
+export type TabsProps<T extends ValidComponent = 'div'> = ComponentProps<typeof TabsPrimitive<T>>
 
-export type TabsProps<T extends ValidComponent = "div"> = ComponentProps<
-  typeof TabsPrimitive<T>
->
-
-export const Tabs = <T extends ValidComponent = "div">(props: TabsProps<T>) => {
-  const [, rest] = splitProps(props as TabsProps, ["class"])
+export const Tabs = <T extends ValidComponent = 'div'>(props: TabsProps<T>) => {
+  const [, rest] = splitProps(props as TabsProps, ['class'])
 
   return (
     <TabsPrimitive
       data-slot="tabs"
-      class={cx(
-        "flex flex-col gap-2",
-        "data-[orientation=vertical]:flex-row",
-        props.class,
-      )}
+      class={cx('flex flex-col gap-2', 'data-[orientation=vertical]:flex-row', props.class)}
       {...rest}
     />
   )
 }
 
-export type TabsListProps<T extends ValidComponent = "div"> = ComponentProps<
+export type TabsListProps<T extends ValidComponent = 'div'> = ComponentProps<
   typeof TabsPrimitive.List<T>
 >
 
-export const TabsList = <T extends ValidComponent = "div">(
-  props: TabsListProps<T>,
-) => {
-  const [, rest] = splitProps(props as TabsListProps, ["class"])
+export const TabsList = <T extends ValidComponent = 'div'>(props: TabsListProps<T>) => {
+  const [, rest] = splitProps(props as TabsListProps, ['class'])
   const radiusClass = useRadiusClass('navigation')
   const componentClass = useComponentClass(ComponentName.Tabs, props as TabsProps)
 
@@ -41,8 +32,8 @@ export const TabsList = <T extends ValidComponent = "div">(
     <TabsPrimitive.List
       data-slot="tabs-list"
       class={cx(
-        "bg-muted text-muted-foreground ring-muted relative flex h-[calc(var(--spacing)*7.5)] w-fit items-center justify-center ring-[3px]",
-        "data-[orientation=vertical]:mt-[3px] data-[orientation=vertical]:size-full data-[orientation=vertical]:flex-col",
+        'bg-muted text-muted-foreground ring-muted relative flex h-[calc(var(--spacing)*7.5)] w-fit items-center justify-center ring-[3px]',
+        'data-[orientation=vertical]:mt-[3px] data-[orientation=vertical]:size-full data-[orientation=vertical]:flex-col',
         radiusClass,
         componentClass,
         props.class,
@@ -52,13 +43,12 @@ export const TabsList = <T extends ValidComponent = "div">(
   )
 }
 
-export type TabsTriggerProps<T extends ValidComponent = "button"> =
-  ComponentProps<typeof TabsPrimitive.Trigger<T>>
+export type TabsTriggerProps<T extends ValidComponent = 'button'> = ComponentProps<
+  typeof TabsPrimitive.Trigger<T>
+>
 
-export const TabsTrigger = <T extends ValidComponent = "button">(
-  props: TabsTriggerProps<T>,
-) => {
-  const [, rest] = splitProps(props as TabsTriggerProps, ["class"])
+export const TabsTrigger = <T extends ValidComponent = 'button'>(props: TabsTriggerProps<T>) => {
+  const [, rest] = splitProps(props as TabsTriggerProps, ['class'])
 
   return (
     <TabsPrimitive.Trigger
@@ -72,31 +62,28 @@ export const TabsTrigger = <T extends ValidComponent = "button">(
   )
 }
 
-export type TabsContentProps<T extends ValidComponent = "div"> = ComponentProps<
+export type TabsContentProps<T extends ValidComponent = 'div'> = ComponentProps<
   typeof TabsPrimitive.Content<T>
 >
 
-export const TabsContent = <T extends ValidComponent = "div">(
-  props: TabsContentProps<T>,
-) => {
-  const [, rest] = splitProps(props as TabsContentProps, ["class"])
+export const TabsContent = <T extends ValidComponent = 'div'>(props: TabsContentProps<T>) => {
+  const [, rest] = splitProps(props as TabsContentProps, ['class'])
 
   return (
     <TabsPrimitive.Content
       data-slot="tabs-content"
-      class={cx("flex-1 outline-none", props.class)}
+      class={cx('flex-1 outline-none', props.class)}
       {...rest}
     />
   )
 }
 
-export type TabsIndicatorProps<T extends ValidComponent = "div"> =
-  ComponentProps<typeof TabsPrimitive.Indicator<T>>
+export type TabsIndicatorProps<T extends ValidComponent = 'div'> = ComponentProps<
+  typeof TabsPrimitive.Indicator<T>
+>
 
-export const TabsIndicator = <T extends ValidComponent = "div">(
-  props: TabsIndicatorProps<T>,
-) => {
-  const [, rest] = splitProps(props as TabsIndicatorProps, ["class"])
+export const TabsIndicator = <T extends ValidComponent = 'div'>(props: TabsIndicatorProps<T>) => {
+  const [, rest] = splitProps(props as TabsIndicatorProps, ['class'])
   const radiusClass = useRadiusClass('navigation')
   const componentClass = useComponentClass(ComponentName.Tabs, props as TabsProps)
 
@@ -104,7 +91,7 @@ export const TabsIndicator = <T extends ValidComponent = "div">(
     <TabsPrimitive.Indicator
       data-slot="tabs-indicator"
       class={cx(
-        "bg-background dark:bg-input/30 dark:border-input peer-focus-visible:border-ring peer-focus-visible:ring-ring/50 peer-focus-visible:outline-ring absolute inset-0 border border-transparent shadow-sm transition-[box-shadow,transform,width,height] duration-200 peer-focus-visible:ring-[3px] peer-focus-visible:outline-1",
+        'bg-background dark:bg-input/30 dark:border-input peer-focus-visible:border-ring peer-focus-visible:ring-ring/50 peer-focus-visible:outline-ring absolute inset-0 border border-transparent shadow-sm transition-[box-shadow,transform,width,height] duration-200 peer-focus-visible:ring-[3px] peer-focus-visible:outline-1',
         radiusClass,
         componentClass,
         props.class,

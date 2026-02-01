@@ -1,5 +1,5 @@
 import { createContext } from 'solid-js'
-import type { ComponentPropsMap, ComponentPropsFor } from './component-props-map'
+import type { ComponentPropsFor, ComponentPropsMap } from './component-props-map'
 
 export type RadiusValue = 'none' | 'sm' | 'md' | 'lg' | 'xl' | 'full'
 
@@ -59,7 +59,7 @@ export const ComponentName = {
   Tooltip: 'Tooltip',
 } as const
 
-export type ComponentName = typeof ComponentName[keyof typeof ComponentName]
+export type ComponentName = (typeof ComponentName)[keyof typeof ComponentName]
 
 export interface ThemeConfig {
   base: {
@@ -69,7 +69,10 @@ export interface ThemeConfig {
   // Can be a function: (componentName: ComponentName, props: ComponentPropsFor<ComponentName>) => string | undefined
   // Or an object: Record<ComponentName, (props: ComponentPropsFor<ComponentName>) => string | undefined>
   componentClass?:
-    | (<N extends ComponentName>(componentName: N, props: ComponentPropsFor<N>) => string | undefined)
+    | (<N extends ComponentName>(
+        componentName: N,
+        props: ComponentPropsFor<N>,
+      ) => string | undefined)
     | {
         [K in ComponentName]?: (props: ComponentPropsFor<K>) => string | undefined
       }

@@ -16,4 +16,3 @@ export const HeaderIcon: Component = () => (
     <path d="M9 21V9" />
   </svg>
 )
-

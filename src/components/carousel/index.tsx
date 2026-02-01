@@ -1,10 +1,7 @@
-import type {
-  Accessor,
-  ComponentProps,
-  Setter,
-  ValidComponent,
-  VoidProps,
-} from "solid-js"
+import type { PolymorphicProps } from '@kobalte/core/polymorphic'
+import type { CreateEmblaCarouselType } from 'embla-carousel-solid'
+import createEmblaCarousel from 'embla-carousel-solid'
+import type { Accessor, ComponentProps, Setter, ValidComponent, VoidProps } from 'solid-js'
 import {
   createContext,
   createEffect,
@@ -13,16 +10,13 @@ import {
   onMount,
   splitProps,
   useContext,
-} from "solid-js"
-import { createStore } from "solid-js/store"
-import type { PolymorphicProps } from "@kobalte/core/polymorphic"
-import type { CreateEmblaCarouselType } from "embla-carousel-solid"
-import createEmblaCarousel from "embla-carousel-solid"
+} from 'solid-js'
+import { createStore } from 'solid-js/store'
 
-import { cx } from "@/lib/cva"
+import { cx } from '@/lib/cva'
 
-import type { ButtonProps } from "../button"
-import { Button } from "../button"
+import type { ButtonProps } from '../button'
+import { Button } from '../button'
 
 type CarouselAPI = CreateEmblaCarouselType[1]
 type CreateCarouselParameters = Parameters<typeof createEmblaCarousel>
@@ -32,11 +26,11 @@ type CarouselPlugin = CreateCarouselParameters[1]
 export interface CarouselOptionsProps {
   options?: CarouselOptions
   plugins?: CarouselPlugin
-  orientation?: "horizontal" | "vertical"
+  orientation?: 'horizontal' | 'vertical'
   setAPI?: Setter<CarouselAPI>
 }
 
-export type CarouselProps = ComponentProps<"div"> & CarouselOptionsProps
+export type CarouselProps = ComponentProps<'div'> & CarouselOptionsProps
 
 type CarouselContextProps = {
   ref: ReturnType<typeof createEmblaCarousel>[0]
@@ -53,7 +47,7 @@ const useCarousel = () => {
   const context = useContext(CarouselContext)
 
   if (!context) {
-    throw new Error("useCarousel must be used within a <Carousel />")
+    throw new Error('useCarousel must be used within a <Carousel />')
   }
 
   return context
@@ -62,23 +56,23 @@ const useCarousel = () => {
 export const Carousel = (props: CarouselProps) => {
   const merge = mergeProps<CarouselProps[]>(
     {
-      orientation: "horizontal",
+      orientation: 'horizontal',
     },
     props,
   )
   const [, rest] = splitProps(merge, [
-    "orientation",
-    "options",
-    "setAPI",
-    "plugins",
-    "class",
-    "children",
+    'orientation',
+    'options',
+    'setAPI',
+    'plugins',
+    'class',
+    'children',
   ])
 
   const [ref, api] = createEmblaCarousel(
     () => ({
       ...merge.options?.(),
-      axis: merge.orientation === "horizontal" ? "x" : "y",
+      axis: merge.orientation === 'horizontal' ? 'x' : 'y',
     }),
     () => merge.plugins?.() ?? [],
   )
@@ -105,10 +99,10 @@ export const Carousel = (props: CarouselProps) => {
   }
 
   const handleKeyDown = (event: KeyboardEvent) => {
-    if (event.key === "ArrowLeft") {
+    if (event.key === 'ArrowLeft') {
       event.preventDefault()
       scrollPrev()
-    } else if (event.key === "ArrowRight") {
+    } else if (event.key === 'ArrowRight') {
       event.preventDefault()
       scrollNext()
     }
@@ -123,15 +117,15 @@ export const Carousel = (props: CarouselProps) => {
   createEffect(() => {
     if (!api()) return
     onSelect(api)
-    api()!.on("reInit", (api) => {
+    api()!.on('reInit', api => {
       onSelect(() => api)
     })
-    api()!.on("select", (api) => {
+    api()!.on('select', api => {
       onSelect(() => api)
     })
 
     onCleanup(() => {
-      api()!.off("select", (api) => {
+      api()!.off('select', api => {
         onSelect(() => api)
       })
     })
@@ -146,10 +140,7 @@ export const Carousel = (props: CarouselProps) => {
     },
     canScrollNext: () => store.canScrollNext,
     get orientation() {
-      return (
-        merge.orientation ??
-        (merge.options?.().axis === "y" ? "vertical" : "horizontal")
-      )
+      return merge.orientation ?? (merge.options?.().axis === 'y' ? 'vertical' : 'horizontal')
     },
     get plugins() {
       return merge.plugins
@@ -165,7 +156,7 @@ export const Carousel = (props: CarouselProps) => {
     <CarouselContext.Provider value={value}>
       <div
         onKeyDown={handleKeyDown}
-        class={cx("relative", merge.class)}
+        class={cx('relative', merge.class)}
         role="region"
         aria-roledescription="carousel"
         data-slot="carousel"
@@ -177,31 +168,27 @@ export const Carousel = (props: CarouselProps) => {
   )
 }
 
-export type CarouselContentProps = ComponentProps<"div">
+export type CarouselContentProps = ComponentProps<'div'>
 
 export const CarouselContent = (props: CarouselContentProps) => {
   const { ref, orientation } = useCarousel()
-  const [, rest] = splitProps(props, ["class"])
+  const [, rest] = splitProps(props, ['class'])
 
   return (
     <div ref={ref} class="overflow-hidden" data-slot="carousel-content">
       <div
-        class={cx(
-          "flex",
-          orientation === "horizontal" ? "-ml-4" : "-mt-4 flex-col",
-          props.class,
-        )}
+        class={cx('flex', orientation === 'horizontal' ? '-ml-4' : '-mt-4 flex-col', props.class)}
         {...rest}
       />
     </div>
   )
 }
 
-export type CarouselItemProps = ComponentProps<"div">
+export type CarouselItemProps = ComponentProps<'div'>
 
 export const CarouselItem = (props: CarouselItemProps) => {
   const { orientation } = useCarousel()
-  const [, rest] = splitProps(props, ["class"])
+  const [, rest] = splitProps(props, ['class'])
 
   return (
     <div
@@ -209,8 +196,8 @@ export const CarouselItem = (props: CarouselItemProps) => {
       aria-roledescription="slide"
       data-slot="carousel-item"
       class={cx(
-        "min-w-0 shrink-0 grow-0 basis-full",
-        orientation === "horizontal" ? "pl-4" : "pt-4",
+        'min-w-0 shrink-0 grow-0 basis-full',
+        orientation === 'horizontal' ? 'pl-4' : 'pt-4',
         props.class,
       )}
       {...rest}
@@ -218,22 +205,20 @@ export const CarouselItem = (props: CarouselItemProps) => {
   )
 }
 
-export type CarouselNextProps<T extends ValidComponent = "button"> = VoidProps<
-  ButtonProps<T>
->
+export type CarouselNextProps<T extends ValidComponent = 'button'> = VoidProps<ButtonProps<T>>
 
-export const CarouselNext = <T extends ValidComponent = "button">(
+export const CarouselNext = <T extends ValidComponent = 'button'>(
   props: PolymorphicProps<T, CarouselNextProps<T>>,
 ) => {
   const { orientation, scrollNext, canScrollNext } = useCarousel()
   const merge = mergeProps<CarouselNextProps[]>(
     {
-      variant: "outline",
-      size: "icon",
+      variant: 'outline',
+      size: 'icon',
     },
     props as CarouselNextProps,
   )
-  const [, rest] = splitProps(merge, ["class", "variant", "size"])
+  const [, rest] = splitProps(merge, ['class', 'variant', 'size'])
 
   return (
     <Button
@@ -241,21 +226,17 @@ export const CarouselNext = <T extends ValidComponent = "button">(
       variant={merge.variant}
       size={merge.size}
       class={cx(
-        "absolute size-8 rounded-full",
-        orientation === "horizontal"
-          ? "top-1/2 -right-12 -translate-y-1/2"
-          : "-bottom-12 left-1/2 -translate-x-1/2 rotate-90",
+        'absolute size-8 rounded-full',
+        orientation === 'horizontal'
+          ? 'top-1/2 -right-12 -translate-y-1/2'
+          : '-bottom-12 left-1/2 -translate-x-1/2 rotate-90',
         merge.class,
       )}
       disabled={!canScrollNext()}
       onClick={scrollNext}
       {...rest}
     >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        class="size-4"
-        viewBox="0 0 24 24"
-      >
+      <svg xmlns="http://www.w3.org/2000/svg" class="size-4" viewBox="0 0 24 24">
         <path
           fill="none"
           stroke="currentColor"
@@ -269,21 +250,20 @@ export const CarouselNext = <T extends ValidComponent = "button">(
   )
 }
 
-export type CarouselPreviousProps<T extends ValidComponent = "button"> =
-  VoidProps<ButtonProps<T>>
+export type CarouselPreviousProps<T extends ValidComponent = 'button'> = VoidProps<ButtonProps<T>>
 
-export const CarouselPrevious = <T extends ValidComponent = "button">(
+export const CarouselPrevious = <T extends ValidComponent = 'button'>(
   props: PolymorphicProps<T, CarouselPreviousProps<T>>,
 ) => {
   const { orientation, scrollPrev, canScrollPrev } = useCarousel()
   const merge = mergeProps<CarouselPreviousProps[]>(
     {
-      variant: "outline",
-      size: "icon",
+      variant: 'outline',
+      size: 'icon',
     },
     props as CarouselPreviousProps,
   )
-  const [, rest] = splitProps(merge, ["class", "variant", "size"])
+  const [, rest] = splitProps(merge, ['class', 'variant', 'size'])
 
   return (
     <Button
@@ -291,21 +271,17 @@ export const CarouselPrevious = <T extends ValidComponent = "button">(
       variant={merge.variant}
       size={merge.size}
       class={cx(
-        "absolute size-8 rounded-full",
-        orientation === "horizontal"
-          ? "top-1/2 -left-12 -translate-y-1/2"
-          : "-top-12 left-1/2 -translate-x-1/2 rotate-90",
+        'absolute size-8 rounded-full',
+        orientation === 'horizontal'
+          ? 'top-1/2 -left-12 -translate-y-1/2'
+          : '-top-12 left-1/2 -translate-x-1/2 rotate-90',
         merge.class,
       )}
       disabled={!canScrollPrev()}
       onClick={scrollPrev}
       {...rest}
     >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        class="size-4"
-        viewBox="0 0 24 24"
-      >
+      <svg xmlns="http://www.w3.org/2000/svg" class="size-4" viewBox="0 0 24 24">
         <path
           fill="none"
           stroke="currentColor"
