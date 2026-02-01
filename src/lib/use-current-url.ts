@@ -14,46 +14,43 @@ export type UrlInfo = {
 
 export type UrlInfoInput = string | UrlInfo | Accessor<string | UrlInfo>
 
-const parseUrl = (input: string | UrlInfo): UrlInfo => {
-  if (typeof input === "string") {
-    if (typeof window === "undefined") {
-      // Manual parsing for SSR environment
-      const hashIndex = input.indexOf("#")
-      const queryIndex = input.indexOf("?")
-      const hashPart = hashIndex >= 0 ? input.substring(hashIndex) : ""
-      const queryPart =
-        queryIndex >= 0
-          ? input.substring(queryIndex + 1, hashIndex >= 0 ? hashIndex : undefined)
-          : ""
-      return {
-        pathname: input.split("?")[0]?.split("#")[0] || "",
-        hash: hashPart,
-        searchParams: new URLSearchParams(queryPart),
-        href: input,
-      }
-    }
-
-    try {
-      // Use URL object for full URLs
-      const url = new URL(input, window.location.origin)
-      return {
-        pathname: url.pathname,
-        hash: url.hash,
-        searchParams: url.searchParams,
-        href: url.href,
-      }
-    } catch {
-      // Fallback to window.location.href for relative paths
-      const url = new URL(input, window.location.href)
-      return {
-        pathname: url.pathname,
-        hash: url.hash,
-        searchParams: url.searchParams,
-        href: url.href,
-      }
+export const parseUrl = (input: string): UrlInfo => {
+  if (typeof window === "undefined") {
+    // Manual parsing for SSR environment
+    const hashIndex = input.indexOf("#")
+    const queryIndex = input.indexOf("?")
+    const hashPart = hashIndex >= 0 ? input.substring(hashIndex) : ""
+    const queryPart =
+      queryIndex >= 0
+        ? input.substring(queryIndex + 1, hashIndex >= 0 ? hashIndex : undefined)
+        : ""
+    return {
+      pathname: input.split("?")[0]?.split("#")[0] || "",
+      hash: hashPart,
+      searchParams: new URLSearchParams(queryPart),
+      href: input,
     }
   }
-  return input
+
+  try {
+    // Use URL object for full URLs
+    const url = new URL(input, window.location.origin)
+    return {
+      pathname: url.pathname,
+      hash: url.hash,
+      searchParams: url.searchParams,
+      href: url.href,
+    }
+  } catch {
+    // Fallback to window.location.href for relative paths
+    const url = new URL(input, window.location.href)
+    return {
+      pathname: url.pathname,
+      hash: url.hash,
+      searchParams: url.searchParams,
+      href: url.href,
+    }
+  }
 }
 
 const getCurrentUrlInfo = (): UrlInfo => {
@@ -73,10 +70,10 @@ export const useCurrentUrl = (
       // Create memo to parse Accessor values reactively
       return createMemo(() => {
         const value = customUrl()
-        return parseUrl(value)
+        return typeof value === "string" ? parseUrl(value) : value
       })
     }
-    const parsed = parseUrl(customUrl)
+    const parsed = typeof customUrl === "string" ? parseUrl(customUrl) : customUrl
     return () => parsed
   }
 

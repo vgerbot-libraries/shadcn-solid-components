@@ -5,3 +5,4 @@ export * from './use-mobile';
 export * from './theme-context';
 export * from './theme-helpers';
 export * from './use-theme';
+export * from './use-current-url';

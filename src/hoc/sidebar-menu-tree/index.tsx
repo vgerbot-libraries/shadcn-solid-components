@@ -1,9 +1,10 @@
-import { For, Show, type Accessor, type JSX } from "solid-js"
+import { For, Show, createMemo, type Accessor, type JSX } from "solid-js"
 import { cx } from "@/lib/cva"
 import {
   useCurrentUrl,
   type UrlInfo,
   type UrlInfoInput,
+  parseUrl,
 } from "@/lib/use-current-url"
 
 import {
@@ -26,10 +27,16 @@ export type UrlMatchStrategy =
   | "endsWith"
   | RegExp
 
+export type SearchParamMatchValue =
+  | string // Exact value match against currentUrl
+  | RegExp // Regex test against currentUrl
+  | true // Check if parameter exists in currentUrl
+  | { matchItemValue: true } // Match against item.url parameter value
+
 export type UrlMatchConfig = {
   pathname?: UrlMatchStrategy
   hash?: UrlMatchStrategy
-  searchParams?: Record<string, string | RegExp | true>
+  searchParams?: Record<string, SearchParamMatchValue>
 }
 
 export type SidebarMenuTreeItem = {
@@ -43,8 +50,8 @@ export type SidebarMenuTreeItem = {
   disabled?: boolean
   visible?: boolean
   class?: string
-  // Supports simple string matching (backward compatible) or detailed config object
-  urlMatch?: UrlMatchStrategy | UrlMatchConfig
+  // Supports simple string matching (backward compatible), detailed config object, or custom callback
+  urlMatch?: UrlMatchStrategy | UrlMatchConfig | ((currentUrl: UrlInfo, itemUrl: UrlInfo) => boolean)
   loading?: boolean
   open?: boolean
   defaultOpen?: boolean
@@ -55,43 +62,6 @@ export type SidebarMenuTreeProps = {
   currentUrl?: UrlInfoInput
 }
 
-const parseItemUrl = (itemUrl: string): UrlInfo => {
-  if (typeof window === "undefined") {
-    // Return basic structure for SSR environment
-    const hashIndex = itemUrl.indexOf("#")
-    const queryIndex = itemUrl.indexOf("?")
-    const hashPart = hashIndex >= 0 ? itemUrl.substring(hashIndex) : ""
-    const queryPart =
-      queryIndex >= 0
-        ? itemUrl.substring(queryIndex + 1, hashIndex >= 0 ? hashIndex : undefined)
-        : ""
-    return {
-      pathname: itemUrl.split("?")[0]?.split("#")[0] || "",
-      hash: hashPart,
-      searchParams: new URLSearchParams(queryPart),
-      href: itemUrl,
-    }
-  }
-
-  try {
-    const url = new URL(itemUrl, window.location.origin)
-    return {
-      pathname: url.pathname,
-      hash: url.hash,
-      searchParams: url.searchParams,
-      href: url.href,
-    }
-  } catch {
-    // Use current location as base for relative paths
-    const url = new URL(itemUrl, window.location.href)
-    return {
-      pathname: url.pathname,
-      hash: url.hash,
-      searchParams: url.searchParams,
-      href: url.href,
-    }
-  }
-}
 
 const matchString = (
   value: string,
@@ -113,15 +83,20 @@ const matchString = (
 const matchUrl = (
   itemUrl: string | undefined,
   currentUrl: UrlInfo,
-  matchConfig?: UrlMatchStrategy | UrlMatchConfig
+  matchConfig?: UrlMatchStrategy | UrlMatchConfig | ((currentUrl: UrlInfo, itemUrl: UrlInfo) => boolean)
 ): boolean => {
   if (!itemUrl) return false
 
-  const itemUrlInfo = parseItemUrl(itemUrl)
+  const itemUrlInfo = parseUrl(itemUrl)
 
   // Default to pathname exact match for backward compatibility
   if (!matchConfig) {
     return itemUrlInfo.pathname === currentUrl.pathname
+  }
+
+  // Custom callback function
+  if (typeof matchConfig === "function") {
+    return matchConfig(currentUrl, itemUrlInfo)
   }
 
   // Simple string matching strategy (backward compatible) - only match pathname
@@ -162,13 +137,16 @@ const matchUrl = (
       const itemValue = itemUrlInfo.searchParams.get(key)
 
       if (value === true) {
-        // Only check if parameter exists
+        // Check if parameter exists in currentUrl
         matches = matches && currentValue !== null
+      } else if (typeof value === "object" && "matchItemValue" in value) {
+        // Match currentUrl parameter value against item.url parameter value
+        matches = matches && currentValue !== null && currentValue === itemValue
       } else if (typeof value === "string") {
-        // Exact string value match
+        // Exact string value match against currentUrl
         matches = matches && currentValue === value
       } else if (value instanceof RegExp) {
-        // Regex match
+        // Regex match against currentUrl
         matches = matches && currentValue !== null && value.test(currentValue)
       }
     }
@@ -177,7 +155,39 @@ const matchUrl = (
   return matches
 }
 
-// Recursively check if menu item and its children match URL
+// Recursively check if menu item and its children match URL (memoized)
+const createItemMatcher = (
+  item: SidebarMenuTreeItem,
+  currentUrl: Accessor<UrlInfo>
+): Accessor<boolean> => {
+  return createMemo(() => {
+    const url = currentUrl()
+
+    // Check if current item matches URL
+    const urlMatches =
+      item.url && matchUrl(item.url, url, item.urlMatch)
+
+    // Recursively check if children match
+    const childMatches =
+      item.items && item.items.length > 0
+        ? item.items.some((subItem) => checkItemMatch(subItem, url))
+        : false
+
+    // Activate if URL matches or child matches
+    if (urlMatches || childMatches) {
+      return true
+    }
+
+    // Use explicit isActive if set
+    if (item.isActive !== undefined) {
+      return item.isActive
+    }
+
+    return false
+  })
+}
+
+// Non-memoized version for recursive checks
 const checkItemMatch = (
   item: SidebarMenuTreeItem,
   currentUrl: UrlInfo
@@ -228,8 +238,8 @@ const renderSubItem = (
 ) => {
   const isVisible = subItem.visible !== false
 
-  // URL matching automatically activates (reactive)
-  const isActive = () => checkItemMatch(subItem, currentUrl())
+  // URL matching automatically activates (reactive with memoization)
+  const isActive = createItemMatcher(subItem, currentUrl)
 
   const hasSubItems = () => subItem.items && subItem.items.length > 0
   const isSubCollapsible = () => subItem.collapsible !== false && hasSubItems()
@@ -369,8 +379,8 @@ const SidebarMenuTreeItem = (props: {
 
   const isVisible = item.visible !== false
 
-  // URL matching automatically activates (reactive)
-  const isActive = () => checkItemMatch(item, currentUrl())
+  // URL matching automatically activates (reactive with memoization)
+  const isActive = createItemMatcher(item, currentUrl)
 
   const hasItems = () => item.items && item.items.length > 0
   const isCollapsible = () => item.collapsible !== false && hasItems()
