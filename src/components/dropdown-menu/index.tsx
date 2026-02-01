@@ -124,7 +124,6 @@ export const DropdownMenuSubContent = <T extends ValidComponent = "div">(
   const [, rest] = splitProps(props as DropdownMenuSubContentProps, ["class"])
 
   const radiusClass = useRadiusClass('overlay')
-  const componentClass = useComponentClass(ComponentName.DropdownMenu, props as DropdownMenuProps)
 
   return (
     <DropdownMenuPrimitive.SubContent
@@ -149,7 +148,6 @@ export const DropdownMenuContent = <T extends ValidComponent = "div">(
   const [, rest] = splitProps(props as DropdownMenuContentProps, ["class"])
 
   const radiusClass = useRadiusClass('overlay')
-  const componentClass = useComponentClass(ComponentName.DropdownMenu, props as DropdownMenuProps)
 
   return (
     <DropdownMenuPrimitive.Content
@@ -189,7 +187,6 @@ export const DropdownMenuItem = <T extends ValidComponent = "div">(
       class={cx(
         "data-[highlighted]:bg-accent data-[highlighted]:text-accent-foreground data-[variant=destructive]:text-destructive data-[variant=destructive]:data-[highlighted]:bg-destructive/10 dark:data-[variant=destructive]:data-[highlighted]:bg-destructive/20 data-[variant=destructive]:data-[highlighted]:text-destructive data-[variant=destructive]:*:[svg]:!text-destructive [&_svg:not([class*='text-'])]:text-muted-foreground relative flex cursor-default items-center gap-2 px-2 py-1.5 text-sm outline-hidden select-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 data-[inset]:pl-8 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
         radiusClass,
-        componentClass,
         props.class,
       )}
       {...rest}
