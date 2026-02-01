@@ -205,6 +205,7 @@ export const DropdownMenuCheckboxItem = <T extends ValidComponent = "div">(
     "children",
   ])
   const radiusClass = useRadiusClass('menu-item')
+  const componentClass = useComponentClass(ComponentName.DropdownMenu, props as DropdownMenuProps)
 
   return (
     <DropdownMenuPrimitive.CheckboxItem
@@ -250,6 +251,7 @@ export const DropdownMenuRadioItem = <T extends ValidComponent = "div">(
     "children",
   ])
   const radiusClass = useRadiusClass('menu-item')
+  const componentClass = useComponentClass(ComponentName.DropdownMenu, props as DropdownMenuProps)
 
   return (
     <DropdownMenuPrimitive.RadioItem

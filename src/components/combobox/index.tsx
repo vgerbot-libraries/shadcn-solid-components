@@ -94,7 +94,7 @@ export const ComboboxControl = <Option, T extends ValidComponent = "div">(
 ) => {
   const [, rest] = splitProps(props as ComboboxControlProps<Option>, ["class"])
   const radiusClass = useRadiusClass('form-control')
-  const componentClass = useComponentClass(ComponentName.Combobox, props as ComboboxProps<any>)
+  const componentClass = useComponentClass(ComponentName.Combobox, props as unknown as ComboboxProps<any>)
 
   return (
     <ComboboxPrimitive.Control
@@ -120,7 +120,7 @@ export const ComboboxContent = <T extends ValidComponent = "div">(
   const [, rest] = splitProps(props as ComboboxContentProps, ["class"])
 
   const radiusClass = useRadiusClass('overlay')
-  const componentClass = useComponentClass(ComponentName.Combobox, props as ComboboxProps<any>)
+  const componentClass = useComponentClass(ComponentName.Combobox, props as unknown as ComboboxProps<any>)
 
   return (
     <ComboboxPrimitive.Content
@@ -147,7 +147,7 @@ export const ComboboxItem = <T extends ValidComponent = "div">(
 ) => {
   const [, rest] = splitProps(props as ComboboxItemProps, ["class", "children"])
   const radiusClass = useRadiusClass('menu-item')
-  const componentClass = useComponentClass(ComponentName.Combobox, props as ComboboxProps<any>)
+  const componentClass = useComponentClass(ComponentName.Combobox, props as unknown as ComboboxProps<any>)
 
   return (
     <ComboboxPrimitive.Item

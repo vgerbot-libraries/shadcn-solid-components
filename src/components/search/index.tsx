@@ -164,7 +164,7 @@ export const SearchContent = <T extends ValidComponent = "div">(
   const [, rest] = splitProps(props as SearchContentProps, ["class"])
 
   const radiusClass = useRadiusClass('overlay')
-  const componentClass = useComponentClass(ComponentName.Search, props as SearchProps<any>)
+  const componentClass = useComponentClass(ComponentName.Search, props as unknown as SearchProps<any>)
 
   return (
     <SearchPrimitive.Content
@@ -212,7 +212,7 @@ export const SearchItem = <T extends ValidComponent = "li">(
 ) => {
   const [, rest] = splitProps(props as SearchItemProps, ["class"])
   const radiusClass = useRadiusClass('menu-item')
-  const componentClass = useComponentClass(ComponentName.Search, props as SearchProps<any>)
+  const componentClass = useComponentClass(ComponentName.Search, props as unknown as SearchProps<any>)
 
   return (
     <SearchPrimitive.Item

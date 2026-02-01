@@ -103,7 +103,7 @@ export const SelectContent = <T extends ValidComponent = "div">(
   const [, rest] = splitProps(props as SelectContentProps, ["class"])
 
   const radiusClass = useRadiusClass('overlay')
-  const componentClass = useComponentClass(ComponentName.Select, props as SelectProps<any>)
+  const componentClass = useComponentClass(ComponentName.Select, props as unknown as SelectProps<any>)
 
   return (
     <SelectPrimitive.Content
@@ -131,7 +131,7 @@ export const SelectItem = <T extends ValidComponent = "li">(
 ) => {
   const [, rest] = splitProps(props as SelectItemProps, ["class", "children"])
   const radiusClass = useRadiusClass('menu-item')
-  const componentClass = useComponentClass(ComponentName.Select, props as SelectProps<any>)
+  const componentClass = useComponentClass(ComponentName.Select, props as unknown as SelectProps<any>)
 
   return (
     <SelectPrimitive.Item

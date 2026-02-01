@@ -26,7 +26,7 @@ import type { KbdProps } from '../components/kbd'
 import type { MenubarProps } from '../components/menubar'
 import type { NavigationMenuProps } from '../components/navigation-menu'
 import type { NumberFieldProps } from '../components/number-field'
-import type { OtpFieldProps } from '../components/otp-field'
+import type { OTPFieldProps } from '../components/otp-field'
 import type { PaginationProps } from '../components/pagination'
 import type { PopoverProps } from '../components/popover'
 import type { ProgressProps } from '../components/progress'
@@ -80,7 +80,7 @@ export interface ComponentPropsMap {
   [ComponentName.Menubar]: MenubarProps
   [ComponentName.NavigationMenu]: NavigationMenuProps
   [ComponentName.NumberField]: NumberFieldProps
-  [ComponentName.OtpField]: OtpFieldProps
+  [ComponentName.OtpField]: OTPFieldProps
   [ComponentName.Pagination]: PaginationProps
   [ComponentName.Popover]: PopoverProps
   [ComponentName.Progress]: ProgressProps
