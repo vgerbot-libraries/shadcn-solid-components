@@ -30,6 +30,8 @@ export function TabulatorTable(props: DataTableProps) {
 
     const options = typeof merged.initOptions === 'function' ? merged.initOptions() : merged.initOptions
 
+    tableElement.style.setProperty('--shadcn-tabulator-row-height', (options?.rowHeight ?? 36) + 'px');
+
     // Create Tabulator instance
     const instance = new TabulatorClass(tableElement, options)
     instance.on('tableBuilt', () => {

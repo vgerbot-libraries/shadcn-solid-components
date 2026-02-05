@@ -4,6 +4,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/table'
 import { Badge } from '@/components/badge'
 import { Button } from '@/components/button'
+import { TabulatorTable } from '@/components/tabulator-table'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -24,6 +25,7 @@ import {
   ChevronLeftDoubleIcon,
   ChevronRightDoubleIcon,
 } from './icons'
+import { Tabulator } from '@types/tabulator-tables';
 
 // Chart data
 const chartData = [
@@ -139,6 +141,8 @@ const tableData = [
 
 export const Main: Component = () => {
   const [selectedRows, setSelectedRows] = createSignal<Set<number>>(new Set())
+
+  const [tabulator, setTabulator] = createSignal<Tabulator | undefined>()
 
   const toggleRow = (index: number) => {
     setSelectedRows(prev => {
@@ -285,6 +289,33 @@ export const Main: Component = () => {
             </div>
           </CardHeader>
           <CardContent>
+            <TabulatorTable
+              initOptions={{
+                layout: 'fitColumns',
+                reactiveData: true,
+                pagination: true,
+                paginationSize: 6,
+                paginationSizeSelector: [3,6,8,10],
+                movableColumns: true,
+                paginationCounter: "rows",
+                rowHeight: 49,
+                columns: [
+                  {title:"Name", field:"name", sorter:"string", width:200},
+                  {title:"Progress", field:"progress", sorter:"number", formatter:"progress"},
+                  {title:"Gender", field:"gender", sorter:"string"},
+                  {title:"Rating", field:"rating", formatter:"star", hozAlign:"center", width:100},
+                  {title:"Favourite Color", field:"col", sorter:"string"},
+                ],
+                data: [
+                  {id:1, name:"Oli Bob", progress:12, gender:"male", rating:1, col:"red" },
+                  {id:2, name:"Mary May", progress:1, gender:"female", rating:2, col:"blue" },
+                  {id:3, name:"Christine Lobowski", progress:42, gender:"female", rating:0, col:"green" },
+                  {id:4, name:"Brendon Philips", progress:100, gender:"male", rating:1, col:"orange" },
+                  {id:5, name:"Margret Marmajuke", progress:16, gender:"female", rating:5, col:"yellow"},
+                ]
+              }}
+              onInit={setTabulator}
+            ></TabulatorTable>
             <Table>
               <TableHeader>
                 <TableRow>

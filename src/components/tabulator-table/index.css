@@ -1,2 +1,423 @@
 @import 'tabulator-tables/dist/css/tabulator.min.css';
 
+:root {
+  --table-separator-color: oklch(0.922 0 0);
+}
+
+[data-kb-theme="dark"] {
+  --table-separator-color: oklch(1 0 0 / 10%);
+}
+
+/* General Styles */
+.tabulator {
+  @apply bg-transparent text-sm text-foreground border-0;
+}
+
+.tabulator-tableholder {
+  @apply bg-transparent;
+}
+
+.tabulator-table {
+  @apply bg-background;
+}
+
+.tabulator .tabulator-tableholder .tabulator-table {
+  @apply bg-transparent text-foreground;
+}
+
+.tabulator-loader {
+  @apply bg-background;
+}
+
+.tabulator-loader-msg {
+  @apply text-foreground;
+}
+
+.tabulator-loading {
+  @apply text-muted-foreground;
+}
+
+.tabulator-error {
+  @apply text-destructive;
+}
+
+.tabulator-placeholder {
+  @apply text-muted-foreground;
+}
+
+.tabulator-arrow {
+  @apply text-muted-foreground;
+}
+
+.tabulator-block-select {
+  @apply select-none;
+}
+
+.tabulator-moving {
+  @apply opacity-50;
+}
+
+.tabulator-movingrow-sending,
+.tabulator-movingrow-receiving {
+  @apply opacity-75;
+}
+
+.tabulator-editing {
+  @apply border-ring ring-ring/50 ring-2;
+}
+
+/* Columns & Headers */
+.tabulator .tabulator-header {
+  border-bottom: 1px solid var(--border);
+}
+
+.tabulator-header-hidden {
+  @apply hidden;
+}
+
+.tabulator-calcs-holder {
+  @apply bg-muted/50 border-t font-medium;
+}
+
+.tabulator-frozen-rows-holder {
+  @apply bg-muted;
+}
+
+.tabulator .tabulator-header .tabulator-col {
+  @apply border-r-0;
+}
+.tabulator-col {
+  @apply text-foreground h-10 px-2 text-left align-middle font-medium whitespace-nowrap;
+}
+
+.tabulator-col-content {
+  @apply text-foreground;
+}
+
+.tabulator-col-title {
+  @apply text-foreground font-medium;
+}
+
+.tabulator-col-group {
+  @apply bg-muted border-r;
+}
+
+.tabulator-col-group-cols {
+  @apply bg-muted;
+}
+
+.tabulator-handle {
+  @apply border-r;
+}
+
+.tabulator-col-resize-guide {
+  @apply border-r-2 border-primary;
+}
+
+.tabulator-title-editor {
+  @apply bg-background text-foreground border border-input rounded;
+}
+
+.tabulator-header-filter {
+  @apply bg-background border border-input rounded;
+}
+
+.tabulator-row-header {
+  @apply bg-muted border-r;
+}
+
+.tabulator-sortable {
+  @apply cursor-pointer hover:bg-muted/50 transition-colors;
+}
+
+.tabulator-frozen {
+  @apply bg-background;
+}
+
+.tabulator-frozen-left {
+  @apply border-r;
+}
+
+.tabulator-frozen-right {
+  @apply border-l;
+}
+
+.tabulator-row-resize-handle {
+  @apply border-b;
+}
+
+.tabulator-col-vertical {
+  writing-mode: vertical-rl;
+}
+
+.tabulator-col-vertical-flip {
+  @apply rotate-180;
+}
+
+/* Rows */
+.tabulator-row {
+  @apply bg-transparent border-b transition-colors;
+}
+
+.tabulator-row.tabulator-row-even,
+.tabulator-row.tabulator-row-odd,
+.tabulator .tabulator-header .tabulator-col,
+.tabulator .tabulator-header {
+  @apply bg-transparent;
+}
+
+.tabulator-row .tabulator-cell {
+  @apply p-2 align-middle whitespace-nowrap border-r-0;
+  line-height: calc(var(--shadcn-tabulator-row-height) - var(--spacing) * 4);
+}
+
+.tabulator-selectable {
+  @apply cursor-pointer;
+}
+
+.tabulator-unselectable {
+  @apply cursor-default;
+}
+
+.tabulator-selected {
+  @apply bg-muted;
+}
+
+.tabulator-row.tabulator-selected {
+  @apply bg-muted;
+}
+
+.tabulator-row.tabulator-selected:hover {
+  @apply bg-muted;
+}
+
+.tabulator-row:hover {
+  @apply bg-muted/50;
+}
+
+.tabulator-validation-fail {
+  @apply border-destructive ring-destructive/20;
+}
+
+.tabulator-group {
+  @apply bg-muted text-muted-foreground border-b font-medium;
+}
+
+.tabulator-group-visible {
+  @apply bg-muted;
+}
+
+.tabulator-group-level-1 {
+  @apply bg-muted;
+}
+
+.tabulator-group-level-2 {
+  @apply bg-muted/80;
+}
+
+.tabulator-group-level-3 {
+  @apply bg-muted/60;
+}
+
+.tabulator-group-toggle {
+  @apply text-muted-foreground;
+}
+
+.tabulator-calcs {
+  @apply bg-muted/50 text-muted-foreground border-t font-medium;
+}
+
+.tabulator-calcs-top {
+  @apply bg-muted/50 border-b;
+}
+
+.tabulator-calcs-bottom {
+  @apply bg-muted/50 border-t;
+}
+
+.tabulator-row-handle {
+  @apply bg-muted border-r;
+}
+
+.tabulator-row-handle-box {
+  @apply text-muted-foreground;
+}
+
+.tabulator-row-handle-bar {
+  @apply bg-muted-foreground;
+}
+
+.tabulator-row-resize-handle {
+  @apply border-b;
+}
+
+.tabulator-row-resize-guide {
+  @apply border-b-2 border-primary;
+}
+
+.tabulator-responsive-collapse {
+  @apply bg-muted/50 border-t;
+}
+
+.tabulator-responsive-collapse-toggle {
+  @apply text-primary cursor-pointer;
+}
+
+/* Pagination */
+.tabulator-footer {
+  @apply bg-muted/50 border-t;
+}
+
+.tabulator-paginator {
+  @apply bg-muted/50 text-muted-foreground;
+}
+
+.tabulator-pages {
+  @apply flex gap-1;
+}
+
+.tabulator-page {
+  @apply bg-background text-foreground border rounded px-3 py-1 cursor-pointer transition-colors;
+}
+
+.tabulator-page:hover {
+  @apply bg-accent text-accent-foreground;
+}
+
+.tabulator-page.active {
+  @apply bg-primary text-primary-foreground border-primary;
+}
+
+/* Data Trees */
+.tabulator-data-tree-control {
+  @apply text-muted-foreground cursor-pointer;
+}
+
+.tabulator-data-tree-control-collapse,
+.tabulator-data-tree-control-expand {
+  @apply text-muted-foreground;
+}
+
+.tabulator-data-tree-branch {
+  @apply text-muted-foreground;
+}
+
+.tabulator-tree-level-1,
+.tabulator-tree-level-2,
+.tabulator-tree-level-3 {
+  @apply border-l;
+}
+
+/* Printing */
+.tabulator-print-table {
+  @apply bg-background text-foreground;
+}
+
+.tabulator-print-fullscreen {
+  @apply bg-background;
+}
+
+.tabulator-print-fullscreen-hide {
+  @apply hidden;
+}
+
+/* Menus & Popups */
+.tabulator-popup-container {
+  @apply bg-popover text-popover-foreground border rounded shadow-lg;
+}
+
+.tabulator-popup {
+  @apply bg-popover text-popover-foreground;
+}
+
+.tabulator-tooltip {
+  @apply bg-popover text-popover-foreground border rounded px-2 py-1 text-sm shadow-md;
+}
+
+.tabulator-menu {
+  @apply bg-popover text-popover-foreground border rounded shadow-lg;
+}
+
+.tabulator-menu-item {
+  @apply px-3 py-2 cursor-pointer hover:bg-accent hover:text-accent-foreground transition-colors;
+}
+
+.tabulator-menu-item-disabled {
+  @apply opacity-50 cursor-not-allowed;
+}
+
+.tabulator-menu-item-disabled:hover {
+  @apply bg-transparent text-popover-foreground;
+}
+
+.tabulator-menu-separator {
+  @apply border-t my-1;
+}
+
+.tabulator-header-menu-button {
+  @apply text-muted-foreground hover:text-foreground cursor-pointer;
+}
+
+/* Formatters */
+.tabulator-traffic-light {
+  @apply rounded-full;
+}
+
+/* Editors */
+.tabulator-editable {
+  @apply cursor-pointer;
+}
+
+.tabulator-edit-list {
+  @apply bg-popover text-popover-foreground border rounded shadow-lg max-h-60 overflow-auto;
+}
+
+.tabulator-edit-list-item {
+  @apply px-3 py-2 cursor-pointer hover:bg-accent hover:text-accent-foreground transition-colors;
+}
+
+.tabulator-edit-list-placeholder {
+  @apply px-3 py-2 text-muted-foreground cursor-default;
+}
+
+.tabulator-edit-list-group {
+  @apply px-3 py-1 text-muted-foreground text-xs font-medium;
+}
+
+/* Spreadsheet */
+.tabulator-spreadsheet-tabs {
+  @apply bg-muted border-b flex;
+}
+
+.tabulator-spreadsheet-tab {
+  @apply bg-background text-foreground border-r px-4 py-2 cursor-pointer hover:bg-accent hover:text-accent-foreground transition-colors;
+}
+
+.tabulator-spreadsheet-tab-active {
+  @apply bg-primary text-primary-foreground border-primary;
+}
+
+/* Range Selection */
+.tabulator-ranges {
+  @apply relative;
+}
+
+.tabulator-range-highlight {
+  @apply bg-accent/30;
+}
+
+.tabulator-range-selected {
+  @apply bg-primary/20 text-primary-foreground;
+}
+
+.tabulator-range-row-header {
+  @apply bg-muted border-r;
+}
+
+.tabulator-range-overlay {
+  @apply border-2 border-primary bg-primary/10 pointer-events-none;
+}
+
+.tabulator-range-active {
+  @apply border-primary bg-primary/20;
+}
