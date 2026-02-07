@@ -7,7 +7,7 @@ import { ThemeProvider } from '../src/components/theme'
 render(() => {
   return (
     <ColorModeProvider>
-      <ThemeProvider defaultTheme={{ base: { radius: 'none' } }} storageKey="shadcn-solid-theme">
+      <ThemeProvider defaultTheme={{ base: { radius: 'md' } }} storageKey="shadcn-solid-theme">
         <App />
       </ThemeProvider>
     </ColorModeProvider>

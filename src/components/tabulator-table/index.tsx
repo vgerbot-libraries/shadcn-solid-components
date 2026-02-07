@@ -1,7 +1,7 @@
 import type { ComponentProps, Accessor } from 'solid-js'
 import { mergeProps, onCleanup, onMount, splitProps } from 'solid-js'
 import type { Options, Tabulator } from 'tabulator-tables'
-import { Tabulator as TabulatorClass } from 'tabulator-tables'
+import { TabulatorFull } from 'tabulator-tables'
 
 export type DataTableProps = ComponentProps<'div'> & {
   /** Tabulator options configuration */
@@ -33,7 +33,7 @@ export function TabulatorTable(props: DataTableProps) {
     tableElement.style.setProperty('--shadcn-tabulator-row-height', (options?.rowHeight ?? 36) + 'px');
 
     // Create Tabulator instance
-    const instance = new TabulatorClass(tableElement, options)
+    const instance = new TabulatorFull(tableElement, options)
     instance.on('tableBuilt', () => {
       merged.onInit?.(instance)
     })

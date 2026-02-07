@@ -1,4 +1,4 @@
-import type { Component } from 'solid-js'
+import { createEffect, type Component } from 'solid-js'
 import { For, createSignal } from 'solid-js'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/card'
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/table'
@@ -25,7 +25,7 @@ import {
   ChevronLeftDoubleIcon,
   ChevronRightDoubleIcon,
 } from './icons'
-import { Tabulator } from '@types/tabulator-tables';
+import { type Tabulator } from 'tabulator-tables';
 
 // Chart data
 const chartData = [
@@ -143,6 +143,19 @@ export const Main: Component = () => {
   const [selectedRows, setSelectedRows] = createSignal<Set<number>>(new Set())
 
   const [tabulator, setTabulator] = createSignal<Tabulator | undefined>()
+
+  createEffect(() => {
+    const table = tabulator();
+    if (!table) {
+      return;
+    }
+    table.on('rowSelected', row => {
+      row.getElement().classList.add('bg-muted');
+    })
+    table.on('rowDeselected', row => {
+      row.getElement().classList.remove('bg-muted');
+    })
+  })
 
   const toggleRow = (index: number) => {
     setSelectedRows(prev => {
@@ -299,6 +312,20 @@ export const Main: Component = () => {
                 movableColumns: true,
                 paginationCounter: "rows",
                 rowHeight: 49,
+                // selectableRows: true,
+
+
+                selectableRows:true,
+                // //enable range selection
+                selectableRange:1,
+                selectableRangeColumns:true,
+                selectableRangeRows:true,
+                selectableRangeClearCells:true,
+
+                editTriggerEvent:"dblclick",
+
+                rowHeader:{resizable: false, frozen: true, width:40, hozAlign:"center", formatter: "rownum", },
+
                 columns: [
                   {title:"Name", field:"name", sorter:"string", width:200},
                   {title:"Progress", field:"progress", sorter:"number", formatter:"progress"},
