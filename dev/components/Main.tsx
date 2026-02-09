@@ -315,8 +315,6 @@ export const Main: Component = () => {
                 // selectableRows: true,
 
 
-                selectableRows:true,
-                // //enable range selection
                 selectableRange:1,
                 selectableRangeColumns:true,
                 selectableRangeRows:true,
@@ -329,7 +327,15 @@ export const Main: Component = () => {
                 columns: [
                   {title:"Name", field:"name", sorter:"string", width:200},
                   {title:"Progress", field:"progress", sorter:"number", formatter:"progress"},
-                  {title:"Gender", field:"gender", sorter:"string"},
+                  {title:"Gender", field:"gender", sorter:"string",editor: 'list', editorParams: {
+                    values: [{
+                      label: '男',
+                      value: 'male'
+                    }, {
+                      label: '女',
+                      value: 'female'
+                    }],
+                  }},
                   {title:"Rating", field:"rating", formatter:"star", hozAlign:"center", width:100},
                   {title:"Favourite Color", field:"col", sorter:"string"},
                 ],
