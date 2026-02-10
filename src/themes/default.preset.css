@@ -47,6 +47,8 @@
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
 
+  --radius-dynamic: var(--radius-md);
+
   /* Colors */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -177,4 +179,8 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+@utility rounded-dynamic {
+  border-radius: var(--radius-dynamic);
 }

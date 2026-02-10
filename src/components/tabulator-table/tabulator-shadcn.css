@@ -63,16 +63,16 @@
 	/* border to tabulator */
 	--tabulator-footerBackgroundColor: var(--tabulator-backgroundColor);
 	/* footer text color */
-	--tabulator-footerTextColor: var(--color-gray-900);
+	--tabulator-footerTextColor: var(--color-foreground);
 	/* footer border color */
-	--tabulator-footerBorderColor: var(--color-gray-100);
+	--tabulator-footerBorderColor: var(--color-border);
 	/* footer bottom separator color */
-	--tabulator-footerSeparatorColor: var(--color-gray-300);
+	--tabulator-footerSeparatorColor: var(--color-border);
 	/* footer bottom active text color */
-	--tabulator-footerActiveColor: var(--color-violet-700);
+	--tabulator-footerActiveColor: var(--color-muted-foreground);
 
 	/* color for the active spreadsheet tab */
-	--tabulator-spreadsheetActiveTabColor: var(--color-violet-100);
+	--tabulator-spreadsheetActiveTabColor: var(--color-muted);
 
 	/* -- range selection -- */
 
