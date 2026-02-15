@@ -1,0 +1,41 @@
+/* ==========================================================================
+   TanStack Table - Custom Styles
+   Uses CSS variables from the project's theme system.
+   ========================================================================== */
+
+/* Column resize handle */
+[data-slot="tanstack-table-resize-handle"] {
+  background: transparent;
+  transition: background-color 150ms ease;
+}
+
+[data-slot="tanstack-table-resize-handle"]:hover {
+  background-color: var(--color-border);
+}
+
+[data-slot="tanstack-table-resize-handle"][data-resizing] {
+  background-color: var(--color-primary);
+}
+
+/* Pinned column border indicators */
+[data-slot="tanstack-table"] [data-pinned-border="left"] {
+  border-right: 1px solid var(--color-border);
+}
+
+[data-slot="tanstack-table"] [data-pinned-border="right"] {
+  border-left: 1px solid var(--color-border);
+}
+
+/* Pinned cell inherits row selected/hover background */
+[data-slot="tanstack-table-row"]:hover [data-pinned] {
+  background-color: oklch(from var(--color-muted) l c h / 0.5);
+}
+
+[data-slot="tanstack-table-row"][data-state="selected"] [data-pinned] {
+  background-color: var(--color-muted);
+}
+
+/* Expanded row sub-component area */
+[data-slot="tanstack-table-expanded-row"] > td {
+  background-color: oklch(from var(--color-muted) l c h / 0.3);
+}
