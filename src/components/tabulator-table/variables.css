@@ -45,6 +45,7 @@
   --tabulator-rowTextColor: #333;
 
   --tabulator-rowSelectedBackground: #9abcea;
+  --tabulator-rowSelectedForeground: #1d68cd;
   /* row background color when selected */
   /* row background color when selected and hovered */
   --tabulator-rowSelectedBackgroundHover: #769bcc;

@@ -50,6 +50,7 @@
 
   /* row background color when selected */
   --tabulator-rowSelectedBackground: var(--color-muted);
+  --tabulator-rowSelectedForeground: var(--color-muted-foreground);
   /* row background color when selected and hovered */
   --tabulator-rowSelectedBackgroundHover: var(--color-violet-200);
 
@@ -77,7 +78,7 @@
   /* -- range selection -- */
 
   /* range border color */
-  --tabulator-rangeBorderColor: var(--color-violet-500);
+  --tabulator-rangeBorderColor: var(--primary);
   /* range handle color */
   --tabulator-rangeHandleColor: var(--tabulator-rangeBorderColor);
   /* header background color when selected */
@@ -109,7 +110,7 @@
 
 /* add some text styling for selected cells */
 .tabulator .tabulator-row.tabulator-selected {
-  @apply text-violet-700;
+  color: var(--tabulator-rowSelectedForeground);
 }
 
 /* header cell styling */
@@ -119,7 +120,7 @@
 
 /* range selection styling */
 .tabulator .tabulator-row .tabulator-cell.tabulator-range-selected {
-  @apply text-violet-700;
+  color: var(--tabulator-rowSelectedForeground);
 }
 
 /* add data tree branch color */
