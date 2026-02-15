@@ -2,7 +2,7 @@ import { Slider as SliderPrimitive } from '@kobalte/core/slider'
 import type { VoidProps } from 'solid-js'
 import { type ComponentProps, splitProps, type ValidComponent } from 'solid-js'
 import { ComponentName } from '@/lib/theme-context'
-import { useComponentClass, useRadiusClass } from '@/lib/theme-helpers'
+import { useComponentClass } from '@/lib/theme-helpers'
 import { cx } from '@/registry/lib/cva'
 
 export type SliderProps<T extends ValidComponent = 'div'> = ComponentProps<
@@ -30,7 +30,6 @@ export type SliderTrackProps<T extends ValidComponent = 'div'> = ComponentProps<
 
 export const SliderTrack = <T extends ValidComponent = 'div'>(props: SliderTrackProps<T>) => {
   const [, rest] = splitProps(props as SliderTrackProps, ['class'])
-  const radiusClass = useRadiusClass('special')
   const componentClass = useComponentClass(ComponentName.Slider, props as SliderProps)
 
   return (
@@ -38,7 +37,7 @@ export const SliderTrack = <T extends ValidComponent = 'div'>(props: SliderTrack
       data-slot="slider-track"
       class={cx(
         'bg-muted relative data-[orientation=horizontal]:h-1.5 data-[orientation=horizontal]:w-full data-[orientation=vertical]:h-[inherit] data-[orientation=vertical]:min-h-[inherit] data-[orientation=vertical]:w-1.5',
-        radiusClass,
+        'rounded-component',
         componentClass,
         props.class,
       )}
@@ -53,7 +52,6 @@ export type SliderFillProps<T extends ValidComponent = 'div'> = VoidProps<
 
 export const SliderFill = <T extends ValidComponent = 'div'>(props: SliderFillProps<T>) => {
   const [, rest] = splitProps(props as SliderFillProps, ['class'])
-  const radiusClass = useRadiusClass('special')
   const componentClass = useComponentClass(ComponentName.Slider, props as SliderProps)
 
   return (
@@ -61,7 +59,7 @@ export const SliderFill = <T extends ValidComponent = 'div'>(props: SliderFillPr
       data-slot="slider-fill"
       class={cx(
         'bg-primary absolute data-[orientation=horizontal]:h-full data-[orientation=vertical]:w-full',
-        radiusClass,
+        'rounded-component',
         componentClass,
         props.class,
       )}
@@ -76,7 +74,6 @@ export type SliderThumbProps<T extends ValidComponent = 'span'> = VoidProps<
 
 export const SliderThumb = <T extends ValidComponent = 'span'>(props: SliderThumbProps<T>) => {
   const [, rest] = splitProps(props as SliderThumbProps, ['class'])
-  const radiusClass = useRadiusClass('special')
   const componentClass = useComponentClass(ComponentName.Slider, props as SliderProps)
 
   return (
@@ -84,7 +81,7 @@ export const SliderThumb = <T extends ValidComponent = 'span'>(props: SliderThum
       data-slot="slider-thumb"
       class={cx(
         'border-primary bg-background ring-ring/50 size-4 border shadow-sm transition-[color,box-shadow] hover:ring-4 focus-visible:ring-4 focus-visible:outline-hidden disabled:pointer-events-none disabled:opacity-50 data-[orientation=horizontal]:-top-1 data-[orientation=vertical]:-left-1',
-        radiusClass,
+        'rounded-component',
         componentClass,
         props.class,
       )}

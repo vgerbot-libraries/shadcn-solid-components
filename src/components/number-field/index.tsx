@@ -2,7 +2,7 @@ import { NumberField as NumberFieldPrimitive } from '@kobalte/core/number-field'
 import type { ValidComponent, VoidProps } from 'solid-js'
 import { type ComponentProps, splitProps } from 'solid-js'
 import { ComponentName } from '@/lib/theme-context'
-import { useComponentClass, useRadiusClass } from '@/lib/theme-helpers'
+import { useComponentClass } from '@/lib/theme-helpers'
 import { cx } from '@/registry/lib/cva'
 
 export type NumberFieldProps<T extends ValidComponent = 'div'> = ComponentProps<
@@ -25,7 +25,6 @@ export type NumberFieldGroupProps = ComponentProps<'div'>
 
 export const NumberFieldGroup = (props: NumberFieldGroupProps) => {
   const [, rest] = splitProps(props, ['class'])
-  const radiusClass = useRadiusClass('form-control')
   const componentClass = useComponentClass(ComponentName.NumberField, props as NumberFieldProps)
 
   return (
@@ -33,7 +32,7 @@ export const NumberFieldGroup = (props: NumberFieldGroupProps) => {
       data-slot="number-field-group"
       class={cx(
         'focus-within:border-ring focus-within:ring-ring/50 border-input has-aria-invalid:ring-destructive/20 dark:has-aria-invalid:ring-destructive/40 has-aria-invalid:border-destructive relative border transition-shadow focus-within:ring-[3px]',
-        radiusClass,
+        'rounded-component',
         componentClass,
         props.class,
       )}
@@ -71,7 +70,6 @@ export const NumberFieldInput = <T extends ValidComponent = 'input'>(
   props: NumberFieldInputProps<T>,
 ) => {
   const [, rest] = splitProps(props as NumberFieldInputProps, ['class'])
-  const radiusClass = useRadiusClass('form-control')
   const componentClass = useComponentClass(ComponentName.NumberField, props as NumberFieldProps)
 
   return (
@@ -79,7 +77,7 @@ export const NumberFieldInput = <T extends ValidComponent = 'input'>(
       data-slot="number-field-input"
       class={cx(
         'placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground dark:bg-input/30 flex h-9 w-full min-w-0 bg-transparent px-3 py-1 text-center text-base shadow-xs transition-colors outline-none disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm',
-        radiusClass,
+        'rounded-component',
         componentClass,
         props.class,
       )}

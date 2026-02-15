@@ -2,7 +2,7 @@ import { Tabs as TabsPrimitive } from '@kobalte/core/tabs'
 import type { ComponentProps, ValidComponent } from 'solid-js'
 import { splitProps } from 'solid-js'
 import { ComponentName } from '@/lib/theme-context'
-import { useComponentClass, useRadiusClass } from '@/lib/theme-helpers'
+import { useComponentClass } from '@/lib/theme-helpers'
 import { cx } from '@/registry/lib/cva'
 
 export type TabsProps<T extends ValidComponent = 'div'> = ComponentProps<typeof TabsPrimitive<T>>
@@ -25,7 +25,6 @@ export type TabsListProps<T extends ValidComponent = 'div'> = ComponentProps<
 
 export const TabsList = <T extends ValidComponent = 'div'>(props: TabsListProps<T>) => {
   const [, rest] = splitProps(props as TabsListProps, ['class'])
-  const radiusClass = useRadiusClass('navigation')
   const componentClass = useComponentClass(ComponentName.Tabs, props as TabsProps)
 
   return (
@@ -34,7 +33,7 @@ export const TabsList = <T extends ValidComponent = 'div'>(props: TabsListProps<
       class={cx(
         'bg-muted text-muted-foreground ring-muted relative flex h-[calc(var(--spacing)*7.5)] w-fit items-center justify-center ring-[3px]',
         'data-[orientation=vertical]:mt-[3px] data-[orientation=vertical]:size-full data-[orientation=vertical]:flex-col',
-        radiusClass,
+        'rounded-component',
         componentClass,
         props.class,
       )}
@@ -84,7 +83,6 @@ export type TabsIndicatorProps<T extends ValidComponent = 'div'> = ComponentProp
 
 export const TabsIndicator = <T extends ValidComponent = 'div'>(props: TabsIndicatorProps<T>) => {
   const [, rest] = splitProps(props as TabsIndicatorProps, ['class'])
-  const radiusClass = useRadiusClass('navigation')
   const componentClass = useComponentClass(ComponentName.Tabs, props as TabsProps)
 
   return (
@@ -92,7 +90,7 @@ export const TabsIndicator = <T extends ValidComponent = 'div'>(props: TabsIndic
       data-slot="tabs-indicator"
       class={cx(
         'bg-background dark:bg-input/30 dark:border-input peer-focus-visible:border-ring peer-focus-visible:ring-ring/50 peer-focus-visible:outline-ring absolute inset-0 border border-transparent shadow-sm transition-[box-shadow,transform,width,height] duration-200 peer-focus-visible:ring-[3px] peer-focus-visible:outline-1',
-        radiusClass,
+        'rounded-component',
         componentClass,
         props.class,
       )}

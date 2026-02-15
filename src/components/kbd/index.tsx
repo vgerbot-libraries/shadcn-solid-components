@@ -1,13 +1,12 @@
 import { type ComponentProps, splitProps } from 'solid-js'
 import { ComponentName } from '@/lib/theme-context'
-import { useComponentClass, useRadiusClass } from '@/lib/theme-helpers'
+import { useComponentClass } from '@/lib/theme-helpers'
 import { cx } from '@/registry/lib/cva'
 
 export type KbdProps = ComponentProps<'kbd'>
 
 export const Kbd = (props: KbdProps) => {
   const [, rest] = splitProps(props, ['class'])
-  const radiusClass = useRadiusClass('display')
   const componentClass = useComponentClass(ComponentName.Kbd, props)
 
   return (
@@ -17,7 +16,7 @@ export const Kbd = (props: KbdProps) => {
         'bg-muted text-muted-foreground pointer-events-none inline-flex h-5 w-fit min-w-5 items-center justify-center gap-1 px-1 font-sans text-xs font-medium select-none',
         "[&_svg:not([class*='size-'])]:size-3",
         '[[data-slot=tooltip-content]_&]:bg-background/20 [[data-slot=tooltip-content]_&]:text-background dark:[[data-slot=tooltip-content]_&]:bg-background/10',
-        radiusClass,
+        'rounded-component',
         componentClass,
         props.class,
       )}

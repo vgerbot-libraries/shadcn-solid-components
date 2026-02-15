@@ -2,7 +2,7 @@ import { Select as SelectPrimitive } from '@kobalte/core/select'
 import type { ComponentProps, ValidComponent, VoidProps } from 'solid-js'
 import { mergeProps, splitProps } from 'solid-js'
 import { ComponentName } from '@/lib/theme-context'
-import { useComponentClass, useRadiusClass } from '@/lib/theme-helpers'
+import { useComponentClass } from '@/lib/theme-helpers'
 import { cx } from '@/registry/lib/cva'
 
 export const SelectPortal = SelectPrimitive.Portal
@@ -43,7 +43,6 @@ export const SelectTrigger = <T extends ValidComponent = 'button'>(
 ) => {
   const merge = mergeProps({ size: 'default' } as SelectTriggerProps, props)
   const [, rest] = splitProps(merge, ['class', 'size', 'children'])
-  const radiusClass = useRadiusClass('form-control')
   const componentClass = useComponentClass(ComponentName.Select, merge as SelectProps<any>)
 
   return (
@@ -52,7 +51,7 @@ export const SelectTrigger = <T extends ValidComponent = 'button'>(
       data-size={props.size}
       class={cx(
         "border-input data-[placeholder]:text-muted-foreground [&_svg:not([class*='text-'])]:text-muted-foreground focus-visible:border-ring focus-visible:ring-ring/50 data-[invalid]:ring-destructive/20 dark:data-[invalid]:ring-destructive/40 data-[invalid]:border-destructive dark:bg-input/30 dark:hover:bg-input/50 flex w-fit items-center justify-between gap-2 border bg-transparent px-3 py-2 text-sm whitespace-nowrap shadow-xs transition-[color,box-shadow] outline-none focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50 data-[size=default]:h-9 data-[size=sm]:h-8 *:data-[slot=select-value]:line-clamp-1 *:data-[slot=select-value]:flex *:data-[slot=select-value]:items-center *:data-[slot=select-value]:gap-2 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
-        radiusClass,
+        'rounded-component',
         componentClass,
         props.class,
       )}
@@ -85,7 +84,6 @@ export type SelectContentProps<T extends ValidComponent = 'div'> = VoidProps<
 export const SelectContent = <T extends ValidComponent = 'div'>(props: SelectContentProps<T>) => {
   const [, rest] = splitProps(props as SelectContentProps, ['class'])
 
-  const radiusClass = useRadiusClass('overlay')
   const componentClass = useComponentClass(
     ComponentName.Select,
     props as unknown as SelectProps<any>,
@@ -96,7 +94,7 @@ export const SelectContent = <T extends ValidComponent = 'div'>(props: SelectCon
       data-slot="select-content"
       class={cx(
         'bg-popover text-popover-foreground data-[expanded]:animate-in data-[closed]:animate-out data-[closed]:fade-out-0 data-[expanded]:fade-in-0 data-[closed]:zoom-out-95 data-[expanded]:zoom-in-95 relative z-50 min-w-[8rem] origin-(--kb-select-content-transform-origin) overflow-x-hidden overflow-y-auto border shadow-md',
-        radiusClass,
+        'rounded-component',
         componentClass,
         "[[data-popper-positioner][style*='--kb-popper-content-transform-origin:_top']>[data-slot=select-content]]:slide-in-from-top-2 [[data-popper-positioner][style*='--kb-popper-content-transform-origin:_bottom']>[data-slot=select-content]]:slide-in-from-bottom-2 [[data-popper-positioner][style*='--kb-popper-content-transform-origin:_left']>[data-slot=select-content]]:slide-in-from-left-2 [[data-popper-positioner][style*='--kb-popper-content-transform-origin:_right']>[data-slot=select-content]]:slide-in-from-right-2",
         props.class,
@@ -114,7 +112,6 @@ export type SelectItemProps<T extends ValidComponent = 'li'> = ComponentProps<
 
 export const SelectItem = <T extends ValidComponent = 'li'>(props: SelectItemProps<T>) => {
   const [, rest] = splitProps(props as SelectItemProps, ['class', 'children'])
-  const radiusClass = useRadiusClass('menu-item')
   const componentClass = useComponentClass(
     ComponentName.Select,
     props as unknown as SelectProps<any>,
@@ -125,7 +122,7 @@ export const SelectItem = <T extends ValidComponent = 'li'>(props: SelectItemPro
       data-slot="select-item"
       class={cx(
         "focus:bg-accent focus:text-accent-foreground [&_svg:not([class*='text-'])]:text-muted-foreground relative flex w-full cursor-default items-center justify-between gap-2 px-2 py-1.5 text-sm outline-hidden select-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 *:[span]:last:flex *:[span]:last:items-center *:[span]:last:gap-2",
-        radiusClass,
+        'rounded-component',
         componentClass,
         props.class,
       )}

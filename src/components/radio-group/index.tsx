@@ -2,7 +2,7 @@ import { RadioGroup as RadioGroupPrimitive } from '@kobalte/core/radio-group'
 import type { VoidProps } from 'solid-js'
 import { type ComponentProps, splitProps, type ValidComponent } from 'solid-js'
 import { ComponentName } from '@/lib/theme-context'
-import { useComponentClass, useRadiusClass } from '@/lib/theme-helpers'
+import { useComponentClass } from '@/lib/theme-helpers'
 import { cx } from '@/registry/lib/cva'
 
 export type RadioGroupProps<T extends ValidComponent = 'div'> = ComponentProps<
@@ -76,7 +76,6 @@ export const RadioGroupItemControl = <T extends ValidComponent = 'div'>(
   props: RadioGroupItemControlProps<T>,
 ) => {
   const [, rest] = splitProps(props as RadioGroupItemControlProps, ['class'])
-  const radiusClass = useRadiusClass('special')
   const componentClass = useComponentClass(ComponentName.RadioGroup, props as RadioGroupProps)
 
   return (
@@ -86,7 +85,7 @@ export const RadioGroupItemControl = <T extends ValidComponent = 'div'>(
         'border-input dark:bg-input/30 flex size-4 items-center justify-center border shadow-xs transition-[color,box-shadow] outline-none disabled:cursor-not-allowed disabled:opacity-50',
         'data-[invalid]:ring-destructive/20 dark:data-[invalid]:ring-destructive/40 data-[invalid]:border-destructive',
         'peer-focus-visible/radio-group:ring-ring/50 peer-focus-visible/radio-group:border-ring peer-focus-visible/radio-group:ring-[3px]',
-        radiusClass,
+        'rounded-component',
         componentClass,
         props.class,
       )}
@@ -103,14 +102,13 @@ export const RadioGroupItemIndicator = <T extends ValidComponent = 'div'>(
   props: RadioGroupItemIndicatorProps<T>,
 ) => {
   const [, rest] = splitProps(props as RadioGroupItemIndicatorProps, ['class'])
-  const radiusClass = useRadiusClass('special')
   const componentClass = useComponentClass(ComponentName.RadioGroup, props as RadioGroupProps)
 
   return (
     <RadioGroupPrimitive.ItemIndicator
       forceMount
       data-slot="radio-group-item-indicator"
-      class={cx('data-[checked]:bg-primary size-2', radiusClass, componentClass, props.class)}
+      class={cx('data-[checked]:bg-primary size-2', 'rounded-component', componentClass, props.class)}
       {...rest}
     />
   )

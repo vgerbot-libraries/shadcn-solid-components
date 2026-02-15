@@ -575,7 +575,7 @@
 
       /* border: 1px solid var(--tabulator-footerBorderColor); */
 
-      @apply rounded-dynamic border inline-block outline-none mx-3;
+      @apply rounded-component border inline-block outline-none mx-3;
     }
 
     .tabulator-pages {

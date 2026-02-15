@@ -17,6 +17,7 @@
   --vis-tooltip-text-color: var(--color-foreground);
   --vis-font-family: var(--font-sans);
   --vis-legend-label-color: var(--vis-tooltip-text-color);
+  --radius-component: var(--radius-sm);
 }
 
 /* Dev-specific styles */

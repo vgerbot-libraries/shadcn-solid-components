@@ -1,7 +1,7 @@
 import { Switch as SwitchPrimitive } from '@kobalte/core/switch'
 import { type ComponentProps, splitProps, type ValidComponent } from 'solid-js'
 import { ComponentName } from '@/lib/theme-context'
-import { useComponentClass, useRadiusClass } from '@/lib/theme-helpers'
+import { useComponentClass } from '@/lib/theme-helpers'
 import { cx } from '@/registry/lib/cva'
 
 export type SwitchProps<T extends ValidComponent = 'div'> = ComponentProps<
@@ -18,7 +18,6 @@ export type SwitchControlProps<T extends ValidComponent = 'div'> = ComponentProp
 
 export const SwitchControl = <T extends ValidComponent = 'div'>(props: SwitchControlProps<T>) => {
   const [, rest] = splitProps(props as SwitchControlProps, ['class'])
-  const radiusClass = useRadiusClass('special')
   const componentClass = useComponentClass(ComponentName.Switch, props as SwitchProps)
 
   return (
@@ -29,7 +28,7 @@ export const SwitchControl = <T extends ValidComponent = 'div'>(props: SwitchCon
         'data-[checked]:bg-primary',
         'peer-focus-visible/switch-input:border-ring peer-focus-visible/switch-input:ring-ring/50 peer-focus-visible/switch-input:ring-[3px]',
         'data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50',
-        radiusClass,
+        'rounded-component',
         componentClass,
         props.class,
       )}
@@ -44,7 +43,6 @@ export type SwitchThumbProps<T extends ValidComponent = 'div'> = ComponentProps<
 
 export const SwitchThumb = <T extends ValidComponent = 'div'>(props: SwitchThumbProps<T>) => {
   const [, rest] = splitProps(props as SwitchThumbProps, ['class'])
-  const radiusClass = useRadiusClass('special')
   const componentClass = useComponentClass(ComponentName.Switch, props as SwitchProps)
 
   return (
@@ -53,7 +51,7 @@ export const SwitchThumb = <T extends ValidComponent = 'div'>(props: SwitchThumb
       class={cx(
         'bg-background dark:bg-foreground pointer-events-none size-4 transition-transform data-[checked]:translate-x-[calc(100%-2px)]',
         'dark:data-[checked]:bg-primary-foreground dark:bg-foreground',
-        radiusClass,
+        'rounded-component',
         componentClass,
         props.class,
       )}

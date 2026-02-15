@@ -2,7 +2,7 @@ import { TextField as TextFieldPrimitive } from '@kobalte/core/text-field'
 import type { ComponentProps, ValidComponent } from 'solid-js'
 import { For, Match, Switch, splitProps } from 'solid-js'
 import { ComponentName } from '@/lib/theme-context'
-import { useComponentClass, useRadiusClass } from '@/lib/theme-helpers'
+import { useComponentClass } from '@/lib/theme-helpers'
 import { cx } from '@/registry/lib/cva'
 
 export type TextFieldProps<T extends ValidComponent = 'div'> = ComponentProps<
@@ -30,7 +30,6 @@ export const TextFieldInput = <T extends ValidComponent = 'input'>(
 ) => {
   const [, rest] = splitProps(props as TextFieldInputProps, ['class'])
 
-  const radiusClass = useRadiusClass('form-control')
   const componentClass = useComponentClass(ComponentName.TextField, props as TextFieldProps)
 
   return (
@@ -41,7 +40,7 @@ export const TextFieldInput = <T extends ValidComponent = 'input'>(
         'focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]',
         'aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive',
         'file:text-foreground file:inline-flex file:h-7 file:border-0 file:bg-transparent file:text-sm file:font-medium',
-        radiusClass,
+        'rounded-component',
         componentClass,
         props.class,
       )}
@@ -59,7 +58,6 @@ export const TextFieldTextArea = <T extends ValidComponent = 'textarea'>(
 ) => {
   const [, rest] = splitProps(props as TextFieldTextAreaProps, ['class'])
 
-  const radiusClass = useRadiusClass('form-control')
   const componentClass = useComponentClass(ComponentName.TextField, props as TextFieldProps)
 
   return (
@@ -69,7 +67,7 @@ export const TextFieldTextArea = <T extends ValidComponent = 'textarea'>(
         'placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground dark:bg-input/30 border-input flex min-h-16 border bg-transparent px-3 py-1 text-base shadow-xs transition-[color,box-shadow] outline-none disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm',
         'focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]',
         'aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive',
-        radiusClass,
+        'rounded-component',
         componentClass,
         props.class,
       )}

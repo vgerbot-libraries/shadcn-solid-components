@@ -2,14 +2,13 @@ import { Command as CommandPrimitive } from 'cmdk-solid'
 import type { ComponentProps } from 'solid-js'
 import { splitProps } from 'solid-js'
 import { ComponentName } from '@/lib/theme-context'
-import { useComponentClass, useRadiusClass } from '@/lib/theme-helpers'
+import { useComponentClass } from '@/lib/theme-helpers'
 import { cx } from '@/registry/lib/cva'
 
 export type CommandProps = ComponentProps<typeof CommandPrimitive>
 
 export const Command = (props: CommandProps) => {
   const [, rest] = splitProps(props, ['class'])
-  const radiusClass = useRadiusClass('overlay')
   const componentClass = useComponentClass(ComponentName.Command, props)
 
   return (
@@ -17,7 +16,7 @@ export const Command = (props: CommandProps) => {
       data-slot="command"
       class={cx(
         'bg-popover text-popover-foreground flex h-full w-full flex-col overflow-hidden',
-        radiusClass,
+        'rounded-component',
         componentClass,
         props.class,
       )}
@@ -34,7 +33,6 @@ export type CommandDialogProps = ComponentProps<typeof CommandPrimitive.Dialog> 
 export const CommandDialog = (props: CommandDialogProps) => {
   const [, rest] = splitProps(props, ['contentClassName', 'overlayClassName', 'class'])
 
-  const radiusClass = useRadiusClass('overlay')
   const componentClass = useComponentClass(ComponentName.Command, props as CommandProps)
 
   return (
@@ -42,7 +40,7 @@ export const CommandDialog = (props: CommandDialogProps) => {
       data-slot="command-dialog"
       contentClassName={cx(
         'bg-popover data-[expanded]:animate-in data-[closed]:animate-out data-[closed]:fade-out-0 data-[expanded]:fade-in-0 data-[closed]:zoom-out-95 data-[expanded]:zoom-in-95 fixed left-[50%] top-[50%] z-50 grid w-full max-w-[calc(100%-2rem)] translate-x-[-50%] translate-y-[-50%] gap-4 shadow-lg duration-200 sm:max-w-lg overflow-hidden',
-        radiusClass,
+        'rounded-component',
         componentClass,
         props.contentClassName,
       )}
@@ -52,7 +50,7 @@ export const CommandDialog = (props: CommandDialogProps) => {
       )}
       class={cx(
         'bg-popover text-popover-foreground [&_[cmdk-group-heading]]:text-muted-foreground flex h-full w-full flex-col overflow-hidden **:data-[slot=command-input-wrapper]:h-12 [&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:font-medium [&_[cmdk-group]]:px-2 [&_[cmdk-group]:not([hidden])_~[cmdk-group]]:pt-0 [&_[cmdk-input-wrapper]_svg]:h-5 [&_[cmdk-input-wrapper]_svg]:w-5 [&_[cmdk-input]]:h-12 [&_[cmdk-item]]:px-2 [&_[cmdk-item]]:py-3 [&_[cmdk-item]_svg]:h-5 [&_[cmdk-item]_svg]:w-5',
-        radiusClass,
+        'rounded-component',
         componentClass,
         props.class,
       )}
@@ -65,7 +63,6 @@ export type CommandInputProps = ComponentProps<typeof CommandPrimitive.Input>
 
 export const CommandInput = (props: CommandInputProps) => {
   const [, rest] = splitProps(props, ['class'])
-  const radiusClass = useRadiusClass('form-control')
   const componentClass = useComponentClass(ComponentName.Command, props as CommandProps)
 
   return (
@@ -90,7 +87,7 @@ export const CommandInput = (props: CommandInputProps) => {
         data-slot="command-input"
         class={cx(
           'placeholder:text-muted-foreground flex h-10 w-full bg-transparent py-3 text-sm outline-hidden disabled:cursor-not-allowed disabled:opacity-50',
-          radiusClass,
+          'rounded-component',
           componentClass,
           props.class,
         )}
@@ -163,7 +160,6 @@ export type CommandItemProps = ComponentProps<typeof CommandPrimitive.Item>
 
 export const CommandItem = (props: CommandItemProps) => {
   const [, rest] = splitProps(props, ['class'])
-  const radiusClass = useRadiusClass('menu-item')
   const componentClass = useComponentClass(ComponentName.Command, props as CommandProps)
 
   return (
@@ -171,7 +167,7 @@ export const CommandItem = (props: CommandItemProps) => {
       data-slot="command-item"
       class={cx(
         "data-[selected=true]:bg-accent data-[selected=true]:text-accent-foreground [&_svg:not([class*='text-'])]:text-muted-foreground relative flex cursor-default items-center gap-2 px-2 py-1.5 text-sm outline-hidden select-none data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
-        radiusClass,
+        'rounded-component',
         componentClass,
         props.class,
       )}

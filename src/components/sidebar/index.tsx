@@ -18,7 +18,7 @@ import {
   useContext,
 } from 'solid-js'
 import { ComponentName } from '@/lib/theme-context'
-import { useComponentClass, useRadiusClass, useRadiusClassWithPrefix } from '@/lib/theme-helpers'
+import { useComponentClass } from '@/lib/theme-helpers'
 import { useIsMobile } from '@/lib/use-mobile'
 import { callHandler } from '@/registry/lib/call-handler'
 import { combineStyle } from '@/registry/lib/combine-style'
@@ -178,11 +178,6 @@ export const Sidebar = (props: SidebarProps) => {
 
   const { isMobile, state, openMobile, setOpenMobile } = useSidebar()
 
-  const floatingRadiusClass = useRadiusClassWithPrefix(
-    'navigation',
-    'group-data-[variant=floating]:',
-  )
-
   return (
     <Switch
       fallback={
@@ -226,7 +221,7 @@ export const Sidebar = (props: SidebarProps) => {
               data-slot="sidebar-inner"
               class={cx(
                 'bg-sidebar group-data-[variant=floating]:border-sidebar-border flex h-full w-full flex-col group-data-[variant=floating]:border group-data-[variant=floating]:shadow-sm',
-                floatingRadiusClass,
+                'group-data-[variant=floating]:rounded-component',
               )}
             >
               {merge.children}
@@ -358,18 +353,13 @@ export type SidebarInsetProps = ComponentProps<'main'>
 export const SidebarInset = (props: SidebarInsetProps) => {
   const [, rest] = splitProps(props, ['class'])
 
-  const conditionalRadiusClass = useRadiusClassWithPrefix(
-    'navigation',
-    'md:peer-data-[variant=inset]:',
-  )
-
   return (
     <main
       data-slot="sidebar-inset"
       class={cx(
         'bg-background relative flex w-full flex-1 flex-col',
         'md:peer-data-[variant=inset]:m-2 md:peer-data-[variant=inset]:ml-0 md:peer-data-[variant=inset]:shadow-sm md:peer-data-[variant=inset]:peer-data-[state=collapsed]:ml-2',
-        conditionalRadiusClass,
+        'md:peer-data-[variant=inset]:rounded-component',
         props.class,
       )}
       {...rest}
@@ -475,7 +465,6 @@ export const SidebarGroupLabel = <T extends ValidComponent = 'div'>(
     props,
   )
   const [, rest] = splitProps(merge, ['as', 'class'])
-  const radiusClass = useRadiusClass('navigation')
 
   return (
     <Polymorphic
@@ -485,7 +474,7 @@ export const SidebarGroupLabel = <T extends ValidComponent = 'div'>(
       class={cx(
         'text-sidebar-foreground/70 ring-sidebar-ring flex h-8 shrink-0 items-center px-2 text-xs font-medium outline-hidden transition-[margin,opacity] duration-200 ease-linear focus-visible:ring-2 [&>svg]:size-4 [&>svg]:shrink-0',
         'group-data-[collapsible=icon]:-mt-8 group-data-[collapsible=icon]:opacity-0',
-        radiusClass,
+        'rounded-component',
         merge.class,
       )}
       {...rest}
@@ -511,7 +500,6 @@ export const SidebarGroupAction = <T extends ValidComponent = 'button'>(
     props,
   )
   const [, rest] = splitProps(merge, ['as', 'class'])
-  const radiusClass = useRadiusClass('navigation')
 
   return (
     <Polymorphic
@@ -523,7 +511,7 @@ export const SidebarGroupAction = <T extends ValidComponent = 'button'>(
         // Increases the hit area of the button on mobile.
         'after:absolute after:-inset-2 md:after:hidden',
         'group-data-[collapsible=icon]:hidden',
-        radiusClass,
+        'rounded-component',
         merge.class,
       )}
       {...rest}
@@ -620,7 +608,6 @@ export const SidebarMenuButton = <T extends ValidComponent = 'button'>(
   )
   const [, rest] = splitProps(merge, ['as', 'class', 'isActive', 'size', 'variant', 'tooltip'])
   const { isMobile, state } = useSidebar()
-  const radiusClass = useRadiusClass('navigation')
 
   return (
     <Show
@@ -636,7 +623,7 @@ export const SidebarMenuButton = <T extends ValidComponent = 'button'>(
             class={SidebarMenuButtonVariants({
               size: merge.size,
               variant: merge.variant,
-              class: cx(radiusClass, merge.class),
+              class: cx('rounded-component', merge.class),
             })}
             {...rest}
           />
@@ -658,7 +645,7 @@ export const SidebarMenuButton = <T extends ValidComponent = 'button'>(
         class={SidebarMenuButtonVariants({
           size: merge.size,
           variant: merge.variant,
-          class: cx(radiusClass, merge.class),
+          class: cx('rounded-component', merge.class),
         })}
         {...rest}
       />
@@ -688,7 +675,6 @@ export const SidebarMenuAction = <T extends ValidComponent = 'button'>(
     props,
   )
   const [, rest] = splitProps(merge, ['as', 'class', 'showOnHover'])
-  const radiusClass = useRadiusClass('navigation')
 
   return (
     <Polymorphic
@@ -705,7 +691,7 @@ export const SidebarMenuAction = <T extends ValidComponent = 'button'>(
         'group-data-[collapsible=icon]:hidden',
         merge.showOnHover &&
           'peer-data-[active=true]/menu-button:text-sidebar-accent-foreground group-focus-within/menu-item:opacity-100 group-hover/menu-item:opacity-100 data-[state=open]:opacity-100 md:opacity-0',
-        radiusClass,
+        'rounded-component',
         merge.class,
       )}
       {...rest}
@@ -721,7 +707,6 @@ export const SidebarMenuBadge = <T extends ValidComponent = 'span'>(
   props: SidebarMenuBadgeProps<T>,
 ) => {
   const [, rest] = splitProps(props as SidebarMenuBadgeProps, ['class'])
-  const radiusClass = useRadiusClass('navigation')
 
   return (
     <Badge
@@ -734,7 +719,7 @@ export const SidebarMenuBadge = <T extends ValidComponent = 'span'>(
         'peer-data-[size=default]/menu-button:top-1.5',
         'peer-data-[size=lg]/menu-button:top-2.5',
         'group-data-[collapsible=icon]:hidden',
-        radiusClass,
+        'rounded-component',
         props.class,
       )}
       {...rest}
@@ -754,7 +739,6 @@ export const SidebarMenuSkeleton = (props: SidebarMenuSkeletonProps) => {
     props,
   )
   const [, rest] = splitProps(merge, ['class', 'showIcon'])
-  const radiusClass = useRadiusClass('navigation')
 
   const width = createMemo(() => `${Math.floor(Math.random() * 40) + 50}%`)
 
@@ -762,11 +746,11 @@ export const SidebarMenuSkeleton = (props: SidebarMenuSkeletonProps) => {
     <div
       data-slot="sidebar-menu-skeleton"
       data-sidebar="menu-skeleton"
-      class={cx('flex h-8 items-center gap-2 px-2', radiusClass, props.class)}
+      class={cx('flex h-8 items-center gap-2 px-2', 'rounded-component', props.class)}
       {...rest}
     >
       <Show when={merge.showIcon}>
-        <Skeleton class={cx('size-4', radiusClass)} data-sidebar="menu-skeleton-icon" />
+        <Skeleton class={cx('size-4', 'rounded-component')} data-sidebar="menu-skeleton-icon" />
       </Show>
       <Skeleton
         class="h-4 max-w-(--skeleton-width) flex-1"
@@ -837,7 +821,6 @@ export const SidebarMenuSubButton = <T extends ValidComponent = 'a'>(
     props,
   )
   const [, rest] = splitProps(merge, ['as', 'class', 'isActive', 'size'])
-  const radiusClass = useRadiusClass('navigation')
 
   return (
     <Polymorphic
@@ -852,7 +835,7 @@ export const SidebarMenuSubButton = <T extends ValidComponent = 'a'>(
         merge.size === 'sm' && 'text-xs',
         merge.size === 'md' && 'text-sm',
         'group-data-[collapsible=icon]:hidden',
-        radiusClass,
+        'rounded-component',
         merge.class,
       )}
       {...rest}

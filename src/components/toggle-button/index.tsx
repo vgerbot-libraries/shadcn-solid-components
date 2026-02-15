@@ -2,7 +2,7 @@ import { ToggleButton as ToggleButtonPrimitive } from '@kobalte/core/toggle-butt
 import type { VariantProps } from 'cva'
 import { type ComponentProps, splitProps, type ValidComponent } from 'solid-js'
 import { ComponentName } from '@/lib/theme-context'
-import { useComponentClass, useRadiusClass } from '@/lib/theme-helpers'
+import { useComponentClass } from '@/lib/theme-helpers'
 import { cva, cx } from '@/registry/lib/cva'
 
 export const toggleButtonVariants = cva({
@@ -32,7 +32,6 @@ export type ToggleButtonProps<T extends ValidComponent = 'button'> = ComponentPr
 
 export const ToggleButton = <T extends ValidComponent = 'button'>(props: ToggleButtonProps<T>) => {
   const [, rest] = splitProps(props as ToggleButtonProps, ['class', 'variant', 'size'])
-  const radiusClass = useRadiusClass('form-control')
   const componentClass = useComponentClass(ComponentName.ToggleButton, props as ToggleButtonProps)
 
   return (
@@ -41,7 +40,7 @@ export const ToggleButton = <T extends ValidComponent = 'button'>(props: ToggleB
       class={toggleButtonVariants({
         variant: props.variant,
         size: props.size,
-        class: cx(radiusClass, componentClass, props.class),
+        class: cx('rounded-component', componentClass, props.class),
       })}
       {...rest}
     />

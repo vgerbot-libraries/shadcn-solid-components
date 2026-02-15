@@ -4,7 +4,7 @@ import { splitProps } from 'solid-js'
 
 import { cx } from '@/lib/cva'
 import { ComponentName } from '@/lib/theme-context'
-import { useComponentClass, useRadiusClass } from '@/lib/theme-helpers'
+import { useComponentClass } from '@/lib/theme-helpers'
 
 export type AccordionProps<T extends ValidComponent = 'div'> = ComponentProps<
   typeof AccordionPrimitive<T>
@@ -38,7 +38,6 @@ export const AccordionTrigger = <T extends ValidComponent = 'button'>(
   props: AccordionTriggerProps<T>,
 ) => {
   const [, rest] = splitProps(props as AccordionTriggerProps, ['class', 'children'])
-  const radiusClass = useRadiusClass('display')
   const componentClass = useComponentClass(ComponentName.Accordion, props as AccordionProps)
 
   return (
@@ -47,7 +46,7 @@ export const AccordionTrigger = <T extends ValidComponent = 'button'>(
         data-slot="accordion-trigger"
         class={cx(
           'focus-visible:border-ring focus-visible:ring-ring/50 flex flex-1 items-start justify-between gap-4 py-4 text-left text-sm font-medium transition-all outline-none hover:underline focus-visible:ring-[3px] disabled:pointer-events-none disabled:opacity-50 [&[data-expanded]>svg]:rotate-180',
-          radiusClass,
+          'rounded-component',
           componentClass,
           props.class,
         )}

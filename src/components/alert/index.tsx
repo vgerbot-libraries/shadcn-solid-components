@@ -5,7 +5,7 @@ import { splitProps } from 'solid-js'
 
 import { cva, cx } from '@/lib/cva'
 import { ComponentName } from '@/lib/theme-context'
-import { useComponentClass, useRadiusClass } from '@/lib/theme-helpers'
+import { useComponentClass } from '@/lib/theme-helpers'
 
 export const alertVariants = cva({
   base: 'relative w-full border px-4 py-3 text-sm grid has-[>svg]:grid-cols-[calc(var(--spacing)*4)_1fr] grid-cols-[0_1fr] has-[>svg]:gap-x-3 gap-y-0.5 items-start [&>svg]:size-4 [&>svg]:translate-y-0.5 [&>svg]:text-current',
@@ -29,7 +29,6 @@ export type AlertProps<T extends ValidComponent = 'button'> = ComponentProps<
 export const Alert = <T extends ValidComponent = 'button'>(props: AlertProps<T>) => {
   const [, rest] = splitProps(props as AlertProps, ['class', 'variant'])
 
-  const radiusClass = useRadiusClass('display')
   const componentClass = useComponentClass(ComponentName.Alert, props as AlertProps)
 
   return (
@@ -39,7 +38,7 @@ export const Alert = <T extends ValidComponent = 'button'>(props: AlertProps<T>)
         alertVariants({
           variant: props.variant,
         }),
-        radiusClass,
+        'rounded-component',
         componentClass,
         props.class,
       )}

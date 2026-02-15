@@ -5,7 +5,7 @@ import { splitProps } from 'solid-js'
 
 import { cva, cx } from '@/lib/cva'
 import { ComponentName } from '@/lib/theme-context'
-import { useComponentClass, useRadiusClass } from '@/lib/theme-helpers'
+import { useComponentClass } from '@/lib/theme-helpers'
 
 export const buttonVariants = cva({
   base: [
@@ -50,7 +50,6 @@ export type ButtonProps<T extends ValidComponent = 'button'> = ComponentProps<
 export const Button = <T extends ValidComponent = 'button'>(props: ButtonProps<T>) => {
   const [, rest] = splitProps(props as ButtonProps, ['class', 'variant', 'size'])
 
-  const radiusClass = useRadiusClass('form-control')
   const componentClass = useComponentClass(ComponentName.Button, props as ButtonProps)
 
   return (
@@ -61,7 +60,7 @@ export const Button = <T extends ValidComponent = 'button'>(props: ButtonProps<T
           variant: props.variant,
           size: props.size,
         }),
-        radiusClass,
+        'rounded-component',
         componentClass,
         props.class,
       )}

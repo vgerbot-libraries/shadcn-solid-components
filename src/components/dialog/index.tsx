@@ -2,7 +2,7 @@ import { Dialog as DialogPrimitive } from '@kobalte/core/dialog'
 import type { ComponentProps, ValidComponent } from 'solid-js'
 import { mergeProps, Show, splitProps } from 'solid-js'
 import { ComponentName } from '@/lib/theme-context'
-import { useComponentClass, useRadiusClass } from '@/lib/theme-helpers'
+import { useComponentClass } from '@/lib/theme-helpers'
 import { cx } from '@/registry/lib/cva'
 
 export const DialogPortal = DialogPrimitive.Portal
@@ -48,7 +48,6 @@ export const DialogContent = <T extends ValidComponent = 'div'>(props: DialogCon
   )
   const [, rest] = splitProps(merge, ['class', 'children', 'showCloseButton'])
 
-  const radiusClass = useRadiusClass('overlay')
   const componentClass = useComponentClass(ComponentName.Dialog, merge as DialogProps)
 
   return (
@@ -61,7 +60,7 @@ export const DialogContent = <T extends ValidComponent = 'div'>(props: DialogCon
         data-slot="dialog-content"
         class={cx(
           'bg-background data-[expanded]:animate-in data-[closed]:animate-out data-[closed]:fade-out-0 data-[expanded]:fade-in-0 data-[closed]:zoom-out-95 data-[expanded]:zoom-in-95 fixed top-[50%] left-[50%] z-50 grid w-full max-w-[calc(100%-2rem)] translate-x-[-50%] translate-y-[-50%] gap-4 border p-6 shadow-lg duration-200 sm:max-w-lg',
-          radiusClass,
+          'rounded-component',
           componentClass,
           props.class,
         )}

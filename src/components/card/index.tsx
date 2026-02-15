@@ -3,14 +3,13 @@ import { splitProps } from 'solid-js'
 
 import { cx } from '@/lib/cva'
 import { ComponentName } from '@/lib/theme-context'
-import { useComponentClass, useRadiusClass } from '@/lib/theme-helpers'
+import { useComponentClass } from '@/lib/theme-helpers'
 
 export type CardProps = ComponentProps<'div'>
 
 export const Card = (props: CardProps) => {
   const [, rest] = splitProps(props, ['class'])
 
-  const radiusClass = useRadiusClass('display')
   const componentClass = useComponentClass(ComponentName.Card, props)
 
   return (
@@ -18,7 +17,7 @@ export const Card = (props: CardProps) => {
       data-slot="card"
       class={cx(
         'bg-card text-card-foreground flex flex-col gap-6 border py-6 shadow-sm',
-        radiusClass,
+        'rounded-component',
         componentClass,
         props.class,
       )}

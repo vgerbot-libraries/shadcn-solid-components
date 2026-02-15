@@ -47,8 +47,6 @@
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
 
-  --radius-dynamic: var(--radius-md);
-
   /* Colors */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -104,6 +102,7 @@
 
 :root {
   --radius: 0.625rem;
+  --radius-component: var(--radius);
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
@@ -181,6 +180,16 @@
   }
 }
 
-@utility rounded-dynamic {
-  border-radius: var(--radius-dynamic);
+@utility rounded-component {
+  border-radius: var(--radius-component);
+}
+
+@utility rounded-t-component {
+  border-top-left-radius: var(--radius-component);
+  border-top-right-radius: var(--radius-component);
+}
+
+@utility rounded-b-component {
+  border-bottom-left-radius: var(--radius-component);
+  border-bottom-right-radius: var(--radius-component);
 }
