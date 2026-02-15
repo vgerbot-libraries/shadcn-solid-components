@@ -679,6 +679,9 @@
       }
     }
   }
+  .tabulator-cell[tabulator-field=rating] > span > svg {
+      @apply float-left;
+  }
 }
 
 /* row element */
