@@ -12,6 +12,7 @@ import {
   TanstackTableColumnHeader,
   TanstackTablePagination,
   TanstackTableGlobalFilter,
+  TanstackTableProvider,
   createSolidTable,
   createSelectColumn,
   getCoreRowModel,
@@ -19,6 +20,7 @@ import {
   getFilteredRowModel,
   getPaginationRowModel,
   flexRender,
+  zhCNLocale,
 } from '@/components/tanstack-table'
 import type {
   ColumnDef,
@@ -643,67 +645,65 @@ export const Main: Component = () => {
           </CardContent>
         </Card>
 
-        {/* TanStack Table Section */}
-        <Card>
-          <CardHeader>
-            <div class="flex items-center justify-between">
-              <div>
-                <CardTitle>TanStack Table</CardTitle>
-                <CardDescription>
-                  Powered by @tanstack/solid-table — sorting, filtering, pagination, row selection.
-                </CardDescription>
+        {/* TanStack Table Section — with zhCN locale via TanstackTableProvider */}
+        <TanstackTableProvider table={tanstackTable} locale={zhCNLocale}>
+          <Card>
+            <CardHeader>
+              <div class="flex items-center justify-between">
+                <div>
+                  <CardTitle>TanStack Table</CardTitle>
+                  <CardDescription>
+                    Powered by @tanstack/solid-table — sorting, filtering, pagination, row selection.
+                  </CardDescription>
+                </div>
+                <div class="flex items-center gap-2">
+                  <TanstackTableGlobalFilter class="w-[250px]" placeholder="按名称或邮箱筛选..." />
+                  {/* Column visibility toggles */}
+                  <DropdownMenu>
+                    <DropdownMenuTrigger as={Button} variant="outline" size="sm">
+                      列
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent>
+                      <For each={tanstackTable.getAllColumns().filter((col) => col.getCanHide())}>
+                        {(column) => (
+                          <DropdownMenuItem
+                            closeOnSelect={false}
+                            onSelect={() => {
+                              column.toggleVisibility(!column.getIsVisible())
+                            }}
+                          >
+                            <input
+                              type="checkbox"
+                              class="size-4 mr-2"
+                              checked={column.getIsVisible()}
+                              readOnly
+                              style={{ 'accent-color': 'var(--color-primary)' }}
+                            />
+                            {column.id}
+                          </DropdownMenuItem>
+                        )}
+                      </For>
+                    </DropdownMenuContent>
+                  </DropdownMenu>
+                </div>
               </div>
-              <div class="flex items-center gap-2">
-                <TanstackTable table={tanstackTable}>
-                  <TanstackTableGlobalFilter class="w-[250px]" placeholder="Filter by name or email..." />
-                </TanstackTable>
-                {/* Column visibility toggles */}
-                <DropdownMenu>
-                  <DropdownMenuTrigger as={Button} variant="outline" size="sm">
-                    Columns
-                  </DropdownMenuTrigger>
-                  <DropdownMenuContent>
-                    <For each={tanstackTable.getAllColumns().filter((col) => col.getCanHide())}>
-                      {(column) => (
-                        <DropdownMenuItem
-                          closeOnSelect={false}
-                          onSelect={() => {
-                            column.toggleVisibility(!column.getIsVisible())
-                          }}
-                        >
-                          <input
-                            type="checkbox"
-                            class="size-4 mr-2"
-                            checked={column.getIsVisible()}
-                            readOnly
-                            style={{ 'accent-color': 'var(--color-primary)' }}
-                          />
-                          {column.id}
-                        </DropdownMenuItem>
-                      )}
-                    </For>
-                  </DropdownMenuContent>
-                </DropdownMenu>
-              </div>
-            </div>
-          </CardHeader>
-          <CardContent>
-            <TanstackTable table={tanstackTable}>
-              <TanstackTableHeader />
-              <TanstackTableBody
-                emptyContent={
-                  <div class="flex flex-col items-center gap-2 py-8">
-                    <span class="text-lg font-medium">No payments found</span>
-                    <span class="text-sm text-muted-foreground">Try adjusting your filters.</span>
-                  </div>
-                }
-              />
-            </TanstackTable>
-            <TanstackTable table={tanstackTable}>
+            </CardHeader>
+            <CardContent>
+              <TanstackTable>
+                <TanstackTableHeader />
+                <TanstackTableBody
+                  emptyContent={
+                    <div class="flex flex-col items-center gap-2 py-8">
+                      <span class="text-lg font-medium">未找到付款记录</span>
+                      <span class="text-sm text-muted-foreground">请尝试调整筛选条件</span>
+                    </div>
+                  }
+                />
+              </TanstackTable>
               <TanstackTablePagination pageSizeOptions={[5, 10, 20]} />
-            </TanstackTable>
-          </CardContent>
-        </Card>
+            </CardContent>
+          </Card>
+        </TanstackTableProvider>
       </div>
     </>
   )

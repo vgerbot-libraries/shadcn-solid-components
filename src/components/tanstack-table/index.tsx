@@ -96,25 +96,178 @@ export type {
 }
 
 // ============================================================================
+// Locale / i18n
+// ============================================================================
+
+/** All translatable strings used by TanstackTable components. */
+export interface TanstackTableLocale {
+  /** Empty state text when there are no rows. */
+  noResults: string
+  /** Aria-label for the select-all checkbox. */
+  selectAll: string
+  /** Aria-label for a row selection checkbox. */
+  selectRow: string
+  /** Selected row count text. Receives (selectedCount, totalCount). */
+  selectedCount: (selected: number, total: number) => string
+  /** Aria-label for expanding a row. */
+  expandRow: string
+  /** Aria-label for collapsing a row. */
+  collapseRow: string
+  /** Default placeholder for the global search input. */
+  search: string
+  /** Label next to the page-size selector. */
+  rowsPerPage: string
+  /** Page info text. Receives (currentPage, totalPages). */
+  pageInfo: (page: number, totalPages: number) => string
+  /** Aria-label for the "first page" button. */
+  firstPage: string
+  /** Aria-label for the "previous page" button. */
+  previousPage: string
+  /** Aria-label for the "next page" button. */
+  nextPage: string
+  /** Aria-label for the "last page" button. */
+  lastPage: string
+}
+
+/** English (default) */
+export const enLocale: TanstackTableLocale = {
+  noResults: 'No results.',
+  selectAll: 'Select all',
+  selectRow: 'Select row',
+  selectedCount: (selected, total) => `${selected} of ${total} row(s) selected.`,
+  expandRow: 'Expand row',
+  collapseRow: 'Collapse row',
+  search: 'Search...',
+  rowsPerPage: 'Rows per page',
+  pageInfo: (page, totalPages) => `Page ${page} of ${totalPages}`,
+  firstPage: 'Go to first page',
+  previousPage: 'Go to previous page',
+  nextPage: 'Go to next page',
+  lastPage: 'Go to last page',
+}
+
+/** 简体中文 */
+export const zhCNLocale: TanstackTableLocale = {
+  noResults: '暂无数据',
+  selectAll: '全选',
+  selectRow: '选择行',
+  selectedCount: (selected, total) => `已选择 ${selected} / ${total} 行`,
+  expandRow: '展开行',
+  collapseRow: '收起行',
+  search: '搜索...',
+  rowsPerPage: '每页行数',
+  pageInfo: (page, totalPages) => `第 ${page} 页，共 ${totalPages} 页`,
+  firstPage: '跳转到首页',
+  previousPage: '上一页',
+  nextPage: '下一页',
+  lastPage: '跳转到末页',
+}
+
+/** 繁體中文 */
+export const zhTWLocale: TanstackTableLocale = {
+  noResults: '暫無資料',
+  selectAll: '全選',
+  selectRow: '選取列',
+  selectedCount: (selected, total) => `已選取 ${selected} / ${total} 列`,
+  expandRow: '展開列',
+  collapseRow: '收合列',
+  search: '搜尋...',
+  rowsPerPage: '每頁列數',
+  pageInfo: (page, totalPages) => `第 ${page} 頁，共 ${totalPages} 頁`,
+  firstPage: '前往首頁',
+  previousPage: '上一頁',
+  nextPage: '下一頁',
+  lastPage: '前往末頁',
+}
+
+/** 日本語 */
+export const jaLocale: TanstackTableLocale = {
+  noResults: 'データがありません',
+  selectAll: 'すべて選択',
+  selectRow: '行を選択',
+  selectedCount: (selected, total) => `${total} 件中 ${selected} 件を選択`,
+  expandRow: '行を展開',
+  collapseRow: '行を折りたたむ',
+  search: '検索...',
+  rowsPerPage: 'ページあたりの行数',
+  pageInfo: (page, totalPages) => `${totalPages} ページ中 ${page} ページ`,
+  firstPage: '最初のページへ',
+  previousPage: '前のページへ',
+  nextPage: '次のページへ',
+  lastPage: '最後のページへ',
+}
+
+// ============================================================================
 // Context
 // ============================================================================
 
 interface TanstackTableContextValue<TData = any> {
   table: Table<TData>
+  locale: TanstackTableLocale
 }
 
 const TanstackTableCtx = createContext<TanstackTableContextValue>()
 
 /**
  * Access the TanStack Table instance from context.
- * Must be used within a `<TanstackTable>` component.
+ * Must be used within a `<TanstackTable>` or `<TanstackTableProvider>` component.
  */
 export function useTanstackTable<TData = any>(): Table<TData> {
   const ctx = useContext(TanstackTableCtx) as TanstackTableContextValue<TData> | undefined
   if (!ctx) {
-    throw new Error('useTanstackTable must be used within a <TanstackTable> component')
+    throw new Error(
+      'useTanstackTable must be used within a <TanstackTable> or <TanstackTableProvider>',
+    )
   }
   return ctx.table
+}
+
+/**
+ * Access the current locale from context.
+ * Returns the default English locale when used outside a provider.
+ */
+export function useTanstackTableLocale(): TanstackTableLocale {
+  const ctx = useContext(TanstackTableCtx)
+  return ctx?.locale ?? enLocale
+}
+
+// ============================================================================
+// TanstackTableProvider — Shared Context Provider
+// ============================================================================
+
+export type TanstackTableProviderProps = {
+  /** The TanStack Table instance created via createSolidTable() */
+  table: Table<any>
+  /** Locale overrides. Merged with the default English locale. */
+  locale?: Partial<TanstackTableLocale>
+  children: JSX.Element
+}
+
+/**
+ * Provides shared table + locale context to child components.
+ * Use this when you need multiple TanstackTable* sections (e.g. filter, table, pagination)
+ * to share the same context without nesting inside a `<table>` element.
+ *
+ * @example
+ * ```tsx
+ * <TanstackTableProvider table={table} locale={zhCNLocale}>
+ *   <TanstackTableGlobalFilter />
+ *   <TanstackTable>
+ *     <TanstackTableHeader />
+ *     <TanstackTableBody />
+ *   </TanstackTable>
+ *   <TanstackTablePagination />
+ * </TanstackTableProvider>
+ * ```
+ */
+export function TanstackTableProvider(props: TanstackTableProviderProps) {
+  const mergedLocale = (): TanstackTableLocale => ({ ...enLocale, ...props.locale })
+
+  return (
+    <TanstackTableCtx.Provider value={{ table: props.table, locale: mergedLocale() }}>
+      {props.children}
+    </TanstackTableCtx.Provider>
+  )
 }
 
 // ============================================================================
@@ -122,29 +275,46 @@ export function useTanstackTable<TData = any>(): Table<TData> {
 // ============================================================================
 
 export type TanstackTableRootProps<TData = any> = ComponentProps<'table'> & {
-  /** The TanStack Table instance created via createSolidTable() */
-  table: Table<TData>
+  /** The TanStack Table instance created via createSolidTable(). Optional when nested inside TanstackTableProvider. */
+  table?: Table<TData>
+  /** Locale overrides. Merged with parent locale or the default English locale. */
+  locale?: Partial<TanstackTableLocale>
 }
 
 /**
  * Root component that provides the table context and renders the HTML table.
- * All other TanstackTable* sub-components must be descendants of this component.
+ * All other TanstackTable* sub-components must be descendants of this component
+ * or a parent `<TanstackTableProvider>`.
  *
  * @example
  * ```tsx
- * const table = createSolidTable({ ... })
- *
- * <TanstackTable table={table}>
+ * // Standalone (locale optional)
+ * <TanstackTable table={table} locale={zhCNLocale}>
  *   <TanstackTableHeader />
  *   <TanstackTableBody />
  * </TanstackTable>
+ *
+ * // With provider (table inherited from context)
+ * <TanstackTableProvider table={table} locale={zhCNLocale}>
+ *   <TanstackTable>
+ *     <TanstackTableHeader />
+ *     <TanstackTableBody />
+ *   </TanstackTable>
+ * </TanstackTableProvider>
  * ```
  */
 export function TanstackTable<TData = any>(props: TanstackTableRootProps<TData>) {
-  const [local, rest] = splitProps(props, ['table', 'children', 'class'])
+  const [local, rest] = splitProps(props, ['table', 'children', 'class', 'locale'])
+
+  const parentCtx = useContext(TanstackTableCtx)
+  const table = () => local.table ?? parentCtx?.table
+  const resolvedLocale = (): TanstackTableLocale => {
+    const base = parentCtx?.locale ?? enLocale
+    return local.locale ? { ...base, ...local.locale } : base
+  }
 
   return (
-    <TanstackTableCtx.Provider value={{ table: local.table as Table<any> }}>
+    <TanstackTableCtx.Provider value={{ table: table() as Table<any>, locale: resolvedLocale() }}>
       <div data-slot="tanstack-table-container" class="relative w-full overflow-x-auto">
         <table
           data-slot="tanstack-table"
@@ -254,6 +424,7 @@ export function TanstackTableBody(props: TanstackTableBodyProps) {
     'children',
   ])
   const table = useTanstackTable()
+  const locale = useTanstackTableLocale()
 
   const defaultContent = () => (
     <Show
@@ -265,7 +436,7 @@ export function TanstackTableBody(props: TanstackTableBodyProps) {
             class="h-24 text-center text-muted-foreground"
             colSpan={table.getAllColumns().length}
           >
-            {local.emptyContent ?? 'No results.'}
+            {local.emptyContent ?? locale.noResults}
           </td>
         </tr>
       }
@@ -562,6 +733,8 @@ export type TanstackTableHeaderCheckboxProps = {
  * ```
  */
 export function TanstackTableHeaderCheckbox(props: TanstackTableHeaderCheckboxProps) {
+  const locale = useTanstackTableLocale()
+
   return (
     <Checkbox
       data-slot="tanstack-table-header-checkbox"
@@ -571,7 +744,7 @@ export function TanstackTableHeaderCheckbox(props: TanstackTableHeaderCheckboxPr
       }
       onChange={(checked) => props.table.toggleAllPageRowsSelected(checked)}
       class={props.class}
-      aria-label="Select all"
+      aria-label={locale.selectAll}
     >
       <CheckboxInput />
       <CheckboxControl />
@@ -600,6 +773,8 @@ export type TanstackTableRowCheckboxProps = {
  * ```
  */
 export function TanstackTableRowCheckbox(props: TanstackTableRowCheckboxProps) {
+  const locale = useTanstackTableLocale()
+
   return (
     <Checkbox
       data-slot="tanstack-table-row-checkbox"
@@ -607,7 +782,7 @@ export function TanstackTableRowCheckbox(props: TanstackTableRowCheckboxProps) {
       disabled={!props.row.getCanSelect()}
       onChange={(checked) => props.row.toggleSelected(checked)}
       class={props.class}
-      aria-label="Select row"
+      aria-label={locale.selectRow}
     >
       <CheckboxInput />
       <CheckboxControl />
@@ -636,6 +811,8 @@ export type TanstackTableExpandTriggerProps = {
  * ```
  */
 export function TanstackTableExpandTrigger(props: TanstackTableExpandTriggerProps) {
+  const locale = useTanstackTableLocale()
+
   return (
     <Button
       variant="ghost"
@@ -644,7 +821,7 @@ export function TanstackTableExpandTrigger(props: TanstackTableExpandTriggerProp
       class={cx('size-6 text-muted-foreground', props.class)}
       onClick={props.row.getToggleExpandedHandler()}
       disabled={!props.row.getCanExpand()}
-      aria-label={props.row.getIsExpanded() ? 'Collapse row' : 'Expand row'}
+      aria-label={props.row.getIsExpanded() ? locale.collapseRow : locale.expandRow}
     >
       <svg
         class={cx(
@@ -682,6 +859,7 @@ export type TanstackTableGlobalFilterProps = {
  */
 export function TanstackTableGlobalFilter(props: TanstackTableGlobalFilterProps) {
   const table = useTanstackTable()
+  const locale = useTanstackTableLocale()
 
   return (
     <TextField
@@ -691,7 +869,7 @@ export function TanstackTableGlobalFilter(props: TanstackTableGlobalFilterProps)
       class="w-auto gap-0"
     >
       <TextFieldInput
-        placeholder={props.placeholder ?? 'Search...'}
+        placeholder={props.placeholder ?? locale.search}
         class={cx('h-8 w-[200px]', props.class)}
       />
     </TextField>
@@ -723,6 +901,7 @@ export function TanstackTablePagination(props: TanstackTablePaginationProps) {
     'class',
   ])
   const table = useTanstackTable()
+  const locale = useTanstackTableLocale()
 
   const pageSizeOptions = () => local.pageSizeOptions ?? [10, 20, 30, 40, 50]
   const showSelectedCount = () => local.showSelectedCount !== false
@@ -737,8 +916,10 @@ export function TanstackTablePagination(props: TanstackTablePaginationProps) {
       {/* Selected row count */}
       <div class="text-muted-foreground flex-1 text-sm">
         <Show when={showSelectedCount()}>
-          {table.getFilteredSelectedRowModel().rows.length} of{' '}
-          {table.getFilteredRowModel().rows.length} row(s) selected.
+          {locale.selectedCount(
+            table.getFilteredSelectedRowModel().rows.length,
+            table.getFilteredRowModel().rows.length,
+          )}
         </Show>
       </div>
 
@@ -746,7 +927,7 @@ export function TanstackTablePagination(props: TanstackTablePaginationProps) {
         {/* Page size selector */}
         <Show when={showPageSize()}>
           <div class="flex items-center gap-2">
-            <span class="text-sm font-medium whitespace-nowrap">Rows per page</span>
+            <span class="text-sm font-medium whitespace-nowrap">{locale.rowsPerPage}</span>
             <Select
               options={pageSizeOptions()}
               value={table.getState().pagination.pageSize}
@@ -774,8 +955,10 @@ export function TanstackTablePagination(props: TanstackTablePaginationProps) {
 
         {/* Page info */}
         <div class="text-sm font-medium whitespace-nowrap">
-          Page {table.getState().pagination.pageIndex + 1} of{' '}
-          {Math.max(table.getPageCount(), 1)}
+          {locale.pageInfo(
+            table.getState().pagination.pageIndex + 1,
+            Math.max(table.getPageCount(), 1),
+          )}
         </div>
 
         {/* Page navigation buttons */}
@@ -787,7 +970,7 @@ export function TanstackTablePagination(props: TanstackTablePaginationProps) {
             data-slot="tanstack-table-pagination-first"
             onClick={() => table.setPageIndex(0)}
             disabled={!table.getCanPreviousPage()}
-            aria-label="Go to first page"
+            aria-label={locale.firstPage}
           >
             <svg
               class="size-4"
@@ -811,7 +994,7 @@ export function TanstackTablePagination(props: TanstackTablePaginationProps) {
             data-slot="tanstack-table-pagination-prev"
             onClick={() => table.previousPage()}
             disabled={!table.getCanPreviousPage()}
-            aria-label="Go to previous page"
+            aria-label={locale.previousPage}
           >
             <svg
               class="size-4"
@@ -834,7 +1017,7 @@ export function TanstackTablePagination(props: TanstackTablePaginationProps) {
             data-slot="tanstack-table-pagination-next"
             onClick={() => table.nextPage()}
             disabled={!table.getCanNextPage()}
-            aria-label="Go to next page"
+            aria-label={locale.nextPage}
           >
             <svg
               class="size-4"
@@ -857,7 +1040,7 @@ export function TanstackTablePagination(props: TanstackTablePaginationProps) {
             data-slot="tanstack-table-pagination-last"
             onClick={() => table.setPageIndex(table.getPageCount() - 1)}
             disabled={!table.getCanNextPage()}
-            aria-label="Go to last page"
+            aria-label={locale.lastPage}
           >
             <svg
               class="size-4"
