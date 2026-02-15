@@ -62,7 +62,7 @@ const menus: AppSidebarMenuGroup[] = [
         title: 'Team',
         badge: {
           content: 10,
-          variant: 'destructive'
+          variant: 'destructive',
         },
         onClick: () => {},
       },

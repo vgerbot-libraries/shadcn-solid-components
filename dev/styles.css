@@ -1,6 +1,6 @@
 @import "tailwindcss";
 @import "../src/themes/default.preset.css";
-@import '../src/components/tabulator-table/tabulator-shadcn.css';
+@import "../src/components/tabulator-table/tabulator-shadcn.css";
 @import "../src/components/chart/index.css";
 
 /* Dev-specific configuration */

@@ -28,9 +28,13 @@ export function TabulatorTable(props: DataTableProps) {
   onMount(() => {
     if (!tableElement) return
 
-    const options = typeof merged.initOptions === 'function' ? merged.initOptions() : merged.initOptions
+    const options =
+      typeof merged.initOptions === 'function' ? merged.initOptions() : merged.initOptions
 
-    tableElement.style.setProperty('--shadcn-tabulator-row-height', (options?.rowHeight ?? 36) + 'px');
+    tableElement.style.setProperty(
+      '--shadcn-tabulator-row-height',
+      (options?.rowHeight ?? 36) + 'px',
+    )
 
     // Create Tabulator instance
     const instance = new TabulatorFull(tableElement, options)
@@ -45,12 +49,5 @@ export function TabulatorTable(props: DataTableProps) {
     })
   })
 
-  return (
-    <div
-      {...rest}
-      ref={tableElement}
-      class={merged.class}
-      style={merged.style}
-    />
-  )
+  return <div {...rest} ref={tableElement} class={merged.class} style={merged.style} />
 }

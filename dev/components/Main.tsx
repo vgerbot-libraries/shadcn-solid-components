@@ -25,7 +25,7 @@ import {
   ChevronLeftDoubleIcon,
   ChevronRightDoubleIcon,
 } from './icons'
-import { type Tabulator } from 'tabulator-tables';
+import { type Tabulator } from 'tabulator-tables'
 
 // Chart data
 const chartData = [
@@ -145,15 +145,15 @@ export const Main: Component = () => {
   const [tabulator, setTabulator] = createSignal<Tabulator | undefined>()
 
   createEffect(() => {
-    const table = tabulator();
+    const table = tabulator()
     if (!table) {
-      return;
+      return
     }
     table.on('rowSelected', row => {
-      row.getElement().classList.add('bg-muted');
+      row.getElement().classList.add('bg-muted')
     })
     table.on('rowDeselected', row => {
-      row.getElement().classList.remove('bg-muted');
+      row.getElement().classList.remove('bg-muted')
     })
   })
 
@@ -308,44 +308,92 @@ export const Main: Component = () => {
                 reactiveData: true,
                 pagination: true,
                 paginationSize: 6,
-                paginationSizeSelector: [3,6,8,10],
+                paginationSizeSelector: [3, 6, 8, 10],
                 movableColumns: true,
-                paginationCounter: "rows",
+                paginationCounter: 'rows',
                 rowHeight: 49,
                 // selectableRows: true,
 
+                selectableRange: 1,
+                selectableRangeColumns: true,
+                selectableRangeRows: true,
+                selectableRangeClearCells: true,
 
-                selectableRange:1,
-                selectableRangeColumns:true,
-                selectableRangeRows:true,
-                selectableRangeClearCells:true,
+                editTriggerEvent: 'dblclick',
 
-                editTriggerEvent:"dblclick",
-
-                rowHeader:{resizable: false, frozen: true, width:40, hozAlign:"center", formatter: "rownum", },
+                rowHeader: {
+                  resizable: false,
+                  frozen: true,
+                  width: 40,
+                  hozAlign: 'center',
+                  formatter: 'rownum',
+                },
 
                 columns: [
-                  {title:"Name", field:"name", sorter:"string", width:200},
-                  {title:"Progress", field:"progress", sorter:"number", formatter:"progress"},
-                  {title:"Gender", field:"gender", sorter:"string",editor: 'list', editorParams: {
-                    values: [{
-                      label: '男',
-                      value: 'male'
-                    }, {
-                      label: '女',
-                      value: 'female'
-                    }],
-                  }},
-                  {title:"Rating", field:"rating", formatter:"star", hozAlign:"center", width:100},
-                  {title:"Favourite Color", field:"col", sorter:"string"},
+                  { title: 'Name', field: 'name', sorter: 'string', width: 200 },
+                  { title: 'Progress', field: 'progress', sorter: 'number', formatter: 'progress' },
+                  {
+                    title: 'Gender',
+                    field: 'gender',
+                    sorter: 'string',
+                    editor: 'list',
+                    editorParams: {
+                      values: [
+                        {
+                          label: '男',
+                          value: 'male',
+                        },
+                        {
+                          label: '女',
+                          value: 'female',
+                        },
+                      ],
+                    },
+                  },
+                  {
+                    title: 'Rating',
+                    field: 'rating',
+                    formatter: 'star',
+                    hozAlign: 'center',
+                    width: 100,
+                  },
+                  { title: 'Favourite Color', field: 'col', sorter: 'string' },
                 ],
                 data: [
-                  {id:1, name:"Oli Bob", progress:12, gender:"male", rating:1, col:"red" },
-                  {id:2, name:"Mary May", progress:1, gender:"female", rating:2, col:"blue" },
-                  {id:3, name:"Christine Lobowski", progress:42, gender:"female", rating:0, col:"green" },
-                  {id:4, name:"Brendon Philips", progress:100, gender:"male", rating:1, col:"orange" },
-                  {id:5, name:"Margret Marmajuke", progress:16, gender:"female", rating:5, col:"yellow"},
-                ]
+                  { id: 1, name: 'Oli Bob', progress: 12, gender: 'male', rating: 1, col: 'red' },
+                  {
+                    id: 2,
+                    name: 'Mary May',
+                    progress: 1,
+                    gender: 'female',
+                    rating: 2,
+                    col: 'blue',
+                  },
+                  {
+                    id: 3,
+                    name: 'Christine Lobowski',
+                    progress: 42,
+                    gender: 'female',
+                    rating: 0,
+                    col: 'green',
+                  },
+                  {
+                    id: 4,
+                    name: 'Brendon Philips',
+                    progress: 100,
+                    gender: 'male',
+                    rating: 1,
+                    col: 'orange',
+                  },
+                  {
+                    id: 5,
+                    name: 'Margret Marmajuke',
+                    progress: 16,
+                    gender: 'female',
+                    rating: 5,
+                    col: 'yellow',
+                  },
+                ],
               }}
               onInit={setTabulator}
             ></TabulatorTable>
