@@ -1,5 +1,5 @@
-import { createEffect, type Component } from 'solid-js'
-import { For, createSignal } from 'solid-js'
+import { createEffect, createSignal, type Component } from 'solid-js'
+import { For } from 'solid-js'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/card'
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/table'
 import { Badge } from '@/components/badge'
@@ -11,7 +11,6 @@ import {
   TanstackTableBody,
   TanstackTableColumnHeader,
   TanstackTablePagination,
-  TanstackTableGlobalFilter,
   TanstackTableProvider,
   createSolidTable,
   createSelectColumn,
@@ -19,7 +18,6 @@ import {
   getSortedRowModel,
   getFilteredRowModel,
   getPaginationRowModel,
-  flexRender,
   zhCNLocale,
 } from '@/components/tanstack-table'
 import type {
@@ -38,8 +36,17 @@ import {
 import { Separator } from '@/components/separator'
 import { SidebarTrigger } from '@/components/sidebar'
 import { ChartContainer, ChartCrosshair } from '@/components/chart'
+import { TextField, TextFieldInput } from '@/components/text-field'
+import { IconInbox, IconUser, IconSettings, IconCreditCard, IconMail } from '@/components/icons'
 import { VisLine, VisArea } from '@unovis/solid'
-import { ModeToggleDropdown } from '@/hoc/mode-toggle-dropdown'
+import { PageHeader } from '@/hoc/page-header'
+import { UserMenu } from '@/hoc/user-menu'
+import { StatCard } from '@/hoc/stat-card'
+import { DataTableToolbar } from '@/hoc/data-table-toolbar'
+import { EmptyState } from '@/hoc/empty-state'
+import { FormField } from '@/hoc/form-field'
+import { useNotify } from '@/hoc/use-notify'
+import { confirm } from '@/hoc/confirm-dialog'
 import {
   TotalRevenueIcon,
   NewCustomersIcon,
@@ -321,86 +328,79 @@ export const Main: Component = () => {
     })
   }
 
+  const notify = useNotify({ position: 'bottom-right' })
+  const [confirmResult, setConfirmResult] = createSignal('')
+
   return (
     <>
       <header class="flex h-16 shrink-0 items-center gap-2 border-b px-4">
         <SidebarTrigger class="-ml-1" />
         <Separator orientation="vertical" class="mr-2 h-4" />
         <div class="flex flex-1 items-center gap-2">
-          <h1 class="text-lg font-semibold">Documents</h1>
+          <span class="text-muted-foreground text-sm">Press</span>
+          <kbd class="bg-muted text-muted-foreground pointer-events-none inline-flex h-5 items-center gap-1 rounded px-1.5 font-mono text-xs font-medium">
+            <span class="text-xs">⌘</span>K
+          </kbd>
+          <span class="text-muted-foreground text-sm">to open command palette</span>
         </div>
         <div class="ml-auto flex items-center gap-2">
-          <ModeToggleDropdown
-            trigger={{
-              size: 'icon',
-              variant: 'ghost',
-            }}
+          <UserMenu
+            name="John Doe"
+            email="john@acme.com"
+            groups={[
+              {
+                label: 'Account',
+                items: [
+                  { label: 'Profile', icon: <IconUser class="size-4" />, onSelect: () => notify.info('Navigate to profile') },
+                  { label: 'Settings', icon: <IconSettings class="size-4" />, onSelect: () => notify.info('Navigate to settings') },
+                ],
+              },
+            ]}
+            onSignOut={() => notify('Signed out')}
           />
         </div>
       </header>
       <div class="flex flex-1 flex-col gap-4 p-4 md:p-6">
-        {/* Quick Create Section */}
-        <div class="flex items-center justify-between">
-          <h2 class="text-2xl font-bold tracking-tight">Quick Create</h2>
-        </div>
+        <PageHeader
+          breadcrumbs={[
+            { label: 'Home', href: '#' },
+            { label: 'Dashboard' },
+          ]}
+          title="Dashboard"
+          description="Overview of your project metrics and recent activity."
+          actions={<Button size="sm">Quick Create</Button>}
+        />
 
-        {/* Stats Cards */}
+        {/* Stats Cards (StatCard HOC) */}
         <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-          <Card>
-            <CardHeader class="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle class="text-sm font-medium">Total Revenue</CardTitle>
-              <TotalRevenueIcon />
-            </CardHeader>
-            <CardContent>
-              <div class="text-2xl font-bold">$1,250.00</div>
-              <p class="text-xs text-muted-foreground flex items-center gap-1">
-                <span class="text-green-600">+12.5%</span>
-                <span>Trending up this month</span>
-              </p>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader class="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle class="text-sm font-medium">New Customers</CardTitle>
-              <NewCustomersIcon />
-            </CardHeader>
-            <CardContent>
-              <div class="text-2xl font-bold">1,234</div>
-              <p class="text-xs text-muted-foreground flex items-center gap-1">
-                <span class="text-red-600">-20%</span>
-                <span>Down 20% this period</span>
-              </p>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader class="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle class="text-sm font-medium">Active Accounts</CardTitle>
-              <ActiveAccountsIcon />
-            </CardHeader>
-            <CardContent>
-              <div class="text-2xl font-bold">45,678</div>
-              <p class="text-xs text-muted-foreground flex items-center gap-1">
-                <span class="text-green-600">+12.5%</span>
-                <span>Strong user retention</span>
-              </p>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader class="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle class="text-sm font-medium">Growth Rate</CardTitle>
-              <GrowthRateIcon />
-            </CardHeader>
-            <CardContent>
-              <div class="text-2xl font-bold">4.5%</div>
-              <p class="text-xs text-muted-foreground flex items-center gap-1">
-                <span class="text-green-600">+4.5%</span>
-                <span>Steady performance increase</span>
-              </p>
-            </CardContent>
-          </Card>
+          <StatCard
+            label="Total Revenue"
+            value="$1,250.00"
+            trend="up"
+            trendText="+12.5% Trending up this month"
+            icon={<TotalRevenueIcon />}
+          />
+          <StatCard
+            label="New Customers"
+            value="1,234"
+            trend="down"
+            trendText="-20% Down 20% this period"
+            icon={<NewCustomersIcon />}
+          />
+          <StatCard
+            label="Active Accounts"
+            value="45,678"
+            trend="up"
+            trendText="+12.5% Strong user retention"
+            icon={<ActiveAccountsIcon />}
+          />
+          <StatCard
+            label="Growth Rate"
+            value="4.5%"
+            trend="up"
+            trendText="+4.5% Steady performance increase"
+            icon={<GrowthRateIcon />}
+          />
         </div>
 
         {/* Chart Section */}
@@ -645,58 +645,33 @@ export const Main: Component = () => {
           </CardContent>
         </Card>
 
-        {/* TanStack Table Section — with zhCN locale via TanstackTableProvider */}
+        {/* TanStack Table Section — with DataTableToolbar + EmptyState HOCs */}
         <TanstackTableProvider table={tanstackTable} locale={zhCNLocale}>
           <Card>
             <CardHeader>
-              <div class="flex items-center justify-between">
-                <div>
-                  <CardTitle>TanStack Table</CardTitle>
-                  <CardDescription>
-                    Powered by @tanstack/solid-table — sorting, filtering, pagination, row selection.
-                  </CardDescription>
-                </div>
-                <div class="flex items-center gap-2">
-                  <TanstackTableGlobalFilter class="w-[250px]" placeholder="按名称或邮箱筛选..." />
-                  {/* Column visibility toggles */}
-                  <DropdownMenu>
-                    <DropdownMenuTrigger as={Button} variant="outline" size="sm">
-                      列
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent>
-                      <For each={tanstackTable.getAllColumns().filter((col) => col.getCanHide())}>
-                        {(column) => (
-                          <DropdownMenuItem
-                            closeOnSelect={false}
-                            onSelect={() => {
-                              column.toggleVisibility(!column.getIsVisible())
-                            }}
-                          >
-                            <input
-                              type="checkbox"
-                              class="size-4 mr-2"
-                              checked={column.getIsVisible()}
-                              readOnly
-                              style={{ 'accent-color': 'var(--color-primary)' }}
-                            />
-                            {column.id}
-                          </DropdownMenuItem>
-                        )}
-                      </For>
-                    </DropdownMenuContent>
-                  </DropdownMenu>
-                </div>
-              </div>
+              <CardTitle>TanStack Table</CardTitle>
+              <CardDescription>
+                Powered by @tanstack/solid-table — sorting, filtering, pagination, row selection.
+              </CardDescription>
             </CardHeader>
-            <CardContent>
+            <CardContent class="flex flex-col gap-4">
+              <DataTableToolbar
+                table={tanstackTable}
+                searchColumn="name"
+                locale={{ searchPlaceholder: '按名称筛选...' }}
+                actions={
+                  <Button variant="outline" size="sm">Export</Button>
+                }
+              />
               <TanstackTable>
                 <TanstackTableHeader />
                 <TanstackTableBody
                   emptyContent={
-                    <div class="flex flex-col items-center gap-2 py-8">
-                      <span class="text-lg font-medium">未找到付款记录</span>
-                      <span class="text-sm text-muted-foreground">请尝试调整筛选条件</span>
-                    </div>
+                    <EmptyState
+                      icon={<IconInbox class="size-10" />}
+                      title="未找到付款记录"
+                      description="请尝试调整筛选条件"
+                    />
                   }
                 />
               </TanstackTable>
@@ -704,6 +679,130 @@ export const Main: Component = () => {
             </CardContent>
           </Card>
         </TanstackTableProvider>
+
+        {/* HOC Demos Section */}
+        <div class="grid gap-4 md:grid-cols-2">
+          {/* useNotify Demo */}
+          <Card>
+            <CardHeader>
+              <CardTitle>useNotify Hook</CardTitle>
+              <CardDescription>Toast notifications with merged default options.</CardDescription>
+            </CardHeader>
+            <CardContent class="flex flex-wrap gap-2">
+              <Button size="sm" onClick={() => notify.success('File saved successfully')}>
+                Success
+              </Button>
+              <Button size="sm" variant="destructive" onClick={() => notify.error('Something went wrong')}>
+                Error
+              </Button>
+              <Button size="sm" variant="outline" onClick={() => notify.warning('Disk space is running low')}>
+                Warning
+              </Button>
+              <Button size="sm" variant="secondary" onClick={() => notify.info('New version available')}>
+                Info
+              </Button>
+              <Button
+                size="sm"
+                variant="outline"
+                onClick={() => {
+                  notify.promise(
+                    new Promise(resolve => setTimeout(resolve, 2000)),
+                    { loading: 'Uploading...', success: 'Upload complete!', error: 'Upload failed' },
+                  )
+                }}
+              >
+                Promise
+              </Button>
+            </CardContent>
+          </Card>
+
+          {/* confirm() Demo */}
+          <Card>
+            <CardHeader>
+              <CardTitle>Confirm Dialog</CardTitle>
+              <CardDescription>Imperative confirmation dialogs via <code>confirm()</code>.</CardDescription>
+            </CardHeader>
+            <CardContent class="flex flex-col gap-3">
+              <div class="flex flex-wrap gap-2">
+                <Button
+                  size="sm"
+                  variant="outline"
+                  onClick={async () => {
+                    const ok = await confirm({ title: 'Save changes?', description: 'Your unsaved changes will be committed.' })
+                    setConfirmResult(ok ? 'Confirmed' : 'Cancelled')
+                  }}
+                >
+                  Default Confirm
+                </Button>
+                <Button
+                  size="sm"
+                  variant="destructive"
+                  onClick={async () => {
+                    const ok = await confirm({
+                      title: 'Delete this item?',
+                      description: 'This action cannot be undone.',
+                      variant: 'destructive',
+                      locale: { confirm: 'Delete', cancel: 'Keep' },
+                    })
+                    setConfirmResult(ok ? 'Deleted' : 'Kept')
+                  }}
+                >
+                  Destructive Confirm
+                </Button>
+              </div>
+              {confirmResult() && (
+                <p class="text-muted-foreground text-sm">
+                  Result: <span class="text-foreground font-medium">{confirmResult()}</span>
+                </p>
+              )}
+            </CardContent>
+          </Card>
+
+          {/* FormField Demo */}
+          <Card>
+            <CardHeader>
+              <CardTitle>Form Field</CardTitle>
+              <CardDescription>Unified label + input + error + description wrapper.</CardDescription>
+            </CardHeader>
+            <CardContent class="flex flex-col gap-4">
+              <FormField label="Username" required description="This will be your public display name.">
+                <TextField>
+                  <TextFieldInput placeholder="Enter username" />
+                </TextField>
+              </FormField>
+              <FormField label="Email" required error="Please enter a valid email address.">
+                <TextField validationState="invalid">
+                  <TextFieldInput type="email" placeholder="you@example.com" />
+                </TextField>
+              </FormField>
+              <FormField label="Bio" description="Tell us about yourself.">
+                <TextField>
+                  <TextFieldInput placeholder="Optional bio" />
+                </TextField>
+              </FormField>
+            </CardContent>
+          </Card>
+
+          {/* EmptyState Standalone Demo */}
+          <Card>
+            <CardHeader>
+              <CardTitle>Empty State</CardTitle>
+              <CardDescription>Placeholder for empty data, search results, or permission walls.</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <EmptyState
+                icon={<IconMail class="size-12" />}
+                title="No messages"
+                description="You haven't received any messages yet. Start a conversation to get going."
+                action={
+                  <Button size="sm" onClick={() => notify.info('Compose clicked')}>
+                    Compose
+                  </Button>
+                }
+              />
+            </CardContent>
+          </Card>
+        </div>
       </div>
     </>
   )

@@ -1,5 +1,7 @@
 import type { Component } from 'solid-js'
 import { AppSidebar, type AppSidebarMenuGroup } from '@/hoc/app-sidebar'
+import { CommandPalette, type CommandPaletteGroup } from '@/hoc/command-palette'
+import { IconHome, IconSettings, IconSearch, IconFile, IconUsers } from '@/components/icons'
 import {
   DashboardIcon,
   LifecycleIcon,
@@ -108,17 +110,38 @@ const footerMenus: SidebarMenuTreeItem[] = [
   },
 ]
 
+const commandPaletteGroups: CommandPaletteGroup[] = [
+  {
+    label: 'Pages',
+    items: [
+      { id: 'dashboard', label: 'Dashboard', icon: <IconHome class="size-4" /> },
+      { id: 'analytics', label: 'Analytics', icon: <IconSearch class="size-4" /> },
+      { id: 'team', label: 'Team', icon: <IconUsers class="size-4" /> },
+      { id: 'reports', label: 'Reports', icon: <IconFile class="size-4" /> },
+    ],
+  },
+  {
+    label: 'Actions',
+    items: [
+      { id: 'settings', label: 'Settings', icon: <IconSettings class="size-4" />, shortcut: '⌘,' },
+    ],
+  },
+]
+
 const App: Component = () => {
   return (
-    <AppSidebar
-      header={{
-        icon: <HeaderIcon />,
-        title: 'Acme Inc.',
-      }}
-      menus={menus}
-      footer={footerMenus}
-      body={<Main />}
-    />
+    <>
+      <CommandPalette groups={commandPaletteGroups} />
+      <AppSidebar
+        header={{
+          icon: <HeaderIcon />,
+          title: 'Acme Inc.',
+        }}
+        menus={menus}
+        footer={footerMenus}
+        body={<Main />}
+      />
+    </>
   )
 }
 
