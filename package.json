@@ -346,11 +346,32 @@
         "default": "./dist/tabs/index.js"
       }
     },
+    "./tabulator-table": {
+      "solid": "./dist/tabulator-table/index.jsx",
+      "import": {
+        "types": "./dist/tabulator-table/index.d.ts",
+        "default": "./dist/tabulator-table/index.js"
+      }
+    },
+    "./tanstack-table": {
+      "solid": "./dist/tanstack-table/index.jsx",
+      "import": {
+        "types": "./dist/tanstack-table/index.d.ts",
+        "default": "./dist/tanstack-table/index.js"
+      }
+    },
     "./text-field": {
       "solid": "./dist/text-field/index.jsx",
       "import": {
         "types": "./dist/text-field/index.d.ts",
         "default": "./dist/text-field/index.js"
+      }
+    },
+    "./theme": {
+      "solid": "./dist/theme/index.jsx",
+      "import": {
+        "types": "./dist/theme/index.d.ts",
+        "default": "./dist/theme/index.js"
       }
     },
     "./toggle-button": {
@@ -381,7 +402,7 @@
   },
   "scripts": {
     "dev": "vite serve dev",
-    "build": "tsup",
+    "build": "cross-env NODE_OPTIONS='--max-old-space-size=1048576' tsup",
     "test": "concurrently pnpm:test:*",
     "test:client": "vitest",
     "test:ssr": "pnpm run test:client --mode ssr",
@@ -403,6 +424,7 @@
     "@tailwindcss/vite": "^4.1.18",
     "@types/node": "^20.12.12",
     "concurrently": "^8.2.2",
+    "cross-env": "^10.1.0",
     "esbuild": "^0.21.3",
     "esbuild-plugin-solid": "^0.6.0",
     "jsdom": "^24.0.0",
@@ -583,8 +605,17 @@
       "tabs": [
         "./dist/tabs/index.d.ts"
       ],
+      "tabulator-table": [
+        "./dist/tabulator-table/index.d.ts"
+      ],
+      "tanstack-table": [
+        "./dist/tanstack-table/index.d.ts"
+      ],
       "text-field": [
         "./dist/text-field/index.d.ts"
+      ],
+      "theme": [
+        "./dist/theme/index.d.ts"
       ],
       "toggle-button": [
         "./dist/toggle-button/index.d.ts"

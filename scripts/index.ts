@@ -7,5 +7,3 @@
 
 export { getComponentEntries } from './components'
 export { getThemeFiles, copyThemesToDist } from './themes'
-export { updatePackageJsonFiles } from './package-json'
-

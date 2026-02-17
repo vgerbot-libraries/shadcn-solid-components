@@ -37,7 +37,7 @@ import { Separator } from '@/components/separator'
 import { SidebarTrigger } from '@/components/sidebar'
 import { ChartContainer, ChartCrosshair } from '@/components/chart'
 import { TextField, TextFieldInput } from '@/components/text-field'
-import { IconInbox, IconUser, IconSettings, IconCreditCard, IconMail } from '@/components/icons'
+import { IconInbox, IconUser, IconSettings, IconCreditCard, IconMail, IconBrandGoogle, IconBrandGithub, IconCheck, IconLoader, IconBell } from '@/components/icons'
 import { VisLine, VisArea } from '@unovis/solid'
 import { PageHeader } from '@/hoc/page-header'
 import { UserMenu } from '@/hoc/user-menu'
@@ -47,6 +47,16 @@ import { EmptyState } from '@/hoc/empty-state'
 import { FormField } from '@/hoc/form-field'
 import { useNotify } from '@/hoc/use-notify'
 import { confirm } from '@/hoc/confirm-dialog'
+import { DataTable } from '@/hoc/data-table'
+import { Stepper } from '@/hoc/stepper'
+import { DescriptionList } from '@/hoc/description-list'
+import { Timeline } from '@/hoc/timeline'
+import { FileUploadZone, type UploadFile } from '@/hoc/file-upload-zone'
+import { LoginForm } from '@/hoc/login-form'
+import { TagInput } from '@/hoc/tag-input'
+import { TransferList, type TransferItem } from '@/hoc/transfer-list'
+import { NotificationCenter, type NotificationItem } from '@/hoc/notification-center'
+import { FilterBuilder, type FilterRule } from '@/hoc/filter-builder'
 import {
   TotalRevenueIcon,
   NewCustomersIcon,
@@ -331,6 +341,44 @@ export const Main: Component = () => {
   const notify = useNotify({ position: 'bottom-right' })
   const [confirmResult, setConfirmResult] = createSignal('')
 
+  // -- DataTable HOC demo (reuses paymentColumns) --
+  const [dataTableLoading, setDataTableLoading] = createSignal(false)
+
+  // -- Stepper demo --
+  const [stepperActiveStep, setStepperActiveStep] = createSignal(0)
+
+  // -- FileUploadZone demo --
+  const [uploadedFiles, setUploadedFiles] = createSignal<UploadFile[]>([])
+
+  // -- LoginForm demo --
+  const [loginMode, setLoginMode] = createSignal<'login' | 'register'>('login')
+
+  // -- TagInput demo --
+  const [tags, setTags] = createSignal<string[]>(['SolidJS', 'TypeScript'])
+
+  // -- TransferList demo --
+  const transferSource: TransferItem[] = [
+    { key: 'admin', label: 'Admin', description: 'Full access to all resources' },
+    { key: 'editor', label: 'Editor', description: 'Can edit content' },
+    { key: 'viewer', label: 'Viewer', description: 'Read-only access' },
+    { key: 'moderator', label: 'Moderator', description: 'Can moderate content' },
+    { key: 'contributor', label: 'Contributor', description: 'Can submit content' },
+    { key: 'analyst', label: 'Analyst', description: 'Can view analytics' },
+  ]
+  const [transferTarget, setTransferTarget] = createSignal<string[]>(['admin'])
+
+  // -- NotificationCenter demo --
+  const [notifications, setNotifications] = createSignal<NotificationItem[]>([
+    { id: '1', title: 'New comment on your post', description: 'Alice replied to your discussion about SolidJS performance.', time: '5 min ago', category: 'messages', icon: <IconMail class="size-4" /> },
+    { id: '2', title: 'Deployment successful', description: 'Production v2.4.1 deployed.', time: '1 hour ago', category: 'updates', icon: <IconCheck class="size-4" />, read: true },
+    { id: '3', title: 'New team member', description: 'Bob joined the Engineering team.', time: '3 hours ago', category: 'updates', icon: <IconUser class="size-4" /> },
+    { id: '4', title: 'Payment received', description: 'Invoice #1234 paid — $1,250.00', time: 'Yesterday', category: 'messages', icon: <IconCreditCard class="size-4" />, read: true },
+    { id: '5', title: 'System maintenance', description: 'Scheduled downtime on Feb 20, 2:00 AM UTC.', time: '2 days ago', category: 'updates', icon: <IconSettings class="size-4" /> },
+  ])
+
+  // -- FilterBuilder demo --
+  const [filterRules, setFilterRules] = createSignal<FilterRule[]>([])
+
   return (
     <>
       <header class="flex h-16 shrink-0 items-center gap-2 border-b px-4">
@@ -344,6 +392,15 @@ export const Main: Component = () => {
           <span class="text-muted-foreground text-sm">to open command palette</span>
         </div>
         <div class="ml-auto flex items-center gap-2">
+          <NotificationCenter
+            notifications={notifications()}
+            categories={[
+              { key: 'messages', label: 'Messages' },
+              { key: 'updates', label: 'Updates' },
+            ]}
+            onRead={id => setNotifications(prev => prev.map(n => n.id === id ? { ...n, read: true } : n))}
+            onReadAll={() => setNotifications(prev => prev.map(n => ({ ...n, read: true })))}
+          />
           <UserMenu
             name="John Doe"
             email="john@acme.com"
@@ -803,6 +860,295 @@ export const Main: Component = () => {
             </CardContent>
           </Card>
         </div>
+
+        <Separator class="my-4" />
+        <h2 class="text-xl font-bold tracking-tight">New HOC Components</h2>
+
+        {/* DataTable HOC Demo */}
+        <Card>
+          <CardHeader>
+            <div class="flex items-center justify-between">
+              <div>
+                <CardTitle>DataTable HOC</CardTitle>
+                <CardDescription>
+                  Full-featured table with toolbar, pagination, loading skeleton & empty state — all in one component.
+                </CardDescription>
+              </div>
+              <Button
+                size="sm"
+                variant="outline"
+                onClick={() => {
+                  setDataTableLoading(true)
+                  setTimeout(() => setDataTableLoading(false), 2000)
+                }}
+              >
+                Toggle Loading
+              </Button>
+            </div>
+          </CardHeader>
+          <CardContent>
+            <DataTable
+              columns={paymentColumns}
+              data={payments}
+              loading={dataTableLoading()}
+              searchColumn="name"
+              actions={<Button variant="outline" size="sm">Export</Button>}
+            />
+          </CardContent>
+        </Card>
+
+        {/* Stepper Demo */}
+        <Card>
+          <CardHeader>
+            <CardTitle>Stepper</CardTitle>
+            <CardDescription>Multi-step wizard with per-step validation and navigation.</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <Stepper
+              activeStep={stepperActiveStep()}
+              onActiveStepChange={setStepperActiveStep}
+              steps={[
+                {
+                  label: 'Account',
+                  description: 'Create your account',
+                  content: (
+                    <div class="flex flex-col gap-4 py-4">
+                      <FormField label="Email" required>
+                        <TextField>
+                          <TextFieldInput type="email" placeholder="you@example.com" />
+                        </TextField>
+                      </FormField>
+                      <FormField label="Password" required>
+                        <TextField>
+                          <TextFieldInput type="password" placeholder="Create a password" />
+                        </TextField>
+                      </FormField>
+                    </div>
+                  ),
+                },
+                {
+                  label: 'Profile',
+                  description: 'Set up your profile',
+                  content: (
+                    <div class="flex flex-col gap-4 py-4">
+                      <FormField label="Display Name" required>
+                        <TextField>
+                          <TextFieldInput placeholder="John Doe" />
+                        </TextField>
+                      </FormField>
+                      <FormField label="Bio" description="Tell us about yourself.">
+                        <TextField>
+                          <TextFieldInput placeholder="Software engineer..." />
+                        </TextField>
+                      </FormField>
+                    </div>
+                  ),
+                },
+                {
+                  label: 'Review',
+                  description: 'Confirm details',
+                  content: (
+                    <div class="py-4">
+                      <p class="text-muted-foreground text-sm">
+                        Review your information and click "Finish" to complete the setup.
+                      </p>
+                    </div>
+                  ),
+                },
+              ]}
+              onComplete={() => {
+                notify.success('Setup complete!')
+                setStepperActiveStep(0)
+              }}
+            />
+          </CardContent>
+        </Card>
+
+        {/* DescriptionList + Timeline side by side */}
+        <div class="grid gap-4 md:grid-cols-2">
+          {/* DescriptionList Demo */}
+          <Card>
+            <CardHeader>
+              <CardTitle>Description List</CardTitle>
+              <CardDescription>Structured key-value display for detail pages.</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <DescriptionList
+                columns={2}
+                bordered
+                items={[
+                  { label: 'Full Name', value: 'John Doe' },
+                  { label: 'Email', value: 'john@example.com', copyable: true },
+                  { label: 'Role', value: <Badge>Admin</Badge> },
+                  { label: 'Status', value: <Badge variant="secondary">Active</Badge> },
+                  { label: 'Bio', value: 'Full-stack engineer with 10+ years of experience in building web applications.', span: 2 },
+                  { label: 'Joined', value: 'January 15, 2024' },
+                  { label: 'Last Login', value: '5 minutes ago' },
+                ]}
+              />
+            </CardContent>
+          </Card>
+
+          {/* Timeline Demo */}
+          <Card>
+            <CardHeader>
+              <CardTitle>Timeline</CardTitle>
+              <CardDescription>Activity feeds, changelogs, and order tracking.</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <Timeline
+                items={[
+                  {
+                    title: 'Order placed',
+                    time: 'Jan 15, 2024',
+                    description: 'Your order #1234 has been received and is being processed.',
+                    icon: <IconCreditCard class="size-4" />,
+                  },
+                  {
+                    title: 'Payment confirmed',
+                    time: 'Jan 15, 2024',
+                    description: 'Payment of $1,250.00 was successfully processed.',
+                    icon: <IconCheck class="size-4" />,
+                  },
+                  {
+                    title: 'Processing',
+                    time: 'Jan 16, 2024',
+                    description: 'Your order is being prepared for shipment.',
+                    icon: <IconLoader class="size-4" />,
+                  },
+                  {
+                    title: 'Shipped',
+                    time: 'Jan 17, 2024',
+                    description: 'Package has been handed to the carrier.',
+                  },
+                  {
+                    title: 'Delivered',
+                    time: 'Jan 19, 2024',
+                    description: 'Package was delivered to the front door.',
+                  },
+                ]}
+              />
+            </CardContent>
+          </Card>
+        </div>
+
+        {/* FileUploadZone Demo */}
+        <Card>
+          <CardHeader>
+            <CardTitle>File Upload Zone</CardTitle>
+            <CardDescription>Drag-and-drop file upload with validation, preview and progress.</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <FileUploadZone
+              accept="image/*,.pdf"
+              maxSize={5 * 1024 * 1024}
+              maxFiles={3}
+              value={uploadedFiles()}
+              onFilesAdd={files => {
+                const newFiles: UploadFile[] = files.map(f => ({
+                  file: f,
+                  id: `${Date.now()}-${f.name}`,
+                  status: 'done' as const,
+                  preview: f.type.startsWith('image/') ? URL.createObjectURL(f) : undefined,
+                }))
+                setUploadedFiles(prev => [...prev, ...newFiles])
+              }}
+              onRemove={file => {
+                setUploadedFiles(prev => prev.filter(f => f.id !== file.id))
+              }}
+            />
+          </CardContent>
+        </Card>
+
+        {/* TagInput + FilterBuilder side by side */}
+        <div class="grid gap-4 md:grid-cols-2">
+          {/* TagInput Demo */}
+          <Card>
+            <CardHeader>
+              <CardTitle>Tag Input</CardTitle>
+              <CardDescription>Multi-tag input with autocomplete suggestions.</CardDescription>
+            </CardHeader>
+            <CardContent class="flex flex-col gap-3">
+              <TagInput
+                value={tags()}
+                onChange={setTags}
+                suggestions={['SolidJS', 'TypeScript', 'React', 'Vue', 'Svelte', 'Angular', 'Tailwind', 'Vite']}
+                max={6}
+                placeholder="Add a framework..."
+              />
+              <p class="text-muted-foreground text-sm">
+                Current tags: {tags().join(', ') || 'none'}
+              </p>
+            </CardContent>
+          </Card>
+
+          {/* FilterBuilder Demo */}
+          <Card>
+            <CardHeader>
+              <CardTitle>Filter Builder</CardTitle>
+              <CardDescription>Composable filter rules: field + operator + value.</CardDescription>
+            </CardHeader>
+            <CardContent class="flex flex-col gap-3">
+              <FilterBuilder
+                fields={[
+                  { key: 'name', label: 'Name', type: 'text' },
+                  { key: 'amount', label: 'Amount', type: 'number' },
+                  { key: 'status', label: 'Status', type: 'select', options: [
+                    { label: 'Pending', value: 'pending' },
+                    { label: 'Processing', value: 'processing' },
+                    { label: 'Success', value: 'success' },
+                    { label: 'Failed', value: 'failed' },
+                  ]},
+                  { key: 'date', label: 'Date', type: 'date' },
+                ]}
+                value={filterRules()}
+                onChange={setFilterRules}
+                maxRules={5}
+              />
+              <p class="text-muted-foreground text-sm">
+                Active rules: {filterRules().length}
+              </p>
+            </CardContent>
+          </Card>
+        </div>
+
+        {/* TransferList Demo */}
+        <Card>
+          <CardHeader>
+            <CardTitle>Transfer List</CardTitle>
+            <CardDescription>Dual-panel list for moving items between "available" and "selected".</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <TransferList
+              source={transferSource}
+              target={transferTarget()}
+              onChange={setTransferTarget}
+              titles={['Available Roles', 'Assigned Roles']}
+            />
+          </CardContent>
+        </Card>
+
+        {/* LoginForm Demo */}
+        <Card>
+          <CardHeader>
+            <CardTitle>Login Form</CardTitle>
+            <CardDescription>Pre-built authentication form with social providers and mode switching.</CardDescription>
+          </CardHeader>
+          <CardContent class="flex justify-center py-6">
+            <LoginForm
+              mode={loginMode()}
+              providers={[
+                { name: 'Google', icon: <IconBrandGoogle class="size-4" />, onSelect: () => notify.info('Google sign-in') },
+                { name: 'GitHub', icon: <IconBrandGithub class="size-4" />, onSelect: () => notify.info('GitHub sign-in') },
+              ]}
+              forgotPasswordHref="#"
+              onSubmit={data => {
+                notify.success(`${loginMode() === 'login' ? 'Signed in' : 'Registered'} as ${data.email}`)
+              }}
+              onModeSwitch={() => setLoginMode(m => m === 'login' ? 'register' : 'login')}
+            />
+          </CardContent>
+        </Card>
       </div>
     </>
   )

@@ -2,8 +2,7 @@ import { defineConfig } from 'tsup'
 import * as preset from 'tsup-preset-solid'
 import {
   getComponentEntries,
-  copyThemesToDist,
-  updatePackageJsonFiles,
+  copyThemesToDist
 } from './scripts'
 
 const preset_options: preset.PresetOptions = {
@@ -37,15 +36,9 @@ export default defineConfig(config => {
   const watching = !!config.watch
 
   const parsed_options = preset.parsePresetOptions(preset_options, watching)
-
-  if (!watching && !CI) {
-    const package_fields = preset.generatePackageExports(parsed_options)
-
-    console.log(`package.json: \n\n${JSON.stringify(package_fields, null, 2)}\n\n`)
-
-    // will update ./package.json with the correct export fields
-    preset.writePackageJson(package_fields)
-  }
+  const package_fields = preset.generatePackageExports(parsed_options)
+  // will update ./package.json with the correct export fields
+  preset.writePackageJson(package_fields)
 
   const tsupOptions = preset.generateTsupOptions(parsed_options)
 
@@ -57,9 +50,6 @@ export default defineConfig(config => {
       onSuccess: async () => {
         // Copy themes directory
         copyThemesToDist()
-
-        // Update package.json files field
-        updatePackageJsonFiles()
 
         // Call original onSuccess if it exists
         if (typeof option.onSuccess === 'function') {
@@ -75,9 +65,6 @@ export default defineConfig(config => {
       onSuccess: async () => {
         // Copy themes directory
         copyThemesToDist()
-
-        // Update package.json files field
-        updatePackageJsonFiles()
 
         // Call original onSuccess if it exists
         if (typeof options.onSuccess === 'function') {
