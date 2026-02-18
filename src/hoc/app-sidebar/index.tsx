@@ -43,7 +43,7 @@ export function AppSidebar(props: AppSidebarProps) {
                 <div class="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-primary-foreground">
                   {(header as AppSidebarHeaderProps).icon}
                 </div>
-                <div class="flex flex-col">
+                <div class="flex flex-col group-data-[collapsible=icon]:hidden">
                   <span class="text-sm font-semibold">
                     {(header as AppSidebarHeaderProps).title}
                   </span>
