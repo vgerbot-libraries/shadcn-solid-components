@@ -33,6 +33,7 @@ import {
   NavigationItemDescription,
   NavigationMenuPortal,
 } from '@/components/navigation-menu'
+import { NavMenu } from '@/hoc/navigation-menu'
 import {
   Pagination,
   PaginationItems,
@@ -212,6 +213,80 @@ const NavigationPage: Component = () => {
               </NavigationMenuPortal>
             </NavigationMenuList>
           </NavigationMenu>
+        </CardContent>
+      </Card>
+
+      {/* NavigationMenu HOC (Config-driven) */}
+      <Card>
+        <CardHeader>
+          <CardTitle>Navigation Menu (Config-driven)</CardTitle>
+          <CardDescription>
+            Same result via a simple config object using the NavMenu HOC.
+          </CardDescription>
+        </CardHeader>
+        <CardContent class="flex flex-col gap-6">
+          <NavMenu
+            menus={[
+              {
+                trigger: 'Getting Started',
+                featured: {
+                  label: 'shadcn-solid',
+                  description: 'Beautifully designed components built with Kobalte and Tailwind CSS.',
+                  href: '#',
+                },
+                items: [
+                  {
+                    label: 'Introduction',
+                    description: 'Re-usable components built using Kobalte and Tailwind CSS.',
+                    href: '#',
+                  },
+                  {
+                    label: 'Installation',
+                    description: 'How to install dependencies and structure your app.',
+                    href: '#',
+                  },
+                  {
+                    label: 'Typography',
+                    description: 'Styles for headings, paragraphs, lists...etc.',
+                    href: '#',
+                  },
+                ],
+              },
+              {
+                trigger: 'Components',
+                items: [
+                  { label: 'Alert Dialog', description: 'A modal dialog that interrupts the user.', href: '#' },
+                  { label: 'Hover Card', description: 'For sighted users to preview content behind a link.', href: '#' },
+                  { label: 'Progress', description: 'Displays an indicator showing the completion progress of a task.', href: '#' },
+                  { label: 'Tooltip', description: 'A popup that displays information related to an element.', href: '#' },
+                ],
+              },
+              { trigger: 'GitHub', href: 'https://github.com' },
+            ]}
+          />
+
+          <NavMenu
+            orientation="vertical"
+            menus={[
+              {
+                trigger: 'Getting Started',
+                items: [
+                  {
+                    label: 'Introduction',
+                    description: 'Re-usable components built using Kobalte and Tailwind CSS.',
+                    href: '#',
+                  },
+                ],
+              },
+              {
+                trigger: 'Components',
+                items: [
+                  { label: 'Alert Dialog', description: 'A modal dialog that interrupts the user.', href: '#' },
+                  { label: 'Hover Card', description: 'For sighted users to preview content behind a link.', href: '#' },
+                ],
+              },
+            ]}
+          />
         </CardContent>
       </Card>
 
