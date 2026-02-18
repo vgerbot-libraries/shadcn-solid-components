@@ -455,6 +455,7 @@
     "@fontsource-variable/inter": "^5.2.8",
     "@fontsource-variable/jetbrains-mono": "^5.2.8",
     "@kobalte/core": "^0.13.11",
+    "@solidjs/router": "^0.15.4",
     "@tanstack/solid-table": "^8.21.3",
     "@types/tabulator-tables": "^6.3.1",
     "@unovis/solid": "^1.6.2",
