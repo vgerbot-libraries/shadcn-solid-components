@@ -19,6 +19,7 @@ import {
   MenubarSubTrigger,
   MenubarSubContent,
   MenubarCheckboxItem,
+  MenubarGroup,
   MenubarRadioGroup,
   MenubarRadioItem,
   MenubarGroupLabel,
@@ -150,12 +151,14 @@ const NavigationPage: Component = () => {
                   Show Full URLs
                 </MenubarCheckboxItem>
                 <MenubarSeparator />
-                <MenubarGroupLabel>Zoom</MenubarGroupLabel>
-                <MenubarRadioGroup>
-                  <MenubarRadioItem value="100">100%</MenubarRadioItem>
-                  <MenubarRadioItem value="125">125%</MenubarRadioItem>
-                  <MenubarRadioItem value="150">150%</MenubarRadioItem>
-                </MenubarRadioGroup>
+                <MenubarGroup>
+                  <MenubarGroupLabel>Zoom</MenubarGroupLabel>
+                  <MenubarRadioGroup>
+                    <MenubarRadioItem value="100">100%</MenubarRadioItem>
+                    <MenubarRadioItem value="125">125%</MenubarRadioItem>
+                    <MenubarRadioItem value="150">150%</MenubarRadioItem>
+                  </MenubarRadioGroup>
+                </MenubarGroup>
               </MenubarContent>
             </MenubarMenu>
           </Menubar>
