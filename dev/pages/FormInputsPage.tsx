@@ -1,0 +1,326 @@
+import { createSignal, type Component } from 'solid-js'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/card'
+import { TextField, TextFieldInput } from '@/components/text-field'
+import {
+  NumberField,
+  NumberFieldGroup,
+  NumberFieldInput,
+  NumberFieldDecrementTrigger,
+  NumberFieldIncrementTrigger,
+  NumberFieldLabel,
+} from '@/components/number-field'
+import {
+  Checkbox,
+  CheckboxControl,
+  CheckboxLabel,
+} from '@/components/checkbox'
+import {
+  RadioGroup,
+  RadioGroupItem,
+  RadioGroupItemControl,
+  RadioGroupItemInput,
+  RadioGroupItemLabel,
+  RadioGroupLabel,
+  RadioGroupItems,
+} from '@/components/radio-group'
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/select'
+import {
+  Combobox,
+  ComboboxContent,
+  ComboboxControl,
+  ComboboxInput,
+  ComboboxItem,
+  ComboboxItemLabel,
+  ComboboxTrigger,
+} from '@/components/combobox'
+import { Switch, SwitchControl, SwitchThumb, SwitchLabel } from '@/components/switch'
+import {
+  Slider,
+  SliderTrack,
+  SliderFill,
+  SliderThumb,
+  SliderGroup,
+  SliderLabel,
+  SliderValueLabel,
+} from '@/components/slider'
+import { ToggleButton } from '@/components/toggle-button'
+import { ToggleGroup, ToggleGroupItem } from '@/components/toggle-group'
+import {
+  OTPField,
+  OTPFieldGroup,
+  OTPFieldSlot,
+  OTPFieldInput,
+  OTPFieldSeparator,
+} from '@/components/otp-field'
+import { Calendar } from '@/components/calendar'
+import { IconBold, IconItalic, IconUnderline, IconMinus, IconPlus } from '@/components/icons'
+import { PageLayout } from '../components/PageLayout'
+
+const fruits = ['Apple', 'Banana', 'Cherry', 'Date', 'Elderberry', 'Fig', 'Grape']
+
+const FormInputsPage: Component = () => {
+  const [togglePressed, setTogglePressed] = createSignal(false)
+  const [sliderValue, setSliderValue] = createSignal([50])
+
+  return (
+    <PageLayout title="Form Inputs" description="Input components: TextField, NumberField, Checkbox, RadioGroup, Select, Combobox, Switch, Slider, Toggle, OTP, Calendar.">
+      <div class="grid gap-4 md:grid-cols-2">
+        {/* TextField */}
+        <Card>
+          <CardHeader>
+            <CardTitle>Text Field</CardTitle>
+            <CardDescription>Text input with various types.</CardDescription>
+          </CardHeader>
+          <CardContent class="flex flex-col gap-3">
+            <TextField>
+              <TextFieldInput placeholder="Default input" />
+            </TextField>
+            <TextField>
+              <TextFieldInput type="email" placeholder="Email" />
+            </TextField>
+            <TextField>
+              <TextFieldInput type="password" placeholder="Password" />
+            </TextField>
+            <TextField disabled>
+              <TextFieldInput placeholder="Disabled" />
+            </TextField>
+          </CardContent>
+        </Card>
+
+        {/* NumberField */}
+        <Card>
+          <CardHeader>
+            <CardTitle>Number Field</CardTitle>
+            <CardDescription>Numeric input with increment/decrement.</CardDescription>
+          </CardHeader>
+          <CardContent class="flex flex-col gap-3">
+            <NumberField defaultValue={5} minValue={0} maxValue={100}>
+              <NumberFieldLabel>Quantity</NumberFieldLabel>
+              <NumberFieldGroup>
+                <NumberFieldDecrementTrigger><IconMinus /></NumberFieldDecrementTrigger>
+                <NumberFieldInput />
+                <NumberFieldIncrementTrigger><IconPlus /></NumberFieldIncrementTrigger>
+              </NumberFieldGroup>
+            </NumberField>
+          </CardContent>
+        </Card>
+
+        {/* Checkbox */}
+        <Card>
+          <CardHeader>
+            <CardTitle>Checkbox</CardTitle>
+            <CardDescription>Toggle options on/off.</CardDescription>
+          </CardHeader>
+          <CardContent class="flex flex-col gap-3">
+            <Checkbox>
+              <CheckboxControl />
+              <CheckboxLabel>Accept terms and conditions</CheckboxLabel>
+            </Checkbox>
+            <Checkbox>
+              <CheckboxControl />
+              <CheckboxLabel>Send me email notifications</CheckboxLabel>
+            </Checkbox>
+            <Checkbox disabled>
+              <CheckboxControl />
+              <CheckboxLabel>Disabled option</CheckboxLabel>
+            </Checkbox>
+          </CardContent>
+        </Card>
+
+        {/* RadioGroup */}
+        <Card>
+          <CardHeader>
+            <CardTitle>Radio Group</CardTitle>
+            <CardDescription>Select one from a set of options.</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <RadioGroup defaultValue="comfortable">
+              <RadioGroupLabel>Layout density</RadioGroupLabel>
+              <RadioGroupItems>
+                <RadioGroupItem value="compact">
+                  <RadioGroupItemInput />
+                  <RadioGroupItemControl />
+                  <RadioGroupItemLabel>Compact</RadioGroupItemLabel>
+                </RadioGroupItem>
+                <RadioGroupItem value="comfortable">
+                  <RadioGroupItemInput />
+                  <RadioGroupItemControl />
+                  <RadioGroupItemLabel>Comfortable</RadioGroupItemLabel>
+                </RadioGroupItem>
+                <RadioGroupItem value="spacious">
+                  <RadioGroupItemInput />
+                  <RadioGroupItemControl />
+                  <RadioGroupItemLabel>Spacious</RadioGroupItemLabel>
+                </RadioGroupItem>
+              </RadioGroupItems>
+            </RadioGroup>
+          </CardContent>
+        </Card>
+
+        {/* Select */}
+        <Card>
+          <CardHeader>
+            <CardTitle>Select</CardTitle>
+            <CardDescription>Dropdown selection from a list.</CardDescription>
+          </CardHeader>
+          <CardContent class="flex flex-col gap-3">
+            <Select
+              options={fruits}
+              placeholder="Select a fruit..."
+              itemComponent={props => (
+                <SelectItem item={props.item}>{props.item.rawValue}</SelectItem>
+              )}
+            >
+              <SelectTrigger>
+                <SelectValue<string>>{state => state.selectedOption()}</SelectValue>
+              </SelectTrigger>
+              <SelectContent />
+            </Select>
+          </CardContent>
+        </Card>
+
+        {/* Combobox */}
+        <Card>
+          <CardHeader>
+            <CardTitle>Combobox</CardTitle>
+            <CardDescription>Searchable dropdown selection.</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <Combobox
+              options={fruits}
+              placeholder="Search fruits..."
+              itemComponent={props => (
+                <ComboboxItem item={props.item}>
+                  <ComboboxItemLabel>{props.item.rawValue}</ComboboxItemLabel>
+                </ComboboxItem>
+              )}
+            >
+              <ComboboxControl>
+                <ComboboxInput />
+                <ComboboxTrigger />
+              </ComboboxControl>
+              <ComboboxContent />
+            </Combobox>
+          </CardContent>
+        </Card>
+
+        {/* Switch */}
+        <Card>
+          <CardHeader>
+            <CardTitle>Switch</CardTitle>
+            <CardDescription>Toggle between on and off states.</CardDescription>
+          </CardHeader>
+          <CardContent class="flex flex-col gap-3">
+            <Switch>
+              <SwitchControl>
+                <SwitchThumb />
+              </SwitchControl>
+              <SwitchLabel>Airplane Mode</SwitchLabel>
+            </Switch>
+            <Switch defaultChecked>
+              <SwitchControl>
+                <SwitchThumb />
+              </SwitchControl>
+              <SwitchLabel>Notifications</SwitchLabel>
+            </Switch>
+            <Switch disabled>
+              <SwitchControl>
+                <SwitchThumb />
+              </SwitchControl>
+              <SwitchLabel>Disabled</SwitchLabel>
+            </Switch>
+          </CardContent>
+        </Card>
+
+        {/* Slider */}
+        <Card>
+          <CardHeader>
+            <CardTitle>Slider</CardTitle>
+            <CardDescription>Range selection with a draggable thumb.</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <Slider value={sliderValue()} onChange={setSliderValue} minValue={0} maxValue={100} step={1}>
+              <SliderGroup>
+                <SliderLabel>Volume</SliderLabel>
+                <SliderValueLabel />
+              </SliderGroup>
+              <SliderTrack>
+                <SliderFill />
+                <SliderThumb />
+              </SliderTrack>
+            </Slider>
+          </CardContent>
+        </Card>
+      </div>
+
+      <div class="grid gap-4 md:grid-cols-2">
+        {/* ToggleButton + ToggleGroup */}
+        <Card>
+          <CardHeader>
+            <CardTitle>Toggle Button & Group</CardTitle>
+            <CardDescription>Pressable toggle buttons, alone or as a group.</CardDescription>
+          </CardHeader>
+          <CardContent class="flex flex-col gap-4">
+            <div class="flex items-center gap-2">
+              <ToggleButton pressed={togglePressed()} onChange={setTogglePressed}>
+                <IconBold />
+              </ToggleButton>
+              <span class="text-muted-foreground text-sm">Pressed: {togglePressed() ? 'Yes' : 'No'}</span>
+            </div>
+            <ToggleGroup>
+              <ToggleGroupItem value="bold"><IconBold /></ToggleGroupItem>
+              <ToggleGroupItem value="italic"><IconItalic /></ToggleGroupItem>
+              <ToggleGroupItem value="underline"><IconUnderline /></ToggleGroupItem>
+            </ToggleGroup>
+            <ToggleGroup variant="outline">
+              <ToggleGroupItem value="bold"><IconBold /></ToggleGroupItem>
+              <ToggleGroupItem value="italic"><IconItalic /></ToggleGroupItem>
+              <ToggleGroupItem value="underline"><IconUnderline /></ToggleGroupItem>
+            </ToggleGroup>
+          </CardContent>
+        </Card>
+
+        {/* OTPField */}
+        <Card>
+          <CardHeader>
+            <CardTitle>OTP Field</CardTitle>
+            <CardDescription>One-time password input with individual slots.</CardDescription>
+          </CardHeader>
+          <CardContent class="flex flex-col gap-4">
+            <OTPField maxLength={6}>
+              <OTPFieldInput />
+              <OTPFieldGroup>
+                <OTPFieldSlot index={0} />
+                <OTPFieldSlot index={1} />
+                <OTPFieldSlot index={2} />
+                <OTPFieldSeparator />
+                <OTPFieldSlot index={3} />
+                <OTPFieldSlot index={4} />
+                <OTPFieldSlot index={5} />
+              </OTPFieldGroup>
+            </OTPField>
+          </CardContent>
+        </Card>
+      </div>
+
+      {/* Calendar */}
+      <Card>
+        <CardHeader>
+          <CardTitle>Calendar</CardTitle>
+          <CardDescription>Date picker calendar view.</CardDescription>
+        </CardHeader>
+        <CardContent class="flex justify-center">
+          <Calendar />
+        </CardContent>
+      </Card>
+    </PageLayout>
+  )
+}
+
+export default FormInputsPage
