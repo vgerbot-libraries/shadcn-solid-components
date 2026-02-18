@@ -108,7 +108,12 @@ export const RadioGroupItemIndicator = <T extends ValidComponent = 'div'>(
     <RadioGroupPrimitive.ItemIndicator
       forceMount
       data-slot="radio-group-item-indicator"
-      class={cx('data-[checked]:bg-primary size-2', 'rounded-component', componentClass, props.class)}
+      class={cx(
+        'data-[checked]:bg-primary size-2',
+        'rounded-component',
+        componentClass,
+        props.class,
+      )}
       {...rest}
     />
   )

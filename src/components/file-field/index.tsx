@@ -128,7 +128,11 @@ export const FileFieldItemPreviewImage = <T extends ValidComponent = 'img'>(
   return (
     <FileFieldPrimitive.ItemPreviewImage
       data-slot="file-field-item-preview-image"
-      class={cx('aspect-[1] h-auto w-14 self-center object-cover', 'rounded-component', props.class)}
+      class={cx(
+        'aspect-[1] h-auto w-14 self-center object-cover',
+        'rounded-component',
+        props.class,
+      )}
       {...rest}
     />
   )

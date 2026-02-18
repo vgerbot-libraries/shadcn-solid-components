@@ -1,7 +1,14 @@
 import { createSignal, type Component } from 'solid-js'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/card'
 import { Button } from '@/components/button'
-import { IconInbox, IconMail, IconUser, IconSettings, IconCreditCard, IconCheck } from '@/components/icons'
+import {
+  IconInbox,
+  IconMail,
+  IconUser,
+  IconSettings,
+  IconCreditCard,
+  IconCheck,
+} from '@/components/icons'
 import { useNotify } from '@/hoc/use-notify'
 import { confirm } from '@/hoc/confirm-dialog'
 import { NotificationCenter, type NotificationItem } from '@/hoc/notification-center'
@@ -14,15 +21,55 @@ const FeedbackPage: Component = () => {
   const [confirmResult, setConfirmResult] = createSignal('')
 
   const [notifications, setNotifications] = createSignal<NotificationItem[]>([
-    { id: '1', title: 'New comment on your post', description: 'Alice replied to your discussion.', time: '5 min ago', category: 'messages', icon: <IconMail class="size-4" /> },
-    { id: '2', title: 'Deployment successful', description: 'Production v2.4.1 deployed.', time: '1 hour ago', category: 'updates', icon: <IconCheck class="size-4" />, read: true },
-    { id: '3', title: 'New team member', description: 'Bob joined Engineering.', time: '3 hours ago', category: 'updates', icon: <IconUser class="size-4" /> },
-    { id: '4', title: 'Payment received', description: 'Invoice #1234 paid — $1,250.00', time: 'Yesterday', category: 'messages', icon: <IconCreditCard class="size-4" />, read: true },
-    { id: '5', title: 'System maintenance', description: 'Scheduled downtime on Feb 20.', time: '2 days ago', category: 'updates', icon: <IconSettings class="size-4" /> },
+    {
+      id: '1',
+      title: 'New comment on your post',
+      description: 'Alice replied to your discussion.',
+      time: '5 min ago',
+      category: 'messages',
+      icon: <IconMail class="size-4" />,
+    },
+    {
+      id: '2',
+      title: 'Deployment successful',
+      description: 'Production v2.4.1 deployed.',
+      time: '1 hour ago',
+      category: 'updates',
+      icon: <IconCheck class="size-4" />,
+      read: true,
+    },
+    {
+      id: '3',
+      title: 'New team member',
+      description: 'Bob joined Engineering.',
+      time: '3 hours ago',
+      category: 'updates',
+      icon: <IconUser class="size-4" />,
+    },
+    {
+      id: '4',
+      title: 'Payment received',
+      description: 'Invoice #1234 paid — $1,250.00',
+      time: 'Yesterday',
+      category: 'messages',
+      icon: <IconCreditCard class="size-4" />,
+      read: true,
+    },
+    {
+      id: '5',
+      title: 'System maintenance',
+      description: 'Scheduled downtime on Feb 20.',
+      time: '2 days ago',
+      category: 'updates',
+      icon: <IconSettings class="size-4" />,
+    },
   ])
 
   return (
-    <PageLayout title="Feedback" description="Feedback components: useNotify, ConfirmDialog, NotificationCenter, EmptyState, ModeToggle.">
+    <PageLayout
+      title="Feedback"
+      description="Feedback components: useNotify, ConfirmDialog, NotificationCenter, EmptyState, ModeToggle."
+    >
       <div class="grid gap-4 md:grid-cols-2">
         {/* useNotify */}
         <Card>
@@ -31,18 +78,39 @@ const FeedbackPage: Component = () => {
             <CardDescription>Toast notifications with merged default options.</CardDescription>
           </CardHeader>
           <CardContent class="flex flex-wrap gap-2">
-            <Button size="sm" onClick={() => notify.success('File saved successfully')}>Success</Button>
-            <Button size="sm" variant="destructive" onClick={() => notify.error('Something went wrong')}>Error</Button>
-            <Button size="sm" variant="outline" onClick={() => notify.warning('Disk space is running low')}>Warning</Button>
-            <Button size="sm" variant="secondary" onClick={() => notify.info('New version available')}>Info</Button>
+            <Button size="sm" onClick={() => notify.success('File saved successfully')}>
+              Success
+            </Button>
+            <Button
+              size="sm"
+              variant="destructive"
+              onClick={() => notify.error('Something went wrong')}
+            >
+              Error
+            </Button>
+            <Button
+              size="sm"
+              variant="outline"
+              onClick={() => notify.warning('Disk space is running low')}
+            >
+              Warning
+            </Button>
+            <Button
+              size="sm"
+              variant="secondary"
+              onClick={() => notify.info('New version available')}
+            >
+              Info
+            </Button>
             <Button
               size="sm"
               variant="outline"
               onClick={() => {
-                notify.promise(
-                  new Promise(resolve => setTimeout(resolve, 2000)),
-                  { loading: 'Uploading...', success: 'Upload complete!', error: 'Upload failed' },
-                )
+                notify.promise(new Promise(resolve => setTimeout(resolve, 2000)), {
+                  loading: 'Uploading...',
+                  success: 'Upload complete!',
+                  error: 'Upload failed',
+                })
               }}
             >
               Promise
@@ -54,7 +122,9 @@ const FeedbackPage: Component = () => {
         <Card>
           <CardHeader>
             <CardTitle>Confirm Dialog</CardTitle>
-            <CardDescription>Imperative confirmation dialogs via <code>confirm()</code>.</CardDescription>
+            <CardDescription>
+              Imperative confirmation dialogs via <code>confirm()</code>.
+            </CardDescription>
           </CardHeader>
           <CardContent class="flex flex-col gap-3">
             <div class="flex flex-wrap gap-2">
@@ -62,7 +132,10 @@ const FeedbackPage: Component = () => {
                 size="sm"
                 variant="outline"
                 onClick={async () => {
-                  const ok = await confirm({ title: 'Save changes?', description: 'Your unsaved changes will be committed.' })
+                  const ok = await confirm({
+                    title: 'Save changes?',
+                    description: 'Your unsaved changes will be committed.',
+                  })
                   setConfirmResult(ok ? 'Confirmed' : 'Cancelled')
                 }}
               >
@@ -106,7 +179,9 @@ const FeedbackPage: Component = () => {
               { key: 'messages', label: 'Messages' },
               { key: 'updates', label: 'Updates' },
             ]}
-            onRead={id => setNotifications(prev => prev.map(n => n.id === id ? { ...n, read: true } : n))}
+            onRead={id =>
+              setNotifications(prev => prev.map(n => (n.id === id ? { ...n, read: true } : n)))
+            }
             onReadAll={() => setNotifications(prev => prev.map(n => ({ ...n, read: true })))}
           />
           <span class="text-muted-foreground text-sm">
@@ -127,7 +202,11 @@ const FeedbackPage: Component = () => {
               icon={<IconMail class="size-12" />}
               title="No messages"
               description="You haven't received any messages yet. Start a conversation to get going."
-              action={<Button size="sm" onClick={() => notify.info('Compose clicked')}>Compose</Button>}
+              action={
+                <Button size="sm" onClick={() => notify.info('Compose clicked')}>
+                  Compose
+                </Button>
+              }
             />
           </CardContent>
         </Card>

@@ -60,12 +60,21 @@ import {
 } from '@/components/command'
 import { Button } from '@/components/button'
 import { TextField, TextFieldInput } from '@/components/text-field'
-import { IconAlertTriangle, IconSettings, IconUser, IconMail, IconCreditCard } from '@/components/icons'
+import {
+  IconAlertTriangle,
+  IconSettings,
+  IconUser,
+  IconMail,
+  IconCreditCard,
+} from '@/components/icons'
 import { PageLayout } from '../components/PageLayout'
 
 const OverlayPage: Component = () => {
   return (
-    <PageLayout title="Overlay & Feedback" description="Overlay components: Alert, AlertDialog, Dialog, Drawer, Popover, ContextMenu, DropdownMenu, Command.">
+    <PageLayout
+      title="Overlay & Feedback"
+      description="Overlay components: Alert, AlertDialog, Dialog, Drawer, Popover, ContextMenu, DropdownMenu, Command."
+    >
       {/* Alert */}
       <Card>
         <CardHeader>
@@ -94,12 +103,15 @@ const OverlayPage: Component = () => {
           </CardHeader>
           <CardContent>
             <AlertDialog>
-              <AlertDialogTrigger as={Button} variant="outline">Delete Account</AlertDialogTrigger>
+              <AlertDialogTrigger as={Button} variant="outline">
+                Delete Account
+              </AlertDialogTrigger>
               <AlertDialogContent>
                 <AlertDialogHeader>
                   <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
                   <AlertDialogDescription>
-                    This action cannot be undone. This will permanently delete your account and remove your data from our servers.
+                    This action cannot be undone. This will permanently delete your account and
+                    remove your data from our servers.
                   </AlertDialogDescription>
                 </AlertDialogHeader>
                 <AlertDialogFooter>
@@ -123,7 +135,9 @@ const OverlayPage: Component = () => {
               <DialogContent>
                 <DialogHeader>
                   <DialogTitle>Edit profile</DialogTitle>
-                  <DialogDescription>Make changes to your profile here. Click save when you're done.</DialogDescription>
+                  <DialogDescription>
+                    Make changes to your profile here. Click save when you're done.
+                  </DialogDescription>
                 </DialogHeader>
                 <div class="flex flex-col gap-4 py-4">
                   <TextField>
@@ -149,16 +163,16 @@ const OverlayPage: Component = () => {
           </CardHeader>
           <CardContent>
             <Drawer>
-              <DrawerTrigger as={Button} variant="outline">Open Drawer</DrawerTrigger>
+              <DrawerTrigger as={Button} variant="outline">
+                Open Drawer
+              </DrawerTrigger>
               <DrawerContent>
                 <DrawerHeader>
                   <DrawerLabel>Move Goal</DrawerLabel>
                   <DrawerDescription>Set your daily activity goal.</DrawerDescription>
                 </DrawerHeader>
                 <div class="p-4">
-                  <div class="flex items-center justify-center text-6xl font-bold py-8">
-                    350
-                  </div>
+                  <div class="flex items-center justify-center text-6xl font-bold py-8">350</div>
                   <p class="text-center text-muted-foreground text-sm">calories per day</p>
                 </div>
                 <DrawerFooter>
@@ -177,7 +191,9 @@ const OverlayPage: Component = () => {
           </CardHeader>
           <CardContent>
             <Popover>
-              <PopoverTrigger as={Button} variant="outline">Open Popover</PopoverTrigger>
+              <PopoverTrigger as={Button} variant="outline">
+                Open Popover
+              </PopoverTrigger>
               <PopoverContent class="w-80">
                 <div class="flex flex-col gap-2">
                   <h4 class="font-medium leading-none">Dimensions</h4>
@@ -214,21 +230,31 @@ const OverlayPage: Component = () => {
                 Right click here
               </ContextMenuTrigger>
               <ContextMenuContent class="w-64">
-                <ContextMenuItem>Back <ContextMenuShortcut>⌘[</ContextMenuShortcut></ContextMenuItem>
-                <ContextMenuItem>Forward <ContextMenuShortcut>⌘]</ContextMenuShortcut></ContextMenuItem>
-                <ContextMenuItem>Reload <ContextMenuShortcut>⌘R</ContextMenuShortcut></ContextMenuItem>
+                <ContextMenuItem>
+                  Back <ContextMenuShortcut>⌘[</ContextMenuShortcut>
+                </ContextMenuItem>
+                <ContextMenuItem>
+                  Forward <ContextMenuShortcut>⌘]</ContextMenuShortcut>
+                </ContextMenuItem>
+                <ContextMenuItem>
+                  Reload <ContextMenuShortcut>⌘R</ContextMenuShortcut>
+                </ContextMenuItem>
                 <ContextMenuSeparator />
                 <ContextMenuSub>
                   <ContextMenuSubTrigger>More Tools</ContextMenuSubTrigger>
                   <ContextMenuSubContent class="w-48">
-                    <ContextMenuItem>Save Page As... <ContextMenuShortcut>⌘S</ContextMenuShortcut></ContextMenuItem>
+                    <ContextMenuItem>
+                      Save Page As... <ContextMenuShortcut>⌘S</ContextMenuShortcut>
+                    </ContextMenuItem>
                     <ContextMenuItem>Create Shortcut...</ContextMenuItem>
                     <ContextMenuSeparator />
                     <ContextMenuItem>Developer Tools</ContextMenuItem>
                   </ContextMenuSubContent>
                 </ContextMenuSub>
                 <ContextMenuSeparator />
-                <ContextMenuItem>View Page Source <ContextMenuShortcut>⌘U</ContextMenuShortcut></ContextMenuItem>
+                <ContextMenuItem>
+                  View Page Source <ContextMenuShortcut>⌘U</ContextMenuShortcut>
+                </ContextMenuItem>
                 <ContextMenuItem>Inspect</ContextMenuItem>
               </ContextMenuContent>
             </ContextMenu>
@@ -243,12 +269,22 @@ const OverlayPage: Component = () => {
           </CardHeader>
           <CardContent>
             <DropdownMenu>
-              <DropdownMenuTrigger as={Button} variant="outline">Open Menu</DropdownMenuTrigger>
+              <DropdownMenuTrigger as={Button} variant="outline">
+                Open Menu
+              </DropdownMenuTrigger>
               <DropdownMenuContent class="w-56">
-                <DropdownMenuItem><IconUser class="mr-2 size-4" /> Profile</DropdownMenuItem>
-                <DropdownMenuItem><IconCreditCard class="mr-2 size-4" /> Billing</DropdownMenuItem>
-                <DropdownMenuItem><IconSettings class="mr-2 size-4" /> Settings</DropdownMenuItem>
-                <DropdownMenuItem><IconMail class="mr-2 size-4" /> Messages</DropdownMenuItem>
+                <DropdownMenuItem>
+                  <IconUser class="mr-2 size-4" /> Profile
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <IconCreditCard class="mr-2 size-4" /> Billing
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <IconSettings class="mr-2 size-4" /> Settings
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <IconMail class="mr-2 size-4" /> Messages
+                </DropdownMenuItem>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem variant="destructive">Log out</DropdownMenuItem>
               </DropdownMenuContent>
@@ -269,14 +305,24 @@ const OverlayPage: Component = () => {
             <CommandList>
               <CommandEmpty>No results found.</CommandEmpty>
               <CommandGroup heading="Suggestions">
-                <CommandItem><IconMail class="mr-2 size-4" /> Mail</CommandItem>
-                <CommandItem><IconUser class="mr-2 size-4" /> Profile</CommandItem>
-                <CommandItem><IconSettings class="mr-2 size-4" /> Settings</CommandItem>
+                <CommandItem>
+                  <IconMail class="mr-2 size-4" /> Mail
+                </CommandItem>
+                <CommandItem>
+                  <IconUser class="mr-2 size-4" /> Profile
+                </CommandItem>
+                <CommandItem>
+                  <IconSettings class="mr-2 size-4" /> Settings
+                </CommandItem>
               </CommandGroup>
               <CommandSeparator />
               <CommandGroup heading="Settings">
-                <CommandItem><IconUser class="mr-2 size-4" /> Account</CommandItem>
-                <CommandItem><IconCreditCard class="mr-2 size-4" /> Billing</CommandItem>
+                <CommandItem>
+                  <IconUser class="mr-2 size-4" /> Account
+                </CommandItem>
+                <CommandItem>
+                  <IconCreditCard class="mr-2 size-4" /> Billing
+                </CommandItem>
               </CommandGroup>
             </CommandList>
           </Command>

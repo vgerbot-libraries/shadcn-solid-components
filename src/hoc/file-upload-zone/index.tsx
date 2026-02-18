@@ -1,11 +1,4 @@
-import {
-  type ComponentProps,
-  createSignal,
-  For,
-  type JSX,
-  Show,
-  splitProps,
-} from 'solid-js'
+import { type ComponentProps, createSignal, For, type JSX, Show, splitProps } from 'solid-js'
 import { Button } from '@/components/button'
 import { Progress } from '@/components/progress'
 import { cx } from '@/lib/cva'
@@ -136,7 +129,11 @@ function isValidType(file: File, accept: string): boolean {
 
 function FileIcon() {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" class="size-10 text-muted-foreground" viewBox="0 0 24 24">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      class="size-10 text-muted-foreground"
+      viewBox="0 0 24 24"
+    >
       <path
         fill="none"
         stroke="currentColor"
@@ -254,11 +251,7 @@ export function FileUploadZone(props: FileUploadZoneProps) {
   }
 
   return (
-    <div
-      data-slot="file-upload-zone"
-      class={cx('flex flex-col gap-3', local.class)}
-      {...rest}
-    >
+    <div data-slot="file-upload-zone" class={cx('flex flex-col gap-3', local.class)} {...rest}>
       {/* Drop area */}
       <div
         class={cx(
@@ -274,8 +267,7 @@ export function FileUploadZone(props: FileUploadZoneProps) {
         <FileIcon />
         <div class="flex flex-col gap-1">
           <p class="text-sm font-medium">
-            {locale().dropHere}{' '}
-            <span class="text-muted-foreground">{locale().or}</span>{' '}
+            {locale().dropHere} <span class="text-muted-foreground">{locale().or}</span>{' '}
             <button
               type="button"
               class="text-primary cursor-pointer underline underline-offset-4"
@@ -322,8 +314,19 @@ export function FileUploadZone(props: FileUploadZoneProps) {
                   when={file.preview}
                   fallback={
                     <div class="bg-muted flex size-10 shrink-0 items-center justify-center rounded">
-                      <svg xmlns="http://www.w3.org/2000/svg" class="text-muted-foreground size-5" viewBox="0 0 24 24">
-                        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7ZM14 2v4a2 2 0 0 0 2 2h4" />
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="text-muted-foreground size-5"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7ZM14 2v4a2 2 0 0 0 2 2h4"
+                        />
                       </svg>
                     </div>
                   }
@@ -359,7 +362,14 @@ export function FileUploadZone(props: FileUploadZoneProps) {
                   onClick={() => local.onRemove?.(file)}
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" class="size-4" viewBox="0 0 24 24">
-                    <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 6L6 18M6 6l12 12" />
+                    <path
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M18 6L6 18M6 6l12 12"
+                    />
                   </svg>
                   <span class="sr-only">{locale().remove}</span>
                 </Button>

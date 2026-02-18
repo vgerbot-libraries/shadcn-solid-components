@@ -127,9 +127,7 @@ export function DataTableToolbar<TData>(props: DataTableToolbarProps<TData>) {
               placeholder={locale().searchPlaceholder}
               value={searchValue()}
               onInput={e => {
-                local.table
-                  .getColumn(local.searchColumn!)
-                  ?.setFilterValue(e.currentTarget.value)
+                local.table.getColumn(local.searchColumn!)?.setFilterValue(e.currentTarget.value)
               }}
               class={cx(
                 'placeholder:text-muted-foreground dark:bg-input/30 border-input flex h-9 w-full border bg-transparent py-1 pr-3 pl-8 text-sm shadow-xs transition-[color,box-shadow] outline-none',
@@ -145,11 +143,7 @@ export function DataTableToolbar<TData>(props: DataTableToolbarProps<TData>) {
 
         {/* Reset button */}
         <Show when={isFiltered()}>
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={() => local.table.resetColumnFilters()}
-          >
+          <Button variant="ghost" size="sm" onClick={() => local.table.resetColumnFilters()}>
             {locale().resetFilters}
             <IconX class="ml-1 size-4" />
           </Button>
@@ -163,17 +157,8 @@ export function DataTableToolbar<TData>(props: DataTableToolbarProps<TData>) {
         {/* Column visibility */}
         <Show when={showColumnToggle()}>
           <DropdownMenu>
-            <DropdownMenuTrigger
-              as={Button<'button'>}
-              variant="outline"
-              size="sm"
-              class="ml-auto"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="mr-1 size-4"
-                viewBox="0 0 24 24"
-              >
+            <DropdownMenuTrigger as={Button<'button'>} variant="outline" size="sm" class="ml-auto">
+              <svg xmlns="http://www.w3.org/2000/svg" class="mr-1 size-4" viewBox="0 0 24 24">
                 <path
                   fill="none"
                   stroke="currentColor"
@@ -188,11 +173,7 @@ export function DataTableToolbar<TData>(props: DataTableToolbarProps<TData>) {
             <DropdownMenuContent>
               <DropdownMenuGroupLabel>{locale().columns}</DropdownMenuGroupLabel>
               <DropdownMenuSeparator />
-              <For
-                each={local.table
-                  .getAllColumns()
-                  .filter(col => col.getCanHide())}
-              >
+              <For each={local.table.getAllColumns().filter(col => col.getCanHide())}>
                 {column => (
                   <DropdownMenuCheckboxItem
                     checked={column.getIsVisible()}

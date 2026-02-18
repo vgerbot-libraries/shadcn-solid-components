@@ -9,7 +9,7 @@ interface PageLayoutProps {
   children: JSX.Element
 }
 
-export const PageLayout: Component<PageLayoutProps> = (props) => {
+export const PageLayout: Component<PageLayoutProps> = props => {
   return (
     <>
       <header class="flex h-16 shrink-0 items-center gap-2 border-b px-4">

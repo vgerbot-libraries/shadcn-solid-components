@@ -679,8 +679,8 @@
       }
     }
   }
-  .tabulator-cell[tabulator-field=rating] > span > svg {
-      @apply float-left;
+  .tabulator-cell[tabulator-field="rating"] > span > svg {
+    @apply float-left;
   }
 }
 

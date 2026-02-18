@@ -3,7 +3,13 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/table'
 import { ChartContainer, ChartCrosshair } from '@/components/chart'
 import { Progress, ProgressGroup, ProgressLabel, ProgressValueLabel } from '@/components/progress'
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/carousel'
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from '@/components/carousel'
 import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/components/hover-card'
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/tooltip'
 import { Button } from '@/components/button'
@@ -31,7 +37,10 @@ const DataDisplayPage: Component = () => {
   const [progressValue, setProgressValue] = createSignal(65)
 
   return (
-    <PageLayout title="Data Display" description="Data presentation components: Table, Chart, Progress, Carousel, HoverCard, Tooltip.">
+    <PageLayout
+      title="Data Display"
+      description="Data presentation components: Table, Chart, Progress, Carousel, HoverCard, Tooltip."
+    >
       {/* Table */}
       <Card>
         <CardHeader>
@@ -51,25 +60,33 @@ const DataDisplayPage: Component = () => {
             <TableBody>
               <TableRow>
                 <TableCell class="font-medium">INV001</TableCell>
-                <TableCell><Badge>Paid</Badge></TableCell>
+                <TableCell>
+                  <Badge>Paid</Badge>
+                </TableCell>
                 <TableCell>Credit Card</TableCell>
                 <TableCell class="text-right">$250.00</TableCell>
               </TableRow>
               <TableRow>
                 <TableCell class="font-medium">INV002</TableCell>
-                <TableCell><Badge variant="secondary">Pending</Badge></TableCell>
+                <TableCell>
+                  <Badge variant="secondary">Pending</Badge>
+                </TableCell>
                 <TableCell>PayPal</TableCell>
                 <TableCell class="text-right">$150.00</TableCell>
               </TableRow>
               <TableRow>
                 <TableCell class="font-medium">INV003</TableCell>
-                <TableCell><Badge variant="destructive">Unpaid</Badge></TableCell>
+                <TableCell>
+                  <Badge variant="destructive">Unpaid</Badge>
+                </TableCell>
                 <TableCell>Bank Transfer</TableCell>
                 <TableCell class="text-right">$350.00</TableCell>
               </TableRow>
               <TableRow>
                 <TableCell class="font-medium">INV004</TableCell>
-                <TableCell><Badge>Paid</Badge></TableCell>
+                <TableCell>
+                  <Badge>Paid</Badge>
+                </TableCell>
                 <TableCell>Credit Card</TableCell>
                 <TableCell class="text-right">$450.00</TableCell>
               </TableRow>
@@ -85,10 +102,22 @@ const DataDisplayPage: Component = () => {
           <CardDescription>Area and line chart with Unovis.</CardDescription>
         </CardHeader>
         <CardContent>
-          <ChartContainer<ChartDataPoint> config={chartConfig} type="xy" data={chartData} class="h-[250px] w-full">
+          <ChartContainer<ChartDataPoint>
+            config={chartConfig}
+            type="xy"
+            data={chartData}
+            class="h-[250px] w-full"
+          >
             <ChartCrosshair />
-            <VisArea<ChartDataPoint> x={(_d: ChartDataPoint, i: number) => i} y={(d: ChartDataPoint) => d.visitors} opacity={0.2} />
-            <VisLine<ChartDataPoint> x={(_d: ChartDataPoint, i: number) => i} y={(d: ChartDataPoint) => d.visitors} />
+            <VisArea<ChartDataPoint>
+              x={(_d: ChartDataPoint, i: number) => i}
+              y={(d: ChartDataPoint) => d.visitors}
+              opacity={0.2}
+            />
+            <VisLine<ChartDataPoint>
+              x={(_d: ChartDataPoint, i: number) => i}
+              y={(d: ChartDataPoint) => d.visitors}
+            />
           </ChartContainer>
         </CardContent>
       </Card>
@@ -119,7 +148,11 @@ const DataDisplayPage: Component = () => {
                 <ProgressValueLabel />
               </ProgressGroup>
             </Progress>
-            <Button size="sm" variant="outline" onClick={() => setProgressValue(v => Math.min(100, v + 10))}>
+            <Button
+              size="sm"
+              variant="outline"
+              onClick={() => setProgressValue(v => Math.min(100, v + 10))}
+            >
               Increase Progress
             </Button>
           </CardContent>
@@ -136,13 +169,17 @@ const DataDisplayPage: Component = () => {
               <h4 class="text-sm font-medium mb-2">Tooltip</h4>
               <div class="flex gap-2">
                 <Tooltip>
-                  <TooltipTrigger as={Button} variant="outline">Hover me</TooltipTrigger>
+                  <TooltipTrigger as={Button} variant="outline">
+                    Hover me
+                  </TooltipTrigger>
                   <TooltipContent>
                     <p>This is a tooltip message</p>
                   </TooltipContent>
                 </Tooltip>
                 <Tooltip>
-                  <TooltipTrigger as={Button} variant="outline" size="sm">Info</TooltipTrigger>
+                  <TooltipTrigger as={Button} variant="outline" size="sm">
+                    Info
+                  </TooltipTrigger>
                   <TooltipContent>
                     <p>Additional context about this element</p>
                   </TooltipContent>
@@ -152,7 +189,9 @@ const DataDisplayPage: Component = () => {
             <div>
               <h4 class="text-sm font-medium mb-2">HoverCard</h4>
               <HoverCard>
-                <HoverCardTrigger as={Button} variant="link">@solidjs</HoverCardTrigger>
+                <HoverCardTrigger as={Button} variant="link">
+                  @solidjs
+                </HoverCardTrigger>
                 <HoverCardContent class="w-80">
                   <div class="flex flex-col gap-2">
                     <h4 class="text-sm font-semibold">SolidJS</h4>

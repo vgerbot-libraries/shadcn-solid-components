@@ -152,37 +152,21 @@ export function UserMenu(props: UserMenuProps) {
       class="focus-visible:ring-ring flex items-center rounded-full outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
       aria-label={props.name}
     >
-      <Show
-        when={props.avatarUrl}
-        fallback={<Initials name={props.name} />}
-      >
-        <img
-          src={props.avatarUrl}
-          alt={props.name}
-          class="size-8 rounded-full object-cover"
-        />
+      <Show when={props.avatarUrl} fallback={<Initials name={props.name} />}>
+        <img src={props.avatarUrl} alt={props.name} class="size-8 rounded-full object-cover" />
       </Show>
     </button>
   )
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger as="div">
-        {props.trigger ?? defaultTrigger()}
-      </DropdownMenuTrigger>
+      <DropdownMenuTrigger as="div">{props.trigger ?? defaultTrigger()}</DropdownMenuTrigger>
 
       <DropdownMenuContent class={cx('w-56', props.contentClass)}>
         {/* User info header */}
         <div class="flex items-center gap-3 px-2 py-2">
-          <Show
-            when={props.avatarUrl}
-            fallback={<Initials name={props.name} />}
-          >
-            <img
-              src={props.avatarUrl}
-              alt={props.name}
-              class="size-8 rounded-full object-cover"
-            />
+          <Show when={props.avatarUrl} fallback={<Initials name={props.name} />}>
+            <img src={props.avatarUrl} alt={props.name} class="size-8 rounded-full object-cover" />
           </Show>
           <div class="flex flex-col">
             <span class="text-sm font-medium leading-none">{props.name}</span>
@@ -203,10 +187,7 @@ export function UserMenu(props: UserMenuProps) {
               </Show>
               <For each={group.items}>
                 {item => (
-                  <DropdownMenuItem
-                    onSelect={() => item.onSelect?.()}
-                    variant={item.variant}
-                  >
+                  <DropdownMenuItem onSelect={() => item.onSelect?.()} variant={item.variant}>
                     <Show when={item.icon}>{item.icon}</Show>
                     <span>{item.label}</span>
                   </DropdownMenuItem>
@@ -242,15 +223,8 @@ export function UserMenu(props: UserMenuProps) {
 
         {/* Sign out */}
         <Show when={showSignOut()}>
-          <DropdownMenuItem
-            variant="destructive"
-            onSelect={() => props.onSignOut?.()}
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="size-4"
-              viewBox="0 0 24 24"
-            >
+          <DropdownMenuItem variant="destructive" onSelect={() => props.onSignOut?.()}>
+            <svg xmlns="http://www.w3.org/2000/svg" class="size-4" viewBox="0 0 24 24">
               <path
                 fill="none"
                 stroke="currentColor"

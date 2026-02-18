@@ -21,11 +21,7 @@ import {
   IconCreditCard,
 } from '@/components/icons'
 import { Skeleton } from '@/components/skeleton'
-import {
-  SettingsIcon,
-  GetHelpIcon,
-  HeaderIcon,
-} from './components/icons'
+import { SettingsIcon, GetHelpIcon, HeaderIcon } from './components/icons'
 import { currentPage, setCurrentPage } from './context'
 import { pages } from './pages'
 
@@ -36,37 +32,49 @@ const menus: AppSidebarMenuGroup[] = [
       {
         icon: () => <IconRocket class="size-4" />,
         title: 'General',
-        get isActive() { return currentPage() === 'general' },
+        get isActive() {
+          return currentPage() === 'general'
+        },
         onClick: () => setCurrentPage('general'),
       },
       {
         icon: () => <IconFullscreen class="size-4" />,
         title: 'Layout',
-        get isActive() { return currentPage() === 'layout' },
+        get isActive() {
+          return currentPage() === 'layout'
+        },
         onClick: () => setCurrentPage('layout'),
       },
       {
         icon: () => <IconArrowRight class="size-4" />,
         title: 'Navigation',
-        get isActive() { return currentPage() === 'navigation' },
+        get isActive() {
+          return currentPage() === 'navigation'
+        },
         onClick: () => setCurrentPage('navigation'),
       },
       {
         icon: () => <IconFile class="size-4" />,
         title: 'Form Inputs',
-        get isActive() { return currentPage() === 'form-inputs' },
+        get isActive() {
+          return currentPage() === 'form-inputs'
+        },
         onClick: () => setCurrentPage('form-inputs'),
       },
       {
         icon: () => <IconInbox class="size-4" />,
         title: 'Data Display',
-        get isActive() { return currentPage() === 'data-display' },
+        get isActive() {
+          return currentPage() === 'data-display'
+        },
         onClick: () => setCurrentPage('data-display'),
       },
       {
         icon: () => <IconAlertTriangle class="size-4" />,
         title: 'Overlay & Feedback',
-        get isActive() { return currentPage() === 'overlay' },
+        get isActive() {
+          return currentPage() === 'overlay'
+        },
         onClick: () => setCurrentPage('overlay'),
       },
     ],
@@ -77,31 +85,41 @@ const menus: AppSidebarMenuGroup[] = [
       {
         icon: () => <IconHome class="size-4" />,
         title: 'Dashboard',
-        get isActive() { return currentPage() === 'dashboard' },
+        get isActive() {
+          return currentPage() === 'dashboard'
+        },
         onClick: () => setCurrentPage('dashboard'),
       },
       {
         icon: () => <IconHash class="size-4" />,
         title: 'Tables',
-        get isActive() { return currentPage() === 'tables' },
+        get isActive() {
+          return currentPage() === 'tables'
+        },
         onClick: () => setCurrentPage('tables'),
       },
       {
         icon: () => <IconCreditCard class="size-4" />,
         title: 'Form Composites',
-        get isActive() { return currentPage() === 'forms-composite' },
+        get isActive() {
+          return currentPage() === 'forms-composite'
+        },
         onClick: () => setCurrentPage('forms-composite'),
       },
       {
         icon: () => <IconBell class="size-4" />,
         title: 'Feedback',
-        get isActive() { return currentPage() === 'feedback' },
+        get isActive() {
+          return currentPage() === 'feedback'
+        },
         onClick: () => setCurrentPage('feedback'),
       },
       {
         icon: () => <IconStar class="size-4" />,
         title: 'Display Composites',
-        get isActive() { return currentPage() === 'display-composite' },
+        get isActive() {
+          return currentPage() === 'display-composite'
+        },
         onClick: () => setCurrentPage('display-composite'),
       },
     ],
@@ -125,22 +143,77 @@ const commandPaletteGroups: CommandPaletteGroup[] = [
   {
     label: 'Base Components',
     items: [
-      { id: 'general', label: 'General', icon: <IconRocket class="size-4" />, onSelect: () => setCurrentPage('general') },
-      { id: 'layout', label: 'Layout', icon: <IconFullscreen class="size-4" />, onSelect: () => setCurrentPage('layout') },
-      { id: 'navigation', label: 'Navigation', icon: <IconArrowRight class="size-4" />, onSelect: () => setCurrentPage('navigation') },
-      { id: 'form-inputs', label: 'Form Inputs', icon: <IconFile class="size-4" />, onSelect: () => setCurrentPage('form-inputs') },
-      { id: 'data-display', label: 'Data Display', icon: <IconInbox class="size-4" />, onSelect: () => setCurrentPage('data-display') },
-      { id: 'overlay', label: 'Overlay & Feedback', icon: <IconAlertTriangle class="size-4" />, onSelect: () => setCurrentPage('overlay') },
+      {
+        id: 'general',
+        label: 'General',
+        icon: <IconRocket class="size-4" />,
+        onSelect: () => setCurrentPage('general'),
+      },
+      {
+        id: 'layout',
+        label: 'Layout',
+        icon: <IconFullscreen class="size-4" />,
+        onSelect: () => setCurrentPage('layout'),
+      },
+      {
+        id: 'navigation',
+        label: 'Navigation',
+        icon: <IconArrowRight class="size-4" />,
+        onSelect: () => setCurrentPage('navigation'),
+      },
+      {
+        id: 'form-inputs',
+        label: 'Form Inputs',
+        icon: <IconFile class="size-4" />,
+        onSelect: () => setCurrentPage('form-inputs'),
+      },
+      {
+        id: 'data-display',
+        label: 'Data Display',
+        icon: <IconInbox class="size-4" />,
+        onSelect: () => setCurrentPage('data-display'),
+      },
+      {
+        id: 'overlay',
+        label: 'Overlay & Feedback',
+        icon: <IconAlertTriangle class="size-4" />,
+        onSelect: () => setCurrentPage('overlay'),
+      },
     ],
   },
   {
     label: 'Composites',
     items: [
-      { id: 'dashboard', label: 'Dashboard', icon: <IconHome class="size-4" />, onSelect: () => setCurrentPage('dashboard') },
-      { id: 'tables', label: 'Tables', icon: <IconHash class="size-4" />, onSelect: () => setCurrentPage('tables') },
-      { id: 'forms-composite', label: 'Form Composites', icon: <IconCreditCard class="size-4" />, onSelect: () => setCurrentPage('forms-composite') },
-      { id: 'feedback', label: 'Feedback', icon: <IconBell class="size-4" />, onSelect: () => setCurrentPage('feedback') },
-      { id: 'display-composite', label: 'Display Composites', icon: <IconStar class="size-4" />, onSelect: () => setCurrentPage('display-composite') },
+      {
+        id: 'dashboard',
+        label: 'Dashboard',
+        icon: <IconHome class="size-4" />,
+        onSelect: () => setCurrentPage('dashboard'),
+      },
+      {
+        id: 'tables',
+        label: 'Tables',
+        icon: <IconHash class="size-4" />,
+        onSelect: () => setCurrentPage('tables'),
+      },
+      {
+        id: 'forms-composite',
+        label: 'Form Composites',
+        icon: <IconCreditCard class="size-4" />,
+        onSelect: () => setCurrentPage('forms-composite'),
+      },
+      {
+        id: 'feedback',
+        label: 'Feedback',
+        icon: <IconBell class="size-4" />,
+        onSelect: () => setCurrentPage('feedback'),
+      },
+      {
+        id: 'display-composite',
+        label: 'Display Composites',
+        icon: <IconStar class="size-4" />,
+        onSelect: () => setCurrentPage('display-composite'),
+      },
     ],
   },
   {

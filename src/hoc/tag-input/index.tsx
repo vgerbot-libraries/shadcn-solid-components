@@ -1,11 +1,4 @@
-import {
-  type ComponentProps,
-  createSignal,
-  For,
-  type JSX,
-  Show,
-  splitProps,
-} from 'solid-js'
+import { type ComponentProps, createSignal, For, type JSX, Show, splitProps } from 'solid-js'
 import { Badge } from '@/components/badge'
 import { cx } from '@/lib/cva'
 
@@ -116,9 +109,7 @@ export function TagInput(props: TagInputProps) {
     if (!local.suggestions) return []
     const query = inputValue().toLowerCase().trim()
     if (!query) return []
-    return local.suggestions.filter(
-      s => s.toLowerCase().includes(query) && !tags().includes(s),
-    )
+    return local.suggestions.filter(s => s.toLowerCase().includes(query) && !tags().includes(s))
   }
 
   const addTag = (tag: string) => {
@@ -179,11 +170,7 @@ export function TagInput(props: TagInputProps) {
   }
 
   return (
-    <div
-      data-slot="tag-input"
-      class={cx('relative', local.class)}
-      {...rest}
-    >
+    <div data-slot="tag-input" class={cx('relative', local.class)} {...rest}>
       <div
         class={cx(
           'border-input bg-background flex flex-wrap items-center gap-1.5 rounded-md border px-3 py-2 shadow-xs transition-[color,box-shadow]',
@@ -199,14 +186,21 @@ export function TagInput(props: TagInputProps) {
               <button
                 type="button"
                 class="hover:bg-muted rounded-sm p-0.5"
-                onClick={(e) => {
+                onClick={e => {
                   e.stopPropagation()
                   removeTag(index())
                 }}
                 aria-label={`${locale().removeTag} ${tag}`}
               >
                 <svg xmlns="http://www.w3.org/2000/svg" class="size-3" viewBox="0 0 24 24">
-                  <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 6L6 18M6 6l12 12" />
+                  <path
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M18 6L6 18M6 6l12 12"
+                  />
                 </svg>
               </button>
             </Badge>
@@ -217,7 +211,9 @@ export function TagInput(props: TagInputProps) {
           ref={inputRef!}
           type="text"
           class="placeholder:text-muted-foreground min-w-[120px] flex-1 bg-transparent text-sm outline-none"
-          placeholder={atMax() ? locale().maxReached(local.max!) : (local.placeholder ?? locale().placeholder)}
+          placeholder={
+            atMax() ? locale().maxReached(local.max!) : (local.placeholder ?? locale().placeholder)
+          }
           value={inputValue()}
           disabled={local.disabled || atMax()}
           onInput={e => {
@@ -246,7 +242,9 @@ export function TagInput(props: TagInputProps) {
                 type="button"
                 class={cx(
                   'relative flex w-full cursor-pointer items-center rounded-sm px-2 py-1.5 text-sm outline-none select-none',
-                  focusedIndex() === index() ? 'bg-accent text-accent-foreground' : 'hover:bg-accent hover:text-accent-foreground',
+                  focusedIndex() === index()
+                    ? 'bg-accent text-accent-foreground'
+                    : 'hover:bg-accent hover:text-accent-foreground',
                 )}
                 onMouseDown={e => {
                   e.preventDefault()

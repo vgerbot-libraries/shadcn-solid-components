@@ -9,11 +9,7 @@ import {
   NumberFieldIncrementTrigger,
   NumberFieldLabel,
 } from '@/components/number-field'
-import {
-  Checkbox,
-  CheckboxControl,
-  CheckboxLabel,
-} from '@/components/checkbox'
+import { Checkbox, CheckboxControl, CheckboxLabel } from '@/components/checkbox'
 import {
   RadioGroup,
   RadioGroupItem,
@@ -23,13 +19,7 @@ import {
   RadioGroupLabel,
   RadioGroupItems,
 } from '@/components/radio-group'
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/select'
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/select'
 import {
   Combobox,
   ComboboxContent,
@@ -69,7 +59,10 @@ const FormInputsPage: Component = () => {
   const [sliderValue, setSliderValue] = createSignal([50])
 
   return (
-    <PageLayout title="Form Inputs" description="Input components: TextField, NumberField, Checkbox, RadioGroup, Select, Combobox, Switch, Slider, Toggle, OTP, Calendar.">
+    <PageLayout
+      title="Form Inputs"
+      description="Input components: TextField, NumberField, Checkbox, RadioGroup, Select, Combobox, Switch, Slider, Toggle, OTP, Calendar."
+    >
       <div class="grid gap-4 md:grid-cols-2">
         {/* TextField */}
         <Card>
@@ -103,9 +96,13 @@ const FormInputsPage: Component = () => {
             <NumberField defaultValue={5} minValue={0} maxValue={100}>
               <NumberFieldLabel>Quantity</NumberFieldLabel>
               <NumberFieldGroup>
-                <NumberFieldDecrementTrigger><IconMinus /></NumberFieldDecrementTrigger>
+                <NumberFieldDecrementTrigger>
+                  <IconMinus />
+                </NumberFieldDecrementTrigger>
                 <NumberFieldInput />
-                <NumberFieldIncrementTrigger><IconPlus /></NumberFieldIncrementTrigger>
+                <NumberFieldIncrementTrigger>
+                  <IconPlus />
+                </NumberFieldIncrementTrigger>
               </NumberFieldGroup>
             </NumberField>
           </CardContent>
@@ -245,7 +242,13 @@ const FormInputsPage: Component = () => {
             <CardDescription>Range selection with a draggable thumb.</CardDescription>
           </CardHeader>
           <CardContent>
-            <Slider value={sliderValue()} onChange={setSliderValue} minValue={0} maxValue={100} step={1}>
+            <Slider
+              value={sliderValue()}
+              onChange={setSliderValue}
+              minValue={0}
+              maxValue={100}
+              step={1}
+            >
               <SliderGroup>
                 <SliderLabel>Volume</SliderLabel>
                 <SliderValueLabel />
@@ -271,17 +274,31 @@ const FormInputsPage: Component = () => {
               <ToggleButton pressed={togglePressed()} onChange={setTogglePressed}>
                 <IconBold />
               </ToggleButton>
-              <span class="text-muted-foreground text-sm">Pressed: {togglePressed() ? 'Yes' : 'No'}</span>
+              <span class="text-muted-foreground text-sm">
+                Pressed: {togglePressed() ? 'Yes' : 'No'}
+              </span>
             </div>
             <ToggleGroup>
-              <ToggleGroupItem value="bold"><IconBold /></ToggleGroupItem>
-              <ToggleGroupItem value="italic"><IconItalic /></ToggleGroupItem>
-              <ToggleGroupItem value="underline"><IconUnderline /></ToggleGroupItem>
+              <ToggleGroupItem value="bold">
+                <IconBold />
+              </ToggleGroupItem>
+              <ToggleGroupItem value="italic">
+                <IconItalic />
+              </ToggleGroupItem>
+              <ToggleGroupItem value="underline">
+                <IconUnderline />
+              </ToggleGroupItem>
             </ToggleGroup>
             <ToggleGroup variant="outline">
-              <ToggleGroupItem value="bold"><IconBold /></ToggleGroupItem>
-              <ToggleGroupItem value="italic"><IconItalic /></ToggleGroupItem>
-              <ToggleGroupItem value="underline"><IconUnderline /></ToggleGroupItem>
+              <ToggleGroupItem value="bold">
+                <IconBold />
+              </ToggleGroupItem>
+              <ToggleGroupItem value="italic">
+                <IconItalic />
+              </ToggleGroupItem>
+              <ToggleGroupItem value="underline">
+                <IconUnderline />
+              </ToggleGroupItem>
             </ToggleGroup>
           </CardContent>
         </Card>

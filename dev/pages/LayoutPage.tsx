@@ -1,6 +1,18 @@
 import { createSignal, type Component } from 'solid-js'
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/card'
-import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '@/components/accordion'
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from '@/components/card'
+import {
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent,
+} from '@/components/accordion'
 import { Collapsible, CollapsibleTrigger, CollapsibleContent } from '@/components/collapsible'
 import { Resizable, ResizablePanel, ResizableHandle } from '@/components/resizable'
 import { Tabs, TabsList, TabsTrigger, TabsContent, TabsIndicator } from '@/components/tabs'
@@ -12,7 +24,10 @@ const LayoutPage: Component = () => {
   const [collapsibleOpen, setCollapsibleOpen] = createSignal(false)
 
   return (
-    <PageLayout title="Layout" description="Structural components: Card, Accordion, Collapsible, Resizable, Tabs.">
+    <PageLayout
+      title="Layout"
+      description="Structural components: Card, Accordion, Collapsible, Resizable, Tabs."
+    >
       {/* Card */}
       <Card>
         <CardHeader>
@@ -39,7 +54,9 @@ const LayoutPage: Component = () => {
                 <p class="text-sm">Some important details here.</p>
               </CardContent>
               <CardFooter class="flex gap-2">
-                <Button size="sm" variant="outline">Cancel</Button>
+                <Button size="sm" variant="outline">
+                  Cancel
+                </Button>
                 <Button size="sm">Save</Button>
               </CardFooter>
             </Card>
@@ -52,7 +69,9 @@ const LayoutPage: Component = () => {
                 <p class="text-sm">Check your inbox for updates.</p>
               </CardContent>
               <CardFooter>
-                <Button size="sm" class="w-full">View All</Button>
+                <Button size="sm" class="w-full">
+                  View All
+                </Button>
               </CardFooter>
             </Card>
           </div>
@@ -97,11 +116,17 @@ const LayoutPage: Component = () => {
             <CardDescription>Toggle visibility of content sections.</CardDescription>
           </CardHeader>
           <CardContent>
-            <Collapsible open={collapsibleOpen()} onOpenChange={setCollapsibleOpen} class="space-y-2">
+            <Collapsible
+              open={collapsibleOpen()}
+              onOpenChange={setCollapsibleOpen}
+              class="space-y-2"
+            >
               <div class="flex items-center justify-between rounded-md border px-4 py-3">
                 <h4 class="text-sm font-semibold">@peduarte starred 3 repositories</h4>
                 <CollapsibleTrigger as={Button} variant="ghost" size="icon-sm">
-                  <IconChevronDown class={`size-4 transition-transform ${collapsibleOpen() ? 'rotate-180' : ''}`} />
+                  <IconChevronDown
+                    class={`size-4 transition-transform ${collapsibleOpen() ? 'rotate-180' : ''}`}
+                  />
                 </CollapsibleTrigger>
               </div>
               <div class="rounded-md border px-4 py-3 text-sm">@radix-ui/primitives</div>

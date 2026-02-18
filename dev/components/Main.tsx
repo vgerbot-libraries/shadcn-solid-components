@@ -37,7 +37,18 @@ import { Separator } from '@/components/separator'
 import { SidebarTrigger } from '@/components/sidebar'
 import { ChartContainer, ChartCrosshair } from '@/components/chart'
 import { TextField, TextFieldInput } from '@/components/text-field'
-import { IconInbox, IconUser, IconSettings, IconCreditCard, IconMail, IconBrandGoogle, IconBrandGithub, IconCheck, IconLoader, IconBell } from '@/components/icons'
+import {
+  IconInbox,
+  IconUser,
+  IconSettings,
+  IconCreditCard,
+  IconMail,
+  IconBrandGoogle,
+  IconBrandGithub,
+  IconCheck,
+  IconLoader,
+  IconBell,
+} from '@/components/icons'
 import { VisLine, VisArea } from '@unovis/solid'
 import { PageHeader } from '@/hoc/page-header'
 import { UserMenu } from '@/hoc/user-menu'
@@ -191,24 +202,132 @@ type Payment = {
 
 const payments: Payment[] = [
   { id: 'pay_001', amount: 316.0, status: 'success', email: 'ken99@yahoo.com', name: 'Ken Adams' },
-  { id: 'pay_002', amount: 242.0, status: 'success', email: 'abe45@gmail.com', name: 'Abe Lincoln' },
-  { id: 'pay_003', amount: 837.0, status: 'processing', email: 'monserrat44@gmail.com', name: 'Monserrat Ruiz' },
-  { id: 'pay_004', amount: 874.0, status: 'success', email: 'silas22@gmail.com', name: 'Silas Johnson' },
-  { id: 'pay_005', amount: 721.0, status: 'failed', email: 'carmella@hotmail.com', name: 'Carmella Davis' },
-  { id: 'pay_006', amount: 150.0, status: 'pending', email: 'oliver.smith@mail.com', name: 'Oliver Smith' },
-  { id: 'pay_007', amount: 499.0, status: 'success', email: 'emma.w@gmail.com', name: 'Emma Wilson' },
-  { id: 'pay_008', amount: 320.0, status: 'processing', email: 'liam.b@yahoo.com', name: 'Liam Brown' },
-  { id: 'pay_009', amount: 95.0, status: 'failed', email: 'sophia.j@mail.com', name: 'Sophia Jones' },
-  { id: 'pay_010', amount: 610.0, status: 'success', email: 'noah.m@gmail.com', name: 'Noah Miller' },
-  { id: 'pay_011', amount: 450.0, status: 'pending', email: 'ava.d@hotmail.com', name: 'Ava Davis' },
-  { id: 'pay_012', amount: 780.0, status: 'success', email: 'jackson.w@mail.com', name: 'Jackson White' },
-  { id: 'pay_013', amount: 125.0, status: 'processing', email: 'mia.t@gmail.com', name: 'Mia Taylor' },
-  { id: 'pay_014', amount: 990.0, status: 'success', email: 'lucas.a@yahoo.com', name: 'Lucas Anderson' },
-  { id: 'pay_015', amount: 55.0, status: 'failed', email: 'harper.g@mail.com', name: 'Harper Garcia' },
-  { id: 'pay_016', amount: 340.0, status: 'pending', email: 'ethan.m@gmail.com', name: 'Ethan Martinez' },
-  { id: 'pay_017', amount: 670.0, status: 'success', email: 'amelia.r@hotmail.com', name: 'Amelia Robinson' },
-  { id: 'pay_018', amount: 200.0, status: 'processing', email: 'mason.c@mail.com', name: 'Mason Clark' },
-  { id: 'pay_019', amount: 415.0, status: 'success', email: 'ella.l@gmail.com', name: 'Ella Lewis' },
+  {
+    id: 'pay_002',
+    amount: 242.0,
+    status: 'success',
+    email: 'abe45@gmail.com',
+    name: 'Abe Lincoln',
+  },
+  {
+    id: 'pay_003',
+    amount: 837.0,
+    status: 'processing',
+    email: 'monserrat44@gmail.com',
+    name: 'Monserrat Ruiz',
+  },
+  {
+    id: 'pay_004',
+    amount: 874.0,
+    status: 'success',
+    email: 'silas22@gmail.com',
+    name: 'Silas Johnson',
+  },
+  {
+    id: 'pay_005',
+    amount: 721.0,
+    status: 'failed',
+    email: 'carmella@hotmail.com',
+    name: 'Carmella Davis',
+  },
+  {
+    id: 'pay_006',
+    amount: 150.0,
+    status: 'pending',
+    email: 'oliver.smith@mail.com',
+    name: 'Oliver Smith',
+  },
+  {
+    id: 'pay_007',
+    amount: 499.0,
+    status: 'success',
+    email: 'emma.w@gmail.com',
+    name: 'Emma Wilson',
+  },
+  {
+    id: 'pay_008',
+    amount: 320.0,
+    status: 'processing',
+    email: 'liam.b@yahoo.com',
+    name: 'Liam Brown',
+  },
+  {
+    id: 'pay_009',
+    amount: 95.0,
+    status: 'failed',
+    email: 'sophia.j@mail.com',
+    name: 'Sophia Jones',
+  },
+  {
+    id: 'pay_010',
+    amount: 610.0,
+    status: 'success',
+    email: 'noah.m@gmail.com',
+    name: 'Noah Miller',
+  },
+  {
+    id: 'pay_011',
+    amount: 450.0,
+    status: 'pending',
+    email: 'ava.d@hotmail.com',
+    name: 'Ava Davis',
+  },
+  {
+    id: 'pay_012',
+    amount: 780.0,
+    status: 'success',
+    email: 'jackson.w@mail.com',
+    name: 'Jackson White',
+  },
+  {
+    id: 'pay_013',
+    amount: 125.0,
+    status: 'processing',
+    email: 'mia.t@gmail.com',
+    name: 'Mia Taylor',
+  },
+  {
+    id: 'pay_014',
+    amount: 990.0,
+    status: 'success',
+    email: 'lucas.a@yahoo.com',
+    name: 'Lucas Anderson',
+  },
+  {
+    id: 'pay_015',
+    amount: 55.0,
+    status: 'failed',
+    email: 'harper.g@mail.com',
+    name: 'Harper Garcia',
+  },
+  {
+    id: 'pay_016',
+    amount: 340.0,
+    status: 'pending',
+    email: 'ethan.m@gmail.com',
+    name: 'Ethan Martinez',
+  },
+  {
+    id: 'pay_017',
+    amount: 670.0,
+    status: 'success',
+    email: 'amelia.r@hotmail.com',
+    name: 'Amelia Robinson',
+  },
+  {
+    id: 'pay_018',
+    amount: 200.0,
+    status: 'processing',
+    email: 'mason.c@mail.com',
+    name: 'Mason Clark',
+  },
+  {
+    id: 'pay_019',
+    amount: 415.0,
+    status: 'success',
+    email: 'ella.l@gmail.com',
+    name: 'Ella Lewis',
+  },
   { id: 'pay_020', amount: 88.0, status: 'failed', email: 'james.h@yahoo.com', name: 'James Hall' },
 ]
 
@@ -217,22 +336,26 @@ const paymentColumns: ColumnDef<Payment>[] = [
   {
     accessorKey: 'name',
     header: ({ column }) => <TanstackTableColumnHeader column={column} title="Name" />,
-    cell: (info) => <span class="font-medium">{info.getValue() as string}</span>,
+    cell: info => <span class="font-medium">{info.getValue() as string}</span>,
   },
   {
     accessorKey: 'email',
     header: ({ column }) => <TanstackTableColumnHeader column={column} title="Email" />,
-    cell: (info) => <span class="text-muted-foreground">{info.getValue() as string}</span>,
+    cell: info => <span class="text-muted-foreground">{info.getValue() as string}</span>,
   },
   {
     accessorKey: 'status',
     header: ({ column }) => <TanstackTableColumnHeader column={column} title="Status" />,
-    cell: (info) => {
+    cell: info => {
       const status = info.getValue() as Payment['status']
-      const variant = status === 'success' ? 'default'
-        : status === 'processing' ? 'secondary'
-        : status === 'pending' ? 'outline'
-        : 'destructive'
+      const variant =
+        status === 'success'
+          ? 'default'
+          : status === 'processing'
+            ? 'secondary'
+            : status === 'pending'
+              ? 'outline'
+              : 'destructive'
       return <Badge variant={variant}>{status}</Badge>
     },
     filterFn: 'equals',
@@ -240,7 +363,7 @@ const paymentColumns: ColumnDef<Payment>[] = [
   {
     accessorKey: 'amount',
     header: ({ column }) => <TanstackTableColumnHeader column={column} title="Amount" />,
-    cell: (info) => {
+    cell: info => {
       const amount = info.getValue() as number
       const formatted = new Intl.NumberFormat('en-US', {
         style: 'currency',
@@ -369,11 +492,48 @@ export const Main: Component = () => {
 
   // -- NotificationCenter demo --
   const [notifications, setNotifications] = createSignal<NotificationItem[]>([
-    { id: '1', title: 'New comment on your post', description: 'Alice replied to your discussion about SolidJS performance.', time: '5 min ago', category: 'messages', icon: <IconMail class="size-4" /> },
-    { id: '2', title: 'Deployment successful', description: 'Production v2.4.1 deployed.', time: '1 hour ago', category: 'updates', icon: <IconCheck class="size-4" />, read: true },
-    { id: '3', title: 'New team member', description: 'Bob joined the Engineering team.', time: '3 hours ago', category: 'updates', icon: <IconUser class="size-4" /> },
-    { id: '4', title: 'Payment received', description: 'Invoice #1234 paid — $1,250.00', time: 'Yesterday', category: 'messages', icon: <IconCreditCard class="size-4" />, read: true },
-    { id: '5', title: 'System maintenance', description: 'Scheduled downtime on Feb 20, 2:00 AM UTC.', time: '2 days ago', category: 'updates', icon: <IconSettings class="size-4" /> },
+    {
+      id: '1',
+      title: 'New comment on your post',
+      description: 'Alice replied to your discussion about SolidJS performance.',
+      time: '5 min ago',
+      category: 'messages',
+      icon: <IconMail class="size-4" />,
+    },
+    {
+      id: '2',
+      title: 'Deployment successful',
+      description: 'Production v2.4.1 deployed.',
+      time: '1 hour ago',
+      category: 'updates',
+      icon: <IconCheck class="size-4" />,
+      read: true,
+    },
+    {
+      id: '3',
+      title: 'New team member',
+      description: 'Bob joined the Engineering team.',
+      time: '3 hours ago',
+      category: 'updates',
+      icon: <IconUser class="size-4" />,
+    },
+    {
+      id: '4',
+      title: 'Payment received',
+      description: 'Invoice #1234 paid — $1,250.00',
+      time: 'Yesterday',
+      category: 'messages',
+      icon: <IconCreditCard class="size-4" />,
+      read: true,
+    },
+    {
+      id: '5',
+      title: 'System maintenance',
+      description: 'Scheduled downtime on Feb 20, 2:00 AM UTC.',
+      time: '2 days ago',
+      category: 'updates',
+      icon: <IconSettings class="size-4" />,
+    },
   ])
 
   // -- FilterBuilder demo --
@@ -398,7 +558,9 @@ export const Main: Component = () => {
               { key: 'messages', label: 'Messages' },
               { key: 'updates', label: 'Updates' },
             ]}
-            onRead={id => setNotifications(prev => prev.map(n => n.id === id ? { ...n, read: true } : n))}
+            onRead={id =>
+              setNotifications(prev => prev.map(n => (n.id === id ? { ...n, read: true } : n)))
+            }
             onReadAll={() => setNotifications(prev => prev.map(n => ({ ...n, read: true })))}
           />
           <UserMenu
@@ -408,8 +570,16 @@ export const Main: Component = () => {
               {
                 label: 'Account',
                 items: [
-                  { label: 'Profile', icon: <IconUser class="size-4" />, onSelect: () => notify.info('Navigate to profile') },
-                  { label: 'Settings', icon: <IconSettings class="size-4" />, onSelect: () => notify.info('Navigate to settings') },
+                  {
+                    label: 'Profile',
+                    icon: <IconUser class="size-4" />,
+                    onSelect: () => notify.info('Navigate to profile'),
+                  },
+                  {
+                    label: 'Settings',
+                    icon: <IconSettings class="size-4" />,
+                    onSelect: () => notify.info('Navigate to settings'),
+                  },
                 ],
               },
             ]}
@@ -419,10 +589,7 @@ export const Main: Component = () => {
       </header>
       <div class="flex flex-1 flex-col gap-4 p-4 md:p-6">
         <PageHeader
-          breadcrumbs={[
-            { label: 'Home', href: '#' },
-            { label: 'Dashboard' },
-          ]}
+          breadcrumbs={[{ label: 'Home', href: '#' }, { label: 'Dashboard' }]}
           title="Dashboard"
           description="Overview of your project metrics and recent activity."
           actions={<Button size="sm">Quick Create</Button>}
@@ -717,7 +884,9 @@ export const Main: Component = () => {
                 searchColumn="name"
                 locale={{ searchPlaceholder: '按名称筛选...' }}
                 actions={
-                  <Button variant="outline" size="sm">Export</Button>
+                  <Button variant="outline" size="sm">
+                    Export
+                  </Button>
                 }
               />
               <TanstackTable>
@@ -749,23 +918,36 @@ export const Main: Component = () => {
               <Button size="sm" onClick={() => notify.success('File saved successfully')}>
                 Success
               </Button>
-              <Button size="sm" variant="destructive" onClick={() => notify.error('Something went wrong')}>
+              <Button
+                size="sm"
+                variant="destructive"
+                onClick={() => notify.error('Something went wrong')}
+              >
                 Error
               </Button>
-              <Button size="sm" variant="outline" onClick={() => notify.warning('Disk space is running low')}>
+              <Button
+                size="sm"
+                variant="outline"
+                onClick={() => notify.warning('Disk space is running low')}
+              >
                 Warning
               </Button>
-              <Button size="sm" variant="secondary" onClick={() => notify.info('New version available')}>
+              <Button
+                size="sm"
+                variant="secondary"
+                onClick={() => notify.info('New version available')}
+              >
                 Info
               </Button>
               <Button
                 size="sm"
                 variant="outline"
                 onClick={() => {
-                  notify.promise(
-                    new Promise(resolve => setTimeout(resolve, 2000)),
-                    { loading: 'Uploading...', success: 'Upload complete!', error: 'Upload failed' },
-                  )
+                  notify.promise(new Promise(resolve => setTimeout(resolve, 2000)), {
+                    loading: 'Uploading...',
+                    success: 'Upload complete!',
+                    error: 'Upload failed',
+                  })
                 }}
               >
                 Promise
@@ -777,7 +959,9 @@ export const Main: Component = () => {
           <Card>
             <CardHeader>
               <CardTitle>Confirm Dialog</CardTitle>
-              <CardDescription>Imperative confirmation dialogs via <code>confirm()</code>.</CardDescription>
+              <CardDescription>
+                Imperative confirmation dialogs via <code>confirm()</code>.
+              </CardDescription>
             </CardHeader>
             <CardContent class="flex flex-col gap-3">
               <div class="flex flex-wrap gap-2">
@@ -785,7 +969,10 @@ export const Main: Component = () => {
                   size="sm"
                   variant="outline"
                   onClick={async () => {
-                    const ok = await confirm({ title: 'Save changes?', description: 'Your unsaved changes will be committed.' })
+                    const ok = await confirm({
+                      title: 'Save changes?',
+                      description: 'Your unsaved changes will be committed.',
+                    })
                     setConfirmResult(ok ? 'Confirmed' : 'Cancelled')
                   }}
                 >
@@ -819,10 +1006,16 @@ export const Main: Component = () => {
           <Card>
             <CardHeader>
               <CardTitle>Form Field</CardTitle>
-              <CardDescription>Unified label + input + error + description wrapper.</CardDescription>
+              <CardDescription>
+                Unified label + input + error + description wrapper.
+              </CardDescription>
             </CardHeader>
             <CardContent class="flex flex-col gap-4">
-              <FormField label="Username" required description="This will be your public display name.">
+              <FormField
+                label="Username"
+                required
+                description="This will be your public display name."
+              >
                 <TextField>
                   <TextFieldInput placeholder="Enter username" />
                 </TextField>
@@ -844,7 +1037,9 @@ export const Main: Component = () => {
           <Card>
             <CardHeader>
               <CardTitle>Empty State</CardTitle>
-              <CardDescription>Placeholder for empty data, search results, or permission walls.</CardDescription>
+              <CardDescription>
+                Placeholder for empty data, search results, or permission walls.
+              </CardDescription>
             </CardHeader>
             <CardContent>
               <EmptyState
@@ -871,7 +1066,8 @@ export const Main: Component = () => {
               <div>
                 <CardTitle>DataTable HOC</CardTitle>
                 <CardDescription>
-                  Full-featured table with toolbar, pagination, loading skeleton & empty state — all in one component.
+                  Full-featured table with toolbar, pagination, loading skeleton & empty state — all
+                  in one component.
                 </CardDescription>
               </div>
               <Button
@@ -892,7 +1088,11 @@ export const Main: Component = () => {
               data={payments}
               loading={dataTableLoading()}
               searchColumn="name"
-              actions={<Button variant="outline" size="sm">Export</Button>}
+              actions={
+                <Button variant="outline" size="sm">
+                  Export
+                </Button>
+              }
             />
           </CardContent>
         </Card>
@@ -901,7 +1101,9 @@ export const Main: Component = () => {
         <Card>
           <CardHeader>
             <CardTitle>Stepper</CardTitle>
-            <CardDescription>Multi-step wizard with per-step validation and navigation.</CardDescription>
+            <CardDescription>
+              Multi-step wizard with per-step validation and navigation.
+            </CardDescription>
           </CardHeader>
           <CardContent>
             <Stepper
@@ -981,7 +1183,12 @@ export const Main: Component = () => {
                   { label: 'Email', value: 'john@example.com', copyable: true },
                   { label: 'Role', value: <Badge>Admin</Badge> },
                   { label: 'Status', value: <Badge variant="secondary">Active</Badge> },
-                  { label: 'Bio', value: 'Full-stack engineer with 10+ years of experience in building web applications.', span: 2 },
+                  {
+                    label: 'Bio',
+                    value:
+                      'Full-stack engineer with 10+ years of experience in building web applications.',
+                    span: 2,
+                  },
                   { label: 'Joined', value: 'January 15, 2024' },
                   { label: 'Last Login', value: '5 minutes ago' },
                 ]}
@@ -1036,7 +1243,9 @@ export const Main: Component = () => {
         <Card>
           <CardHeader>
             <CardTitle>File Upload Zone</CardTitle>
-            <CardDescription>Drag-and-drop file upload with validation, preview and progress.</CardDescription>
+            <CardDescription>
+              Drag-and-drop file upload with validation, preview and progress.
+            </CardDescription>
           </CardHeader>
           <CardContent>
             <FileUploadZone
@@ -1072,7 +1281,16 @@ export const Main: Component = () => {
               <TagInput
                 value={tags()}
                 onChange={setTags}
-                suggestions={['SolidJS', 'TypeScript', 'React', 'Vue', 'Svelte', 'Angular', 'Tailwind', 'Vite']}
+                suggestions={[
+                  'SolidJS',
+                  'TypeScript',
+                  'React',
+                  'Vue',
+                  'Svelte',
+                  'Angular',
+                  'Tailwind',
+                  'Vite',
+                ]}
                 max={6}
                 placeholder="Add a framework..."
               />
@@ -1093,21 +1311,24 @@ export const Main: Component = () => {
                 fields={[
                   { key: 'name', label: 'Name', type: 'text' },
                   { key: 'amount', label: 'Amount', type: 'number' },
-                  { key: 'status', label: 'Status', type: 'select', options: [
-                    { label: 'Pending', value: 'pending' },
-                    { label: 'Processing', value: 'processing' },
-                    { label: 'Success', value: 'success' },
-                    { label: 'Failed', value: 'failed' },
-                  ]},
+                  {
+                    key: 'status',
+                    label: 'Status',
+                    type: 'select',
+                    options: [
+                      { label: 'Pending', value: 'pending' },
+                      { label: 'Processing', value: 'processing' },
+                      { label: 'Success', value: 'success' },
+                      { label: 'Failed', value: 'failed' },
+                    ],
+                  },
                   { key: 'date', label: 'Date', type: 'date' },
                 ]}
                 value={filterRules()}
                 onChange={setFilterRules}
                 maxRules={5}
               />
-              <p class="text-muted-foreground text-sm">
-                Active rules: {filterRules().length}
-              </p>
+              <p class="text-muted-foreground text-sm">Active rules: {filterRules().length}</p>
             </CardContent>
           </Card>
         </div>
@@ -1116,7 +1337,9 @@ export const Main: Component = () => {
         <Card>
           <CardHeader>
             <CardTitle>Transfer List</CardTitle>
-            <CardDescription>Dual-panel list for moving items between "available" and "selected".</CardDescription>
+            <CardDescription>
+              Dual-panel list for moving items between "available" and "selected".
+            </CardDescription>
           </CardHeader>
           <CardContent>
             <TransferList
@@ -1132,20 +1355,32 @@ export const Main: Component = () => {
         <Card>
           <CardHeader>
             <CardTitle>Login Form</CardTitle>
-            <CardDescription>Pre-built authentication form with social providers and mode switching.</CardDescription>
+            <CardDescription>
+              Pre-built authentication form with social providers and mode switching.
+            </CardDescription>
           </CardHeader>
           <CardContent class="flex justify-center py-6">
             <LoginForm
               mode={loginMode()}
               providers={[
-                { name: 'Google', icon: <IconBrandGoogle class="size-4" />, onSelect: () => notify.info('Google sign-in') },
-                { name: 'GitHub', icon: <IconBrandGithub class="size-4" />, onSelect: () => notify.info('GitHub sign-in') },
+                {
+                  name: 'Google',
+                  icon: <IconBrandGoogle class="size-4" />,
+                  onSelect: () => notify.info('Google sign-in'),
+                },
+                {
+                  name: 'GitHub',
+                  icon: <IconBrandGithub class="size-4" />,
+                  onSelect: () => notify.info('GitHub sign-in'),
+                },
               ]}
               forgotPasswordHref="#"
               onSubmit={data => {
-                notify.success(`${loginMode() === 'login' ? 'Signed in' : 'Registered'} as ${data.email}`)
+                notify.success(
+                  `${loginMode() === 'login' ? 'Signed in' : 'Registered'} as ${data.email}`,
+                )
               }}
-              onModeSwitch={() => setLoginMode(m => m === 'login' ? 'register' : 'login')}
+              onModeSwitch={() => setLoginMode(m => (m === 'login' ? 'register' : 'login'))}
             />
           </CardContent>
         </Card>

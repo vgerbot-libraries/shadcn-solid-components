@@ -69,9 +69,9 @@ type ResolveReject = {
 // State
 // ============================================================================
 
-const [dialogState, setDialogState] = createSignal<
-  (ConfirmDialogOptions & ResolveReject) | null
->(null)
+const [dialogState, setDialogState] = createSignal<(ConfirmDialogOptions & ResolveReject) | null>(
+  null,
+)
 
 // ============================================================================
 // Imperative API

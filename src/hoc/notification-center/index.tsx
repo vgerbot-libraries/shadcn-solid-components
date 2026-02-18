@@ -1,10 +1,4 @@
-import {
-  type ComponentProps,
-  For,
-  type JSX,
-  Show,
-  splitProps,
-} from 'solid-js'
+import { type ComponentProps, For, type JSX, Show, splitProps } from 'solid-js'
 import { Badge } from '@/components/badge'
 import { Button } from '@/components/button'
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/popover'
@@ -101,10 +95,7 @@ export interface NotificationCenterProps extends ComponentProps<'div'> {
 // Helpers
 // ============================================================================
 
-function NotificationRow(props: {
-  item: NotificationItem
-  onRead?: (id: string) => void
-}) {
+function NotificationRow(props: { item: NotificationItem; onRead?: (id: string) => void }) {
   return (
     <button
       type="button"
@@ -120,14 +111,7 @@ function NotificationRow(props: {
 
       <div class="flex min-w-0 flex-1 flex-col gap-1">
         <div class="flex items-start justify-between gap-2">
-          <span
-            class={cx(
-              'text-sm',
-              !props.item.read && 'font-semibold',
-            )}
-          >
-            {props.item.title}
-          </span>
+          <span class={cx('text-sm', !props.item.read && 'font-semibold')}>{props.item.title}</span>
           <Show when={!props.item.read}>
             <div class="bg-primary mt-1.5 size-2 shrink-0 rounded-full" />
           </Show>
@@ -215,9 +199,7 @@ export function NotificationCenter(props: NotificationCenterProps) {
       }
     >
       <div class="flex flex-col">
-        <For each={items}>
-          {item => <NotificationRow item={item} onRead={local.onRead} />}
-        </For>
+        <For each={items}>{item => <NotificationRow item={item} onRead={local.onRead} />}</For>
       </div>
     </Show>
   )
@@ -225,9 +207,7 @@ export function NotificationCenter(props: NotificationCenterProps) {
   return (
     <div data-slot="notification-center" class={local.class} {...rest}>
       <Popover>
-        <PopoverTrigger>
-          {local.trigger ?? defaultTrigger()}
-        </PopoverTrigger>
+        <PopoverTrigger>{local.trigger ?? defaultTrigger()}</PopoverTrigger>
 
         <PopoverContent class="w-[380px] p-0">
           {/* Header */}
@@ -249,10 +229,7 @@ export function NotificationCenter(props: NotificationCenterProps) {
 
           {/* Content */}
           <div class="max-h-[400px] overflow-y-auto">
-            <Show
-              when={hasCategories()}
-              fallback={renderList(local.notifications)}
-            >
+            <Show when={hasCategories()} fallback={renderList(local.notifications)}>
               <Tabs defaultValue="__all__">
                 <div class="px-2 pt-2">
                   <TabsList class="w-full">

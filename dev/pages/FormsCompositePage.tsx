@@ -19,7 +19,10 @@ const FormsCompositePage: Component = () => {
   const [uploadedFiles, setUploadedFiles] = createSignal<UploadFile[]>([])
 
   return (
-    <PageLayout title="Form Composites" description="High-level form components: FormField, TagInput, FilterBuilder, LoginForm, FileUploadZone.">
+    <PageLayout
+      title="Form Composites"
+      description="High-level form components: FormField, TagInput, FilterBuilder, LoginForm, FileUploadZone."
+    >
       {/* FormField */}
       <Card>
         <CardHeader>
@@ -56,7 +59,16 @@ const FormsCompositePage: Component = () => {
             <TagInput
               value={tags()}
               onChange={setTags}
-              suggestions={['SolidJS', 'TypeScript', 'React', 'Vue', 'Svelte', 'Angular', 'Tailwind', 'Vite']}
+              suggestions={[
+                'SolidJS',
+                'TypeScript',
+                'React',
+                'Vue',
+                'Svelte',
+                'Angular',
+                'Tailwind',
+                'Vite',
+              ]}
               max={6}
               placeholder="Add a framework..."
             />
@@ -75,12 +87,17 @@ const FormsCompositePage: Component = () => {
               fields={[
                 { key: 'name', label: 'Name', type: 'text' },
                 { key: 'amount', label: 'Amount', type: 'number' },
-                { key: 'status', label: 'Status', type: 'select', options: [
-                  { label: 'Pending', value: 'pending' },
-                  { label: 'Processing', value: 'processing' },
-                  { label: 'Success', value: 'success' },
-                  { label: 'Failed', value: 'failed' },
-                ]},
+                {
+                  key: 'status',
+                  label: 'Status',
+                  type: 'select',
+                  options: [
+                    { label: 'Pending', value: 'pending' },
+                    { label: 'Processing', value: 'processing' },
+                    { label: 'Success', value: 'success' },
+                    { label: 'Failed', value: 'failed' },
+                  ],
+                },
                 { key: 'date', label: 'Date', type: 'date' },
               ]}
               value={filterRules()}
@@ -96,7 +113,9 @@ const FormsCompositePage: Component = () => {
       <Card>
         <CardHeader>
           <CardTitle>File Upload Zone</CardTitle>
-          <CardDescription>Drag-and-drop file upload with validation, preview and progress.</CardDescription>
+          <CardDescription>
+            Drag-and-drop file upload with validation, preview and progress.
+          </CardDescription>
         </CardHeader>
         <CardContent>
           <FileUploadZone
@@ -122,18 +141,32 @@ const FormsCompositePage: Component = () => {
       <Card>
         <CardHeader>
           <CardTitle>Login Form</CardTitle>
-          <CardDescription>Pre-built authentication form with social providers and mode switching.</CardDescription>
+          <CardDescription>
+            Pre-built authentication form with social providers and mode switching.
+          </CardDescription>
         </CardHeader>
         <CardContent class="flex justify-center py-6">
           <LoginForm
             mode={loginMode()}
             providers={[
-              { name: 'Google', icon: <IconBrandGoogle class="size-4" />, onSelect: () => notify.info('Google sign-in') },
-              { name: 'GitHub', icon: <IconBrandGithub class="size-4" />, onSelect: () => notify.info('GitHub sign-in') },
+              {
+                name: 'Google',
+                icon: <IconBrandGoogle class="size-4" />,
+                onSelect: () => notify.info('Google sign-in'),
+              },
+              {
+                name: 'GitHub',
+                icon: <IconBrandGithub class="size-4" />,
+                onSelect: () => notify.info('GitHub sign-in'),
+              },
             ]}
             forgotPasswordHref="#"
-            onSubmit={data => notify.success(`${loginMode() === 'login' ? 'Signed in' : 'Registered'} as ${data.email}`)}
-            onModeSwitch={() => setLoginMode(m => m === 'login' ? 'register' : 'login')}
+            onSubmit={data =>
+              notify.success(
+                `${loginMode() === 'login' ? 'Signed in' : 'Registered'} as ${data.email}`,
+              )
+            }
+            onModeSwitch={() => setLoginMode(m => (m === 'login' ? 'register' : 'login'))}
           />
         </CardContent>
       </Card>

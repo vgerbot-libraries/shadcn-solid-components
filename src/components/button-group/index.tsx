@@ -1,18 +1,19 @@
-import { type ElementOf, Polymorphic, type PolymorphicProps } from '@kobalte/core';
-import type { VariantProps } from 'cva';
+import { type ElementOf, Polymorphic, type PolymorphicProps } from '@kobalte/core'
+import type { VariantProps } from 'cva'
 import {
-    type ComponentProps,
-    createContext,
-    mergeProps, splitProps,
-    useContext,
-    type ValidComponent
-} from 'solid-js';
+  type ComponentProps,
+  createContext,
+  mergeProps,
+  splitProps,
+  useContext,
+  type ValidComponent,
+} from 'solid-js'
 
-import { cva, cx } from '@/lib/cva';
-import { ComponentName } from '@/lib/theme-context';
-import { useComponentClass } from '@/lib/theme-helpers';
+import { cva, cx } from '@/lib/cva'
+import { ComponentName } from '@/lib/theme-context'
+import { useComponentClass } from '@/lib/theme-helpers'
 
-import { Separator, type SeparatorProps } from '../separator';
+import { Separator, type SeparatorProps } from '../separator'
 
 export const buttonGroupVariants = cva({
   base: [
@@ -82,9 +83,12 @@ export type ButtonSeparatorProps<T extends ValidComponent = 'hr'> = SeparatorPro
 export const ButtonSeparator = <T extends ValidComponent = 'hr'>(
   props: ButtonSeparatorProps<T>,
 ) => {
-  const [{ class: inClass, orientation: inOrientation }, rest] = splitProps(props as ButtonSeparatorProps, ['class', 'orientation'])
-  const buttonGroupContext = useContext(ButtonGroupContext);
-  const orientation = buttonGroupContext?.orientation ?? inOrientation;
+  const [{ class: inClass, orientation: inOrientation }, rest] = splitProps(
+    props as ButtonSeparatorProps,
+    ['class', 'orientation'],
+  )
+  const buttonGroupContext = useContext(ButtonGroupContext)
+  const orientation = buttonGroupContext?.orientation ?? inOrientation
 
   return (
     <Separator

@@ -99,13 +99,7 @@ function TimelineNode(props: { icon?: JSX.Element; color?: string }) {
  * ```
  */
 export function Timeline(props: TimelineProps) {
-  const [local, rest] = splitProps(props, [
-    'class',
-    'items',
-    'mode',
-    'pending',
-    'locale',
-  ])
+  const [local, rest] = splitProps(props, ['class', 'items', 'mode', 'pending', 'locale'])
 
   const locale = (): TimelineLocale => ({ ...enLocale, ...local.locale })
   const mode = () => local.mode ?? 'left'
@@ -117,11 +111,7 @@ export function Timeline(props: TimelineProps) {
   }
 
   return (
-    <div
-      data-slot="timeline"
-      class={cx('relative w-full', local.class)}
-      {...rest}
-    >
+    <div data-slot="timeline" class={cx('relative w-full', local.class)} {...rest}>
       <For each={local.items}>
         {(item, index) => {
           const right = () => isRight(index())
@@ -142,7 +132,9 @@ export function Timeline(props: TimelineProps) {
                     'absolute top-0 bottom-0 w-px bg-border',
                     mode() === 'alternate'
                       ? 'left-[calc(50%-0.5px)] hidden md:block'
-                      : item.icon ? 'left-4' : 'left-1.5',
+                      : item.icon
+                        ? 'left-4'
+                        : 'left-1.5',
                   )}
                 />
               </Show>
@@ -199,12 +191,7 @@ export function Timeline(props: TimelineProps) {
 
       {/* Pending indicator */}
       <Show when={local.pending}>
-        <div
-          class={cx(
-            'relative flex gap-4',
-            mode() === 'alternate' && 'justify-center',
-          )}
-        >
+        <div class={cx('relative flex gap-4', mode() === 'alternate' && 'justify-center')}>
           <div class="relative flex flex-col items-center">
             <div class="size-3 animate-pulse rounded-full bg-muted-foreground" />
           </div>
@@ -221,12 +208,7 @@ function TimelineContent(props: { item: TimelineItem; align: 'left' | 'right' })
   return (
     <div class={cx('pb-8', props.align === 'right' && 'text-right')}>
       <div class="flex flex-col gap-1">
-        <div
-          class={cx(
-            'flex items-center gap-2',
-            props.align === 'right' && 'justify-end',
-          )}
-        >
+        <div class={cx('flex items-center gap-2', props.align === 'right' && 'justify-end')}>
           <span class="text-sm font-semibold">{props.item.title}</span>
           <Show when={props.item.time}>
             <span class="text-muted-foreground text-xs">{props.item.time}</span>

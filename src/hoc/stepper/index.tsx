@@ -259,17 +259,10 @@ export function Stepper(props: StepperProps) {
 
   return (
     <StepperCtx.Provider value={api}>
-      <div
-        data-slot="stepper"
-        class={cx('flex flex-col gap-6', local.class)}
-        {...rest}
-      >
+      <div data-slot="stepper" class={cx('flex flex-col gap-6', local.class)} {...rest}>
         {/* Step indicators */}
         <div
-          class={cx(
-            'flex items-center',
-            orientation() === 'vertical' && 'flex-col items-start',
-          )}
+          class={cx('flex items-center', orientation() === 'vertical' && 'flex-col items-start')}
           role="list"
           aria-label={locale().stepOf(activeStep() + 1, totalSteps())}
         >
@@ -339,19 +332,13 @@ export function Stepper(props: StepperProps) {
         {/* Navigation */}
         <Show when={showNav()}>
           <div class="flex items-center justify-between">
-            <Button
-              variant="outline"
-              disabled={isFirst()}
-              onClick={prev}
-            >
+            <Button variant="outline" disabled={isFirst()} onClick={prev}>
               {locale().previous}
             </Button>
             <span class="text-muted-foreground text-sm">
               {locale().stepOf(activeStep() + 1, totalSteps())}
             </span>
-            <Button onClick={next}>
-              {isLast() ? locale().finish : locale().next}
-            </Button>
+            <Button onClick={next}>{isLast() ? locale().finish : locale().next}</Button>
           </div>
         </Show>
       </div>

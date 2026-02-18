@@ -149,7 +149,12 @@ export interface LoginFormProps extends Omit<ComponentProps<'div'>, 'onSubmit'> 
   /** Href for the "Forgot password" link. Set to `false` to hide. */
   forgotPasswordHref?: string | false
   /** Called when the form is submitted. */
-  onSubmit?: (data: { email: string; password: string; confirmPassword?: string; rememberMe?: boolean }) => void
+  onSubmit?: (data: {
+    email: string
+    password: string
+    confirmPassword?: string
+    rememberMe?: boolean
+  }) => void
   /** Loading state for the submit button. */
   loading?: boolean
   /** Called when the footer link is clicked (e.g. to switch mode). */
@@ -224,11 +229,7 @@ export function LoginForm(props: LoginFormProps) {
   )
 
   return (
-    <Card
-      data-slot="login-form"
-      class={cx('w-full max-w-md', local.class)}
-      {...rest}
-    >
+    <Card data-slot="login-form" class={cx('w-full max-w-md', local.class)} {...rest}>
       <CardHeader class="text-center">
         <Show when={local.logo}>
           <div class="mb-2 flex justify-center">{local.logo}</div>
@@ -237,7 +238,8 @@ export function LoginForm(props: LoginFormProps) {
           {local.title ?? (isLogin() ? locale().loginTitle : locale().registerTitle)}
         </CardTitle>
         <CardDescription>
-          {local.description ?? (isLogin() ? locale().loginDescription : locale().registerDescription)}
+          {local.description ??
+            (isLogin() ? locale().loginDescription : locale().registerDescription)}
         </CardDescription>
       </CardHeader>
 
@@ -347,8 +349,19 @@ export function LoginForm(props: LoginFormProps) {
           {/* Submit */}
           <Button type="submit" class="w-full" disabled={local.loading}>
             <Show when={local.loading}>
-              <svg class="mr-2 size-4 animate-spin" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 1 1-6.219-8.56" />
+              <svg
+                class="mr-2 size-4 animate-spin"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M21 12a9 9 0 1 1-6.219-8.56"
+                />
               </svg>
             </Show>
             {isLogin() ? locale().loginButton : locale().registerButton}

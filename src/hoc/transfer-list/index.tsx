@@ -129,15 +129,14 @@ function TransferPanel(props: {
     const q = search().toLowerCase().trim()
     if (!q) return props.items
     return props.items.filter(
-      item =>
-        item.label.toLowerCase().includes(q) ||
-        item.description?.toLowerCase().includes(q),
+      item => item.label.toLowerCase().includes(q) || item.description?.toLowerCase().includes(q),
     )
   })
 
   const enabledItems = () => filtered().filter(i => !i.disabled)
   const checkedCount = () => filtered().filter(i => props.checkedKeys.has(i.key)).length
-  const allChecked = () => enabledItems().length > 0 && enabledItems().every(i => props.checkedKeys.has(i.key))
+  const allChecked = () =>
+    enabledItems().length > 0 && enabledItems().every(i => props.checkedKeys.has(i.key))
 
   let headerCheckRef!: HTMLInputElement
   createEffect(() => {
@@ -314,11 +313,7 @@ export function TransferList(props: TransferListProps) {
   }
 
   return (
-    <div
-      data-slot="transfer-list"
-      class={cx('flex items-stretch gap-3', local.class)}
-      {...rest}
-    >
+    <div data-slot="transfer-list" class={cx('flex items-stretch gap-3', local.class)} {...rest}>
       {/* Source panel */}
       <TransferPanel
         title={local.titles?.[0] ?? locale().sourceTitle}
@@ -348,7 +343,14 @@ export function TransferList(props: TransferListProps) {
           aria-label={locale().moveRight}
         >
           <svg xmlns="http://www.w3.org/2000/svg" class="size-4" viewBox="0 0 24 24">
-            <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m9 18 6-6-6-6" />
+            <path
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="m9 18 6-6-6-6"
+            />
           </svg>
         </Button>
         <Button
@@ -359,7 +361,14 @@ export function TransferList(props: TransferListProps) {
           aria-label={locale().moveAllRight}
         >
           <svg xmlns="http://www.w3.org/2000/svg" class="size-4" viewBox="0 0 24 24">
-            <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m6 17 5-5-5-5m7 10 5-5-5-5" />
+            <path
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="m6 17 5-5-5-5m7 10 5-5-5-5"
+            />
           </svg>
         </Button>
         <Button
@@ -371,7 +380,14 @@ export function TransferList(props: TransferListProps) {
           aria-label={locale().moveLeft}
         >
           <svg xmlns="http://www.w3.org/2000/svg" class="size-4" viewBox="0 0 24 24">
-            <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m15 18-6-6 6-6" />
+            <path
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="m15 18-6-6 6-6"
+            />
           </svg>
         </Button>
         <Button
@@ -382,7 +398,14 @@ export function TransferList(props: TransferListProps) {
           aria-label={locale().moveAllLeft}
         >
           <svg xmlns="http://www.w3.org/2000/svg" class="size-4" viewBox="0 0 24 24">
-            <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m18 17-5-5 5-5M11 17l-5-5 5-5" />
+            <path
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="m18 17-5-5 5-5M11 17l-5-5 5-5"
+            />
           </svg>
         </Button>
       </div>

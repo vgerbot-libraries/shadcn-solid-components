@@ -68,10 +68,7 @@ export function FormField(props: FormFieldProps) {
       <Show when={local.label}>
         <label
           for={local.htmlFor}
-          class={cx(
-            'text-sm font-medium select-none',
-            hasError() && 'text-destructive',
-          )}
+          class={cx('text-sm font-medium select-none', hasError() && 'text-destructive')}
         >
           {local.label}
           <Show when={local.required}>
@@ -84,10 +81,7 @@ export function FormField(props: FormFieldProps) {
 
       <Show when={hasError()}>
         <div class="text-destructive text-sm">
-          <Show
-            when={errorMessages().length > 1}
-            fallback={errorMessages()[0]}
-          >
+          <Show when={errorMessages().length > 1} fallback={errorMessages()[0]}>
             <ul class="ml-4 list-disc">
               {errorMessages().map(msg => (
                 <li>{msg}</li>

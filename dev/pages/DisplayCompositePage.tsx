@@ -36,7 +36,10 @@ const DisplayCompositePage: Component = () => {
   const [transferTarget, setTransferTarget] = createSignal<string[]>(['admin'])
 
   return (
-    <PageLayout title="Display Composites" description="Display HOCs: StatCard, DescriptionList, Timeline, Stepper, TransferList, PageHeader, UserMenu.">
+    <PageLayout
+      title="Display Composites"
+      description="Display HOCs: StatCard, DescriptionList, Timeline, Stepper, TransferList, PageHeader, UserMenu."
+    >
       {/* StatCard */}
       <Card>
         <CardHeader>
@@ -45,10 +48,34 @@ const DisplayCompositePage: Component = () => {
         </CardHeader>
         <CardContent>
           <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-            <StatCard label="Total Revenue" value="$1,250.00" trend="up" trendText="+12.5% this month" icon={<TotalRevenueIcon />} />
-            <StatCard label="New Customers" value="1,234" trend="down" trendText="-20% this period" icon={<NewCustomersIcon />} />
-            <StatCard label="Active Accounts" value="45,678" trend="up" trendText="+12.5% retention" icon={<ActiveAccountsIcon />} />
-            <StatCard label="Growth Rate" value="4.5%" trend="up" trendText="+4.5% increase" icon={<GrowthRateIcon />} />
+            <StatCard
+              label="Total Revenue"
+              value="$1,250.00"
+              trend="up"
+              trendText="+12.5% this month"
+              icon={<TotalRevenueIcon />}
+            />
+            <StatCard
+              label="New Customers"
+              value="1,234"
+              trend="down"
+              trendText="-20% this period"
+              icon={<NewCustomersIcon />}
+            />
+            <StatCard
+              label="Active Accounts"
+              value="45,678"
+              trend="up"
+              trendText="+12.5% retention"
+              icon={<ActiveAccountsIcon />}
+            />
+            <StatCard
+              label="Growth Rate"
+              value="4.5%"
+              trend="up"
+              trendText="+4.5% increase"
+              icon={<GrowthRateIcon />}
+            />
           </div>
         </CardContent>
       </Card>
@@ -77,8 +104,16 @@ const DisplayCompositePage: Component = () => {
                     {
                       label: 'Account',
                       items: [
-                        { label: 'Profile', icon: <IconUser class="size-4" />, onSelect: () => notify.info('Profile') },
-                        { label: 'Settings', icon: <IconSettings class="size-4" />, onSelect: () => notify.info('Settings') },
+                        {
+                          label: 'Profile',
+                          icon: <IconUser class="size-4" />,
+                          onSelect: () => notify.info('Profile'),
+                        },
+                        {
+                          label: 'Settings',
+                          icon: <IconSettings class="size-4" />,
+                          onSelect: () => notify.info('Settings'),
+                        },
                       ],
                     },
                   ]}
@@ -107,7 +142,11 @@ const DisplayCompositePage: Component = () => {
                 { label: 'Email', value: 'john@example.com', copyable: true },
                 { label: 'Role', value: <Badge>Admin</Badge> },
                 { label: 'Status', value: <Badge variant="secondary">Active</Badge> },
-                { label: 'Bio', value: 'Full-stack engineer with 10+ years of experience.', span: 2 },
+                {
+                  label: 'Bio',
+                  value: 'Full-stack engineer with 10+ years of experience.',
+                  span: 2,
+                },
                 { label: 'Joined', value: 'January 15, 2024' },
                 { label: 'Last Login', value: '5 minutes ago' },
               ]}
@@ -123,11 +162,34 @@ const DisplayCompositePage: Component = () => {
           <CardContent>
             <Timeline
               items={[
-                { title: 'Order placed', time: 'Jan 15, 2024', description: 'Order #1234 received.', icon: <IconCreditCard class="size-4" /> },
-                { title: 'Payment confirmed', time: 'Jan 15, 2024', description: '$1,250.00 processed.', icon: <IconCheck class="size-4" /> },
-                { title: 'Processing', time: 'Jan 16, 2024', description: 'Preparing for shipment.', icon: <IconLoader class="size-4" /> },
-                { title: 'Shipped', time: 'Jan 17, 2024', description: 'Package handed to carrier.' },
-                { title: 'Delivered', time: 'Jan 19, 2024', description: 'Delivered to front door.' },
+                {
+                  title: 'Order placed',
+                  time: 'Jan 15, 2024',
+                  description: 'Order #1234 received.',
+                  icon: <IconCreditCard class="size-4" />,
+                },
+                {
+                  title: 'Payment confirmed',
+                  time: 'Jan 15, 2024',
+                  description: '$1,250.00 processed.',
+                  icon: <IconCheck class="size-4" />,
+                },
+                {
+                  title: 'Processing',
+                  time: 'Jan 16, 2024',
+                  description: 'Preparing for shipment.',
+                  icon: <IconLoader class="size-4" />,
+                },
+                {
+                  title: 'Shipped',
+                  time: 'Jan 17, 2024',
+                  description: 'Package handed to carrier.',
+                },
+                {
+                  title: 'Delivered',
+                  time: 'Jan 19, 2024',
+                  description: 'Delivered to front door.',
+                },
               ]}
             />
           </CardContent>
@@ -138,7 +200,9 @@ const DisplayCompositePage: Component = () => {
       <Card>
         <CardHeader>
           <CardTitle>Stepper</CardTitle>
-          <CardDescription>Multi-step wizard with per-step validation and navigation.</CardDescription>
+          <CardDescription>
+            Multi-step wizard with per-step validation and navigation.
+          </CardDescription>
         </CardHeader>
         <CardContent>
           <Stepper
@@ -151,10 +215,14 @@ const DisplayCompositePage: Component = () => {
                 content: (
                   <div class="flex flex-col gap-4 py-4">
                     <FormField label="Email" required>
-                      <TextField><TextFieldInput type="email" placeholder="you@example.com" /></TextField>
+                      <TextField>
+                        <TextFieldInput type="email" placeholder="you@example.com" />
+                      </TextField>
                     </FormField>
                     <FormField label="Password" required>
-                      <TextField><TextFieldInput type="password" placeholder="Create a password" /></TextField>
+                      <TextField>
+                        <TextFieldInput type="password" placeholder="Create a password" />
+                      </TextField>
                     </FormField>
                   </div>
                 ),
@@ -165,10 +233,14 @@ const DisplayCompositePage: Component = () => {
                 content: (
                   <div class="flex flex-col gap-4 py-4">
                     <FormField label="Display Name" required>
-                      <TextField><TextFieldInput placeholder="John Doe" /></TextField>
+                      <TextField>
+                        <TextFieldInput placeholder="John Doe" />
+                      </TextField>
                     </FormField>
                     <FormField label="Bio" description="Tell us about yourself.">
-                      <TextField><TextFieldInput placeholder="Software engineer..." /></TextField>
+                      <TextField>
+                        <TextFieldInput placeholder="Software engineer..." />
+                      </TextField>
                     </FormField>
                   </div>
                 ),
@@ -178,12 +250,17 @@ const DisplayCompositePage: Component = () => {
                 description: 'Confirm details',
                 content: (
                   <div class="py-4">
-                    <p class="text-muted-foreground text-sm">Review your information and click "Finish" to complete the setup.</p>
+                    <p class="text-muted-foreground text-sm">
+                      Review your information and click "Finish" to complete the setup.
+                    </p>
                   </div>
                 ),
               },
             ]}
-            onComplete={() => { notify.success('Setup complete!'); setStepperActiveStep(0) }}
+            onComplete={() => {
+              notify.success('Setup complete!')
+              setStepperActiveStep(0)
+            }}
           />
         </CardContent>
       </Card>
@@ -192,7 +269,9 @@ const DisplayCompositePage: Component = () => {
       <Card>
         <CardHeader>
           <CardTitle>Transfer List</CardTitle>
-          <CardDescription>Dual-panel list for moving items between "available" and "selected".</CardDescription>
+          <CardDescription>
+            Dual-panel list for moving items between "available" and "selected".
+          </CardDescription>
         </CardHeader>
         <CardContent>
           <TransferList

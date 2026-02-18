@@ -1,11 +1,4 @@
-import {
-  type ComponentProps,
-  createSignal,
-  For,
-  type JSX,
-  Show,
-  splitProps,
-} from 'solid-js'
+import { type ComponentProps, createSignal, For, type JSX, Show, splitProps } from 'solid-js'
 import type {
   ColumnDef,
   ColumnFiltersState,
@@ -234,11 +227,7 @@ export function DataTable<TData>(props: DataTableProps<TData>) {
   local.onTableReady?.(table)
 
   return (
-    <div
-      data-slot="data-table"
-      class={cx('flex flex-col gap-4', local.class)}
-      {...rest}
-    >
+    <div data-slot="data-table" class={cx('flex flex-col gap-4', local.class)} {...rest}>
       <Show
         when={!local.loading}
         fallback={

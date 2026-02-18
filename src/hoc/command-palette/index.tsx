@@ -118,7 +118,7 @@ export function CommandPalette(props: CommandPaletteProps) {
   }
 
   // Global keyboard shortcut
-  const hotkey = () => (props.hotkey === false ? null : props.hotkey ?? 'k')
+  const hotkey = () => (props.hotkey === false ? null : (props.hotkey ?? 'k'))
 
   createEffect(() => {
     const key = hotkey()
@@ -142,10 +142,7 @@ export function CommandPalette(props: CommandPaletteProps) {
       title={props.title ?? 'Command Palette'}
       description={props.description ?? 'Search for commands'}
     >
-      <CommandInput
-        placeholder={locale().placeholder}
-        onValueChange={v => props.onSearch?.(v)}
-      />
+      <CommandInput placeholder={locale().placeholder} onValueChange={v => props.onSearch?.(v)} />
       <CommandList>
         <CommandEmpty>{locale().noResults}</CommandEmpty>
         <For each={props.groups}>

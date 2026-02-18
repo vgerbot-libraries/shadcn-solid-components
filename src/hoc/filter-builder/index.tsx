@@ -1,11 +1,4 @@
-import {
-  type ComponentProps,
-  createMemo,
-  For,
-  type JSX,
-  Show,
-  splitProps,
-} from 'solid-js'
+import { type ComponentProps, createMemo, For, type JSX, Show, splitProps } from 'solid-js'
 import { Button } from '@/components/button'
 import { Badge } from '@/components/badge'
 import { cx } from '@/lib/cva'
@@ -79,12 +72,20 @@ export const jaLocale: FilterBuilderLocale = {
 // ============================================================================
 
 export type FilterOperator =
-  | 'eq' | 'neq'
-  | 'gt' | 'gte' | 'lt' | 'lte'
-  | 'contains' | 'not_contains'
-  | 'starts_with' | 'ends_with'
-  | 'is_empty' | 'is_not_empty'
-  | 'in' | 'not_in'
+  | 'eq'
+  | 'neq'
+  | 'gt'
+  | 'gte'
+  | 'lt'
+  | 'lte'
+  | 'contains'
+  | 'not_contains'
+  | 'starts_with'
+  | 'ends_with'
+  | 'is_empty'
+  | 'is_not_empty'
+  | 'in'
+  | 'not_in'
 
 export type FilterFieldType = 'text' | 'number' | 'select' | 'date'
 
@@ -229,10 +230,7 @@ export function FilterBuilder(props: FilterBuilderProps) {
     const firstField = local.fields[0]
     if (!firstField) return
     const ops = getOperators(firstField.key)
-    local.onChange([
-      ...local.value,
-      { field: firstField.key, operator: ops[0] ?? 'eq', value: '' },
-    ])
+    local.onChange([...local.value, { field: firstField.key, operator: ops[0] ?? 'eq', value: '' }])
   }
 
   const removeRule = (index: number) => {
@@ -262,16 +260,10 @@ export function FilterBuilder(props: FilterBuilderProps) {
   const reset = () => local.onChange([])
 
   return (
-    <div
-      data-slot="filter-builder"
-      class={cx('flex flex-col gap-3', local.class)}
-      {...rest}
-    >
+    <div data-slot="filter-builder" class={cx('flex flex-col gap-3', local.class)} {...rest}>
       <Show
         when={local.fields.length > 0}
-        fallback={
-          <p class="text-muted-foreground text-sm">{locale().noFields}</p>
-        }
+        fallback={<p class="text-muted-foreground text-sm">{locale().noFields}</p>}
       >
         {/* Filter rows */}
         <For each={local.value}>
@@ -293,16 +285,16 @@ export function FilterBuilder(props: FilterBuilderProps) {
                   value={rule.field}
                   onChange={e => updateRule(index(), { field: e.currentTarget.value })}
                 >
-                  <For each={local.fields}>
-                    {f => <option value={f.key}>{f.label}</option>}
-                  </For>
+                  <For each={local.fields}>{f => <option value={f.key}>{f.label}</option>}</For>
                 </select>
 
                 {/* Operator select */}
                 <select
                   class={selectClass()}
                   value={rule.operator}
-                  onChange={e => updateRule(index(), { operator: e.currentTarget.value as FilterOperator })}
+                  onChange={e =>
+                    updateRule(index(), { operator: e.currentTarget.value as FilterOperator })
+                  }
                 >
                   <For each={operators()}>
                     {op => <option value={op}>{operatorLabels[op]}</option>}
@@ -315,7 +307,13 @@ export function FilterBuilder(props: FilterBuilderProps) {
                     when={field()?.type === 'select' && field()?.options}
                     fallback={
                       <input
-                        type={field()?.type === 'number' ? 'number' : field()?.type === 'date' ? 'date' : 'text'}
+                        type={
+                          field()?.type === 'number'
+                            ? 'number'
+                            : field()?.type === 'date'
+                              ? 'date'
+                              : 'text'
+                        }
                         class={inputClass()}
                         placeholder={locale().enterValue}
                         value={rule.value}
@@ -344,7 +342,14 @@ export function FilterBuilder(props: FilterBuilderProps) {
                   onClick={() => removeRule(index())}
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" class="size-4" viewBox="0 0 24 24">
-                    <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 6L6 18M6 6l12 12" />
+                    <path
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M18 6L6 18M6 6l12 12"
+                    />
                   </svg>
                   <span class="sr-only">{locale().removeRule}</span>
                 </Button>
@@ -355,23 +360,21 @@ export function FilterBuilder(props: FilterBuilderProps) {
 
         {/* Actions */}
         <div class="flex items-center gap-2">
-          <Button
-            variant="outline"
-            size="sm"
-            disabled={atMax()}
-            onClick={addRule}
-          >
+          <Button variant="outline" size="sm" disabled={atMax()} onClick={addRule}>
             <svg xmlns="http://www.w3.org/2000/svg" class="mr-1 size-4" viewBox="0 0 24 24">
-              <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v14m-7-7h14" />
+              <path
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 5v14m-7-7h14"
+              />
             </svg>
             {locale().addRule}
           </Button>
           <Show when={local.value.length > 0}>
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={reset}
-            >
+            <Button variant="ghost" size="sm" onClick={reset}>
               {locale().reset}
             </Button>
           </Show>

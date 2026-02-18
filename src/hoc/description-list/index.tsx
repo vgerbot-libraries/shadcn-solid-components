@@ -105,19 +105,27 @@ function CopyButton(props: { value: string; locale: DescriptionListLocale }) {
 
 function columnClass(columns: number): string {
   switch (columns) {
-    case 1: return 'grid-cols-1'
-    case 3: return 'grid-cols-1 sm:grid-cols-3'
-    case 4: return 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-4'
-    default: return 'grid-cols-1 sm:grid-cols-2'
+    case 1:
+      return 'grid-cols-1'
+    case 3:
+      return 'grid-cols-1 sm:grid-cols-3'
+    case 4:
+      return 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-4'
+    default:
+      return 'grid-cols-1 sm:grid-cols-2'
   }
 }
 
 function spanClass(span: number): string {
   switch (span) {
-    case 2: return 'sm:col-span-2'
-    case 3: return 'sm:col-span-3'
-    case 4: return 'sm:col-span-4'
-    default: return ''
+    case 2:
+      return 'sm:col-span-2'
+    case 3:
+      return 'sm:col-span-3'
+    case 4:
+      return 'sm:col-span-4'
+    default:
+      return ''
   }
 }
 
@@ -173,12 +181,7 @@ export function DescriptionList(props: DescriptionListProps) {
         <Separator class="my-3" />
       </Show>
 
-      <dl
-        class={cx(
-          'grid gap-4',
-          columnClass(columns()),
-        )}
-      >
+      <dl class={cx('grid gap-4', columnClass(columns()))}>
         <For each={local.items}>
           {item => {
             const valueText = () => {
@@ -215,24 +218,13 @@ export function DescriptionList(props: DescriptionListProps) {
     <Show
       when={local.card}
       fallback={
-        <div
-          data-slot="description-list"
-          class={cx('w-full', local.class)}
-          {...rest}
-        >
+        <div data-slot="description-list" class={cx('w-full', local.class)} {...rest}>
           {content()}
         </div>
       }
     >
-      <Card
-        data-slot="description-list"
-        class={cx(local.class)}
-        {...rest}
-      >
-        <Show
-          when={local.title}
-          fallback={<CardContent class="pt-6">{content()}</CardContent>}
-        >
+      <Card data-slot="description-list" class={cx(local.class)} {...rest}>
+        <Show when={local.title} fallback={<CardContent class="pt-6">{content()}</CardContent>}>
           <CardHeader>
             <div class="flex items-center justify-between">
               <CardTitle>{local.title}</CardTitle>
@@ -242,12 +234,7 @@ export function DescriptionList(props: DescriptionListProps) {
             </div>
           </CardHeader>
           <CardContent>
-            <dl
-              class={cx(
-                'grid gap-4',
-                columnClass(columns()),
-              )}
-            >
+            <dl class={cx('grid gap-4', columnClass(columns()))}>
               <For each={local.items}>
                 {item => {
                   const valueText = () => {

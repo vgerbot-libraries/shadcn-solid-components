@@ -62,11 +62,7 @@ export function PageHeader(props: PageHeaderProps) {
   ])
 
   return (
-    <div
-      data-slot="page-header"
-      class={cx('flex flex-col gap-4', local.class)}
-      {...rest}
-    >
+    <div data-slot="page-header" class={cx('flex flex-col gap-4', local.class)} {...rest}>
       <Show when={local.breadcrumbs?.length}>
         <Breadcrumbs>
           <BreadcrumbList>
@@ -79,9 +75,7 @@ export function PageHeader(props: PageHeaderProps) {
                   <BreadcrumbsItem>
                     <Show
                       when={item.href}
-                      fallback={
-                        <span class="text-foreground font-medium">{item.label}</span>
-                      }
+                      fallback={<span class="text-foreground font-medium">{item.label}</span>}
                     >
                       <BreadcrumbsLink href={item.href}>{item.label}</BreadcrumbsLink>
                     </Show>

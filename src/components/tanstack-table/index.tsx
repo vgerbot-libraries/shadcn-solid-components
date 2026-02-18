@@ -1,13 +1,5 @@
 import type { ComponentProps, JSX } from 'solid-js'
-import {
-  createContext,
-  useContext,
-  splitProps,
-  For,
-  Show,
-  Switch,
-  Match,
-} from 'solid-js'
+import { createContext, useContext, splitProps, For, Show, Switch, Match } from 'solid-js'
 import type {
   Table,
   Row,
@@ -345,10 +337,10 @@ export function TanstackTableHeader(props: TanstackTableHeaderProps) {
 
   const defaultContent = () => (
     <For each={table.getHeaderGroups()}>
-      {(headerGroup) => (
+      {headerGroup => (
         <tr data-slot="tanstack-table-header-row" class="border-b transition-colors">
           <For each={headerGroup.headers}>
-            {(header) => {
+            {header => {
               const pinned = () => header.column.getIsPinned()
               return (
                 <th
@@ -363,9 +355,7 @@ export function TanstackTableHeader(props: TanstackTableHeaderProps) {
                   colSpan={header.colSpan}
                   style={{
                     width: `${header.getSize()}px`,
-                    ...(pinned() === 'left'
-                      ? { left: `${header.column.getStart('left')}px` }
-                      : {}),
+                    ...(pinned() === 'left' ? { left: `${header.column.getStart('left')}px` } : {}),
                     ...(pinned() === 'right'
                       ? { right: `${header.column.getAfter('right')}px` }
                       : {}),
@@ -381,7 +371,7 @@ export function TanstackTableHeader(props: TanstackTableHeaderProps) {
                       class="absolute top-0 right-0 h-full w-1 cursor-col-resize select-none touch-none"
                       onMouseDown={header.getResizeHandler()}
                       onTouchStart={header.getResizeHandler()}
-                      onClick={(e) => e.stopPropagation()}
+                      onClick={e => e.stopPropagation()}
                     />
                   </Show>
                 </th>
@@ -442,7 +432,7 @@ export function TanstackTableBody(props: TanstackTableBodyProps) {
       }
     >
       <For each={table.getRowModel().rows}>
-        {(row) => (
+        {row => (
           <>
             <tr
               data-slot="tanstack-table-row"
@@ -452,7 +442,7 @@ export function TanstackTableBody(props: TanstackTableBodyProps) {
               class="hover:bg-muted/50 data-[state=selected]:bg-muted border-b transition-colors"
             >
               <For each={row.getVisibleCells()}>
-                {(cell) => {
+                {cell => {
                   const pinned = () => cell.column.getIsPinned()
                   return (
                     <td
@@ -473,9 +463,7 @@ export function TanstackTableBody(props: TanstackTableBodyProps) {
                           : {}),
                       }}
                     >
-                      <Switch
-                        fallback={flexRender(cell.column.columnDef.cell, cell.getContext())}
-                      >
+                      <Switch fallback={flexRender(cell.column.columnDef.cell, cell.getContext())}>
                         <Match when={cell.getIsGrouped()}>
                           <button
                             class="flex items-center gap-1 cursor-pointer font-medium"
@@ -556,10 +544,10 @@ export function TanstackTableFooter(props: TanstackTableFooterProps) {
 
   const defaultContent = () => (
     <For each={table.getFooterGroups()}>
-      {(footerGroup) => (
+      {footerGroup => (
         <tr data-slot="tanstack-table-footer-row" class="border-b transition-colors">
           <For each={footerGroup.headers}>
-            {(header) => (
+            {header => (
               <td
                 data-slot="tanstack-table-footer-cell"
                 class="p-2 align-middle font-medium"
@@ -609,13 +597,15 @@ export function TanstackTableCaption(props: TanstackTableCaptionProps) {
 // TanstackTableColumnHeader — Sortable Column Header
 // ============================================================================
 
-export type TanstackTableColumnHeaderProps<TData = any, TValue = unknown> =
-  ComponentProps<'button'> & {
-    /** The column instance from TanStack Table */
-    column: Column<TData, TValue>
-    /** The display title for the column */
-    title: string
-  }
+export type TanstackTableColumnHeaderProps<
+  TData = any,
+  TValue = unknown,
+> = ComponentProps<'button'> & {
+  /** The column instance from TanStack Table */
+  column: Column<TData, TValue>
+  /** The display title for the column */
+  title: string
+}
 
 /**
  * A pre-styled sortable column header button.
@@ -651,7 +641,7 @@ export function TanstackTableColumnHeader<TData = any, TValue = unknown>(
           local.column.getIsSorted() && 'text-foreground',
           local.class,
         )}
-        onClick={(e) => local.column.toggleSorting(undefined, e.shiftKey)}
+        onClick={e => local.column.toggleSorting(undefined, e.shiftKey)}
         {...rest}
       >
         <span>{local.title}</span>
@@ -742,7 +732,7 @@ export function TanstackTableHeaderCheckbox(props: TanstackTableHeaderCheckboxPr
       indeterminate={
         props.table.getIsSomePageRowsSelected() && !props.table.getIsAllPageRowsSelected()
       }
-      onChange={(checked) => props.table.toggleAllPageRowsSelected(checked)}
+      onChange={checked => props.table.toggleAllPageRowsSelected(checked)}
       class={props.class}
       aria-label={locale.selectAll}
     >
@@ -780,7 +770,7 @@ export function TanstackTableRowCheckbox(props: TanstackTableRowCheckboxProps) {
       data-slot="tanstack-table-row-checkbox"
       checked={props.row.getIsSelected()}
       disabled={!props.row.getCanSelect()}
-      onChange={(checked) => props.row.toggleSelected(checked)}
+      onChange={checked => props.row.toggleSelected(checked)}
       class={props.class}
       aria-label={locale.selectRow}
     >
@@ -865,7 +855,7 @@ export function TanstackTableGlobalFilter(props: TanstackTableGlobalFilterProps)
     <TextField
       data-slot="tanstack-table-global-filter"
       value={(table.getState().globalFilter as string) ?? ''}
-      onChange={(value) => table.setGlobalFilter(value)}
+      onChange={value => table.setGlobalFilter(value)}
       class="w-auto gap-0"
     >
       <TextFieldInput
@@ -931,20 +921,16 @@ export function TanstackTablePagination(props: TanstackTablePaginationProps) {
             <Select
               options={pageSizeOptions()}
               value={table.getState().pagination.pageSize}
-              onChange={(value) => {
+              onChange={value => {
                 if (value != null) table.setPageSize(value)
               }}
               disallowEmptySelection
-              itemComponent={(itemProps) => (
+              itemComponent={itemProps => (
                 <SelectItem item={itemProps.item}>{itemProps.item.rawValue}</SelectItem>
               )}
             >
-              <SelectTrigger
-                size="sm"
-                class="w-[70px]"
-                data-slot="tanstack-table-page-size"
-              >
-                <SelectValue<number>>{(state) => state.selectedOption()}</SelectValue>
+              <SelectTrigger size="sm" class="w-[70px]" data-slot="tanstack-table-page-size">
+                <SelectValue<number>>{state => state.selectedOption()}</SelectValue>
               </SelectTrigger>
               <SelectPortal>
                 <SelectContent />

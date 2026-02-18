@@ -34,13 +34,7 @@ export interface EmptyStateProps extends ComponentProps<'div'> {
  * ```
  */
 export function EmptyState(props: EmptyStateProps) {
-  const [local, rest] = splitProps(props, [
-    'class',
-    'icon',
-    'title',
-    'description',
-    'action',
-  ])
+  const [local, rest] = splitProps(props, ['class', 'icon', 'title', 'description', 'action'])
 
   return (
     <div

@@ -6,12 +6,24 @@ import { Badge } from '@/components/badge'
 import { Separator } from '@/components/separator'
 import { Kbd, KbdGroup } from '@/components/kbd'
 import { Skeleton } from '@/components/skeleton'
-import { IconMail, IconPlus, IconDownload, IconTrash, IconSettings, IconBold, IconItalic, IconUnderline } from '@/components/icons'
+import {
+  IconMail,
+  IconPlus,
+  IconDownload,
+  IconTrash,
+  IconSettings,
+  IconBold,
+  IconItalic,
+  IconUnderline,
+} from '@/components/icons'
 import { PageLayout } from '../components/PageLayout'
 
 const GeneralPage: Component = () => {
   return (
-    <PageLayout title="General" description="Basic building-block components: Button, Badge, Separator, Kbd, Skeleton.">
+    <PageLayout
+      title="General"
+      description="Basic building-block components: Button, Badge, Separator, Kbd, Skeleton."
+    >
       {/* Button */}
       <Card>
         <CardHeader>
@@ -31,14 +43,27 @@ const GeneralPage: Component = () => {
             <Button size="sm">Small</Button>
             <Button size="default">Default</Button>
             <Button size="lg">Large</Button>
-            <Button size="icon"><IconPlus /></Button>
-            <Button size="icon-sm"><IconSettings /></Button>
+            <Button size="icon">
+              <IconPlus />
+            </Button>
+            <Button size="icon-sm">
+              <IconSettings />
+            </Button>
           </div>
           <div class="flex flex-wrap items-center gap-2">
             <Button disabled>Disabled</Button>
-            <Button variant="outline"><IconMail class="mr-2" />Login with Email</Button>
-            <Button variant="destructive"><IconTrash class="mr-2" />Delete</Button>
-            <Button variant="outline"><IconDownload class="mr-2" />Download</Button>
+            <Button variant="outline">
+              <IconMail class="mr-2" />
+              Login with Email
+            </Button>
+            <Button variant="destructive">
+              <IconTrash class="mr-2" />
+              Delete
+            </Button>
+            <Button variant="outline">
+              <IconDownload class="mr-2" />
+              Download
+            </Button>
           </div>
         </CardContent>
       </Card>
@@ -51,11 +76,17 @@ const GeneralPage: Component = () => {
         </CardHeader>
         <CardContent class="flex flex-col gap-4">
           <ButtonGroup>
-            <Button variant="outline"><IconBold /></Button>
+            <Button variant="outline">
+              <IconBold />
+            </Button>
             <ButtonSeparator />
-            <Button variant="outline"><IconItalic /></Button>
+            <Button variant="outline">
+              <IconItalic />
+            </Button>
             <ButtonSeparator />
-            <Button variant="outline"><IconUnderline /></Button>
+            <Button variant="outline">
+              <IconUnderline />
+            </Button>
           </ButtonGroup>
           <ButtonGroup>
             <Button variant="outline">Day</Button>

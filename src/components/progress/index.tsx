@@ -21,7 +21,11 @@ export const Progress = <T extends ValidComponent = 'div'>(props: ProgressProps<
       {props.children}
       <ProgressPrimitive.Track
         data-slot="progress-track"
-        class={cx('bg-primary/20 relative h-2 w-full overflow-hidden', 'rounded-component', componentClass)}
+        class={cx(
+          'bg-primary/20 relative h-2 w-full overflow-hidden',
+          'rounded-component',
+          componentClass,
+        )}
       >
         <ProgressPrimitive.Fill
           data-slot="progress-fill"
