@@ -147,18 +147,9 @@ export function OTPFieldGroup(props: OTPFieldGroupProps) {
   }
 
   return (
-    <div
-      data-slot="otp-field-hoc"
-      class={cx('grid w-full gap-2', local.class)}
-      {...rest}
-    >
+    <div data-slot="otp-field-hoc" class={cx('grid w-full gap-2', local.class)} {...rest}>
       <Show when={local.label}>
-        <label
-          class={cx(
-            'text-sm font-medium select-none',
-            hasError() && 'text-destructive',
-          )}
-        >
+        <label class={cx('text-sm font-medium select-none', hasError() && 'text-destructive')}>
           {local.label}
           <Show when={local.required}>
             <span class="text-destructive ml-0.5">*</span>
@@ -183,9 +174,7 @@ export function OTPFieldGroup(props: OTPFieldGroupProps) {
                 <OTPFieldSeparator />
               </Show>
               <OTPFieldGroupBase>
-                <For each={group}>
-                  {slotIndex => <OTPFieldSlot index={slotIndex} />}
-                </For>
+                <For each={group}>{slotIndex => <OTPFieldSlot index={slotIndex} />}</For>
               </OTPFieldGroupBase>
             </>
           )}

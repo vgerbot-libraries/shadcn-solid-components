@@ -1,7 +1,11 @@
 import { type ComponentProps, For, type JSX, Show, splitProps } from 'solid-js'
 import { Button } from '@/components/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/card'
+import { Checkbox, CheckboxControl, CheckboxInput, CheckboxLabel } from '@/components/checkbox'
+import { IconLoader } from '@/components/icons'
 import { Separator } from '@/components/separator'
+import { TextField, TextFieldInput } from '@/components/text-field'
+import { FormField } from '@/hoc/form-field'
 import { cx } from '@/lib/cva'
 
 // ============================================================================
@@ -222,12 +226,6 @@ export function LoginForm(props: LoginFormProps) {
     })
   }
 
-  const inputClass = cx(
-    'placeholder:text-muted-foreground dark:bg-input/30 border-input flex h-9 w-full border bg-transparent px-3 py-1 text-sm shadow-xs transition-[color,box-shadow] outline-none',
-    'focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]',
-    'rounded-md',
-  )
-
   return (
     <Card data-slot="login-form" class={cx('w-full max-w-md', local.class)} {...rest}>
       <CardHeader class="text-center">
@@ -272,97 +270,67 @@ export function LoginForm(props: LoginFormProps) {
           </Show>
 
           {/* Email */}
-          <div class="grid gap-2">
-            <label for="login-email" class="text-sm font-medium">
-              {locale().emailLabel}
-            </label>
-            <input
-              id="login-email"
-              name="email"
-              type="email"
-              placeholder={locale().emailPlaceholder}
-              required
-              autocomplete="email"
-              class={inputClass}
-            />
-          </div>
+          <FormField label={locale().emailLabel}>
+            <TextField name="email" required>
+              <TextFieldInput
+                type="email"
+                placeholder={locale().emailPlaceholder}
+                autocomplete="email"
+              />
+            </TextField>
+          </FormField>
 
           {/* Password */}
-          <div class="grid gap-2">
-            <div class="flex items-center justify-between">
-              <label for="login-password" class="text-sm font-medium">
-                {locale().passwordLabel}
-              </label>
-              <Show when={showForgotPassword() && local.forgotPasswordHref}>
-                <a
-                  href={local.forgotPasswordHref as string}
-                  class="text-muted-foreground hover:text-foreground text-xs underline-offset-4 hover:underline"
-                >
-                  {locale().forgotPassword}
-                </a>
-              </Show>
-            </div>
-            <input
-              id="login-password"
-              name="password"
-              type="password"
-              placeholder={locale().passwordPlaceholder}
-              required
-              autocomplete={isLogin() ? 'current-password' : 'new-password'}
-              class={inputClass}
-            />
-          </div>
+          <FormField
+            label={
+              <div class="flex items-center justify-between">
+                <label class="text-sm font-medium select-none">{locale().passwordLabel}</label>
+                <Show when={showForgotPassword() && local.forgotPasswordHref}>
+                  <a
+                    href={local.forgotPasswordHref as string}
+                    class="text-muted-foreground hover:text-foreground text-xs underline-offset-4 hover:underline"
+                  >
+                    {locale().forgotPassword}
+                  </a>
+                </Show>
+              </div>
+            }
+          >
+            <TextField name="password" required>
+              <TextFieldInput
+                type="password"
+                placeholder={locale().passwordPlaceholder}
+                autocomplete={isLogin() ? 'current-password' : 'new-password'}
+              />
+            </TextField>
+          </FormField>
 
           {/* Confirm password (register mode) */}
           <Show when={!isLogin()}>
-            <div class="grid gap-2">
-              <label for="login-confirm-password" class="text-sm font-medium">
-                {locale().confirmPasswordLabel}
-              </label>
-              <input
-                id="login-confirm-password"
-                name="confirmPassword"
-                type="password"
-                placeholder={locale().confirmPasswordPlaceholder}
-                required
-                autocomplete="new-password"
-                class={inputClass}
-              />
-            </div>
+            <FormField label={locale().confirmPasswordLabel}>
+              <TextField name="confirmPassword" required>
+                <TextFieldInput
+                  type="password"
+                  placeholder={locale().confirmPasswordPlaceholder}
+                  autocomplete="new-password"
+                />
+              </TextField>
+            </FormField>
           </Show>
 
           {/* Remember me */}
           <Show when={showRememberMe()}>
-            <div class="flex items-center gap-2">
-              <input
-                id="login-remember"
-                name="rememberMe"
-                type="checkbox"
-                class="accent-primary size-4 rounded"
-              />
-              <label for="login-remember" class="text-sm select-none">
-                {locale().rememberMe}
-              </label>
-            </div>
+            <Checkbox name="rememberMe" class="flex items-center gap-2">
+              <CheckboxInput />
+              <CheckboxControl />
+              <CheckboxLabel>{locale().rememberMe}</CheckboxLabel>
+            </Checkbox>
           </Show>
 
           {/* Submit */}
           <Button type="submit" class="w-full" disabled={local.loading}>
             <Show when={local.loading}>
-              <svg
-                class="mr-2 size-4 animate-spin"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M21 12a9 9 0 1 1-6.219-8.56"
-                />
-              </svg>
+              <IconLoader class="mr-2 size-4 animate-spin" />
             </Show>
             {isLogin() ? locale().loginButton : locale().registerButton}
           </Button>

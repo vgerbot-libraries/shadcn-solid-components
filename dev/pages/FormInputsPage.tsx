@@ -342,12 +342,7 @@ const FormInputsPage: Component = () => {
               description="Enter the 6-digit code sent to your email."
               required
             />
-            <OTPFieldGroupHOC
-              maxLength={4}
-              label="PIN"
-              error="Invalid PIN code"
-              required
-            />
+            <OTPFieldGroupHOC maxLength={4} label="PIN" error="Invalid PIN code" required />
           </CardContent>
         </Card>
       </div>

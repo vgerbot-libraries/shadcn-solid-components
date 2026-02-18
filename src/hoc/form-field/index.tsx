@@ -1,4 +1,12 @@
-import { type ComponentProps, type JSX, Show, splitProps } from 'solid-js'
+import {
+  type ComponentProps,
+  type JSX,
+  Show,
+  createSignal,
+  createUniqueId,
+  onMount,
+  splitProps,
+} from 'solid-js'
 import { cx } from '@/lib/cva'
 
 // ============================================================================
@@ -6,9 +14,12 @@ import { cx } from '@/lib/cva'
 // ============================================================================
 
 export interface FormFieldProps extends ComponentProps<'div'> {
-  /** Field label text. */
-  label?: string
-  /** Accessible `id` linking the label to the input. Auto-generated if omitted. */
+  /** Field label text, or a custom JSX element for complex label layouts. */
+  label?: string | JSX.Element
+  /**
+   * Accessible `id` linking the label to the input.
+   * When omitted, auto-detected from the first input element inside children.
+   */
   htmlFor?: string
   /** Show a required indicator (*) next to the label. */
   required?: boolean
@@ -30,6 +41,9 @@ export interface FormFieldProps extends ComponentProps<'div'> {
  * A uniform wrapper for form fields providing label, required indicator,
  * validation error and description.
  *
+ * The label is automatically associated with the first `<input>`, `<textarea>`,
+ * or `<select>` found inside children — no manual `id` / `htmlFor` needed.
+ *
  * @example
  * ```tsx
  * <FormField label="Email" required error={errors().email}>
@@ -48,6 +62,26 @@ export function FormField(props: FormFieldProps) {
     'children',
   ])
 
+  let containerRef: HTMLDivElement | undefined
+  const autoId = createUniqueId()
+  const [autoFor, setAutoFor] = createSignal<string>()
+
+  onMount(() => {
+    if (local.htmlFor || !local.label || !containerRef) return
+    const input = containerRef.querySelector('input, textarea, select')
+    if (!input) return
+    if (!input.id) input.id = autoId
+    const inputId = input.id
+
+    if (typeof local.label === 'string') {
+      setAutoFor(inputId)
+    } else {
+      for (const label of containerRef.querySelectorAll('label')) {
+        if (!label.getAttribute('for')) label.setAttribute('for', inputId)
+      }
+    }
+  })
+
   const hasError = () => {
     if (Array.isArray(local.error)) return local.error.length > 0
     return !!local.error
@@ -64,17 +98,22 @@ export function FormField(props: FormFieldProps) {
       data-invalid={hasError() || undefined}
       class={cx('grid w-full gap-2', local.class)}
       {...rest}
+      ref={containerRef}
     >
       <Show when={local.label}>
-        <label
-          for={local.htmlFor}
-          class={cx('text-sm font-medium select-none', hasError() && 'text-destructive')}
-        >
-          {local.label}
-          <Show when={local.required}>
-            <span class="text-destructive ml-0.5">*</span>
-          </Show>
-        </label>
+        {typeof local.label === 'string' ? (
+          <label
+            for={local.htmlFor ?? autoFor()}
+            class={cx('text-sm font-medium select-none', hasError() && 'text-destructive')}
+          >
+            {local.label}
+            <Show when={local.required}>
+              <span class="text-destructive ml-0.5">*</span>
+            </Show>
+          </label>
+        ) : (
+          local.label
+        )}
       </Show>
 
       {local.children}

@@ -234,7 +234,8 @@ const NavigationPage: Component = () => {
                 trigger: 'Getting Started',
                 featured: {
                   label: 'shadcn-solid',
-                  description: 'Beautifully designed components built with Kobalte and Tailwind CSS.',
+                  description:
+                    'Beautifully designed components built with Kobalte and Tailwind CSS.',
                   href: '#',
                 },
                 items: [
@@ -258,10 +259,26 @@ const NavigationPage: Component = () => {
               {
                 trigger: 'Components',
                 items: [
-                  { label: 'Alert Dialog', description: 'A modal dialog that interrupts the user.', href: '#' },
-                  { label: 'Hover Card', description: 'For sighted users to preview content behind a link.', href: '#' },
-                  { label: 'Progress', description: 'Displays an indicator showing the completion progress of a task.', href: '#' },
-                  { label: 'Tooltip', description: 'A popup that displays information related to an element.', href: '#' },
+                  {
+                    label: 'Alert Dialog',
+                    description: 'A modal dialog that interrupts the user.',
+                    href: '#',
+                  },
+                  {
+                    label: 'Hover Card',
+                    description: 'For sighted users to preview content behind a link.',
+                    href: '#',
+                  },
+                  {
+                    label: 'Progress',
+                    description: 'Displays an indicator showing the completion progress of a task.',
+                    href: '#',
+                  },
+                  {
+                    label: 'Tooltip',
+                    description: 'A popup that displays information related to an element.',
+                    href: '#',
+                  },
                 ],
               },
               { trigger: 'GitHub', href: 'https://github.com' },
@@ -284,8 +301,16 @@ const NavigationPage: Component = () => {
               {
                 trigger: 'Components',
                 items: [
-                  { label: 'Alert Dialog', description: 'A modal dialog that interrupts the user.', href: '#' },
-                  { label: 'Hover Card', description: 'For sighted users to preview content behind a link.', href: '#' },
+                  {
+                    label: 'Alert Dialog',
+                    description: 'A modal dialog that interrupts the user.',
+                    href: '#',
+                  },
+                  {
+                    label: 'Hover Card',
+                    description: 'For sighted users to preview content behind a link.',
+                    href: '#',
+                  },
                 ],
               },
             ]}

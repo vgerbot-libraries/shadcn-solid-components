@@ -145,14 +145,17 @@ function renderMenuGroup(group: NavMenuGroup) {
       <Show when={hasContent}>
         <NavigationMenuPortal>
           <NavigationMenuContent class={cx(defaultContentClass, group.contentClass)}>
-            <Show when={group.content} fallback={
-              <>
-                <Show when={group.featured}>{renderFeatured(group.featured!)}</Show>
-                <Show when={group.items}>
-                  <For each={group.items}>{item => renderItem(item)}</For>
-                </Show>
-              </>
-            }>
+            <Show
+              when={group.content}
+              fallback={
+                <>
+                  <Show when={group.featured}>{renderFeatured(group.featured!)}</Show>
+                  <Show when={group.items}>
+                    <For each={group.items}>{item => renderItem(item)}</For>
+                  </Show>
+                </>
+              }
+            >
               {group.content!()}
             </Show>
           </NavigationMenuContent>
@@ -201,7 +204,7 @@ export function NavMenu(props: NavMenuProps) {
       orientation={local.orientation}
       gutter={local.gutter}
       class={local.class}
-      {...rest as Omit<NavigationMenuRootProps, 'class' | 'orientation' | 'gutter'>}
+      {...(rest as Omit<NavigationMenuRootProps, 'class' | 'orientation' | 'gutter'>)}
     >
       <For each={local.menus}>{group => renderMenuGroup(group)}</For>
     </NavigationMenuRoot>
