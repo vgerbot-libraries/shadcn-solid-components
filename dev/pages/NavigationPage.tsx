@@ -31,6 +31,7 @@ import {
   NavigationMenuContent,
   NavigationItemLabel,
   NavigationItemDescription,
+  NavigationMenuPortal,
 } from '@/components/navigation-menu'
 import {
   Pagination,
@@ -56,7 +57,10 @@ const NavigationPage: Component = () => {
   const [showUrls, setShowUrls] = createSignal(false)
 
   return (
-    <PageLayout title="Navigation" description="Navigation components: Breadcrumbs, Menubar, NavigationMenu, Pagination, SegmentedControl.">
+    <PageLayout
+      title="Navigation"
+      description="Navigation components: Breadcrumbs, Menubar, NavigationMenu, Pagination, SegmentedControl."
+    >
       {/* Breadcrumbs */}
       <Card>
         <CardHeader>
@@ -86,26 +90,38 @@ const NavigationPage: Component = () => {
       <Card>
         <CardHeader>
           <CardTitle>Menubar</CardTitle>
-          <CardDescription>Application menu bar with menus, submenus, checkboxes, and radios.</CardDescription>
+          <CardDescription>
+            Application menu bar with menus, submenus, checkboxes, and radios.
+          </CardDescription>
         </CardHeader>
         <CardContent>
           <Menubar>
             <MenubarMenu>
               <MenubarTrigger>File</MenubarTrigger>
               <MenubarContent>
-                <MenubarItem>New Tab <MenubarShortcut>⌘T</MenubarShortcut></MenubarItem>
-                <MenubarItem>New Window <MenubarShortcut>⌘N</MenubarShortcut></MenubarItem>
+                <MenubarItem>
+                  New Tab <MenubarShortcut>⌘T</MenubarShortcut>
+                </MenubarItem>
+                <MenubarItem>
+                  New Window <MenubarShortcut>⌘N</MenubarShortcut>
+                </MenubarItem>
                 <MenubarSeparator />
                 <MenubarItem>Share</MenubarItem>
                 <MenubarSeparator />
-                <MenubarItem>Print <MenubarShortcut>⌘P</MenubarShortcut></MenubarItem>
+                <MenubarItem>
+                  Print <MenubarShortcut>⌘P</MenubarShortcut>
+                </MenubarItem>
               </MenubarContent>
             </MenubarMenu>
             <MenubarMenu>
               <MenubarTrigger>Edit</MenubarTrigger>
               <MenubarContent>
-                <MenubarItem>Undo <MenubarShortcut>⌘Z</MenubarShortcut></MenubarItem>
-                <MenubarItem>Redo <MenubarShortcut>⇧⌘Z</MenubarShortcut></MenubarItem>
+                <MenubarItem>
+                  Undo <MenubarShortcut>⌘Z</MenubarShortcut>
+                </MenubarItem>
+                <MenubarItem>
+                  Redo <MenubarShortcut>⇧⌘Z</MenubarShortcut>
+                </MenubarItem>
                 <MenubarSeparator />
                 <MenubarSub>
                   <MenubarSubTrigger>Find</MenubarSubTrigger>
@@ -154,32 +170,46 @@ const NavigationPage: Component = () => {
         <CardContent>
           <NavigationMenu>
             <NavigationMenuList>
-              <NavigationMenuItem>
-                <NavigationMenuTrigger>Getting Started</NavigationMenuTrigger>
+              <NavigationMenuTrigger>Getting Started</NavigationMenuTrigger>
+              <NavigationMenuPortal>
                 <NavigationMenuContent class="grid gap-3 p-4 w-[400px] md:w-[500px] md:grid-cols-2">
-                  <a href="#" class="block select-none rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
+                  <NavigationMenuItem>
                     <NavigationItemLabel>Introduction</NavigationItemLabel>
-                    <NavigationItemDescription>Re-usable components built using Kobalte and Tailwind CSS.</NavigationItemDescription>
-                  </a>
-                  <a href="#" class="block select-none rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
-                    <NavigationItemLabel>Installation</NavigationItemLabel>
-                    <NavigationItemDescription>How to install dependencies and structure your app.</NavigationItemDescription>
-                  </a>
+                    <NavigationItemDescription>
+                      Re-usable components built using Kobalte and Tailwind CSS.
+                    </NavigationItemDescription>
+                  </NavigationMenuItem>
                 </NavigationMenuContent>
-              </NavigationMenuItem>
-              <NavigationMenuItem>
-                <NavigationMenuTrigger>Components</NavigationMenuTrigger>
+              </NavigationMenuPortal>
+            </NavigationMenuList>
+            <NavigationMenuList>
+              <NavigationMenuTrigger>Components</NavigationMenuTrigger>
+              <NavigationMenuPortal>
                 <NavigationMenuContent class="grid gap-3 p-4 w-[400px] md:w-[500px] md:grid-cols-2">
-                  <a href="#" class="block select-none rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
-                    <NavigationItemLabel>Alert Dialog</NavigationItemLabel>
-                    <NavigationItemDescription>A modal dialog that interrupts the user.</NavigationItemDescription>
+                  <a
+                    href="#"
+                    class="block select-none rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                  >
+                    <NavigationMenuItem>
+                      <NavigationItemLabel>Alert Dialog</NavigationItemLabel>
+                      <NavigationItemDescription>
+                        A modal dialog that interrupts the user.
+                      </NavigationItemDescription>
+                    </NavigationMenuItem>
                   </a>
-                  <a href="#" class="block select-none rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
-                    <NavigationItemLabel>Hover Card</NavigationItemLabel>
-                    <NavigationItemDescription>For sighted users to preview content behind a link.</NavigationItemDescription>
+                  <a
+                    href="#"
+                    class="block select-none rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                  >
+                    <NavigationMenuItem>
+                      <NavigationItemLabel>Hover Card</NavigationItemLabel>
+                      <NavigationItemDescription>
+                        For sighted users to preview content behind a link.
+                      </NavigationItemDescription>
+                    </NavigationMenuItem>
                   </a>
                 </NavigationMenuContent>
-              </NavigationMenuItem>
+              </NavigationMenuPortal>
             </NavigationMenuList>
           </NavigationMenu>
         </CardContent>
@@ -193,7 +223,14 @@ const NavigationPage: Component = () => {
             <CardDescription>Page number navigation.</CardDescription>
           </CardHeader>
           <CardContent>
-            <Pagination count={20} fixedItems itemComponent={props => <PaginationItem page={props.page}>{props.page}</PaginationItem>} ellipsisComponent={() => <PaginationEllipsis />}>
+            <Pagination
+              count={20}
+              fixedItems
+              itemComponent={props => (
+                <PaginationItem page={props.page}>{props.page}</PaginationItem>
+              )}
+              ellipsisComponent={() => <PaginationEllipsis />}
+            >
               <PaginationPrevious />
               <PaginationItems />
               <PaginationNext />
