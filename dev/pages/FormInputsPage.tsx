@@ -316,7 +316,9 @@ const FormInputsPage: Component = () => {
                 <OTPFieldSlot index={0} />
                 <OTPFieldSlot index={1} />
                 <OTPFieldSlot index={2} />
-                <OTPFieldSeparator />
+              </OTPFieldGroup>
+              <OTPFieldSeparator />
+              <OTPFieldGroup>
                 <OTPFieldSlot index={3} />
                 <OTPFieldSlot index={4} />
                 <OTPFieldSlot index={5} />
