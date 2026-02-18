@@ -48,6 +48,7 @@ import {
   OTPFieldInput,
   OTPFieldSeparator,
 } from '@/components/otp-field'
+import { OTPFieldGroup as OTPFieldGroupHOC } from '@/hoc/otp-field'
 import { Calendar } from '@/components/calendar'
 import { IconBold, IconItalic, IconUnderline, IconMinus, IconPlus } from '@/components/icons'
 import { PageLayout } from '../components/PageLayout'
@@ -324,6 +325,29 @@ const FormInputsPage: Component = () => {
                 <OTPFieldSlot index={5} />
               </OTPFieldGroup>
             </OTPField>
+          </CardContent>
+        </Card>
+
+        {/* OTPField HOC */}
+        <Card>
+          <CardHeader>
+            <CardTitle>OTP Field (HOC)</CardTitle>
+            <CardDescription>Pre-composed OTP field with grouping and labels.</CardDescription>
+          </CardHeader>
+          <CardContent class="flex flex-col gap-6">
+            <OTPFieldGroupHOC
+              maxLength={6}
+              groupPattern={[3, 3]}
+              label="Verification Code"
+              description="Enter the 6-digit code sent to your email."
+              required
+            />
+            <OTPFieldGroupHOC
+              maxLength={4}
+              label="PIN"
+              error="Invalid PIN code"
+              required
+            />
           </CardContent>
         </Card>
       </div>
