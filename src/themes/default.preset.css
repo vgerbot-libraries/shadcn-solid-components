@@ -189,6 +189,16 @@
   border-top-right-radius: var(--radius-component);
 }
 
+@utility rounded-r-component {
+  border-top-right-radius: var(--radius-component);
+  border-bottom-right-radius: var(--radius-component);
+}
+
+@utility rounded-l-component {
+  border-top-left-radius: var(--radius-component);
+  border-bottom-left-radius: var(--radius-component);
+}
+
 @utility rounded-b-component {
   border-bottom-left-radius: var(--radius-component);
   border-bottom-right-radius: var(--radius-component);

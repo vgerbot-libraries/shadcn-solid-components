@@ -149,7 +149,7 @@ export const AlertDialogAction = <T extends ValidComponent = 'button'>(
   return (
     <AlertDialogPrimitive.CloseButton
       class={buttonVariants({
-        class: props.class,
+        class: cx('rounded-component', props.class),
       })}
       {...rest}
     />
@@ -168,7 +168,7 @@ export const AlertDialogCancel = <T extends ValidComponent = 'button'>(
   return (
     <AlertDialogPrimitive.CloseButton
       class={buttonVariants({
-        class: props.class,
+        class: cx('rounded-component', props.class),
         variant: 'outline',
       })}
       {...rest}
