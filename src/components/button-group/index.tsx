@@ -1,13 +1,18 @@
-import { type ElementOf, Polymorphic, type PolymorphicProps } from '@kobalte/core'
-import type { VariantProps } from 'cva'
-import type { ValidComponent } from 'solid-js'
-import { type ComponentProps, mergeProps, splitProps } from 'solid-js'
+import { type ElementOf, Polymorphic, type PolymorphicProps } from '@kobalte/core';
+import type { VariantProps } from 'cva';
+import {
+    type ComponentProps,
+    createContext,
+    mergeProps, splitProps,
+    useContext,
+    type ValidComponent
+} from 'solid-js';
 
-import { cva, cx } from '@/lib/cva'
-import { ComponentName } from '@/lib/theme-context'
-import { useComponentClass } from '@/lib/theme-helpers'
+import { cva, cx } from '@/lib/cva';
+import { ComponentName } from '@/lib/theme-context';
+import { useComponentClass } from '@/lib/theme-helpers';
 
-import { Separator, type SeparatorProps } from '../separator'
+import { Separator, type SeparatorProps } from '../separator';
 
 export const buttonGroupVariants = cva({
   base: [
@@ -28,20 +33,24 @@ export const buttonGroupVariants = cva({
 
 export type ButtonGroupProps = ComponentProps<'div'> & VariantProps<typeof buttonGroupVariants>
 
+const ButtonGroupContext = createContext<VariantProps<typeof buttonGroupVariants>>()
+
 export const ButtonGroup = (props: ButtonGroupProps) => {
   const [, rest] = splitProps(props, ['class', 'orientation'])
 
   return (
-    <div
-      role="group"
-      data-slot="button-group"
-      data-orientation={props.orientation}
-      class={buttonGroupVariants({
-        orientation: props.orientation,
-        class: props.class,
-      })}
-      {...rest}
-    />
+    <ButtonGroupContext.Provider value={{ orientation: props.orientation }}>
+      <div
+        role="group"
+        data-slot="button-group"
+        data-orientation={props.orientation}
+        class={buttonGroupVariants({
+          orientation: props.orientation,
+          class: props.class,
+        })}
+        {...rest}
+      />
+    </ButtonGroupContext.Provider>
   )
 }
 
@@ -73,15 +82,18 @@ export type ButtonSeparatorProps<T extends ValidComponent = 'hr'> = SeparatorPro
 export const ButtonSeparator = <T extends ValidComponent = 'hr'>(
   props: ButtonSeparatorProps<T>,
 ) => {
-  const [, rest] = splitProps(props as ButtonSeparatorProps, ['class'])
+  const [{ class: inClass, orientation: inOrientation }, rest] = splitProps(props as ButtonSeparatorProps, ['class', 'orientation'])
+  const buttonGroupContext = useContext(ButtonGroupContext);
+  const orientation = buttonGroupContext?.orientation ?? inOrientation;
 
   return (
     <Separator
       data-slot="button-group-separator"
       class={cx(
-        'bg-input relative !m-0 self-stretch data-[orientation=vertical]:h-auto',
-        props.class,
+        'bg-input relative !m-0 self-stretch  data-[orientation=vertical]:w-full data-[orientation=vertical]:h-px data-[orientation=horizontal]:h-full data-[orientation=horizontal]:w-px',
+        inClass,
       )}
+      orientation={orientation}
       {...rest}
     />
   )
