@@ -384,7 +384,7 @@ const SidebarMenuTreeItem = (props: {
       'aria-disabled': item.disabled || item.loading,
     }
 
-    if (!excludeClickAndRef) {
+    if (excludeClickAndRef !== true) {
       if (item.url && !item.disabled && !item.loading) {
         props.as = 'a'
         props.href = item.url
