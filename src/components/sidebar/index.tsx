@@ -473,7 +473,7 @@ export const SidebarGroupLabel = <T extends ValidComponent = 'div'>(
       data-sidebar="group-label"
       class={cx(
         'text-sidebar-foreground/70 ring-sidebar-ring flex h-8 shrink-0 items-center px-2 text-xs font-medium outline-hidden transition-[margin,opacity] duration-200 ease-linear focus-visible:ring-2 [&>svg]:size-4 [&>svg]:shrink-0',
-        'group-data-[collapsible=icon]:-mt-8 group-data-[collapsible=icon]:opacity-0',
+        'delay-[200ms] group-data-[collapsible=icon]:-mt-8 group-data-[collapsible=icon]:opacity-0 group-data-[collapsible=icon]:delay-0',
         'rounded-component',
         merge.class,
       )}
@@ -565,7 +565,7 @@ export const SidebarMenuItem = (props: SidebarMenuItemProps) => {
 }
 
 export const SidebarMenuButtonVariants = cva({
-  base: 'peer/menu-button flex w-full items-center gap-2 overflow-hidden p-2 text-left text-sm outline-hidden ring-sidebar-ring transition-[width,height,padding] hover:bg-sidebar-accent hover:text-sidebar-accent-foreground focus-visible:ring-2 active:bg-sidebar-accent active:text-sidebar-accent-foreground disabled:pointer-events-none disabled:opacity-50 group-has-data-[sidebar=menu-action]/menu-item:pr-8 aria-disabled:pointer-events-none aria-disabled:opacity-50 data-[active=true]:bg-sidebar-accent data-[active=true]:font-medium data-[active=true]:text-sidebar-accent-foreground data-[state=open]:hover:bg-sidebar-accent data-[state=open]:hover:text-sidebar-accent-foreground group-data-[collapsible=icon]:size-8! group-data-[collapsible=icon]:p-2! [&>span:last-child]:truncate [&>svg]:size-4 [&>svg]:shrink-0',
+  base: 'peer/menu-button flex w-full items-center gap-2 overflow-hidden p-2 text-left text-sm outline-hidden ring-sidebar-ring transition-[width,height,padding] hover:bg-sidebar-accent hover:text-sidebar-accent-foreground focus-visible:ring-2 active:bg-sidebar-accent active:text-sidebar-accent-foreground disabled:pointer-events-none disabled:opacity-50 group-has-data-[sidebar=menu-action]/menu-item:pr-8 aria-disabled:pointer-events-none aria-disabled:opacity-50 data-[active=true]:bg-sidebar-accent data-[active=true]:font-medium data-[active=true]:text-sidebar-accent-foreground data-[state=open]:hover:bg-sidebar-accent data-[state=open]:hover:text-sidebar-accent-foreground group-data-[collapsible=icon]:size-8! group-data-[collapsible=icon]:p-2! [&>span:last-child]:truncate [&>span]:transition-opacity [&>span]:duration-150 [&>span]:delay-[200ms] group-data-[collapsible=icon]:[&>span]:opacity-0 group-data-[collapsible=icon]:[&>span]:delay-0 [&>svg]:size-4 [&>svg]:shrink-0',
   variants: {
     variant: {
       default: 'hover:bg-sidebar-accent hover:text-sidebar-accent-foreground',

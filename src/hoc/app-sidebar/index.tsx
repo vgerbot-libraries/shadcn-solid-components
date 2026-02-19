@@ -39,11 +39,11 @@ export function AppSidebar(props: AppSidebarProps) {
         <SidebarHeader>
           <Switch fallback={header as JSX.Element}>
             <Match when={isPresetHeader(header)}>
-              <div class="flex items-center gap-2 px-2 py-1.5 group-data-[collapsible=icon]:px-1">
-                <div class="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-primary-foreground group-data-[collapsible=icon]:w-6 group-data-[collapsible=icon]:h-6">
+              <div class="flex items-center gap-2 px-2 py-1.5">
+                <div class="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-primary-foreground group-data-[collapsible=icon]:bg-transparent group-data-[collapsible=icon]:text-primary">
                   {(header as AppSidebarHeaderProps).icon}
                 </div>
-                <div class="flex flex-col group-data-[collapsible=icon]:hidden">
+                <div class="flex flex-col min-w-0 transition-opacity duration-150 delay-[200ms] group-data-[collapsible=icon]:opacity-0 group-data-[collapsible=icon]:max-w-0 group-data-[collapsible=icon]:overflow-hidden group-data-[collapsible=icon]:delay-0">
                   <span class="text-sm font-semibold">
                     {(header as AppSidebarHeaderProps).title}
                   </span>
