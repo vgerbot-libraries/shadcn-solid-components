@@ -30,7 +30,7 @@ export const ComboboxInput = <T extends ValidComponent = 'input'>(props: Combobo
     <ComboboxPrimitive.Input
       data-slot="combobox-input"
       class={cx(
-        'placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground pr-3 outline-none',
+        'flex-1 placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground pr-3 outline-none',
         props.class,
       )}
       {...rest}
