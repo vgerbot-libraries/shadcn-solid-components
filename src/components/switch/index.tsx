@@ -28,7 +28,7 @@ export const SwitchControl = <T extends ValidComponent = 'div'>(props: SwitchCon
         'data-[checked]:bg-primary',
         'peer-focus-visible/switch-input:border-ring peer-focus-visible/switch-input:ring-ring/50 peer-focus-visible/switch-input:ring-[3px]',
         'data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50',
-        'rounded-component',
+        'rounded-full',
         componentClass,
         props.class,
       )}
@@ -50,8 +50,7 @@ export const SwitchThumb = <T extends ValidComponent = 'div'>(props: SwitchThumb
       data-slot="switch-thumb"
       class={cx(
         'bg-background dark:bg-foreground pointer-events-none size-4 transition-transform data-[checked]:translate-x-[calc(100%-2px)]',
-        'dark:data-[checked]:bg-primary-foreground dark:bg-foreground',
-        'rounded-component',
+        'dark:data-[checked]:bg-primary-foreground dark:bg-foreground rounded-full',
         componentClass,
         props.class,
       )}
