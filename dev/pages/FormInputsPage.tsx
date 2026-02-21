@@ -49,6 +49,7 @@ import {
   OTPFieldSeparator,
 } from '@/components/otp-field'
 import { OTPFieldGroup as OTPFieldGroupHOC } from '@/hoc/otp-field'
+import { DatePickerField, zhCNLocale as datePickerZhCN } from '@/hoc/date-picker'
 import {
   Calendar,
   CalendarNav,
@@ -534,6 +535,72 @@ const FormInputsPage: Component = () => {
           </DatePicker>
         </CardContent>
       </Card>
+
+      {/* DatePicker HOC */}
+      <div class="grid gap-4 md:grid-cols-2">
+        <Card>
+          <CardHeader>
+            <CardTitle>Date Picker (HOC)</CardTitle>
+            <CardDescription>Pre-composed date picker with label and description.</CardDescription>
+          </CardHeader>
+          <CardContent class="flex flex-col gap-6">
+            <DatePickerField
+              label="Date of Birth"
+              required
+              description="Select your date of birth."
+            />
+            <DatePickerField
+              label="Deadline"
+              clearable
+              error="This field is required"
+            />
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader>
+            <CardTitle>Date Picker Range (HOC)</CardTitle>
+            <CardDescription>Range selection with preset quick-select options.</CardDescription>
+          </CardHeader>
+          <CardContent class="flex flex-col gap-6">
+            <DatePickerField
+              label="Date Range"
+              selectionMode="range"
+              presets={[
+                { label: 'Last 7 Days', value: 'last7Days' },
+                { label: 'Last 30 Days', value: 'last30Days' },
+                { label: 'This Month', value: 'thisMonth' },
+                { label: 'Last Month', value: 'lastMonth' },
+              ]}
+            />
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader>
+            <CardTitle>Date Picker Inline (HOC)</CardTitle>
+            <CardDescription>Always-visible inline calendar, no popover.</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <DatePickerField inline />
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader>
+            <CardTitle>Date Picker i18n (HOC)</CardTitle>
+            <CardDescription>Chinese locale with 2-month display.</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <DatePickerField
+              label="日期"
+              locale="zh-CN"
+              i18n={datePickerZhCN}
+              numOfMonths={2}
+            />
+          </CardContent>
+        </Card>
+      </div>
     </PageLayout>
   )
 }
