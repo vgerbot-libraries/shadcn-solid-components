@@ -1,4 +1,4 @@
-import { createSignal, type Component } from 'solid-js'
+import { createSignal, For, type Component } from 'solid-js'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/card'
 import { TextField, TextFieldInput } from '@/components/text-field'
 import {
@@ -49,7 +49,15 @@ import {
   OTPFieldSeparator,
 } from '@/components/otp-field'
 import { OTPFieldGroup as OTPFieldGroupHOC } from '@/hoc/otp-field'
-import { Calendar } from '@/components/calendar'
+import {
+  Calendar,
+  CalendarNav,
+  CalendarLabel,
+  CalendarTable,
+  CalendarHeadCell,
+  CalendarCell,
+  CalendarCellTrigger,
+} from '@/components/calendar'
 import { IconBold, IconItalic, IconUnderline, IconMinus, IconPlus } from '@/components/icons'
 import { PageLayout } from '../components/PageLayout'
 
@@ -354,7 +362,49 @@ const FormInputsPage: Component = () => {
           <CardDescription>Date picker calendar view.</CardDescription>
         </CardHeader>
         <CardContent class="flex justify-center">
-          <Calendar />
+          <Calendar mode="single">
+            {(state) => (
+              <div class="flex flex-col">
+                <div class="flex items-center justify-between">
+                  <CalendarNav action="prev-month" />
+                  <CalendarLabel>
+                    {state.month.toLocaleDateString('en', { month: 'long', year: 'numeric' })}
+                  </CalendarLabel>
+                  <CalendarNav action="next-month" />
+                </div>
+                <CalendarTable>
+                  <thead>
+                    <tr class="flex">
+                      <For each={state.weekdays}>
+                        {(weekday) => (
+                          <CalendarHeadCell>
+                            {weekday.toLocaleDateString('en', { weekday: 'short' }).slice(0, 2)}
+                          </CalendarHeadCell>
+                        )}
+                      </For>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <For each={state.weeks}>
+                      {(week) => (
+                        <tr class="flex w-full mt-2">
+                          <For each={week}>
+                            {(day) => (
+                              <CalendarCell>
+                                <CalendarCellTrigger day={day}>
+                                  {day.getDate()}
+                                </CalendarCellTrigger>
+                              </CalendarCell>
+                            )}
+                          </For>
+                        </tr>
+                      )}
+                    </For>
+                  </tbody>
+                </CalendarTable>
+              </div>
+            )}
+          </Calendar>
         </CardContent>
       </Card>
     </PageLayout>
