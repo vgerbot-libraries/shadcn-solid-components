@@ -615,6 +615,68 @@ const FormInputsPage: Component = () => {
             />
           </CardContent>
         </Card>
+
+        <Card>
+          <CardHeader>
+            <CardTitle>Month/Year Select (HOC)</CardTitle>
+            <CardDescription>Dropdown selects for quick month/year navigation.</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <DatePickerField
+              label="Event Date"
+              showMonthYearSelect
+              showTodayButton
+            />
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader>
+            <CardTitle>Month Picker (HOC)</CardTitle>
+            <CardDescription>Select by month only, using minView and defaultView.</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <DatePickerField
+              label="Billing Month"
+              defaultView="month"
+              minView="month"
+            />
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader>
+            <CardTitle>Year Picker (HOC)</CardTitle>
+            <CardDescription>Select by year only, using minView and defaultView.</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <DatePickerField
+              label="Fiscal Year"
+              defaultView="year"
+              minView="year"
+            />
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader>
+            <CardTitle>Calendar Footer (HOC)</CardTitle>
+            <CardDescription>Custom footer slot with Today button and extra content.</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <DatePickerField
+              label="Appointment"
+              showTodayButton
+              calendarFooter={
+                <p class="text-xs text-muted-foreground mt-2 text-center">Weekends are unavailable</p>
+              }
+              isDateUnavailable={(date) => {
+                const d = new Date(date.year, date.month - 1, date.day)
+                return d.getDay() === 0 || d.getDay() === 6
+              }}
+            />
+          </CardContent>
+        </Card>
       </div>
     </PageLayout>
   )

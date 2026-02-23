@@ -10,6 +10,7 @@ import {
   DatePickerContext,
   DatePickerControl,
   DatePickerInput,
+  DatePickerMonthSelect,
   DatePickerPositioner,
   DatePickerRangeText,
   DatePickerTable,
@@ -23,6 +24,7 @@ import {
   DatePickerView,
   DatePickerViewControl,
   DatePickerViewTrigger,
+  DatePickerYearSelect,
 } from '@/components/date-picker'
 import { Badge } from '@/components/badge'
 import { buttonVariants } from '@/components/button'
@@ -38,6 +40,7 @@ export interface DatePickerFieldLocale {
   rangePlaceholder: string
   multiplePlaceholder: string
   clear: string
+  today: string
 }
 
 export const enLocale: DatePickerFieldLocale = {
@@ -45,6 +48,7 @@ export const enLocale: DatePickerFieldLocale = {
   rangePlaceholder: 'Pick a date range',
   multiplePlaceholder: 'Pick dates',
   clear: 'Clear',
+  today: 'Today',
 }
 
 export const zhCNLocale: DatePickerFieldLocale = {
@@ -52,6 +56,7 @@ export const zhCNLocale: DatePickerFieldLocale = {
   rangePlaceholder: '选择日期范围',
   multiplePlaceholder: '选择多个日期',
   clear: '清除',
+  today: '今天',
 }
 
 export const zhTWLocale: DatePickerFieldLocale = {
@@ -59,6 +64,7 @@ export const zhTWLocale: DatePickerFieldLocale = {
   rangePlaceholder: '選擇日期範圍',
   multiplePlaceholder: '選擇多個日期',
   clear: '清除',
+  today: '今天',
 }
 
 export const jaLocale: DatePickerFieldLocale = {
@@ -66,6 +72,7 @@ export const jaLocale: DatePickerFieldLocale = {
   rangePlaceholder: '日付範囲を選択',
   multiplePlaceholder: '複数の日付を選択',
   clear: 'クリア',
+  today: '今日',
 }
 
 // ============================================================================
@@ -117,9 +124,17 @@ type PickedRootProps = Pick<
   | 'defaultOpen'
   | 'inline'
   | 'format'
+  | 'parse'
   | 'name'
   | 'timeZone'
   | 'locale'
+  | 'defaultView'
+  | 'view'
+  | 'minView'
+  | 'maxView'
+  | 'outsideDaySelectable'
+  | 'translations'
+  | 'ids'
 >
 
 export interface DatePickerFieldProps extends Omit<ComponentProps<'div'>, 'onChange'>, PickedRootProps {
@@ -141,6 +156,14 @@ export interface DatePickerFieldProps extends Omit<ComponentProps<'div'>, 'onCha
   i18n?: Partial<DatePickerFieldLocale>
   /** Class applied to the calendar content panel. */
   contentClass?: string
+  /** Show Month/Year dropdown selects in the day-view header for quick navigation. @default false */
+  showMonthYearSelect?: boolean
+  /** Show a "Today" button below the calendar. @default false */
+  showTodayButton?: boolean
+  /** Custom JSX rendered above the calendar views inside the content panel. */
+  calendarHeader?: JSX.Element
+  /** Custom JSX rendered below the calendar views inside the content panel. */
+  calendarFooter?: JSX.Element
 }
 
 // ============================================================================
@@ -184,7 +207,9 @@ function DayViewTable(props: {
   )
 }
 
-function CalendarViews() {
+const selectClass = 'appearance-none border border-border rounded-md bg-background px-2 py-1 text-sm cursor-pointer focus-visible:outline-none focus-visible:ring-[1.5px] focus-visible:ring-ring'
+
+function CalendarViews(props: { showMonthYearSelect?: boolean }) {
   return (
     <DatePickerContext>
       {(api) => {
@@ -195,9 +220,19 @@ function CalendarViews() {
           <>
             <DatePickerView view="day">
               <DatePickerViewControl>
-                <DatePickerViewTrigger>
-                  <DatePickerRangeText />
-                </DatePickerViewTrigger>
+                <Show
+                  when={props.showMonthYearSelect}
+                  fallback={
+                    <DatePickerViewTrigger>
+                      <DatePickerRangeText />
+                    </DatePickerViewTrigger>
+                  }
+                >
+                  <div class="flex items-center gap-1">
+                    <DatePickerMonthSelect class={selectClass} />
+                    <DatePickerYearSelect class={selectClass} />
+                  </div>
+                </Show>
               </DatePickerViewControl>
               <div class={cx(numOfMonths() > 1 && 'flex gap-4')}>
                 <For each={monthOffsets()}>
@@ -288,11 +323,51 @@ function CalendarViews() {
 // Internal: Calendar panel with optional presets sidebar
 // ============================================================================
 
-function CalendarPanel(props: { presets?: DatePickerPreset[]; hasPresets: boolean }) {
+function TodayButton(props: { label: string }) {
+  return (
+    <DatePickerContext>
+      {(api) => (
+        <button
+          type="button"
+          class={cx(
+            buttonVariants({ variant: 'outline', size: 'sm' }),
+            'w-full mt-2',
+          )}
+          onClick={() => api().selectToday()}
+        >
+          {props.label}
+        </button>
+      )}
+    </DatePickerContext>
+  )
+}
+
+interface CalendarPanelProps {
+  presets?: DatePickerPreset[]
+  hasPresets: boolean
+  showMonthYearSelect?: boolean
+  showTodayButton?: boolean
+  todayLabel: string
+  calendarHeader?: JSX.Element
+  calendarFooter?: JSX.Element
+}
+
+function CalendarPanel(props: CalendarPanelProps) {
+  const calendarContent = () => (
+    <div>
+      {props.calendarHeader}
+      <CalendarViews showMonthYearSelect={props.showMonthYearSelect} />
+      <Show when={props.showTodayButton}>
+        <TodayButton label={props.todayLabel} />
+      </Show>
+      {props.calendarFooter}
+    </div>
+  )
+
   return (
     <Show
       when={props.hasPresets}
-      fallback={<CalendarViews />}
+      fallback={calendarContent()}
     >
       <div class="flex gap-3">
         <div class="flex flex-col gap-1 border-r pr-3">
@@ -310,9 +385,7 @@ function CalendarPanel(props: { presets?: DatePickerPreset[]; hasPresets: boolea
             )}
           </For>
         </div>
-        <div>
-          <CalendarViews />
-        </div>
+        {calendarContent()}
       </div>
     </Show>
   )
@@ -374,6 +447,10 @@ export function DatePickerField(props: DatePickerFieldProps) {
       'presets',
       'i18n',
       'contentClass',
+      'showMonthYearSelect',
+      'showTodayButton',
+      'calendarHeader',
+      'calendarFooter',
     ],
     [
       'selectionMode',
@@ -399,9 +476,17 @@ export function DatePickerField(props: DatePickerFieldProps) {
       'defaultOpen',
       'inline',
       'format',
+      'parse',
       'name',
       'timeZone',
       'locale',
+      'defaultView',
+      'view',
+      'minView',
+      'maxView',
+      'outsideDaySelectable',
+      'translations',
+      'ids',
     ],
   )
 
@@ -451,8 +536,9 @@ export function DatePickerField(props: DatePickerFieldProps) {
 
       <DatePicker
         {...rootProps}
+        invalid={hasError() || undefined}
+        required={local.required}
         placeholder={placeholderText()}
-        aria-invalid={hasError() || undefined}
       >
         <Show when={!rootProps.inline}>
           <DatePickerControl>
@@ -513,14 +599,30 @@ export function DatePickerField(props: DatePickerFieldProps) {
 
           <DatePickerPositioner>
             <DatePickerContent class={local.contentClass}>
-              <CalendarPanel presets={local.presets} hasPresets={hasPresets()} />
+              <CalendarPanel
+                presets={local.presets}
+                hasPresets={hasPresets()}
+                showMonthYearSelect={local.showMonthYearSelect}
+                showTodayButton={local.showTodayButton}
+                todayLabel={i18n().today}
+                calendarHeader={local.calendarHeader}
+                calendarFooter={local.calendarFooter}
+              />
             </DatePickerContent>
           </DatePickerPositioner>
         </Show>
 
         <Show when={rootProps.inline}>
           <DatePickerContent class={cx('shadow-none border-0 p-0', local.contentClass)}>
-            <CalendarPanel presets={local.presets} hasPresets={hasPresets()} />
+            <CalendarPanel
+              presets={local.presets}
+              hasPresets={hasPresets()}
+              showMonthYearSelect={local.showMonthYearSelect}
+              showTodayButton={local.showTodayButton}
+              todayLabel={i18n().today}
+              calendarHeader={local.calendarHeader}
+              calendarFooter={local.calendarFooter}
+            />
           </DatePickerContent>
         </Show>
       </DatePicker>

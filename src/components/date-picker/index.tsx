@@ -14,6 +14,7 @@ import type {
   DatePickerViewControlProps,
   DatePickerViewProps,
   DatePickerViewTriggerProps,
+  DateValue,
 } from "@ark-ui/solid/date-picker"
 import { splitProps } from "solid-js"
 import type { VoidProps } from "solid-js"
@@ -31,22 +32,25 @@ export const DatePickerRootProvider = DatePickerPrimitive.RootProvider
 export const DatePickerPositioner = DatePickerPrimitive.Positioner
 
 export const DatePicker = (props: DatePickerRootProps) => {
+  const [local, rest] = splitProps(props, ["format", "locale"])
+
+  const defaultFormat = (date: DateValue) => {
+    const parsedDate = new Date(Date.parse(date.toString()))
+    const normalizedDate = new Date(
+      parsedDate.getUTCFullYear(),
+      parsedDate.getUTCMonth(),
+      parsedDate.getUTCDate(),
+    )
+    return new Intl.DateTimeFormat(local.locale ?? "en-US", {
+      dateStyle: "long",
+    }).format(normalizedDate)
+  }
+
   return (
     <DatePickerPrimitive.Root
-      format={(e) => {
-        const parsedDate = new Date(Date.parse(e.toString()))
-
-        const normalizedDate = new Date(
-          parsedDate.getUTCFullYear(),
-          parsedDate.getUTCMonth(),
-          parsedDate.getUTCDate(),
-        )
-
-        return new Intl.DateTimeFormat("en-US", {
-          dateStyle: "long",
-        }).format(normalizedDate)
-      }}
-      {...props}
+      locale={local.locale}
+      format={local.format ?? defaultFormat}
+      {...rest}
     />
   )
 }
@@ -248,7 +252,7 @@ export const DatePickerControl = (props: DatePickerControlProps) => {
   return (
     <DatePickerPrimitive.Control
       class={cx(
-        "inline-flex items-center gap-x-1 [&>input:first-of-type]:rounded-s-md",
+        "flex items-center gap-x-1 [&>input:first-of-type]:rounded-s-md",
         local.class,
       )}
       {...rest}
