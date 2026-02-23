@@ -27,6 +27,7 @@ import {
 import { Badge } from '@/components/badge'
 import { buttonVariants } from '@/components/button'
 import { cx } from '@/lib/cva'
+import { IconX } from '@/components/icons';
 
 // ============================================================================
 // Locale
@@ -481,20 +482,7 @@ export function DatePickerField(props: DatePickerFieldProps) {
                           onClick={() => props.remove()}
                           aria-label={i18n().clear}
                         >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            class="size-3"
-                            viewBox="0 0 24 24"
-                          >
-                            <path
-                              fill="none"
-                              stroke="currentColor"
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              stroke-width="2"
-                              d="M18 6L6 18M6 6l12 12"
-                            />
-                          </svg>
+                          <IconX class="size-3"></IconX>
                         </button>
                       </Badge>
                     )}
