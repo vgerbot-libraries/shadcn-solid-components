@@ -566,12 +566,27 @@ const FormInputsPage: Component = () => {
             <DatePickerField
               label="Date Range"
               selectionMode="range"
+              numOfMonths={2}
               presets={[
                 { label: 'Last 7 Days', value: 'last7Days' },
                 { label: 'Last 30 Days', value: 'last30Days' },
                 { label: 'This Month', value: 'thisMonth' },
                 { label: 'Last Month', value: 'lastMonth' },
               ]}
+            />
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader>
+            <CardTitle>Date Picker Multiple (HOC)</CardTitle>
+            <CardDescription>Select multiple dates, displayed as removable tags.</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <DatePickerField
+              label="Select dates"
+              selectionMode="multiple"
+              clearable
             />
           </CardContent>
         </Card>

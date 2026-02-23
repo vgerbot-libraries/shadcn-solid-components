@@ -1,4 +1,4 @@
-import { type ComponentProps, For, type JSX, Show, splitProps } from 'solid-js'
+import { type ComponentProps, For, type JSX, Match, Show, splitProps,Switch } from 'solid-js'
 import { DatePicker as DatePickerPrimitive } from '@ark-ui/solid/date-picker'
 import type { DatePickerRootProps } from '@ark-ui/solid/date-picker'
 export type { DateValue } from '@ark-ui/solid/date-picker'
@@ -24,6 +24,7 @@ import {
   DatePickerViewControl,
   DatePickerViewTrigger,
 } from '@/components/date-picker'
+import { Badge } from '@/components/badge'
 import { buttonVariants } from '@/components/button'
 import { cx } from '@/lib/cva'
 
@@ -34,30 +35,35 @@ import { cx } from '@/lib/cva'
 export interface DatePickerFieldLocale {
   placeholder: string
   rangePlaceholder: string
+  multiplePlaceholder: string
   clear: string
 }
 
 export const enLocale: DatePickerFieldLocale = {
   placeholder: 'Pick a date',
   rangePlaceholder: 'Pick a date range',
+  multiplePlaceholder: 'Pick dates',
   clear: 'Clear',
 }
 
 export const zhCNLocale: DatePickerFieldLocale = {
   placeholder: '选择日期',
   rangePlaceholder: '选择日期范围',
+  multiplePlaceholder: '选择多个日期',
   clear: '清除',
 }
 
 export const zhTWLocale: DatePickerFieldLocale = {
   placeholder: '選擇日期',
   rangePlaceholder: '選擇日期範圍',
+  multiplePlaceholder: '選擇多個日期',
   clear: '清除',
 }
 
 export const jaLocale: DatePickerFieldLocale = {
   placeholder: '日付を選択',
   rangePlaceholder: '日付範囲を選択',
+  multiplePlaceholder: '複数の日付を選択',
   clear: 'クリア',
 }
 
@@ -140,46 +146,83 @@ export interface DatePickerFieldProps extends Omit<ComponentProps<'div'>, 'onCha
 // Internal: Calendar views
 // ============================================================================
 
+function DayViewTable(props: {
+  weeks: DateValue[][]
+  weekDays: { short: string }[]
+  visibleRange?: { start: DateValue; end: DateValue }
+}) {
+  return (
+    <DatePickerTable>
+      <DatePickerTableHead>
+        <DatePickerTableRow>
+          <For each={props.weekDays}>
+            {(weekDay) => (
+              <DatePickerTableHeader>{weekDay.short}</DatePickerTableHeader>
+            )}
+          </For>
+        </DatePickerTableRow>
+      </DatePickerTableHead>
+      <DatePickerTableBody>
+        <For each={props.weeks}>
+          {(week) => (
+            <DatePickerTableRow>
+              <For each={week}>
+                {(day) => (
+                  <DatePickerTableCell value={day} visibleRange={props.visibleRange}>
+                    <DatePickerTableCellTrigger>
+                      {day.day}
+                    </DatePickerTableCellTrigger>
+                  </DatePickerTableCell>
+                )}
+              </For>
+            </DatePickerTableRow>
+          )}
+        </For>
+      </DatePickerTableBody>
+    </DatePickerTable>
+  )
+}
+
 function CalendarViews() {
   return (
     <DatePickerContext>
-      {(api) => (
-        <>
-          <DatePickerView view="day">
-            <DatePickerViewControl>
-              <DatePickerViewTrigger>
-                <DatePickerRangeText />
-              </DatePickerViewTrigger>
-            </DatePickerViewControl>
-            <DatePickerTable>
-              <DatePickerTableHead>
-                <DatePickerTableRow>
-                  <For each={api().weekDays}>
-                    {(weekDay) => (
-                      <DatePickerTableHeader>{weekDay.short}</DatePickerTableHeader>
-                    )}
-                  </For>
-                </DatePickerTableRow>
-              </DatePickerTableHead>
-              <DatePickerTableBody>
-                <For each={api().weeks}>
-                  {(week) => (
-                    <DatePickerTableRow>
-                      <For each={week}>
-                        {(day) => (
-                          <DatePickerTableCell value={day}>
-                            <DatePickerTableCellTrigger>
-                              {day.day}
-                            </DatePickerTableCellTrigger>
-                          </DatePickerTableCell>
+      {(api) => {
+        const numOfMonths = () => api().numOfMonths ?? 1
+        const monthOffsets = () =>
+          Array.from({ length: numOfMonths() }, (_, i) => i)
+        return (
+          <>
+            <DatePickerView view="day">
+              <DatePickerViewControl>
+                <DatePickerViewTrigger>
+                  <DatePickerRangeText />
+                </DatePickerViewTrigger>
+              </DatePickerViewControl>
+              <div class={cx(numOfMonths() > 1 && 'flex gap-4')}>
+                <For each={monthOffsets()}>
+                  {(monthIndex) => {
+                    const offset = () =>
+                      monthIndex === 0
+                        ? { weeks: api().weeks, visibleRange: api().visibleRange }
+                        : api().getOffset({ months: monthIndex })
+                    return (
+                      <div
+                        class={cx(
+                          numOfMonths() > 1 &&
+                            'min-w-[calc(var(--reference-width)-(0.75rem*2))]',
                         )}
-                      </For>
-                    </DatePickerTableRow>
-                  )}
+                      >
+                        <DayViewTable
+                          weeks={offset().weeks}
+                          weekDays={api().weekDays}
+                          visibleRange={offset().visibleRange}
+                        />
+                      </div>
+                    )
+                  }}
                 </For>
-              </DatePickerTableBody>
-            </DatePickerTable>
-          </DatePickerView>
+              </div>
+            </DatePickerView>
 
           <DatePickerView view="month">
             <DatePickerViewControl>
@@ -235,7 +278,7 @@ function CalendarViews() {
             </DatePickerTable>
           </DatePickerView>
         </>
-      )}
+      )}}
     </DatePickerContext>
   )
 }
@@ -375,7 +418,11 @@ export function DatePickerField(props: DatePickerFieldProps) {
 
   const placeholderText = () =>
     local.placeholder ??
-    (rootProps.selectionMode === 'range' ? i18n().rangePlaceholder : i18n().placeholder)
+    (rootProps.selectionMode === 'range'
+      ? i18n().rangePlaceholder
+      : rootProps.selectionMode === 'multiple'
+        ? i18n().multiplePlaceholder
+        : i18n().placeholder)
 
   const hasPresets = () => !!local.presets && local.presets.length > 0
 
@@ -408,7 +455,53 @@ export function DatePickerField(props: DatePickerFieldProps) {
       >
         <Show when={!rootProps.inline}>
           <DatePickerControl>
-            <DatePickerInput />
+            <Switch fallback={<DatePickerInput />}>
+              <Match when={rootProps.selectionMode === 'range'}>
+                <>
+                  <DatePickerInput index={0} />
+                  <DatePickerInput index={1} />
+                </>
+              </Match>
+              <Match when={rootProps.selectionMode === 'multiple'}>
+                <div class={cx(
+                  'placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground dark:bg-input/30 border-input min-h-9 border bg-transparent px-3 py-1 text-base shadow-xs transition-[color,box-shadow] outline-none disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm',
+                'focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]',
+                'aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive',
+                'rounded-component',
+                "flex min-w-0 flex-1 flex-wrap items-center gap-1.5"
+                )}
+                >
+                  <DatePickerPrimitive.ValueText placeholder={placeholderText()}>
+                    {(props) => (
+                      <Badge variant="outline" class="gap-1 pr-1">
+                        {props.valueAsString}
+                        <button
+                          type="button"
+                          class="hover:bg-muted rounded-sm p-0.5"
+                          onClick={() => props.remove()}
+                          aria-label={i18n().clear}
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="size-3"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              fill="none"
+                              stroke="currentColor"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-width="2"
+                              d="M18 6L6 18M6 6l12 12"
+                            />
+                          </svg>
+                        </button>
+                      </Badge>
+                    )}
+                  </DatePickerPrimitive.ValueText>
+                </div>
+              </Match>
+            </Switch>
             <Show when={local.clearable}>
               <DatePickerClearTrigger
                 class={cx(
