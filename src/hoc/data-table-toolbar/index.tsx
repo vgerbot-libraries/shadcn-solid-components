@@ -1,3 +1,6 @@
+import { useLocale } from '@/components/config-provider'
+import type { DataTableToolbarLocale } from '@/i18n/types'
+import { enUS as defaultLocale } from './locales/en-US'
 import type { Table } from '@tanstack/solid-table'
 import { type ComponentProps, createSignal, For, type JSX, Show, splitProps } from 'solid-js'
 import { Button } from '@/components/button'
@@ -12,44 +15,16 @@ import {
 import { IconSearch, IconX } from '@/components/icons'
 import { cx } from '@/lib/cva'
 
-// ============================================================================
-// Locale
-// ============================================================================
 
-export interface DataTableToolbarLocale {
-  searchPlaceholder: string
-  columns: string
-  toggleAll: string
-  resetFilters: string
-}
 
-export const enLocale: DataTableToolbarLocale = {
-  searchPlaceholder: 'Search...',
-  columns: 'Columns',
-  toggleAll: 'Toggle all',
-  resetFilters: 'Reset',
-}
 
-export const zhCNLocale: DataTableToolbarLocale = {
-  searchPlaceholder: '搜索…',
-  columns: '列',
-  toggleAll: '全部切换',
-  resetFilters: '重置',
-}
 
-export const zhTWLocale: DataTableToolbarLocale = {
-  searchPlaceholder: '搜尋…',
-  columns: '欄位',
-  toggleAll: '全部切換',
-  resetFilters: '重置',
-}
 
-export const jaLocale: DataTableToolbarLocale = {
-  searchPlaceholder: '検索…',
-  columns: '列',
-  toggleAll: 'すべて切替',
-  resetFilters: 'リセット',
-}
+
+
+
+
+
 
 // ============================================================================
 // Types
@@ -101,7 +76,8 @@ export function DataTableToolbar<TData>(props: DataTableToolbarProps<TData>) {
     'locale',
   ])
 
-  const locale = (): DataTableToolbarLocale => ({ ...enLocale, ...local.locale })
+  const globalLocale = useLocale()
+  const locale = (): DataTableToolbarLocale => ({ ...defaultLocale, ...globalLocale.DataTableToolbar, ...local.locale })
   const showColumnToggle = () => local.showColumnToggle !== false
 
   const searchValue = () => {

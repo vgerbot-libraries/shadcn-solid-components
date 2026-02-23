@@ -1,4 +1,4 @@
-import { type Component, Suspense } from 'solid-js'
+import { Suspense, type Component } from 'solid-js'
 import type { JSX } from 'solid-js'
 import { AppSidebar, type AppSidebarMenuGroup } from '@/hoc/app-sidebar'
 import { CommandPalette, type CommandPaletteGroup } from '@/hoc/command-palette'
@@ -17,26 +17,14 @@ import {
   IconBell,
   IconCreditCard,
 } from '@/components/icons'
-import { Skeleton } from '@/components/skeleton'
 import { SettingsIcon, GetHelpIcon, HeaderIcon } from './components/icons'
 import { useLocation, useNavigate } from '@solidjs/router'
+import { Skeleton } from '@/components/skeleton';
 
 interface AppProps {
   children?: JSX.Element
 }
 
-const footerMenus: SidebarMenuTreeItem[] = [
-  {
-    icon: () => <SettingsIcon />,
-    title: 'Settings',
-    onClick: () => {},
-  },
-  {
-    icon: () => <GetHelpIcon />,
-    title: 'Get Help',
-    onClick: () => {},
-  },
-]
 
 const App: Component<AppProps> = (props) => {
   const location = useLocation()
@@ -48,6 +36,22 @@ const App: Component<AppProps> = (props) => {
     if (path === '/') return p === '/' || p === ''
     return p === path || p === `${path}/`
   }
+
+const makeFooterMenus = (navigate: (path: string) => void): SidebarMenuTreeItem[] => [
+  {
+    icon: () => <SettingsIcon />,
+    title: 'Settings',
+    get isActive() {
+      return isActive('/settings')
+    },
+    onClick: () => navigate('/settings'),
+  },
+  {
+    icon: () => <GetHelpIcon />,
+    title: 'Get Help',
+    onClick: () => {},
+  },
+]
 
   const menus: AppSidebarMenuGroup[] = [
     {
@@ -230,7 +234,7 @@ const App: Component<AppProps> = (props) => {
     {
       label: 'Actions',
       items: [
-        { id: 'settings', label: 'Settings', icon: <IconSettings class="size-4" />, shortcut: '⌘,' },
+        { id: 'settings', label: 'Settings', icon: <IconSettings class="size-4" />, shortcut: '⌘,', onSelect: () => navigate('/settings') },
       ],
     },
   ]
@@ -244,23 +248,17 @@ const App: Component<AppProps> = (props) => {
           title: 'Shadcn Solid',
         }}
         menus={menus}
-        footer={footerMenus}
-        body={
-          <Suspense
-            fallback={
-              <div class="flex flex-1 flex-col gap-6 p-4 md:p-6">
-                <Skeleton class="h-8 w-48" />
-                <Skeleton class="h-4 w-96" />
-                <div class="grid gap-4 md:grid-cols-2">
-                  <Skeleton class="h-[200px] rounded-xl" />
-                  <Skeleton class="h-[200px] rounded-xl" />
-                </div>
-              </div>
-            }
-          >
-            {props.children}
-          </Suspense>
-        }
+        footer={makeFooterMenus(navigate)}
+        body={<Suspense
+          fallback={
+            <div class="flex flex-1 flex-col gap-6 p-4 md:p-6">
+              <Skeleton class="h-[200px] rounded-xl" />
+              <Skeleton class="h-[200px] rounded-xl" />
+            </div>
+          }
+        >
+          {props.children}
+        </Suspense>}
       />
     </>
   )

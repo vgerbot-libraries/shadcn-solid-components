@@ -1,3 +1,6 @@
+import { useLocale } from '@/components/config-provider'
+import type { ConfirmDialogLocale } from '@/i18n/types'
+import { enUS as defaultLocale } from './locales/en-US'
 import { createSignal, type JSX, Show } from 'solid-js'
 import { Portal } from 'solid-js/web'
 import {
@@ -13,34 +16,16 @@ import {
 import { buttonVariants } from '@/components/button'
 import { cx } from '@/lib/cva'
 
-// ============================================================================
-// Locale
-// ============================================================================
 
-export interface ConfirmDialogLocale {
-  confirm: string
-  cancel: string
-}
 
-export const enLocale: ConfirmDialogLocale = {
-  confirm: 'Continue',
-  cancel: 'Cancel',
-}
 
-export const zhCNLocale: ConfirmDialogLocale = {
-  confirm: '确认',
-  cancel: '取消',
-}
 
-export const zhTWLocale: ConfirmDialogLocale = {
-  confirm: '確認',
-  cancel: '取消',
-}
 
-export const jaLocale: ConfirmDialogLocale = {
-  confirm: '確認',
-  cancel: 'キャンセル',
-}
+
+
+
+
+
 
 // ============================================================================
 // Types
@@ -116,7 +101,8 @@ export function ConfirmDialog() {
   }
 
   const locale = (): ConfirmDialogLocale => ({
-    ...enLocale,
+    ...defaultLocale,
+    ...useLocale().ConfirmDialog,
     ...dialogState()?.locale,
   })
 

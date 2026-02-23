@@ -4,9 +4,13 @@ import './styles.css'
 import App from './App'
 import { ColorModeProvider } from '@kobalte/core'
 import { ThemeProvider } from '../src/components/theme'
+import { ConfigProvider } from '../src/components/config-provider'
 import { Toaster } from '../src/components/sonner'
 import { ConfirmDialog } from '../src/hoc/confirm-dialog'
 import { Router, Route } from '@solidjs/router'
+import { globalLocale } from './store'
+
+export { globalLocale, setGlobalLocale } from './store'
 
 const DashboardPage = lazy(() => import('./pages/DashboardPage'))
 const GeneralPage = lazy(() => import('./pages/GeneralPage'))
@@ -19,18 +23,24 @@ const TablesPage = lazy(() => import('./pages/TablesPage'))
 const FormsCompositePage = lazy(() => import('./pages/FormsCompositePage'))
 const FeedbackPage = lazy(() => import('./pages/FeedbackPage'))
 const DisplayCompositePage = lazy(() => import('./pages/DisplayCompositePage'))
+const SettingsPage = lazy(() => import('./pages/SettingsPage'))
 
-const Root = (props: { children: import('solid-js').JSX.Element }) => (
+const Root = (props: { children?: import('solid-js').JSX.Element }) => (
   <ColorModeProvider>
     <ThemeProvider defaultTheme={{ base: { radius: 'md' } }} storageKey="shadcn-solid-theme">
-      <App>{props.children}</App>
-      <Toaster />
-      <ConfirmDialog />
+      <ConfigProvider locale={globalLocale()}>
+        <App>{props.children}</App>
+        <Toaster />
+        <ConfirmDialog />
+      </ConfigProvider>
     </ThemeProvider>
   </ColorModeProvider>
 )
 
-render(() => {
+const rootEl = document.getElementById('root')!
+rootEl.textContent = ''
+
+const dispose = render(() => {
   return (
     <Router root={Root}>
       <Route path="/" component={DashboardPage} />
@@ -44,6 +54,11 @@ render(() => {
       <Route path="/forms-composite" component={FormsCompositePage} />
       <Route path="/feedback" component={FeedbackPage} />
       <Route path="/display-composite" component={DisplayCompositePage} />
+      <Route path="/settings" component={SettingsPage} />
     </Router>
   )
-}, document.getElementById('root')!)
+}, rootEl)
+
+if (import.meta.hot) {
+  import.meta.hot.dispose(() => dispose())
+}

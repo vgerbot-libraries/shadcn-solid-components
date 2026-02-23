@@ -1,3 +1,6 @@
+import { useLocale } from '@/components/config-provider'
+import type { OTPFieldLocale } from '@/i18n/types'
+import { enUS as defaultLocale } from './locales/en-US'
 import { type ComponentProps, For, Show, splitProps } from 'solid-js'
 import {
   OTPField as OTPFieldRoot,
@@ -8,34 +11,16 @@ import {
 } from '@/components/otp-field'
 import { cx } from '@/lib/cva'
 
-// ============================================================================
-// Locale
-// ============================================================================
 
-export interface OTPFieldLocale {
-  label: string
-  description: string
-}
 
-export const enLocale: OTPFieldLocale = {
-  label: 'One-Time Password',
-  description: 'Enter the verification code',
-}
 
-export const zhCNLocale: OTPFieldLocale = {
-  label: '一次性密码',
-  description: '请输入验证码',
-}
 
-export const zhTWLocale: OTPFieldLocale = {
-  label: '一次性密碼',
-  description: '請輸入驗證碼',
-}
 
-export const jaLocale: OTPFieldLocale = {
-  label: 'ワンタイムパスワード',
-  description: '認証コードを入力してください',
-}
+
+
+
+
+
 
 // ============================================================================
 // Types
@@ -117,7 +102,8 @@ export function OTPFieldGroup(props: OTPFieldGroupProps) {
     'locale',
   ])
 
-  const locale = (): OTPFieldLocale => ({ ...enLocale, ...local.locale })
+  const globalLocale = useLocale()
+  const locale = (): OTPFieldLocale => ({ ...defaultLocale, ...globalLocale.OTPField, ...local.locale })
 
   const groups = () => {
     const pattern = local.groupPattern

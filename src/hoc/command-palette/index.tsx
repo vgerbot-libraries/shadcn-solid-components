@@ -1,3 +1,6 @@
+import { useLocale } from '@/components/config-provider'
+import type { CommandPaletteLocale } from '@/i18n/types'
+import { enUS as defaultLocale } from './locales/en-US'
 import { createEffect, createSignal, For, type JSX, onCleanup, Show, splitProps } from 'solid-js'
 import {
   CommandDialog,
@@ -11,34 +14,16 @@ import {
 } from '@/components/command'
 import { Kbd } from '@/components/kbd'
 
-// ============================================================================
-// Locale
-// ============================================================================
 
-export interface CommandPaletteLocale {
-  placeholder: string
-  noResults: string
-}
 
-export const enLocale: CommandPaletteLocale = {
-  placeholder: 'Type a command or search...',
-  noResults: 'No results found.',
-}
 
-export const zhCNLocale: CommandPaletteLocale = {
-  placeholder: '输入命令或搜索…',
-  noResults: '未找到结果。',
-}
 
-export const zhTWLocale: CommandPaletteLocale = {
-  placeholder: '輸入命令或搜尋…',
-  noResults: '未找到結果。',
-}
 
-export const jaLocale: CommandPaletteLocale = {
-  placeholder: 'コマンドまたは検索…',
-  noResults: '結果が見つかりません。',
-}
+
+
+
+
+
 
 // ============================================================================
 // Types
@@ -106,7 +91,8 @@ export interface CommandPaletteProps {
  * ```
  */
 export function CommandPalette(props: CommandPaletteProps) {
-  const locale = (): CommandPaletteLocale => ({ ...enLocale, ...props.locale })
+  const globalLocale = useLocale()
+  const locale = (): CommandPaletteLocale => ({ ...defaultLocale, ...globalLocale.CommandPalette, ...props.locale })
 
   const isControlled = () => props.open !== undefined
   const [internalOpen, setInternalOpen] = createSignal(false)

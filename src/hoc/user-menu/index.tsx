@@ -1,3 +1,6 @@
+import { useLocale } from '@/components/config-provider'
+import type { UserMenuLocale } from '@/i18n/types'
+import { enUS as defaultLocale } from './locales/en-US'
 import { useColorMode } from '@kobalte/core'
 import { type ComponentProps, For, type JSX, Show, splitProps } from 'solid-js'
 import {
@@ -12,49 +15,16 @@ import {
 import { IconLaptop, IconMoon, IconSun } from '@/components/icons'
 import { cx } from '@/lib/cva'
 
-// ============================================================================
-// Locale
-// ============================================================================
 
-export interface UserMenuLocale {
-  lightTheme: string
-  darkTheme: string
-  systemTheme: string
-  themeLabel: string
-  signOut: string
-}
 
-export const enLocale: UserMenuLocale = {
-  lightTheme: 'Light',
-  darkTheme: 'Dark',
-  systemTheme: 'System',
-  themeLabel: 'Theme',
-  signOut: 'Sign out',
-}
 
-export const zhCNLocale: UserMenuLocale = {
-  lightTheme: '浅色',
-  darkTheme: '深色',
-  systemTheme: '跟随系统',
-  themeLabel: '主题',
-  signOut: '退出登录',
-}
 
-export const zhTWLocale: UserMenuLocale = {
-  lightTheme: '淺色',
-  darkTheme: '深色',
-  systemTheme: '跟隨系統',
-  themeLabel: '主題',
-  signOut: '登出',
-}
 
-export const jaLocale: UserMenuLocale = {
-  lightTheme: 'ライト',
-  darkTheme: 'ダーク',
-  systemTheme: 'システム',
-  themeLabel: 'テーマ',
-  signOut: 'ログアウト',
-}
+
+
+
+
+
 
 // ============================================================================
 // Types
@@ -143,7 +113,8 @@ function Initials(props: { name: string }) {
  */
 export function UserMenu(props: UserMenuProps) {
   const { setColorMode } = useColorMode()
-  const locale = (): UserMenuLocale => ({ ...enLocale, ...props.locale })
+  const globalLocale = useLocale()
+  const locale = (): UserMenuLocale => ({ ...defaultLocale, ...globalLocale.UserMenu, ...props.locale })
   const showTheme = () => props.showThemeSwitch !== false
   const showSignOut = () => props.showSignOut !== false
 

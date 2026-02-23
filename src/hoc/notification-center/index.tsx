@@ -1,3 +1,6 @@
+import { useLocale } from '@/components/config-provider'
+import type { NotificationCenterLocale } from '@/i18n/types'
+import { enUS as defaultLocale } from './locales/en-US'
 import { type ComponentProps, For, type JSX, Show, splitProps } from 'solid-js'
 import { Badge } from '@/components/badge'
 import { Button } from '@/components/button'
@@ -7,44 +10,16 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/tabs'
 import { IconBell } from '@/components/icons'
 import { cx } from '@/lib/cva'
 
-// ============================================================================
-// Locale
-// ============================================================================
 
-export interface NotificationCenterLocale {
-  title: string
-  markAllRead: string
-  empty: string
-  all: string
-}
 
-export const enLocale: NotificationCenterLocale = {
-  title: 'Notifications',
-  markAllRead: 'Mark all read',
-  empty: 'No notifications',
-  all: 'All',
-}
 
-export const zhCNLocale: NotificationCenterLocale = {
-  title: '通知',
-  markAllRead: '全部标为已读',
-  empty: '暂无通知',
-  all: '全部',
-}
 
-export const zhTWLocale: NotificationCenterLocale = {
-  title: '通知',
-  markAllRead: '全部標為已讀',
-  empty: '暫無通知',
-  all: '全部',
-}
 
-export const jaLocale: NotificationCenterLocale = {
-  title: '通知',
-  markAllRead: 'すべて既読にする',
-  empty: '通知はありません',
-  all: 'すべて',
-}
+
+
+
+
+
 
 // ============================================================================
 // Types
@@ -165,7 +140,8 @@ export function NotificationCenter(props: NotificationCenterProps) {
     'locale',
   ])
 
-  const locale = (): NotificationCenterLocale => ({ ...enLocale, ...local.locale })
+  const globalLocale = useLocale()
+  const locale = (): NotificationCenterLocale => ({ ...defaultLocale, ...globalLocale.NotificationCenter, ...local.locale })
   const unreadCount = () => local.notifications.filter(n => !n.read).length
   const hasCategories = () => local.categories && local.categories.length > 0
 

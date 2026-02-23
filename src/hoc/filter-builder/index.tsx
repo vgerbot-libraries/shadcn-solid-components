@@ -1,71 +1,21 @@
+import { useLocale } from '@/components/config-provider'
+import type { FilterBuilderLocale } from '@/i18n/types'
+import { enUS as defaultLocale } from './locales/en-US'
 import { type ComponentProps, createMemo, For, type JSX, Show, splitProps } from 'solid-js'
 import { Button } from '@/components/button'
 import { Badge } from '@/components/badge'
 import { cx } from '@/lib/cva'
 
-// ============================================================================
-// Locale
-// ============================================================================
 
-export interface FilterBuilderLocale {
-  addRule: string
-  removeRule: string
-  reset: string
-  where: string
-  and: string
-  noFields: string
-  selectField: string
-  selectOperator: string
-  enterValue: string
-}
 
-export const enLocale: FilterBuilderLocale = {
-  addRule: 'Add filter',
-  removeRule: 'Remove',
-  reset: 'Reset',
-  where: 'Where',
-  and: 'and',
-  noFields: 'No filter fields configured.',
-  selectField: 'Select field',
-  selectOperator: 'Select operator',
-  enterValue: 'Enter value',
-}
 
-export const zhCNLocale: FilterBuilderLocale = {
-  addRule: '添加条件',
-  removeRule: '移除',
-  reset: '重置',
-  where: '当',
-  and: '且',
-  noFields: '未配置筛选字段。',
-  selectField: '选择字段',
-  selectOperator: '选择操作符',
-  enterValue: '输入值',
-}
 
-export const zhTWLocale: FilterBuilderLocale = {
-  addRule: '新增條件',
-  removeRule: '移除',
-  reset: '重置',
-  where: '當',
-  and: '且',
-  noFields: '未設定篩選欄位。',
-  selectField: '選擇欄位',
-  selectOperator: '選擇運算子',
-  enterValue: '輸入值',
-}
 
-export const jaLocale: FilterBuilderLocale = {
-  addRule: 'フィルター追加',
-  removeRule: '削除',
-  reset: 'リセット',
-  where: '条件',
-  and: 'かつ',
-  noFields: 'フィルターフィールドが設定されていません。',
-  selectField: 'フィールドを選択',
-  selectOperator: '演算子を選択',
-  enterValue: '値を入力',
-}
+
+
+
+
+
 
 // ============================================================================
 // Types
@@ -210,7 +160,8 @@ export function FilterBuilder(props: FilterBuilderProps) {
     'locale',
   ])
 
-  const locale = (): FilterBuilderLocale => ({ ...enLocale, ...local.locale })
+  const globalLocale = useLocale()
+  const locale = (): FilterBuilderLocale => ({ ...defaultLocale, ...globalLocale.FilterBuilder, ...local.locale })
   const atMax = () => local.maxRules !== undefined && local.value.length >= local.maxRules
 
   const fieldMap = createMemo(() => {

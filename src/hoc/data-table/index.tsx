@@ -1,3 +1,6 @@
+import { useLocale } from '@/components/config-provider'
+import type { DataTableLocale } from '@/i18n/types'
+import { enUS as defaultLocale } from './locales/en-US'
 import { type ComponentProps, createSignal, For, type JSX, Show, splitProps } from 'solid-js'
 import type {
   ColumnDef,
@@ -20,24 +23,15 @@ import {
   TanstackTableHeader,
   TanstackTablePagination,
   TanstackTableProvider,
-  type TanstackTableLocale,
 } from '@/components/tanstack-table'
 import { Card } from '@/components/card'
 import { Skeleton } from '@/components/skeleton'
 import { EmptyState } from '@/hoc/empty-state'
-import { DataTableToolbar, type DataTableToolbarLocale } from '@/hoc/data-table-toolbar'
+import { DataTableToolbar } from '@/hoc/data-table-toolbar'
 import { cx } from '@/lib/cva'
 
 // ============================================================================
-// Locale
-// ============================================================================
 
-export interface DataTableLocale {
-  toolbar: Partial<DataTableToolbarLocale>
-  table: Partial<TanstackTableLocale>
-  emptyTitle: string
-  emptyDescription: string
-}
 
 export const enLocale: DataTableLocale = {
   toolbar: {},
@@ -184,7 +178,8 @@ export function DataTable<TData>(props: DataTableProps<TData>) {
     'onTableReady',
   ])
 
-  const locale = (): DataTableLocale => ({ ...enLocale, ...local.locale })
+  const globalLocale = useLocale()
+  const locale = (): DataTableLocale => ({ ...defaultLocale, ...globalLocale.DataTable, ...local.locale })
   const showPagination = () => local.showPagination !== false
 
   const [sorting, setSorting] = createSignal<SortingState>([])

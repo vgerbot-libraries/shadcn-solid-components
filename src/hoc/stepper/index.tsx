@@ -1,3 +1,6 @@
+import { useLocale } from '@/components/config-provider'
+import type { StepperLocale } from '@/i18n/types'
+import { enUS as defaultLocale } from './locales/en-US'
 import {
   type Accessor,
   type ComponentProps,
@@ -14,15 +17,7 @@ import { Separator } from '@/components/separator'
 import { cx } from '@/lib/cva'
 
 // ============================================================================
-// Locale
-// ============================================================================
 
-export interface StepperLocale {
-  next: string
-  previous: string
-  finish: string
-  stepOf: (current: number, total: number) => string
-}
 
 export const enLocale: StepperLocale = {
   next: 'Next',
@@ -204,7 +199,8 @@ export function Stepper(props: StepperProps) {
     'locale',
   ])
 
-  const locale = (): StepperLocale => ({ ...enLocale, ...local.locale })
+  const globalLocale = useLocale()
+  const locale = (): StepperLocale => ({ ...defaultLocale, ...globalLocale.Stepper, ...local.locale })
   const variant = () => local.variant ?? 'default'
   const orientation = () => local.orientation ?? 'horizontal'
   const clickable = () => local.clickable !== false

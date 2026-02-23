@@ -18,7 +18,6 @@ import {
   getSortedRowModel,
   getFilteredRowModel,
   getPaginationRowModel,
-  zhCNLocale,
 } from '@/components/tanstack-table'
 import type {
   ColumnDef,
@@ -870,7 +869,7 @@ export const Main: Component = () => {
         </Card>
 
         {/* TanStack Table Section — with DataTableToolbar + EmptyState HOCs */}
-        <TanstackTableProvider table={tanstackTable} locale={zhCNLocale}>
+        <TanstackTableProvider table={tanstackTable}>
           <Card>
             <CardHeader>
               <CardTitle>TanStack Table</CardTitle>

@@ -1,3 +1,6 @@
+import { useLocale } from '@/components/config-provider'
+import type { TanstackTableLocale } from '@/i18n/types'
+import { enUS as defaultLocale } from './locales/en-US'
 import type { ComponentProps, JSX } from 'solid-js'
 import { createContext, useContext, splitProps, For, Show, Switch, Match } from 'solid-js'
 import type {
@@ -92,34 +95,6 @@ export type {
 // ============================================================================
 
 /** All translatable strings used by TanstackTable components. */
-export interface TanstackTableLocale {
-  /** Empty state text when there are no rows. */
-  noResults: string
-  /** Aria-label for the select-all checkbox. */
-  selectAll: string
-  /** Aria-label for a row selection checkbox. */
-  selectRow: string
-  /** Selected row count text. Receives (selectedCount, totalCount). */
-  selectedCount: (selected: number, total: number) => string
-  /** Aria-label for expanding a row. */
-  expandRow: string
-  /** Aria-label for collapsing a row. */
-  collapseRow: string
-  /** Default placeholder for the global search input. */
-  search: string
-  /** Label next to the page-size selector. */
-  rowsPerPage: string
-  /** Page info text. Receives (currentPage, totalPages). */
-  pageInfo: (page: number, totalPages: number) => string
-  /** Aria-label for the "first page" button. */
-  firstPage: string
-  /** Aria-label for the "previous page" button. */
-  previousPage: string
-  /** Aria-label for the "next page" button. */
-  nextPage: string
-  /** Aria-label for the "last page" button. */
-  lastPage: string
-}
 
 /** English (default) */
 export const enLocale: TanstackTableLocale = {
@@ -253,7 +228,7 @@ export type TanstackTableProviderProps = {
  * ```
  */
 export function TanstackTableProvider(props: TanstackTableProviderProps) {
-  const mergedLocale = (): TanstackTableLocale => ({ ...enLocale, ...props.locale })
+  const mergedLocale = (): TanstackTableLocale => ({ ...defaultLocale, ...useLocale().TanstackTable, ...props.locale })
 
   return (
     <TanstackTableCtx.Provider value={{ table: props.table, locale: mergedLocale() }}>
@@ -301,7 +276,7 @@ export function TanstackTable<TData = any>(props: TanstackTableRootProps<TData>)
   const parentCtx = useContext(TanstackTableCtx)
   const table = () => local.table ?? parentCtx?.table
   const resolvedLocale = (): TanstackTableLocale => {
-    const base = parentCtx?.locale ?? enLocale
+    const base = parentCtx?.locale ?? { ...defaultLocale, ...useLocale().TanstackTable }
     return local.locale ? { ...base, ...local.locale } : base
   }
 

@@ -1,3 +1,6 @@
+import { useLocale } from '@/components/config-provider'
+import type { LoginFormLocale } from '@/i18n/types'
+import { enUS as defaultLocale } from './locales/en-US'
 import { type ComponentProps, For, type JSX, Show, splitProps } from 'solid-js'
 import { Button } from '@/components/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/card'
@@ -8,119 +11,16 @@ import { TextField, TextFieldInput } from '@/components/text-field'
 import { FormField } from '@/hoc/form-field'
 import { cx } from '@/lib/cva'
 
-// ============================================================================
-// Locale
-// ============================================================================
 
-export interface LoginFormLocale {
-  loginTitle: string
-  loginDescription: string
-  registerTitle: string
-  registerDescription: string
-  emailLabel: string
-  emailPlaceholder: string
-  passwordLabel: string
-  passwordPlaceholder: string
-  confirmPasswordLabel: string
-  confirmPasswordPlaceholder: string
-  rememberMe: string
-  forgotPassword: string
-  loginButton: string
-  registerButton: string
-  loginFooter: string
-  loginFooterLink: string
-  registerFooter: string
-  registerFooterLink: string
-  orContinueWith: string
-}
 
-export const enLocale: LoginFormLocale = {
-  loginTitle: 'Sign in',
-  loginDescription: 'Enter your credentials to access your account',
-  registerTitle: 'Create account',
-  registerDescription: 'Enter your details to create a new account',
-  emailLabel: 'Email',
-  emailPlaceholder: 'you@example.com',
-  passwordLabel: 'Password',
-  passwordPlaceholder: 'Enter your password',
-  confirmPasswordLabel: 'Confirm password',
-  confirmPasswordPlaceholder: 'Confirm your password',
-  rememberMe: 'Remember me',
-  forgotPassword: 'Forgot password?',
-  loginButton: 'Sign in',
-  registerButton: 'Create account',
-  loginFooter: "Don't have an account?",
-  loginFooterLink: 'Sign up',
-  registerFooter: 'Already have an account?',
-  registerFooterLink: 'Sign in',
-  orContinueWith: 'Or continue with',
-}
 
-export const zhCNLocale: LoginFormLocale = {
-  loginTitle: '登录',
-  loginDescription: '输入你的凭据以访问账户',
-  registerTitle: '创建账户',
-  registerDescription: '输入你的信息以创建新账户',
-  emailLabel: '邮箱',
-  emailPlaceholder: 'you@example.com',
-  passwordLabel: '密码',
-  passwordPlaceholder: '输入密码',
-  confirmPasswordLabel: '确认密码',
-  confirmPasswordPlaceholder: '确认密码',
-  rememberMe: '记住我',
-  forgotPassword: '忘记密码？',
-  loginButton: '登录',
-  registerButton: '创建账户',
-  loginFooter: '还没有账户？',
-  loginFooterLink: '注册',
-  registerFooter: '已有账户？',
-  registerFooterLink: '登录',
-  orContinueWith: '或通过以下方式继续',
-}
 
-export const zhTWLocale: LoginFormLocale = {
-  loginTitle: '登入',
-  loginDescription: '輸入你的憑據以存取帳戶',
-  registerTitle: '建立帳戶',
-  registerDescription: '輸入你的資訊以建立新帳戶',
-  emailLabel: '電子郵件',
-  emailPlaceholder: 'you@example.com',
-  passwordLabel: '密碼',
-  passwordPlaceholder: '輸入密碼',
-  confirmPasswordLabel: '確認密碼',
-  confirmPasswordPlaceholder: '確認密碼',
-  rememberMe: '記住我',
-  forgotPassword: '忘記密碼？',
-  loginButton: '登入',
-  registerButton: '建立帳戶',
-  loginFooter: '還沒有帳戶？',
-  loginFooterLink: '註冊',
-  registerFooter: '已有帳戶？',
-  registerFooterLink: '登入',
-  orContinueWith: '或透過以下方式繼續',
-}
 
-export const jaLocale: LoginFormLocale = {
-  loginTitle: 'ログイン',
-  loginDescription: 'アカウントにアクセスするための資格情報を入力してください',
-  registerTitle: 'アカウント作成',
-  registerDescription: '新しいアカウントを作成するための情報を入力してください',
-  emailLabel: 'メールアドレス',
-  emailPlaceholder: 'you@example.com',
-  passwordLabel: 'パスワード',
-  passwordPlaceholder: 'パスワードを入力',
-  confirmPasswordLabel: 'パスワード確認',
-  confirmPasswordPlaceholder: 'パスワードを確認',
-  rememberMe: 'ログイン状態を保持',
-  forgotPassword: 'パスワードを忘れた場合',
-  loginButton: 'ログイン',
-  registerButton: 'アカウント作成',
-  loginFooter: 'アカウントをお持ちでない方は',
-  loginFooterLink: '新規登録',
-  registerFooter: 'すでにアカウントをお持ちの方は',
-  registerFooterLink: 'ログイン',
-  orContinueWith: 'または以下で続行',
-}
+
+
+
+
+
 
 // ============================================================================
 // Types
@@ -208,7 +108,8 @@ export function LoginForm(props: LoginFormProps) {
     'locale',
   ])
 
-  const locale = (): LoginFormLocale => ({ ...enLocale, ...local.locale })
+  const globalLocale = useLocale()
+  const locale = (): LoginFormLocale => ({ ...defaultLocale, ...globalLocale.LoginForm, ...local.locale })
   const mode = () => local.mode ?? 'login'
   const isLogin = () => mode() === 'login'
   const showRememberMe = () => local.showRememberMe !== false && isLogin()

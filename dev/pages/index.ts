@@ -12,4 +12,5 @@ export const pages: Record<string, Component> = {
   'forms-composite': lazy(() => import('./FormsCompositePage')),
   feedback: lazy(() => import('./FeedbackPage')),
   'display-composite': lazy(() => import('./DisplayCompositePage')),
+  settings: lazy(() => import('./SettingsPage')),
 }

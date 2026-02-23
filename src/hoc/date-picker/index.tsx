@@ -1,3 +1,6 @@
+import { useLocale } from '@/components/config-provider'
+import type { DatePickerFieldLocale } from '@/i18n/types'
+import { enUS as defaultLocale } from './locales/en-US'
 import { type ComponentProps, For, type JSX, Match, Show, splitProps,Switch } from 'solid-js'
 import { DatePicker as DatePickerPrimitive } from '@ark-ui/solid/date-picker'
 import type { DatePickerRootProps } from '@ark-ui/solid/date-picker'
@@ -31,49 +34,16 @@ import { buttonVariants } from '@/components/button'
 import { cx } from '@/lib/cva'
 import { IconX } from '@/components/icons';
 
-// ============================================================================
-// Locale
-// ============================================================================
 
-export interface DatePickerFieldLocale {
-  placeholder: string
-  rangePlaceholder: string
-  multiplePlaceholder: string
-  clear: string
-  today: string
-}
 
-export const enLocale: DatePickerFieldLocale = {
-  placeholder: 'Pick a date',
-  rangePlaceholder: 'Pick a date range',
-  multiplePlaceholder: 'Pick dates',
-  clear: 'Clear',
-  today: 'Today',
-}
 
-export const zhCNLocale: DatePickerFieldLocale = {
-  placeholder: '选择日期',
-  rangePlaceholder: '选择日期范围',
-  multiplePlaceholder: '选择多个日期',
-  clear: '清除',
-  today: '今天',
-}
 
-export const zhTWLocale: DatePickerFieldLocale = {
-  placeholder: '選擇日期',
-  rangePlaceholder: '選擇日期範圍',
-  multiplePlaceholder: '選擇多個日期',
-  clear: '清除',
-  today: '今天',
-}
 
-export const jaLocale: DatePickerFieldLocale = {
-  placeholder: '日付を選択',
-  rangePlaceholder: '日付範囲を選択',
-  multiplePlaceholder: '複数の日付を選択',
-  clear: 'クリア',
-  today: '今日',
-}
+
+
+
+
+
 
 // ============================================================================
 // Types
@@ -490,7 +460,8 @@ export function DatePickerField(props: DatePickerFieldProps) {
     ],
   )
 
-  const i18n = (): DatePickerFieldLocale => ({ ...enLocale, ...local.i18n })
+  const globalLocale = useLocale()
+  const i18n = (): DatePickerFieldLocale => ({ ...defaultLocale, ...globalLocale.DatePickerField, ...local.i18n })
 
   const hasError = () => {
     if (Array.isArray(local.error)) return local.error.length > 0

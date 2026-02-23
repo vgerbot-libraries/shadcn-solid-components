@@ -1,3 +1,6 @@
+import { useLocale } from '@/components/config-provider'
+import type { TransferListLocale } from '@/i18n/types'
+import { enUS as defaultLocale } from './locales/en-US'
 import {
   type ComponentProps,
   createEffect,
@@ -12,20 +15,7 @@ import { Button } from '@/components/button'
 import { cx } from '@/lib/cva'
 
 // ============================================================================
-// Locale
-// ============================================================================
 
-export interface TransferListLocale {
-  sourceTitle: string
-  targetTitle: string
-  searchPlaceholder: string
-  moveRight: string
-  moveAllRight: string
-  moveLeft: string
-  moveAllLeft: string
-  selected: (count: number, total: number) => string
-  noData: string
-}
 
 export const enLocale: TransferListLocale = {
   sourceTitle: 'Available',
@@ -261,7 +251,8 @@ export function TransferList(props: TransferListProps) {
     'locale',
   ])
 
-  const locale = (): TransferListLocale => ({ ...enLocale, ...local.locale })
+  const globalLocale = useLocale()
+  const locale = (): TransferListLocale => ({ ...defaultLocale, ...globalLocale.TransferList, ...local.locale })
   const searchable = () => local.searchable !== false
 
   const targetSet = createMemo(() => new Set(local.target))

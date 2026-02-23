@@ -1,29 +1,19 @@
+import { useLocale } from '@/components/config-provider'
+import type { TimelineLocale } from '@/i18n/types'
+import { enUS as defaultLocale } from './locales/en-US'
 import { type ComponentProps, For, type JSX, Show, splitProps } from 'solid-js'
 import { cx } from '@/lib/cva'
 
-// ============================================================================
-// Locale
-// ============================================================================
 
-export interface TimelineLocale {
-  pending: string
-}
 
-export const enLocale: TimelineLocale = {
-  pending: 'Loading...',
-}
 
-export const zhCNLocale: TimelineLocale = {
-  pending: '加载中…',
-}
 
-export const zhTWLocale: TimelineLocale = {
-  pending: '載入中…',
-}
 
-export const jaLocale: TimelineLocale = {
-  pending: '読み込み中…',
-}
+
+
+
+
+
 
 // ============================================================================
 // Types
@@ -101,7 +91,8 @@ function TimelineNode(props: { icon?: JSX.Element; color?: string }) {
 export function Timeline(props: TimelineProps) {
   const [local, rest] = splitProps(props, ['class', 'items', 'mode', 'pending', 'locale'])
 
-  const locale = (): TimelineLocale => ({ ...enLocale, ...local.locale })
+  const globalLocale = useLocale()
+  const locale = (): TimelineLocale => ({ ...defaultLocale, ...globalLocale.Timeline, ...local.locale })
   const mode = () => local.mode ?? 'left'
 
   const isRight = (index: number) => {

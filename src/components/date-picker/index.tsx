@@ -16,6 +16,7 @@ import type {
   DatePickerViewTriggerProps,
   DateValue,
 } from "@ark-ui/solid/date-picker"
+import { useLocale } from "@/components/config-provider"
 import { splitProps } from "solid-js"
 import type { VoidProps } from "solid-js"
 import { cx } from "../../lib/cva"
@@ -33,6 +34,7 @@ export const DatePickerPositioner = DatePickerPrimitive.Positioner
 
 export const DatePicker = (props: DatePickerRootProps) => {
   const [local, rest] = splitProps(props, ["format", "locale"])
+  const globalLocale = useLocale()
 
   const defaultFormat = (date: DateValue) => {
     const parsedDate = new Date(Date.parse(date.toString()))
@@ -41,14 +43,14 @@ export const DatePicker = (props: DatePickerRootProps) => {
       parsedDate.getUTCMonth(),
       parsedDate.getUTCDate(),
     )
-    return new Intl.DateTimeFormat(local.locale ?? "en-US", {
+    return new Intl.DateTimeFormat(local.locale ?? globalLocale.locale ?? 'en-US', {
       dateStyle: "long",
     }).format(normalizedDate)
   }
 
   return (
     <DatePickerPrimitive.Root
-      locale={local.locale}
+      locale={local.locale ?? globalLocale.locale ?? 'en-US'}
       format={local.format ?? defaultFormat}
       {...rest}
     />

@@ -49,7 +49,8 @@ import {
   OTPFieldSeparator,
 } from '@/components/otp-field'
 import { OTPFieldGroup as OTPFieldGroupHOC } from '@/hoc/otp-field'
-import { DatePickerField, zhCNLocale as datePickerZhCN } from '@/hoc/date-picker'
+import { DatePickerField } from '@/hoc/date-picker'
+import { zhCN } from '@/i18n/locales/zh-CN'
 import {
   Calendar,
   CalendarNav,
@@ -610,7 +611,7 @@ const FormInputsPage: Component = () => {
             <DatePickerField
               label="日期"
               locale="zh-CN"
-              i18n={datePickerZhCN}
+              i18n={zhCN.DatePickerField}
               numOfMonths={2}
             />
           </CardContent>
