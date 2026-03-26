@@ -4,7 +4,7 @@
     "target": "ESNext",
     "module": "ESNext",
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "noEmit": true,
@@ -21,5 +21,5 @@
       "@/registry/*": ["./src/*"]
     }
   },
-  "exclude": ["node_modules", "dist", "./dev"]
+  "exclude": ["node_modules", "dist", "./dev", "./temp"]
 }

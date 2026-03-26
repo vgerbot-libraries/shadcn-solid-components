@@ -1,6 +1,3 @@
-import { useLocale } from '@/components/config-provider'
-import type { ConfirmDialogLocale } from '@/i18n/types'
-import { enUS as defaultLocale } from './locales/en-US'
 import { createSignal, type JSX, Show } from 'solid-js'
 import { Portal } from 'solid-js/web'
 import {
@@ -14,18 +11,10 @@ import {
   AlertDialogTitle,
 } from '@/components/alert-dialog'
 import { buttonVariants } from '@/components/button'
+import { useLocale } from '@/components/config-provider'
+import type { ConfirmDialogLocale } from '@/i18n/types'
 import { cx } from '@/lib/cva'
-
-
-
-
-
-
-
-
-
-
-
+import { enUS as defaultLocale } from './locales/en-US'
 
 // ============================================================================
 // Types

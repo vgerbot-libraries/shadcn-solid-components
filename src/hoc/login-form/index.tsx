@@ -1,26 +1,15 @@
-import { useLocale } from '@/components/config-provider'
-import type { LoginFormLocale } from '@/i18n/types'
-import { enUS as defaultLocale } from './locales/en-US'
 import { type ComponentProps, For, type JSX, Show, splitProps } from 'solid-js'
 import { Button } from '@/components/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/card'
 import { Checkbox, CheckboxControl, CheckboxInput, CheckboxLabel } from '@/components/checkbox'
+import { useLocale } from '@/components/config-provider'
 import { IconLoader } from '@/components/icons'
 import { Separator } from '@/components/separator'
 import { TextField, TextFieldInput } from '@/components/text-field'
 import { FormField } from '@/hoc/form-field'
+import type { LoginFormLocale } from '@/i18n/types'
 import { cx } from '@/lib/cva'
-
-
-
-
-
-
-
-
-
-
-
+import { enUS as defaultLocale } from './locales/en-US'
 
 // ============================================================================
 // Types
@@ -109,7 +98,11 @@ export function LoginForm(props: LoginFormProps) {
   ])
 
   const globalLocale = useLocale()
-  const locale = (): LoginFormLocale => ({ ...defaultLocale, ...globalLocale.LoginForm, ...local.locale })
+  const locale = (): LoginFormLocale => ({
+    ...defaultLocale,
+    ...globalLocale.LoginForm,
+    ...local.locale,
+  })
   const mode = () => local.mode ?? 'login'
   const isLogin = () => mode() === 'login'
   const showRememberMe = () => local.showRememberMe !== false && isLogin()

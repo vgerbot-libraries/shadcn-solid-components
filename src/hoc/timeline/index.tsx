@@ -1,19 +1,8 @@
+import { type ComponentProps, For, type JSX, Show, splitProps } from 'solid-js'
 import { useLocale } from '@/components/config-provider'
 import type { TimelineLocale } from '@/i18n/types'
-import { enUS as defaultLocale } from './locales/en-US'
-import { type ComponentProps, For, type JSX, Show, splitProps } from 'solid-js'
 import { cx } from '@/lib/cva'
-
-
-
-
-
-
-
-
-
-
-
+import { enUS as defaultLocale } from './locales/en-US'
 
 // ============================================================================
 // Types
@@ -92,7 +81,11 @@ export function Timeline(props: TimelineProps) {
   const [local, rest] = splitProps(props, ['class', 'items', 'mode', 'pending', 'locale'])
 
   const globalLocale = useLocale()
-  const locale = (): TimelineLocale => ({ ...defaultLocale, ...globalLocale.Timeline, ...local.locale })
+  const locale = (): TimelineLocale => ({
+    ...defaultLocale,
+    ...globalLocale.Timeline,
+    ...local.locale,
+  })
   const mode = () => local.mode ?? 'left'
 
   const isRight = (index: number) => {

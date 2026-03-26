@@ -1,21 +1,21 @@
 import { type Component } from 'solid-js'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/card'
-import { Button } from '@/components/button'
-import { ButtonGroup, ButtonText, ButtonSeparator } from '@/components/button-group'
 import { Badge } from '@/components/badge'
-import { Separator } from '@/components/separator'
-import { Kbd, KbdGroup } from '@/components/kbd'
-import { Skeleton } from '@/components/skeleton'
+import { Button } from '@/components/button'
+import { ButtonGroup, ButtonSeparator, ButtonText } from '@/components/button-group'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/card'
 import {
+  IconBold,
+  IconDownload,
+  IconItalic,
   IconMail,
   IconPlus,
-  IconDownload,
-  IconTrash,
   IconSettings,
-  IconBold,
-  IconItalic,
+  IconTrash,
   IconUnderline,
 } from '@/components/icons'
+import { Kbd, KbdGroup } from '@/components/kbd'
+import { Separator } from '@/components/separator'
+import { Skeleton } from '@/components/skeleton'
 import { PageLayout } from '../components/PageLayout'
 
 const GeneralPage: Component = () => {

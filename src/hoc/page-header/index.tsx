@@ -1,7 +1,7 @@
 import { type ComponentProps, For, type JSX, Show, splitProps } from 'solid-js'
 import {
-  Breadcrumbs,
   BreadcrumbList,
+  Breadcrumbs,
   BreadcrumbsItem,
   BreadcrumbsLink,
   BreadcrumbsSeparator,

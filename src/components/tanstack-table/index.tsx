@@ -1,53 +1,53 @@
-import { useLocale } from '@/components/config-provider'
-import type { TanstackTableLocale } from '@/i18n/types'
-import { enUS as defaultLocale } from './locales/en-US'
-import type { ComponentProps, JSX } from 'solid-js'
-import { createContext, useContext, splitProps, For, Show, Switch, Match } from 'solid-js'
 import type {
-  Table,
-  Row,
-  Header,
   Cell,
-  HeaderGroup,
   Column,
   ColumnDef,
-  RowData,
-  SortingState,
   ColumnFiltersState,
-  VisibilityState,
-  RowSelectionState,
-  PaginationState,
-  ExpandedState,
-  GroupingState,
   ColumnOrderState,
   ColumnPinningState,
   ColumnSizingState,
+  ExpandedState,
+  GroupingState,
+  Header,
+  HeaderGroup,
+  PaginationState,
+  Row,
+  RowData,
+  RowSelectionState,
+  SortingState,
+  Table,
+  VisibilityState,
 } from '@tanstack/solid-table'
 import {
-  flexRender,
   createSolidTable,
+  flexRender,
   getCoreRowModel,
-  getSortedRowModel,
-  getFilteredRowModel,
-  getPaginationRowModel,
   getExpandedRowModel,
-  getGroupedRowModel,
+  getFacetedMinMaxValues,
   getFacetedRowModel,
   getFacetedUniqueValues,
-  getFacetedMinMaxValues,
+  getFilteredRowModel,
+  getGroupedRowModel,
+  getPaginationRowModel,
+  getSortedRowModel,
 } from '@tanstack/solid-table'
-import { cx } from '@/lib/cva'
+import type { ComponentProps, JSX } from 'solid-js'
+import { createContext, For, Match, Show, Switch, splitProps, useContext } from 'solid-js'
 import { Button } from '@/components/button'
-import { Checkbox, CheckboxInput, CheckboxControl } from '@/components/checkbox'
+import { Checkbox, CheckboxControl, CheckboxInput } from '@/components/checkbox'
+import { useLocale } from '@/components/config-provider'
 import {
   Select,
-  SelectTrigger,
-  SelectValue,
   SelectContent,
   SelectItem,
   SelectPortal,
+  SelectTrigger,
+  SelectValue,
 } from '@/components/select'
 import { TextField, TextFieldInput } from '@/components/text-field'
+import type { TanstackTableLocale } from '@/i18n/types'
+import { cx } from '@/lib/cva'
+import { enUS as defaultLocale } from './locales/en-US'
 
 import './index.css'
 
@@ -228,7 +228,11 @@ export type TanstackTableProviderProps = {
  * ```
  */
 export function TanstackTableProvider(props: TanstackTableProviderProps) {
-  const mergedLocale = (): TanstackTableLocale => ({ ...defaultLocale, ...useLocale().TanstackTable, ...props.locale })
+  const mergedLocale = (): TanstackTableLocale => ({
+    ...defaultLocale,
+    ...useLocale().TanstackTable,
+    ...props.locale,
+  })
 
   return (
     <TanstackTableCtx.Provider value={{ table: props.table, locale: mergedLocale() }}>

@@ -1,9 +1,7 @@
-import { useLocale } from '@/components/config-provider'
-import type { DataTableToolbarLocale } from '@/i18n/types'
-import { enUS as defaultLocale } from './locales/en-US'
 import type { Table } from '@tanstack/solid-table'
 import { type ComponentProps, createSignal, For, type JSX, Show, splitProps } from 'solid-js'
 import { Button } from '@/components/button'
+import { useLocale } from '@/components/config-provider'
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
@@ -13,18 +11,9 @@ import {
   DropdownMenuTrigger,
 } from '@/components/dropdown-menu'
 import { IconSearch, IconX } from '@/components/icons'
+import type { DataTableToolbarLocale } from '@/i18n/types'
 import { cx } from '@/lib/cva'
-
-
-
-
-
-
-
-
-
-
-
+import { enUS as defaultLocale } from './locales/en-US'
 
 // ============================================================================
 // Types
@@ -77,7 +66,11 @@ export function DataTableToolbar<TData>(props: DataTableToolbarProps<TData>) {
   ])
 
   const globalLocale = useLocale()
-  const locale = (): DataTableToolbarLocale => ({ ...defaultLocale, ...globalLocale.DataTableToolbar, ...local.locale })
+  const locale = (): DataTableToolbarLocale => ({
+    ...defaultLocale,
+    ...globalLocale.DataTableToolbar,
+    ...local.locale,
+  })
   const showColumnToggle = () => local.showColumnToggle !== false
 
   const searchValue = () => {

@@ -1,35 +1,33 @@
 // Navigation icons
-export {
-  DashboardIcon,
-  LifecycleIcon,
-  AnalyticsIcon,
-  ProjectsIcon,
-  TeamIcon,
-} from './navigation'
 
 // Document icons
 export {
   DataLibraryIcon,
+  MoreIcon,
   ReportsIcon,
   WordAssistantIcon,
-  MoreIcon,
 } from './documents'
-
-// Settings icons
-export {
-  SettingsIcon,
-  GetHelpIcon,
-} from './settings'
-
 // Header icons
 export { HeaderIcon } from './header'
+export {
+  AnalyticsIcon,
+  DashboardIcon,
+  LifecycleIcon,
+  ProjectsIcon,
+  TeamIcon,
+} from './navigation'
+// Settings icons
+export {
+  GetHelpIcon,
+  SettingsIcon,
+} from './settings'
 
 // Stats icons
 export {
-  TotalRevenueIcon,
-  NewCustomersIcon,
   ActiveAccountsIcon,
   GrowthRateIcon,
+  NewCustomersIcon,
+  TotalRevenueIcon,
 } from './stats'
 
 // Table icons

@@ -1,8 +1,6 @@
-import { useLocale } from '@/components/config-provider'
-import type { UserMenuLocale } from '@/i18n/types'
-import { enUS as defaultLocale } from './locales/en-US'
 import { useColorMode } from '@kobalte/core'
 import { type ComponentProps, For, type JSX, Show, splitProps } from 'solid-js'
+import { useLocale } from '@/components/config-provider'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -13,18 +11,9 @@ import {
   DropdownMenuTrigger,
 } from '@/components/dropdown-menu'
 import { IconLaptop, IconMoon, IconSun } from '@/components/icons'
+import type { UserMenuLocale } from '@/i18n/types'
 import { cx } from '@/lib/cva'
-
-
-
-
-
-
-
-
-
-
-
+import { enUS as defaultLocale } from './locales/en-US'
 
 // ============================================================================
 // Types
@@ -114,7 +103,11 @@ function Initials(props: { name: string }) {
 export function UserMenu(props: UserMenuProps) {
   const { setColorMode } = useColorMode()
   const globalLocale = useLocale()
-  const locale = (): UserMenuLocale => ({ ...defaultLocale, ...globalLocale.UserMenu, ...props.locale })
+  const locale = (): UserMenuLocale => ({
+    ...defaultLocale,
+    ...globalLocale.UserMenu,
+    ...props.locale,
+  })
   const showTheme = () => props.showThemeSwitch !== false
   const showSignOut = () => props.showSignOut !== false
 

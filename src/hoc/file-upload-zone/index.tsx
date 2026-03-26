@@ -1,13 +1,12 @@
-import { useLocale } from '@/components/config-provider'
-import type { FileUploadZoneLocale } from '@/i18n/types'
-import { enUS as defaultLocale } from './locales/en-US'
 import { type ComponentProps, createSignal, For, type JSX, Show, splitProps } from 'solid-js'
 import { Button } from '@/components/button'
+import { useLocale } from '@/components/config-provider'
 import { Progress } from '@/components/progress'
+import type { FileUploadZoneLocale } from '@/i18n/types'
 import { cx } from '@/lib/cva'
+import { enUS as defaultLocale } from './locales/en-US'
 
 // ============================================================================
-
 
 export const enLocale: FileUploadZoneLocale = {
   dropHere: 'Drag & drop files here',
@@ -179,7 +178,11 @@ export function FileUploadZone(props: FileUploadZoneProps) {
   ])
 
   const globalLocale = useLocale()
-  const locale = (): FileUploadZoneLocale => ({ ...defaultLocale, ...globalLocale.FileUploadZone, ...local.locale })
+  const locale = (): FileUploadZoneLocale => ({
+    ...defaultLocale,
+    ...globalLocale.FileUploadZone,
+    ...local.locale,
+  })
   const multiple = () => local.multiple !== false
 
   const [isDragging, setIsDragging] = createSignal(false)

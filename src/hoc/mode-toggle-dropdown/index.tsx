@@ -1,9 +1,7 @@
-import { useLocale } from '@/components/config-provider'
-import type { ModeToggleDropdownLocale } from '@/i18n/types'
-import { enUS as defaultLocale } from './locales/en-US'
 import { useColorMode } from '@kobalte/core'
 import { ComponentProps } from 'solid-js'
 import { Button } from '@/components/button'
+import { useLocale } from '@/components/config-provider'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -11,22 +9,19 @@ import {
   DropdownMenuTrigger,
 } from '@/components/dropdown-menu'
 import { IconLaptop, IconMoon, IconSun } from '@/components/icons'
+import type { ModeToggleDropdownLocale } from '@/i18n/types'
 import { cx } from '@/lib'
+import { enUS as defaultLocale } from './locales/en-US'
 
 /** All translatable strings used by ModeToggleDropdown. */
 
-
 /** English (default) */
-
 
 /** 简体中文 */
 
-
 /** 繁體中文 */
 
-
 /** 日本語 */
-
 
 // ============================================================================
 // Component
@@ -41,7 +36,11 @@ export type ModeToggleDropdownProps = {
 export function ModeToggleDropdown(props: ModeToggleDropdownProps) {
   const { setColorMode } = useColorMode()
   const globalLocale = useLocale()
-  const locale = (): ModeToggleDropdownLocale => ({ ...defaultLocale, ...globalLocale.ModeToggleDropdown, ...props.locale })
+  const locale = (): ModeToggleDropdownLocale => ({
+    ...defaultLocale,
+    ...globalLocale.ModeToggleDropdown,
+    ...props.locale,
+  })
 
   return (
     <DropdownMenu>

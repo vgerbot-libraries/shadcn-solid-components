@@ -1,9 +1,9 @@
-import { defineConfig } from 'vite'
 import path from 'node:path'
-import solidPlugin from 'vite-plugin-solid'
-import tsConfigPaths from 'vite-tsconfig-paths'
 import tailwindcss from '@tailwindcss/vite'
 import devtools from 'solid-devtools/vite'
+import { defineConfig } from 'vite'
+import solidPlugin from 'vite-plugin-solid'
+import tsConfigPaths from 'vite-tsconfig-paths'
 
 export default defineConfig({
   resolve: {

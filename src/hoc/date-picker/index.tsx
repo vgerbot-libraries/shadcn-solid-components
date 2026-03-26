@@ -1,11 +1,15 @@
+import type { DatePickerRootProps } from '@ark-ui/solid/date-picker'
+import { DatePicker as DatePickerPrimitive } from '@ark-ui/solid/date-picker'
+import { type ComponentProps, For, type JSX, Match, Show, Switch, splitProps } from 'solid-js'
 import { useLocale } from '@/components/config-provider'
 import type { DatePickerFieldLocale } from '@/i18n/types'
 import { enUS as defaultLocale } from './locales/en-US'
-import { type ComponentProps, For, type JSX, Match, Show, splitProps,Switch } from 'solid-js'
-import { DatePicker as DatePickerPrimitive } from '@ark-ui/solid/date-picker'
-import type { DatePickerRootProps } from '@ark-ui/solid/date-picker'
+
 export type { DateValue } from '@ark-ui/solid/date-picker'
+
 import type { DateValue } from '@ark-ui/solid/date-picker'
+import { Badge } from '@/components/badge'
+import { buttonVariants } from '@/components/button'
 import {
   DatePicker,
   DatePickerClearTrigger,
@@ -29,21 +33,8 @@ import {
   DatePickerViewTrigger,
   DatePickerYearSelect,
 } from '@/components/date-picker'
-import { Badge } from '@/components/badge'
-import { buttonVariants } from '@/components/button'
+import { IconX } from '@/components/icons'
 import { cx } from '@/lib/cva'
-import { IconX } from '@/components/icons';
-
-
-
-
-
-
-
-
-
-
-
 
 // ============================================================================
 // Types
@@ -107,7 +98,9 @@ type PickedRootProps = Pick<
   | 'ids'
 >
 
-export interface DatePickerFieldProps extends Omit<ComponentProps<'div'>, 'onChange'>, PickedRootProps {
+export interface DatePickerFieldProps
+  extends Omit<ComponentProps<'div'>, 'onChange'>,
+    PickedRootProps {
   /** Field label. */
   label?: string | JSX.Element
   /** Help text shown below the input (hidden when `error` is present). */
@@ -150,22 +143,18 @@ function DayViewTable(props: {
       <DatePickerTableHead>
         <DatePickerTableRow>
           <For each={props.weekDays}>
-            {(weekDay) => (
-              <DatePickerTableHeader>{weekDay.short}</DatePickerTableHeader>
-            )}
+            {weekDay => <DatePickerTableHeader>{weekDay.short}</DatePickerTableHeader>}
           </For>
         </DatePickerTableRow>
       </DatePickerTableHead>
       <DatePickerTableBody>
         <For each={props.weeks}>
-          {(week) => (
+          {week => (
             <DatePickerTableRow>
               <For each={week}>
-                {(day) => (
+                {day => (
                   <DatePickerTableCell value={day} visibleRange={props.visibleRange}>
-                    <DatePickerTableCellTrigger>
-                      {day.day}
-                    </DatePickerTableCellTrigger>
+                    <DatePickerTableCellTrigger>{day.day}</DatePickerTableCellTrigger>
                   </DatePickerTableCell>
                 )}
               </For>
@@ -177,15 +166,15 @@ function DayViewTable(props: {
   )
 }
 
-const selectClass = 'appearance-none border border-border rounded-md bg-background px-2 py-1 text-sm cursor-pointer focus-visible:outline-none focus-visible:ring-[1.5px] focus-visible:ring-ring'
+const selectClass =
+  'appearance-none border border-border rounded-md bg-background px-2 py-1 text-sm cursor-pointer focus-visible:outline-none focus-visible:ring-[1.5px] focus-visible:ring-ring'
 
 function CalendarViews(props: { showMonthYearSelect?: boolean }) {
   return (
     <DatePickerContext>
-      {(api) => {
+      {api => {
         const numOfMonths = () => api().numOfMonths ?? 1
-        const monthOffsets = () =>
-          Array.from({ length: numOfMonths() }, (_, i) => i)
+        const monthOffsets = () => Array.from({ length: numOfMonths() }, (_, i) => i)
         return (
           <>
             <DatePickerView view="day">
@@ -206,7 +195,7 @@ function CalendarViews(props: { showMonthYearSelect?: boolean }) {
               </DatePickerViewControl>
               <div class={cx(numOfMonths() > 1 && 'flex gap-4')}>
                 <For each={monthOffsets()}>
-                  {(monthIndex) => {
+                  {monthIndex => {
                     const offset = () =>
                       monthIndex === 0
                         ? { weeks: api().weeks, visibleRange: api().visibleRange }
@@ -214,8 +203,7 @@ function CalendarViews(props: { showMonthYearSelect?: boolean }) {
                     return (
                       <div
                         class={cx(
-                          numOfMonths() > 1 &&
-                            'min-w-[calc(var(--reference-width)-(0.75rem*2))]',
+                          numOfMonths() > 1 && 'min-w-[calc(var(--reference-width)-(0.75rem*2))]',
                         )}
                       >
                         <DayViewTable
@@ -230,61 +218,58 @@ function CalendarViews(props: { showMonthYearSelect?: boolean }) {
               </div>
             </DatePickerView>
 
-          <DatePickerView view="month">
-            <DatePickerViewControl>
-              <DatePickerViewTrigger>
-                <DatePickerRangeText />
-              </DatePickerViewTrigger>
-            </DatePickerViewControl>
-            <DatePickerTable>
-              <DatePickerTableBody>
-                <For each={api().getMonthsGrid({ columns: 4, format: 'short' })}>
-                  {(months) => (
-                    <DatePickerTableRow>
-                      <For each={months}>
-                        {(month) => (
-                          <DatePickerTableCell value={month.value}>
-                            <DatePickerTableCellTrigger>
-                              {month.label}
-                            </DatePickerTableCellTrigger>
-                          </DatePickerTableCell>
-                        )}
-                      </For>
-                    </DatePickerTableRow>
-                  )}
-                </For>
-              </DatePickerTableBody>
-            </DatePickerTable>
-          </DatePickerView>
+            <DatePickerView view="month">
+              <DatePickerViewControl>
+                <DatePickerViewTrigger>
+                  <DatePickerRangeText />
+                </DatePickerViewTrigger>
+              </DatePickerViewControl>
+              <DatePickerTable>
+                <DatePickerTableBody>
+                  <For each={api().getMonthsGrid({ columns: 4, format: 'short' })}>
+                    {months => (
+                      <DatePickerTableRow>
+                        <For each={months}>
+                          {month => (
+                            <DatePickerTableCell value={month.value}>
+                              <DatePickerTableCellTrigger>{month.label}</DatePickerTableCellTrigger>
+                            </DatePickerTableCell>
+                          )}
+                        </For>
+                      </DatePickerTableRow>
+                    )}
+                  </For>
+                </DatePickerTableBody>
+              </DatePickerTable>
+            </DatePickerView>
 
-          <DatePickerView view="year">
-            <DatePickerViewControl>
-              <DatePickerViewTrigger>
-                <DatePickerRangeText />
-              </DatePickerViewTrigger>
-            </DatePickerViewControl>
-            <DatePickerTable>
-              <DatePickerTableBody>
-                <For each={api().getYearsGrid({ columns: 4 })}>
-                  {(years) => (
-                    <DatePickerTableRow>
-                      <For each={years}>
-                        {(year) => (
-                          <DatePickerTableCell value={year.value}>
-                            <DatePickerTableCellTrigger>
-                              {year.label}
-                            </DatePickerTableCellTrigger>
-                          </DatePickerTableCell>
-                        )}
-                      </For>
-                    </DatePickerTableRow>
-                  )}
-                </For>
-              </DatePickerTableBody>
-            </DatePickerTable>
-          </DatePickerView>
-        </>
-      )}}
+            <DatePickerView view="year">
+              <DatePickerViewControl>
+                <DatePickerViewTrigger>
+                  <DatePickerRangeText />
+                </DatePickerViewTrigger>
+              </DatePickerViewControl>
+              <DatePickerTable>
+                <DatePickerTableBody>
+                  <For each={api().getYearsGrid({ columns: 4 })}>
+                    {years => (
+                      <DatePickerTableRow>
+                        <For each={years}>
+                          {year => (
+                            <DatePickerTableCell value={year.value}>
+                              <DatePickerTableCellTrigger>{year.label}</DatePickerTableCellTrigger>
+                            </DatePickerTableCell>
+                          )}
+                        </For>
+                      </DatePickerTableRow>
+                    )}
+                  </For>
+                </DatePickerTableBody>
+              </DatePickerTable>
+            </DatePickerView>
+          </>
+        )
+      }}
     </DatePickerContext>
   )
 }
@@ -296,13 +281,10 @@ function CalendarViews(props: { showMonthYearSelect?: boolean }) {
 function TodayButton(props: { label: string }) {
   return (
     <DatePickerContext>
-      {(api) => (
+      {api => (
         <button
           type="button"
-          class={cx(
-            buttonVariants({ variant: 'outline', size: 'sm' }),
-            'w-full mt-2',
-          )}
+          class={cx(buttonVariants({ variant: 'outline', size: 'sm' }), 'w-full mt-2')}
           onClick={() => api().selectToday()}
         >
           {props.label}
@@ -335,14 +317,11 @@ function CalendarPanel(props: CalendarPanelProps) {
   )
 
   return (
-    <Show
-      when={props.hasPresets}
-      fallback={calendarContent()}
-    >
+    <Show when={props.hasPresets} fallback={calendarContent()}>
       <div class="flex gap-3">
         <div class="flex flex-col gap-1 border-r pr-3">
           <For each={props.presets}>
-            {(preset) => (
+            {preset => (
               <DatePickerPrimitive.PresetTrigger
                 value={preset.value}
                 class={cx(
@@ -461,7 +440,11 @@ export function DatePickerField(props: DatePickerFieldProps) {
   )
 
   const globalLocale = useLocale()
-  const i18n = (): DatePickerFieldLocale => ({ ...defaultLocale, ...globalLocale.DatePickerField, ...local.i18n })
+  const i18n = (): DatePickerFieldLocale => ({
+    ...defaultLocale,
+    ...globalLocale.DatePickerField,
+    ...local.i18n,
+  })
 
   const hasError = () => {
     if (Array.isArray(local.error)) return local.error.length > 0
@@ -492,9 +475,7 @@ export function DatePickerField(props: DatePickerFieldProps) {
     >
       <Show when={local.label}>
         {typeof local.label === 'string' ? (
-          <label
-            class={cx('text-sm font-medium select-none', hasError() && 'text-destructive')}
-          >
+          <label class={cx('text-sm font-medium select-none', hasError() && 'text-destructive')}>
             {local.label}
             <Show when={local.required}>
               <span class="text-destructive ml-0.5">*</span>
@@ -521,16 +502,17 @@ export function DatePickerField(props: DatePickerFieldProps) {
                 </>
               </Match>
               <Match when={rootProps.selectionMode === 'multiple'}>
-                <div class={cx(
-                  'placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground dark:bg-input/30 border-input min-h-9 border bg-transparent px-3 py-1 text-base shadow-xs transition-[color,box-shadow] outline-none disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm',
-                'focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]',
-                'aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive',
-                'rounded-component',
-                "flex min-w-0 flex-1 flex-wrap items-center gap-1.5"
-                )}
+                <div
+                  class={cx(
+                    'placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground dark:bg-input/30 border-input min-h-9 border bg-transparent px-3 py-1 text-base shadow-xs transition-[color,box-shadow] outline-none disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm',
+                    'focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]',
+                    'aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive',
+                    'rounded-component',
+                    'flex min-w-0 flex-1 flex-wrap items-center gap-1.5',
+                  )}
                 >
                   <DatePickerPrimitive.ValueText placeholder={placeholderText()}>
-                    {(props) => (
+                    {props => (
                       <Badge variant="outline" class="gap-1 pr-1">
                         {props.valueAsString}
                         <button

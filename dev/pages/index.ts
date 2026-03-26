@@ -1,4 +1,4 @@
-import { lazy, type Component } from 'solid-js'
+import { type Component, lazy } from 'solid-js'
 
 export const pages: Record<string, Component> = {
   dashboard: lazy(() => import('./DashboardPage')),

@@ -1,57 +1,57 @@
-import { createSignal, type Component } from 'solid-js'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/card'
+import { type Component, createSignal } from 'solid-js'
 import {
-  Breadcrumbs,
   BreadcrumbList,
+  Breadcrumbs,
   BreadcrumbsItem,
   BreadcrumbsLink,
   BreadcrumbsSeparator,
 } from '@/components/breadcrumbs'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/card'
 import {
   Menubar,
-  MenubarMenu,
-  MenubarTrigger,
+  MenubarCheckboxItem,
   MenubarContent,
+  MenubarGroup,
+  MenubarGroupLabel,
   MenubarItem,
+  MenubarMenu,
+  MenubarRadioGroup,
+  MenubarRadioItem,
   MenubarSeparator,
   MenubarShortcut,
   MenubarSub,
-  MenubarSubTrigger,
   MenubarSubContent,
-  MenubarCheckboxItem,
-  MenubarGroup,
-  MenubarRadioGroup,
-  MenubarRadioItem,
-  MenubarGroupLabel,
+  MenubarSubTrigger,
+  MenubarTrigger,
 } from '@/components/menubar'
 import {
-  NavigationMenu,
-  NavigationMenuList,
-  NavigationMenuItem,
-  NavigationMenuTrigger,
-  NavigationMenuContent,
-  NavigationItemLabel,
   NavigationItemDescription,
+  NavigationItemLabel,
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuList,
   NavigationMenuPortal,
+  NavigationMenuTrigger,
 } from '@/components/navigation-menu'
-import { NavMenu } from '@/hoc/navigation-menu'
 import {
   Pagination,
-  PaginationItems,
-  PaginationItem,
   PaginationEllipsis,
+  PaginationItem,
+  PaginationItems,
   PaginationNext,
   PaginationPrevious,
 } from '@/components/pagination'
 import {
   SegmentedControl,
+  SegmentedControlIndicator,
   SegmentedControlItem,
   SegmentedControlItemInput,
   SegmentedControlItemLabel,
-  SegmentedControlIndicator,
-  SegmentedControlList,
   SegmentedControlItems,
+  SegmentedControlList,
 } from '@/components/segmented-control'
+import { NavMenu } from '@/hoc/navigation-menu'
 import { PageLayout } from '../components/PageLayout'
 
 const NavigationPage: Component = () => {

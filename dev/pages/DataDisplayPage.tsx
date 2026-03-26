@@ -1,8 +1,8 @@
-import { createSignal, type Component } from 'solid-js'
+import { VisArea, VisLine } from '@unovis/solid'
+import { type Component, createSignal } from 'solid-js'
+import { Badge } from '@/components/badge'
+import { Button } from '@/components/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/card'
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/table'
-import { ChartContainer, ChartCrosshair } from '@/components/chart'
-import { Progress, ProgressGroup, ProgressLabel, ProgressValueLabel } from '@/components/progress'
 import {
   Carousel,
   CarouselContent,
@@ -10,11 +10,11 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from '@/components/carousel'
+import { ChartContainer, ChartCrosshair } from '@/components/chart'
 import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/components/hover-card'
+import { Progress, ProgressGroup, ProgressLabel, ProgressValueLabel } from '@/components/progress'
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/table'
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/tooltip'
-import { Button } from '@/components/button'
-import { Badge } from '@/components/badge'
-import { VisLine, VisArea } from '@unovis/solid'
 import { PageLayout } from '../components/PageLayout'
 
 const chartData = [

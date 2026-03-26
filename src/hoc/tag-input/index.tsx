@@ -1,12 +1,11 @@
-import { useLocale } from '@/components/config-provider'
-import type { TagInputLocale } from '@/i18n/types'
-import { enUS as defaultLocale } from './locales/en-US'
 import { type ComponentProps, createSignal, For, type JSX, Show, splitProps } from 'solid-js'
 import { Badge } from '@/components/badge'
+import { useLocale } from '@/components/config-provider'
+import type { TagInputLocale } from '@/i18n/types'
 import { cx } from '@/lib/cva'
+import { enUS as defaultLocale } from './locales/en-US'
 
 // ============================================================================
-
 
 export const enLocale: TagInputLocale = {
   placeholder: 'Add a tag...',
@@ -91,7 +90,11 @@ export function TagInput(props: TagInputProps) {
   ])
 
   const globalLocale = useLocale()
-  const locale = (): TagInputLocale => ({ ...defaultLocale, ...globalLocale.TagInput, ...local.locale })
+  const locale = (): TagInputLocale => ({
+    ...defaultLocale,
+    ...globalLocale.TagInput,
+    ...local.locale,
+  })
   const allowCreate = () => local.allowCreate !== false
   const tags = () => local.value ?? []
   const atMax = () => local.max !== undefined && tags().length >= local.max

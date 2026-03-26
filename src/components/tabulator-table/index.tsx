@@ -1,4 +1,4 @@
-import type { ComponentProps, Accessor } from 'solid-js'
+import type { Accessor, ComponentProps } from 'solid-js'
 import { mergeProps, onCleanup, onMount, splitProps } from 'solid-js'
 import type { Options, Tabulator } from 'tabulator-tables'
 import { TabulatorFull } from 'tabulator-tables'

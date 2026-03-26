@@ -1,13 +1,13 @@
-import { render } from 'solid-js/web'
 import { lazy } from 'solid-js'
+import { render } from 'solid-js/web'
 import './styles.css'
-import App from './App'
 import { ColorModeProvider } from '@kobalte/core'
-import { ThemeProvider } from '../src/components/theme'
+import { Route, Router } from '@solidjs/router'
 import { ConfigProvider } from '../src/components/config-provider'
 import { Toaster } from '../src/components/sonner'
+import { ThemeProvider } from '../src/components/theme'
 import { ConfirmDialog } from '../src/hoc/confirm-dialog'
-import { Router, Route } from '@solidjs/router'
+import App from './App'
 import { globalLocale } from './store'
 
 export { globalLocale, setGlobalLocale } from './store'
@@ -24,6 +24,7 @@ const FormsCompositePage = lazy(() => import('./pages/FormsCompositePage'))
 const FeedbackPage = lazy(() => import('./pages/FeedbackPage'))
 const DisplayCompositePage = lazy(() => import('./pages/DisplayCompositePage'))
 const SettingsPage = lazy(() => import('./pages/SettingsPage'))
+const CustomThemePage = lazy(() => import('./pages/CustomThemePage'))
 
 const Root = (props: { children?: import('solid-js').JSX.Element }) => (
   <ColorModeProvider>
@@ -55,6 +56,7 @@ const dispose = render(() => {
       <Route path="/feedback" component={FeedbackPage} />
       <Route path="/display-composite" component={DisplayCompositePage} />
       <Route path="/settings" component={SettingsPage} />
+      <Route path="/custom-theme" component={CustomThemePage} />
     </Router>
   )
 }, rootEl)

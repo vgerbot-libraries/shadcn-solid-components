@@ -1,9 +1,8 @@
-import { createSignal, type Component } from 'solid-js'
-import { For } from 'solid-js'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/card'
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/table'
+import { VisArea, VisLine } from '@unovis/solid'
+import { type Component, createSignal, For } from 'solid-js'
 import { Badge } from '@/components/badge'
 import { Button } from '@/components/button'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/card'
 import { ChartContainer, ChartCrosshair } from '@/components/chart'
 import {
   DropdownMenu,
@@ -11,21 +10,21 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/dropdown-menu'
-import { IconUser, IconSettings, IconCreditCard, IconMail, IconCheck } from '@/components/icons'
-import { VisLine, VisArea } from '@unovis/solid'
-import { PageHeader } from '@/hoc/page-header'
-import { UserMenu } from '@/hoc/user-menu'
-import { StatCard } from '@/hoc/stat-card'
+import { IconCheck, IconCreditCard, IconMail, IconSettings, IconUser } from '@/components/icons'
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/table'
 import { NotificationCenter, type NotificationItem } from '@/hoc/notification-center'
+import { PageHeader } from '@/hoc/page-header'
+import { StatCard } from '@/hoc/stat-card'
 import { useNotify } from '@/hoc/use-notify'
-import { PageLayout } from '../components/PageLayout'
+import { UserMenu } from '@/hoc/user-menu'
 import {
-  TotalRevenueIcon,
-  NewCustomersIcon,
   ActiveAccountsIcon,
   GrowthRateIcon,
   MoreIcon,
+  NewCustomersIcon,
+  TotalRevenueIcon,
 } from '../components/icons'
+import { PageLayout } from '../components/PageLayout'
 
 const chartData = [
   { month: 'Jan', visitors: 186 },

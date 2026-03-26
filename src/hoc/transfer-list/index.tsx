@@ -1,6 +1,3 @@
-import { useLocale } from '@/components/config-provider'
-import type { TransferListLocale } from '@/i18n/types'
-import { enUS as defaultLocale } from './locales/en-US'
 import {
   type ComponentProps,
   createEffect,
@@ -12,10 +9,12 @@ import {
   splitProps,
 } from 'solid-js'
 import { Button } from '@/components/button'
+import { useLocale } from '@/components/config-provider'
+import type { TransferListLocale } from '@/i18n/types'
 import { cx } from '@/lib/cva'
+import { enUS as defaultLocale } from './locales/en-US'
 
 // ============================================================================
-
 
 export const enLocale: TransferListLocale = {
   sourceTitle: 'Available',
@@ -252,7 +251,11 @@ export function TransferList(props: TransferListProps) {
   ])
 
   const globalLocale = useLocale()
-  const locale = (): TransferListLocale => ({ ...defaultLocale, ...globalLocale.TransferList, ...local.locale })
+  const locale = (): TransferListLocale => ({
+    ...defaultLocale,
+    ...globalLocale.TransferList,
+    ...local.locale,
+  })
   const searchable = () => local.searchable !== false
 
   const targetSet = createMemo(() => new Set(local.target))

@@ -1,4 +1,3 @@
-import { DatePicker as DatePickerPrimitive } from "@ark-ui/solid/date-picker"
 import type {
   DatePickerContentProps,
   DatePickerControlProps,
@@ -15,12 +14,13 @@ import type {
   DatePickerViewProps,
   DatePickerViewTriggerProps,
   DateValue,
-} from "@ark-ui/solid/date-picker"
-import { useLocale } from "@/components/config-provider"
-import { splitProps } from "solid-js"
-import type { VoidProps } from "solid-js"
-import { cx } from "../../lib/cva"
-import { buttonVariants } from "../button"
+} from '@ark-ui/solid/date-picker'
+import { DatePicker as DatePickerPrimitive } from '@ark-ui/solid/date-picker'
+import type { VoidProps } from 'solid-js'
+import { splitProps } from 'solid-js'
+import { useLocale } from '@/components/config-provider'
+import { cx } from '../../lib/cva'
+import { buttonVariants } from '../button'
 
 export const DatePickerLabel = DatePickerPrimitive.Label
 export const DatePickerTableHead = DatePickerPrimitive.TableHead
@@ -33,7 +33,7 @@ export const DatePickerRootProvider = DatePickerPrimitive.RootProvider
 export const DatePickerPositioner = DatePickerPrimitive.Positioner
 
 export const DatePicker = (props: DatePickerRootProps) => {
-  const [local, rest] = splitProps(props, ["format", "locale"])
+  const [local, rest] = splitProps(props, ['format', 'locale'])
   const globalLocale = useLocale()
 
   const defaultFormat = (date: DateValue) => {
@@ -44,7 +44,7 @@ export const DatePicker = (props: DatePickerRootProps) => {
       parsedDate.getUTCDate(),
     )
     return new Intl.DateTimeFormat(local.locale ?? globalLocale.locale ?? 'en-US', {
-      dateStyle: "long",
+      dateStyle: 'long',
     }).format(normalizedDate)
   }
 
@@ -58,40 +58,33 @@ export const DatePicker = (props: DatePickerRootProps) => {
 }
 
 export const DatePickerView = (props: DatePickerViewProps) => {
-  const [local, rest] = splitProps(props, ["class"])
+  const [local, rest] = splitProps(props, ['class'])
 
   return (
     <DatePickerPrimitive.View
-      class={cx(
-        "space-y-4 min-w-[calc(var(--reference-width)-(0.75rem*2))]",
-        local.class,
-      )}
+      class={cx('space-y-4 min-w-[calc(var(--reference-width)-(0.75rem*2))]', local.class)}
       {...rest}
     />
   )
 }
 
 export const DatePickerViewControl = (props: DatePickerViewControlProps) => {
-  const [local, rest] = splitProps(props, ["class", "children"])
+  const [local, rest] = splitProps(props, ['class', 'children'])
 
   return (
     <DatePickerPrimitive.ViewControl
-      class={cx("flex items-center justify-between", local.class)}
+      class={cx('flex items-center justify-between', local.class)}
       {...rest}
     >
       <DatePickerPrimitive.PrevTrigger
         class={cx(
           buttonVariants({
-            variant: "outline",
+            variant: 'outline',
           }),
-          "h-7 w-7 bg-transparent p-0 opacity-50 hover:opacity-100",
+          'h-7 w-7 bg-transparent p-0 opacity-50 hover:opacity-100',
         )}
       >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          class="h-4 w-4"
-          viewBox="0 0 24 24"
-        >
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24">
           <path
             fill="none"
             stroke="currentColor"
@@ -107,16 +100,12 @@ export const DatePickerViewControl = (props: DatePickerViewControlProps) => {
       <DatePickerPrimitive.NextTrigger
         class={cx(
           buttonVariants({
-            variant: "outline",
+            variant: 'outline',
           }),
-          "h-7 w-7 bg-transparent p-0 opacity-50 hover:opacity-100",
+          'h-7 w-7 bg-transparent p-0 opacity-50 hover:opacity-100',
         )}
       >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          class="h-4 w-4"
-          viewBox="0 0 24 24"
-        >
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24">
           <path
             fill="none"
             stroke="currentColor"
@@ -132,65 +121,50 @@ export const DatePickerViewControl = (props: DatePickerViewControlProps) => {
   )
 }
 
-export const DatePickerRangeText = (
-  props: VoidProps<DatePickerRangeTextProps>,
-) => {
-  const [local, rest] = splitProps(props, ["class"])
+export const DatePickerRangeText = (props: VoidProps<DatePickerRangeTextProps>) => {
+  const [local, rest] = splitProps(props, ['class'])
 
-  return (
-    <DatePickerPrimitive.RangeText
-      class={cx("text-sm font-medium", local.class)}
-      {...rest}
-    />
-  )
+  return <DatePickerPrimitive.RangeText class={cx('text-sm font-medium', local.class)} {...rest} />
 }
 
 export const DatePickerTable = (props: DatePickerTableProps) => {
-  const [local, rest] = splitProps(props, ["class"])
+  const [local, rest] = splitProps(props, ['class'])
 
   return (
     <DatePickerPrimitive.Table
-      class={cx("w-full border-collapse space-y-1", local.class)}
+      class={cx('w-full border-collapse space-y-1', local.class)}
       {...rest}
     />
   )
 }
 
 export const DatePickerTableRow = (props: DatePickerTableRowProps) => {
-  const [local, rest] = splitProps(props, ["class"])
+  const [local, rest] = splitProps(props, ['class'])
 
-  return (
-    <DatePickerPrimitive.TableRow
-      class={cx("mt-2 flex w-full", local.class)}
-      {...rest}
-    />
-  )
+  return <DatePickerPrimitive.TableRow class={cx('mt-2 flex w-full', local.class)} {...rest} />
 }
 
 export const DatePickerTableHeader = (props: DatePickerTableHeaderProps) => {
-  const [local, rest] = splitProps(props, ["class"])
+  const [local, rest] = splitProps(props, ['class'])
 
   return (
     <DatePickerPrimitive.TableHeader
-      class={cx(
-        "w-8 flex-1 text-[0.8rem] font-normal text-muted-foreground",
-        local.class,
-      )}
+      class={cx('w-8 flex-1 text-[0.8rem] font-normal text-muted-foreground', local.class)}
       {...rest}
     />
   )
 }
 
 export const DatePickerTableCell = (props: DatePickerTableCellProps) => {
-  const [local, rest] = splitProps(props, ["class"])
+  const [local, rest] = splitProps(props, ['class'])
 
   return (
     <DatePickerPrimitive.TableCell
       class={cx(
-        "flex-1 p-0 text-center text-sm",
-        "has-[[data-in-range]]:bg-accent has-[[data-in-range]]:first-of-type:rounded-l-md has-[[data-in-range]]:last-of-type:rounded-r-md",
-        "has-[[data-range-end]]:rounded-r-md has-[[data-range-start]]:rounded-l-md",
-        "has-[[data-outside-range][data-in-range]]:bg-accent/50",
+        'flex-1 p-0 text-center text-sm',
+        'has-[[data-in-range]]:bg-accent has-[[data-in-range]]:first-of-type:rounded-l-md has-[[data-in-range]]:last-of-type:rounded-r-md',
+        'has-[[data-range-end]]:rounded-r-md has-[[data-range-start]]:rounded-l-md',
+        'has-[[data-outside-range][data-in-range]]:bg-accent/50',
         local.class,
       )}
       {...rest}
@@ -198,22 +172,20 @@ export const DatePickerTableCell = (props: DatePickerTableCellProps) => {
   )
 }
 
-export const DatePickerTableCellTrigger = (
-  props: DatePickerTableCellTriggerProps,
-) => {
-  const [local, rest] = splitProps(props, ["class"])
+export const DatePickerTableCellTrigger = (props: DatePickerTableCellTriggerProps) => {
+  const [local, rest] = splitProps(props, ['class'])
 
   return (
     <DatePickerPrimitive.TableCellTrigger
       class={cx(
-        buttonVariants({ variant: "ghost" }),
-        "size-8 w-full p-0 font-normal data-[selected]:opacity-100",
-        "data-[today]:bg-accent data-[today]:text-accent-foreground",
-        "[&:is([data-today][data-selected])]:bg-primary [&:is([data-today][data-selected])]:text-primary-foreground",
-        "data-[selected]:bg-primary data-[selected]:text-primary-foreground data-[selected]:hover:bg-primary data-[selected]:hover:text-primary-foreground",
-        "data-[disabled]:text-muted-foreground data-[disabled]:opacity-50",
-        "data-[outside-range]:text-muted-foreground data-[outside-range]:opacity-50",
-        "[&:is([data-outside-range][data-in-range])]:bg-accent/50 [&:is([data-outside-range][data-in-range])]:text-muted-foreground [&:is([data-outside-range][data-in-range])]:opacity-30",
+        buttonVariants({ variant: 'ghost' }),
+        'size-8 w-full p-0 font-normal data-[selected]:opacity-100',
+        'data-[today]:bg-accent data-[today]:text-accent-foreground',
+        '[&:is([data-today][data-selected])]:bg-primary [&:is([data-today][data-selected])]:text-primary-foreground',
+        'data-[selected]:bg-primary data-[selected]:text-primary-foreground data-[selected]:hover:bg-primary data-[selected]:hover:text-primary-foreground',
+        'data-[disabled]:text-muted-foreground data-[disabled]:opacity-50',
+        'data-[outside-range]:text-muted-foreground data-[outside-range]:opacity-50',
+        '[&:is([data-outside-range][data-in-range])]:bg-accent/50 [&:is([data-outside-range][data-in-range])]:text-muted-foreground [&:is([data-outside-range][data-in-range])]:opacity-30',
         local.class,
       )}
       {...rest}
@@ -222,23 +194,23 @@ export const DatePickerTableCellTrigger = (
 }
 
 export const DatePickerViewTrigger = (props: DatePickerViewTriggerProps) => {
-  const [local, rest] = splitProps(props, ["class"])
+  const [local, rest] = splitProps(props, ['class'])
 
   return (
     <DatePickerPrimitive.ViewTrigger
-      class={cx(buttonVariants({ variant: "ghost" }), "h-7 mx-2", local.class)}
+      class={cx(buttonVariants({ variant: 'ghost' }), 'h-7 mx-2', local.class)}
       {...rest}
     />
   )
 }
 
 export const DatePickerContent = (props: DatePickerContentProps) => {
-  const [local, rest] = splitProps(props, ["class", "children"])
+  const [local, rest] = splitProps(props, ['class', 'children'])
 
   return (
     <DatePickerPrimitive.Content
       class={cx(
-        "rounded-md border bg-popover p-3 text-popover-foreground shadow-md outline-none data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 z-50",
+        'rounded-md border bg-popover p-3 text-popover-foreground shadow-md outline-none data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 z-50',
         local.class,
       )}
       {...rest}
@@ -249,26 +221,23 @@ export const DatePickerContent = (props: DatePickerContentProps) => {
 }
 
 export const DatePickerControl = (props: DatePickerControlProps) => {
-  const [local, rest] = splitProps(props, ["class"])
+  const [local, rest] = splitProps(props, ['class'])
 
   return (
     <DatePickerPrimitive.Control
-      class={cx(
-        "flex items-center gap-x-1 [&>input:first-of-type]:rounded-s-md",
-        local.class,
-      )}
+      class={cx('flex items-center gap-x-1 [&>input:first-of-type]:rounded-s-md', local.class)}
       {...rest}
     />
   )
 }
 
 export const DatePickerInput = (props: DatePickerInputProps) => {
-  const [local, rest] = splitProps(props, ["class"])
+  const [local, rest] = splitProps(props, ['class'])
 
   return (
     <DatePickerPrimitive.Input
       class={cx(
-        "w-full h-9 border border-border bg-background px-3 py-1 text-sm shadow-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-[1.5px] focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 transition-shadow",
+        'w-full h-9 border border-border bg-background px-3 py-1 text-sm shadow-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-[1.5px] focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 transition-shadow',
         local.class,
       )}
       {...rest}
@@ -277,12 +246,12 @@ export const DatePickerInput = (props: DatePickerInputProps) => {
 }
 
 export const DatePickerTrigger = (props: DatePickerTriggerProps) => {
-  const [local, rest] = splitProps(props, ["class"])
+  const [local, rest] = splitProps(props, ['class'])
 
   return (
     <DatePickerPrimitive.Trigger
       class={cx(
-        "transition-[box-shadow,background-color] focus-visible:outline-none focus-visible:ring-[1.5px] focus-visible:ring-ring flex items-center justify-center min-w-9 min-h-9 rounded-e-md border border-border bg-background [&>svg]:size-4 hover:bg-accent/50 disabled:cursor-not-allowed disabled:opacity-50",
+        'transition-[box-shadow,background-color] focus-visible:outline-none focus-visible:ring-[1.5px] focus-visible:ring-ring flex items-center justify-center min-w-9 min-h-9 rounded-e-md border border-border bg-background [&>svg]:size-4 hover:bg-accent/50 disabled:cursor-not-allowed disabled:opacity-50',
         local.class,
       )}
       {...rest}

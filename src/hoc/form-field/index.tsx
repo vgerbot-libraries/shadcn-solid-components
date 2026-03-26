@@ -1,10 +1,10 @@
 import {
   type ComponentProps,
-  type JSX,
-  Show,
   createSignal,
   createUniqueId,
+  type JSX,
   onMount,
+  Show,
   splitProps,
 } from 'solid-js'
 import { cx } from '@/lib/cva'

@@ -1,21 +1,10 @@
-import { useLocale } from '@/components/config-provider'
-import type { DescriptionListLocale } from '@/i18n/types'
-import { enUS as defaultLocale } from './locales/en-US'
 import { type ComponentProps, For, type JSX, Show, splitProps } from 'solid-js'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/card'
+import { useLocale } from '@/components/config-provider'
 import { Separator } from '@/components/separator'
+import type { DescriptionListLocale } from '@/i18n/types'
 import { cx } from '@/lib/cva'
-
-
-
-
-
-
-
-
-
-
-
+import { enUS as defaultLocale } from './locales/en-US'
 
 // ============================================================================
 // Types
@@ -149,7 +138,11 @@ export function DescriptionList(props: DescriptionListProps) {
   ])
 
   const globalLocale = useLocale()
-  const locale = (): DescriptionListLocale => ({ ...defaultLocale, ...globalLocale.DescriptionList, ...local.locale })
+  const locale = (): DescriptionListLocale => ({
+    ...defaultLocale,
+    ...globalLocale.DescriptionList,
+    ...local.locale,
+  })
   const columns = () => local.columns ?? 2
   const layout = () => local.layout ?? 'vertical'
 

@@ -1,13 +1,6 @@
-import { type Component } from 'solid-js'
 import { useColorMode } from '@kobalte/core'
+import { type Component } from 'solid-js'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/card'
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/select'
 import {
   RadioGroup,
   RadioGroupItem,
@@ -17,9 +10,10 @@ import {
   RadioGroupItems,
   RadioGroupLabel,
 } from '@/components/radio-group'
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/select'
+import type { Locale } from '@/i18n/types'
 import { PageLayout } from '../components/PageLayout'
 import { setGlobalLocale } from '../store'
-import type { Locale } from '@/i18n/types'
 
 const localeOptions = [
   { value: 'default', label: 'English (default)' },

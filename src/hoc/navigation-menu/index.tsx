@@ -1,17 +1,17 @@
 import { For, type JSX, Show, splitProps } from 'solid-js'
-import { cx } from '@/lib/cva'
 import {
-  NavigationMenu as NavigationMenuRoot,
+  NavigationItemDescription,
+  NavigationItemLabel,
   NavigationMenuContent,
   NavigationMenuItem,
   NavigationMenuList,
   NavigationMenuPortal,
-  NavigationMenuTrigger,
-  NavigationItemLabel,
-  NavigationItemDescription,
-  navigationButtonVariant,
+  NavigationMenu as NavigationMenuRoot,
   type NavigationMenuProps as NavigationMenuRootProps,
+  NavigationMenuTrigger,
+  navigationButtonVariant,
 } from '@/components/navigation-menu'
+import { cx } from '@/lib/cva'
 
 // ============================================================================
 // Types

@@ -1,25 +1,25 @@
-import { createSignal, type Component } from 'solid-js'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/card'
+import { type Component, createSignal } from 'solid-js'
 import { Badge } from '@/components/badge'
 import { Button } from '@/components/button'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/card'
+import { IconCheck, IconCreditCard, IconLoader, IconSettings, IconUser } from '@/components/icons'
 import { TextField, TextFieldInput } from '@/components/text-field'
-import { IconUser, IconSettings, IconCreditCard, IconCheck, IconLoader } from '@/components/icons'
-import { StatCard } from '@/hoc/stat-card'
 import { DescriptionList } from '@/hoc/description-list'
-import { Timeline } from '@/hoc/timeline'
-import { Stepper } from '@/hoc/stepper'
-import { TransferList, type TransferItem } from '@/hoc/transfer-list'
-import { PageHeader } from '@/hoc/page-header'
-import { UserMenu } from '@/hoc/user-menu'
 import { FormField } from '@/hoc/form-field'
+import { PageHeader } from '@/hoc/page-header'
+import { StatCard } from '@/hoc/stat-card'
+import { Stepper } from '@/hoc/stepper'
+import { Timeline } from '@/hoc/timeline'
+import { type TransferItem, TransferList } from '@/hoc/transfer-list'
 import { useNotify } from '@/hoc/use-notify'
-import { PageLayout } from '../components/PageLayout'
+import { UserMenu } from '@/hoc/user-menu'
 import {
-  TotalRevenueIcon,
-  NewCustomersIcon,
   ActiveAccountsIcon,
   GrowthRateIcon,
+  NewCustomersIcon,
+  TotalRevenueIcon,
 } from '../components/icons'
+import { PageLayout } from '../components/PageLayout'
 
 const transferSource: TransferItem[] = [
   { key: 'admin', label: 'Admin', description: 'Full access to all resources' },

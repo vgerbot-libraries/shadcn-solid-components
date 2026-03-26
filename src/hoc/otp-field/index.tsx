@@ -1,26 +1,15 @@
-import { useLocale } from '@/components/config-provider'
-import type { OTPFieldLocale } from '@/i18n/types'
-import { enUS as defaultLocale } from './locales/en-US'
 import { type ComponentProps, For, Show, splitProps } from 'solid-js'
+import { useLocale } from '@/components/config-provider'
 import {
-  OTPField as OTPFieldRoot,
   OTPFieldGroup as OTPFieldGroupBase,
   OTPFieldInput,
+  OTPField as OTPFieldRoot,
   OTPFieldSeparator,
   OTPFieldSlot,
 } from '@/components/otp-field'
+import type { OTPFieldLocale } from '@/i18n/types'
 import { cx } from '@/lib/cva'
-
-
-
-
-
-
-
-
-
-
-
+import { enUS as defaultLocale } from './locales/en-US'
 
 // ============================================================================
 // Types
@@ -103,7 +92,11 @@ export function OTPFieldGroup(props: OTPFieldGroupProps) {
   ])
 
   const globalLocale = useLocale()
-  const locale = (): OTPFieldLocale => ({ ...defaultLocale, ...globalLocale.OTPField, ...local.locale })
+  const locale = (): OTPFieldLocale => ({
+    ...defaultLocale,
+    ...globalLocale.OTPField,
+    ...local.locale,
+  })
 
   const groups = () => {
     const pattern = local.groupPattern
@@ -148,11 +141,10 @@ export function OTPFieldGroup(props: OTPFieldGroupProps) {
         value={local.value}
         onValueChange={local.onValueChange}
         onComplete={local.onComplete}
-        disabled={local.disabled}
         aria-label={local.label ?? locale().label}
         aria-invalid={hasError() || undefined}
       >
-        <OTPFieldInput pattern={local.pattern} />
+        <OTPFieldInput pattern={local.pattern} disabled={local.disabled} />
         <For each={slotGroups()}>
           {(group, groupIndex) => (
             <>

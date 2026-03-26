@@ -1,25 +1,14 @@
-import { useLocale } from '@/components/config-provider'
-import type { NotificationCenterLocale } from '@/i18n/types'
-import { enUS as defaultLocale } from './locales/en-US'
 import { type ComponentProps, For, type JSX, Show, splitProps } from 'solid-js'
 import { Badge } from '@/components/badge'
 import { Button } from '@/components/button'
+import { useLocale } from '@/components/config-provider'
+import { IconBell } from '@/components/icons'
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/popover'
 import { Separator } from '@/components/separator'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/tabs'
-import { IconBell } from '@/components/icons'
+import type { NotificationCenterLocale } from '@/i18n/types'
 import { cx } from '@/lib/cva'
-
-
-
-
-
-
-
-
-
-
-
+import { enUS as defaultLocale } from './locales/en-US'
 
 // ============================================================================
 // Types
@@ -141,7 +130,11 @@ export function NotificationCenter(props: NotificationCenterProps) {
   ])
 
   const globalLocale = useLocale()
-  const locale = (): NotificationCenterLocale => ({ ...defaultLocale, ...globalLocale.NotificationCenter, ...local.locale })
+  const locale = (): NotificationCenterLocale => ({
+    ...defaultLocale,
+    ...globalLocale.NotificationCenter,
+    ...local.locale,
+  })
   const unreadCount = () => local.notifications.filter(n => !n.read).length
   const hasCategories = () => local.categories && local.categories.length > 0
 

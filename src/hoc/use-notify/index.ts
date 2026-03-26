@@ -1,5 +1,5 @@
-import { toast, type ExternalToast } from 'somoto'
 import type { JSX } from 'solid-js'
+import { type ExternalToast, toast } from 'somoto'
 
 // ============================================================================
 // Types

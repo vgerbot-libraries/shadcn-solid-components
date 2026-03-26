@@ -1,25 +1,15 @@
-import { createSignal, For, type Component } from 'solid-js'
+import { type Component, createSignal, For } from 'solid-js'
+import {
+  Calendar,
+  CalendarCell,
+  CalendarCellTrigger,
+  CalendarHeadCell,
+  CalendarLabel,
+  CalendarNav,
+  CalendarTable,
+} from '@/components/calendar'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/card'
-import { TextField, TextFieldInput } from '@/components/text-field'
-import {
-  NumberField,
-  NumberFieldGroup,
-  NumberFieldInput,
-  NumberFieldDecrementTrigger,
-  NumberFieldIncrementTrigger,
-  NumberFieldLabel,
-} from '@/components/number-field'
 import { Checkbox, CheckboxControl, CheckboxLabel } from '@/components/checkbox'
-import {
-  RadioGroup,
-  RadioGroupItem,
-  RadioGroupItemControl,
-  RadioGroupItemInput,
-  RadioGroupItemLabel,
-  RadioGroupLabel,
-  RadioGroupItems,
-} from '@/components/radio-group'
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/select'
 import {
   Combobox,
   ComboboxContent,
@@ -29,37 +19,6 @@ import {
   ComboboxItemLabel,
   ComboboxTrigger,
 } from '@/components/combobox'
-import { Switch, SwitchControl, SwitchThumb, SwitchLabel } from '@/components/switch'
-import {
-  Slider,
-  SliderTrack,
-  SliderFill,
-  SliderThumb,
-  SliderGroup,
-  SliderLabel,
-  SliderValueLabel,
-} from '@/components/slider'
-import { ToggleButton } from '@/components/toggle-button'
-import { ToggleGroup, ToggleGroupItem } from '@/components/toggle-group'
-import {
-  OTPField,
-  OTPFieldGroup,
-  OTPFieldSlot,
-  OTPFieldInput,
-  OTPFieldSeparator,
-} from '@/components/otp-field'
-import { OTPFieldGroup as OTPFieldGroupHOC } from '@/hoc/otp-field'
-import { DatePickerField } from '@/hoc/date-picker'
-import { zhCN } from '@/i18n/locales/zh-CN'
-import {
-  Calendar,
-  CalendarNav,
-  CalendarLabel,
-  CalendarTable,
-  CalendarHeadCell,
-  CalendarCell,
-  CalendarCellTrigger,
-} from '@/components/calendar'
 import {
   DatePicker,
   DatePickerContent,
@@ -80,7 +39,48 @@ import {
   DatePickerViewControl,
   DatePickerViewTrigger,
 } from '@/components/date-picker'
-import { IconBold, IconItalic, IconUnderline, IconMinus, IconPlus } from '@/components/icons'
+import { IconBold, IconItalic, IconMinus, IconPlus, IconUnderline } from '@/components/icons'
+import {
+  NumberField,
+  NumberFieldDecrementTrigger,
+  NumberFieldGroup,
+  NumberFieldIncrementTrigger,
+  NumberFieldInput,
+  NumberFieldLabel,
+} from '@/components/number-field'
+import {
+  OTPField,
+  OTPFieldGroup,
+  OTPFieldInput,
+  OTPFieldSeparator,
+  OTPFieldSlot,
+} from '@/components/otp-field'
+import {
+  RadioGroup,
+  RadioGroupItem,
+  RadioGroupItemControl,
+  RadioGroupItemInput,
+  RadioGroupItemLabel,
+  RadioGroupItems,
+  RadioGroupLabel,
+} from '@/components/radio-group'
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/select'
+import {
+  Slider,
+  SliderFill,
+  SliderGroup,
+  SliderLabel,
+  SliderThumb,
+  SliderTrack,
+  SliderValueLabel,
+} from '@/components/slider'
+import { Switch, SwitchControl, SwitchLabel, SwitchThumb } from '@/components/switch'
+import { TextField, TextFieldInput } from '@/components/text-field'
+import { ToggleButton } from '@/components/toggle-button'
+import { ToggleGroup, ToggleGroupItem } from '@/components/toggle-group'
+import { DatePickerField } from '@/hoc/date-picker'
+import { OTPFieldGroup as OTPFieldGroupHOC } from '@/hoc/otp-field'
+import { zhCN } from '@/i18n/locales/zh-CN'
 import { PageLayout } from '../components/PageLayout'
 
 const fruits = ['Apple', 'Banana', 'Cherry', 'Date', 'Elderberry', 'Fig', 'Grape']
@@ -385,7 +385,7 @@ const FormInputsPage: Component = () => {
         </CardHeader>
         <CardContent class="flex justify-center">
           <Calendar mode="single">
-            {(state) => (
+            {state => (
               <div class="flex flex-col">
                 <div class="flex items-center justify-between">
                   <CalendarNav action="prev-month" />
@@ -398,7 +398,7 @@ const FormInputsPage: Component = () => {
                   <thead>
                     <tr class="flex">
                       <For each={state.weekdays}>
-                        {(weekday) => (
+                        {weekday => (
                           <CalendarHeadCell>
                             {weekday.toLocaleDateString('en', { weekday: 'short' }).slice(0, 2)}
                           </CalendarHeadCell>
@@ -408,14 +408,12 @@ const FormInputsPage: Component = () => {
                   </thead>
                   <tbody>
                     <For each={state.weeks}>
-                      {(week) => (
+                      {week => (
                         <tr class="flex w-full mt-2">
                           <For each={week}>
-                            {(day) => (
+                            {day => (
                               <CalendarCell>
-                                <CalendarCellTrigger day={day}>
-                                  {day.getDate()}
-                                </CalendarCellTrigger>
+                                <CalendarCellTrigger day={day}>{day.getDate()}</CalendarCellTrigger>
                               </CalendarCell>
                             )}
                           </For>
@@ -445,7 +443,7 @@ const FormInputsPage: Component = () => {
             <DatePickerPositioner>
               <DatePickerContent>
                 <DatePickerContext>
-                  {(api) => (
+                  {api => (
                     <>
                       <DatePickerView view="day">
                         <DatePickerViewControl>
@@ -457,7 +455,7 @@ const FormInputsPage: Component = () => {
                           <DatePickerTableHead>
                             <DatePickerTableRow>
                               <For each={api().weekDays}>
-                                {(weekDay) => (
+                                {weekDay => (
                                   <DatePickerTableHeader>{weekDay.short}</DatePickerTableHeader>
                                 )}
                               </For>
@@ -465,12 +463,14 @@ const FormInputsPage: Component = () => {
                           </DatePickerTableHead>
                           <DatePickerTableBody>
                             <For each={api().weeks}>
-                              {(week) => (
+                              {week => (
                                 <DatePickerTableRow>
                                   <For each={week}>
-                                    {(day) => (
+                                    {day => (
                                       <DatePickerTableCell value={day}>
-                                        <DatePickerTableCellTrigger>{day.day}</DatePickerTableCellTrigger>
+                                        <DatePickerTableCellTrigger>
+                                          {day.day}
+                                        </DatePickerTableCellTrigger>
                                       </DatePickerTableCell>
                                     )}
                                   </For>
@@ -489,12 +489,14 @@ const FormInputsPage: Component = () => {
                         <DatePickerTable>
                           <DatePickerTableBody>
                             <For each={api().getMonthsGrid({ columns: 4, format: 'short' })}>
-                              {(months) => (
+                              {months => (
                                 <DatePickerTableRow>
                                   <For each={months}>
-                                    {(month) => (
+                                    {month => (
                                       <DatePickerTableCell value={month.value}>
-                                        <DatePickerTableCellTrigger>{month.label}</DatePickerTableCellTrigger>
+                                        <DatePickerTableCellTrigger>
+                                          {month.label}
+                                        </DatePickerTableCellTrigger>
                                       </DatePickerTableCell>
                                     )}
                                   </For>
@@ -513,12 +515,14 @@ const FormInputsPage: Component = () => {
                         <DatePickerTable>
                           <DatePickerTableBody>
                             <For each={api().getYearsGrid({ columns: 4 })}>
-                              {(years) => (
+                              {years => (
                                 <DatePickerTableRow>
                                   <For each={years}>
-                                    {(year) => (
+                                    {year => (
                                       <DatePickerTableCell value={year.value}>
-                                        <DatePickerTableCellTrigger>{year.label}</DatePickerTableCellTrigger>
+                                        <DatePickerTableCellTrigger>
+                                          {year.label}
+                                        </DatePickerTableCellTrigger>
                                       </DatePickerTableCell>
                                     )}
                                   </For>
@@ -550,11 +554,7 @@ const FormInputsPage: Component = () => {
               required
               description="Select your date of birth."
             />
-            <DatePickerField
-              label="Deadline"
-              clearable
-              error="This field is required"
-            />
+            <DatePickerField label="Deadline" clearable error="This field is required" />
           </CardContent>
         </Card>
 
@@ -584,11 +584,7 @@ const FormInputsPage: Component = () => {
             <CardDescription>Select multiple dates, displayed as removable tags.</CardDescription>
           </CardHeader>
           <CardContent>
-            <DatePickerField
-              label="Select dates"
-              selectionMode="multiple"
-              clearable
-            />
+            <DatePickerField label="Select dates" selectionMode="multiple" clearable />
           </CardContent>
         </Card>
 
@@ -623,11 +619,7 @@ const FormInputsPage: Component = () => {
             <CardDescription>Dropdown selects for quick month/year navigation.</CardDescription>
           </CardHeader>
           <CardContent>
-            <DatePickerField
-              label="Event Date"
-              showMonthYearSelect
-              showTodayButton
-            />
+            <DatePickerField label="Event Date" showMonthYearSelect showTodayButton />
           </CardContent>
         </Card>
 
@@ -637,11 +629,7 @@ const FormInputsPage: Component = () => {
             <CardDescription>Select by month only, using minView and defaultView.</CardDescription>
           </CardHeader>
           <CardContent>
-            <DatePickerField
-              label="Billing Month"
-              defaultView="month"
-              minView="month"
-            />
+            <DatePickerField label="Billing Month" defaultView="month" minView="month" />
           </CardContent>
         </Card>
 
@@ -651,27 +639,27 @@ const FormInputsPage: Component = () => {
             <CardDescription>Select by year only, using minView and defaultView.</CardDescription>
           </CardHeader>
           <CardContent>
-            <DatePickerField
-              label="Fiscal Year"
-              defaultView="year"
-              minView="year"
-            />
+            <DatePickerField label="Fiscal Year" defaultView="year" minView="year" />
           </CardContent>
         </Card>
 
         <Card>
           <CardHeader>
             <CardTitle>Calendar Footer (HOC)</CardTitle>
-            <CardDescription>Custom footer slot with Today button and extra content.</CardDescription>
+            <CardDescription>
+              Custom footer slot with Today button and extra content.
+            </CardDescription>
           </CardHeader>
           <CardContent>
             <DatePickerField
               label="Appointment"
               showTodayButton
               calendarFooter={
-                <p class="text-xs text-muted-foreground mt-2 text-center">Weekends are unavailable</p>
+                <p class="text-xs text-muted-foreground mt-2 text-center">
+                  Weekends are unavailable
+                </p>
               }
-              isDateUnavailable={(date) => {
+              isDateUnavailable={date => {
                 const d = new Date(date.year, date.month - 1, date.day)
                 return d.getDay() === 0 || d.getDay() === 6
               }}

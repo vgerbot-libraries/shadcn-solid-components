@@ -1,19 +1,19 @@
-import { createSignal, type Component } from 'solid-js'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/card'
+import { type Component, createSignal } from 'solid-js'
 import { Button } from '@/components/button'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/card'
 import {
+  IconCheck,
+  IconCreditCard,
   IconInbox,
   IconMail,
-  IconUser,
   IconSettings,
-  IconCreditCard,
-  IconCheck,
+  IconUser,
 } from '@/components/icons'
-import { useNotify } from '@/hoc/use-notify'
 import { confirm } from '@/hoc/confirm-dialog'
-import { NotificationCenter, type NotificationItem } from '@/hoc/notification-center'
 import { EmptyState } from '@/hoc/empty-state'
 import { ModeToggleDropdown } from '@/hoc/mode-toggle-dropdown'
+import { NotificationCenter, type NotificationItem } from '@/hoc/notification-center'
+import { useNotify } from '@/hoc/use-notify'
 import { PageLayout } from '../components/PageLayout'
 
 const FeedbackPage: Component = () => {

@@ -1,6 +1,3 @@
-import { useLocale } from '@/components/config-provider'
-import type { CommandPaletteLocale } from '@/i18n/types'
-import { enUS as defaultLocale } from './locales/en-US'
 import { createEffect, createSignal, For, type JSX, onCleanup, Show, splitProps } from 'solid-js'
 import {
   CommandDialog,
@@ -12,18 +9,10 @@ import {
   CommandSeparator,
   CommandShortcut,
 } from '@/components/command'
+import { useLocale } from '@/components/config-provider'
 import { Kbd } from '@/components/kbd'
-
-
-
-
-
-
-
-
-
-
-
+import type { CommandPaletteLocale } from '@/i18n/types'
+import { enUS as defaultLocale } from './locales/en-US'
 
 // ============================================================================
 // Types
@@ -92,7 +81,11 @@ export interface CommandPaletteProps {
  */
 export function CommandPalette(props: CommandPaletteProps) {
   const globalLocale = useLocale()
-  const locale = (): CommandPaletteLocale => ({ ...defaultLocale, ...globalLocale.CommandPalette, ...props.locale })
+  const locale = (): CommandPaletteLocale => ({
+    ...defaultLocale,
+    ...globalLocale.CommandPalette,
+    ...props.locale,
+  })
 
   const isControlled = () => props.open !== undefined
   const [internalOpen, setInternalOpen] = createSignal(false)

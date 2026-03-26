@@ -1,4 +1,11 @@
-import { createSignal, type Component } from 'solid-js'
+import { type Component, createSignal } from 'solid-js'
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from '@/components/accordion'
+import { Button } from '@/components/button'
 import {
   Card,
   CardContent,
@@ -7,17 +14,10 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/card'
-import {
-  Accordion,
-  AccordionItem,
-  AccordionTrigger,
-  AccordionContent,
-} from '@/components/accordion'
-import { Collapsible, CollapsibleTrigger, CollapsibleContent } from '@/components/collapsible'
-import { Resizable, ResizablePanel, ResizableHandle } from '@/components/resizable'
-import { Tabs, TabsList, TabsTrigger, TabsContent, TabsIndicator } from '@/components/tabs'
-import { Button } from '@/components/button'
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/collapsible'
 import { IconChevronDown } from '@/components/icons'
+import { Resizable, ResizableHandle, ResizablePanel } from '@/components/resizable'
+import { Tabs, TabsContent, TabsIndicator, TabsList, TabsTrigger } from '@/components/tabs'
 import { PageLayout } from '../components/PageLayout'
 
 const LayoutPage: Component = () => {
