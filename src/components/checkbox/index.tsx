@@ -1,4 +1,4 @@
-import { Checkbox as CheckboxPrimitive } from '@kobalte/core/checkbox'
+import { Checkbox as CheckboxPrimitive, useCheckboxContext } from '@kobalte/core/checkbox'
 import type { ComponentProps, ValidComponent } from 'solid-js'
 import { splitProps } from 'solid-js'
 
@@ -9,7 +9,15 @@ export type CheckboxProps<T extends ValidComponent = 'div'> = ComponentProps<
 >
 
 export const Checkbox = <T extends ValidComponent = 'div'>(props: CheckboxProps<T>) => {
-  return <CheckboxPrimitive data-slot="checkbox" {...props} />
+  const [, rest] = splitProps(props as CheckboxProps, ['class'])
+
+  return (
+    <CheckboxPrimitive
+      data-slot="checkbox"
+      class={cx('inline-flex items-center gap-2 align-middle', props.class)}
+      {...rest}
+    />
+  )
 }
 
 export type CheckboxLabelProps<T extends ValidComponent = 'label'> = ComponentProps<
@@ -17,7 +25,8 @@ export type CheckboxLabelProps<T extends ValidComponent = 'label'> = ComponentPr
 >
 
 export const CheckboxLabel = <T extends ValidComponent = 'label'>(props: CheckboxLabelProps<T>) => {
-  const [, rest] = splitProps(props as CheckboxLabelProps, ['class'])
+  const context = useCheckboxContext()
+  const [, rest] = splitProps(props as CheckboxLabelProps, ['class', 'onClick'])
 
   return (
     <CheckboxPrimitive.Label
@@ -27,6 +36,13 @@ export const CheckboxLabel = <T extends ValidComponent = 'label'>(props: Checkbo
         'data-[invalid]:text-destructive',
         props.class,
       )}
+      onClick={(event: MouseEvent) => {
+        props.onClick?.(event)
+
+        if (!event.defaultPrevented && !context.inputRef()) {
+          context.toggle()
+        }
+      }}
       {...rest}
     />
   )
