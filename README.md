@@ -7,11 +7,6 @@ A collection of SolidJS components built with TailwindCSS, inspired by shadcn/ui
 ## Installation
 
 ```bash
-npm install shadcn-solid-components
-# or
-yarn add shadcn-solid-components
-# or
-pnpm add shadcn-solid-components
 # or
 npm install vgerbot-libraries/shadcn-solid-components
 # or
