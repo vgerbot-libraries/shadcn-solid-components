@@ -12,6 +12,12 @@ npm install shadcn-solid-components
 yarn add shadcn-solid-components
 # or
 pnpm add shadcn-solid-components
+# or
+npm install vgerbot-libraries/shadcn-solid-components
+# or
+yarn add vgerbot-libraries/shadcn-solid-components
+# or
+pnpm add vgerbot-libraries/shadcn-solid-components
 ```
 
 ## Peer Dependencies
