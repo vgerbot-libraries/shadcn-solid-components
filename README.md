@@ -7,12 +7,28 @@ A collection of SolidJS components built with TailwindCSS, inspired by shadcn/ui
 ## Installation
 
 ```bash
+npm install shadcn-solid-components
 # or
-npm install vgerbot-libraries/shadcn-solid-components
+yarn add shadcn-solid-components
 # or
-yarn add vgerbot-libraries/shadcn-solid-components
+pnpm add shadcn-solid-components
+```
+
+If you need to install directly from GitHub, use:
+
+```bash
+npm install github:vgerbot-libraries/shadcn-solid-components
 # or
-pnpm add vgerbot-libraries/shadcn-solid-components
+yarn add github:vgerbot-libraries/shadcn-solid-components
+# or
+pnpm add github:vgerbot-libraries/shadcn-solid-components
+```
+
+> **Note:** GitHub installs build the package from source during installation. If your `pnpm` workspace restricts dependency build scripts with `onlyBuiltDependencies`, allow `shadcn-solid-components` first or run `pnpm approve-builds`.
+
+```yaml
+onlyBuiltDependencies:
+  - shadcn-solid-components
 ```
 
 ## Peer Dependencies
