@@ -4,14 +4,10 @@ import {
   getComponentEntries,
   copyThemesToDist
 } from './scripts'
+import { getHocEntries } from './scripts/components';
 
 const preset_options: preset.PresetOptions = {
   entries: [
-    // Main entry
-    {
-      entry: 'src/index.tsx',
-      name: 'index'
-    },
     // Lib utilities
     {
       entry: 'src/lib/index.ts',
@@ -19,6 +15,7 @@ const preset_options: preset.PresetOptions = {
     },
     // Dynamically add all components
     ...getComponentEntries(),
+    ...getHocEntries(),
   ],
   // Set to `true` to remove all `console.*` calls and `debugger` statements in prod builds
   drop_console: true,

@@ -1,5 +1,5 @@
-import { readdirSync, statSync } from 'fs'
-import { join } from 'path'
+import { existsSync, fstat, readdirSync, statSync } from 'fs'
+import path, { join } from 'path'
 
 interface ComponentEntry {
   entry: string
@@ -11,7 +11,21 @@ interface ComponentEntry {
  * @returns Array of component entry configurations
  */
 export function getComponentEntries(): ComponentEntry[] {
-  const componentsDir = join(process.cwd(), 'src/components')
+  return _getComponentEntries('src/components')
+}
+
+
+export function getHocEntries(): ComponentEntry[] {
+  return _getComponentEntries('src/hoc').map(it => {
+    return {
+      ...it,
+      name: 'hoc/' + it.name
+    }
+  })
+}
+
+function _getComponentEntries(dir: string): ComponentEntry[] {
+  const componentsDir = join(process.cwd(), dir)
   const entries: ComponentEntry[] = []
 
   try {
@@ -23,8 +37,12 @@ export function getComponentEntries(): ComponentEntry[] {
 
       // Only process directories (skip index.ts)
       if (stat.isDirectory()) {
+        let entry = `${dir}/${item}/index.tsx`;
+        if(existsSync(path.resolve(componentsDir, item, 'index.ts'))) {
+            entry = `${dir}/${item}/index.ts`;1
+        }
         entries.push({
-          entry: `src/components/${item}/index.tsx`,
+          entry,
           name: item,
         })
       }
@@ -35,4 +53,3 @@ export function getComponentEntries(): ComponentEntry[] {
 
   return entries
 }
-
