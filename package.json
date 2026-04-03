@@ -418,7 +418,7 @@
     "lint:code": "biome check --write ./src",
     "lint:types": "tsc --noEmit",
     "update-deps": "pnpm up -Li",
-    "postinstall": "npm run build"
+    "prepare": "npm run build"
   },
   "peerDependencies": {
     "solid-js": "^1.6.0",
