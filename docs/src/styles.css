@@ -1,0 +1,41 @@
+@import "shadcn-solid-components/src/themes/default.preset.css";
+
+
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background: var(--background);
+    color: var(--foreground);
+    font-family:
+      "Inter",
+      ui-sans-serif,
+      system-ui,
+      sans-serif;
+  }
+
+  * {
+    border-color: var(--border);
+  }
+}
+
+@layer utilities {
+  .no-scrollbar {
+    scrollbar-width: none;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.docs-content {
+  min-width: 0;
+}
+
+.docs-content > :first-child {
+  margin-top: 0;
+}
