@@ -1,0 +1,4 @@
+[submodule "shadcn-solid-components-skills"]
+	path = shadcn-solid-components-skills
+	url = git@github.com:vgerbot-libraries/shadcn-solid-components-skills.git
+  branch = main
