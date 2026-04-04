@@ -7,9 +7,9 @@ import {
 import { getHocEntries } from './scripts/components'
 
 const entries = {
-  'lib': 'src/lib/index.ts',
-  ...Object.fromEntries(getComponentEntries().map(e => [e.name, e.entry])),
-  ...Object.fromEntries(getHocEntries().map(e => [e.name, e.entry])),
+  'lib/index': 'src/lib/index.ts',
+  ...Object.fromEntries(getComponentEntries().map(e => [`${e.name}/index`, e.entry])),
+  ...Object.fromEntries(getHocEntries().map(e => [`${e.name}/index`, e.entry])),
 }
 
 export default defineConfig({
@@ -25,7 +25,7 @@ export default defineConfig({
   exports: {
     all: true,
   },
-  outExtensions: () => ({ js: '.js' }),
+  outExtensions: () => ({ js: '.jsx' }),
   onSuccess: async () => {
     copyThemesToDist()
   },
