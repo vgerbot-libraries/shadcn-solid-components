@@ -13,7 +13,7 @@ import {
 } from 'solid-js'
 import { createStore } from 'solid-js/store'
 
-import { cx } from '@/lib/cva'
+import { cx } from 'shadcn-solid-components/lib/cva'
 
 import type { ButtonProps } from '../button'
 import { Button } from '../button'

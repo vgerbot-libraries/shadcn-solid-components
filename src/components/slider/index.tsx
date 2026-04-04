@@ -1,9 +1,9 @@
 import { Slider as SliderPrimitive } from '@kobalte/core/slider'
 import type { VoidProps } from 'solid-js'
 import { type ComponentProps, splitProps, type ValidComponent } from 'solid-js'
-import { ComponentName } from '@/lib/theme-context'
-import { useComponentClass } from '@/lib/theme-helpers'
-import { cx } from '@/registry/lib/cva'
+import { ComponentName } from 'shadcn-solid-components/lib/theme-context'
+import { useComponentClass } from 'shadcn-solid-components/lib/theme-helpers'
+import { cx } from 'shadcn-solid-components/lib/cva'
 
 export type SliderProps<T extends ValidComponent = 'div'> = ComponentProps<
   typeof SliderPrimitive<T>

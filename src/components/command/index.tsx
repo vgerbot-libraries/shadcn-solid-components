@@ -1,9 +1,9 @@
 import { Command as CommandPrimitive } from 'cmdk-solid'
 import type { ComponentProps } from 'solid-js'
 import { splitProps } from 'solid-js'
-import { ComponentName } from '@/lib/theme-context'
-import { useComponentClass } from '@/lib/theme-helpers'
-import { cx } from '@/registry/lib/cva'
+import { ComponentName } from 'shadcn-solid-components/lib/theme-context'
+import { useComponentClass } from 'shadcn-solid-components/lib/theme-helpers'
+import { cx } from 'shadcn-solid-components/lib/cva'
 
 export type CommandProps = ComponentProps<typeof CommandPrimitive>
 

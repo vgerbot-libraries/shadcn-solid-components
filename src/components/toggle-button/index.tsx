@@ -1,9 +1,9 @@
 import { ToggleButton as ToggleButtonPrimitive } from '@kobalte/core/toggle-button'
 import type { VariantProps } from 'cva'
 import { type ComponentProps, splitProps, type ValidComponent } from 'solid-js'
-import { ComponentName } from '@/lib/theme-context'
-import { useComponentClass } from '@/lib/theme-helpers'
-import { cva, cx } from '@/registry/lib/cva'
+import { ComponentName } from 'shadcn-solid-components/lib/theme-context'
+import { useComponentClass } from 'shadcn-solid-components/lib/theme-helpers'
+import { cva, cx } from 'shadcn-solid-components/lib/cva'
 
 export const toggleButtonVariants = cva({
   base: "inline-flex items-center justify-center gap-2 text-sm font-medium hover:bg-muted hover:text-muted-foreground disabled:pointer-events-none disabled:opacity-50 data-[pressed]:bg-accent data-[pressed]:text-accent-foreground [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 [&_svg]:shrink-0 focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] outline-none transition-[color,background-color,box-shadow] whitespace-nowrap",

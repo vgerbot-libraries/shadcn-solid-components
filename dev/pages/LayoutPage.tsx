@@ -4,8 +4,8 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from '@/components/accordion'
-import { Button } from '@/components/button'
+} from 'shadcn-solid-components/components/accordion'
+import { Button } from 'shadcn-solid-components/components/button'
 import {
   Card,
   CardContent,
@@ -13,11 +13,11 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from '@/components/card'
-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/collapsible'
-import { IconChevronDown } from '@/components/icons'
-import { Resizable, ResizableHandle, ResizablePanel } from '@/components/resizable'
-import { Tabs, TabsContent, TabsIndicator, TabsList, TabsTrigger } from '@/components/tabs'
+} from 'shadcn-solid-components/components/card'
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from 'shadcn-solid-components/components/collapsible'
+import { IconChevronDown } from 'shadcn-solid-components/components/icons'
+import { Resizable, ResizableHandle, ResizablePanel } from 'shadcn-solid-components/components/resizable'
+import { Tabs, TabsContent, TabsIndicator, TabsList, TabsTrigger } from 'shadcn-solid-components/components/tabs'
 import { PageLayout } from '../components/PageLayout'
 
 const LayoutPage: Component = () => {

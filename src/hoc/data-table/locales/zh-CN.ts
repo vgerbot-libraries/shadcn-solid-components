@@ -1,4 +1,4 @@
-import type { DataTableLocale } from '@/i18n/types'
+import type { DataTableLocale } from 'shadcn-solid-components/i18n/types'
 
 export const zhCN: DataTableLocale = {
   toolbar: {},

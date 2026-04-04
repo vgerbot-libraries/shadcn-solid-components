@@ -2,8 +2,8 @@ import type { DynamicProps } from '@corvu/drawer'
 import DrawerPrimitive from '@corvu/drawer'
 import type { ComponentProps, ValidComponent } from 'solid-js'
 import { mergeProps, Show, splitProps } from 'solid-js'
-import { ComponentName } from '@/lib/theme-context'
-import { cx } from '@/registry/lib/cva'
+import { ComponentName } from 'shadcn-solid-components/lib/theme-context'
+import { cx } from 'shadcn-solid-components/lib/cva'
 
 export const DrawerPortal = DrawerPrimitive.Portal
 

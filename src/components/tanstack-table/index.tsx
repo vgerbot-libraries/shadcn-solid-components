@@ -33,9 +33,9 @@ import {
 } from '@tanstack/solid-table'
 import type { ComponentProps, JSX } from 'solid-js'
 import { createContext, For, Match, Show, Switch, splitProps, useContext } from 'solid-js'
-import { Button } from '@/components/button'
-import { Checkbox, CheckboxControl, CheckboxInput } from '@/components/checkbox'
-import { useLocale } from '@/components/config-provider'
+import { Button } from 'shadcn-solid-components/components/button'
+import { Checkbox, CheckboxControl, CheckboxInput } from 'shadcn-solid-components/components/checkbox'
+import { useLocale } from 'shadcn-solid-components/components/config-provider'
 import {
   Select,
   SelectContent,
@@ -43,10 +43,10 @@ import {
   SelectPortal,
   SelectTrigger,
   SelectValue,
-} from '@/components/select'
-import { TextField, TextFieldInput } from '@/components/text-field'
-import type { TanstackTableLocale } from '@/i18n/types'
-import { cx } from '@/lib/cva'
+} from 'shadcn-solid-components/components/select'
+import { TextField, TextFieldInput } from 'shadcn-solid-components/components/text-field'
+import type { TanstackTableLocale } from 'shadcn-solid-components/i18n/types'
+import { cx } from 'shadcn-solid-components/lib/cva'
 import { enUS as defaultLocale } from './locales/en-US'
 
 import './index.css'

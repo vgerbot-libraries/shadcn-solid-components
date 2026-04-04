@@ -10,7 +10,7 @@ import {
   SidebarInset,
   SidebarProps,
   SidebarProvider,
-} from '@/components/sidebar'
+} from 'shadcn-solid-components/components/sidebar'
 import { SidebarMenuTree, SidebarMenuTreeProps } from '../sidebar-menu-tree'
 
 export type AppSidebarMenuGroup = {

@@ -3,9 +3,9 @@ import type { VariantProps } from 'cva'
 import type { ComponentProps, ValidComponent } from 'solid-js'
 import { splitProps } from 'solid-js'
 
-import { cva, cx } from '@/lib/cva'
-import { ComponentName } from '@/lib/theme-context'
-import { useComponentClass } from '@/lib/theme-helpers'
+import { cva, cx } from 'shadcn-solid-components/lib/cva'
+import { ComponentName } from 'shadcn-solid-components/lib/theme-context'
+import { useComponentClass } from 'shadcn-solid-components/lib/theme-helpers'
 
 export const buttonVariants = cva({
   base: [

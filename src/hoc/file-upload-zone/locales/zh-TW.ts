@@ -1,4 +1,4 @@
-import type { FileUploadZoneLocale } from '@/i18n/types'
+import type { FileUploadZoneLocale } from 'shadcn-solid-components/i18n/types'
 
 export const zhTW: FileUploadZoneLocale = {
   dropHere: '拖放檔案到此處',

@@ -7,9 +7,9 @@ import {
   CalendarLabel,
   CalendarNav,
   CalendarTable,
-} from '@/components/calendar'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/card'
-import { Checkbox, CheckboxControl, CheckboxLabel } from '@/components/checkbox'
+} from 'shadcn-solid-components/components/calendar'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from 'shadcn-solid-components/components/card'
+import { Checkbox, CheckboxControl, CheckboxLabel } from 'shadcn-solid-components/components/checkbox'
 import {
   Combobox,
   ComboboxContent,
@@ -18,7 +18,7 @@ import {
   ComboboxItem,
   ComboboxItemLabel,
   ComboboxTrigger,
-} from '@/components/combobox'
+} from 'shadcn-solid-components/components/combobox'
 import {
   DatePicker,
   DatePickerContent,
@@ -38,8 +38,8 @@ import {
   DatePickerView,
   DatePickerViewControl,
   DatePickerViewTrigger,
-} from '@/components/date-picker'
-import { IconBold, IconItalic, IconMinus, IconPlus, IconUnderline } from '@/components/icons'
+} from 'shadcn-solid-components/components/date-picker'
+import { IconBold, IconItalic, IconMinus, IconPlus, IconUnderline } from 'shadcn-solid-components/components/icons'
 import {
   NumberField,
   NumberFieldDecrementTrigger,
@@ -47,14 +47,14 @@ import {
   NumberFieldIncrementTrigger,
   NumberFieldInput,
   NumberFieldLabel,
-} from '@/components/number-field'
+} from 'shadcn-solid-components/components/number-field'
 import {
   OTPField,
   OTPFieldGroup,
   OTPFieldInput,
   OTPFieldSeparator,
   OTPFieldSlot,
-} from '@/components/otp-field'
+} from 'shadcn-solid-components/components/otp-field'
 import {
   RadioGroup,
   RadioGroupItem,
@@ -63,8 +63,8 @@ import {
   RadioGroupItemLabel,
   RadioGroupItems,
   RadioGroupLabel,
-} from '@/components/radio-group'
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/select'
+} from 'shadcn-solid-components/components/radio-group'
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from 'shadcn-solid-components/components/select'
 import {
   Slider,
   SliderFill,
@@ -73,14 +73,14 @@ import {
   SliderThumb,
   SliderTrack,
   SliderValueLabel,
-} from '@/components/slider'
-import { Switch, SwitchControl, SwitchLabel, SwitchThumb } from '@/components/switch'
-import { TextField, TextFieldInput } from '@/components/text-field'
-import { ToggleButton } from '@/components/toggle-button'
-import { ToggleGroup, ToggleGroupItem } from '@/components/toggle-group'
-import { DatePickerField } from '@/hoc/date-picker'
-import { OTPFieldGroup as OTPFieldGroupHOC } from '@/hoc/otp-field'
-import { zhCN } from '@/i18n/locales/zh-CN'
+} from 'shadcn-solid-components/components/slider'
+import { Switch, SwitchControl, SwitchLabel, SwitchThumb } from 'shadcn-solid-components/components/switch'
+import { TextField, TextFieldInput } from 'shadcn-solid-components/components/text-field'
+import { ToggleButton } from 'shadcn-solid-components/components/toggle-button'
+import { ToggleGroup, ToggleGroupItem } from 'shadcn-solid-components/components/toggle-group'
+import { DatePickerField } from 'shadcn-solid-components/hoc/date-picker'
+import { OTPFieldGroup as OTPFieldGroupHOC } from 'shadcn-solid-components/hoc/otp-field'
+import { zhCN } from 'shadcn-solid-components/i18n/locales/zh-CN'
 import { PageLayout } from '../components/PageLayout'
 
 const fruits = ['Apple', 'Banana', 'Cherry', 'Date', 'Elderberry', 'Fig', 'Grape']

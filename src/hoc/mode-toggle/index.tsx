@@ -1,6 +1,6 @@
 import { useColorMode } from '@kobalte/core'
 
-import { Button } from '@/components/button'
+import { Button } from 'shadcn-solid-components/components/button'
 
 const ModeToggle = () => {
   const { toggleColorMode } = useColorMode()

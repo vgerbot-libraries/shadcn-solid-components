@@ -1,9 +1,9 @@
 import { type ComponentProps, createMemo, For, type JSX, Show, splitProps } from 'solid-js'
-import { Badge } from '@/components/badge'
-import { Button } from '@/components/button'
-import { useLocale } from '@/components/config-provider'
-import type { FilterBuilderLocale } from '@/i18n/types'
-import { cx } from '@/lib/cva'
+import { Badge } from 'shadcn-solid-components/components/badge'
+import { Button } from 'shadcn-solid-components/components/button'
+import { useLocale } from 'shadcn-solid-components/components/config-provider'
+import type { FilterBuilderLocale } from 'shadcn-solid-components/i18n/types'
+import { cx } from 'shadcn-solid-components/lib/cva'
 import { enUS as defaultLocale } from './locales/en-US'
 
 // ============================================================================

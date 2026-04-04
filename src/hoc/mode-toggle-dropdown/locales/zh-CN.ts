@@ -1,4 +1,4 @@
-import type { ModeToggleDropdownLocale } from '@/i18n/types'
+import type { ModeToggleDropdownLocale } from 'shadcn-solid-components/i18n/types'
 
 export const zhCN: ModeToggleDropdownLocale = {
   toggleTheme: '切换主题',

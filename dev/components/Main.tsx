@@ -1,16 +1,16 @@
 import { VisArea, VisLine } from '@unovis/solid'
 import { type Component, createEffect, createSignal, For } from 'solid-js'
 import { type Tabulator } from 'tabulator-tables'
-import { Badge } from '@/components/badge'
-import { Button } from '@/components/button'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/card'
-import { ChartContainer, ChartCrosshair } from '@/components/chart'
+import { Badge } from 'shadcn-solid-components/components/badge'
+import { Button } from 'shadcn-solid-components/components/button'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from 'shadcn-solid-components/components/card'
+import { ChartContainer, ChartCrosshair } from 'shadcn-solid-components/components/chart'
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from '@/components/dropdown-menu'
+} from 'shadcn-solid-components/components/dropdown-menu'
 import {
   IconBell,
   IconBrandGithub,
@@ -22,18 +22,18 @@ import {
   IconMail,
   IconSettings,
   IconUser,
-} from '@/components/icons'
-import { Separator } from '@/components/separator'
-import { SidebarTrigger } from '@/components/sidebar'
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/table'
-import { TabulatorTable } from '@/components/tabulator-table'
+} from 'shadcn-solid-components/components/icons'
+import { Separator } from 'shadcn-solid-components/components/separator'
+import { SidebarTrigger } from 'shadcn-solid-components/components/sidebar'
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from 'shadcn-solid-components/components/table'
+import { TabulatorTable } from 'shadcn-solid-components/components/tabulator-table'
 import type {
   ColumnDef,
   ColumnFiltersState,
   RowSelectionState,
   SortingState,
   VisibilityState,
-} from '@/components/tanstack-table'
+} from 'shadcn-solid-components/components/tanstack-table'
 import {
   createSelectColumn,
   createSolidTable,
@@ -47,26 +47,26 @@ import {
   TanstackTableHeader,
   TanstackTablePagination,
   TanstackTableProvider,
-} from '@/components/tanstack-table'
-import { TextField, TextFieldInput } from '@/components/text-field'
-import { confirm } from '@/hoc/confirm-dialog'
-import { DataTable } from '@/hoc/data-table'
-import { DataTableToolbar } from '@/hoc/data-table-toolbar'
-import { DescriptionList } from '@/hoc/description-list'
-import { EmptyState } from '@/hoc/empty-state'
-import { FileUploadZone, type UploadFile } from '@/hoc/file-upload-zone'
-import { FilterBuilder, type FilterRule } from '@/hoc/filter-builder'
-import { FormField } from '@/hoc/form-field'
-import { LoginForm } from '@/hoc/login-form'
-import { NotificationCenter, type NotificationItem } from '@/hoc/notification-center'
-import { PageHeader } from '@/hoc/page-header'
-import { StatCard } from '@/hoc/stat-card'
-import { Stepper } from '@/hoc/stepper'
-import { TagInput } from '@/hoc/tag-input'
-import { Timeline } from '@/hoc/timeline'
-import { type TransferItem, TransferList } from '@/hoc/transfer-list'
-import { useNotify } from '@/hoc/use-notify'
-import { UserMenu } from '@/hoc/user-menu'
+} from 'shadcn-solid-components/components/tanstack-table'
+import { TextField, TextFieldInput } from 'shadcn-solid-components/components/text-field'
+import { confirm } from 'shadcn-solid-components/hoc/confirm-dialog'
+import { DataTable } from 'shadcn-solid-components/hoc/data-table'
+import { DataTableToolbar } from 'shadcn-solid-components/hoc/data-table-toolbar'
+import { DescriptionList } from 'shadcn-solid-components/hoc/description-list'
+import { EmptyState } from 'shadcn-solid-components/hoc/empty-state'
+import { FileUploadZone, type UploadFile } from 'shadcn-solid-components/hoc/file-upload-zone'
+import { FilterBuilder, type FilterRule } from 'shadcn-solid-components/hoc/filter-builder'
+import { FormField } from 'shadcn-solid-components/hoc/form-field'
+import { LoginForm } from 'shadcn-solid-components/hoc/login-form'
+import { NotificationCenter, type NotificationItem } from 'shadcn-solid-components/hoc/notification-center'
+import { PageHeader } from 'shadcn-solid-components/hoc/page-header'
+import { StatCard } from 'shadcn-solid-components/hoc/stat-card'
+import { Stepper } from 'shadcn-solid-components/hoc/stepper'
+import { TagInput } from 'shadcn-solid-components/hoc/tag-input'
+import { Timeline } from 'shadcn-solid-components/hoc/timeline'
+import { type TransferItem, TransferList } from 'shadcn-solid-components/hoc/transfer-list'
+import { useNotify } from 'shadcn-solid-components/hoc/use-notify'
+import { UserMenu } from 'shadcn-solid-components/hoc/user-menu'
 import {
   ActiveAccountsIcon,
   ChevronLeftDoubleIcon,

@@ -1,4 +1,4 @@
-import type { TanstackTableLocale } from '@/i18n/types'
+import type { TanstackTableLocale } from 'shadcn-solid-components/i18n/types'
 
 export const zhTW: TanstackTableLocale = {
   noResults: '暫無資料',

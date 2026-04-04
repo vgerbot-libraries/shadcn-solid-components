@@ -3,7 +3,7 @@ import type { VariantProps } from 'cva'
 import type { ComponentProps, ValidComponent } from 'solid-js'
 import { createContext, splitProps, useContext } from 'solid-js'
 
-import { cx } from '@/registry/lib/cva'
+import { cx } from 'shadcn-solid-components/lib/cva'
 
 import { toggleButtonVariants } from '../toggle-button'
 

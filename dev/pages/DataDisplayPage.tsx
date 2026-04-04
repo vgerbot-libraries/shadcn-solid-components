@@ -1,20 +1,20 @@
 import { VisArea, VisLine } from '@unovis/solid'
 import { type Component, createSignal } from 'solid-js'
-import { Badge } from '@/components/badge'
-import { Button } from '@/components/button'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/card'
+import { Badge } from 'shadcn-solid-components/components/badge'
+import { Button } from 'shadcn-solid-components/components/button'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from 'shadcn-solid-components/components/card'
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from '@/components/carousel'
-import { ChartContainer, ChartCrosshair } from '@/components/chart'
-import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/components/hover-card'
-import { Progress, ProgressGroup, ProgressLabel, ProgressValueLabel } from '@/components/progress'
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/table'
-import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/tooltip'
+} from 'shadcn-solid-components/components/carousel'
+import { ChartContainer, ChartCrosshair } from 'shadcn-solid-components/components/chart'
+import { HoverCard, HoverCardContent, HoverCardTrigger } from 'shadcn-solid-components/components/hover-card'
+import { Progress, ProgressGroup, ProgressLabel, ProgressValueLabel } from 'shadcn-solid-components/components/progress'
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from 'shadcn-solid-components/components/table'
+import { Tooltip, TooltipContent, TooltipTrigger } from 'shadcn-solid-components/components/tooltip'
 import { PageLayout } from '../components/PageLayout'
 
 const chartData = [

@@ -1,4 +1,4 @@
-import type { TagInputLocale } from '@/i18n/types'
+import type { TagInputLocale } from 'shadcn-solid-components/i18n/types'
 
 export const zhCN: TagInputLocale = {
   placeholder: '添加标签…',

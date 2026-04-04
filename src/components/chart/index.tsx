@@ -19,7 +19,7 @@ import {
 } from 'solid-js'
 import { render } from 'solid-js/web'
 import './index.css'
-import { cx } from '@/lib/cva'
+import { cx } from 'shadcn-solid-components/lib/cva'
 
 // Format: { THEME_NAME: CSS_SELECTOR }
 const THEMES = { light: '', dark: '[data-kb-theme="dark"]' } as const

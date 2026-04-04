@@ -1,4 +1,4 @@
-import type { OTPFieldLocale } from '@/i18n/types'
+import type { OTPFieldLocale } from 'shadcn-solid-components/i18n/types'
 
 export const zhTW: OTPFieldLocale = {
   label: '一次性密碼',

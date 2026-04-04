@@ -1,8 +1,8 @@
 import { type ComponentProps, createSignal, For, type JSX, Show, splitProps } from 'solid-js'
-import { Badge } from '@/components/badge'
-import { useLocale } from '@/components/config-provider'
-import type { TagInputLocale } from '@/i18n/types'
-import { cx } from '@/lib/cva'
+import { Badge } from 'shadcn-solid-components/components/badge'
+import { useLocale } from 'shadcn-solid-components/components/config-provider'
+import type { TagInputLocale } from 'shadcn-solid-components/i18n/types'
+import { cx } from 'shadcn-solid-components/lib/cva'
 import { enUS as defaultLocale } from './locales/en-US'
 
 // ============================================================================

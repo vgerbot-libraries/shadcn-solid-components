@@ -1,4 +1,4 @@
-import type { StepperLocale } from '@/i18n/types'
+import type { StepperLocale } from 'shadcn-solid-components/i18n/types'
 
 export const jaJP: StepperLocale = {
   next: '次へ',

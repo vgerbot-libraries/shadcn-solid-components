@@ -1,4 +1,4 @@
-import type { DatePickerFieldLocale } from '@/i18n/types'
+import type { DatePickerFieldLocale } from 'shadcn-solid-components/i18n/types'
 
 export const jaJP: DatePickerFieldLocale = {
   placeholder: '日付を選択',

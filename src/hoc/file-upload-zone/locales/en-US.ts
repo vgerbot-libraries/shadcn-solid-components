@@ -1,4 +1,4 @@
-import type { FileUploadZoneLocale } from '@/i18n/types'
+import type { FileUploadZoneLocale } from 'shadcn-solid-components/i18n/types'
 
 export const enUS: FileUploadZoneLocale = {
   dropHere: 'Drag & drop files here',

@@ -1,6 +1,6 @@
 import { type Component, createSignal } from 'solid-js'
-import { Button } from '@/components/button'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/card'
+import { Button } from 'shadcn-solid-components/components/button'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from 'shadcn-solid-components/components/card'
 import {
   IconCheck,
   IconCreditCard,
@@ -8,12 +8,12 @@ import {
   IconMail,
   IconSettings,
   IconUser,
-} from '@/components/icons'
-import { confirm } from '@/hoc/confirm-dialog'
-import { EmptyState } from '@/hoc/empty-state'
-import { ModeToggleDropdown } from '@/hoc/mode-toggle-dropdown'
-import { NotificationCenter, type NotificationItem } from '@/hoc/notification-center'
-import { useNotify } from '@/hoc/use-notify'
+} from 'shadcn-solid-components/components/icons'
+import { confirm } from 'shadcn-solid-components/hoc/confirm-dialog'
+import { EmptyState } from 'shadcn-solid-components/hoc/empty-state'
+import { ModeToggleDropdown } from 'shadcn-solid-components/hoc/mode-toggle-dropdown'
+import { NotificationCenter, type NotificationItem } from 'shadcn-solid-components/hoc/notification-center'
+import { useNotify } from 'shadcn-solid-components/hoc/use-notify'
 import { PageLayout } from '../components/PageLayout'
 
 const FeedbackPage: Component = () => {

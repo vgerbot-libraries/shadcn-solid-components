@@ -1,6 +1,6 @@
 import { useColorMode } from '@kobalte/core'
 import { type Component } from 'solid-js'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/card'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from 'shadcn-solid-components/components/card'
 import {
   RadioGroup,
   RadioGroupItem,
@@ -9,9 +9,9 @@ import {
   RadioGroupItemLabel,
   RadioGroupItems,
   RadioGroupLabel,
-} from '@/components/radio-group'
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/select'
-import type { Locale } from '@/i18n/types'
+} from 'shadcn-solid-components/components/radio-group'
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from 'shadcn-solid-components/components/select'
+import type { Locale } from 'shadcn-solid-components/i18n/types'
 import { PageLayout } from '../components/PageLayout'
 import { setGlobalLocale } from '../store'
 
@@ -24,10 +24,10 @@ const localeOptions = [
 ]
 
 const localeLoaders: Record<string, () => Promise<Locale>> = {
-  'en-US': () => import('@/i18n/locales/en-US').then(m => m.enUS),
-  'zh-CN': () => import('@/i18n/locales/zh-CN').then(m => m.zhCN),
-  'zh-TW': () => import('@/i18n/locales/zh-TW').then(m => m.zhTW),
-  'ja-JP': () => import('@/i18n/locales/ja-JP').then(m => m.jaJP),
+  'en-US': () => import('shadcn-solid-components/i18n/locales/en-US').then(m => m.enUS),
+  'zh-CN': () => import('shadcn-solid-components/i18n/locales/zh-CN').then(m => m.zhCN),
+  'zh-TW': () => import('shadcn-solid-components/i18n/locales/zh-TW').then(m => m.zhTW),
+  'ja-JP': () => import('shadcn-solid-components/i18n/locales/ja-JP').then(m => m.jaJP),
 }
 
 async function handleLocaleChange(value: string) {

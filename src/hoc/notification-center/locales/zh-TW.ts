@@ -1,4 +1,4 @@
-import type { NotificationCenterLocale } from '@/i18n/types'
+import type { NotificationCenterLocale } from 'shadcn-solid-components/i18n/types'
 
 export const zhTW: NotificationCenterLocale = {
   title: '通知',

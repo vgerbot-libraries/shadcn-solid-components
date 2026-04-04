@@ -1,4 +1,4 @@
-import type { TransferListLocale } from '@/i18n/types'
+import type { TransferListLocale } from 'shadcn-solid-components/i18n/types'
 
 export const jaJP: TransferListLocale = {
   sourceTitle: '利用可能',

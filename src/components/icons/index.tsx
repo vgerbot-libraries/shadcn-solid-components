@@ -1,6 +1,6 @@
 import { type ComponentProps, splitProps } from 'solid-js'
 
-import { cx } from '@/lib/cva'
+import { cx } from 'shadcn-solid-components/lib/cva'
 
 type IconProps = ComponentProps<'svg'>
 

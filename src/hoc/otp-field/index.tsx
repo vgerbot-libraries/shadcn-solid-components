@@ -1,14 +1,14 @@
 import { type ComponentProps, For, Show, splitProps } from 'solid-js'
-import { useLocale } from '@/components/config-provider'
+import { useLocale } from 'shadcn-solid-components/components/config-provider'
 import {
   OTPFieldGroup as OTPFieldGroupBase,
   OTPFieldInput,
   OTPField as OTPFieldRoot,
   OTPFieldSeparator,
   OTPFieldSlot,
-} from '@/components/otp-field'
-import type { OTPFieldLocale } from '@/i18n/types'
-import { cx } from '@/lib/cva'
+} from 'shadcn-solid-components/components/otp-field'
+import type { OTPFieldLocale } from 'shadcn-solid-components/i18n/types'
+import { cx } from 'shadcn-solid-components/lib/cva'
 import { enUS as defaultLocale } from './locales/en-US'
 
 // ============================================================================

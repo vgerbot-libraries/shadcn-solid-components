@@ -1,5 +1,5 @@
 import { createContext, type JSX, useContext } from 'solid-js'
-import type { Locale } from '@/i18n/types'
+import type { Locale } from 'shadcn-solid-components/i18n/types'
 
 const LocaleContext = createContext<Partial<Locale>>({})
 

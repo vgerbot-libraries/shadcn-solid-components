@@ -1,4 +1,4 @@
-import type { UserMenuLocale } from '@/i18n/types'
+import type { UserMenuLocale } from 'shadcn-solid-components/i18n/types'
 
 export const enUS: UserMenuLocale = {
   lightTheme: 'Light',

@@ -1,8 +1,8 @@
 import { type Component } from 'solid-js'
-import { Badge } from '@/components/badge'
-import { Button } from '@/components/button'
-import { ButtonGroup, ButtonSeparator, ButtonText } from '@/components/button-group'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/card'
+import { Badge } from 'shadcn-solid-components/components/badge'
+import { Button } from 'shadcn-solid-components/components/button'
+import { ButtonGroup, ButtonSeparator, ButtonText } from 'shadcn-solid-components/components/button-group'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from 'shadcn-solid-components/components/card'
 import {
   IconBold,
   IconDownload,
@@ -12,10 +12,10 @@ import {
   IconSettings,
   IconTrash,
   IconUnderline,
-} from '@/components/icons'
-import { Kbd, KbdGroup } from '@/components/kbd'
-import { Separator } from '@/components/separator'
-import { Skeleton } from '@/components/skeleton'
+} from 'shadcn-solid-components/components/icons'
+import { Kbd, KbdGroup } from 'shadcn-solid-components/components/kbd'
+import { Separator } from 'shadcn-solid-components/components/separator'
+import { Skeleton } from 'shadcn-solid-components/components/skeleton'
 import { PageLayout } from '../components/PageLayout'
 
 const GeneralPage: Component = () => {

@@ -1,9 +1,9 @@
 import { NumberField as NumberFieldPrimitive } from '@kobalte/core/number-field'
 import type { ValidComponent, VoidProps } from 'solid-js'
 import { type ComponentProps, splitProps } from 'solid-js'
-import { ComponentName } from '@/lib/theme-context'
-import { useComponentClass } from '@/lib/theme-helpers'
-import { cx } from '@/registry/lib/cva'
+import { ComponentName } from 'shadcn-solid-components/lib/theme-context'
+import { useComponentClass } from 'shadcn-solid-components/lib/theme-helpers'
+import { cx } from 'shadcn-solid-components/lib/cva'
 
 export type NumberFieldProps<T extends ValidComponent = 'div'> = ComponentProps<
   typeof NumberFieldPrimitive<T>

@@ -14,20 +14,20 @@ import {
   getSortedRowModel,
 } from '@tanstack/solid-table'
 import { type ComponentProps, createSignal, For, type JSX, Show, splitProps } from 'solid-js'
-import { Card } from '@/components/card'
-import { useLocale } from '@/components/config-provider'
-import { Skeleton } from '@/components/skeleton'
+import { Card } from 'shadcn-solid-components/components/card'
+import { useLocale } from 'shadcn-solid-components/components/config-provider'
+import { Skeleton } from 'shadcn-solid-components/components/skeleton'
 import {
   TanstackTable,
   TanstackTableBody,
   TanstackTableHeader,
   TanstackTablePagination,
   TanstackTableProvider,
-} from '@/components/tanstack-table'
-import { DataTableToolbar } from '@/hoc/data-table-toolbar'
-import { EmptyState } from '@/hoc/empty-state'
-import type { DataTableLocale } from '@/i18n/types'
-import { cx } from '@/lib/cva'
+} from 'shadcn-solid-components/components/tanstack-table'
+import { DataTableToolbar } from 'shadcn-solid-components/hoc/data-table-toolbar'
+import { EmptyState } from 'shadcn-solid-components/hoc/empty-state'
+import type { DataTableLocale } from 'shadcn-solid-components/i18n/types'
+import { cx } from 'shadcn-solid-components/lib/cva'
 import { enUS as defaultLocale } from './locales/en-US'
 
 // ============================================================================

@@ -1,9 +1,9 @@
 import { useColorMode } from '@kobalte/core'
 import type { ComponentProps } from 'solid-js'
 import { splitProps } from 'solid-js'
-import { Button } from '@/components/button'
-import { IconMoon, IconSun } from '@/components/icons'
-import { cx } from '@/lib/cva'
+import { Button } from 'shadcn-solid-components/components/button'
+import { IconMoon, IconSun } from 'shadcn-solid-components/components/icons'
+import { cx } from 'shadcn-solid-components/lib/cva'
 
 export type ModeToggleGroupProps = ComponentProps<'div'> & {
   lightLabel?: string

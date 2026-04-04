@@ -1,4 +1,4 @@
-import type { StepperLocale } from '@/i18n/types'
+import type { StepperLocale } from 'shadcn-solid-components/i18n/types'
 
 export const zhCN: StepperLocale = {
   next: '下一步',

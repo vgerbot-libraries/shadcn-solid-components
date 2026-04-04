@@ -1,4 +1,4 @@
-import type { ConfirmDialogLocale } from '@/i18n/types'
+import type { ConfirmDialogLocale } from 'shadcn-solid-components/i18n/types'
 
 export const zhCN: ConfirmDialogLocale = {
   confirm: '确认',

@@ -2,7 +2,7 @@ import { Checkbox as CheckboxPrimitive, useCheckboxContext } from '@kobalte/core
 import type { ComponentProps, ValidComponent } from 'solid-js'
 import { splitProps } from 'solid-js'
 
-import { cx } from '@/lib/cva'
+import { cx } from 'shadcn-solid-components/lib/cva'
 
 export type CheckboxProps<T extends ValidComponent = 'div'> = ComponentProps<
   typeof CheckboxPrimitive<T>

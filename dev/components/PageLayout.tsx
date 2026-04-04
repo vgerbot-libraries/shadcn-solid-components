@@ -1,6 +1,6 @@
 import { type Component, type JSX } from 'solid-js'
-import { Separator } from '@/components/separator'
-import { SidebarTrigger } from '@/components/sidebar'
+import { Separator } from 'shadcn-solid-components/components/separator'
+import { SidebarTrigger } from 'shadcn-solid-components/components/sidebar'
 
 interface PageLayoutProps {
   title: string

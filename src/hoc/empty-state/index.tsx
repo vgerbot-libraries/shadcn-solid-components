@@ -1,5 +1,5 @@
 import { type ComponentProps, type JSX, Show, splitProps } from 'solid-js'
-import { cx } from '@/lib/cva'
+import { cx } from 'shadcn-solid-components/lib/cva'
 
 // ============================================================================
 // Types

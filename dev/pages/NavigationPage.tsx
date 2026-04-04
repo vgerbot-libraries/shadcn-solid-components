@@ -5,8 +5,8 @@ import {
   BreadcrumbsItem,
   BreadcrumbsLink,
   BreadcrumbsSeparator,
-} from '@/components/breadcrumbs'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/card'
+} from 'shadcn-solid-components/components/breadcrumbs'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from 'shadcn-solid-components/components/card'
 import {
   Menubar,
   MenubarCheckboxItem,
@@ -23,7 +23,7 @@ import {
   MenubarSubContent,
   MenubarSubTrigger,
   MenubarTrigger,
-} from '@/components/menubar'
+} from 'shadcn-solid-components/components/menubar'
 import {
   NavigationItemDescription,
   NavigationItemLabel,
@@ -33,7 +33,7 @@ import {
   NavigationMenuList,
   NavigationMenuPortal,
   NavigationMenuTrigger,
-} from '@/components/navigation-menu'
+} from 'shadcn-solid-components/components/navigation-menu'
 import {
   Pagination,
   PaginationEllipsis,
@@ -41,7 +41,7 @@ import {
   PaginationItems,
   PaginationNext,
   PaginationPrevious,
-} from '@/components/pagination'
+} from 'shadcn-solid-components/components/pagination'
 import {
   SegmentedControl,
   SegmentedControlIndicator,
@@ -50,8 +50,8 @@ import {
   SegmentedControlItemLabel,
   SegmentedControlItems,
   SegmentedControlList,
-} from '@/components/segmented-control'
-import { NavMenu } from '@/hoc/navigation-menu'
+} from 'shadcn-solid-components/components/segmented-control'
+import { NavMenu } from 'shadcn-solid-components/hoc/navigation-menu'
 import { PageLayout } from '../components/PageLayout'
 
 const NavigationPage: Component = () => {

@@ -1,15 +1,15 @@
 import type { DatePickerRootProps } from '@ark-ui/solid/date-picker'
 import { DatePicker as DatePickerPrimitive } from '@ark-ui/solid/date-picker'
 import { type ComponentProps, For, type JSX, Match, Show, Switch, splitProps } from 'solid-js'
-import { useLocale } from '@/components/config-provider'
-import type { DatePickerFieldLocale } from '@/i18n/types'
+import { useLocale } from 'shadcn-solid-components/components/config-provider'
+import type { DatePickerFieldLocale } from 'shadcn-solid-components/i18n/types'
 import { enUS as defaultLocale } from './locales/en-US'
 
 export type { DateValue } from '@ark-ui/solid/date-picker'
 
 import type { DateValue } from '@ark-ui/solid/date-picker'
-import { Badge } from '@/components/badge'
-import { buttonVariants } from '@/components/button'
+import { Badge } from 'shadcn-solid-components/components/badge'
+import { buttonVariants } from 'shadcn-solid-components/components/button'
 import {
   DatePicker,
   DatePickerClearTrigger,
@@ -32,9 +32,9 @@ import {
   DatePickerViewControl,
   DatePickerViewTrigger,
   DatePickerYearSelect,
-} from '@/components/date-picker'
-import { IconX } from '@/components/icons'
-import { cx } from '@/lib/cva'
+} from 'shadcn-solid-components/components/date-picker'
+import { IconX } from 'shadcn-solid-components/components/icons'
+import { cx } from 'shadcn-solid-components/lib/cva'
 
 // ============================================================================
 // Types

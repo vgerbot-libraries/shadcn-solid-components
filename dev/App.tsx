@@ -14,11 +14,11 @@ import {
   IconRocket,
   IconSettings,
   IconStar,
-} from '@/components/icons'
-import { Skeleton } from '@/components/skeleton'
-import { AppSidebar, type AppSidebarMenuGroup } from '@/hoc/app-sidebar'
-import { CommandPalette, type CommandPaletteGroup } from '@/hoc/command-palette'
-import { SidebarMenuTreeItem } from '@/hoc/sidebar-menu-tree'
+} from 'shadcn-solid-components/components/icons'
+import { Skeleton } from 'shadcn-solid-components/components/skeleton'
+import { AppSidebar, type AppSidebarMenuGroup } from 'shadcn-solid-components/hoc/app-sidebar'
+import { CommandPalette, type CommandPaletteGroup } from 'shadcn-solid-components/hoc/command-palette'
+import { SidebarMenuTreeItem } from 'shadcn-solid-components/hoc/sidebar-menu-tree'
 import { GetHelpIcon, HeaderIcon, SettingsIcon } from './components/icons'
 
 interface AppProps {

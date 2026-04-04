@@ -1,8 +1,8 @@
 import { Menubar as MenubarPrimitive } from '@kobalte/core/menubar'
 import { type ComponentProps, mergeProps, splitProps, type ValidComponent } from 'solid-js'
-import { ComponentName } from '@/lib/theme-context'
-import { useComponentClass } from '@/lib/theme-helpers'
-import { cx } from '@/registry/lib/cva'
+import { ComponentName } from 'shadcn-solid-components/lib/theme-context'
+import { useComponentClass } from 'shadcn-solid-components/lib/theme-helpers'
+import { cx } from 'shadcn-solid-components/lib/cva'
 
 export const MenubarPortal = MenubarPrimitive.Portal
 

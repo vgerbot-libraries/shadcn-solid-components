@@ -1,5 +1,5 @@
 import { type Component, createSignal } from 'solid-js'
-import { Alert, AlertDescription, AlertTitle } from '@/components/alert'
+import { Alert, AlertDescription, AlertTitle } from 'shadcn-solid-components/components/alert'
 import {
   AlertDialog,
   AlertDialogAction,
@@ -10,9 +10,9 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from '@/components/alert-dialog'
-import { Button } from '@/components/button'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/card'
+} from 'shadcn-solid-components/components/alert-dialog'
+import { Button } from 'shadcn-solid-components/components/button'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from 'shadcn-solid-components/components/card'
 import {
   Command,
   CommandEmpty,
@@ -21,7 +21,7 @@ import {
   CommandItem,
   CommandList,
   CommandSeparator,
-} from '@/components/command'
+} from 'shadcn-solid-components/components/command'
 import {
   ContextMenu,
   ContextMenuContent,
@@ -32,7 +32,7 @@ import {
   ContextMenuSubContent,
   ContextMenuSubTrigger,
   ContextMenuTrigger,
-} from '@/components/context-menu'
+} from 'shadcn-solid-components/components/context-menu'
 import {
   Dialog,
   DialogContent,
@@ -41,7 +41,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from '@/components/dialog'
+} from 'shadcn-solid-components/components/dialog'
 import {
   Drawer,
   DrawerContent,
@@ -50,23 +50,23 @@ import {
   DrawerHeader,
   DrawerLabel,
   DrawerTrigger,
-} from '@/components/drawer'
+} from 'shadcn-solid-components/components/drawer'
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from '@/components/dropdown-menu'
+} from 'shadcn-solid-components/components/dropdown-menu'
 import {
   IconAlertTriangle,
   IconCreditCard,
   IconMail,
   IconSettings,
   IconUser,
-} from '@/components/icons'
-import { Popover, PopoverContent, PopoverTrigger } from '@/components/popover'
-import { TextField, TextFieldInput } from '@/components/text-field'
+} from 'shadcn-solid-components/components/icons'
+import { Popover, PopoverContent, PopoverTrigger } from 'shadcn-solid-components/components/popover'
+import { TextField, TextFieldInput } from 'shadcn-solid-components/components/text-field'
 import { PageLayout } from '../components/PageLayout'
 
 const OverlayPage: Component = () => {

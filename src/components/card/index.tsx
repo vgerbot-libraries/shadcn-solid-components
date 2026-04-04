@@ -1,9 +1,9 @@
 import type { ComponentProps } from 'solid-js'
 import { splitProps } from 'solid-js'
 
-import { cx } from '@/lib/cva'
-import { ComponentName } from '@/lib/theme-context'
-import { useComponentClass } from '@/lib/theme-helpers'
+import { cx } from 'shadcn-solid-components/lib/cva'
+import { ComponentName } from 'shadcn-solid-components/lib/theme-context'
+import { useComponentClass } from 'shadcn-solid-components/lib/theme-helpers'
 
 export type CardProps = ComponentProps<'div'>
 

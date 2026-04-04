@@ -1,4 +1,4 @@
-import type { LoginFormLocale } from '@/i18n/types'
+import type { LoginFormLocale } from 'shadcn-solid-components/i18n/types'
 
 export const zhCN: LoginFormLocale = {
   loginTitle: '登录',

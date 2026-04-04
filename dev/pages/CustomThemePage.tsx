@@ -1,8 +1,8 @@
 import { useColorMode } from '@kobalte/core'
 import { createEffect, createSignal, For } from 'solid-js'
 import { toast } from 'solid-sonner'
-import { Badge } from '@/components/badge'
-import { Button } from '@/components/button'
+import { Badge } from 'shadcn-solid-components/components/badge'
+import { Button } from 'shadcn-solid-components/components/button'
 import {
   Card,
   CardContent,
@@ -10,8 +10,8 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from '@/components/card'
-import { Checkbox, CheckboxControl, CheckboxLabel } from '@/components/checkbox'
+} from 'shadcn-solid-components/components/card'
+import { Checkbox, CheckboxControl, CheckboxLabel } from 'shadcn-solid-components/components/checkbox'
 import {
   IconArrowRight,
   IconCalendar,
@@ -20,18 +20,18 @@ import {
   IconRocket,
   IconSettings,
   IconUsers,
-} from '@/components/icons'
-import { Progress, ProgressGroup, ProgressLabel, ProgressValueLabel } from '@/components/progress'
-import { ModeToggleGroup } from '@/hoc/mode-toggle-group'
+} from 'shadcn-solid-components/components/icons'
+import { Progress, ProgressGroup, ProgressLabel, ProgressValueLabel } from 'shadcn-solid-components/components/progress'
+import { ModeToggleGroup } from 'shadcn-solid-components/hoc/mode-toggle-group'
 import {
   RadioGroup,
   RadioGroupItem,
   RadioGroupItemControl,
   RadioGroupItemLabel,
-} from '@/components/radio-group'
-import { Separator } from '@/components/separator'
-import { Slider, SliderFill, SliderThumb, SliderTrack } from '@/components/slider'
-import { Switch, SwitchControl, SwitchLabel, SwitchThumb } from '@/components/switch'
+} from 'shadcn-solid-components/components/radio-group'
+import { Separator } from 'shadcn-solid-components/components/separator'
+import { Slider, SliderFill, SliderThumb, SliderTrack } from 'shadcn-solid-components/components/slider'
+import { Switch, SwitchControl, SwitchLabel, SwitchThumb } from 'shadcn-solid-components/components/switch'
 import {
   Table,
   TableBody,
@@ -39,9 +39,9 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from '@/components/table'
-import { Tabs, TabsContent, TabsIndicator, TabsList, TabsTrigger } from '@/components/tabs'
-import { TextField, TextFieldInput, TextFieldLabel } from '@/components/text-field'
+} from 'shadcn-solid-components/components/table'
+import { Tabs, TabsContent, TabsIndicator, TabsList, TabsTrigger } from 'shadcn-solid-components/components/tabs'
+import { TextField, TextFieldInput, TextFieldLabel } from 'shadcn-solid-components/components/text-field'
 import { BASE_COLORS } from '../lib/base-colors'
 import { generatePresetCss, generateThemeCssVars, RADII } from '../lib/theme-generator'
 import { generateStyleCss, STYLE_PRESETS } from '../lib/theme-styles'

@@ -17,12 +17,12 @@ import {
   splitProps,
   useContext,
 } from 'solid-js'
-import { ComponentName } from '@/lib/theme-context'
-import { useComponentClass } from '@/lib/theme-helpers'
-import { useIsMobile } from '@/lib/use-mobile'
-import { callHandler } from '@/registry/lib/call-handler'
-import { combineStyle } from '@/registry/lib/combine-style'
-import { cva, cx } from '@/registry/lib/cva'
+import { ComponentName } from 'shadcn-solid-components/lib/theme-context'
+import { useComponentClass } from 'shadcn-solid-components/lib/theme-helpers'
+import { useIsMobile } from 'shadcn-solid-components/lib/use-mobile'
+import { callHandler } from 'shadcn-solid-components/lib/call-handler'
+import { combineStyle } from 'shadcn-solid-components/lib/combine-style'
+import { cva, cx } from 'shadcn-solid-components/lib/cva'
 
 import { Button } from '../button'
 import { Drawer, DrawerContent } from '../drawer'

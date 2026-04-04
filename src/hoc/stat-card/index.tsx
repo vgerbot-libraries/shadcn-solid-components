@@ -1,6 +1,6 @@
 import { type ComponentProps, type JSX, Show, splitProps } from 'solid-js'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/card'
-import { cx } from '@/lib/cva'
+import { Card, CardContent, CardHeader, CardTitle } from 'shadcn-solid-components/components/card'
+import { cx } from 'shadcn-solid-components/lib/cva'
 
 // ============================================================================
 // Types

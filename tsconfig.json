@@ -17,8 +17,7 @@
     "jsxImportSource": "solid-js",
     "types": [],
     "paths": {
-      "@/*": ["./src/*"],
-      "@/registry/*": ["./src/*"]
+      "shadcn-solid-components/*": ["./src/*"]
     }
   },
   "exclude": ["node_modules", "dist", "./dev", "./temp"]

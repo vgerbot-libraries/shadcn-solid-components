@@ -5,9 +5,9 @@ import {
   BreadcrumbsItem,
   BreadcrumbsLink,
   BreadcrumbsSeparator,
-} from '@/components/breadcrumbs'
-import { Separator } from '@/components/separator'
-import { cx } from '@/lib/cva'
+} from 'shadcn-solid-components/components/breadcrumbs'
+import { Separator } from 'shadcn-solid-components/components/separator'
+import { cx } from 'shadcn-solid-components/lib/cva'
 
 // ============================================================================
 // Types

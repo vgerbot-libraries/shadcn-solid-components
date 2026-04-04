@@ -1,4 +1,4 @@
-import type { FilterBuilderLocale } from '@/i18n/types'
+import type { FilterBuilderLocale } from 'shadcn-solid-components/i18n/types'
 
 export const zhCN: FilterBuilderLocale = {
   addRule: '添加条件',

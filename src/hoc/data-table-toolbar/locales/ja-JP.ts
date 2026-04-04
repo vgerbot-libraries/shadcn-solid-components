@@ -1,4 +1,4 @@
-import type { DataTableToolbarLocale } from '@/i18n/types'
+import type { DataTableToolbarLocale } from 'shadcn-solid-components/i18n/types'
 
 export const jaJP: DataTableToolbarLocale = {
   searchPlaceholder: '検索…',

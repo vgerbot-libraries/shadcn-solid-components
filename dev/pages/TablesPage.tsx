@@ -1,23 +1,23 @@
 import { type Component, createEffect, createSignal } from 'solid-js'
 import { type Tabulator } from 'tabulator-tables'
-import { Badge } from '@/components/badge'
-import { Button } from '@/components/button'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/card'
+import { Badge } from 'shadcn-solid-components/components/badge'
+import { Button } from 'shadcn-solid-components/components/button'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from 'shadcn-solid-components/components/card'
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from '@/components/dropdown-menu'
-import { IconInbox } from '@/components/icons'
-import { TabulatorTable } from '@/components/tabulator-table'
+} from 'shadcn-solid-components/components/dropdown-menu'
+import { IconInbox } from 'shadcn-solid-components/components/icons'
+import { TabulatorTable } from 'shadcn-solid-components/components/tabulator-table'
 import type {
   ColumnDef,
   ColumnFiltersState,
   RowSelectionState,
   SortingState,
   VisibilityState,
-} from '@/components/tanstack-table'
+} from 'shadcn-solid-components/components/tanstack-table'
 import {
   createSelectColumn,
   createSolidTable,
@@ -31,10 +31,10 @@ import {
   TanstackTableHeader,
   TanstackTablePagination,
   TanstackTableProvider,
-} from '@/components/tanstack-table'
-import { DataTable } from '@/hoc/data-table'
-import { DataTableToolbar } from '@/hoc/data-table-toolbar'
-import { EmptyState } from '@/hoc/empty-state'
+} from 'shadcn-solid-components/components/tanstack-table'
+import { DataTable } from 'shadcn-solid-components/hoc/data-table'
+import { DataTableToolbar } from 'shadcn-solid-components/hoc/data-table-toolbar'
+import { EmptyState } from 'shadcn-solid-components/hoc/empty-state'
 import { MoreIcon } from '../components/icons'
 import { PageLayout } from '../components/PageLayout'
 

@@ -8,10 +8,10 @@ import {
   CommandList,
   CommandSeparator,
   CommandShortcut,
-} from '@/components/command'
-import { useLocale } from '@/components/config-provider'
-import { Kbd } from '@/components/kbd'
-import type { CommandPaletteLocale } from '@/i18n/types'
+} from 'shadcn-solid-components/components/command'
+import { useLocale } from 'shadcn-solid-components/components/config-provider'
+import { Kbd } from 'shadcn-solid-components/components/kbd'
+import type { CommandPaletteLocale } from 'shadcn-solid-components/i18n/types'
 import { enUS as defaultLocale } from './locales/en-US'
 
 // ============================================================================

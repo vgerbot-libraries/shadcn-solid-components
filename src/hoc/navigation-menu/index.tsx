@@ -10,8 +10,8 @@ import {
   type NavigationMenuProps as NavigationMenuRootProps,
   NavigationMenuTrigger,
   navigationButtonVariant,
-} from '@/components/navigation-menu'
-import { cx } from '@/lib/cva'
+} from 'shadcn-solid-components/components/navigation-menu'
+import { cx } from 'shadcn-solid-components/lib/cva'
 
 // ============================================================================
 // Types

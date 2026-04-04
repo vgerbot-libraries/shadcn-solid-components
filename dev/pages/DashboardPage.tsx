@@ -1,22 +1,22 @@
 import { VisArea, VisLine } from '@unovis/solid'
 import { type Component, createSignal, For } from 'solid-js'
-import { Badge } from '@/components/badge'
-import { Button } from '@/components/button'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/card'
-import { ChartContainer, ChartCrosshair } from '@/components/chart'
+import { Badge } from 'shadcn-solid-components/components/badge'
+import { Button } from 'shadcn-solid-components/components/button'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from 'shadcn-solid-components/components/card'
+import { ChartContainer, ChartCrosshair } from 'shadcn-solid-components/components/chart'
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from '@/components/dropdown-menu'
-import { IconCheck, IconCreditCard, IconMail, IconSettings, IconUser } from '@/components/icons'
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/table'
-import { NotificationCenter, type NotificationItem } from '@/hoc/notification-center'
-import { PageHeader } from '@/hoc/page-header'
-import { StatCard } from '@/hoc/stat-card'
-import { useNotify } from '@/hoc/use-notify'
-import { UserMenu } from '@/hoc/user-menu'
+} from 'shadcn-solid-components/components/dropdown-menu'
+import { IconCheck, IconCreditCard, IconMail, IconSettings, IconUser } from 'shadcn-solid-components/components/icons'
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from 'shadcn-solid-components/components/table'
+import { NotificationCenter, type NotificationItem } from 'shadcn-solid-components/hoc/notification-center'
+import { PageHeader } from 'shadcn-solid-components/hoc/page-header'
+import { StatCard } from 'shadcn-solid-components/hoc/stat-card'
+import { useNotify } from 'shadcn-solid-components/hoc/use-notify'
+import { UserMenu } from 'shadcn-solid-components/hoc/user-menu'
 import {
   ActiveAccountsIcon,
   GrowthRateIcon,

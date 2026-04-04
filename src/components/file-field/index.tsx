@@ -2,9 +2,9 @@ import { FileField as FileFieldPrimitive } from '@kobalte/core/file-field'
 import type { VariantProps } from 'cva'
 import type { ComponentProps, ValidComponent } from 'solid-js'
 import { Show, splitProps } from 'solid-js'
-import { ComponentName } from '@/lib/theme-context'
-import { useComponentClass } from '@/lib/theme-helpers'
-import { cx } from '@/registry/lib/cva'
+import { ComponentName } from 'shadcn-solid-components/lib/theme-context'
+import { useComponentClass } from 'shadcn-solid-components/lib/theme-helpers'
+import { cx } from 'shadcn-solid-components/lib/cva'
 
 import { buttonVariants } from '../button'
 
