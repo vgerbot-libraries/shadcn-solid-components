@@ -309,7 +309,7 @@ const DocsIndexPage = () => {
               Install the package, then make sure the required peer dependencies are already configured in your app.
             </p>
             <pre class="bg-muted p-4 rounded-md overflow-x-auto text-sm">
-              <code>pnpm add shadcn-solid-components</code>
+              <code>pnpm add github:vgerbot-libraries/shadcn-solid-components</code>
             </pre>
             <p class="text-muted-foreground">
               Peer dependencies: <code class="bg-muted px-1 py-0.5 rounded text-sm">solid-js</code>, <code class="bg-muted px-1 py-0.5 rounded text-sm">tailwindcss</code> (v4), and <code class="bg-muted px-1 py-0.5 rounded text-sm">tw-animate-css</code>.
