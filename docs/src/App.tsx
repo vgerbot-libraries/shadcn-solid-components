@@ -6,10 +6,17 @@ import { For, Show, createEffect, createMemo } from "solid-js"
 import { Button, buttonVariants } from "shadcn-solid-components/components/button"
 import { Separator } from "shadcn-solid-components/components/separator"
 import { ModeToggleDropdown } from "shadcn-solid-components/hoc/mode-toggle-dropdown"
-import { cx } from "shadcn-solid-components/lib"
+import { cx } from "shadcn-solid-components/lib/cva"
 
 import { mdxCustomComponents } from "@docs/components/mdx"
 import { Contents, docsNavigation } from "@docs/content"
+
+import AccordionDemo from "./examples/accordion-demo"
+import CalendarDemo from "./examples/calendar-demo"
+import CardDemo from "./examples/card-demo"
+import CommandDemo from "./examples/command-demo"
+import LoginFormDemo from "./examples/login-form-demo"
+import TabsDemo from "./examples/tabs-demo"
 
 type DocRouteParams = {
   slug?: string
@@ -36,29 +43,55 @@ const HomePage = () => {
   })
 
   return (
-    <div class="mx-auto flex w-full max-w-7xl flex-1 flex-col px-6 py-16 sm:px-8 lg:px-12">
-      <div class="border-border bg-muted/30 max-w-4xl rounded-3xl border p-8 sm:p-12">
-        <p class="text-muted-foreground text-sm uppercase tracking-[0.2em]">Docs Infrastructure</p>
-        <h1 class="mt-4 text-4xl font-semibold tracking-tight sm:text-5xl">
-          Documentation foundation for `shadcn-solid-components`
+    <div class="mx-auto flex w-full max-w-7xl flex-1 flex-col px-6 py-16 sm:px-8 lg:px-12 text-center items-center justify-center">
+      <div class="flex flex-col items-center gap-4">
+        <a href="https://github.com/hngngn/shadcn-solid" target="_blank" rel="noreferrer" class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80">
+          <span class="mr-2">🎉</span>
+          New Components: Kbd and Button Group
+        </a>
+        <h1 class="text-center text-3xl font-bold leading-tight tracking-tighter md:text-6xl lg:leading-[1.1]">
+          The Foundation for your Design System
         </h1>
-        <p class="text-muted-foreground mt-6 max-w-2xl text-base leading-7">
-          The docs app is wired with MDX, content indexing, navigation, and layout primitives.
-          Add files under <code>docs/src/content/docs</code> to publish documentation pages.
+        <p class="max-w-[750px] text-center text-lg text-muted-foreground sm:text-xl">
+          A set of beautifully designed components that you can customize, extend, and build on. Start here then make it your own. Open Source. Open Code.
         </p>
-        <div class="mt-8 flex flex-wrap items-center gap-3">
-          <A href="/docs" class={buttonVariants({ size: "sm" })}>
-            Open docs
+        <div class="flex items-center gap-4 mt-4 justify-center">
+          <A href="/docs" class={buttonVariants({ size: "lg" })}>
+            Get Started
           </A>
-          <a
-            href="https://github.com/vgerbot-libraries/shadcn-solid-components"
-            target="_blank"
-            rel="noreferrer"
-            class={cx(buttonVariants({ size: "sm", variant: "outline" }))}
-          >
-            Repository
-          </a>
+          <A href="/docs/components/accordion" class={buttonVariants({ size: "lg", variant: "outline" })}>
+            View Components
+          </A>
         </div>
+      </div>
+      
+      <div class="mt-16 w-full max-w-5xl items-start justify-center relative">
+         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-left">
+            <div class="flex flex-col gap-6 items-center">
+              <div class="w-full max-w-sm relative">
+                <CardDemo />
+              </div>
+              <div class="w-full max-w-sm relative">
+                 <TabsDemo />
+              </div>
+            </div>
+            <div class="hidden md:flex md:flex-col gap-6 md:items-center">
+              <div class="w-full max-w-sm relative">
+                 <CalendarDemo />
+              </div>
+              <div class="w-full max-w-sm relative bg-card text-card-foreground shadow-sm rounded-xl">
+                 <LoginFormDemo />
+              </div>
+            </div>
+            <div class="hidden lg:flex lg:flex-col gap-6 lg:items-center">
+              <div class="w-full max-w-sm relative">
+                 <CommandDemo />
+              </div>
+              <div class="p-4 border rounded-xl w-full max-w-sm relative bg-card text-card-foreground shadow-sm">
+                 <AccordionDemo />
+              </div>
+            </div>
+         </div>
       </div>
     </div>
   )
