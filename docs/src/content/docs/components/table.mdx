@@ -5,7 +5,6 @@ section: Components
 toc: true
 ---
 
-import TableData from "../../../examples/table-data"
 import TableDemo from "../../../examples/table-demo"
 
 The table module wraps semantic `<table>` markup in a horizontal scroll container and applies consistent typography, borders, and hover states. Use it for static or manually rendered grids; for large data sets with sorting and filtering, see **TanStack table** or **Tabulator table** components.
@@ -144,10 +143,6 @@ export default TableDemo
 
 ### Data
 
-<ComponentPreview name="Table Data">
-  <div class="mb-4 w-full">
-    <TableData />
-  </div>
   ```tsx
   import type { Task } from "./data-table-demo"
 
@@ -308,4 +303,3 @@ export const dataTable: Task[] = [
   },
 ]
   ```
-</ComponentPreview>

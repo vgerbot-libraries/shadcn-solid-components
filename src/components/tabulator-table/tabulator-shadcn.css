@@ -1,3 +1,5 @@
+@reference "../../themes/default.preset.css";
+
 /* import the base definitions for tabulator */
 @import "./tabulator.css";
 
@@ -104,7 +106,7 @@
   select {
     /* we need to apply some important styling to override styling set
         ** directly on the html dom element */
-    @apply !px-3 !py-4 !border-0 bg-violet-100;
+    @apply px-3! py-4! border-0! bg-violet-100;
   }
 }
 

@@ -1,3 +1,5 @@
+@reference "../../themes/default.preset.css";
+
 @import "./variables.css";
 
 .tabulator {
