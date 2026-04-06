@@ -1,0 +1,126 @@
+---
+title: Switch
+description: Toggle switch with control, thumb, hidden input, and optional label and error slots.
+section: Components
+toc: true
+---
+
+import {
+  Switch,
+  SwitchControl,
+  SwitchInput,
+  SwitchLabel,
+  SwitchThumb,
+} from "shadcn-solid-components/components/switch"
+import SwitchDemo from "../../../examples/switch-demo"
+
+The switch composes Kobalte’s switch primitive: `Switch` is the root; `SwitchControl` and `SwitchThumb` render the track and knob; `SwitchInput` is the accessible input. Optional `SwitchLabel`, `SwitchDescription`, and `SwitchErrorMessage` match the text-field patterns.
+
+## Installation
+
+Install `shadcn-solid-components` and satisfy peer dependencies (`solid-js`, Tailwind CSS v4, `tw-animate-css`).
+
+## Usage
+
+```tsx
+import {
+  Switch,
+  SwitchControl,
+  SwitchDescription,
+  SwitchErrorMessage,
+  SwitchInput,
+  SwitchLabel,
+  SwitchThumb,
+} from "shadcn-solid-components/components/switch"
+```
+
+```tsx
+<Switch>
+  <SwitchLabel>Airplane mode</SwitchLabel>
+  <SwitchControl>
+    <SwitchThumb />
+  </SwitchControl>
+  <SwitchInput />
+</Switch>
+```
+
+Pass `disabled` on the root `Switch` to prevent interaction and dim the control. Keep `SwitchInput` in the tree so the checked state stays exposed to assistive tech and forms.
+
+Use `checked` / `defaultChecked` and `onChange` when you need controlled or uncontrolled state like other form controls.
+
+## Examples
+
+### Default
+
+<ComponentPreview name="Switch Demo">
+  <div class="mb-4 w-full">
+    <SwitchDemo />
+  </div>
+  ```tsx
+  import {
+    Switch,
+    SwitchControl,
+    SwitchInput,
+    SwitchLabel,
+    SwitchThumb,
+  } from "shadcn-solid-components/components/switch"
+
+  const SwitchDemo = () => {
+    return (
+      <Switch class="flex items-center gap-x-2">
+        <SwitchInput />
+        <SwitchControl>
+          <SwitchThumb />
+        </SwitchControl>
+        <SwitchLabel>Airplane Mode</SwitchLabel>
+      </Switch>
+    )
+  }
+
+  export default SwitchDemo
+  ```
+</ComponentPreview>
+
+### Disabled
+
+When `disabled` is set, the switch does not receive focus for toggling and should reflect that state visually (handled by the component styles).
+
+<ComponentPreview name="Switch Disabled">
+  <div class="mb-4 w-full">
+    <Switch class="flex items-center gap-x-2" disabled>
+      <SwitchInput />
+      <SwitchControl>
+        <SwitchThumb />
+      </SwitchControl>
+      <SwitchLabel>Unavailable</SwitchLabel>
+    </Switch>
+  </div>
+  ```tsx
+  import {
+    Switch,
+    SwitchControl,
+    SwitchInput,
+    SwitchLabel,
+    SwitchThumb,
+  } from "shadcn-solid-components/components/switch"
+
+  const SwitchDisabledDemo = () => {
+    return (
+      <Switch class="flex items-center gap-x-2" disabled>
+        <SwitchInput />
+        <SwitchControl>
+          <SwitchThumb />
+        </SwitchControl>
+        <SwitchLabel>Unavailable</SwitchLabel>
+      </Switch>
+    )
+  }
+
+  export default SwitchDisabledDemo
+  ```
+</ComponentPreview>
+
+## Exports
+
+- `Switch`, `SwitchControl`, `SwitchThumb`, `SwitchInput`, `SwitchLabel`, `SwitchErrorMessage`, `SwitchDescription`
+- Types: `SwitchProps`, `SwitchControlProps`, `SwitchThumbProps`, `SwitchInputProps`, `SwitchLabelProps`, `SwitchErrorMessageProps`, `SwitchDescriptionProps`

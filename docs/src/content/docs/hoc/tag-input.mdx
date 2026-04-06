@@ -1,0 +1,112 @@
+---
+title: Tag input
+description: Chip-style tags with optional suggestions, max count, and custom validation.
+section: HOC
+toc: true
+---
+
+import TagInputDemo from "../../../examples/tag-input-demo"
+
+`TagInput` reads tags from `value` (defaults to `[]` when omitted). Use `onChange` whenever the list should update—adding or removing tags only calls `onChange`. Enter commits the current input; Backspace on an empty input removes the last tag. When `suggestions` is set, the list filters as you type.
+
+## Installation
+
+```bash
+pnpm add shadcn-solid-components
+```
+
+## Usage
+
+```tsx
+import { createSignal } from "solid-js"
+import { TagInput } from "shadcn-solid-components/hoc/tag-input"
+
+const [tags, setTags] = createSignal<string[]>([])
+
+<TagInput
+  value={tags()}
+  onChange={setTags}
+  suggestions={["react", "solid"]}
+  max={5}
+/>
+```
+
+## Examples
+
+### Suggestions only (no free-form tags)
+
+<ComponentPreview name="Tag Input Demo">
+  <div class="mb-4 w-full max-w-md">
+    <TagInputDemo />
+  </div>
+  ```tsx
+  import { createSignal } from "solid-js"
+
+  import { TagInput } from "shadcn-solid-components/hoc/tag-input"
+
+  const TagInputDemo = () => {
+    const [tags, setTags] = createSignal<string[]>(["solid"])
+
+    return (
+      <TagInput
+        value={tags()}
+        onChange={setTags}
+        suggestions={["solid", "tailwind", "kobalte"]}
+        allowCreate={false}
+        placeholder="Pick from the list..."
+      />
+    )
+  }
+
+  export default TagInputDemo
+  ```
+</ComponentPreview>
+
+```tsx
+import { createSignal } from "solid-js"
+import { TagInput } from "shadcn-solid-components/hoc/tag-input"
+
+const [tags, setTags] = createSignal<string[]>(["solid"])
+
+<TagInput
+  value={tags()}
+  onChange={setTags}
+  suggestions={["solid", "tailwind", "kobalte"]}
+  allowCreate={false}
+  placeholder="Pick from the list…"
+/>
+```
+
+### Custom validation
+
+```tsx
+import { createSignal } from "solid-js"
+import { TagInput } from "shadcn-solid-components/hoc/tag-input"
+
+const [tags, setTags] = createSignal<string[]>([])
+
+<TagInput
+  value={tags()}
+  onChange={setTags}
+  validate={t => t.length >= 2 && /^[a-z0-9-]+$/i.test(t)}
+/>
+```
+
+### Locale preset
+
+```tsx
+import { createSignal } from "solid-js"
+import { TagInput, zhCNLocale } from "shadcn-solid-components/hoc/tag-input"
+
+const [tags, setTags] = createSignal<string[]>([])
+
+<TagInput value={tags()} onChange={setTags} locale={zhCNLocale} />
+```
+
+## Exports
+
+| Name | Description |
+| --- | --- |
+| `TagInput` | Tag input component. |
+| `TagInputProps` | `value`, `onChange`, optional `suggestions`, `max`, `placeholder`, `allowCreate`, `validate`, `disabled`, `locale`, plus `div` props (excluding `onChange` from native div). |
+| `enLocale`, `zhCNLocale`, `zhTWLocale`, `jaLocale` | `TagInputLocale` presets; override via `locale`. |

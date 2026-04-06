@@ -1,0 +1,95 @@
+---
+title: File Field
+navTitle: File Field
+description: Accessible file upload with dropzone, item list, and previews.
+section: Components
+toc: true
+---
+
+import FileFieldDemo from "../../../examples/file-field-demo"
+
+The file field composes a root control with optional dropzone, trigger, hidden input, and a list of selected files including preview, name, size, and delete actions.
+
+## Installation
+
+Install `shadcn-solid-components` and satisfy peer dependencies (`solid-js`, Tailwind CSS v4, `tw-animate-css`).
+
+## Usage
+
+```tsx
+import {
+  FileField,
+  FileFieldDropzone,
+  FileFieldHiddenInput,
+  FileFieldItem,
+  FileFieldItemList,
+  FileFieldTrigger,
+} from "shadcn-solid-components/components/file-field"
+```
+
+## Exports
+
+- `FileField`, `FileFieldHiddenInput`, `FileFieldDropzone`, `FileFieldTrigger`, `FileFieldItemList`, `FileFieldItem`, `FileFieldItemPreviewImage`, `FileFieldItemSize`, `FileFieldItemName`, `FileFieldItemDeleteTrigger`, `FileFieldLabel`, `FileFieldDescription`, `FileFieldErrorMessage`
+- Types: `FileFieldProps` and matching `*Props` types for each part
+
+
+## Examples
+
+### Default
+
+<ComponentPreview name="File Field Demo">
+  <div class="mb-4 w-full">
+    <FileFieldDemo />
+  </div>
+  ```tsx
+  import {
+  FileField,
+  FileFieldDropzone,
+  FileFieldHiddenInput,
+  FileFieldItem,
+  FileFieldItemDeleteTrigger,
+  FileFieldItemList,
+  FileFieldItemName,
+  FileFieldItemPreviewImage,
+  FileFieldItemSize,
+  FileFieldLabel,
+  FileFieldTrigger,
+} from "shadcn-solid-components/components/file-field"
+
+const FileFieldDemo = () => {
+  return (
+    <FileField
+      multiple
+      maxFiles={5}
+      onFileAccept={(data) => {
+        console.log("accept data:", data)
+      }}
+      onFileReject={(data) => {
+        console.log("reject data:", data)
+      }}
+      onFileChange={(data) => {
+        console.log("changed data:", data)
+      }}
+    >
+      <FileFieldDropzone>
+        <FileFieldLabel>Drop your files here...</FileFieldLabel>
+        <FileFieldTrigger>Choose files!</FileFieldTrigger>
+      </FileFieldDropzone>
+      <FileFieldHiddenInput />
+      <FileFieldItemList>
+        {() => (
+          <FileFieldItem>
+            <FileFieldItemPreviewImage />
+            <FileFieldItemName />
+            <FileFieldItemSize />
+            <FileFieldItemDeleteTrigger />
+          </FileFieldItem>
+        )}
+      </FileFieldItemList>
+    </FileField>
+  )
+}
+
+export default FileFieldDemo
+  ```
+</ComponentPreview>

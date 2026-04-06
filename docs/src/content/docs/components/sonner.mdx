@@ -1,0 +1,78 @@
+---
+title: Sonner (Toaster)
+navTitle: Sonner
+description: Toast host wired to Kobalte color mode and design tokens via somoto.
+section: Components
+toc: true
+---
+
+import SonnerDemo from "../../../examples/sonner-demo"
+
+The **Toaster** component wraps the `somoto` toast renderer, sets `theme` from Kobalte’s `useColorMode()`, and applies CSS variables so surfaces align with your popover and radius tokens. Default SVG icons are provided for success, info, warning, error, and loading toasts.
+
+## Installation
+
+Install `shadcn-solid-components` and satisfy peer dependencies (`solid-js`, Tailwind CSS v4, `tw-animate-css`). `somoto` and `@kobalte/core` are pulled in as dependencies.
+
+Mount **Toaster** once near the root of your app (for example beside your router). Trigger toasts with `toast` (and helpers such as `toast.success`) from `somoto`; that package is already a dependency of this library.
+
+## Usage
+
+```tsx
+import { toast } from "somoto"
+import { Toaster } from "shadcn-solid-components/components/sonner"
+
+<>
+  <Toaster />
+  <App />
+</>
+```
+
+```tsx
+toast.success(<>Saved</>)
+```
+
+Props are forwarded to the underlying `somoto` `Toaster` (same parameter type as in the library). You may override `icons`, `style`, or other supported options; the wrapper supplies defaults for theme integration.
+
+## Exports
+
+- `Toaster`
+
+
+## Examples
+
+### Default
+
+<ComponentPreview name="Sonner Demo">
+  <div class="mb-4 w-full">
+    <SonnerDemo />
+  </div>
+  ```tsx
+  import { toast } from "somoto"
+
+import { Button } from "shadcn-solid-components/components/button"
+
+const SonnerDemo = () => {
+  return (
+    <Button
+      variant="outline"
+      onClick={() =>
+        toast("Event has been created", {
+          description: "Sunday, December 03, 2023 at 9:00 AM",
+          action: {
+            label: "Undo",
+            onClick: () => {
+              console.log("Undo")
+            },
+          },
+        })
+      }
+    >
+      Show Toast
+    </Button>
+  )
+}
+
+export default SonnerDemo
+  ```
+</ComponentPreview>

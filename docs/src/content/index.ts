@@ -35,7 +35,4596 @@ export type DocsNavSection = {
 }
 
 export const Contents: Record<string, DocEntry> = {
-
+  "components/accordion": {
+    component: lazy(() => import("@docs/content/docs/components/accordion.mdx")),
+    data: {
+    "title": "Accordion",
+    "description": "Vertically stacked sections with expandable content.",
+    "navTitle": "Accordion",
+    "section": "Components",
+    "order": 0,
+    "toc": true
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "installation",
+        "text": "Installation"
+    },
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "exports",
+        "text": "Exports"
+    },
+    {
+        "depth": 2,
+        "slug": "examples",
+        "text": "Examples"
+    },
+    {
+        "depth": 3,
+        "slug": "default",
+        "text": "Default"
+    }
+]
+  },
+  "components/alert": {
+    component: lazy(() => import("@docs/content/docs/components/alert.mdx")),
+    data: {
+    "title": "Alert",
+    "description": "Inline message for status, feedback, or important information.",
+    "navTitle": "Alert",
+    "section": "Components",
+    "order": 0,
+    "toc": true
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "installation",
+        "text": "Installation"
+    },
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "accessibility-and-semantics",
+        "text": "Accessibility And Semantics"
+    },
+    {
+        "depth": 2,
+        "slug": "variants",
+        "text": "Variants"
+    },
+    {
+        "depth": 2,
+        "slug": "custom-styling",
+        "text": "Custom Styling"
+    },
+    {
+        "depth": 2,
+        "slug": "examples",
+        "text": "Examples"
+    },
+    {
+        "depth": 3,
+        "slug": "default",
+        "text": "Default"
+    },
+    {
+        "depth": 3,
+        "slug": "static-informational-alert",
+        "text": "Static Informational Alert"
+    },
+    {
+        "depth": 3,
+        "slug": "destructive",
+        "text": "Destructive"
+    },
+    {
+        "depth": 2,
+        "slug": "exports",
+        "text": "Exports"
+    }
+]
+  },
+  "components/alert-dialog": {
+    component: lazy(() => import("@docs/content/docs/components/alert-dialog.mdx")),
+    data: {
+    "title": "Alert Dialog",
+    "description": "Modal dialog for critical confirmations that interrupt the user flow.",
+    "navTitle": "Alert Dialog",
+    "section": "Components",
+    "order": 0,
+    "toc": true
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "installation",
+        "text": "Installation"
+    },
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "exports",
+        "text": "Exports"
+    },
+    {
+        "depth": 2,
+        "slug": "examples",
+        "text": "Examples"
+    },
+    {
+        "depth": 3,
+        "slug": "default",
+        "text": "Default"
+    }
+]
+  },
+  "components/badge": {
+    component: lazy(() => import("@docs/content/docs/components/badge.mdx")),
+    data: {
+    "title": "Badge",
+    "description": "Small label for status, counts, or metadata.",
+    "navTitle": "Badge",
+    "section": "Components",
+    "order": 0,
+    "toc": true
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "installation",
+        "text": "Installation"
+    },
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "exports",
+        "text": "Exports"
+    },
+    {
+        "depth": 2,
+        "slug": "examples",
+        "text": "Examples"
+    },
+    {
+        "depth": 3,
+        "slug": "default",
+        "text": "Default"
+    },
+    {
+        "depth": 3,
+        "slug": "destructive",
+        "text": "Destructive"
+    },
+    {
+        "depth": 3,
+        "slug": "outline",
+        "text": "Outline"
+    },
+    {
+        "depth": 3,
+        "slug": "secondary",
+        "text": "Secondary"
+    }
+]
+  },
+  "components/breadcrumbs": {
+    component: lazy(() => import("@docs/content/docs/components/breadcrumbs.mdx")),
+    data: {
+    "title": "Breadcrumbs",
+    "description": "Navigation trail showing the current page hierarchy.",
+    "navTitle": "Breadcrumbs",
+    "section": "Components",
+    "order": 0,
+    "toc": true
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "installation",
+        "text": "Installation"
+    },
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "exports",
+        "text": "Exports"
+    },
+    {
+        "depth": 2,
+        "slug": "examples",
+        "text": "Examples"
+    },
+    {
+        "depth": 3,
+        "slug": "default",
+        "text": "Default"
+    },
+    {
+        "depth": 3,
+        "slug": "custom-separator",
+        "text": "Custom Separator"
+    }
+]
+  },
+  "components/button": {
+    component: lazy(() => import("@docs/content/docs/components/button.mdx")),
+    data: {
+    "title": "Button",
+    "description": "Clickable control for actions and navigation.",
+    "navTitle": "Button",
+    "section": "Components",
+    "order": 0,
+    "toc": true
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "installation",
+        "text": "Installation"
+    },
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "examples",
+        "text": "Examples"
+    },
+    {
+        "depth": 3,
+        "slug": "default",
+        "text": "Default"
+    },
+    {
+        "depth": 3,
+        "slug": "secondary",
+        "text": "Secondary"
+    },
+    {
+        "depth": 3,
+        "slug": "destructive",
+        "text": "Destructive"
+    },
+    {
+        "depth": 3,
+        "slug": "outline",
+        "text": "Outline"
+    },
+    {
+        "depth": 3,
+        "slug": "ghost",
+        "text": "Ghost"
+    },
+    {
+        "depth": 3,
+        "slug": "link",
+        "text": "Link"
+    },
+    {
+        "depth": 3,
+        "slug": "with-icon",
+        "text": "With Icon"
+    },
+    {
+        "depth": 3,
+        "slug": "loading",
+        "text": "Loading"
+    },
+    {
+        "depth": 2,
+        "slug": "exports",
+        "text": "Exports"
+    }
+]
+  },
+  "components/button-group": {
+    component: lazy(() => import("@docs/content/docs/components/button-group.mdx")),
+    data: {
+    "title": "Button Group",
+    "description": "Groups related buttons or inputs with shared orientation and separators.",
+    "navTitle": "Button Group",
+    "section": "Components",
+    "order": 0,
+    "toc": true
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "installation",
+        "text": "Installation"
+    },
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "exports",
+        "text": "Exports"
+    },
+    {
+        "depth": 2,
+        "slug": "examples",
+        "text": "Examples"
+    },
+    {
+        "depth": 3,
+        "slug": "default",
+        "text": "Default"
+    }
+]
+  },
+  "components/calendar": {
+    component: lazy(() => import("@docs/content/docs/components/calendar.mdx")),
+    data: {
+    "title": "Calendar",
+    "description": "Accessible calendar grid built on Corvu calendar primitives.",
+    "navTitle": "Calendar",
+    "section": "Components",
+    "order": 0,
+    "toc": true
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "installation",
+        "text": "Installation"
+    },
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "exports",
+        "text": "Exports"
+    },
+    {
+        "depth": 2,
+        "slug": "examples",
+        "text": "Examples"
+    },
+    {
+        "depth": 3,
+        "slug": "default",
+        "text": "Default"
+    },
+    {
+        "depth": 3,
+        "slug": "range",
+        "text": "Range"
+    }
+]
+  },
+  "components/card": {
+    component: lazy(() => import("@docs/content/docs/components/card.mdx")),
+    data: {
+    "title": "Card",
+    "description": "Container for grouped content with optional header, body, and footer.",
+    "navTitle": "Card",
+    "section": "Components",
+    "order": 0,
+    "toc": true
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "installation",
+        "text": "Installation"
+    },
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "examples",
+        "text": "Examples"
+    },
+    {
+        "depth": 3,
+        "slug": "default",
+        "text": "Default"
+    },
+    {
+        "depth": 2,
+        "slug": "exports",
+        "text": "Exports"
+    }
+]
+  },
+  "components/carousel": {
+    component: lazy(() => import("@docs/content/docs/components/carousel.mdx")),
+    data: {
+    "title": "Carousel",
+    "description": "Slideshow or horizontal scroller powered by Embla Carousel.",
+    "navTitle": "Carousel",
+    "section": "Components",
+    "order": 0,
+    "toc": true
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "installation",
+        "text": "Installation"
+    },
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "exports",
+        "text": "Exports"
+    },
+    {
+        "depth": 2,
+        "slug": "examples",
+        "text": "Examples"
+    },
+    {
+        "depth": 3,
+        "slug": "default",
+        "text": "Default"
+    },
+    {
+        "depth": 3,
+        "slug": "orientation",
+        "text": "Orientation"
+    },
+    {
+        "depth": 3,
+        "slug": "plugin",
+        "text": "Plugin"
+    },
+    {
+        "depth": 3,
+        "slug": "size",
+        "text": "Size"
+    }
+]
+  },
+  "components/chart": {
+    component: lazy(() => import("@docs/content/docs/components/chart.mdx")),
+    data: {
+    "title": "Chart",
+    "description": "Chart layout and tooltip helpers built on Unovis.",
+    "navTitle": "Chart",
+    "section": "Components",
+    "order": 0,
+    "toc": true
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "installation",
+        "text": "Installation"
+    },
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "exports",
+        "text": "Exports"
+    },
+    {
+        "depth": 2,
+        "slug": "examples",
+        "text": "Examples"
+    },
+    {
+        "depth": 3,
+        "slug": "tooltip",
+        "text": "Tooltip"
+    }
+]
+  },
+  "components/checkbox": {
+    component: lazy(() => import("@docs/content/docs/components/checkbox.mdx")),
+    data: {
+    "title": "Checkbox",
+    "description": "Boolean input with label, description, and styled control.",
+    "navTitle": "Checkbox",
+    "section": "Components",
+    "order": 0,
+    "toc": true
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "installation",
+        "text": "Installation"
+    },
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "examples",
+        "text": "Examples"
+    },
+    {
+        "depth": 3,
+        "slug": "default",
+        "text": "Default"
+    },
+    {
+        "depth": 3,
+        "slug": "disabled",
+        "text": "Disabled"
+    },
+    {
+        "depth": 2,
+        "slug": "exports",
+        "text": "Exports"
+    }
+]
+  },
+  "components/collapsible": {
+    component: lazy(() => import("@docs/content/docs/components/collapsible.mdx")),
+    data: {
+    "title": "Collapsible",
+    "description": "Show or hide content with an animated region.",
+    "navTitle": "Collapsible",
+    "section": "Components",
+    "order": 0,
+    "toc": true
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "installation",
+        "text": "Installation"
+    },
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "exports",
+        "text": "Exports"
+    },
+    {
+        "depth": 2,
+        "slug": "examples",
+        "text": "Examples"
+    },
+    {
+        "depth": 3,
+        "slug": "default",
+        "text": "Default"
+    }
+]
+  },
+  "components/combobox": {
+    component: lazy(() => import("@docs/content/docs/components/combobox.mdx")),
+    data: {
+    "title": "Combobox",
+    "description": "Filterable listbox tied to a text input.",
+    "navTitle": "Combobox",
+    "section": "Components",
+    "order": 0,
+    "toc": true
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "installation",
+        "text": "Installation"
+    },
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "exports",
+        "text": "Exports"
+    },
+    {
+        "depth": 2,
+        "slug": "examples",
+        "text": "Examples"
+    },
+    {
+        "depth": 3,
+        "slug": "default",
+        "text": "Default"
+    },
+    {
+        "depth": 3,
+        "slug": "disabled",
+        "text": "Disabled"
+    },
+    {
+        "depth": 3,
+        "slug": "error",
+        "text": "Error"
+    },
+    {
+        "depth": 3,
+        "slug": "group",
+        "text": "Group"
+    },
+    {
+        "depth": 3,
+        "slug": "multi",
+        "text": "Multi"
+    }
+]
+  },
+  "components/command": {
+    component: lazy(() => import("@docs/content/docs/components/command.mdx")),
+    data: {
+    "title": "Command",
+    "description": "Command palette and searchable lists built on cmdk-solid.",
+    "navTitle": "Command",
+    "section": "Components",
+    "order": 0,
+    "toc": true
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "installation",
+        "text": "Installation"
+    },
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "exports",
+        "text": "Exports"
+    },
+    {
+        "depth": 2,
+        "slug": "examples",
+        "text": "Examples"
+    },
+    {
+        "depth": 3,
+        "slug": "default",
+        "text": "Default"
+    },
+    {
+        "depth": 3,
+        "slug": "dialog",
+        "text": "Dialog"
+    }
+]
+  },
+  "components/config-provider": {
+    component: lazy(() => import("@docs/content/docs/components/config-provider.mdx")),
+    data: {
+    "title": "Config Provider",
+    "description": "Global configuration context for library-wide settings such as locale.",
+    "navTitle": "Config Provider",
+    "section": "Components",
+    "order": 0,
+    "toc": true
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "installation",
+        "text": "Installation"
+    },
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "api",
+        "text": "API"
+    },
+    {
+        "depth": 2,
+        "slug": "exports",
+        "text": "Exports"
+    },
+    {
+        "depth": 2,
+        "slug": "examples",
+        "text": "Examples"
+    },
+    {
+        "depth": 3,
+        "slug": "locale-context",
+        "text": "Locale context"
+    },
+    {
+        "depth": 3,
+        "slug": "nesting-and-overrides",
+        "text": "Nesting and overrides"
+    }
+]
+  },
+  "components/context-menu": {
+    component: lazy(() => import("@docs/content/docs/components/context-menu.mdx")),
+    data: {
+    "title": "Context Menu",
+    "description": "Right-click (or long-press) menu built on Kobalte.",
+    "navTitle": "Context Menu",
+    "section": "Components",
+    "order": 0,
+    "toc": true
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "installation",
+        "text": "Installation"
+    },
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "exports",
+        "text": "Exports"
+    },
+    {
+        "depth": 2,
+        "slug": "examples",
+        "text": "Examples"
+    },
+    {
+        "depth": 3,
+        "slug": "default",
+        "text": "Default"
+    }
+]
+  },
+  "components/date-picker": {
+    component: lazy(() => import("@docs/content/docs/components/date-picker.mdx")),
+    data: {
+    "title": "Date Picker",
+    "description": "Date or range selection with calendar views and inputs.",
+    "navTitle": "Date Picker",
+    "section": "Components",
+    "order": 0,
+    "toc": true
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "installation",
+        "text": "Installation"
+    },
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "exports",
+        "text": "Exports"
+    },
+    {
+        "depth": 2,
+        "slug": "examples",
+        "text": "Examples"
+    },
+    {
+        "depth": 3,
+        "slug": "default",
+        "text": "Default"
+    },
+    {
+        "depth": 3,
+        "slug": "range",
+        "text": "Range"
+    }
+]
+  },
+  "components/dialog": {
+    component: lazy(() => import("@docs/content/docs/components/dialog.mdx")),
+    data: {
+    "title": "Dialog",
+    "description": "Modal overlay for focused tasks or information.",
+    "navTitle": "Dialog",
+    "section": "Components",
+    "order": 0,
+    "toc": true
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "installation",
+        "text": "Installation"
+    },
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "exports",
+        "text": "Exports"
+    },
+    {
+        "depth": 2,
+        "slug": "examples",
+        "text": "Examples"
+    },
+    {
+        "depth": 3,
+        "slug": "default",
+        "text": "Default"
+    }
+]
+  },
+  "components/drawer": {
+    component: lazy(() => import("@docs/content/docs/components/drawer.mdx")),
+    data: {
+    "title": "Drawer",
+    "description": "Panel that slides in from the edge of the viewport.",
+    "navTitle": "Drawer",
+    "section": "Components",
+    "order": 0,
+    "toc": true
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "installation",
+        "text": "Installation"
+    },
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "exports",
+        "text": "Exports"
+    },
+    {
+        "depth": 2,
+        "slug": "examples",
+        "text": "Examples"
+    },
+    {
+        "depth": 3,
+        "slug": "default",
+        "text": "Default"
+    },
+    {
+        "depth": 3,
+        "slug": "side",
+        "text": "Side"
+    }
+]
+  },
+  "components/dropdown-menu": {
+    component: lazy(() => import("@docs/content/docs/components/dropdown-menu.mdx")),
+    data: {
+    "title": "Dropdown Menu",
+    "description": "Floating menu triggered from a control, with items, groups, and submenus.",
+    "navTitle": "Dropdown Menu",
+    "section": "Components",
+    "order": 0,
+    "toc": true
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "installation",
+        "text": "Installation"
+    },
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "exports",
+        "text": "Exports"
+    },
+    {
+        "depth": 2,
+        "slug": "examples",
+        "text": "Examples"
+    },
+    {
+        "depth": 3,
+        "slug": "default",
+        "text": "Default"
+    }
+]
+  },
+  "components/file-field": {
+    component: lazy(() => import("@docs/content/docs/components/file-field.mdx")),
+    data: {
+    "title": "File Field",
+    "description": "Accessible file upload with dropzone, item list, and previews.",
+    "navTitle": "File Field",
+    "section": "Components",
+    "order": 0,
+    "toc": true
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "installation",
+        "text": "Installation"
+    },
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "exports",
+        "text": "Exports"
+    },
+    {
+        "depth": 2,
+        "slug": "examples",
+        "text": "Examples"
+    },
+    {
+        "depth": 3,
+        "slug": "default",
+        "text": "Default"
+    }
+]
+  },
+  "components/hover-card": {
+    component: lazy(() => import("@docs/content/docs/components/hover-card.mdx")),
+    data: {
+    "title": "Hover Card",
+    "description": "Rich preview content shown on hover or focus.",
+    "navTitle": "Hover Card",
+    "section": "Components",
+    "order": 0,
+    "toc": true
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "installation",
+        "text": "Installation"
+    },
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "exports",
+        "text": "Exports"
+    },
+    {
+        "depth": 2,
+        "slug": "examples",
+        "text": "Examples"
+    },
+    {
+        "depth": 3,
+        "slug": "default",
+        "text": "Default"
+    }
+]
+  },
+  "components/icons": {
+    component: lazy(() => import("@docs/content/docs/components/icons.mdx")),
+    data: {
+    "title": "Icons",
+    "description": "Inline SVG icon components used across the design system.",
+    "navTitle": "Icons",
+    "section": "Components",
+    "order": 0,
+    "toc": true
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "installation",
+        "text": "Installation"
+    },
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "exports",
+        "text": "Exports"
+    },
+    {
+        "depth": 2,
+        "slug": "examples",
+        "text": "Examples"
+    },
+    {
+        "depth": 3,
+        "slug": "common-icons",
+        "text": "Common icons"
+    }
+]
+  },
+  "components/kbd": {
+    component: lazy(() => import("@docs/content/docs/components/kbd.mdx")),
+    data: {
+    "title": "Kbd",
+    "description": "Keyboard shortcut styling for inline hints.",
+    "navTitle": "Kbd",
+    "section": "Components",
+    "order": 0,
+    "toc": true
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "installation",
+        "text": "Installation"
+    },
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "exports",
+        "text": "Exports"
+    },
+    {
+        "depth": 2,
+        "slug": "examples",
+        "text": "Examples"
+    },
+    {
+        "depth": 3,
+        "slug": "default",
+        "text": "Default"
+    },
+    {
+        "depth": 3,
+        "slug": "button",
+        "text": "Button"
+    },
+    {
+        "depth": 3,
+        "slug": "group",
+        "text": "Group"
+    }
+]
+  },
+  "components/menubar": {
+    component: lazy(() => import("@docs/content/docs/components/menubar.mdx")),
+    data: {
+    "title": "Menubar",
+    "description": "Horizontal bar of menus, similar to desktop application menus.",
+    "navTitle": "Menubar",
+    "section": "Components",
+    "order": 0,
+    "toc": true
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "installation",
+        "text": "Installation"
+    },
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "exports",
+        "text": "Exports"
+    },
+    {
+        "depth": 2,
+        "slug": "examples",
+        "text": "Examples"
+    },
+    {
+        "depth": 3,
+        "slug": "default",
+        "text": "Default"
+    }
+]
+  },
+  "components/navigation-menu": {
+    component: lazy(() => import("@docs/content/docs/components/navigation-menu.mdx")),
+    data: {
+    "title": "Navigation Menu",
+    "description": "Accessible site navigation with triggers and content panels.",
+    "navTitle": "Navigation Menu",
+    "section": "Components",
+    "order": 0,
+    "toc": true
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "installation",
+        "text": "Installation"
+    },
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "exports",
+        "text": "Exports"
+    },
+    {
+        "depth": 2,
+        "slug": "examples",
+        "text": "Examples"
+    },
+    {
+        "depth": 3,
+        "slug": "default",
+        "text": "Default"
+    },
+    {
+        "depth": 3,
+        "slug": "vertical",
+        "text": "Vertical"
+    }
+]
+  },
+  "components/number-field": {
+    component: lazy(() => import("@docs/content/docs/components/number-field.mdx")),
+    data: {
+    "title": "Number Field",
+    "description": "Numeric input with increment and decrement controls.",
+    "navTitle": "Number Field",
+    "section": "Components",
+    "order": 0,
+    "toc": true
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "installation",
+        "text": "Installation"
+    },
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "exports",
+        "text": "Exports"
+    },
+    {
+        "depth": 2,
+        "slug": "examples",
+        "text": "Examples"
+    },
+    {
+        "depth": 3,
+        "slug": "default",
+        "text": "Default"
+    },
+    {
+        "depth": 3,
+        "slug": "error",
+        "text": "Error"
+    }
+]
+  },
+  "components/otp-field": {
+    component: lazy(() => import("@docs/content/docs/components/otp-field.mdx")),
+    data: {
+    "title": "OTP Field",
+    "description": "One-time password input with slots and optional separators.",
+    "navTitle": "OTP Field",
+    "section": "Components",
+    "order": 0,
+    "toc": true
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "installation",
+        "text": "Installation"
+    },
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "exports",
+        "text": "Exports"
+    },
+    {
+        "depth": 2,
+        "slug": "examples",
+        "text": "Examples"
+    },
+    {
+        "depth": 3,
+        "slug": "default",
+        "text": "Default"
+    }
+]
+  },
+  "components/pagination": {
+    component: lazy(() => import("@docs/content/docs/components/pagination.mdx")),
+    data: {
+    "title": "Pagination",
+    "description": "Navigation control for paged lists and tables.",
+    "navTitle": "Pagination",
+    "section": "Components",
+    "order": 0,
+    "toc": true
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "installation",
+        "text": "Installation"
+    },
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "exports",
+        "text": "Exports"
+    },
+    {
+        "depth": 2,
+        "slug": "examples",
+        "text": "Examples"
+    },
+    {
+        "depth": 3,
+        "slug": "default",
+        "text": "Default"
+    }
+]
+  },
+  "components/popover": {
+    component: lazy(() => import("@docs/content/docs/components/popover.mdx")),
+    data: {
+    "title": "Popover",
+    "description": "Floating panel anchored to a trigger element.",
+    "navTitle": "Popover",
+    "section": "Components",
+    "order": 0,
+    "toc": true
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "installation",
+        "text": "Installation"
+    },
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "examples",
+        "text": "Examples"
+    },
+    {
+        "depth": 3,
+        "slug": "default",
+        "text": "Default"
+    },
+    {
+        "depth": 3,
+        "slug": "simple-content",
+        "text": "Simple content"
+    },
+    {
+        "depth": 3,
+        "slug": "controlled-open",
+        "text": "Controlled open"
+    },
+    {
+        "depth": 2,
+        "slug": "exports",
+        "text": "Exports"
+    }
+]
+  },
+  "components/progress": {
+    component: lazy(() => import("@docs/content/docs/components/progress.mdx")),
+    data: {
+    "title": "Progress",
+    "description": "Linear progress indicator with optional label and value text.",
+    "navTitle": "Progress",
+    "section": "Components",
+    "order": 0,
+    "toc": true
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "installation",
+        "text": "Installation"
+    },
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "exports",
+        "text": "Exports"
+    },
+    {
+        "depth": 2,
+        "slug": "examples",
+        "text": "Examples"
+    },
+    {
+        "depth": 3,
+        "slug": "default",
+        "text": "Default"
+    }
+]
+  },
+  "components/radio-group": {
+    component: lazy(() => import("@docs/content/docs/components/radio-group.mdx")),
+    data: {
+    "title": "Radio Group",
+    "description": "Single-choice control built from radio items and labels.",
+    "navTitle": "Radio Group",
+    "section": "Components",
+    "order": 0,
+    "toc": true
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "installation",
+        "text": "Installation"
+    },
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "exports",
+        "text": "Exports"
+    },
+    {
+        "depth": 2,
+        "slug": "examples",
+        "text": "Examples"
+    },
+    {
+        "depth": 3,
+        "slug": "default",
+        "text": "Default"
+    }
+]
+  },
+  "components/resizable": {
+    component: lazy(() => import("@docs/content/docs/components/resizable.mdx")),
+    data: {
+    "title": "Resizable",
+    "description": "Split layout with draggable panel handles.",
+    "navTitle": "Resizable",
+    "section": "Components",
+    "order": 0,
+    "toc": true
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "installation",
+        "text": "Installation"
+    },
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "exports",
+        "text": "Exports"
+    },
+    {
+        "depth": 2,
+        "slug": "examples",
+        "text": "Examples"
+    },
+    {
+        "depth": 3,
+        "slug": "default",
+        "text": "Default"
+    },
+    {
+        "depth": 3,
+        "slug": "orientation",
+        "text": "Orientation"
+    },
+    {
+        "depth": 3,
+        "slug": "with-handle",
+        "text": "With Handle"
+    }
+]
+  },
+  "components/search": {
+    component: lazy(() => import("@docs/content/docs/components/search.mdx")),
+    data: {
+    "title": "Search",
+    "description": "Composable search and autocomplete built on Kobalte’s search primitive.",
+    "navTitle": "Search",
+    "section": "Components",
+    "order": 0,
+    "toc": true
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "installation",
+        "text": "Installation"
+    },
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "exports",
+        "text": "Exports"
+    },
+    {
+        "depth": 2,
+        "slug": "examples",
+        "text": "Examples"
+    },
+    {
+        "depth": 3,
+        "slug": "default",
+        "text": "Default"
+    },
+    {
+        "depth": 3,
+        "slug": "inline",
+        "text": "Inline"
+    }
+]
+  },
+  "components/segmented-control": {
+    component: lazy(() => import("@docs/content/docs/components/segmented-control.mdx")),
+    data: {
+    "title": "Segmented Control",
+    "description": "Toggle-style control for choosing one of several segments.",
+    "navTitle": "Segmented Control",
+    "section": "Components",
+    "order": 0,
+    "toc": true
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "installation",
+        "text": "Installation"
+    },
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "exports",
+        "text": "Exports"
+    },
+    {
+        "depth": 2,
+        "slug": "examples",
+        "text": "Examples"
+    },
+    {
+        "depth": 3,
+        "slug": "default",
+        "text": "Default"
+    },
+    {
+        "depth": 3,
+        "slug": "orientation",
+        "text": "Orientation"
+    }
+]
+  },
+  "components/select": {
+    component: lazy(() => import("@docs/content/docs/components/select.mdx")),
+    data: {
+    "title": "Select",
+    "description": "Dropdown single-select with trigger, value, and listbox parts.",
+    "navTitle": "Select",
+    "section": "Components",
+    "order": 0,
+    "toc": true
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "installation",
+        "text": "Installation"
+    },
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "accessibility",
+        "text": "Accessibility"
+    },
+    {
+        "depth": 2,
+        "slug": "examples",
+        "text": "Examples"
+    },
+    {
+        "depth": 3,
+        "slug": "default",
+        "text": "Default"
+    },
+    {
+        "depth": 3,
+        "slug": "error",
+        "text": "Error"
+    },
+    {
+        "depth": 2,
+        "slug": "exports",
+        "text": "Exports"
+    }
+]
+  },
+  "components/separator": {
+    component: lazy(() => import("@docs/content/docs/components/separator.mdx")),
+    data: {
+    "title": "Separator",
+    "description": "Visual divider between sections of content.",
+    "navTitle": "Separator",
+    "section": "Components",
+    "order": 0,
+    "toc": true
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "installation",
+        "text": "Installation"
+    },
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "exports",
+        "text": "Exports"
+    },
+    {
+        "depth": 2,
+        "slug": "examples",
+        "text": "Examples"
+    },
+    {
+        "depth": 3,
+        "slug": "default",
+        "text": "Default"
+    }
+]
+  },
+  "components/sidebar": {
+    component: lazy(() => import("@docs/content/docs/components/sidebar.mdx")),
+    data: {
+    "title": "Sidebar",
+    "description": "Collapsible application sidebar with mobile drawer, menu tree, and layout slots.",
+    "navTitle": "Sidebar",
+    "section": "Components",
+    "order": 0,
+    "toc": true
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "installation",
+        "text": "Installation"
+    },
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "exports",
+        "text": "Exports"
+    },
+    {
+        "depth": 2,
+        "slug": "examples",
+        "text": "Examples"
+    },
+    {
+        "depth": 3,
+        "slug": "default",
+        "text": "Default"
+    }
+]
+  },
+  "components/skeleton": {
+    component: lazy(() => import("@docs/content/docs/components/skeleton.mdx")),
+    data: {
+    "title": "Skeleton",
+    "description": "Placeholder block for loading states.",
+    "navTitle": "Skeleton",
+    "section": "Components",
+    "order": 0,
+    "toc": true
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "installation",
+        "text": "Installation"
+    },
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "exports",
+        "text": "Exports"
+    },
+    {
+        "depth": 2,
+        "slug": "examples",
+        "text": "Examples"
+    },
+    {
+        "depth": 3,
+        "slug": "default",
+        "text": "Default"
+    }
+]
+  },
+  "components/slider": {
+    component: lazy(() => import("@docs/content/docs/components/slider.mdx")),
+    data: {
+    "title": "Slider",
+    "description": "Range input with track, fill, thumb, and optional labels.",
+    "navTitle": "Slider",
+    "section": "Components",
+    "order": 0,
+    "toc": true
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "installation",
+        "text": "Installation"
+    },
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "exports",
+        "text": "Exports"
+    },
+    {
+        "depth": 2,
+        "slug": "examples",
+        "text": "Examples"
+    },
+    {
+        "depth": 3,
+        "slug": "default",
+        "text": "Default"
+    },
+    {
+        "depth": 3,
+        "slug": "custom-label",
+        "text": "Custom Label"
+    },
+    {
+        "depth": 3,
+        "slug": "vertical",
+        "text": "Vertical"
+    }
+]
+  },
+  "components/sonner": {
+    component: lazy(() => import("@docs/content/docs/components/sonner.mdx")),
+    data: {
+    "title": "Sonner (Toaster)",
+    "description": "Toast host wired to Kobalte color mode and design tokens via somoto.",
+    "navTitle": "Sonner",
+    "section": "Components",
+    "order": 0,
+    "toc": true
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "installation",
+        "text": "Installation"
+    },
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "exports",
+        "text": "Exports"
+    },
+    {
+        "depth": 2,
+        "slug": "examples",
+        "text": "Examples"
+    },
+    {
+        "depth": 3,
+        "slug": "default",
+        "text": "Default"
+    }
+]
+  },
+  "components/switch": {
+    component: lazy(() => import("@docs/content/docs/components/switch.mdx")),
+    data: {
+    "title": "Switch",
+    "description": "Toggle switch with control, thumb, hidden input, and optional label and error slots.",
+    "navTitle": "Switch",
+    "section": "Components",
+    "order": 0,
+    "toc": true
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "installation",
+        "text": "Installation"
+    },
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "examples",
+        "text": "Examples"
+    },
+    {
+        "depth": 3,
+        "slug": "default",
+        "text": "Default"
+    },
+    {
+        "depth": 3,
+        "slug": "disabled",
+        "text": "Disabled"
+    },
+    {
+        "depth": 2,
+        "slug": "exports",
+        "text": "Exports"
+    }
+]
+  },
+  "components/table": {
+    component: lazy(() => import("@docs/content/docs/components/table.mdx")),
+    data: {
+    "title": "Table",
+    "description": "Styled HTML table primitives with scroll container and row or cell slots.",
+    "navTitle": "Table",
+    "section": "Components",
+    "order": 0,
+    "toc": true
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "installation",
+        "text": "Installation"
+    },
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "exports",
+        "text": "Exports"
+    },
+    {
+        "depth": 2,
+        "slug": "examples",
+        "text": "Examples"
+    },
+    {
+        "depth": 3,
+        "slug": "default",
+        "text": "Default"
+    },
+    {
+        "depth": 3,
+        "slug": "data",
+        "text": "Data"
+    }
+]
+  },
+  "components/tabs": {
+    component: lazy(() => import("@docs/content/docs/components/tabs.mdx")),
+    data: {
+    "title": "Tabs",
+    "description": "Accessible tab list, triggers, indicator, and panels built on Kobalte.",
+    "navTitle": "Tabs",
+    "section": "Components",
+    "order": 0,
+    "toc": true
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "installation",
+        "text": "Installation"
+    },
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "exports",
+        "text": "Exports"
+    },
+    {
+        "depth": 2,
+        "slug": "examples",
+        "text": "Examples"
+    },
+    {
+        "depth": 3,
+        "slug": "default",
+        "text": "Default"
+    },
+    {
+        "depth": 3,
+        "slug": "orientation",
+        "text": "Orientation"
+    }
+]
+  },
+  "components/tabulator-table": {
+    component: lazy(() => import("@docs/content/docs/components/tabulator-table.mdx")),
+    data: {
+    "title": "Tabulator table",
+    "description": "Solid wrapper that mounts Tabulator.js on a div with lifecycle-safe init and cleanup.",
+    "navTitle": "Tabulator Table",
+    "section": "Components",
+    "order": 0,
+    "toc": true
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "installation",
+        "text": "Installation"
+    },
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "api",
+        "text": "API"
+    },
+    {
+        "depth": 2,
+        "slug": "exports",
+        "text": "Exports"
+    },
+    {
+        "depth": 2,
+        "slug": "examples",
+        "text": "Examples"
+    },
+    {
+        "depth": 3,
+        "slug": "basic-table",
+        "text": "Basic table"
+    },
+    {
+        "depth": 3,
+        "slug": "oninit-and-instance-access",
+        "text": "onInit and instance access"
+    }
+]
+  },
+  "components/tanstack-table": {
+    component: lazy(() => import("@docs/content/docs/components/tanstack-table.mdx")),
+    data: {
+    "title": "TanStack table",
+    "description": "Data table UI built on TanStack Table with Solid adapters, context, and helpers.",
+    "navTitle": "TanStack Table",
+    "section": "Components",
+    "order": 0,
+    "toc": true
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "installation",
+        "text": "Installation"
+    },
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "exports",
+        "text": "Exports"
+    },
+    {
+        "depth": 2,
+        "slug": "examples",
+        "text": "Examples"
+    },
+    {
+        "depth": 3,
+        "slug": "styled-table-primitives",
+        "text": "Styled table primitives"
+    },
+    {
+        "depth": 3,
+        "slug": "data-table-using-data-table-demo",
+        "text": "Data table using data-table-demo"
+    }
+]
+  },
+  "components/text-field": {
+    component: lazy(() => import("@docs/content/docs/components/text-field.mdx")),
+    data: {
+    "title": "Text field",
+    "description": "Labelled text input, textarea, validation, and description built on Kobalte.",
+    "navTitle": "Text Field",
+    "section": "Components",
+    "order": 0,
+    "toc": true
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "installation",
+        "text": "Installation"
+    },
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "exports",
+        "text": "Exports"
+    },
+    {
+        "depth": 2,
+        "slug": "examples",
+        "text": "Examples"
+    },
+    {
+        "depth": 3,
+        "slug": "default",
+        "text": "Default"
+    },
+    {
+        "depth": 3,
+        "slug": "area",
+        "text": "Area"
+    },
+    {
+        "depth": 3,
+        "slug": "disabled",
+        "text": "Disabled"
+    },
+    {
+        "depth": 3,
+        "slug": "error",
+        "text": "Error"
+    },
+    {
+        "depth": 3,
+        "slug": "file",
+        "text": "File"
+    }
+]
+  },
+  "components/theme": {
+    component: lazy(() => import("@docs/content/docs/components/theme.mdx")),
+    data: {
+    "title": "Theme",
+    "description": "Solid context provider for design tokens such as component radius.",
+    "navTitle": "Theme",
+    "section": "Components",
+    "order": 0,
+    "toc": true
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "installation",
+        "text": "Installation"
+    },
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "api",
+        "text": "API"
+    },
+    {
+        "depth": 2,
+        "slug": "exports",
+        "text": "Exports"
+    },
+    {
+        "depth": 2,
+        "slug": "examples",
+        "text": "Examples"
+    },
+    {
+        "depth": 3,
+        "slug": "themeprovider-and-usetheme",
+        "text": "ThemeProvider and useTheme"
+    },
+    {
+        "depth": 3,
+        "slug": "radius-mapping-by-component-category",
+        "text": "Radius mapping by component category"
+    }
+]
+  },
+  "components/toggle-button": {
+    component: lazy(() => import("@docs/content/docs/components/toggle-button.mdx")),
+    data: {
+    "title": "Toggle button",
+    "description": "Pressable toggle with default and outline variants and shared sizing tokens.",
+    "navTitle": "Toggle Button",
+    "section": "Components",
+    "order": 0,
+    "toc": true
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "installation",
+        "text": "Installation"
+    },
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "exports",
+        "text": "Exports"
+    },
+    {
+        "depth": 2,
+        "slug": "examples",
+        "text": "Examples"
+    },
+    {
+        "depth": 3,
+        "slug": "default",
+        "text": "Default"
+    },
+    {
+        "depth": 3,
+        "slug": "disabled",
+        "text": "Disabled"
+    },
+    {
+        "depth": 3,
+        "slug": "outline",
+        "text": "Outline"
+    },
+    {
+        "depth": 3,
+        "slug": "size",
+        "text": "Size"
+    }
+]
+  },
+  "components/toggle-group": {
+    component: lazy(() => import("@docs/content/docs/components/toggle-group.mdx")),
+    data: {
+    "title": "Toggle group",
+    "description": "Single- or multi-select toggle group sharing variant and size with each item.",
+    "navTitle": "Toggle Group",
+    "section": "Components",
+    "order": 0,
+    "toc": true
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "installation",
+        "text": "Installation"
+    },
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "exports",
+        "text": "Exports"
+    },
+    {
+        "depth": 2,
+        "slug": "examples",
+        "text": "Examples"
+    },
+    {
+        "depth": 3,
+        "slug": "default",
+        "text": "Default"
+    }
+]
+  },
+  "components/tooltip": {
+    component: lazy(() => import("@docs/content/docs/components/tooltip.mdx")),
+    data: {
+    "title": "Tooltip",
+    "description": "Tooltip root, trigger, portal, and styled content with arrow on Kobalte.",
+    "navTitle": "Tooltip",
+    "section": "Components",
+    "order": 0,
+    "toc": true
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "installation",
+        "text": "Installation"
+    },
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "examples",
+        "text": "Examples"
+    },
+    {
+        "depth": 3,
+        "slug": "default",
+        "text": "Default"
+    },
+    {
+        "depth": 3,
+        "slug": "placement",
+        "text": "Placement"
+    },
+    {
+        "depth": 2,
+        "slug": "exports",
+        "text": "Exports"
+    }
+]
+  },
+  "hoc/app-sidebar": {
+    component: lazy(() => import("@docs/content/docs/hoc/app-sidebar.mdx")),
+    data: {
+    "title": "App sidebar",
+    "description": "Application shell with sidebar provider, grouped menu trees, and main inset body.",
+    "navTitle": "App sidebar",
+    "section": "HOC",
+    "order": 0,
+    "toc": true
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "installation",
+        "text": "Installation"
+    },
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "examples",
+        "text": "Examples"
+    },
+    {
+        "depth": 3,
+        "slug": "preset-header-with-grouped-menus",
+        "text": "Preset header with grouped menus"
+    },
+    {
+        "depth": 3,
+        "slug": "custom-header-and-footer-jsx",
+        "text": "Custom header and footer JSX"
+    },
+    {
+        "depth": 3,
+        "slug": "adjust-sidebar-styling-with-sidebarprops",
+        "text": "Adjust sidebar styling with sidebarProps"
+    },
+    {
+        "depth": 3,
+        "slug": "use-sidebarprops-for-side-and-styling",
+        "text": "Use sidebarProps for side and styling"
+    },
+    {
+        "depth": 3,
+        "slug": "sidebarprops-for-placement-and-styling",
+        "text": "sidebarProps for placement and styling"
+    },
+    {
+        "depth": 2,
+        "slug": "exports",
+        "text": "Exports"
+    }
+]
+  },
+  "hoc/command-palette": {
+    component: lazy(() => import("@docs/content/docs/hoc/command-palette.mdx")),
+    data: {
+    "title": "Command palette",
+    "description": "Global command dialog with grouped items, optional Cmd/Ctrl+K hotkey, and search.",
+    "navTitle": "Command palette",
+    "section": "HOC",
+    "order": 0,
+    "toc": true
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "installation",
+        "text": "Installation"
+    },
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "examples",
+        "text": "Examples"
+    },
+    {
+        "depth": 3,
+        "slug": "uncontrolled-with-default-hotkey",
+        "text": "Uncontrolled with default hotkey"
+    },
+    {
+        "depth": 3,
+        "slug": "controlled-open-state-with-hotkey-disabled",
+        "text": "Controlled open state with hotkey disabled"
+    },
+    {
+        "depth": 3,
+        "slug": "custom-title-search-callback-and-disabled-items",
+        "text": "Custom title, search callback, and disabled items"
+    },
+    {
+        "depth": 3,
+        "slug": "custom-hotkey-and-localized-copy",
+        "text": "Custom hotkey and localized copy"
+    },
+    {
+        "depth": 3,
+        "slug": "uncontrolled-with-grouped-items-and-icon",
+        "text": "Uncontrolled with grouped items and icon"
+    },
+    {
+        "depth": 3,
+        "slug": "internal-state-with-default-hotkey-and-item-icon",
+        "text": "Internal state with default hotkey and item icon"
+    },
+    {
+        "depth": 2,
+        "slug": "api",
+        "text": "API"
+    },
+    {
+        "depth": 3,
+        "slug": "commandpaletteprops",
+        "text": "CommandPaletteProps"
+    },
+    {
+        "depth": 3,
+        "slug": "commandpaletteitem",
+        "text": "CommandPaletteItem"
+    },
+    {
+        "depth": 3,
+        "slug": "commandpalettegroup",
+        "text": "CommandPaletteGroup"
+    },
+    {
+        "depth": 2,
+        "slug": "exports",
+        "text": "Exports"
+    }
+]
+  },
+  "hoc/confirm-dialog": {
+    component: lazy(() => import("@docs/content/docs/hoc/confirm-dialog.mdx")),
+    data: {
+    "title": "Confirm dialog",
+    "description": "Imperative confirmation API backed by a single root `AlertDialog` instance.",
+    "navTitle": "Confirm dialog",
+    "section": "HOC",
+    "order": 0,
+    "toc": true
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "installation",
+        "text": "Installation"
+    },
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "api",
+        "text": "API"
+    },
+    {
+        "depth": 3,
+        "slug": "confirmoptions-confirmdialogoptions-promiseboolean",
+        "text": "confirm(options: ConfirmDialogOptions): Promise<boolean>"
+    },
+    {
+        "depth": 3,
+        "slug": "confirmdialogoptions",
+        "text": "ConfirmDialogOptions"
+    },
+    {
+        "depth": 2,
+        "slug": "examples",
+        "text": "Examples"
+    },
+    {
+        "depth": 3,
+        "slug": "neutral-confirmation-with-button-classes",
+        "text": "Neutral confirmation with button classes"
+    },
+    {
+        "depth": 3,
+        "slug": "confirm-destructive-deletion",
+        "text": "Confirm destructive deletion"
+    },
+    {
+        "depth": 3,
+        "slug": "jsx-description-and-custom-button-copy",
+        "text": "JSX description and custom button copy"
+    },
+    {
+        "depth": 3,
+        "slug": "extra-button-classes-with-confirmclass-and-cancelclass",
+        "text": "Extra button classes with confirmClass and cancelClass"
+    },
+    {
+        "depth": 3,
+        "slug": "default-variant-with-button-class-adjustments",
+        "text": "Default variant with button class adjustments"
+    },
+    {
+        "depth": 2,
+        "slug": "exports",
+        "text": "Exports"
+    }
+]
+  },
+  "hoc/data-table": {
+    component: lazy(() => import("@docs/content/docs/hoc/data-table.mdx")),
+    data: {
+    "title": "Data table",
+    "description": "TanStack Table wiring with toolbar, pagination, loading skeleton, and empty state.",
+    "navTitle": "Data table",
+    "section": "HOC",
+    "order": 0,
+    "toc": true
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "installation",
+        "text": "Installation"
+    },
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "examples",
+        "text": "Examples"
+    },
+    {
+        "depth": 3,
+        "slug": "column-definitions-and-search-column",
+        "text": "Column definitions and search column"
+    },
+    {
+        "depth": 3,
+        "slug": "row-selection-and-ontableready",
+        "text": "Row selection and onTableReady"
+    },
+    {
+        "depth": 3,
+        "slug": "toolbar-filter-slot-and-empty-state-copy",
+        "text": "Toolbar filter slot and empty-state copy"
+    },
+    {
+        "depth": 3,
+        "slug": "loading-state-and-custom-skeleton-row-count",
+        "text": "Loading state and custom skeleton row count"
+    },
+    {
+        "depth": 3,
+        "slug": "loading-and-loadingrows",
+        "text": "loading and loadingRows"
+    },
+    {
+        "depth": 2,
+        "slug": "api",
+        "text": "API"
+    },
+    {
+        "depth": 3,
+        "slug": "datatablepropstdata",
+        "text": "DataTableProps<TData>"
+    },
+    {
+        "depth": 2,
+        "slug": "exports",
+        "text": "Exports"
+    }
+]
+  },
+  "hoc/data-table-toolbar": {
+    component: lazy(() => import("@docs/content/docs/hoc/data-table-toolbar.mdx")),
+    data: {
+    "title": "Data table toolbar",
+    "description": "Search, filter slot, column visibility, and actions for a TanStack `Table` instance.",
+    "navTitle": "Data table toolbar",
+    "section": "HOC",
+    "order": 0,
+    "toc": true
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "installation",
+        "text": "Installation"
+    },
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "examples",
+        "text": "Examples"
+    },
+    {
+        "depth": 3,
+        "slug": "combined-with-createsolidtable",
+        "text": "Combined with createSolidTable"
+    },
+    {
+        "depth": 3,
+        "slug": "no-search-and-hidden-column-visibility-menu",
+        "text": "No search and hidden column visibility menu"
+    },
+    {
+        "depth": 3,
+        "slug": "locale-overrides-for-placeholder-and-columns-menu",
+        "text": "locale overrides for placeholder and columns menu"
+    },
+    {
+        "depth": 3,
+        "slug": "locale-overrides-for-toolbar-copy",
+        "text": "locale overrides for toolbar copy"
+    },
+    {
+        "depth": 2,
+        "slug": "api",
+        "text": "API"
+    },
+    {
+        "depth": 3,
+        "slug": "datatabletoolbarpropstdata",
+        "text": "DataTableToolbarProps<TData>"
+    },
+    {
+        "depth": 2,
+        "slug": "exports",
+        "text": "Exports"
+    }
+]
+  },
+  "hoc/date-picker": {
+    component: lazy(() => import("@docs/content/docs/hoc/date-picker.mdx")),
+    data: {
+    "title": "Date picker field",
+    "description": "Pre-composed date picker with label, validation, presets, and calendar panel.",
+    "navTitle": "Date picker field",
+    "section": "HOC",
+    "order": 0,
+    "toc": true
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "installation",
+        "text": "Installation"
+    },
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "examples",
+        "text": "Examples"
+    },
+    {
+        "depth": 3,
+        "slug": "single-date-clearable-and-preset-ranges",
+        "text": "Single date, clearable, and preset ranges"
+    },
+    {
+        "depth": 2,
+        "slug": "api",
+        "text": "API"
+    },
+    {
+        "depth": 3,
+        "slug": "datepickerfieldprops",
+        "text": "DatePickerFieldProps"
+    },
+    {
+        "depth": 3,
+        "slug": "datepickerpreset",
+        "text": "DatePickerPreset"
+    },
+    {
+        "depth": 3,
+        "slug": "daterangepreset",
+        "text": "DateRangePreset"
+    },
+    {
+        "depth": 2,
+        "slug": "exports",
+        "text": "Exports"
+    }
+]
+  },
+  "hoc/description-list": {
+    component: lazy(() => import("@docs/content/docs/hoc/description-list.mdx")),
+    data: {
+    "title": "Description list",
+    "description": "Key-value grid for detail pages with optional card wrapper and copy-to-clipboard.",
+    "navTitle": "Description list",
+    "section": "HOC",
+    "order": 0,
+    "toc": true
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "installation",
+        "text": "Installation"
+    },
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "examples",
+        "text": "Examples"
+    },
+    {
+        "depth": 3,
+        "slug": "horizontal-layout-with-card-wrapper",
+        "text": "Horizontal layout with card wrapper"
+    },
+    {
+        "depth": 2,
+        "slug": "api",
+        "text": "API"
+    },
+    {
+        "depth": 3,
+        "slug": "descriptionlistprops",
+        "text": "DescriptionListProps"
+    },
+    {
+        "depth": 3,
+        "slug": "descriptionitem",
+        "text": "DescriptionItem"
+    },
+    {
+        "depth": 2,
+        "slug": "exports",
+        "text": "Exports"
+    }
+]
+  },
+  "hoc/empty-state": {
+    component: lazy(() => import("@docs/content/docs/hoc/empty-state.mdx")),
+    data: {
+    "title": "Empty state",
+    "description": "Centered placeholder for empty lists, search results, or missing data.",
+    "navTitle": "Empty state",
+    "section": "HOC",
+    "order": 0,
+    "toc": true
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "installation",
+        "text": "Installation"
+    },
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "examples",
+        "text": "Examples"
+    },
+    {
+        "depth": 3,
+        "slug": "with-icon-and-action",
+        "text": "With icon and action"
+    },
+    {
+        "depth": 2,
+        "slug": "api",
+        "text": "API"
+    },
+    {
+        "depth": 3,
+        "slug": "emptystateprops",
+        "text": "EmptyStateProps"
+    },
+    {
+        "depth": 2,
+        "slug": "exports",
+        "text": "Exports"
+    }
+]
+  },
+  "hoc/file-upload-zone": {
+    component: lazy(() => import("@docs/content/docs/hoc/file-upload-zone.mdx")),
+    data: {
+    "title": "File upload zone",
+    "description": "Drag-and-drop and file input with validation, previews, and upload progress UI.",
+    "navTitle": "File upload zone",
+    "section": "HOC",
+    "order": 0,
+    "toc": true
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "installation",
+        "text": "Installation"
+    },
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "examples",
+        "text": "Examples"
+    },
+    {
+        "depth": 3,
+        "slug": "controlled-list-with-add-and-remove",
+        "text": "Controlled list with add and remove"
+    },
+    {
+        "depth": 2,
+        "slug": "api",
+        "text": "API"
+    },
+    {
+        "depth": 3,
+        "slug": "fileuploadzoneprops",
+        "text": "FileUploadZoneProps"
+    },
+    {
+        "depth": 3,
+        "slug": "uploadfile",
+        "text": "UploadFile"
+    },
+    {
+        "depth": 2,
+        "slug": "exports",
+        "text": "Exports"
+    }
+]
+  },
+  "hoc/filter-builder": {
+    component: lazy(() => import("@docs/content/docs/hoc/filter-builder.mdx")),
+    data: {
+    "title": "Filter builder",
+    "description": "Controlled UI to add rules: field, operator, and value per row.",
+    "navTitle": "Filter builder",
+    "section": "HOC",
+    "order": 0,
+    "toc": true
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "installation",
+        "text": "Installation"
+    },
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "examples",
+        "text": "Examples"
+    },
+    {
+        "depth": 3,
+        "slug": "multiple-rules-across-mixed-field-types",
+        "text": "Multiple rules across mixed field types"
+    },
+    {
+        "depth": 2,
+        "slug": "api",
+        "text": "API"
+    },
+    {
+        "depth": 3,
+        "slug": "filterbuilderprops",
+        "text": "FilterBuilderProps"
+    },
+    {
+        "depth": 3,
+        "slug": "filterfielddefinition",
+        "text": "FilterFieldDefinition"
+    },
+    {
+        "depth": 3,
+        "slug": "filterrule",
+        "text": "FilterRule"
+    },
+    {
+        "depth": 3,
+        "slug": "filteroperator-filterfieldtype-filterfieldoption",
+        "text": "FilterOperator, FilterFieldType, FilterFieldOption"
+    },
+    {
+        "depth": 2,
+        "slug": "exports",
+        "text": "Exports"
+    }
+]
+  },
+  "hoc/form-field": {
+    component: lazy(() => import("@docs/content/docs/hoc/form-field.mdx")),
+    data: {
+    "title": "Form field",
+    "description": "Label, required marker, error list, and description around arbitrary field children.",
+    "navTitle": "Form field",
+    "section": "HOC",
+    "order": 0,
+    "toc": true
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "installation",
+        "text": "Installation"
+    },
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "examples",
+        "text": "Examples"
+    },
+    {
+        "depth": 3,
+        "slug": "validation-error-hides-description",
+        "text": "Validation error hides description"
+    },
+    {
+        "depth": 3,
+        "slug": "multiple-errors-with-explicit-htmlfor",
+        "text": "Multiple errors with explicit htmlFor"
+    },
+    {
+        "depth": 2,
+        "slug": "api",
+        "text": "API"
+    },
+    {
+        "depth": 3,
+        "slug": "formfieldprops",
+        "text": "FormFieldProps"
+    },
+    {
+        "depth": 2,
+        "slug": "exports",
+        "text": "Exports"
+    }
+]
+  },
+  "hoc/login-form": {
+    component: lazy(() => import("@docs/content/docs/hoc/login-form.mdx")),
+    data: {
+    "title": "Login form",
+    "description": "Card-styled login or register form with email, password, optional OAuth rows, and remember-me.",
+    "navTitle": "Login form",
+    "section": "HOC",
+    "order": 0,
+    "toc": true
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "installation",
+        "text": "Installation"
+    },
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "examples",
+        "text": "Examples"
+    },
+    {
+        "depth": 3,
+        "slug": "switching-between-login-and-register-with-providers",
+        "text": "Switching between login and register with providers"
+    },
+    {
+        "depth": 2,
+        "slug": "api",
+        "text": "API"
+    },
+    {
+        "depth": 3,
+        "slug": "loginformprops",
+        "text": "LoginFormProps"
+    },
+    {
+        "depth": 3,
+        "slug": "loginformprovider",
+        "text": "LoginFormProvider"
+    },
+    {
+        "depth": 2,
+        "slug": "exports",
+        "text": "Exports"
+    }
+]
+  },
+  "hoc/mode-toggle": {
+    component: lazy(() => import("@docs/content/docs/hoc/mode-toggle.mdx")),
+    data: {
+    "title": "Mode toggle",
+    "description": "Single icon button that toggles light/dark color mode via Kobalte `useColorMode`.",
+    "navTitle": "Mode toggle",
+    "section": "HOC",
+    "order": 0,
+    "toc": true
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "installation",
+        "text": "Installation"
+    },
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "examples",
+        "text": "Examples"
+    },
+    {
+        "depth": 3,
+        "slug": "used-with-colormodeprovider",
+        "text": "Used with ColorModeProvider"
+    },
+    {
+        "depth": 2,
+        "slug": "exports",
+        "text": "Exports"
+    }
+]
+  },
+  "hoc/mode-toggle-dropdown": {
+    component: lazy(() => import("@docs/content/docs/hoc/mode-toggle-dropdown.mdx")),
+    data: {
+    "title": "Mode toggle dropdown",
+    "description": "Dropdown to set color mode to light, dark, or system.",
+    "navTitle": "Mode toggle dropdown",
+    "section": "HOC",
+    "order": 0,
+    "toc": true
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "installation",
+        "text": "Installation"
+    },
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "examples",
+        "text": "Examples"
+    },
+    {
+        "depth": 3,
+        "slug": "default-trigger",
+        "text": "Default trigger"
+    },
+    {
+        "depth": 3,
+        "slug": "compact-trigger-and-custom-labels",
+        "text": "Compact trigger and custom labels"
+    },
+    {
+        "depth": 3,
+        "slug": "merging-labels-with-configprovider",
+        "text": "Merging labels with ConfigProvider"
+    },
+    {
+        "depth": 2,
+        "slug": "api",
+        "text": "API"
+    },
+    {
+        "depth": 3,
+        "slug": "modetoggledropdownprops",
+        "text": "ModeToggleDropdownProps"
+    },
+    {
+        "depth": 2,
+        "slug": "exports",
+        "text": "Exports"
+    }
+]
+  },
+  "hoc/mode-toggle-group": {
+    component: lazy(() => import("@docs/content/docs/hoc/mode-toggle-group.mdx")),
+    data: {
+    "title": "Mode toggle group",
+    "description": "Segmented light/dark buttons using Kobalte color mode.",
+    "navTitle": "Mode toggle group",
+    "section": "HOC",
+    "order": 0,
+    "toc": true
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "installation",
+        "text": "Installation"
+    },
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "examples",
+        "text": "Examples"
+    },
+    {
+        "depth": 3,
+        "slug": "localized-labels",
+        "text": "Localized labels"
+    },
+    {
+        "depth": 3,
+        "slug": "wrapper-layout",
+        "text": "Wrapper layout"
+    },
+    {
+        "depth": 3,
+        "slug": "root-forwards-test-and-accessibility-props",
+        "text": "Root forwards test and accessibility props"
+    },
+    {
+        "depth": 2,
+        "slug": "api",
+        "text": "API"
+    },
+    {
+        "depth": 3,
+        "slug": "modetogglegroupprops",
+        "text": "ModeToggleGroupProps"
+    },
+    {
+        "depth": 2,
+        "slug": "exports",
+        "text": "Exports"
+    }
+]
+  },
+  "hoc/navigation-menu": {
+    component: lazy(() => import("@docs/content/docs/hoc/navigation-menu.mdx")),
+    data: {
+    "title": "Navigation menu",
+    "description": "Declarative mega-menu built from grouped triggers, links, and optional featured column.",
+    "navTitle": "Navigation menu",
+    "section": "HOC",
+    "order": 0,
+    "toc": true
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "installation",
+        "text": "Installation"
+    },
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "examples",
+        "text": "Examples"
+    },
+    {
+        "depth": 3,
+        "slug": "top-level-link-no-dropdown",
+        "text": "Top-level link (no dropdown)"
+    },
+    {
+        "depth": 3,
+        "slug": "featured-column-and-custom-panel",
+        "text": "Featured column and custom panel"
+    },
+    {
+        "depth": 3,
+        "slug": "vertical-menu",
+        "text": "Vertical menu"
+    },
+    {
+        "depth": 3,
+        "slug": "adjust-trigger-and-content-spacing",
+        "text": "Adjust trigger and content spacing"
+    },
+    {
+        "depth": 2,
+        "slug": "api",
+        "text": "API"
+    },
+    {
+        "depth": 3,
+        "slug": "navmenuprops",
+        "text": "NavMenuProps"
+    },
+    {
+        "depth": 3,
+        "slug": "navmenugroup",
+        "text": "NavMenuGroup"
+    },
+    {
+        "depth": 3,
+        "slug": "navmenuitem",
+        "text": "NavMenuItem"
+    },
+    {
+        "depth": 2,
+        "slug": "exports",
+        "text": "Exports"
+    }
+]
+  },
+  "hoc/notification-center": {
+    component: lazy(() => import("@docs/content/docs/hoc/notification-center.mdx")),
+    data: {
+    "title": "Notification center",
+    "description": "Bell trigger popover with categorized tabs, unread styling, and mark-all-read.",
+    "navTitle": "Notification center",
+    "section": "HOC",
+    "order": 0,
+    "toc": true
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "installation",
+        "text": "Installation"
+    },
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "examples",
+        "text": "Examples"
+    },
+    {
+        "depth": 3,
+        "slug": "categories-and-mark-all-read",
+        "text": "Categories and mark-all-read"
+    },
+    {
+        "depth": 3,
+        "slug": "custom-trigger",
+        "text": "Custom trigger"
+    },
+    {
+        "depth": 3,
+        "slug": "icon-description-and-inline-action",
+        "text": "Icon, description, and inline action"
+    },
+    {
+        "depth": 2,
+        "slug": "api",
+        "text": "API"
+    },
+    {
+        "depth": 3,
+        "slug": "notificationcenterprops",
+        "text": "NotificationCenterProps"
+    },
+    {
+        "depth": 3,
+        "slug": "notificationitem",
+        "text": "NotificationItem"
+    },
+    {
+        "depth": 2,
+        "slug": "exports",
+        "text": "Exports"
+    }
+]
+  },
+  "hoc/otp-field": {
+    component: lazy(() => import("@docs/content/docs/hoc/otp-field.mdx")),
+    data: {
+    "title": "OTP field",
+    "description": "One-time code input with grouped slots, separators, and form-style labeling.",
+    "navTitle": "OTP field",
+    "section": "HOC",
+    "order": 0,
+    "toc": true
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "installation",
+        "text": "Installation"
+    },
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "examples",
+        "text": "Examples"
+    },
+    {
+        "depth": 3,
+        "slug": "controlled-value-and-validation-error",
+        "text": "Controlled value and validation error"
+    },
+    {
+        "depth": 3,
+        "slug": "non-digit-characters",
+        "text": "Non-digit characters"
+    },
+    {
+        "depth": 3,
+        "slug": "grouped-lengths-and-separators",
+        "text": "Grouped lengths and separators"
+    },
+    {
+        "depth": 2,
+        "slug": "api",
+        "text": "API"
+    },
+    {
+        "depth": 3,
+        "slug": "otpfieldgroupprops",
+        "text": "OTPFieldGroupProps"
+    },
+    {
+        "depth": 2,
+        "slug": "exports",
+        "text": "Exports"
+    }
+]
+  },
+  "hoc/page-header": {
+    component: lazy(() => import("@docs/content/docs/hoc/page-header.mdx")),
+    data: {
+    "title": "Page header",
+    "description": "Page title row with optional breadcrumbs, description, and actions.",
+    "navTitle": "Page header",
+    "section": "HOC",
+    "order": 0,
+    "toc": true
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "installation",
+        "text": "Installation"
+    },
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "examples",
+        "text": "Examples"
+    },
+    {
+        "depth": 3,
+        "slug": "title-only",
+        "text": "Title only"
+    },
+    {
+        "depth": 3,
+        "slug": "with-bottom-separator",
+        "text": "With bottom separator"
+    },
+    {
+        "depth": 3,
+        "slug": "title-and-actions-without-breadcrumbs",
+        "text": "Title and actions without breadcrumbs"
+    },
+    {
+        "depth": 2,
+        "slug": "api",
+        "text": "API"
+    },
+    {
+        "depth": 3,
+        "slug": "pageheaderprops",
+        "text": "PageHeaderProps"
+    },
+    {
+        "depth": 2,
+        "slug": "exports",
+        "text": "Exports"
+    }
+]
+  },
+  "hoc/sidebar-menu-tree": {
+    component: lazy(() => import("@docs/content/docs/hoc/sidebar-menu-tree.mdx")),
+    data: {
+    "title": "Sidebar menu tree",
+    "description": "Recursive sidebar menu with URL-based active state, collapsible groups, and badges.",
+    "navTitle": "Sidebar menu tree",
+    "section": "HOC",
+    "order": 0,
+    "toc": true
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "installation",
+        "text": "Installation"
+    },
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "examples",
+        "text": "Examples"
+    },
+    {
+        "depth": 3,
+        "slug": "icons-and-nested-sections",
+        "text": "Icons and nested sections"
+    },
+    {
+        "depth": 3,
+        "slug": "fixed-url-for-tests-or-ssr",
+        "text": "Fixed URL for tests or SSR"
+    },
+    {
+        "depth": 3,
+        "slug": "badge-and-startswith-on-a-leaf",
+        "text": "Badge and startsWith on a leaf"
+    },
+    {
+        "depth": 3,
+        "slug": "pathname-prefix-match-with-nested-links",
+        "text": "Pathname prefix match with nested links"
+    },
+    {
+        "depth": 3,
+        "slug": "child-items-without-collapse",
+        "text": "Child items without collapse"
+    },
+    {
+        "depth": 2,
+        "slug": "exports",
+        "text": "Exports"
+    }
+]
+  },
+  "hoc/stat-card": {
+    component: lazy(() => import("@docs/content/docs/hoc/stat-card.mdx")),
+    data: {
+    "title": "Stat card",
+    "description": "Metric card with label, value, optional trend, icon, and footer slot.",
+    "navTitle": "Stat card",
+    "section": "HOC",
+    "order": 0,
+    "toc": true
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "installation",
+        "text": "Installation"
+    },
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "examples",
+        "text": "Examples"
+    },
+    {
+        "depth": 3,
+        "slug": "neutral-trend-and-icon",
+        "text": "Neutral trend and icon"
+    },
+    {
+        "depth": 3,
+        "slug": "footer-slot",
+        "text": "Footer slot"
+    },
+    {
+        "depth": 3,
+        "slug": "numeric-value-and-longer-label",
+        "text": "Numeric value and longer label"
+    },
+    {
+        "depth": 2,
+        "slug": "api",
+        "text": "API"
+    },
+    {
+        "depth": 3,
+        "slug": "statcardprops",
+        "text": "StatCardProps"
+    },
+    {
+        "depth": 2,
+        "slug": "exports",
+        "text": "Exports"
+    }
+]
+  },
+  "hoc/stepper": {
+    component: lazy(() => import("@docs/content/docs/hoc/stepper.mdx")),
+    data: {
+    "title": "Stepper",
+    "description": "Multi-step wizard with indicators, per-step validation, and optional built-in navigation.",
+    "navTitle": "Stepper",
+    "section": "HOC",
+    "order": 0,
+    "toc": true
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "installation",
+        "text": "Installation"
+    },
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "examples",
+        "text": "Examples"
+    },
+    {
+        "depth": 3,
+        "slug": "controlled-step-index",
+        "text": "Controlled step index"
+    },
+    {
+        "depth": 3,
+        "slug": "custom-navigation-with-usestepper",
+        "text": "Custom navigation with useStepper"
+    },
+    {
+        "depth": 3,
+        "slug": "vertical-dot-variant",
+        "text": "Vertical dot variant"
+    },
+    {
+        "depth": 3,
+        "slug": "validate-blocks-moving-forward",
+        "text": "validate blocks moving forward"
+    },
+    {
+        "depth": 2,
+        "slug": "exports",
+        "text": "Exports"
+    }
+]
+  },
+  "hoc/tag-input": {
+    component: lazy(() => import("@docs/content/docs/hoc/tag-input.mdx")),
+    data: {
+    "title": "Tag input",
+    "description": "Chip-style tags with optional suggestions, max count, and custom validation.",
+    "navTitle": "Tag input",
+    "section": "HOC",
+    "order": 0,
+    "toc": true
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "installation",
+        "text": "Installation"
+    },
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "examples",
+        "text": "Examples"
+    },
+    {
+        "depth": 3,
+        "slug": "suggestions-only-no-free-form-tags",
+        "text": "Suggestions only (no free-form tags)"
+    },
+    {
+        "depth": 3,
+        "slug": "custom-validation",
+        "text": "Custom validation"
+    },
+    {
+        "depth": 3,
+        "slug": "locale-preset",
+        "text": "Locale preset"
+    },
+    {
+        "depth": 2,
+        "slug": "exports",
+        "text": "Exports"
+    }
+]
+  },
+  "hoc/timeline": {
+    component: lazy(() => import("@docs/content/docs/hoc/timeline.mdx")),
+    data: {
+    "title": "Timeline",
+    "description": "Vertical timeline for activity feeds with optional alternate layout and pending state.",
+    "navTitle": "Timeline",
+    "section": "HOC",
+    "order": 0,
+    "toc": true
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "installation",
+        "text": "Installation"
+    },
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "examples",
+        "text": "Examples"
+    },
+    {
+        "depth": 3,
+        "slug": "alternate-layout-with-rich-content",
+        "text": "Alternate layout with rich content"
+    },
+    {
+        "depth": 3,
+        "slug": "pending-tail-state",
+        "text": "Pending tail state"
+    },
+    {
+        "depth": 2,
+        "slug": "exports",
+        "text": "Exports"
+    }
+]
+  },
+  "hoc/transfer-list": {
+    component: lazy(() => import("@docs/content/docs/hoc/transfer-list.mdx")),
+    data: {
+    "title": "Transfer list",
+    "description": "Two-panel picker to move items between available and selected lists by key.",
+    "navTitle": "Transfer list",
+    "section": "HOC",
+    "order": 0,
+    "toc": true
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "installation",
+        "text": "Installation"
+    },
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "examples",
+        "text": "Examples"
+    },
+    {
+        "depth": 3,
+        "slug": "custom-panel-titles-and-search-off",
+        "text": "Custom panel titles and search off"
+    },
+    {
+        "depth": 3,
+        "slug": "custom-row-rendering",
+        "text": "Custom row rendering"
+    },
+    {
+        "depth": 3,
+        "slug": "locale-preset",
+        "text": "Locale preset"
+    },
+    {
+        "depth": 2,
+        "slug": "exports",
+        "text": "Exports"
+    }
+]
+  },
+  "hoc/use-notify": {
+    component: lazy(() => import("@docs/content/docs/hoc/use-notify.mdx")),
+    data: {
+    "title": "useNotify",
+    "description": "Hook that returns a toast helper with defaults, wrapping somoto's `toast` API.",
+    "navTitle": "useNotify",
+    "section": "HOC",
+    "order": 0,
+    "toc": true
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "installation",
+        "text": "Installation"
+    },
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "examples",
+        "text": "Examples"
+    },
+    {
+        "depth": 3,
+        "slug": "default-type-for-every-call",
+        "text": "Default type for every call"
+    },
+    {
+        "depth": 3,
+        "slug": "loading-toast-then-dismiss-or-update",
+        "text": "Loading toast then dismiss or update"
+    },
+    {
+        "depth": 2,
+        "slug": "exports",
+        "text": "Exports"
+    }
+]
+  },
+  "hoc/user-menu": {
+    component: lazy(() => import("@docs/content/docs/hoc/user-menu.mdx")),
+    data: {
+    "title": "User menu",
+    "description": "Avatar dropdown with profile header, custom groups, theme switcher, and sign-out.",
+    "navTitle": "User menu",
+    "section": "HOC",
+    "order": 0,
+    "toc": true
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "installation",
+        "text": "Installation"
+    },
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "examples",
+        "text": "Examples"
+    },
+    {
+        "depth": 3,
+        "slug": "avatar-image-and-destructive-action",
+        "text": "Avatar image and destructive action"
+    },
+    {
+        "depth": 3,
+        "slug": "hide-built-in-theme-or-sign-out-rows",
+        "text": "Hide built-in theme or sign-out rows"
+    },
+    {
+        "depth": 3,
+        "slug": "custom-trigger",
+        "text": "Custom trigger"
+    },
+    {
+        "depth": 2,
+        "slug": "exports",
+        "text": "Exports"
+    }
+]
+  },
+  "lib/call-handler": {
+    component: lazy(() => import("@docs/content/docs/lib/call-handler.mdx")),
+    data: {
+    "title": "Call Handler",
+    "description": "Call Solid JSX event handlers that are either a plain function or a Kobalte-style tuple handler.",
+    "navTitle": "Call Handler",
+    "section": "Libraries",
+    "order": 10,
+    "toc": true
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "installation",
+        "text": "Installation"
+    },
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "api",
+        "text": "API"
+    },
+    {
+        "depth": 3,
+        "slug": "isfunctionvalue-unknown-value-is-function",
+        "text": "isFunction(value: unknown): value is Function"
+    },
+    {
+        "depth": 3,
+        "slug": "callhandlert-e-extends-eventevent-handler",
+        "text": "callHandler<T, E extends Event>(event, handler?)"
+    }
+]
+  },
+  "lib/combine-style": {
+    component: lazy(() => import("@docs/content/docs/lib/combine-style.mdx")),
+    data: {
+    "title": "Combine Style",
+    "description": "Merge Solid `style` values when either side may be an object or an inline CSS string.",
+    "navTitle": "Combine Style",
+    "section": "Libraries",
+    "order": 20,
+    "toc": true
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "installation",
+        "text": "Installation"
+    },
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "api",
+        "text": "API"
+    },
+    {
+        "depth": 3,
+        "slug": "stringstyletoobjectstyle-string-jsxcssproperties",
+        "text": "stringStyleToObject(style: string): JSX.CSSProperties"
+    },
+    {
+        "depth": 3,
+        "slug": "combinestylea-b",
+        "text": "combineStyle(a, b)"
+    }
+]
+  },
+  "lib/component-props-map": {
+    component: lazy(() => import("@docs/content/docs/lib/component-props-map.mdx")),
+    data: {
+    "title": "Component Props Map",
+    "description": "Type-level map from theme component names to each component’s props type.",
+    "navTitle": "Component Props Map",
+    "section": "Libraries",
+    "order": 30,
+    "toc": true
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "installation",
+        "text": "Installation"
+    },
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "api",
+        "text": "API"
+    },
+    {
+        "depth": 3,
+        "slug": "componentpropsmap",
+        "text": "ComponentPropsMap"
+    },
+    {
+        "depth": 3,
+        "slug": "componentpropsforn-extends-componentname",
+        "text": "ComponentPropsFor<N extends ComponentName>"
+    }
+]
+  },
+  "lib/cva": {
+    component: lazy(() => import("@docs/content/docs/lib/cva.mdx")),
+    data: {
+    "title": "CVA",
+    "description": "Class-variance-authority (`cva`) with Tailwind merge applied to completed class strings.",
+    "navTitle": "CVA",
+    "section": "Libraries",
+    "order": 40,
+    "toc": true
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "installation",
+        "text": "Installation"
+    },
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "api",
+        "text": "API"
+    }
+]
+  },
+  "lib/theme-context": {
+    component: lazy(() => import("@docs/content/docs/lib/theme-context.mdx")),
+    data: {
+    "title": "Theme Context",
+    "description": "Theme configuration types, `ComponentName` identifiers, and Solid context for the design system.",
+    "navTitle": "Theme Context",
+    "section": "Libraries",
+    "order": 50,
+    "toc": true
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "installation",
+        "text": "Installation"
+    },
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "api",
+        "text": "API"
+    },
+    {
+        "depth": 3,
+        "slug": "types",
+        "text": "Types"
+    },
+    {
+        "depth": 3,
+        "slug": "context-and-constants",
+        "text": "Context and constants"
+    }
+]
+  },
+  "lib/theme-helpers": {
+    component: lazy(() => import("@docs/content/docs/lib/theme-helpers.mdx")),
+    data: {
+    "title": "Theme Helpers",
+    "description": "Read per-component theme classes from `ThemeContext` in a type-safe way.",
+    "navTitle": "Theme Helpers",
+    "section": "Libraries",
+    "order": 60,
+    "toc": true
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "installation",
+        "text": "Installation"
+    },
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "api",
+        "text": "API"
+    },
+    {
+        "depth": 3,
+        "slug": "usecomponentclassn-extends-componentnamecomponentname-props-string--undefined",
+        "text": "useComponentClass<N extends ComponentName>(componentName, props): string | undefined"
+    }
+]
+  },
+  "lib/use-current-url": {
+    component: lazy(() => import("@docs/content/docs/lib/use-current-url.mdx")),
+    data: {
+    "title": "Use Current URL",
+    "description": "Reactive URL pathname, hash, query, and href via `useCurrentUrl`, with optional custom sources or browser history hooks.",
+    "navTitle": "Use Current URL",
+    "section": "Libraries",
+    "order": 70,
+    "toc": true
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "installation",
+        "text": "Installation"
+    },
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 3,
+        "slug": "ssr",
+        "text": "SSR"
+    },
+    {
+        "depth": 2,
+        "slug": "api",
+        "text": "API"
+    },
+    {
+        "depth": 3,
+        "slug": "parseurlinput-string-urlinfo",
+        "text": "parseUrl(input: string): UrlInfo"
+    },
+    {
+        "depth": 3,
+        "slug": "usecurrenturlcustomurl-urlinfoinput-accessorurlinfo",
+        "text": "useCurrentUrl(customUrl?: UrlInfoInput): Accessor<UrlInfo>"
+    }
+]
+  },
+  "lib/use-mobile": {
+    component: lazy(() => import("@docs/content/docs/lib/use-mobile.mdx")),
+    data: {
+    "title": "Use Mobile",
+    "description": "Solid accessor from `useIsMobile` for the `(max-width: 767px)` media query.",
+    "navTitle": "Use Mobile",
+    "section": "Libraries",
+    "order": 80,
+    "toc": true
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "installation",
+        "text": "Installation"
+    },
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "api",
+        "text": "API"
+    },
+    {
+        "depth": 3,
+        "slug": "useismobile",
+        "text": "useIsMobile()"
+    }
+]
+  },
+  "lib/use-theme": {
+    component: lazy(() => import("@docs/content/docs/lib/use-theme.mdx")),
+    data: {
+    "title": "Use Theme",
+    "description": "Access theme state with `useTheme`, update radius, and map radius tokens to Tailwind `rounded-*` classes by component category.",
+    "navTitle": "Use Theme",
+    "section": "Libraries",
+    "order": 90,
+    "toc": true
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "installation",
+        "text": "Installation"
+    },
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "api",
+        "text": "API"
+    },
+    {
+        "depth": 3,
+        "slug": "usethemereturn",
+        "text": "UseThemeReturn"
+    },
+    {
+        "depth": 3,
+        "slug": "usetheme-usethemereturn",
+        "text": "useTheme(): UseThemeReturn"
+    }
+]
+  },
 }
 
-export const docsNavigation: DocsNavSection[] = []
+export const docsNavigation: DocsNavSection[] = [
+  {
+    "title": "Components",
+    "items": [
+      {
+        "title": "Accordion",
+        "href": "/docs/components/accordion",
+        "description": "Vertically stacked sections with expandable content."
+      },
+      {
+        "title": "Alert",
+        "href": "/docs/components/alert",
+        "description": "Inline message for status, feedback, or important information."
+      },
+      {
+        "title": "Alert Dialog",
+        "href": "/docs/components/alert-dialog",
+        "description": "Modal dialog for critical confirmations that interrupt the user flow."
+      },
+      {
+        "title": "Badge",
+        "href": "/docs/components/badge",
+        "description": "Small label for status, counts, or metadata."
+      },
+      {
+        "title": "Breadcrumbs",
+        "href": "/docs/components/breadcrumbs",
+        "description": "Navigation trail showing the current page hierarchy."
+      },
+      {
+        "title": "Button",
+        "href": "/docs/components/button",
+        "description": "Clickable control for actions and navigation."
+      },
+      {
+        "title": "Button Group",
+        "href": "/docs/components/button-group",
+        "description": "Groups related buttons or inputs with shared orientation and separators."
+      },
+      {
+        "title": "Calendar",
+        "href": "/docs/components/calendar",
+        "description": "Accessible calendar grid built on Corvu calendar primitives."
+      },
+      {
+        "title": "Card",
+        "href": "/docs/components/card",
+        "description": "Container for grouped content with optional header, body, and footer."
+      },
+      {
+        "title": "Carousel",
+        "href": "/docs/components/carousel",
+        "description": "Slideshow or horizontal scroller powered by Embla Carousel."
+      },
+      {
+        "title": "Chart",
+        "href": "/docs/components/chart",
+        "description": "Chart layout and tooltip helpers built on Unovis."
+      },
+      {
+        "title": "Checkbox",
+        "href": "/docs/components/checkbox",
+        "description": "Boolean input with label, description, and styled control."
+      },
+      {
+        "title": "Collapsible",
+        "href": "/docs/components/collapsible",
+        "description": "Show or hide content with an animated region."
+      },
+      {
+        "title": "Combobox",
+        "href": "/docs/components/combobox",
+        "description": "Filterable listbox tied to a text input."
+      },
+      {
+        "title": "Command",
+        "href": "/docs/components/command",
+        "description": "Command palette and searchable lists built on cmdk-solid."
+      },
+      {
+        "title": "Config Provider",
+        "href": "/docs/components/config-provider",
+        "description": "Global configuration context for library-wide settings such as locale."
+      },
+      {
+        "title": "Context Menu",
+        "href": "/docs/components/context-menu",
+        "description": "Right-click (or long-press) menu built on Kobalte."
+      },
+      {
+        "title": "Date Picker",
+        "href": "/docs/components/date-picker",
+        "description": "Date or range selection with calendar views and inputs."
+      },
+      {
+        "title": "Dialog",
+        "href": "/docs/components/dialog",
+        "description": "Modal overlay for focused tasks or information."
+      },
+      {
+        "title": "Drawer",
+        "href": "/docs/components/drawer",
+        "description": "Panel that slides in from the edge of the viewport."
+      },
+      {
+        "title": "Dropdown Menu",
+        "href": "/docs/components/dropdown-menu",
+        "description": "Floating menu triggered from a control, with items, groups, and submenus."
+      },
+      {
+        "title": "File Field",
+        "href": "/docs/components/file-field",
+        "description": "Accessible file upload with dropzone, item list, and previews."
+      },
+      {
+        "title": "Hover Card",
+        "href": "/docs/components/hover-card",
+        "description": "Rich preview content shown on hover or focus."
+      },
+      {
+        "title": "Icons",
+        "href": "/docs/components/icons",
+        "description": "Inline SVG icon components used across the design system."
+      },
+      {
+        "title": "Kbd",
+        "href": "/docs/components/kbd",
+        "description": "Keyboard shortcut styling for inline hints."
+      },
+      {
+        "title": "Menubar",
+        "href": "/docs/components/menubar",
+        "description": "Horizontal bar of menus, similar to desktop application menus."
+      },
+      {
+        "title": "Navigation Menu",
+        "href": "/docs/components/navigation-menu",
+        "description": "Accessible site navigation with triggers and content panels."
+      },
+      {
+        "title": "Number Field",
+        "href": "/docs/components/number-field",
+        "description": "Numeric input with increment and decrement controls."
+      },
+      {
+        "title": "OTP Field",
+        "href": "/docs/components/otp-field",
+        "description": "One-time password input with slots and optional separators."
+      },
+      {
+        "title": "Pagination",
+        "href": "/docs/components/pagination",
+        "description": "Navigation control for paged lists and tables."
+      },
+      {
+        "title": "Popover",
+        "href": "/docs/components/popover",
+        "description": "Floating panel anchored to a trigger element."
+      },
+      {
+        "title": "Progress",
+        "href": "/docs/components/progress",
+        "description": "Linear progress indicator with optional label and value text."
+      },
+      {
+        "title": "Radio Group",
+        "href": "/docs/components/radio-group",
+        "description": "Single-choice control built from radio items and labels."
+      },
+      {
+        "title": "Resizable",
+        "href": "/docs/components/resizable",
+        "description": "Split layout with draggable panel handles."
+      },
+      {
+        "title": "Search",
+        "href": "/docs/components/search",
+        "description": "Composable search and autocomplete built on Kobalte’s search primitive."
+      },
+      {
+        "title": "Segmented Control",
+        "href": "/docs/components/segmented-control",
+        "description": "Toggle-style control for choosing one of several segments."
+      },
+      {
+        "title": "Select",
+        "href": "/docs/components/select",
+        "description": "Dropdown single-select with trigger, value, and listbox parts."
+      },
+      {
+        "title": "Separator",
+        "href": "/docs/components/separator",
+        "description": "Visual divider between sections of content."
+      },
+      {
+        "title": "Sidebar",
+        "href": "/docs/components/sidebar",
+        "description": "Collapsible application sidebar with mobile drawer, menu tree, and layout slots."
+      },
+      {
+        "title": "Skeleton",
+        "href": "/docs/components/skeleton",
+        "description": "Placeholder block for loading states."
+      },
+      {
+        "title": "Slider",
+        "href": "/docs/components/slider",
+        "description": "Range input with track, fill, thumb, and optional labels."
+      },
+      {
+        "title": "Sonner",
+        "href": "/docs/components/sonner",
+        "description": "Toast host wired to Kobalte color mode and design tokens via somoto."
+      },
+      {
+        "title": "Switch",
+        "href": "/docs/components/switch",
+        "description": "Toggle switch with control, thumb, hidden input, and optional label and error slots."
+      },
+      {
+        "title": "Table",
+        "href": "/docs/components/table",
+        "description": "Styled HTML table primitives with scroll container and row or cell slots."
+      },
+      {
+        "title": "Tabs",
+        "href": "/docs/components/tabs",
+        "description": "Accessible tab list, triggers, indicator, and panels built on Kobalte."
+      },
+      {
+        "title": "Tabulator Table",
+        "href": "/docs/components/tabulator-table",
+        "description": "Solid wrapper that mounts Tabulator.js on a div with lifecycle-safe init and cleanup."
+      },
+      {
+        "title": "TanStack Table",
+        "href": "/docs/components/tanstack-table",
+        "description": "Data table UI built on TanStack Table with Solid adapters, context, and helpers."
+      },
+      {
+        "title": "Text Field",
+        "href": "/docs/components/text-field",
+        "description": "Labelled text input, textarea, validation, and description built on Kobalte."
+      },
+      {
+        "title": "Theme",
+        "href": "/docs/components/theme",
+        "description": "Solid context provider for design tokens such as component radius."
+      },
+      {
+        "title": "Toggle Button",
+        "href": "/docs/components/toggle-button",
+        "description": "Pressable toggle with default and outline variants and shared sizing tokens."
+      },
+      {
+        "title": "Toggle Group",
+        "href": "/docs/components/toggle-group",
+        "description": "Single- or multi-select toggle group sharing variant and size with each item."
+      },
+      {
+        "title": "Tooltip",
+        "href": "/docs/components/tooltip",
+        "description": "Tooltip root, trigger, portal, and styled content with arrow on Kobalte."
+      }
+    ]
+  },
+  {
+    "title": "HOC",
+    "items": [
+      {
+        "title": "App sidebar",
+        "href": "/docs/hoc/app-sidebar",
+        "description": "Application shell with sidebar provider, grouped menu trees, and main inset body."
+      },
+      {
+        "title": "Command palette",
+        "href": "/docs/hoc/command-palette",
+        "description": "Global command dialog with grouped items, optional Cmd/Ctrl+K hotkey, and search."
+      },
+      {
+        "title": "Confirm dialog",
+        "href": "/docs/hoc/confirm-dialog",
+        "description": "Imperative confirmation API backed by a single root `AlertDialog` instance."
+      },
+      {
+        "title": "Data table",
+        "href": "/docs/hoc/data-table",
+        "description": "TanStack Table wiring with toolbar, pagination, loading skeleton, and empty state."
+      },
+      {
+        "title": "Data table toolbar",
+        "href": "/docs/hoc/data-table-toolbar",
+        "description": "Search, filter slot, column visibility, and actions for a TanStack `Table` instance."
+      },
+      {
+        "title": "Date picker field",
+        "href": "/docs/hoc/date-picker",
+        "description": "Pre-composed date picker with label, validation, presets, and calendar panel."
+      },
+      {
+        "title": "Description list",
+        "href": "/docs/hoc/description-list",
+        "description": "Key-value grid for detail pages with optional card wrapper and copy-to-clipboard."
+      },
+      {
+        "title": "Empty state",
+        "href": "/docs/hoc/empty-state",
+        "description": "Centered placeholder for empty lists, search results, or missing data."
+      },
+      {
+        "title": "File upload zone",
+        "href": "/docs/hoc/file-upload-zone",
+        "description": "Drag-and-drop and file input with validation, previews, and upload progress UI."
+      },
+      {
+        "title": "Filter builder",
+        "href": "/docs/hoc/filter-builder",
+        "description": "Controlled UI to add rules: field, operator, and value per row."
+      },
+      {
+        "title": "Form field",
+        "href": "/docs/hoc/form-field",
+        "description": "Label, required marker, error list, and description around arbitrary field children."
+      },
+      {
+        "title": "Login form",
+        "href": "/docs/hoc/login-form",
+        "description": "Card-styled login or register form with email, password, optional OAuth rows, and remember-me."
+      },
+      {
+        "title": "Mode toggle",
+        "href": "/docs/hoc/mode-toggle",
+        "description": "Single icon button that toggles light/dark color mode via Kobalte `useColorMode`."
+      },
+      {
+        "title": "Mode toggle dropdown",
+        "href": "/docs/hoc/mode-toggle-dropdown",
+        "description": "Dropdown to set color mode to light, dark, or system."
+      },
+      {
+        "title": "Mode toggle group",
+        "href": "/docs/hoc/mode-toggle-group",
+        "description": "Segmented light/dark buttons using Kobalte color mode."
+      },
+      {
+        "title": "Navigation menu",
+        "href": "/docs/hoc/navigation-menu",
+        "description": "Declarative mega-menu built from grouped triggers, links, and optional featured column."
+      },
+      {
+        "title": "Notification center",
+        "href": "/docs/hoc/notification-center",
+        "description": "Bell trigger popover with categorized tabs, unread styling, and mark-all-read."
+      },
+      {
+        "title": "OTP field",
+        "href": "/docs/hoc/otp-field",
+        "description": "One-time code input with grouped slots, separators, and form-style labeling."
+      },
+      {
+        "title": "Page header",
+        "href": "/docs/hoc/page-header",
+        "description": "Page title row with optional breadcrumbs, description, and actions."
+      },
+      {
+        "title": "Sidebar menu tree",
+        "href": "/docs/hoc/sidebar-menu-tree",
+        "description": "Recursive sidebar menu with URL-based active state, collapsible groups, and badges."
+      },
+      {
+        "title": "Stat card",
+        "href": "/docs/hoc/stat-card",
+        "description": "Metric card with label, value, optional trend, icon, and footer slot."
+      },
+      {
+        "title": "Stepper",
+        "href": "/docs/hoc/stepper",
+        "description": "Multi-step wizard with indicators, per-step validation, and optional built-in navigation."
+      },
+      {
+        "title": "Tag input",
+        "href": "/docs/hoc/tag-input",
+        "description": "Chip-style tags with optional suggestions, max count, and custom validation."
+      },
+      {
+        "title": "Timeline",
+        "href": "/docs/hoc/timeline",
+        "description": "Vertical timeline for activity feeds with optional alternate layout and pending state."
+      },
+      {
+        "title": "Transfer list",
+        "href": "/docs/hoc/transfer-list",
+        "description": "Two-panel picker to move items between available and selected lists by key."
+      },
+      {
+        "title": "useNotify",
+        "href": "/docs/hoc/use-notify",
+        "description": "Hook that returns a toast helper with defaults, wrapping somoto's `toast` API."
+      },
+      {
+        "title": "User menu",
+        "href": "/docs/hoc/user-menu",
+        "description": "Avatar dropdown with profile header, custom groups, theme switcher, and sign-out."
+      }
+    ]
+  },
+  {
+    "title": "Libraries",
+    "items": [
+      {
+        "title": "Call Handler",
+        "href": "/docs/lib/call-handler",
+        "description": "Call Solid JSX event handlers that are either a plain function or a Kobalte-style tuple handler."
+      },
+      {
+        "title": "Combine Style",
+        "href": "/docs/lib/combine-style",
+        "description": "Merge Solid `style` values when either side may be an object or an inline CSS string."
+      },
+      {
+        "title": "Component Props Map",
+        "href": "/docs/lib/component-props-map",
+        "description": "Type-level map from theme component names to each component’s props type."
+      },
+      {
+        "title": "CVA",
+        "href": "/docs/lib/cva",
+        "description": "Class-variance-authority (`cva`) with Tailwind merge applied to completed class strings."
+      },
+      {
+        "title": "Theme Context",
+        "href": "/docs/lib/theme-context",
+        "description": "Theme configuration types, `ComponentName` identifiers, and Solid context for the design system."
+      },
+      {
+        "title": "Theme Helpers",
+        "href": "/docs/lib/theme-helpers",
+        "description": "Read per-component theme classes from `ThemeContext` in a type-safe way."
+      },
+      {
+        "title": "Use Current URL",
+        "href": "/docs/lib/use-current-url",
+        "description": "Reactive URL pathname, hash, query, and href via `useCurrentUrl`, with optional custom sources or browser history hooks."
+      },
+      {
+        "title": "Use Mobile",
+        "href": "/docs/lib/use-mobile",
+        "description": "Solid accessor from `useIsMobile` for the `(max-width: 767px)` media query."
+      },
+      {
+        "title": "Use Theme",
+        "href": "/docs/lib/use-theme",
+        "description": "Access theme state with `useTheme`, update radius, and map radius tokens to Tailwind `rounded-*` classes by component category."
+      }
+    ]
+  }
+]

@@ -1,0 +1,196 @@
+---
+title: Sidebar menu tree
+description: Recursive sidebar menu with URL-based active state, collapsible groups, and badges.
+section: HOC
+toc: true
+---
+
+import SidebarMenuTreeDemo from "../../../examples/sidebar-menu-tree-demo"
+
+`SidebarMenuTree` renders a `SidebarMenu` from nested `items`. It uses `useCurrentUrl` (from the library) to highlight the active route; you can override matching with `urlMatch` or pass `currentUrl` for testing or non-router contexts.
+
+## Installation
+
+Install `shadcn-solid-components` and satisfy peer dependencies (`solid-js`, Tailwind CSS v4, `tw-animate-css`).
+
+## Usage
+
+```tsx
+import { SidebarMenuTree } from "shadcn-solid-components/hoc/sidebar-menu-tree"
+
+<SidebarMenuTree
+  items={[
+    {
+      title: "Home",
+      url: "/",
+      icon: () => <IconHome class="size-4" />,
+    },
+    {
+      title: "Settings",
+      url: "/settings",
+      items: [{ title: "Profile", url: "/settings/profile" }],
+    },
+  ]}
+/>
+```
+
+## Examples
+
+### Icons and nested sections
+
+`icon` is a Solid accessor — pass a function that returns JSX so it stays reactive.
+
+<ComponentPreview name="Sidebar Menu Tree Demo">
+  <div class="mb-4 w-full">
+    <SidebarMenuTreeDemo />
+  </div>
+  ```tsx
+  import { Sidebar, SidebarContent, SidebarProvider } from "shadcn-solid-components/components/sidebar"
+  import { IconHome, IconSettings } from "shadcn-solid-components/components/icons"
+  import { SidebarMenuTree } from "shadcn-solid-components/hoc/sidebar-menu-tree"
+
+  const SidebarMenuTreeDemo = () => {
+    return (
+      <SidebarProvider>
+        <div class="w-full max-w-xs">
+          <Sidebar collapsible="none" class="static h-auto w-full">
+            <SidebarContent>
+              <SidebarMenuTree
+                currentUrl="/settings/profile"
+                items={[
+                  { title: "Home", url: "/", icon: () => <IconHome class="size-4" /> },
+                  {
+                    title: "Settings",
+                    url: "/settings",
+                    icon: () => <IconSettings class="size-4" />,
+                    defaultOpen: true,
+                    items: [
+                      {
+                        title: "Profile",
+                        url: "/settings/profile",
+                        urlMatch: "startsWith",
+                        badge: 3,
+                      },
+                    ],
+                  },
+                ]}
+              />
+            </SidebarContent>
+          </Sidebar>
+        </div>
+      </SidebarProvider>
+    )
+  }
+
+  export default SidebarMenuTreeDemo
+  ```
+</ComponentPreview>
+
+```tsx
+import { IconHome, IconSettings } from "shadcn-solid-components/components/icons"
+import { SidebarMenuTree } from "shadcn-solid-components/hoc/sidebar-menu-tree"
+
+<SidebarMenuTree
+  items={[
+    {
+      title: "Home",
+      url: "/",
+      icon: () => <IconHome class="size-4" />,
+    },
+    {
+      title: "Settings",
+      url: "/settings",
+      icon: () => <IconSettings class="size-4" />,
+      defaultOpen: true,
+      items: [
+        {
+          title: "Profile",
+          url: "/settings/profile",
+          urlMatch: "startsWith",
+          badge: 3,
+        },
+      ],
+    },
+  ]}
+/>
+```
+
+### Fixed URL for tests or SSR
+
+```tsx
+import { SidebarMenuTree } from "shadcn-solid-components/hoc/sidebar-menu-tree"
+
+<SidebarMenuTree currentUrl="/settings/profile" items={[{ title: "Profile", url: "/settings/profile" }]} />
+```
+
+### Badge and `startsWith` on a leaf
+
+```tsx
+import { SidebarMenuTree } from "shadcn-solid-components/hoc/sidebar-menu-tree"
+
+<SidebarMenuTree
+  items={[
+    {
+      title: "Inbox",
+      url: "/inbox",
+      badge: { content: 3, variant: "default" },
+      urlMatch: "startsWith",
+    },
+  ]}
+/>
+```
+
+### Pathname prefix match with nested links
+
+```tsx
+import { SidebarMenuTree } from "shadcn-solid-components/hoc/sidebar-menu-tree"
+
+<SidebarMenuTree
+  items={[
+    {
+      title: "Docs",
+      url: "/docs",
+      urlMatch: "startsWith",
+      items: [{ title: "Guide", url: "/docs/guide" }],
+    },
+  ]}
+/>
+```
+
+### Child items without collapse
+
+By default, a node with child items is wrapped in `Collapsible`. If you want the child links to
+stay expanded at all times, set `collapsible: false` on that node:
+
+```tsx
+import { SidebarMenuTree } from "shadcn-solid-components/hoc/sidebar-menu-tree"
+
+<SidebarMenuTree
+  currentUrl="/docs/guide"
+  items={[
+    {
+      title: "Docs",
+      url: "/docs",
+      urlMatch: "startsWith",
+      collapsible: false,
+      items: [
+        { title: "Guide", url: "/docs/guide" },
+        { title: "API", url: "/docs/api" },
+      ],
+    },
+  ]}
+/>
+```
+
+## Exports
+
+| Name | Description |
+| --- | --- |
+| `SidebarMenuTree` | Menu component; `items` and optional `currentUrl`. |
+| `SidebarMenuTreeProps` | `{ items: SidebarMenuTreeItem[]; currentUrl?: UrlInfoInput }`. |
+| `SidebarMenuTreeItem` | Item shape: `title`, optional `url`, `onClick`, `icon` (accessor), nested `items`, `collapsible`, `disabled`, `visible`, `badge`, `urlMatch`, `loading`, `open`, `defaultOpen`, `isActive`, `class`. |
+| `UrlMatchStrategy` | `'exact' \| 'startsWith' \| 'endsWith' \| RegExp`. |
+| `UrlMatchConfig` | Optional `pathname`, `hash`, `searchParams` matching. |
+| `SearchParamMatchValue` | Values used in `searchParams` matching. |
+
+`UrlInfoInput` / `UrlInfo` come from `shadcn-solid-components/lib/use-current-url` if you type `currentUrl` manually.

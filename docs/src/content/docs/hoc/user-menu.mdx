@@ -1,0 +1,125 @@
+---
+title: User menu
+description: Avatar dropdown with profile header, custom groups, theme switcher, and sign-out.
+section: HOC
+toc: true
+---
+
+import UserMenuDemo from "../../../examples/user-menu-demo"
+
+`UserMenu` uses Kobalte `useColorMode` for the built-in light/dark/system rows. Without `avatarUrl`, initials are derived from `name`. Hide theme or sign-out with `showThemeSwitch` / `showSignOut`.
+
+## Installation
+
+```bash
+pnpm add shadcn-solid-components @kobalte/core
+```
+
+## Usage
+
+```tsx
+import { UserMenu } from "shadcn-solid-components/hoc/user-menu"
+
+<UserMenu
+  name="Jane Doe"
+  email="jane@example.com"
+  groups={[
+    {
+      label: "Account",
+      items: [
+        { label: "Profile", onSelect: () => {} },
+      ],
+    },
+  ]}
+  onSignOut={() => {}}
+/>
+```
+
+## Examples
+
+### Avatar image and destructive action
+
+<ComponentPreview name="User Menu Demo">
+  <div class="mb-4 flex w-full justify-end">
+    <UserMenuDemo />
+  </div>
+  ```tsx
+  import { ColorModeProvider } from "@kobalte/core"
+
+  import { UserMenu } from "shadcn-solid-components/hoc/user-menu"
+
+  const UserMenuDemo = () => {
+    return (
+      <ColorModeProvider>
+        <div class="flex justify-end">
+          <UserMenu
+            name="Jane Doe"
+            email="jane@example.com"
+            groups={[
+              {
+                items: [
+                  { label: "Profile", onSelect: () => {} },
+                  { label: "Delete account", variant: "destructive", onSelect: () => {} },
+                ],
+              },
+            ]}
+            onSignOut={() => {}}
+          />
+        </div>
+      </ColorModeProvider>
+    )
+  }
+
+  export default UserMenuDemo
+  ```
+</ComponentPreview>
+
+```tsx
+import { UserMenu } from "shadcn-solid-components/hoc/user-menu"
+
+<UserMenu
+  name="Jane Doe"
+  email="jane@example.com"
+  avatarUrl="https://github.com/shadcn.png"
+  groups={[
+    {
+      items: [
+        { label: "Profile", onSelect: () => {} },
+        { label: "Delete account", variant: "destructive", onSelect: () => {} },
+      ],
+    },
+  ]}
+  onSignOut={() => {}}
+/>
+```
+
+### Hide built-in theme or sign-out rows
+
+```tsx
+import { UserMenu } from "shadcn-solid-components/hoc/user-menu"
+
+<UserMenu
+  name="Guest"
+  showThemeSwitch={false}
+  showSignOut={false}
+  groups={[{ label: "App", items: [{ label: "About", onSelect: () => {} }] }]}
+/>
+```
+
+### Custom trigger
+
+```tsx
+import { Button } from "shadcn-solid-components/components/button"
+import { UserMenu } from "shadcn-solid-components/hoc/user-menu"
+
+<UserMenu name="Alex" trigger={<Button variant="ghost">Open menu</Button>} onSignOut={() => {}} />
+```
+
+## Exports
+
+| Name | Description |
+| --- | --- |
+| `UserMenu` | Dropdown menu component. |
+| `UserMenuProps` | `name`, optional `email`, `avatarUrl`, `trigger`, `groups`, `showThemeSwitch` (defaults to `true`), `showSignOut` (defaults to `true`), `onSignOut`, `locale`, `contentClass`. Does not accept arbitrary `div` props. |
+| `UserMenuGroupDef` | Optional `label`, `items: UserMenuItemDef[]`. |
+| `UserMenuItemDef` | `label`, optional `icon`, `onSelect`, `variant` (`'default' \| 'destructive'`). |

@@ -1,0 +1,118 @@
+---
+title: Date picker field
+description: Pre-composed date picker with label, validation, presets, and calendar panel.
+section: HOC
+toc: true
+---
+
+import DatePickerFieldDemo from "../../../examples/date-picker-field-demo"
+
+`DatePickerField` wraps the lower-level `DatePicker*` components from `shadcn-solid-components/components/date-picker` with form-style labeling, errors, optional presets sidebar, and calendar chrome (day/month/year views, optional today button and month/year selects).
+
+## Installation
+
+Install `shadcn-solid-components` and satisfy peer dependencies (`solid-js`, Tailwind CSS v4, `tw-animate-css`).
+
+## Usage
+
+```tsx
+import { DatePickerField } from "shadcn-solid-components/hoc/date-picker"
+
+<DatePickerField label="Birthday" selectionMode="single" />
+```
+
+Root props such as `value`, `defaultValue`, `onValueChange`, `selectionMode`, `inline`, and locale-related options are forwarded to the `DatePicker` primitive from `shadcn-solid-components/components/date-picker`. `DateValue` is re-exported for typing preset values.
+
+`presets` can assign `value` from a `DateRangePreset` string such as `last7Days` for quick range
+selection. When validation fails, pass `error` so the field switches to error styling and hides the
+description text.
+
+## Examples
+
+### Single date, clearable, and preset ranges
+
+<ComponentPreview name="Date Picker Field Demo">
+  <div class="mb-4 w-full">
+    <DatePickerFieldDemo />
+  </div>
+  ```tsx
+  import { DatePickerField } from "shadcn-solid-components/hoc/date-picker"
+
+const DatePickerFieldDemo = () => {
+  return (
+    <div class="grid w-full max-w-md gap-4">
+      <DatePickerField
+        label="Departure date"
+        selectionMode="single"
+        placeholder="Choose a date"
+        clearable
+        showTodayButton
+      />
+      <DatePickerField
+        label="Reporting range"
+        selectionMode="range"
+        presets={[
+          { label: "Last 7 days", value: "last7Days" },
+          { label: "This month", value: "thisMonth" },
+        ]}
+      />
+    </div>
+  )
+}
+
+export default DatePickerFieldDemo
+  ```
+</ComponentPreview>
+
+```tsx
+import { DatePickerField } from "shadcn-solid-components/hoc/date-picker"
+
+export function BookingFields() {
+  return (
+    <>
+      <DatePickerField
+        label="Departure date"
+        selectionMode="single"
+        placeholder="Choose a date"
+        clearable
+        showTodayButton
+      />
+      <DatePickerField
+        label="Reporting range"
+        selectionMode="range"
+        presets={[
+          { label: "Last 7 days", value: "last7Days" },
+          { label: "This month", value: "thisMonth" },
+        ]}
+      />
+    </>
+  )
+}
+```
+
+## API
+
+### `DatePickerFieldProps`
+
+Extends `div` props (minus `onChange`) plus a picked subset of Ark `DatePickerRootProps` (value, selection mode, views, locale, `inline`, etc.—see `src/hoc/date-picker/index.tsx` for the full picked list).
+
+HOC-specific fields include:
+
+- `label`, `description`, `error`, `required`, `placeholder`, `clearable`
+- `presets` — `{ label, value }[]` where `value` is `DateValue[]` or a `DateRangePreset` string key
+- `i18n` — partial locale for HOC strings
+- `contentClass`, `showMonthYearSelect`, `showTodayButton`, `calendarHeader`, `calendarFooter`
+
+### `DatePickerPreset`
+
+- `label`, `value` — `DateValue[]` or `DateRangePreset`
+
+### `DateRangePreset`
+
+String union such as `'thisWeek'`, `'last7Days'`, `'thisMonth'`, etc. (see source for the full set).
+
+## Exports
+
+- `DatePickerField` — component
+- `DatePickerFieldProps`, `DatePickerPreset`, `DateRangePreset` — types
+- `DateValue` — re-export from Ark UI date picker

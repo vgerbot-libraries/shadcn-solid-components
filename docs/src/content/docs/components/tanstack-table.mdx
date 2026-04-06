@@ -1,0 +1,164 @@
+---
+title: TanStack table
+navTitle: TanStack Table
+description: Data table UI built on TanStack Table with Solid adapters, context, and helpers.
+section: Components
+toc: true
+---
+
+import DataTableDemo from "../../../examples/data-table-demo"
+import TanstackTablePreviewDemo from "../../../examples/tanstack-table-preview-demo"
+
+This module re-exports core TanStack Table utilities (`createSolidTable`, `flexRender`, row model helpers) and provides styled primitives (`TanstackTable`, `TanstackTableHeader`, `TanstackTableBody`, pagination, selection columns, and more). Table state and column definitions follow [@tanstack/solid-table](https://tanstack.com/table/latest); the components here handle table markup, selection/expand helpers, and built-in chrome (pagination, global filter) with design-system styling.
+
+## Installation
+
+Install `shadcn-solid-components` and `@tanstack/solid-table` as needed for your app, and satisfy peer dependencies (`solid-js`, Tailwind CSS v4, `tw-animate-css`).
+
+## Usage
+
+```tsx
+import {
+  createSolidTable,
+  flexRender,
+  getCoreRowModel,
+  TanstackTable,
+  TanstackTableBody,
+  TanstackTableColumnHeader,
+  TanstackTableHeader,
+  TanstackTableProvider,
+} from "shadcn-solid-components/components/tanstack-table"
+import type { ColumnDef } from "@tanstack/solid-table"
+
+// Build columns + data, then:
+// const table = createSolidTable({ data, columns, getCoreRowModel: getCoreRowModel(), ... })
+
+<TanstackTableProvider table={table}>
+  <TanstackTable>
+    <TanstackTableHeader>
+      {/* header groups / TanstackTableColumnHeader */}
+    </TanstackTableHeader>
+    <TanstackTableBody />
+  </TanstackTable>
+</TanstackTableProvider>
+```
+
+Use `TanstackTableProvider` when you need toolbars, filters, or pagination **outside** the `<table>` while sharing one `table` instance. Nesting `TanstackTable` inside the provider can omit the `table` prop when context is available. Optional props on the provider and root can override built-in UI copy; see `TanstackTableProviderProps` and `TanstackTableRootProps` in the source.
+
+## Exports
+
+**TanStack re-exports:** `flexRender`, `createSolidTable`, `getCoreRowModel`, `getSortedRowModel`, `getFilteredRowModel`, `getPaginationRowModel`, `getExpandedRowModel`, `getGroupedRowModel`, `getFacetedRowModel`, `getFacetedUniqueValues`, `getFacetedMinMaxValues`, and the associated TypeScript types (`Table`, `ColumnDef`, `Row`, `SortingState`, and others exported from the module).
+
+**Context and hooks:** `TanstackTableProvider`, `useTanstackTable`, `useTanstackTableLocale`
+
+**Layout:** `TanstackTable`, `TanstackTableHeader`, `TanstackTableBody`, `TanstackTableFooter`, `TanstackTableCaption`
+
+**Cells and controls:** `TanstackTableColumnHeader`, `TanstackTableHeaderCheckbox`, `TanstackTableRowCheckbox`, `TanstackTableExpandTrigger`, `TanstackTableGlobalFilter`, `TanstackTablePagination`
+
+**Helpers:** `createSelectColumn`, `createExpandColumn`
+
+For the full prop list of each subcomponent, refer to `src/components/tanstack-table/index.tsx` and the [TanStack Table API](https://tanstack.com/table/latest/docs/api/core/table).
+
+## Examples
+
+### Styled table primitives
+
+The example below uses this package's `TanstackTable`, `TanstackTableHeader`,
+`TanstackTableBody`, and `createSolidTable` helpers to build a table shell that matches the design
+system quickly.
+
+<ComponentPreview name="TanStack Table Primitives">
+  <div class="mb-4 w-full">
+    <TanstackTablePreviewDemo />
+  </div>
+  ```tsx
+  import type { ColumnDef } from "@tanstack/solid-table"
+  import {
+    TanstackTable,
+    TanstackTableBody,
+    TanstackTableHeader,
+    createSolidTable,
+    getCoreRowModel,
+  } from "shadcn-solid-components/components/tanstack-table"
+
+  type Person = { id: string; name: string; role: string }
+
+  const data: Person[] = [
+    { id: "1", name: "Ada", role: "Engineer" },
+    { id: "2", name: "Lin", role: "Designer" },
+  ]
+
+  const columns: ColumnDef<Person>[] = [
+    { accessorKey: "name", header: "Name" },
+    { accessorKey: "role", header: "Role" },
+  ]
+
+  const TanstackTablePreviewDemo = () => {
+    const table = createSolidTable({
+      get data() {
+        return data
+      },
+      columns,
+      getCoreRowModel: getCoreRowModel(),
+    })
+
+    return (
+      <div class="border-border w-full max-w-xl rounded-md border">
+        <TanstackTable table={table}>
+          <TanstackTableHeader />
+          <TanstackTableBody />
+        </TanstackTable>
+      </div>
+    )
+  }
+
+  export default TanstackTablePreviewDemo
+  ```
+</ComponentPreview>
+
+### Data table using `data-table-demo`
+
+The preview below renders the default export from `docs/src/examples/data-table-demo.tsx`
+directly. It is the same source used by the docs site's `Table` page, so you can compare the two
+pages against the same implementation.
+
+This example includes:
+
+- state managed with `createSolidTable`, `flexRender`, `getCoreRowModel`,
+  `getFilteredRowModel`, `getSortedRowModel`, and `getPaginationRowModel` from
+  `@tanstack/solid-table`
+- header dropdown actions for sorting and hiding columns
+- a toolbar with `TextField` title filtering, `Select` status filtering, and `DropdownMenu`
+  column visibility controls
+- row selection and bottom pagination controls
+
+If you prefer the lower-level `TanstackTable*` primitives from this package, start with the
+previous "Styled table primitives" section. For richer toolbar scenarios, inspect the column
+definitions and table state wiring in `data-table-demo.tsx`.
+
+<ComponentPreview name="TanStack Data Table Demo">
+  <div class="mb-4 w-full max-w-5xl">
+    <DataTableDemo />
+  </div>
+  ```tsx
+  /**
+   * Full column definitions, header menus, pagination, and filter UI live in:
+   * docs/src/examples/data-table-demo.tsx
+   *
+   * Structure overview:
+   * - import { createSolidTable, flexRender, ... } from "@tanstack/solid-table"
+   * - import { Table, TableBody, TableCell, ... } from "shadcn-solid-components/components/table"
+   * - columns + signals(state) → createSolidTable({ get data() {...}, state: {...}, ... })
+   * - render cells in JSX with flexRender(columnDef.header | cell, context)
+   */
+  import DataTableDemo from "../../../examples/data-table-demo"
+
+  const Page = () => (
+    <div class="w-full max-w-5xl">
+      <DataTableDemo />
+    </div>
+  )
+
+  export default Page
+  ```
+</ComponentPreview>

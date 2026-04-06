@@ -1,0 +1,49 @@
+---
+title: Combine Style
+description: Merge Solid `style` values when either side may be an object or an inline CSS string.
+section: Libraries
+toc: true
+order: 20
+---
+
+These utilities merge `style` props without dropping string-based declarations. String styles are parsed into objects when paired with an object; two strings are joined with `;`. When both sides are objects, later keys win.
+
+## Installation
+
+Install `shadcn-solid-components` and satisfy peer dependencies (`solid-js`, Tailwind CSS v4, `tw-animate-css`).
+
+## Usage
+
+```tsx
+import { combineStyle, stringStyleToObject } from "shadcn-solid-components/lib/combine-style"
+```
+
+Merge two style objects:
+
+```tsx
+const style = combineStyle({ color: "red" }, { fontSize: "14px" })
+```
+
+Combine two string styles (concatenated with `;`):
+
+```tsx
+const css = combineStyle("color: red", "margin: 0")
+```
+
+When one side is a string and the other is an object, the string is parsed with `stringStyleToObject` before merging into a single object.
+
+## API
+
+### `stringStyleToObject(style: string): JSX.CSSProperties`
+
+Parses a semicolon-separated inline style string into a plain object of property names to values (including custom properties like `--foo` where they match the internal pattern).
+
+### `combineStyle(a, b)`
+
+Overloads:
+
+- `(string, string) => string` — concatenates with `;`.
+- `(JSX.CSSProperties | undefined, JSX.CSSProperties | undefined) => JSX.CSSProperties`
+- Mixed `string | JSX.CSSProperties | undefined` pairs resolve to a merged object after parsing any string side.
+
+**Exports:** `stringStyleToObject`, `combineStyle`.

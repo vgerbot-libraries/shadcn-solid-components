@@ -1,0 +1,42 @@
+---
+title: Theme Helpers
+description: Read per-component theme classes from `ThemeContext` in a type-safe way.
+section: Libraries
+toc: true
+order: 60
+---
+
+`useComponentClass` resolves optional Tailwind (or other) classes from `theme.componentClass`, whether that config is a single callback or an object keyed by `ComponentName`.
+
+## Installation
+
+Install `shadcn-solid-components` and satisfy peer dependencies (`solid-js`, Tailwind CSS v4, `tw-animate-css`).
+
+## Usage
+
+```tsx
+import { useComponentClass } from "shadcn-solid-components/lib/theme-helpers"
+```
+
+Use an ancestor `ThemeProvider` (`shadcn-solid-components/components/theme`) when you expect non-undefined classes from `useComponentClass`.
+
+```tsx
+import { ComponentName } from "shadcn-solid-components/lib/theme-context"
+import { useComponentClass } from "shadcn-solid-components/lib/theme-helpers"
+
+const extraClass = useComponentClass(ComponentName.Button, props)
+```
+
+- If there is no context, no `componentClass` config, or no entry for that component, the hook returns `undefined`.
+- If `componentClass` is a function, it is called with `(componentName, props)`.
+- If it is an object, the function for that `ComponentName` is called with `props`.
+
+Props must match `ComponentPropsFor` for the given name (see `shadcn-solid-components/lib/component-props-map`).
+
+## API
+
+### `useComponentClass<N extends ComponentName>(componentName, props): string | undefined`
+
+`props` is typed as `ComponentPropsFor<N>`. Returns `undefined` when context is missing, when `theme.componentClass` is unset, or when the object form has no function for that component name.
+
+**Export:** `useComponentClass`.

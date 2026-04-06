@@ -1,0 +1,386 @@
+---
+title: Combobox
+description: Filterable listbox tied to a text input.
+section: Components
+toc: true
+---
+
+import ComboboxDemo from "../../../examples/combobox-demo"
+import ComboboxDisabledDemo from "../../../examples/combobox-disabled-demo"
+import ComboboxErrorDemo from "../../../examples/combobox-error-demo"
+import ComboboxGroupDemo from "../../../examples/combobox-group-demo"
+import ComboboxMultiDemo from "../../../examples/combobox-multi-demo"
+
+The combobox composes Kobalte’s combobox: portal, input, trigger, control, content with embedded listbox, items, sections, labels, and error messaging.
+
+## Installation
+
+Install `shadcn-solid-components` and satisfy peer dependencies (`solid-js`, Tailwind CSS v4, `tw-animate-css`).
+
+## Usage
+
+```tsx
+import {
+  Combobox,
+  ComboboxContent,
+  ComboboxControl,
+  ComboboxDescription,
+  ComboboxErrorMessage,
+  ComboboxInput,
+  ComboboxItem,
+  ComboboxItemLabel,
+  ComboboxLabel,
+  ComboboxPortal,
+  ComboboxSection,
+  ComboboxTrigger,
+} from "shadcn-solid-components/components/combobox"
+```
+
+`Combobox` is generic over `Option` and optional `Group` types to match Kobalte’s combobox typing.
+
+## Exports
+
+- `Combobox`, `ComboboxPortal`, `ComboboxInput`, `ComboboxTrigger`, `ComboboxControl`, `ComboboxContent`, `ComboboxItem`, `ComboboxItemLabel`, `ComboboxDescription`, `ComboboxLabel`, `ComboboxErrorMessage`, `ComboboxSection`
+- Types: `ComboboxProps`, `ComboboxInputProps`, `ComboboxTriggerProps`, `ComboboxControlProps`, `ComboboxContentProps`, `ComboboxItemProps`, `ComboboxItemLabelProps`, `ComboboxDescriptionProps`, `ComboboxLabelProps`, `ComboboxErrorMessageProps`, `ComboboxSectionProps`
+
+
+## Examples
+
+### Default
+
+<ComponentPreview name="Combobox Demo">
+  <div class="mb-4 w-full">
+    <ComboboxDemo />
+  </div>
+  ```tsx
+  import {
+  Combobox,
+  ComboboxContent,
+  ComboboxControl,
+  ComboboxDescription,
+  ComboboxInput,
+  ComboboxItem,
+  ComboboxItemLabel,
+  ComboboxPortal,
+  ComboboxTrigger,
+} from "shadcn-solid-components/components/combobox"
+
+const ALL_OPTIONS = ["Apple", "Banana", "Blueberry", "Grapes", "Pineapple"]
+
+const ComboboxDemo = () => {
+  return (
+    <Combobox
+      options={ALL_OPTIONS}
+      itemComponent={(props) => (
+        <ComboboxItem item={props.item}>
+          <ComboboxItemLabel>{props.item.rawValue}</ComboboxItemLabel>
+        </ComboboxItem>
+      )}
+    >
+      <ComboboxControl>
+        <ComboboxInput />
+        <ComboboxTrigger />
+      </ComboboxControl>
+      <ComboboxDescription>
+        Choose the fruit you like the most.
+      </ComboboxDescription>
+      <ComboboxPortal>
+        <ComboboxContent />
+      </ComboboxPortal>
+    </Combobox>
+  )
+}
+
+export default ComboboxDemo
+  ```
+</ComponentPreview>
+
+### Disabled
+
+<ComponentPreview name="Combobox Disabled Demo">
+  <div class="mb-4 w-full">
+    <ComboboxDisabledDemo />
+  </div>
+  ```tsx
+  import {
+  Combobox,
+  ComboboxContent,
+  ComboboxControl,
+  ComboboxDescription,
+  ComboboxInput,
+  ComboboxItem,
+  ComboboxItemLabel,
+  ComboboxLabel,
+  ComboboxPortal,
+  ComboboxTrigger,
+} from "shadcn-solid-components/components/combobox"
+
+const ALL_OPTIONS = ["Apple", "Banana", "Blueberry", "Grapes", "Pineapple"]
+
+const ComboboxDisabledDemo = () => {
+  return (
+    <Combobox
+      disabled
+      options={ALL_OPTIONS}
+      itemComponent={(props) => (
+        <ComboboxItem item={props.item}>
+          <ComboboxItemLabel>{props.item.rawValue}</ComboboxItemLabel>
+        </ComboboxItem>
+      )}
+    >
+      <ComboboxLabel>Fruit</ComboboxLabel>
+      <ComboboxControl>
+        <ComboboxInput />
+        <ComboboxTrigger />
+      </ComboboxControl>
+      <ComboboxDescription>
+        Choose the fruit you like the most.
+      </ComboboxDescription>
+      <ComboboxPortal>
+        <ComboboxContent />
+      </ComboboxPortal>
+    </Combobox>
+  )
+}
+
+export default ComboboxDisabledDemo
+  ```
+</ComponentPreview>
+
+### Error
+
+<ComponentPreview name="Combobox Error Demo">
+  <div class="mb-4 w-full">
+    <ComboboxErrorDemo />
+  </div>
+  ```tsx
+  import { createSignal } from "solid-js"
+
+import {
+  Combobox,
+  ComboboxContent,
+  ComboboxControl,
+  ComboboxErrorMessage,
+  ComboboxInput,
+  ComboboxItem,
+  ComboboxItemLabel,
+  ComboboxLabel,
+  ComboboxPortal,
+  ComboboxTrigger,
+} from "shadcn-solid-components/components/combobox"
+
+const ALL_OPTIONS = ["Apple", "Banana", "Blueberry", "Grapes", "Pineapple"]
+
+const ComboboxErrorDemo = () => {
+  const [value, setValue] = createSignal("Grapes")
+  const onInputChange = (value: string) => {
+    if (value === "") {
+      setValue("")
+    }
+  }
+
+  return (
+    <Combobox
+      options={ALL_OPTIONS}
+      value={value()}
+      onChange={setValue}
+      onInputChange={onInputChange}
+      validationState={value() !== "Apple" ? "invalid" : "valid"}
+      itemComponent={(props) => (
+        <ComboboxItem item={props.item}>
+          <ComboboxItemLabel>{props.item.rawValue}</ComboboxItemLabel>
+        </ComboboxItem>
+      )}
+    >
+      <ComboboxLabel>Fruit</ComboboxLabel>
+      <ComboboxControl>
+        <ComboboxInput />
+        <ComboboxTrigger />
+      </ComboboxControl>
+      <ComboboxErrorMessage>Hmm, I prefer apples.</ComboboxErrorMessage>
+      <ComboboxPortal>
+        <ComboboxContent />
+      </ComboboxPortal>
+    </Combobox>
+  )
+}
+
+export default ComboboxErrorDemo
+  ```
+</ComponentPreview>
+
+### Group
+
+<ComponentPreview name="Combobox Group Demo">
+  <div class="mb-4 w-full">
+    <ComboboxGroupDemo />
+  </div>
+  ```tsx
+  import {
+  Combobox,
+  ComboboxContent,
+  ComboboxControl,
+  ComboboxDescription,
+  ComboboxInput,
+  ComboboxItem,
+  ComboboxItemLabel,
+  ComboboxPortal,
+  ComboboxSection,
+  ComboboxTrigger,
+} from "shadcn-solid-components/components/combobox"
+
+interface Option {
+  value: string
+  label: string
+  disabled: boolean
+}
+interface Group {
+  label: string
+  options: Option[]
+}
+const ALL_OPTIONS: Group[] = [
+  {
+    label: "Fruits",
+    options: [
+      { value: "apple", label: "Apple", disabled: false },
+      { value: "banana", label: "Banana", disabled: false },
+      { value: "blueberry", label: "Blueberry", disabled: false },
+      { value: "grapes", label: "Grapes", disabled: true },
+      { value: "pineapple", label: "Pineapple", disabled: false },
+    ],
+  },
+  {
+    label: "Meat",
+    options: [
+      { value: "beef", label: "Beef", disabled: false },
+      { value: "chicken", label: "Chicken", disabled: false },
+      { value: "lamb", label: "Lamb", disabled: false },
+      { value: "pork", label: "Pork", disabled: false },
+    ],
+  },
+]
+
+const ComboboxGroupDemo = () => {
+  return (
+    <Combobox<Option, Group>
+      options={ALL_OPTIONS}
+      optionValue="value"
+      optionTextValue="label"
+      optionLabel="label"
+      optionDisabled="disabled"
+      optionGroupChildren="options"
+      itemComponent={(props) => (
+        <ComboboxItem item={props.item}>
+          <ComboboxItemLabel>{props.item.rawValue.label}</ComboboxItemLabel>
+        </ComboboxItem>
+      )}
+      sectionComponent={(props) => (
+        <ComboboxSection>{props.section.rawValue.label}</ComboboxSection>
+      )}
+    >
+      <ComboboxControl>
+        <ComboboxInput />
+        <ComboboxTrigger />
+      </ComboboxControl>
+      <ComboboxDescription>
+        Choose the fruit you like the most.
+      </ComboboxDescription>
+      <ComboboxPortal>
+        <ComboboxContent />
+      </ComboboxPortal>
+    </Combobox>
+  )
+}
+
+export default ComboboxGroupDemo
+  ```
+</ComponentPreview>
+
+### Multi
+
+<ComponentPreview name="Combobox Multi Demo">
+  <div class="mb-4 w-full">
+    <ComboboxMultiDemo />
+  </div>
+  ```tsx
+  import { For } from "solid-js"
+
+import { Badge } from "shadcn-solid-components/components/badge"
+import {
+  Combobox,
+  ComboboxContent,
+  ComboboxControl,
+  ComboboxDescription,
+  ComboboxInput,
+  ComboboxItem,
+  ComboboxItemLabel,
+  ComboboxPortal,
+  ComboboxTrigger,
+} from "shadcn-solid-components/components/combobox"
+
+const ALL_OPTIONS = ["Apple", "Banana", "Blueberry", "Grapes", "Pineapple"]
+
+const ComboboxMultiDemo = () => {
+  return (
+    <Combobox
+      multiple
+      defaultValue={["Apple"]}
+      options={ALL_OPTIONS}
+      itemComponent={(props) => (
+        <ComboboxItem item={props.item}>
+          <ComboboxItemLabel>{props.item.rawValue}</ComboboxItemLabel>
+        </ComboboxItem>
+      )}
+    >
+      <ComboboxControl<string> class="h-full min-h-9 w-full max-w-sm">
+        {(state) => (
+          <>
+            <div class="flex flex-wrap items-center gap-1">
+              <For each={state.selectedOptions()}>
+                {(option) => (
+                  <Badge class="rounded-sm">
+                    {option}
+                    <button
+                      type="button"
+                      class="rounded-full"
+                      onClick={() => {
+                        state.remove(option)
+                      }}
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        class="size-3"
+                      >
+                        <path
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M18 6L6 18M6 6l12 12"
+                        />
+                      </svg>
+                    </button>
+                  </Badge>
+                )}
+              </For>
+              <ComboboxInput />
+            </div>
+            <ComboboxTrigger />
+          </>
+        )}
+      </ComboboxControl>
+      <ComboboxDescription>
+        Choose the fruit you like the most.
+      </ComboboxDescription>
+      <ComboboxPortal>
+        <ComboboxContent />
+      </ComboboxPortal>
+    </Combobox>
+  )
+}
+
+export default ComboboxMultiDemo
+  ```
+</ComponentPreview>

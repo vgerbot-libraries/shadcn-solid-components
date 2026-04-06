@@ -1,0 +1,168 @@
+---
+title: Alert
+description: Inline message for status, feedback, or important information.
+section: Components
+toc: true
+---
+
+import AlertDemo from "../../../examples/alert-demo"
+import AlertDestructiveDemo from "../../../examples/alert-destructive-demo"
+import AlertStaticDemo from "../../../examples/alert-static-demo"
+
+Use `Alert` for inline, persistent feedback inside a page or section. Combine it with `AlertTitle` and `AlertDescription` when you need more structure than plain text.
+
+## Installation
+
+Install the package, then make sure the required peer dependencies are already configured in your app.
+
+```bash
+pnpm add shadcn-solid-components
+```
+
+Peer dependencies: `solid-js`, Tailwind CSS v4, and `tw-animate-css`.
+
+## Usage
+
+```tsx
+import { Alert, AlertDescription, AlertTitle } from "shadcn-solid-components/components/alert"
+```
+
+```tsx
+<Alert as="div">
+  <AlertTitle>Heads up!</AlertTitle>
+  <AlertDescription>
+    Your trial ends in 3 days.
+  </AlertDescription>
+</Alert>
+```
+
+## Accessibility And Semantics
+
+`Alert` is built on Kobalte's alert primitive and defaults to rendering as a `button`.
+
+Use `as="div"` when the alert is informational and should not be interactive. Keep the default element, or render another interactive element, only when the entire alert is meant to be clicked.
+
+## Variants
+
+- `default`: General information, neutral status, or success-style messaging.
+- `destructive`: Error, warning, or destructive state that needs stronger emphasis.
+
+## Custom Styling
+
+Import `alertVariants` when you want to reuse the same visual treatment on a custom wrapper or extend the built-in variants.
+
+```tsx
+import { alertVariants } from "shadcn-solid-components/components/alert"
+```
+
+## Examples
+
+### Default
+
+<ComponentPreview name="Alert Default">
+  <div class="mb-4 w-full max-w-xl">
+    <AlertDemo />
+  </div>
+  ```tsx
+  import { Alert, AlertDescription, AlertTitle } from "shadcn-solid-components/components/alert"
+
+  const AlertDemo = () => {
+    return (
+      <Alert>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="size-4"
+          viewBox="0 0 24 24"
+        >
+          <g
+            fill="none"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+          >
+            <circle cx="12" cy="12" r="10" />
+            <path d="m9 12l2 2l4-4" />
+          </g>
+        </svg>
+        <AlertTitle>Success! Your changes have been saved</AlertTitle>
+        <AlertDescription>
+          This is an alert with icon, title and description.
+        </AlertDescription>
+      </Alert>
+    )
+  }
+
+  export default AlertDemo
+  ```
+</ComponentPreview>
+
+### Static Informational Alert
+
+<ComponentPreview name="Alert Static">
+  <div class="mb-4 w-full max-w-xl">
+    <AlertStaticDemo />
+  </div>
+  ```tsx
+  import { Alert, AlertDescription, AlertTitle } from "shadcn-solid-components/components/alert"
+
+  const AlertStaticDemo = () => {
+    return (
+      <Alert as="div">
+        <AlertTitle>Heads up!</AlertTitle>
+        <AlertDescription>
+          This alert is purely informational, so it renders as a div instead of a button.
+        </AlertDescription>
+      </Alert>
+    )
+  }
+
+  export default AlertStaticDemo
+  ```
+</ComponentPreview>
+
+### Destructive
+
+<ComponentPreview name="Alert Destructive">
+  <div class="mb-4 w-full max-w-xl">
+    <AlertDestructiveDemo />
+  </div>
+  ```tsx
+  import { Alert, AlertDescription, AlertTitle } from "shadcn-solid-components/components/alert"
+
+  const AlertDestructiveDemo = () => {
+    return (
+      <Alert variant="destructive">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="size-4"
+          viewBox="0 0 24 24"
+        >
+          <g
+            fill="none"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+          >
+            <circle cx="12" cy="12" r="10" />
+            <path d="M12 8v4" />
+            <path d="M12 16h.01" />
+          </g>
+        </svg>
+        <AlertTitle>Something went wrong!</AlertTitle>
+        <AlertDescription>
+          Your session has expired. Please log in again.
+        </AlertDescription>
+      </Alert>
+    )
+  }
+
+  export default AlertDestructiveDemo
+  ```
+</ComponentPreview>
+
+## Exports
+
+- `Alert`, `AlertTitle`, `AlertDescription`, `alertVariants`
+- Types: `AlertProps`, `AlertTitleProps`, `AlertDescriptionProps`

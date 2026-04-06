@@ -1,0 +1,55 @@
+---
+title: Skeleton
+description: Placeholder block for loading states.
+section: Components
+toc: true
+---
+
+import SkeletonDemo from "../../../examples/skeleton-demo"
+
+Skeleton renders a pulsing neutral block you can size with utilities until real content is ready.
+
+## Installation
+
+Install `shadcn-solid-components` and satisfy peer dependencies (`solid-js`, Tailwind CSS v4, `tw-animate-css`).
+
+## Usage
+
+```tsx
+import { Skeleton } from "shadcn-solid-components/components/skeleton"
+```
+
+Apply `class` (for example width/height or rounded corners) to match the eventual layout.
+
+## Exports
+
+- `Skeleton`
+- Types: `SkeletonProps`
+
+
+## Examples
+
+### Default
+
+<ComponentPreview name="Skeleton Demo">
+  <div class="mb-4 w-full">
+    <SkeletonDemo />
+  </div>
+  ```tsx
+  import { Skeleton } from "shadcn-solid-components/components/skeleton"
+
+const SkeletonDemo = () => {
+  return (
+    <div class="flex items-center space-x-4">
+      <Skeleton radius={100} height={48} width={48} />
+      <div class="space-y-2">
+        <Skeleton height={16} width={250} />
+        <Skeleton height={16} width={200} />
+      </div>
+    </div>
+  )
+}
+
+export default SkeletonDemo
+  ```
+</ComponentPreview>

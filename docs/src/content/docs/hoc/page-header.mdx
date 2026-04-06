@@ -1,0 +1,126 @@
+---
+title: Page header
+description: Page title row with optional breadcrumbs, description, and actions.
+section: HOC
+toc: true
+---
+
+import PageHeaderDemo from "../../../examples/page-header-demo"
+
+`PageHeader` uses the breadcrumbs and separator components to produce a common admin-style header.
+
+## Installation
+
+Install `shadcn-solid-components` and satisfy peer dependencies (`solid-js`, Tailwind CSS v4, `tw-animate-css`).
+
+## Usage
+
+```tsx
+import { Button } from "shadcn-solid-components/components/button"
+import { PageHeader } from "shadcn-solid-components/hoc/page-header"
+
+<PageHeader
+  breadcrumbs={[{ label: "Home", href: "/" }, { label: "Settings" }]}
+  title="Settings"
+  description="Manage your account."
+  actions={<Button>Save</Button>}
+/>
+```
+
+## Examples
+
+### Title only
+
+<ComponentPreview name="Page Header Demo">
+  <div class="mb-4 w-full">
+    <PageHeaderDemo />
+  </div>
+  ```tsx
+  import { Button } from "shadcn-solid-components/components/button"
+  import { PageHeader } from "shadcn-solid-components/hoc/page-header"
+
+  const PageHeaderDemo = () => {
+    return (
+      <PageHeader
+        breadcrumbs={[{ label: "App", href: "/" }, { label: "Billing" }]}
+        title="Billing"
+        description={<span class="text-muted-foreground text-sm">Manage payment methods.</span>}
+        actions={
+          <Button size="sm" variant="outline">
+            Export
+          </Button>
+        }
+        separator
+      />
+    )
+  }
+
+  export default PageHeaderDemo
+  ```
+</ComponentPreview>
+
+```tsx
+import { PageHeader } from "shadcn-solid-components/hoc/page-header"
+
+<PageHeader title="Dashboard" />
+```
+
+### With bottom separator
+
+```tsx
+import { Button } from "shadcn-solid-components/components/button"
+import { PageHeader } from "shadcn-solid-components/hoc/page-header"
+
+<PageHeader
+  breadcrumbs={[{ label: "App", href: "/" }, { label: "Billing" }]}
+  title="Billing"
+  description={<span class="text-muted-foreground text-sm">Manage payment methods.</span>}
+  actions={
+    <Button size="sm" variant="outline">
+      Export
+    </Button>
+  }
+  separator
+/>
+```
+
+### Title and actions without breadcrumbs
+
+You can omit `breadcrumbs` entirely and keep only the title row plus right-aligned `actions`:
+
+```tsx
+import { Button } from "shadcn-solid-components/components/button"
+import { PageHeader } from "shadcn-solid-components/hoc/page-header"
+
+<PageHeader
+  title="Members"
+  description="Manage organization members and permissions."
+  actions={
+    <>
+      <Button size="sm" variant="outline" type="button">
+        Import
+      </Button>
+      <Button size="sm" type="button">
+        Invite
+      </Button>
+    </>
+  }
+/>
+```
+
+## API
+
+### `PageHeaderProps`
+
+Extends `div` props.
+
+- `breadcrumbs` — `BreadcrumbItem[]` (`label`, optional `href`)
+- `title` — required
+- `description` — string or JSX
+- `actions` — JSX on the right
+- `separator` — bottom `Separator` when `true` (default `false`)
+
+## Exports
+
+- `PageHeader` — component
+- `PageHeaderProps`, `BreadcrumbItem` — types

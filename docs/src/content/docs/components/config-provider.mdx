@@ -1,0 +1,132 @@
+---
+title: Config Provider
+navTitle: Config Provider
+description: Global configuration context for library-wide settings such as locale.
+section: Components
+toc: true
+---
+
+import ConfigProviderDemo from "../../../examples/config-provider-demo"
+import ConfigProviderScopingDemo from "../../../examples/config-provider-scoping-demo"
+
+`ConfigProvider` supplies shared configuration to nested components. Today the primary use is passing a **partial locale** object so built-in strings (for example in tables or date-related UI) resolve consistently across the tree.
+
+## Installation
+
+Install `shadcn-solid-components` and satisfy peer dependencies (`solid-js`, Tailwind CSS v4, `tw-animate-css`).
+
+## Usage
+
+```tsx
+import { ConfigProvider } from "shadcn-solid-components/components/config-provider"
+
+<ConfigProvider locale={{ locale: "en-GB" }}>
+  <App />
+</ConfigProvider>
+```
+
+Pass only the keys you need to override; unspecified keys fall back to each component’s defaults. The top-level `locale` string is a common override for `Intl` formatting in components such as the date picker. Child components that call `useLocale()` read the merged locale from context. Outside a provider, `useLocale()` returns an empty object. The full `Locale` record shape is defined in the library source at `src/i18n/types.ts` if you are authoring objects by hand.
+
+## API
+
+- **`ConfigProvider`** — Props: `children`, optional `locale` (partial record of UI strings; typed as `Partial<Locale>` in source).
+- **`useLocale()`** — Returns the current context value (`Partial<Locale>`), or `{}` outside a provider.
+
+## Exports
+
+- `ConfigProvider`, `useLocale`
+- Types: `ConfigProviderProps`
+
+## Examples
+
+### Locale context
+
+<ComponentPreview name="Config Provider Demo">
+  <div class="mb-4 w-full">
+    <ConfigProviderDemo />
+  </div>
+  ```tsx
+  import { ConfigProvider, useLocale } from "shadcn-solid-components/components/config-provider"
+
+  const LocaleEcho = () => {
+    const locale = useLocale()
+    return (
+      <p class="text-muted-foreground text-sm">
+        <span class="text-foreground font-medium">useLocale().locale:</span>{" "}
+      {locale.locale ?? "(not set)"}
+      </p>
+    )
+  }
+
+  const ConfigProviderDemo = () => {
+    return (
+      <ConfigProvider locale={{ locale: "en-GB" }}>
+        <div class="border-border bg-card max-w-md space-y-2 rounded-xl border p-4">
+          <p class="text-sm">
+            The subtree is wrapped in <code class="text-foreground">ConfigProvider</code>, and
+            child components read the merged locale via{" "}
+            <code class="text-foreground">useLocale()</code>.
+          </p>
+          <LocaleEcho />
+        </div>
+      </ConfigProvider>
+    )
+  }
+
+  export default ConfigProviderDemo
+  ```
+</ComponentPreview>
+
+### Nesting and overrides
+
+Each nested `ConfigProvider` supplies a **new** context value for its subtree. Unlike the deep
+merge behavior that is common in some React setups, this implementation uses the **nearest
+provider**. If an inner provider passes `locale={{}}`, `useLocale()` in that subtree reads the
+empty object instead of inheriting the outer fields.
+
+<ComponentPreview name="Config Provider Scoping">
+  <div class="mb-4 w-full">
+    <ConfigProviderScopingDemo />
+  </div>
+  ```tsx
+  import { ConfigProvider, useLocale } from "shadcn-solid-components/components/config-provider"
+
+  const LocaleEcho = (props: { label: string }) => {
+    const locale = useLocale()
+    return (
+      <p class="text-muted-foreground text-sm">
+        <span class="text-foreground font-medium">{props.label}</span>{" "}
+      <code class="text-foreground font-mono text-xs">{locale.locale ?? "(no locale field)"}</code>
+      </p>
+    )
+  }
+
+  const ConfigProviderScopingDemo = () => {
+    return (
+      <div class="border-border bg-card max-w-lg space-y-4 rounded-xl border p-4 text-sm">
+        <p class="text-muted-foreground">
+          The outer provider sets <code class="text-foreground">en-GB</code>; inner providers can
+          override it with another locale or an empty object.
+        </p>
+        <ConfigProvider locale={{ locale: "en-GB" }}>
+          <div class="space-y-2 border-l-2 border-primary/40 pl-3">
+            <LocaleEcho label="Outer subtree:" />
+            <ConfigProvider locale={{ locale: "zh-CN" }}>
+              <div class="border-border space-y-2 border-l-2 pl-3">
+                <LocaleEcho label="Inner override:" />
+              </div>
+            </ConfigProvider>
+            <ConfigProvider locale={{}}>
+              <div class="border-border space-y-2 border-l-2 pl-3">
+                <LocaleEcho label="Inner empty object:" />
+              </div>
+            </ConfigProvider>
+          </div>
+        </ConfigProvider>
+      </div>
+    )
+  }
+
+  export default ConfigProviderScopingDemo
+  ```
+</ComponentPreview>

@@ -1,0 +1,44 @@
+---
+title: Call Handler
+description: Call Solid JSX event handlers that are either a plain function or a Kobalte-style tuple handler.
+section: Libraries
+toc: true
+order: 10
+---
+
+These helpers match how Kobalte-style APIs treat `JSX.EventHandlerUnion`: the handler may be a function or a `[handler, payload]` tuple. In the tuple form, the implementation calls `handler[0](handler[1], event)`.
+
+## Installation
+
+Install `shadcn-solid-components` and satisfy peer dependencies (`solid-js`, Tailwind CSS v4, `tw-animate-css`).
+
+## Usage
+
+```tsx
+import { callHandler, isFunction } from "shadcn-solid-components/lib/call-handler"
+```
+
+Invoke a consumer handler after your own logic (for example inside a wrapped `onClick`):
+
+```tsx
+callHandler(event, props.onClick)
+```
+
+If `handler` is omitted, nothing runs. The return value is always `event.defaultPrevented` after any handler runs.
+
+`isFunction` is `typeof value === "function"` exposed as a type guard.
+
+## API
+
+### `isFunction(value: unknown): value is Function`
+
+Narrows `unknown` to `Function` when the value is callable.
+
+### `callHandler<T, E extends Event>(event, handler?)`
+
+- `event`: `E & { currentTarget: T; target: Element }`
+- `handler`: `JSX.EventHandlerUnion<T, E> | undefined`
+
+If `handler` is a function, it is called with `event`. If it is a tuple, `handler[0](handler[1], event)` is invoked. Returns `event.defaultPrevented`.
+
+**Exports:** `isFunction`, `callHandler`.

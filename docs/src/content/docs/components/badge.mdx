@@ -1,0 +1,103 @@
+---
+title: Badge
+description: Small label for status, counts, or metadata.
+section: Components
+toc: true
+---
+
+import BadgeDemo from "../../../examples/badge-demo"
+import BadgeDestructiveDemo from "../../../examples/badge-destructive-demo"
+import BadgeOutlineDemo from "../../../examples/badge-outline-demo"
+import BadgeSecondaryDemo from "../../../examples/badge-secondary-demo"
+
+Badges use `badgeVariants` for size and emphasis. The component is polymorphic so you can render a `span`, `a`, or another element via `as`.
+
+## Installation
+
+Install `shadcn-solid-components` and satisfy peer dependencies (`solid-js`, Tailwind CSS v4, `tw-animate-css`).
+
+## Usage
+
+```tsx
+import { Badge, badgeVariants } from "shadcn-solid-components/components/badge"
+```
+
+```tsx
+<Badge variant="secondary">Beta</Badge>
+```
+
+## Exports
+
+- `Badge`, `badgeVariants`
+- Types: `BadgeProps`
+
+
+## Examples
+
+### Default
+
+<ComponentPreview name="Badge Demo">
+  <div class="mb-4 w-full">
+    <BadgeDemo />
+  </div>
+  ```tsx
+  import { Badge } from "shadcn-solid-components/components/badge"
+
+const BadgeDemo = () => {
+  return <Badge>Badge</Badge>
+}
+
+export default BadgeDemo
+  ```
+</ComponentPreview>
+
+### Destructive
+
+<ComponentPreview name="Badge Destructive Demo">
+  <div class="mb-4 w-full">
+    <BadgeDestructiveDemo />
+  </div>
+  ```tsx
+  import { Badge } from "shadcn-solid-components/components/badge"
+
+const BadgeDestructiveDemo = () => {
+  return <Badge variant="destructive">Destructive</Badge>
+}
+
+export default BadgeDestructiveDemo
+  ```
+</ComponentPreview>
+
+### Outline
+
+<ComponentPreview name="Badge Outline Demo">
+  <div class="mb-4 w-full">
+    <BadgeOutlineDemo />
+  </div>
+  ```tsx
+  import { Badge } from "shadcn-solid-components/components/badge"
+
+const BadgeOutlineDemo = () => {
+  return <Badge variant="outline">Outline</Badge>
+}
+
+export default BadgeOutlineDemo
+  ```
+</ComponentPreview>
+
+### Secondary
+
+<ComponentPreview name="Badge Secondary Demo">
+  <div class="mb-4 w-full">
+    <BadgeSecondaryDemo />
+  </div>
+  ```tsx
+  import { Badge } from "shadcn-solid-components/components/badge"
+
+const BadgeSecondaryDemo = () => {
+  return <Badge variant="secondary">Secondary</Badge>
+}
+
+export default BadgeSecondaryDemo
+  ```
+</ComponentPreview>

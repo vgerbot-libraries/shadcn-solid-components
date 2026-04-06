@@ -1,0 +1,76 @@
+---
+title: Icons
+description: Inline SVG icon components used across the design system.
+section: Components
+toc: true
+---
+
+import IconsDemo from "../../../examples/icons-demo"
+
+This entry point ships a large set of stroke-style SVG icons (for example `IconCheck`, `IconChevronDown`, `IconUser`). Each icon is a function component that renders an `<svg>` with `currentColor` strokes and accepts standard SVG element props such as `class` and `aria-hidden`.
+
+## Installation
+
+Install `shadcn-solid-components` and satisfy peer dependencies (`solid-js`, Tailwind CSS v4, `tw-animate-css`).
+
+## Usage
+
+```tsx
+import { IconCheck, IconChevronRight } from "shadcn-solid-components/components/icons"
+
+// Use inside buttons, menus, or labels; size with utility classes on `class`.
+```
+
+## Exports
+
+- Many `Icon*` named components (see `src/components/icons/index.tsx` for the full list). Props match `ComponentProps<'svg'>` (that alias is not exported from this entry).
+
+## Examples
+
+### Common icons
+
+<ComponentPreview name="Icons Demo">
+  <div class="mb-4 w-full">
+    <IconsDemo />
+  </div>
+  ```tsx
+  import {
+    IconCalendar,
+    IconCheck,
+    IconChevronDown,
+    IconHome,
+    IconSearch,
+    IconSettings,
+    IconTrash,
+    IconUser,
+  } from "shadcn-solid-components/components/icons"
+
+  const IconsDemo = () => {
+    const items = [
+      { label: "IconCheck", icon: IconCheck },
+      { label: "IconChevronDown", icon: IconChevronDown },
+      { label: "IconSearch", icon: IconSearch },
+      { label: "IconHome", icon: IconHome },
+      { label: "IconSettings", icon: IconSettings },
+      { label: "IconCalendar", icon: IconCalendar },
+      { label: "IconUser", icon: IconUser },
+      { label: "IconTrash", icon: IconTrash },
+    ] as const
+
+    return (
+      <div class="flex flex-wrap items-center gap-6">
+        {items.map(({ label, icon: Icon }) => (
+          <div class="flex flex-col items-center gap-2">
+            <div class="border-border bg-muted/40 flex size-12 items-center justify-center rounded-lg border">
+              <Icon class="text-foreground size-6" aria-hidden />
+            </div>
+            <span class="text-muted-foreground max-w-[8rem] text-center text-xs">{label}</span>
+          </div>
+        ))}
+      </div>
+    )
+  }
+
+  export default IconsDemo
+  ```
+</ComponentPreview>

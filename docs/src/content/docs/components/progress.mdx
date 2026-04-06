@@ -1,0 +1,64 @@
+---
+title: Progress
+description: Linear progress indicator with optional label and value text.
+section: Components
+toc: true
+---
+
+import ProgressDemo from "../../../examples/progress-demo"
+
+The progress component exposes a root meter, optional grouping wrapper, and label slots aligned with Kobalte’s progress primitive.
+
+## Installation
+
+Install `shadcn-solid-components` and satisfy peer dependencies (`solid-js`, Tailwind CSS v4, `tw-animate-css`).
+
+## Usage
+
+```tsx
+import {
+  Progress,
+  ProgressGroup,
+  ProgressLabel,
+  ProgressValueLabel,
+} from "shadcn-solid-components/components/progress"
+```
+
+Use `Progress` for the track and fill; add `ProgressLabel` and `ProgressValueLabel` when you need visible status text.
+
+## Exports
+
+- `Progress`, `ProgressGroup`, `ProgressLabel`, `ProgressValueLabel`
+- Types: `ProgressProps`, `ProgressGroupProps`, `ProgressLabelProps`, `ProgressValueLabelProps`
+
+
+## Examples
+
+### Default
+
+<ComponentPreview name="Progress Demo">
+  <div class="mb-4 w-full">
+    <ProgressDemo />
+  </div>
+  ```tsx
+  import {
+  Progress,
+  ProgressGroup,
+  ProgressLabel,
+  ProgressValueLabel,
+} from "shadcn-solid-components/components/progress"
+
+const ProgressDemo = () => {
+  return (
+    <Progress value={80} class="max-w-xs">
+      <ProgressGroup>
+        <ProgressLabel>Progress</ProgressLabel>
+        <ProgressValueLabel />
+      </ProgressGroup>
+    </Progress>
+  )
+}
+
+export default ProgressDemo
+  ```
+</ComponentPreview>

@@ -1,0 +1,53 @@
+---
+title: Use Current URL
+description: Reactive URL pathname, hash, query, and href via `useCurrentUrl`, with optional custom sources or browser history hooks.
+section: Libraries
+toc: true
+order: 70
+---
+
+`useCurrentUrl` returns a Solid `Accessor` of structured URL fields. With no arguments it subscribes to browser navigation (`popstate`, `hashchange`, and patched `history.pushState` / `replaceState`). You can instead pass a fixed string, a `UrlInfo` object, or an accessor for either.
+
+## Installation
+
+Install `shadcn-solid-components` and satisfy peer dependencies (`solid-js`, Tailwind CSS v4, `tw-animate-css`).
+
+## Usage
+
+```tsx
+import { useCurrentUrl, parseUrl, type UrlInfo, type UrlInfoInput } from "shadcn-solid-components/lib/use-current-url"
+```
+
+Track the live location:
+
+```tsx
+const url = useCurrentUrl()
+
+url().pathname
+url().searchParams.get("q")
+```
+
+Use a static or reactive override:
+
+```tsx
+const url = useCurrentUrl("/docs/guide#intro")
+const urlFromSignal = useCurrentUrl(() => someStringAccessor())
+```
+
+### SSR
+
+`parseUrl` uses manual parsing when `window` is undefined. The default `useCurrentUrl()` branch without arguments returns empty strings and an empty `URLSearchParams` when `window` is undefined.
+
+## API
+
+### `parseUrl(input: string): UrlInfo`
+
+Returns `{ pathname, hash, searchParams, href }`. In the browser, resolves relative URLs against `window.location` when needed.
+
+### `useCurrentUrl(customUrl?: UrlInfoInput): Accessor<UrlInfo>`
+
+- No argument: reactive `window.location` (with history interception) in the browser; static empty `UrlInfo` on server.
+- `string` / `UrlInfo`: accessor always returns the parsed or fixed value.
+- `Accessor<string | UrlInfo>`: memoized parsing when the value is a string.
+
+**Exports:** `UrlInfo`, `UrlInfoInput`, `parseUrl`, `useCurrentUrl`.

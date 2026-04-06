@@ -1,0 +1,175 @@
+---
+title: Breadcrumbs
+description: Navigation trail showing the current page hierarchy.
+section: Components
+toc: true
+---
+
+import BreadcrumbsCustomSeparatorDemo from "../../../examples/breadcrumbs-custom-separator-demo"
+import BreadcrumbsDemo from "../../../examples/breadcrumbs-demo"
+
+Breadcrumbs combine a Kobalte breadcrumbs root with list, items, links, separators, and an ellipsis helper for collapsed paths.
+
+## Installation
+
+Install `shadcn-solid-components` and satisfy peer dependencies (`solid-js`, Tailwind CSS v4, `tw-animate-css`).
+
+## Usage
+
+```tsx
+import {
+  BreadcrumbList,
+  Breadcrumbs,
+  BreadcrumbsEllipsis,
+  BreadcrumbsItem,
+  BreadcrumbsLink,
+  BreadcrumbsSeparator,
+} from "shadcn-solid-components/components/breadcrumbs"
+```
+
+The root `Breadcrumbs` primitive supplies a default chevron separator; override with your own `separator` prop when needed.
+
+## Exports
+
+- `Breadcrumbs`, `BreadcrumbList`, `BreadcrumbsItem`, `BreadcrumbsLink`, `BreadcrumbsSeparator`, `BreadcrumbsEllipsis`
+- Types: `BreadcrumbsProps`, `BreadcrumbListProps`, `BreadcrumbsItemProps`, `BreadcrumbsLinkProps`, `BreadcrumbsSeparatorProps`, `BreadcrumbsEllipsisProps`
+
+
+## Examples
+
+### Default
+
+<ComponentPreview name="Breadcrumbs Demo">
+  <div class="mb-4 w-full">
+    <BreadcrumbsDemo />
+  </div>
+  ```tsx
+  import {
+  BreadcrumbList,
+  Breadcrumbs,
+  BreadcrumbsEllipsis,
+  BreadcrumbsItem,
+  BreadcrumbsLink,
+  BreadcrumbsSeparator,
+} from "shadcn-solid-components/components/breadcrumbs"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "shadcn-solid-components/components/dropdown-menu"
+
+const BreadcrumbsDemo = () => {
+  return (
+    <Breadcrumbs>
+      <BreadcrumbList>
+        <BreadcrumbsItem>
+          <BreadcrumbsLink href="/">Home</BreadcrumbsLink>
+        </BreadcrumbsItem>
+        <BreadcrumbsSeparator />
+        <BreadcrumbsItem>
+          <DropdownMenu>
+            <DropdownMenuTrigger class="flex items-center gap-1">
+              <BreadcrumbsEllipsis />
+              <span class="sr-only">Toggle menu</span>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent>
+              <DropdownMenuItem>Documentation</DropdownMenuItem>
+              <DropdownMenuItem>Themes</DropdownMenuItem>
+              <DropdownMenuItem>GitHub</DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </BreadcrumbsItem>
+        <BreadcrumbsSeparator />
+        <BreadcrumbsItem>
+          <BreadcrumbsLink href="/docs/components">Components</BreadcrumbsLink>
+        </BreadcrumbsItem>
+        <BreadcrumbsSeparator />
+        <BreadcrumbsItem>
+          <BreadcrumbsLink current>Breadcrumb</BreadcrumbsLink>
+        </BreadcrumbsItem>
+      </BreadcrumbList>
+    </Breadcrumbs>
+  )
+}
+
+export default BreadcrumbsDemo
+  ```
+</ComponentPreview>
+
+### Custom Separator
+
+<ComponentPreview name="Breadcrumbs Custom Separator Demo">
+  <div class="mb-4 w-full">
+    <BreadcrumbsCustomSeparatorDemo />
+  </div>
+  ```tsx
+  import {
+  BreadcrumbList,
+  Breadcrumbs,
+  BreadcrumbsEllipsis,
+  BreadcrumbsItem,
+  BreadcrumbsLink,
+  BreadcrumbsSeparator,
+} from "shadcn-solid-components/components/breadcrumbs"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "shadcn-solid-components/components/dropdown-menu"
+
+const BreadcrumbsCustomSeparatorDemo = () => {
+  return (
+    <Breadcrumbs
+      separator={
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="size-4"
+          viewBox="0 0 24 24"
+        >
+          <path
+            fill="none"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M6 9h6V5l7 7l-7 7v-4H6z"
+          />
+        </svg>
+      }
+    >
+      <BreadcrumbList>
+        <BreadcrumbsItem>
+          <BreadcrumbsLink href="/">Home</BreadcrumbsLink>
+        </BreadcrumbsItem>
+        <BreadcrumbsSeparator />
+        <BreadcrumbsItem>
+          <DropdownMenu>
+            <DropdownMenuTrigger class="flex items-center gap-1">
+              <BreadcrumbsEllipsis />
+              <span class="sr-only">Toggle menu</span>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent>
+              <DropdownMenuItem>Documentation</DropdownMenuItem>
+              <DropdownMenuItem>Themes</DropdownMenuItem>
+              <DropdownMenuItem>GitHub</DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </BreadcrumbsItem>
+        <BreadcrumbsSeparator />
+        <BreadcrumbsItem>
+          <BreadcrumbsLink href="/docs/components">Components</BreadcrumbsLink>
+        </BreadcrumbsItem>
+        <BreadcrumbsSeparator />
+        <BreadcrumbsItem>
+          <BreadcrumbsLink current>Breadcrumb</BreadcrumbsLink>
+        </BreadcrumbsItem>
+      </BreadcrumbList>
+    </Breadcrumbs>
+  )
+}
+
+export default BreadcrumbsCustomSeparatorDemo
+  ```
+</ComponentPreview>

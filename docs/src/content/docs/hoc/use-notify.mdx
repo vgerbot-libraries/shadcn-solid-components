@@ -1,0 +1,105 @@
+---
+title: useNotify
+description: Hook that returns a toast helper with defaults, wrapping somoto's `toast` API.
+section: HOC
+toc: true
+---
+
+import UseNotifyDemo from "../../../examples/use-notify-demo"
+
+`useNotify` merges default options (including default `type`) into every call. The returned function supports object or `(message, options)` overloads, plus `.success`, `.error`, `.warning`, `.info`, `.loading`, `.custom`, `.promise`, `.update`, and `.dismiss`. Messages are `JSX.Element`. Mount `<Toaster />` from `shadcn-solid-components/components/sonner` once in your app (it wraps somoto’s `Toaster`).
+
+## Installation
+
+Install `shadcn-solid-components` and satisfy peer dependencies (`solid-js`, Tailwind CSS v4, `tw-animate-css`). Toasts use `somoto`, which is bundled as a dependency of this package.
+
+```bash
+pnpm add shadcn-solid-components
+```
+
+## Usage
+
+```tsx
+import { Toaster } from "shadcn-solid-components/components/sonner"
+import { useNotify } from "shadcn-solid-components/hoc/use-notify"
+
+// app root
+<Toaster />
+
+const notify = useNotify({ duration: 4000 })
+
+notify(<>Saved</>)
+notify.success(<>Done</>)
+notify.error(<>Failed</>, { duration: 8000 })
+notify({ message: <>Heads up</>, type: "warning", description: "Details…" })
+```
+
+## Examples
+
+### Default type for every call
+
+<ComponentPreview name="useNotify Demo">
+  <div class="mb-4 w-full">
+    <UseNotifyDemo />
+  </div>
+  ```tsx
+  import { Button } from "shadcn-solid-components/components/button"
+  import { Toaster } from "shadcn-solid-components/components/sonner"
+  import { useNotify } from "shadcn-solid-components/hoc/use-notify"
+
+  const UseNotifyDemo = () => {
+    const notify = useNotify({ type: "info", duration: 3000 })
+
+    return (
+      <>
+        <Toaster />
+        <div class="flex gap-2">
+          <Button type="button" variant="outline" onClick={() => notify(<>Sync started</>)}>
+            Info toast
+          </Button>
+          <Button type="button" onClick={() => notify.success(<>Saved</>)}>
+            Success toast
+          </Button>
+        </div>
+      </>
+    )
+  }
+
+  export default UseNotifyDemo
+  ```
+</ComponentPreview>
+
+```tsx
+import { Toaster } from "shadcn-solid-components/components/sonner"
+import { useNotify } from "shadcn-solid-components/hoc/use-notify"
+
+<Toaster />
+
+// later, inside a component:
+const notify = useNotify({ type: "info", duration: 3000 })
+
+notify(<>Sync started</>)
+```
+
+### Loading toast then dismiss or update
+
+```tsx
+import { useNotify } from "shadcn-solid-components/hoc/use-notify"
+
+const notify = useNotify()
+
+const id = notify.loading(<>Saving…</>)
+// after async work:
+notify.dismiss(id)
+notify.success(<>Saved</>)
+```
+
+## Exports
+
+| Name | Description |
+| --- | --- |
+| `useNotify` | `(defaults?: NotifyOptions) => ShowNotifyFn`. |
+| `ShowNotifyFn` | Callable plus `success`, `error`, `warning`, `info`, `loading`, `custom`, `promise`, `update`, `dismiss`. |
+| `NotifyOptions` | Extends somoto `ExternalToast` with optional `type` (`NotifyType`). |
+| `ShowNotifyOptions` | `NotifyOptions` with required `message`. |
+| `NotifyType` | `'default' \| 'success' \| 'error' \| 'warning' \| 'info' \| 'loading'`. |

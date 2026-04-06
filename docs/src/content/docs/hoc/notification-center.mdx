@@ -1,0 +1,144 @@
+---
+title: Notification center
+description: Bell trigger popover with categorized tabs, unread styling, and mark-all-read.
+section: HOC
+toc: true
+---
+
+import NotificationCenterDemo from "../../../examples/notification-center-demo"
+
+`NotificationCenter` lists `notifications` in a `Popover`. Unread items get emphasis; clicking a row calls `onRead` with the item id. Optional `categories` enable `Tabs` filtering by `NotificationItem.category`.
+
+## Installation
+
+Install `shadcn-solid-components` and satisfy peer dependencies (`solid-js`, Tailwind CSS v4, `tw-animate-css`).
+
+## Usage
+
+```tsx
+import { NotificationCenter } from "shadcn-solid-components/hoc/notification-center"
+
+<NotificationCenter
+  notifications={items()}
+  onRead={(id) => markRead(id)}
+  onReadAll={() => markAllRead()}
+/>
+```
+
+## Examples
+
+### Categories and mark-all-read
+
+<ComponentPreview name="Notification Center Demo">
+  <div class="mb-4 flex w-full justify-end">
+    <NotificationCenterDemo />
+  </div>
+  ```tsx
+  import { createSignal } from "solid-js"
+
+  import {
+    NotificationCenter,
+    type NotificationItem,
+  } from "shadcn-solid-components/hoc/notification-center"
+
+  const NotificationCenterDemo = () => {
+    const [items, setItems] = createSignal<NotificationItem[]>([
+      { id: "1", title: "Build finished", category: "ci", read: false, time: "2m" },
+      { id: "2", title: "New comment", category: "social", read: true },
+    ])
+
+    return (
+      <NotificationCenter
+        notifications={items()}
+        categories={[
+          { key: "ci", label: "CI" },
+          { key: "social", label: "Social" },
+        ]}
+        onRead={(id) => setItems((prev) => prev.map((item) => (item.id === id ? { ...item, read: true } : item)))}
+        onReadAll={() => setItems((prev) => prev.map((item) => ({ ...item, read: true })))}
+      />
+    )
+  }
+
+  export default NotificationCenterDemo
+  ```
+</ComponentPreview>
+
+```tsx
+import { createSignal } from "solid-js"
+import { NotificationCenter, type NotificationItem } from "shadcn-solid-components/hoc/notification-center"
+
+const [items, setItems] = createSignal<NotificationItem[]>([
+  { id: "1", title: "Build finished", category: "ci", read: false, time: "2m" },
+  { id: "2", title: "New comment", category: "social", read: true },
+])
+
+<NotificationCenter
+  notifications={items()}
+  categories={[
+    { key: "ci", label: "CI" },
+    { key: "social", label: "Social" },
+  ]}
+  onRead={id => setItems(prev => prev.map(i => (i.id === id ? { ...i, read: true } : i)))}
+  onReadAll={() => setItems(prev => prev.map(i => ({ ...i, read: true })))}
+/>
+```
+
+### Custom trigger
+
+```tsx
+import { Button } from "shadcn-solid-components/components/button"
+import { NotificationCenter } from "shadcn-solid-components/hoc/notification-center"
+
+<NotificationCenter notifications={[]} trigger={<Button variant="outline">Inbox</Button>} />
+```
+
+### Icon, description, and inline `action`
+
+Clicks inside `action` call `stopPropagation`, so they do not mark the notification as read. This
+works well for secondary actions such as "View" or "Undo".
+
+```tsx
+import { Button } from "shadcn-solid-components/components/button"
+import { IconBell } from "shadcn-solid-components/components/icons"
+import { NotificationCenter, type NotificationItem } from "shadcn-solid-components/hoc/notification-center"
+
+const items: NotificationItem[] = [
+  {
+    id: "deploy",
+    title: "Deployment finished",
+    description: "Production has been updated to v2.4.0.",
+    time: "Just now",
+    read: false,
+    icon: <IconBell class="size-4" />,
+    action: (
+      <Button size="sm" variant="outline" type="button">
+        Logs
+      </Button>
+    ),
+  },
+]
+
+<NotificationCenter notifications={items} onRead={() => {}} />
+```
+
+## API
+
+### `NotificationCenterProps`
+
+Extends `div` props.
+
+- `notifications` — `NotificationItem[]`
+- `categories` — `NotificationCategory[]` (`key`, `label`) to show tabs
+- `onRead`, `onReadAll`
+- `trigger` — custom trigger JSX (default bell + unread count badge)
+- `locale` — partial strings
+
+### `NotificationItem`
+
+- `id`, `title`, optional `description`, `time`, `icon`, `read`, `category`, `action`
+
+## Exports
+
+- `NotificationCenter` — component
+- `NotificationCenterProps`, `NotificationItem`, `NotificationCategory` — types

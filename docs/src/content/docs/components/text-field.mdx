@@ -1,0 +1,173 @@
+---
+title: Text field
+navTitle: Text Field
+description: Labelled text input, textarea, validation, and description built on Kobalte.
+section: Components
+toc: true
+---
+
+import TextFieldAreaDemo from "../../../examples/text-field-area-demo"
+import TextFieldDemo from "../../../examples/text-field-demo"
+import TextFieldDisabledDemo from "../../../examples/text-field-disabled-demo"
+import TextFieldErrorDemo from "../../../examples/text-field-error-demo"
+import TextFieldFileDemo from "../../../examples/text-field-file-demo"
+
+The text field composes Kobalte’s text-field primitive: a root `TextField` groups `TextFieldLabel`, `TextFieldInput` or `TextFieldTextArea`, optional `TextFieldDescription`, and `TextFieldErrorMessage`. Styling integrates with the library theme helpers for input radius and focus rings.
+
+## Installation
+
+Install `shadcn-solid-components` and satisfy peer dependencies (`solid-js`, Tailwind CSS v4, `tw-animate-css`).
+
+## Usage
+
+```tsx
+import {
+  TextField,
+  TextFieldDescription,
+  TextFieldErrorMessage,
+  TextFieldInput,
+  TextFieldLabel,
+  TextFieldTextArea,
+} from "shadcn-solid-components/components/text-field"
+```
+
+Wire validation the same way as Kobalte (for example `validationState` and error messages). `TextFieldErrorMessage` accepts an optional `errors` array and renders a default list when `children` are not provided.
+
+## Exports
+
+- `TextField`, `TextFieldInput`, `TextFieldTextArea`, `TextFieldLabel`, `TextFieldDescription`, `TextFieldErrorMessage`
+- Types: `TextFieldProps`, `TextFieldInputProps`, `TextFieldTextAreaProps`, `TextFieldLabelProps`, `TextFieldDescriptionProps`, `TextFieldErrorMessageProps`
+
+
+## Examples
+
+### Default
+
+<ComponentPreview name="Text Field Demo">
+  <div class="mb-4 w-full">
+    <TextFieldDemo />
+  </div>
+  ```tsx
+  import { TextField, TextFieldInput } from "shadcn-solid-components/components/text-field"
+
+const TextFieldDemo = () => {
+  return (
+    <TextField class="max-w-xs">
+      <TextFieldInput type="email" placeholder="Email" />
+    </TextField>
+  )
+}
+
+export default TextFieldDemo
+  ```
+</ComponentPreview>
+
+### Area
+
+<ComponentPreview name="Text Field Area Demo">
+  <div class="mb-4 w-full">
+    <TextFieldAreaDemo />
+  </div>
+  ```tsx
+  import { TextField, TextFieldTextArea } from "shadcn-solid-components/components/text-field"
+
+const TextFieldTextAreaDemo = () => {
+  return (
+    <TextField class="max-w-xs">
+      <TextFieldTextArea placeholder="Type your message here." />
+    </TextField>
+  )
+}
+
+export default TextFieldTextAreaDemo
+  ```
+</ComponentPreview>
+
+### Disabled
+
+<ComponentPreview name="Text Field Disabled Demo">
+  <div class="mb-4 w-full">
+    <TextFieldDisabledDemo />
+  </div>
+  ```tsx
+  import {
+  TextField,
+  TextFieldInput,
+  TextFieldLabel,
+} from "shadcn-solid-components/components/text-field"
+
+const TextFieldDisabledDemo = () => {
+  return (
+    <TextField class="max-w-xs" disabled>
+      <TextFieldLabel>Email</TextFieldLabel>
+      <TextFieldInput type="email" placeholder="Email" />
+    </TextField>
+  )
+}
+
+export default TextFieldDisabledDemo
+  ```
+</ComponentPreview>
+
+### Error
+
+<ComponentPreview name="Text Field Error Demo">
+  <div class="mb-4 w-full">
+    <TextFieldErrorDemo />
+  </div>
+  ```tsx
+  import { createSignal } from "solid-js"
+
+import {
+  TextField,
+  TextFieldErrorMessage,
+  TextFieldInput,
+  TextFieldLabel,
+} from "shadcn-solid-components/components/text-field"
+
+const TextFieldErrorDemo = () => {
+  const [value, setValue] = createSignal("Orange")
+
+  return (
+    <TextField
+      class="max-w-xs"
+      value={value()}
+      onChange={setValue}
+      validationState={value() !== "Apple" ? "invalid" : "valid"}
+    >
+      <TextFieldLabel>Favorite fruit</TextFieldLabel>
+      <TextFieldInput type="text" />
+      <TextFieldErrorMessage>Hmm, I prefer apples.</TextFieldErrorMessage>
+    </TextField>
+  )
+}
+
+export default TextFieldErrorDemo
+  ```
+</ComponentPreview>
+
+### File
+
+<ComponentPreview name="Text Field File Demo">
+  <div class="mb-4 w-full">
+    <TextFieldFileDemo />
+  </div>
+  ```tsx
+  import {
+  TextField,
+  TextFieldInput,
+  TextFieldLabel,
+} from "shadcn-solid-components/components/text-field"
+
+const TextFieldFileDemo = () => {
+  return (
+    <TextField class="max-w-xs">
+      <TextFieldLabel>Picture</TextFieldLabel>
+      <TextFieldInput type="file" />
+    </TextField>
+  )
+}
+
+export default TextFieldFileDemo
+  ```
+</ComponentPreview>

@@ -1,0 +1,303 @@
+---
+title: Data table toolbar
+description: Search, filter slot, column visibility, and actions for a TanStack `Table` instance.
+section: HOC
+toc: true
+---
+
+import DataTableToolbarDemo from "../../../examples/data-table-toolbar-demo"
+
+`DataTableToolbar` is the toolbar used inside `DataTable`. You can also use it standalone with your own `createSolidTable` setup.
+
+## Installation
+
+Install `shadcn-solid-components` and satisfy peer dependencies (`solid-js`, Tailwind CSS v4, `tw-animate-css`).
+
+## Usage
+
+```tsx
+import { DataTableToolbar } from "shadcn-solid-components/hoc/data-table-toolbar"
+
+<DataTableToolbar
+  table={table}
+  searchColumn="name"
+  filters={<YourFilters />}
+  actions={<Button size="sm">Export</Button>}
+/>
+```
+
+When using it standalone, create the `table` instance with `createSolidTable` from
+`@tanstack/solid-table` and enable `getFilteredRowModel` so the column filter bound to
+`searchColumn` works the same way it does inside `DataTable`. If you omit `searchColumn`, the
+search input is hidden, which fits cases where all filtering is handled through custom `filters`
+content.
+
+`locale` can override the search placeholder, columns menu labels, and reset-filters copy so the
+toolbar stays aligned with your product language or the `locale` presets used by `DataTable`.
+
+## Examples
+
+### Combined with `createSolidTable`
+
+<ComponentPreview name="Data Table Toolbar Demo">
+  <div class="mb-4 w-full">
+    <DataTableToolbarDemo />
+  </div>
+  ```tsx
+  import { createSignal } from "solid-js"
+  import {
+    createSolidTable,
+    getCoreRowModel,
+    getFilteredRowModel,
+    type ColumnDef,
+    type ColumnFiltersState,
+  } from "@tanstack/solid-table"
+
+  import { Button } from "shadcn-solid-components/components/button"
+  import { DataTableToolbar } from "shadcn-solid-components/hoc/data-table-toolbar"
+
+  type Row = { id: string; name: string }
+
+  const columns: ColumnDef<Row>[] = [{ accessorKey: "name", header: "Name" }]
+
+  const DataTableToolbarDemo = () => {
+    const [columnFilters, setColumnFilters] = createSignal<ColumnFiltersState>([])
+
+    const table = createSolidTable({
+      get data() {
+        return [
+          { id: "1", name: "Ada" },
+          { id: "2", name: "Grace" },
+        ]
+      },
+      columns,
+      state: {
+        get columnFilters() {
+          return columnFilters()
+        },
+      },
+      onColumnFiltersChange: setColumnFilters,
+      getCoreRowModel: getCoreRowModel(),
+      getFilteredRowModel: getFilteredRowModel(),
+    })
+
+    return (
+      <DataTableToolbar
+        table={table}
+        searchColumn="name"
+        filters={<span class="text-sm text-muted-foreground">Custom filters</span>}
+        actions={<Button size="sm">Export</Button>}
+      />
+    )
+  }
+
+  export default DataTableToolbarDemo
+  ```
+</ComponentPreview>
+
+```tsx
+import { createSignal } from "solid-js"
+import {
+  createSolidTable,
+  getCoreRowModel,
+  getFilteredRowModel,
+  type ColumnDef,
+  type ColumnFiltersState,
+} from "@tanstack/solid-table"
+import { Button } from "shadcn-solid-components/components/button"
+import { DataTableToolbar } from "shadcn-solid-components/hoc/data-table-toolbar"
+
+type Row = { id: string; name: string }
+
+const columns: ColumnDef<Row>[] = [{ accessorKey: "name", header: "Name" }]
+
+export function ToolbarOnly() {
+  const [columnFilters, setColumnFilters] = createSignal<ColumnFiltersState>([])
+
+  const table = createSolidTable({
+    get data() {
+      return [
+        { id: "1", name: "Ada" },
+        { id: "2", name: "Grace" },
+      ]
+    },
+    columns,
+    state: {
+      get columnFilters() {
+        return columnFilters()
+      },
+    },
+    onColumnFiltersChange: setColumnFilters,
+    getCoreRowModel: getCoreRowModel(),
+    getFilteredRowModel: getFilteredRowModel(),
+  })
+
+  return (
+    <DataTableToolbar
+      table={table}
+      searchColumn="name"
+      filters={<span class="text-sm text-muted-foreground">Custom filters</span>}
+      actions={<Button size="sm">Export</Button>}
+    />
+  )
+}
+```
+
+### No search and hidden column visibility menu
+
+```tsx
+import { createSignal } from "solid-js"
+import {
+  createSolidTable,
+  getCoreRowModel,
+  getFilteredRowModel,
+  type ColumnDef,
+  type ColumnFiltersState,
+} from "@tanstack/solid-table"
+import { Button } from "shadcn-solid-components/components/button"
+import { DataTableToolbar } from "shadcn-solid-components/hoc/data-table-toolbar"
+
+type Row = { id: string; sku: string }
+
+const columns: ColumnDef<Row>[] = [{ accessorKey: "sku", header: "SKU" }]
+
+export function ToolbarCompact() {
+  const [columnFilters, setColumnFilters] = createSignal<ColumnFiltersState>([])
+
+  const table = createSolidTable({
+    data: [{ id: "1", sku: "A-100" }],
+    columns,
+    state: {
+      get columnFilters() {
+        return columnFilters()
+      },
+    },
+    onColumnFiltersChange: setColumnFilters,
+    getCoreRowModel: getCoreRowModel(),
+    getFilteredRowModel: getFilteredRowModel(),
+  })
+
+  return (
+    <DataTableToolbar
+      table={table}
+      showColumnToggle={false}
+      filters={<span class="text-sm text-muted-foreground">SKU is filtered by parent controls</span>}
+      actions={<Button size="sm">Export</Button>}
+    />
+  )
+}
+```
+
+### `locale` overrides for placeholder and columns menu
+
+```tsx
+import { createSignal } from "solid-js"
+import {
+  createSolidTable,
+  getCoreRowModel,
+  getFilteredRowModel,
+  type ColumnDef,
+  type ColumnFiltersState,
+} from "@tanstack/solid-table"
+import { DataTableToolbar } from "shadcn-solid-components/hoc/data-table-toolbar"
+
+type Row = { id: string; name: string }
+
+const columns: ColumnDef<Row>[] = [{ accessorKey: "name", header: "Name" }]
+
+export function ToolbarLocalized() {
+  const [columnFilters, setColumnFilters] = createSignal<ColumnFiltersState>([])
+
+  const table = createSolidTable({
+    data: [{ id: "1", name: "Example" }],
+    columns,
+    state: {
+      get columnFilters() {
+        return columnFilters()
+      },
+    },
+    onColumnFiltersChange: setColumnFilters,
+    getCoreRowModel: getCoreRowModel(),
+    getFilteredRowModel: getFilteredRowModel(),
+  })
+
+  return (
+    <DataTableToolbar
+      table={table}
+      searchColumn="name"
+      locale={{
+        searchPlaceholder: "Filter by name...",
+        columns: "Columns",
+        toggleAll: "Toggle all",
+        resetFilters: "Clear filters",
+      }}
+    />
+  )
+}
+```
+
+### `locale` overrides for toolbar copy
+
+```tsx
+import { createSignal } from "solid-js"
+import {
+  createSolidTable,
+  getCoreRowModel,
+  getFilteredRowModel,
+  type ColumnDef,
+  type ColumnFiltersState,
+} from "@tanstack/solid-table"
+import { DataTableToolbar } from "shadcn-solid-components/hoc/data-table-toolbar"
+
+type Row = { id: string; title: string }
+
+const columns: ColumnDef<Row>[] = [{ accessorKey: "title", header: "Title" }]
+
+export function ToolbarZh() {
+  const [columnFilters, setColumnFilters] = createSignal<ColumnFiltersState>([])
+
+  const table = createSolidTable({
+    data: [{ id: "1", title: "Example" }],
+    columns,
+    state: {
+      get columnFilters() {
+        return columnFilters()
+      },
+    },
+    onColumnFiltersChange: setColumnFilters,
+    getCoreRowModel: getCoreRowModel(),
+    getFilteredRowModel: getFilteredRowModel(),
+  })
+
+  return (
+    <DataTableToolbar
+      table={table}
+      searchColumn="title"
+      locale={{
+        searchPlaceholder: "Filter by title...",
+        columns: "Columns",
+        toggleAll: "Toggle all",
+        resetFilters: "Clear filters",
+      }}
+    />
+  )
+}
+```
+
+## API
+
+### `DataTableToolbarProps<TData>`
+
+Extends `div` props.
+
+- `table` — TanStack `Table<TData>` instance
+- `searchColumn` — column id whose filter value is bound to the search input (omit to hide search)
+- `showColumnToggle` — show columns dropdown (default `true`)
+- `filters` — JSX between search and actions
+- `actions` — JSX on the right
+- `locale` — partial toolbar strings
+
+## Exports
+
+- `DataTableToolbar` — component
+- `DataTableToolbarProps` — type

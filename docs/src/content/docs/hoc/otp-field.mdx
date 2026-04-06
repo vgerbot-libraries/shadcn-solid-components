@@ -1,0 +1,128 @@
+---
+title: OTP field
+description: One-time code input with grouped slots, separators, and form-style labeling.
+section: HOC
+toc: true
+---
+
+import OTPFieldGroupDemo from "../../../examples/otp-field-group-demo"
+
+`OTPFieldGroup` composes `OTPField`, `OTPFieldSlot`, `OTPFieldInput`, and optional `OTPFieldSeparator` from the OTP field primitives, plus label, description, and error display.
+
+## Installation
+
+Install `shadcn-solid-components` and satisfy peer dependencies (`solid-js`, Tailwind CSS v4, `tw-animate-css`).
+
+## Usage
+
+```tsx
+import { OTPFieldGroup } from "shadcn-solid-components/hoc/otp-field"
+
+<OTPFieldGroup maxLength={6} groupPattern={[3, 3]} onComplete={(code) => verify(code)} />
+```
+
+## Examples
+
+### Controlled value and validation error
+
+<ComponentPreview name="OTP Field Demo">
+  <div class="mb-4 w-full max-w-md">
+    <OTPFieldGroupDemo />
+  </div>
+  ```tsx
+  import { createSignal } from "solid-js"
+  import { OTPFieldGroup } from "shadcn-solid-components/hoc/otp-field"
+
+  const OTPFieldGroupDemo = () => {
+    const [code, setCode] = createSignal("")
+    const [error, setError] = createSignal<string>()
+
+    return (
+      <OTPFieldGroup
+        maxLength={6}
+        label="Verification code"
+        value={code()}
+        onValueChange={(value) => {
+          setCode(value)
+          setError(undefined)
+        }}
+        onComplete={(value) => {
+          if (value !== "123456") setError("The verification code is incorrect")
+        }}
+        error={error()}
+        required
+      />
+    )
+  }
+
+  export default OTPFieldGroupDemo
+  ```
+</ComponentPreview>
+
+```tsx
+import { createSignal } from "solid-js"
+import { OTPFieldGroup } from "shadcn-solid-components/hoc/otp-field"
+
+const [code, setCode] = createSignal("")
+const [error, setError] = createSignal<string>()
+
+<OTPFieldGroup
+  maxLength={6}
+  label="Verification code"
+  value={code()}
+  onValueChange={v => {
+    setCode(v)
+    setError(undefined)
+  }}
+  onComplete={v => {
+    if (v !== "123456") setError("The verification code is incorrect")
+  }}
+  error={error()}
+  required
+/>
+```
+
+### Non-digit characters
+
+```tsx
+import { OTPFieldGroup } from "shadcn-solid-components/hoc/otp-field"
+
+<OTPFieldGroup maxLength={8} pattern={null} label="Backup code" description="Letters and digits allowed." />
+```
+
+### Grouped lengths and separators
+
+`groupPattern` splits the total length into multiple segments, such as a common 4-4-4-4 card
+layout. When multiple groups are present, separators are shown by default; set `separator={false}`
+to hide them.
+
+```tsx
+import { OTPFieldGroup } from "shadcn-solid-components/hoc/otp-field"
+
+<OTPFieldGroup
+  maxLength={16}
+  groupPattern={[4, 4, 4, 4]}
+  label="Card number"
+  description="A total of 16 digits."
+  onComplete={code => console.info(code)}
+/>
+```
+
+## API
+
+### `OTPFieldGroupProps`
+
+Extends `div` props (without `onChange`).
+
+- `maxLength` — total slots
+- `groupPattern` — e.g. `[3, 3]` for two groups of three
+- `separator` — between groups (default `true` when multiple groups)
+- `value`, `onValueChange`, `onComplete`
+- `label`, `description`, `error`, `required`, `disabled`
+- `pattern` — regex string or `null` for any character (default digits-only)
+- `locale` — partial strings
+
+## Exports
+
+- `OTPFieldGroup` — component
+- `OTPFieldGroupProps` — type

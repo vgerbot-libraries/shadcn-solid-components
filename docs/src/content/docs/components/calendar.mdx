@@ -1,0 +1,227 @@
+---
+title: Calendar
+description: Accessible calendar grid built on Corvu calendar primitives.
+section: Components
+toc: true
+---
+
+import CalendarDemo from "../../../examples/calendar-demo"
+import CalendarRangeDemo from "../../../examples/calendar-range-demo"
+
+The calendar module composes Corvu’s calendar with styled navigation, table, cells, and day triggers for use on its own or inside date pickers.
+
+## Installation
+
+Install `shadcn-solid-components` and satisfy peer dependencies (`solid-js`, Tailwind CSS v4, `tw-animate-css`).
+
+## Usage
+
+```tsx
+import {
+  Calendar,
+  CalendarCell,
+  CalendarCellTrigger,
+  CalendarHeadCell,
+  CalendarLabel,
+  CalendarNav,
+  CalendarTable,
+} from "shadcn-solid-components/components/calendar"
+```
+
+Wire props according to the underlying `@corvu/calendar` API for selection mode, visible dates, and disabled rules.
+
+## Exports
+
+- `Calendar`, `CalendarNav`, `CalendarLabel`, `CalendarTable`, `CalendarHeadCell`, `CalendarCell`, `CalendarCellTrigger`
+- Types: `CalendarProps`, `CalendarNavProps`, `CalendarLabelProps`, `CalendarTableProps`, `CalendarHeadCellProps`, `CalendarCellProps`, `CalendarCellTriggerProps`
+
+
+## Examples
+
+### Default
+
+<ComponentPreview name="Calendar Demo">
+  <div class="mb-4 w-full text-center">
+    <CalendarDemo />
+  </div>
+  ```tsx
+  import { Index } from "solid-js"
+
+import {
+  Calendar,
+  CalendarCell,
+  CalendarCellTrigger,
+  CalendarHeadCell,
+  CalendarLabel,
+  CalendarNav,
+  CalendarTable,
+} from "shadcn-solid-components/components/calendar"
+
+const { format: formatWeekdayLong } = new Intl.DateTimeFormat("en", {
+  weekday: "long",
+})
+const { format: formatWeekdayShort } = new Intl.DateTimeFormat("en", {
+  weekday: "short",
+})
+const { format: formatMonth } = new Intl.DateTimeFormat("en", {
+  month: "long",
+})
+
+const CalendarDemo = () => {
+  return (
+    <Calendar mode="single">
+      {(props) => (
+        <div class="flex flex-col gap-4 rounded-md border p-3 shadow-sm">
+          <div class="relative flex w-full items-center justify-between">
+            <CalendarNav
+              action="prev-month"
+              aria-label="Go to previous month"
+            />
+            <CalendarLabel>
+              {formatMonth(props.month)} {props.month.getFullYear()}
+            </CalendarLabel>
+            <CalendarNav action="next-month" aria-label="Go to next month" />
+          </div>
+          <CalendarTable>
+            <thead>
+              <tr class="flex">
+                <Index each={props.weekdays}>
+                  {(weekday) => (
+                    <CalendarHeadCell abbr={formatWeekdayLong(weekday())}>
+                      {formatWeekdayShort(weekday())}
+                    </CalendarHeadCell>
+                  )}
+                </Index>
+              </tr>
+            </thead>
+            <tbody>
+              <Index each={props.weeks}>
+                {(week) => (
+                  <tr class="mt-2 flex w-full">
+                    <Index each={week()}>
+                      {(day) => (
+                        <CalendarCell>
+                          <CalendarCellTrigger day={day()}>
+                            {day().getDate()}
+                          </CalendarCellTrigger>
+                        </CalendarCell>
+                      )}
+                    </Index>
+                  </tr>
+                )}
+              </Index>
+            </tbody>
+          </CalendarTable>
+        </div>
+      )}
+    </Calendar>
+  )
+}
+
+export default CalendarDemo
+  ```
+</ComponentPreview>
+
+### Range
+
+<ComponentPreview name="Calendar Range Demo">
+  <div class="mb-4 w-full text-center">
+    <CalendarRangeDemo />
+  </div>
+  ```tsx
+  import { Index } from "solid-js"
+
+import {
+  Calendar,
+  CalendarCell,
+  CalendarCellTrigger,
+  CalendarHeadCell,
+  CalendarLabel,
+  CalendarNav,
+  CalendarTable,
+} from "shadcn-solid-components/components/calendar"
+
+const { format: formatWeekdayLong } = new Intl.DateTimeFormat("en", {
+  weekday: "long",
+})
+const { format: formatWeekdayShort } = new Intl.DateTimeFormat("en", {
+  weekday: "short",
+})
+const { format: formatMonth } = new Intl.DateTimeFormat("en", {
+  month: "long",
+})
+
+const CalendarRangeDemo = () => {
+  return (
+    <Calendar mode="range" numberOfMonths={2}>
+      {(props) => (
+        <div class="rounded-md border p-3 shadow-sm">
+          <div class="relative w-full">
+            <CalendarNav
+              action="prev-month"
+              class="absolute left-1"
+              aria-label="Go to previous month"
+            />
+            <CalendarNav
+              action="next-month"
+              class="absolute right-1"
+              aria-label="Go to next month"
+            />
+          </div>
+          <div class="space-y-4 md:flex md:space-y-0 md:space-x-4">
+            <Index each={props.months}>
+              {(month, index) => (
+                <div class="flex flex-col gap-4">
+                  <div class="flex h-7 items-center justify-center">
+                    <CalendarLabel index={index}>
+                      {formatMonth(month().month)} {month().month.getFullYear()}
+                    </CalendarLabel>
+                  </div>
+                  <CalendarTable index={index}>
+                    <thead>
+                      <tr class="flex">
+                        <Index each={props.weekdays}>
+                          {(weekday) => (
+                            <CalendarHeadCell
+                              abbr={formatWeekdayLong(weekday())}
+                            >
+                              {formatWeekdayShort(weekday())}
+                            </CalendarHeadCell>
+                          )}
+                        </Index>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <Index each={month().weeks}>
+                        {(week) => (
+                          <tr class="mt-2 flex w-full">
+                            <Index each={week()}>
+                              {(day) => (
+                                <CalendarCell>
+                                  <CalendarCellTrigger
+                                    day={day()}
+                                    month={month().month}
+                                  >
+                                    {day().getDate()}
+                                  </CalendarCellTrigger>
+                                </CalendarCell>
+                              )}
+                            </Index>
+                          </tr>
+                        )}
+                      </Index>
+                    </tbody>
+                  </CalendarTable>
+                </div>
+              )}
+            </Index>
+          </div>
+        </div>
+      )}
+    </Calendar>
+  )
+}
+
+export default CalendarRangeDemo
+  ```
+</ComponentPreview>

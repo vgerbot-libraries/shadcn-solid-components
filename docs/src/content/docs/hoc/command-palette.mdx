@@ -1,0 +1,349 @@
+---
+title: Command palette
+description: Global command dialog with grouped items, optional Cmd/Ctrl+K hotkey, and search.
+section: HOC
+toc: true
+---
+
+import CommandPaletteDemo from "../../../examples/command-palette-demo"
+
+`CommandPalette` wraps the `Command` primitives in a dialog. It renders grouped `CommandItem` rows, supports controlled or internal open state, and can register a global keyboard shortcut (default `k` for Cmd+K / Ctrl+K).
+
+## Installation
+
+```bash
+pnpm add shadcn-solid-components
+```
+
+Also install the peer requirements: `solid-js`, Tailwind CSS v4, and `tw-animate-css`.
+
+## Usage
+
+```tsx
+import { CommandPalette } from "shadcn-solid-components/hoc/command-palette"
+
+<CommandPalette
+  groups={[
+    {
+      label: "Pages",
+      items: [
+        { id: "home", label: "Home", onSelect: () => navigate("/") },
+      ],
+    },
+  ]}
+/>
+```
+
+Set `hotkey={false}` to disable the global shortcut. Pass `open` / `onOpenChange` for controlled mode.
+
+In controlled mode, you can place the trigger anywhere, such as a top bar button, and keep it in
+sync with a local `open` signal. `onSearch` is useful for remote commands or debounced queries. The
+default shortcut is Cmd/Ctrl+K (`hotkey` defaults to `'k'`), but you can switch it to another
+letter or disable it if it conflicts with app shortcuts.
+
+Each `CommandPaletteItem` needs an `id` and `label`. After navigation or an action inside
+`onSelect`, remember to set controlled `open` to `false` or rely on uncontrolled state so the
+dialog does not remain visible.
+
+If you omit `open` and `onOpenChange`, the component manages its own open state. You can still open
+it with Cmd/Ctrl+K or the key specified by `hotkey`, which works well for a global palette with
+less boilerplate.
+
+## Examples
+
+### Uncontrolled with default hotkey
+
+<ComponentPreview name="Command Palette Demo">
+  <div class="mb-4 w-full">
+    <CommandPaletteDemo />
+  </div>
+  ```tsx
+  import { createSignal } from "solid-js"
+
+import { Button } from "shadcn-solid-components/components/button"
+import { CommandPalette } from "shadcn-solid-components/hoc/command-palette"
+
+const CommandPaletteDemo = () => {
+  const [open, setOpen] = createSignal(false)
+
+  return (
+    <>
+      <Button type="button" variant="outline" size="sm" onClick={() => setOpen(true)}>
+        Open commands
+      </Button>
+      <CommandPalette
+        hotkey={false}
+        open={open()}
+        onOpenChange={setOpen}
+        title="Command palette"
+        description="Search and run actions"
+        groups={[
+          {
+            label: "Navigation",
+            items: [
+              { id: "home", label: "Home", shortcut: "H", onSelect: () => setOpen(false) },
+              {
+                id: "settings",
+                label: "Settings",
+                icon: <span class="size-4 rounded bg-muted" aria-hidden />,
+                onSelect: () => setOpen(false),
+              },
+            ],
+          },
+        ]}
+      />
+    </>
+  )
+}
+
+export default CommandPaletteDemo
+  ```
+</ComponentPreview>
+
+```tsx
+import { CommandPalette } from "shadcn-solid-components/hoc/command-palette"
+
+export function GlobalPalette() {
+  return (
+    <CommandPalette
+      groups={[
+        {
+          label: "Quick",
+          items: [
+            {
+              id: "inbox",
+              label: "Inbox",
+              onSelect: () => {
+                /* navigate("/inbox") */
+              },
+            },
+          ],
+        },
+      ]}
+    />
+  )
+}
+```
+
+### Controlled open state with hotkey disabled
+
+```tsx
+import { createSignal } from "solid-js"
+import { Button } from "shadcn-solid-components/components/button"
+import { CommandPalette } from "shadcn-solid-components/hoc/command-palette"
+
+export function PaletteDemo() {
+  const [open, setOpen] = createSignal(false)
+
+  return (
+    <>
+      <Button type="button" onClick={() => setOpen(true)}>
+        Open commands
+      </Button>
+      <CommandPalette
+        hotkey={false}
+        open={open()}
+        onOpenChange={setOpen}
+        groups={[
+          {
+            label: "Navigation",
+            items: [
+              {
+                id: "home",
+                label: "Home",
+                onSelect: () => {
+                  setOpen(false)
+                  // navigate("/")
+                },
+              },
+            ],
+          },
+        ]}
+      />
+    </>
+  )
+}
+```
+
+### Custom title, search callback, and disabled items
+
+```tsx
+import { createSignal } from "solid-js"
+import { CommandPalette } from "shadcn-solid-components/hoc/command-palette"
+
+export function CommandPaletteLabeled() {
+  const [open, setOpen] = createSignal(false)
+
+  return (
+    <>
+      <button type="button" onClick={() => setOpen(true)}>
+        Open commands
+      </button>
+      <CommandPalette
+        open={open()}
+        onOpenChange={setOpen}
+        hotkey={false}
+        title="Command palette"
+        description="Search and run actions"
+        onSearch={(value) => console.log("search:", value)}
+        groups={[
+          {
+            label: "Actions",
+            items: [
+              {
+                id: "new-doc",
+                label: "New document",
+                shortcut: "N",
+                onSelect: () => setOpen(false),
+              },
+              {
+                id: "disabled-sample",
+                label: "Coming soon",
+                disabled: true,
+              },
+            ],
+          },
+        ]}
+      />
+    </>
+  )
+}
+```
+
+### Custom hotkey and localized copy
+
+Set `hotkey` to a single letter to toggle the palette with Cmd/Ctrl plus that key. `locale` can
+override the placeholder and no-results text so the UI matches your product copy.
+
+```tsx
+import { createSignal } from "solid-js"
+import { CommandPalette } from "shadcn-solid-components/hoc/command-palette"
+
+export function PaletteHotkeyP() {
+  const [open, setOpen] = createSignal(false)
+
+  return (
+    <CommandPalette
+      open={open()}
+      onOpenChange={setOpen}
+      hotkey="p"
+      locale={{
+        placeholder: "Type a command or search...",
+        noResults: "No matching commands.",
+      }}
+      groups={[
+        {
+          label: "Quick actions",
+          items: [{ id: "prefs", label: "Open preferences", onSelect: () => setOpen(false) }],
+        },
+      ]}
+    />
+  )
+}
+```
+
+### Uncontrolled with grouped items and `icon`
+
+When `open` is omitted, the palette can be opened with Cmd/Ctrl+K by default or controlled from
+another trigger elsewhere on the page. This example focuses on the built-in state plus icon slots.
+
+```tsx
+import { CommandPalette } from "shadcn-solid-components/hoc/command-palette"
+
+export function CommandPaletteWithIcons() {
+  return (
+    <CommandPalette
+      hotkey={false}
+      groups={[
+        {
+          label: "Navigate",
+          items: [
+            {
+              id: "dash",
+              label: "Dashboard",
+              icon: <span class="size-4 rounded bg-primary/20" aria-hidden />,
+              onSelect: () => {},
+            },
+            {
+              id: "docs",
+              label: "Documentation",
+              icon: <span class="size-4 rounded bg-muted" aria-hidden />,
+              shortcut: "D",
+              onSelect: () => {},
+            },
+          ],
+        },
+      ]}
+    />
+  )
+}
+```
+
+### Internal state with default hotkey and item `icon`
+
+Without a controlled `open` prop, the palette is driven by internal state. Keeping the default
+`hotkey` (`k`) enables Cmd/Ctrl+K automatically. The example below still disables the shortcut so it
+does not capture the docs site's global keyboard flow; in a real app you can remove
+`hotkey={false}`.
+
+```tsx
+import { createSignal } from "solid-js"
+import { Button } from "shadcn-solid-components/components/button"
+import { CommandPalette } from "shadcn-solid-components/hoc/command-palette"
+
+export function PaletteWithIcons() {
+  const [open, setOpen] = createSignal(false)
+
+  return (
+    <>
+      <Button type="button" variant="outline" size="sm" onClick={() => setOpen(true)}>
+        Commands
+      </Button>
+      <CommandPalette
+        open={open()}
+        onOpenChange={setOpen}
+        hotkey={false}
+        groups={[
+          {
+            label: "Workspace",
+            items: [
+              {
+                id: "search",
+                label: "Search",
+                icon: <span class="flex size-4 items-center justify-center rounded bg-muted text-[10px]">⌕</span>,
+                shortcut: "/",
+                onSelect: () => setOpen(false),
+              },
+            ],
+          },
+        ]}
+      />
+    </>
+  )
+}
+```
+
+## API
+
+### `CommandPaletteProps`
+
+- `groups` — array of `{ label, items }` groups
+- `open`, `onOpenChange` — controlled dialog state
+- `hotkey` — string key (default `'k'`) or `false` to disable
+- `locale` — partial overrides for built-in strings (merged with config provider locale when set)
+- `onSearch` — called when the search input value changes
+- `title`, `description` — accessible dialog labeling (defaults provided)
+
+### `CommandPaletteItem`
+
+- `id`, `label` — required identifiers for display and matching
+- `icon`, `shortcut`, `onSelect`, `disabled` — optional
+
+### `CommandPaletteGroup`
+
+- `label`, `items`
+
+## Exports
+
+- `CommandPalette` — component
+- `CommandPaletteProps`, `CommandPaletteGroup`, `CommandPaletteItem` — types

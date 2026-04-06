@@ -1,0 +1,137 @@
+---
+title: Form field
+description: Label, required marker, error list, and description around arbitrary field children.
+section: HOC
+toc: true
+---
+
+import FormFieldDemo from "../../../examples/form-field-demo"
+
+`FormField` wraps children in a vertical stack. With a string `label`, it associates the label to the first `input`, `textarea`, or `select` inside the tree (assigning an `id` when missing). Custom label JSX can wire `label` elements via `for` on mount.
+
+## Installation
+
+Install `shadcn-solid-components` and satisfy peer dependencies (`solid-js`, Tailwind CSS v4, `tw-animate-css`).
+
+## Usage
+
+```tsx
+import { FormField } from "shadcn-solid-components/hoc/form-field"
+import { TextFieldInput } from "shadcn-solid-components/components/text-field"
+
+<FormField label="Email" required error={errors().email} description="We never share your email.">
+  <TextFieldInput type="email" name="email" />
+</FormField>
+```
+
+Pass `htmlFor` to link the label to a specific control when the control is outside the default scan path, or when you render multiple inputs and need a fixed association. When `error` is set, the description is hidden so the field does not show conflicting help and error text at once.
+
+## Examples
+
+### Validation error hides description
+
+<ComponentPreview name="Form Field Demo">
+  <div class="mb-4 w-full max-w-md">
+    <FormFieldDemo />
+  </div>
+  ```tsx
+  import { createSignal } from "solid-js"
+
+  import { TextFieldInput } from "shadcn-solid-components/components/text-field"
+  import { FormField } from "shadcn-solid-components/hoc/form-field"
+
+  const FormFieldDemo = () => {
+    const [error, setError] = createSignal<string | undefined>()
+
+    return (
+      <FormField
+        label="Email"
+        required
+        description="Used only for account notifications and never shown publicly."
+        error={error()}
+      >
+        <TextFieldInput
+          type="email"
+          name="email"
+          autoComplete="email"
+          onBlur={(e) => {
+            const value = e.currentTarget.value.trim()
+            setError(value ? undefined : "Please enter an email address")
+          }}
+        />
+      </FormField>
+    )
+  }
+
+  export default FormFieldDemo
+  ```
+</ComponentPreview>
+
+```tsx
+import { createSignal } from "solid-js"
+import { FormField } from "shadcn-solid-components/hoc/form-field"
+import { TextFieldInput } from "shadcn-solid-components/components/text-field"
+
+export function EmailField() {
+  const [error, setError] = createSignal<string | undefined>()
+
+  return (
+    <FormField
+      label="Email"
+      required
+      description="Used only for account notifications and never shown publicly."
+      error={error()}
+    >
+      <TextFieldInput
+        type="email"
+        name="email"
+        autoComplete="email"
+        onBlur={(e) => {
+          const v = e.currentTarget.value.trim()
+          setError(v ? undefined : "Please enter an email address")
+        }}
+      />
+    </FormField>
+  )
+}
+```
+
+### Multiple errors with explicit `htmlFor`
+
+```tsx
+import { FormField } from "shadcn-solid-components/hoc/form-field"
+import { TextFieldInput } from "shadcn-solid-components/components/text-field"
+
+export function PasswordField() {
+  const controlId = "account-password"
+
+  return (
+    <FormField
+      label="Password"
+      required
+      htmlFor={controlId}
+      error={["At least 8 characters", "Must include a number"]}
+    >
+      <TextFieldInput id={controlId} type="password" name="password" autoComplete="current-password" />
+    </FormField>
+  )
+}
+```
+
+## API
+
+### `FormFieldProps`
+
+Extends `div` props.
+
+- `label` — string or JSX
+- `htmlFor` — optional explicit control id
+- `required` — shows `*` next to string labels
+- `error` — string or string array; switches to error styling and hides `description`
+- `description` — help text when there is no error
+- `children` — field control(s)
+
+## Exports
+
+- `FormField` — component
+- `FormFieldProps` — type

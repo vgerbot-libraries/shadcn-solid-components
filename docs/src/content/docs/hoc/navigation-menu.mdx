@@ -1,0 +1,167 @@
+---
+title: Navigation menu
+description: Declarative mega-menu built from grouped triggers, links, and optional featured column.
+section: HOC
+toc: true
+---
+
+import NavigationMenuDemo from "../../../examples/navigation-menu-demo"
+
+`NavMenu` maps `menus` to `NavigationMenu` triggers and content. A group with only `href` (and no `items` / `content`) renders the trigger as a direct link.
+
+## Installation
+
+Install `shadcn-solid-components` and satisfy peer dependencies (`solid-js`, Tailwind CSS v4, `tw-animate-css`).
+
+## Usage
+
+```tsx
+import { NavMenu } from "shadcn-solid-components/hoc/navigation-menu"
+
+<NavMenu
+  menus={[
+    {
+      trigger: "Products",
+      items: [
+        { label: "Analytics", description: "Reports", href: "/analytics" },
+      ],
+    },
+  ]}
+/>
+```
+
+## Examples
+
+### Top-level link (no dropdown)
+
+When a group has `href` and no `items` / `content`, the trigger is a plain link.
+
+<ComponentPreview name="Navigation Menu Demo">
+  <div class="mb-4 w-full">
+    <NavigationMenuDemo />
+  </div>
+  ```tsx
+  import { NavMenu } from "shadcn-solid-components/hoc/navigation-menu"
+
+  const NavigationMenuDemo = () => {
+    return (
+      <NavMenu
+        menus={[
+          { trigger: "Docs", href: "/docs" },
+          {
+            trigger: "Solutions",
+            featured: {
+              label: "Platform",
+              description: "One place for analytics and billing.",
+              href: "/platform",
+            },
+            items: [
+              { label: "Analytics", description: "Dashboards", href: "/analytics" },
+              { label: "Billing", description: "Invoices", href: "/billing" },
+            ],
+          },
+        ]}
+        gutter={8}
+      />
+    )
+  }
+
+  export default NavigationMenuDemo
+  ```
+</ComponentPreview>
+
+```tsx
+import { NavMenu } from "shadcn-solid-components/hoc/navigation-menu"
+
+<NavMenu
+  menus={[
+    { trigger: "Docs", href: "/docs" },
+    {
+      trigger: "Product",
+      items: [{ label: "Pricing", href: "/pricing" }],
+    },
+  ]}
+/>
+```
+
+### Featured column and custom panel
+
+```tsx
+import { NavMenu } from "shadcn-solid-components/hoc/navigation-menu"
+
+<NavMenu
+  menus={[
+    {
+      trigger: "Solutions",
+      featured: {
+        label: "Platform",
+        description: "One place for analytics and billing.",
+        href: "/platform",
+      },
+      items: [
+        { label: "Analytics", description: "Dashboards", href: "/analytics" },
+        { label: "Billing", description: "Invoices", href: "/billing" },
+      ],
+    },
+    {
+      trigger: "Custom",
+      content: () => <div class="p-4 text-sm">Any JSX as menu body.</div>,
+    },
+  ]}
+  gutter={8}
+/>
+```
+
+### Vertical menu
+
+```tsx
+import { NavMenu } from "shadcn-solid-components/hoc/navigation-menu"
+
+<NavMenu orientation="vertical" class="max-w-xs" menus={[{ trigger: "Home", href: "/" }]} />
+```
+
+### Adjust trigger and content spacing
+
+`gutter` controls the gap, in pixels, between the navigation trigger and the dropdown content. Use
+`class` on the root to control overall width or alignment:
+
+```tsx
+import { NavMenu } from "shadcn-solid-components/hoc/navigation-menu"
+
+<NavMenu
+  class="justify-center"
+  gutter={10}
+  menus={[
+    {
+      trigger: "Product",
+      items: [{ label: "Overview", href: "/product" }],
+    },
+  ]}
+/>
+```
+
+## API
+
+### `NavMenuProps`
+
+- `menus` — `NavMenuGroup[]`
+- `orientation` — `'horizontal'` | `'vertical'` (default `'horizontal'`)
+- `class` — root class
+- `gutter` — number, gap between trigger and viewport (default `6`)
+
+### `NavMenuGroup`
+
+- `trigger` — button label
+- `href` — if set without `items` / `content`, trigger is a link
+- `items` — `NavMenuItem[]` grid content
+- `content` — custom content factory (overrides `items`)
+- `contentClass`, `featured` — layout helpers for the panel
+
+### `NavMenuItem`
+
+- `label`, optional `description`, `href`, `onClick`, `disabled`, `class`
+
+## Exports
+
+- `NavMenu` — component
+- `NavMenuProps`, `NavMenuGroup`, `NavMenuItem` — types

@@ -1,0 +1,91 @@
+---
+title: Empty state
+description: Centered placeholder for empty lists, search results, or missing data.
+section: HOC
+toc: true
+---
+
+import EmptyStateDemo from "../../../examples/empty-state-demo"
+
+`EmptyState` shows an optional icon, title, description, and a single action slot.
+
+## Installation
+
+Install `shadcn-solid-components` and satisfy peer dependencies (`solid-js`, Tailwind CSS v4, `tw-animate-css`).
+
+## Usage
+
+```tsx
+import { EmptyState } from "shadcn-solid-components/hoc/empty-state"
+
+<EmptyState
+  title="No results"
+  description="Try adjusting your filters."
+  action={<Button variant="outline">Reset</Button>}
+/>
+```
+
+A common pattern is to let it fill the available area when a list or table has no data. `icon` can
+be any icon component or illustration, and `action` typically holds a primary action such as
+"Create" or "Reset filters".
+
+## Examples
+
+### With icon and action
+
+<ComponentPreview name="Empty State Demo">
+  <div class="mb-4 w-full">
+    <EmptyStateDemo />
+  </div>
+  ```tsx
+  import { Button } from "shadcn-solid-components/components/button"
+  import { EmptyState } from "shadcn-solid-components/hoc/empty-state"
+
+  const EmptyStateDemo = () => {
+    return (
+      <EmptyState
+        icon={<span class="text-4xl">📂</span>}
+        title="No projects yet"
+        description="Create a project or adjust your filters."
+        action={<Button>Create project</Button>}
+      />
+    )
+  }
+
+  export default EmptyStateDemo
+  ```
+</ComponentPreview>
+
+```tsx
+import { Button } from "shadcn-solid-components/components/button"
+import { EmptyState } from "shadcn-solid-components/hoc/empty-state"
+
+export function NoProjects() {
+  return (
+    <EmptyState
+      icon={<span class="text-4xl">📂</span>}
+      title="No projects yet"
+      description="Create a project or adjust your filters."
+      action={
+        <Button onClick={() => {}}>Create project</Button>
+      }
+    />
+  )
+}
+```
+
+## API
+
+### `EmptyStateProps`
+
+Extends `div` props.
+
+- `icon` — illustration or icon JSX
+- `title` — required heading
+- `description` — optional string or JSX
+- `action` — optional CTA JSX
+
+## Exports
+
+- `EmptyState` — component
+- `EmptyStateProps` — type

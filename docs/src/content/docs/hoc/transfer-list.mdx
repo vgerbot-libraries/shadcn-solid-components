@@ -1,0 +1,130 @@
+---
+title: Transfer list
+description: Two-panel picker to move items between available and selected lists by key.
+section: HOC
+toc: true
+---
+
+import TransferListDemo from "../../../examples/transfer-list-demo"
+
+`TransferList` expects a full `source` catalog (`TransferItem[]`) and a `target` array of keys. `onChange` receives the updated target key list. Items in `source` that are not in `target` appear in the left panel; keys in `target` pick rows from `source` for the right panel.
+
+## Installation
+
+```bash
+pnpm add shadcn-solid-components
+```
+
+## Usage
+
+```tsx
+import { createSignal } from "solid-js"
+import { TransferList, type TransferItem } from "shadcn-solid-components/hoc/transfer-list"
+
+const items: TransferItem[] = [
+  { key: "a", label: "Option A" },
+  { key: "b", label: "Option B" },
+]
+const [selected, setSelected] = createSignal<string[]>([])
+
+<TransferList source={items} target={selected()} onChange={setSelected} />
+```
+
+## Examples
+
+### Custom panel titles and search off
+
+<ComponentPreview name="Transfer List Demo">
+  <div class="mb-4 w-full">
+    <TransferListDemo />
+  </div>
+  ```tsx
+  import { createSignal } from "solid-js"
+
+  import { TransferList, type TransferItem } from "shadcn-solid-components/hoc/transfer-list"
+
+  const catalog: TransferItem[] = [
+    { key: "a", label: "Alpha", description: "First option" },
+    { key: "b", label: "Beta", disabled: true },
+    { key: "c", label: "Gamma", description: "Third option" },
+  ]
+
+  const TransferListDemo = () => {
+    const [selected, setSelected] = createSignal<string[]>(["a"])
+
+    return (
+      <TransferList
+        source={catalog}
+        target={selected()}
+        onChange={setSelected}
+        titles={["Pool", "Assigned"]}
+        searchable={false}
+      />
+    )
+  }
+
+  export default TransferListDemo
+  ```
+</ComponentPreview>
+
+```tsx
+import { createSignal } from "solid-js"
+import { TransferList, type TransferItem } from "shadcn-solid-components/hoc/transfer-list"
+
+const catalog: TransferItem[] = [
+  { key: "a", label: "Alpha", description: "First option" },
+  { key: "b", label: "Beta", disabled: true },
+]
+const [selected, setSelected] = createSignal<string[]>(["a"])
+
+<TransferList
+  source={catalog}
+  target={selected()}
+  onChange={setSelected}
+  titles={["Pool", "Assigned"]}
+  searchable={false}
+/>
+```
+
+### Custom row rendering
+
+```tsx
+import { createSignal } from "solid-js"
+import { TransferList, type TransferItem } from "shadcn-solid-components/hoc/transfer-list"
+
+const items: TransferItem[] = [{ key: "x", label: "Item X" }]
+const [target, setTarget] = createSignal<string[]>([])
+
+<TransferList
+  source={items}
+  target={target()}
+  onChange={setTarget}
+  renderItem={item => (
+    <span class="font-medium">
+      {item.label}
+      {item.disabled ? <span class="text-muted-foreground ml-1 text-xs">(locked)</span> : null}
+    </span>
+  )}
+/>
+```
+
+### Locale preset
+
+```tsx
+import { createSignal } from "solid-js"
+import { TransferList, jaLocale, type TransferItem } from "shadcn-solid-components/hoc/transfer-list"
+
+const items: TransferItem[] = [{ key: "1", label: "いち" }]
+const [target, setTarget] = createSignal<string[]>([])
+
+<TransferList source={items} target={target()} onChange={setTarget} locale={jaLocale} />
+```
+
+## Exports
+
+| Name | Description |
+| --- | --- |
+| `TransferList` | Two-panel transfer UI. |
+| `TransferListProps` | `source`, `target`, `onChange`, optional `searchable` (defaults to `true`), `titles`, `renderItem`, `locale`, plus `div` props (excluding `onChange`). |
+| `TransferItem` | `key`, `label`, optional `disabled`, `description`. |
+| `enLocale`, `zhCNLocale`, `zhTWLocale`, `jaLocale` | `TransferListLocale` presets; override via `locale`. |

@@ -1,0 +1,216 @@
+---
+title: Data table
+description: TanStack Table wiring with toolbar, pagination, loading skeleton, and empty state.
+section: HOC
+toc: true
+---
+
+import DataTableDemo from "../../../examples/data-table-demo"
+
+`DataTable` composes `TanstackTableProvider`, `DataTableToolbar`, `TanstackTable` body/header, optional pagination, and `EmptyState`. It manages sorting, column filters, visibility, and optional row selection internally.
+
+## Installation
+
+Install `shadcn-solid-components` and satisfy peer dependencies (`solid-js`, Tailwind CSS v4, `tw-animate-css`). This module expects `@tanstack/solid-table` (a dependency of the library).
+
+## Usage
+
+```tsx
+import { DataTable } from "shadcn-solid-components/hoc/data-table"
+
+<DataTable
+  columns={columns}
+  data={rows()}
+  loading={isLoading()}
+  searchColumn="name"
+  actions={<Button size="sm">Export</Button>}
+/>
+```
+
+Use `onTableReady` if you need the `Table` instance outside the component.
+
+`searchColumn` should match the `accessorKey` or `id` in your `ColumnDef`. When you need custom
+filter UI, place those controls in `filters`. Empty datasets render the built-in `EmptyState`, and
+you can override its copy with props like `emptyTitle`. If you enable `selectable`, prepend
+`createSelectColumn()` from `shadcn-solid-components/components/tanstack-table` so the table can
+render row selection and select-all controls.
+
+When `loading` is `true`, the component shows a full-table skeleton, which is useful for first load
+or refresh states. `loadingRows` controls how many skeleton rows to render. If a page does not need
+the column visibility menu, set `showColumnToggle={false}` for a more compact toolbar.
+
+## Examples
+
+### Column definitions and search column
+
+<ComponentPreview name="Data Table Demo">
+  <div class="mb-4 w-full">
+    <DataTableDemo />
+  </div>
+  ```tsx
+  import DataTableDemo from "../../../examples/data-table-demo"
+  ```
+</ComponentPreview>
+
+```tsx
+import type { ColumnDef } from "@tanstack/solid-table"
+import { Button } from "shadcn-solid-components/components/button"
+import { DataTable } from "shadcn-solid-components/hoc/data-table"
+
+type User = { id: string; name: string; email: string }
+
+const columns: ColumnDef<User>[] = [
+  { accessorKey: "name", header: "Name" },
+  { accessorKey: "email", header: "Email" },
+]
+
+export function UsersTable(props: { rows: User[]; loading: boolean }) {
+  return (
+    <DataTable<User>
+      columns={columns}
+      data={props.rows}
+      loading={props.loading}
+      searchColumn="name"
+      actions={<Button size="sm">Export</Button>}
+    />
+  )
+}
+```
+
+### Row selection and `onTableReady`
+
+```tsx
+import type { ColumnDef, Table } from "@tanstack/solid-table"
+import { createSignal } from "solid-js"
+import { createSelectColumn } from "shadcn-solid-components/components/tanstack-table"
+import { DataTable } from "shadcn-solid-components/hoc/data-table"
+
+type Row = { id: string; name: string }
+
+const dataColumns: ColumnDef<Row>[] = [
+  { accessorKey: "name", header: "Name" },
+]
+
+export function SelectableTable(props: { rows: Row[] }) {
+  const [, setTable] = createSignal<Table<Row> | undefined>()
+
+  const columns: ColumnDef<Row>[] = [createSelectColumn<Row>(), ...dataColumns]
+
+  return (
+    <DataTable<Row>
+      columns={columns}
+      data={props.rows}
+      selectable
+      showPagination={false}
+      searchColumn="name"
+      onTableReady={(table) => setTable(table)}
+    />
+  )
+}
+```
+
+### Toolbar filter slot and empty-state copy
+
+`filters` is rendered between the search input and the column visibility controls, which makes it a
+good place for dropdown filters, chips, or custom filter UI. Empty data uses the built-in
+`EmptyState`, and you can override it with `emptyTitle` and `emptyDescription`. `locale` can accept
+the package presets such as `zhCNLocale` when you want the table, toolbar, and empty-state copy to
+stay consistent.
+
+```tsx
+import type { ColumnDef } from "@tanstack/solid-table"
+import { Button } from "shadcn-solid-components/components/button"
+import { DataTable, zhCNLocale } from "shadcn-solid-components/hoc/data-table"
+
+type Row = { id: string; name: string }
+
+const columns: ColumnDef<Row>[] = [{ accessorKey: "name", header: "Name" }]
+
+export function LocalizedTable(props: { rows: Row[] }) {
+  return (
+    <DataTable<Row>
+      columns={columns}
+      data={props.rows}
+      searchColumn="name"
+      filters={<span class="text-sm text-muted-foreground">Custom filter area</span>}
+      actions={<Button size="sm">Export</Button>}
+      emptyTitle="No rows yet"
+      emptyDescription="Adjust your filters or import data."
+      locale={zhCNLocale}
+    />
+  )
+}
+```
+
+### Loading state and custom skeleton row count
+
+```tsx
+import type { ColumnDef } from "@tanstack/solid-table"
+import { DataTable } from "shadcn-solid-components/hoc/data-table"
+
+type Row = { id: string; name: string }
+
+const columns: ColumnDef<Row>[] = [{ accessorKey: "name", header: "Name" }]
+
+export function UsersTableLoading(props: { loading: boolean }) {
+  return (
+    <DataTable<Row>
+      columns={columns}
+      data={[]}
+      loading={props.loading}
+      loadingRows={8}
+      searchColumn="name"
+      showPagination={false}
+    />
+  )
+}
+```
+
+### `loading` and `loadingRows`
+
+```tsx
+import type { ColumnDef } from "@tanstack/solid-table"
+import { DataTable } from "shadcn-solid-components/hoc/data-table"
+
+type Row = { id: string; name: string }
+
+const columns: ColumnDef<Row>[] = [
+  { accessorKey: "name", header: "Name" },
+  { accessorKey: "id", header: "ID" },
+]
+
+export function UsersTableSkeleton(props: { loading: boolean }) {
+  return (
+    <DataTable<Row>
+      columns={columns}
+      data={[]}
+      loading={props.loading}
+      loadingRows={8}
+      searchColumn="name"
+    />
+  )
+}
+```
+
+## API
+
+### `DataTableProps<TData>`
+
+Extends `div` props. Notable fields:
+
+- `columns`, `data` — TanStack `ColumnDef` array and row data
+- `loading`, `loadingRows` — skeleton instead of table
+- `searchColumn` — column id for toolbar search (omit to hide search)
+- `showColumnToggle` — column visibility menu (default `true`)
+- `filters`, `actions` — toolbar slots
+- `showPagination` — default `true`
+- `selectable` — enable row selection (default `false`)
+- `emptyIcon`, `emptyTitle`, `emptyDescription`, `emptyAction` — empty state overrides
+- `locale` — partial strings for table, toolbar, and empty state
+- `onTableReady` — `(table) => void`
+
+## Exports
+
+- `DataTable` — component
+- `DataTableProps` — type
+- `enLocale`, `zhCNLocale`, `zhTWLocale`, `jaLocale` — preset `DataTableLocale` objects

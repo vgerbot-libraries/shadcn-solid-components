@@ -1,0 +1,152 @@
+---
+title: Theme
+description: Solid context provider for design tokens such as component radius.
+section: Components
+toc: true
+---
+
+import ThemeDemo from "../../../examples/theme-demo"
+import ThemeProviderDemo from "../../../examples/theme-provider-demo"
+
+`ThemeProvider` stores a `ThemeConfig` (for example `base.radius`) in Solid context so components that call theme helpers can read consistent values. It is separate from color mode; pair it with your own CSS variables or Kobalte color mode as needed. The implementation reads only `children` and `defaultTheme`; `storageKey` appears on `ThemeProviderProps` but is not used yet—see `src/components/theme/index.tsx` for the current runtime contract.
+
+## Installation
+
+Install `shadcn-solid-components` and satisfy peer dependencies (`solid-js`, Tailwind CSS v4, `tw-animate-css`).
+
+## Usage
+
+```tsx
+import { ThemeProvider } from "shadcn-solid-components/components/theme"
+
+<ThemeProvider defaultTheme={{ base: { radius: "md" } }}>
+  <App />
+</ThemeProvider>
+```
+
+Use `useTheme()` from `shadcn-solid-components/lib/use-theme` under the same provider to read `theme` or call `setTheme` / `setRadius`.
+
+## API
+
+- **`ThemeProvider`** — Uses `children` and optional `defaultTheme` (`ThemeConfig`). Other fields on `ThemeProviderProps` are reserved for future use.
+
+## Exports
+
+- `ThemeProvider`
+- Types: `ThemeProviderProps` (`ThemeConfig` is defined in `shadcn-solid-components/lib/theme-context`)
+
+## Examples
+
+### ThemeProvider and `useTheme`
+
+Use `useTheme()` inside the subtree to read `theme.base.radius`, update the token with
+`setRadius`, and map it to Tailwind classes with helpers like `getRadiusClass("display")`. The
+preview below is wrapped in its own `ThemeProvider` so it stays isolated from the docs site's outer
+shell styling.
+
+<ComponentPreview name="Theme Provider Demo">
+  <div class="mb-4 w-full">
+    <ThemeProviderDemo />
+  </div>
+  ```tsx
+  import { For } from "solid-js"
+
+  import { Button } from "shadcn-solid-components/components/button"
+  import { ThemeProvider } from "shadcn-solid-components/components/theme"
+  import type { RadiusValue } from "shadcn-solid-components/lib/theme-context"
+  import { useTheme } from "shadcn-solid-components/lib/use-theme"
+
+  const radii: RadiusValue[] = ["none", "sm", "md", "lg", "xl", "full"]
+
+  const ThemePanel = () => {
+    const { theme, setRadius, getRadiusClass } = useTheme()
+
+    return (
+      <div class="border-border bg-card max-w-lg space-y-4 rounded-xl border p-4">
+        <p class="text-muted-foreground text-sm">
+          Current <code class="text-foreground">base.radius</code>:
+          <span class="text-foreground ml-1 font-mono text-xs">{theme.base.radius}</span>
+        </p>
+        <div class="flex flex-wrap gap-2">
+          <For each={radii}>
+            {(r) => (
+              <Button
+                size="sm"
+                variant={theme.base.radius === r ? "default" : "outline"}
+                onClick={() => {
+                  setRadius(r)
+                }}
+              >
+                {r}
+              </Button>
+            )}
+          </For>
+        </div>
+        <div
+          class={`border-border bg-muted/50 text-muted-foreground border p-3 text-xs ${getRadiusClass("display")}`}
+        >
+          This preview container uses{" "}
+          <code class="text-foreground">getRadiusClass(&quot;display&quot;)</code> to stay aligned
+          with the current theme radius.
+        </div>
+      </div>
+    )
+  }
+
+  const ThemeProviderDemo = () => {
+    return (
+      <ThemeProvider defaultTheme={{ base: { radius: "md" } }}>
+        <ThemePanel />
+      </ThemeProvider>
+    )
+  }
+
+  export default ThemeProviderDemo
+  ```
+</ComponentPreview>
+
+### Radius mapping by component category
+
+Within the same `RadiusValue`, categories such as `form-control` and `display` map to different
+rounded utility classes. See `radiusMapping` in `use-theme` for the exact table. This is useful
+when buttons, cards, and other surfaces need slightly different visual hierarchy while still
+following one shared radius token.
+
+<ComponentPreview name="Theme Radius By Category">
+  <div class="mb-4 w-full">
+    <ThemeDemo />
+  </div>
+  ```tsx
+  import { Button } from "shadcn-solid-components/components/button"
+  import { ThemeProvider } from "shadcn-solid-components/components/theme"
+  import { useTheme } from "shadcn-solid-components/lib/use-theme"
+
+  const RadiusPreview = () => {
+    const { theme, getRadiusClass } = useTheme()
+    return (
+      <div class="flex flex-col gap-3">
+        <p class="text-muted-foreground text-sm">
+          Current radius token:{" "}
+          <span class="text-foreground font-mono">{theme.base.radius}</span>
+        </p>
+        <div class="flex flex-wrap items-center gap-2">
+          <Button class={getRadiusClass("form-control")}>Form control</Button>
+          <Button variant="outline" class={getRadiusClass("display")}>
+            Display
+          </Button>
+        </div>
+      </div>
+    )
+  }
+
+  const ThemeDemo = () => (
+    <ThemeProvider defaultTheme={{ base: { radius: "lg" } }}>
+      <div class="border-border rounded-lg border p-4">
+        <RadiusPreview />
+      </div>
+    </ThemeProvider>
+  )
+
+  export default ThemeDemo
+  ```
+</ComponentPreview>

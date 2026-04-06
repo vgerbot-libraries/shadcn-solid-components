@@ -1,0 +1,77 @@
+---
+title: Mode toggle
+description: Single icon button that toggles light/dark color mode via Kobalte `useColorMode`.
+section: HOC
+toc: true
+---
+
+import ModeToggleDemo from "../../../examples/mode-toggle"
+
+This module’s **default export** is a button that calls `toggleColorMode` from `@kobalte/core`. It shows a sun icon in light mode and a moon icon in dark mode using `data-kb-theme` selectors.
+
+## Installation
+
+Install `shadcn-solid-components` and satisfy peer dependencies (`solid-js`, Tailwind CSS v4, `tw-animate-css`).
+
+## Usage
+
+```tsx
+import ModeToggle from "shadcn-solid-components/hoc/mode-toggle"
+
+<ModeToggle />
+```
+
+There is no named export from this entry; use a default import.
+
+`toggleColorMode` depends on Kobalte's color mode context, so the app root should use
+`ColorModeProvider` from `@kobalte/core`, just like the docs demo app does. The icon visibility is
+switched via `html[data-kb-theme=light|dark]` selectors, so make sure the root element receives the
+theme attribute written by Kobalte.
+
+## Examples
+
+### Used with `ColorModeProvider`
+
+<ComponentPreview name="Mode Toggle Demo">
+  <div class="mb-4 flex w-full justify-end">
+    <ModeToggleDemo />
+  </div>
+  ```tsx
+  import { useColorMode } from "@kobalte/core"
+
+  import { Button } from "shadcn-solid-components/components/button"
+
+const ModeToggle = () => {
+  const { toggleColorMode } = useColorMode()
+
+  return (
+    <Button onClick={toggleColorMode} size="icon" variant="ghost">
+      {/* light/dark icons omitted for brevity */}
+    </Button>
+  )
+}
+
+export default ModeToggle
+  ```
+</ComponentPreview>
+
+```tsx
+import type { ParentProps } from "solid-js"
+import { ColorModeProvider } from "@kobalte/core"
+import ModeToggle from "shadcn-solid-components/hoc/mode-toggle"
+
+export function AppChrome(props: ParentProps) {
+  return (
+    <ColorModeProvider>
+      <header class="flex h-14 items-center justify-end border-b px-4">
+        <ModeToggle />
+      </header>
+      {props.children}
+    </ColorModeProvider>
+  )
+}
+```
+
+## Exports
+
+- **Default** — `ModeToggle` component (no additional types exported from this file)

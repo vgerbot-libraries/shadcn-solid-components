@@ -1,0 +1,144 @@
+---
+title: Tabulator table
+navTitle: Tabulator Table
+description: Solid wrapper that mounts Tabulator.js on a div with lifecycle-safe init and cleanup.
+section: Components
+toc: true
+---
+
+import TabulatorOnInitDemo from "../../../examples/tabulator-oninit-demo"
+import TabulatorTableDemo from "../../../examples/tabulator-table-demo"
+
+`TabulatorTable` creates a [Tabulator](https://tabulator.info/) instance on mount, passes through [Tabulator `Options`](https://tabulator.info/docs/6.3/options), and destroys the instance when the component unmounts. Row height is surfaced to CSS via `--shadcn-tabulator-row-height` for layout alignment.
+
+## Installation
+
+Install `shadcn-solid-components`, add `tabulator-tables` (and types if you use TypeScript), and satisfy peer dependencies (`solid-js`, Tailwind CSS v4, `tw-animate-css`).
+
+## Usage
+
+```tsx
+import { TabulatorTable } from "shadcn-solid-components/components/tabulator-table"
+import type { Options } from "tabulator-tables"
+
+const initOptions: Options = {
+  data: [{ id: 1, name: "Example" }],
+  columns: [{ title: "Name", field: "name" }],
+}
+
+<TabulatorTable
+  initOptions={initOptions}
+  class="w-full"
+  onInit={instance => {
+    /* optional */
+  }}
+/>
+```
+
+`initOptions` may be a plain object or a Solid accessor returning `Options`, so you can react to signal updates when you recreate options yourself.
+
+## API
+
+- **`TabulatorTable`** — Props extend the root `div`: `initOptions` (`Options` or accessor), optional `onInit(tabulator)`, optional `onDestroy()`. Other props (for example `class`, `style`) are forwarded to the host element.
+
+## Exports
+
+- `TabulatorTable`
+- Types: `DataTableProps` (component props type)
+
+## Examples
+
+### Basic table
+
+Import `tabulator-shadcn.css` in your app entry or page so the table styles stay aligned with the
+theme tokens. The preview demo below already imports that stylesheet.
+
+<ComponentPreview name="Tabulator Table Demo">
+  <div class="mb-4 w-full">
+    <TabulatorTableDemo />
+  </div>
+  ```tsx
+  import { TabulatorTable } from "shadcn-solid-components/components/tabulator-table"
+
+  import "shadcn-solid-components/src/components/tabulator-table/tabulator-shadcn.css"
+
+  const TabulatorTableDemo = () => {
+    return (
+      <div class="w-full max-w-3xl">
+        <TabulatorTable
+          class="w-full overflow-hidden rounded-md border"
+          initOptions={{
+            data: [
+              { id: 1, name: "Alpha", role: "Admin" },
+              { id: 2, name: "Beta", role: "Editor" },
+              { id: 3, name: "Gamma", role: "Viewer" },
+            ],
+            columns: [
+              { title: "ID", field: "id", width: 72, hozAlign: "center" },
+              { title: "Name", field: "name" },
+              { title: "Role", field: "role" },
+            ],
+            layout: "fitColumns",
+            height: 200,
+          }}
+        />
+      </div>
+    )
+  }
+
+  export default TabulatorTableDemo
+  ```
+</ComponentPreview>
+
+### `onInit` and instance access
+
+`onInit` runs after the Tabulator instance is created. Use it to read row counts, register events,
+or call the Tabulator API. The component destroys the instance on unmount; if you store a reference
+in Solid state, clean up any app-level subscriptions in `onDestroy` if needed.
+
+<ComponentPreview name="Tabulator OnInit Demo">
+  <div class="mb-4 w-full">
+    <TabulatorOnInitDemo />
+  </div>
+  ```tsx
+  import { createSignal } from "solid-js"
+
+  import { TabulatorTable } from "shadcn-solid-components/components/tabulator-table"
+
+  import "shadcn-solid-components/src/components/tabulator-table/tabulator-shadcn.css"
+
+  const TabulatorOnInitDemo = () => {
+    const [status, setStatus] = createSignal("Mounting...")
+
+    return (
+      <div class="w-full max-w-3xl space-y-2">
+        <p class="text-muted-foreground text-sm">
+          <span class="text-foreground font-medium">onInit:</span>
+          {status()}
+        </p>
+        <TabulatorTable
+          class="w-full overflow-hidden rounded-md border"
+          initOptions={{
+            data: [
+              { id: 1, name: "North", value: 12 },
+              { id: 2, name: "South", value: 8 },
+            ],
+            columns: [
+              { title: "ID", field: "id", width: 64, hozAlign: "center" },
+              { title: "Region", field: "name" },
+              { title: "Count", field: "value", hozAlign: "right" },
+            ],
+            layout: "fitColumns",
+            height: 160,
+          }}
+          onInit={(instance) => {
+            setStatus(`Table ready with ${instance.getDataCount()} rows`)
+          }}
+        />
+      </div>
+    )
+  }
+
+  export default TabulatorOnInitDemo
+  ```
+</ComponentPreview>

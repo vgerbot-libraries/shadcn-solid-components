@@ -1,0 +1,131 @@
+---
+title: Tooltip
+description: Tooltip root, trigger, portal, and styled content with arrow on Kobalte.
+section: Components
+toc: true
+---
+
+import { Button } from "shadcn-solid-components/components/button"
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipPortal,
+  TooltipTrigger,
+} from "shadcn-solid-components/components/tooltip"
+import TooltipDemo from "../../../examples/tooltip-demo"
+import TooltipPlacementDemo from "../../../examples/tooltip-demo"
+
+The tooltip sets sensible defaults (`openDelay` / `closeDelay` of `0`, `placement` `"top"`) and styles the content layer with theme-aware radius. Use `TooltipPortal` when you need explicit portal control.
+
+Tooltips are for **supplementary** labels: keep copy short. For richer content or interactive regions, use a **popover** or **hover card** instead.
+
+## Installation
+
+Install `shadcn-solid-components` and satisfy peer dependencies (`solid-js`, Tailwind CSS v4, `tw-animate-css`).
+
+## Usage
+
+```tsx
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipPortal,
+  TooltipTrigger,
+} from "shadcn-solid-components/components/tooltip"
+```
+
+```tsx
+<Tooltip>
+  <TooltipTrigger>Hover me</TooltipTrigger>
+  <TooltipContent>Helpful text</TooltipContent>
+</Tooltip>
+```
+
+Additional props match [Kobalte Tooltip](https://kobalte.dev/docs/core/components/tooltip) (open state, `placement`, gutter, and so on).
+
+## Examples
+
+### Default
+
+<ComponentPreview name="Tooltip Demo">
+  <div class="mb-4 w-full">
+    <TooltipDemo />
+  </div>
+  ```tsx
+  import { Button } from "shadcn-solid-components/components/button"
+  import type { TooltipTriggerProps } from "@kobalte/core/tooltip"
+  import {
+    Tooltip,
+    TooltipContent,
+    TooltipPortal,
+    TooltipTrigger,
+  } from "shadcn-solid-components/components/tooltip"
+
+  const TooltipDemo = () => {
+    return (
+      <Tooltip>
+      <TooltipTrigger
+        as={(props: any) => (
+          <Button variant="outline" {...props}>
+            Hover
+          </Button>
+        )}
+      />
+        <TooltipPortal>
+          <TooltipContent>
+            <p>Add to library</p>
+          </TooltipContent>
+        </TooltipPortal>
+      </Tooltip>
+    )
+  }
+
+  export default TooltipDemo
+  ```
+</ComponentPreview>
+
+### Placement
+
+Set `placement` on `Tooltip` when the default top placement collides with the viewport edge or layout.
+
+<ComponentPreview name="Tooltip Placement">
+  <div class="mb-4 w-full">
+    <TooltipPlacementDemo />
+  </div>
+  ```tsx
+  import { Button } from "shadcn-solid-components/components/button"
+  import type { TooltipTriggerProps } from "@kobalte/core/tooltip"
+  import {
+    Tooltip,
+    TooltipContent,
+    TooltipPortal,
+    TooltipTrigger,
+  } from "shadcn-solid-components/components/tooltip"
+
+  const TooltipPlacementDemo = () => {
+    return (
+      <Tooltip placement="bottom">
+        <TooltipTrigger
+          as={(props: any) => (
+            <Button variant="outline" {...props}>
+              Below
+            </Button>
+          )}
+        />
+        <TooltipPortal>
+          <TooltipContent>
+            <p>Opens below the trigger</p>
+          </TooltipContent>
+        </TooltipPortal>
+      </Tooltip>
+    )
+  }
+
+  export default TooltipPlacementDemo
+  ```
+</ComponentPreview>
+
+## Exports
+
+- `Tooltip`, `TooltipTrigger`, `TooltipContent`, `TooltipPortal`
+- Types: `TooltipProps`, `TooltipTriggerProps`, `TooltipContentProps`

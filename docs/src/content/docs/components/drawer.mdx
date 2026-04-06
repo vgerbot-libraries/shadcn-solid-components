@@ -1,0 +1,202 @@
+---
+title: Drawer
+description: Panel that slides in from the edge of the viewport.
+section: Components
+toc: true
+---
+
+import DrawerDemo from "../../../examples/drawer-demo"
+import DrawerSideDemo from "../../../examples/drawer-side-demo"
+
+Drawers are built on `@corvu/drawer` with styled trigger, close control, content shell, header, footer, label, and description slots.
+
+## Installation
+
+Install `shadcn-solid-components` and satisfy peer dependencies (`solid-js`, Tailwind CSS v4, `tw-animate-css`).
+
+## Usage
+
+```tsx
+import {
+  Drawer,
+  DrawerClose,
+  DrawerContent,
+  DrawerDescription,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerLabel,
+  DrawerPortal,
+  DrawerTrigger,
+} from "shadcn-solid-components/components/drawer"
+```
+
+## Exports
+
+- `Drawer`, `DrawerPortal`, `DrawerTrigger`, `DrawerClose`, `DrawerContent`, `DrawerLabel`, `DrawerDescription`, `DrawerHeader`, `DrawerFooter`
+- Types: `DrawerProps`, `DrawerTriggerProps`, `DrawerCloseProps`, `DrawerContentProps`, `DrawerLabelProps`, `DrawerDescriptionProps`, `DrawerHeaderProps`, `DrawerFooterProps`
+
+
+## Examples
+
+### Default
+
+<ComponentPreview name="Drawer Demo">
+  <div class="mb-4 w-full">
+    <DrawerDemo />
+  </div>
+  ```tsx
+  import { For } from "solid-js"
+
+import { Button } from "shadcn-solid-components/components/button"
+import {
+  Drawer,
+  DrawerClose,
+  DrawerContent,
+  DrawerDescription,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerLabel,
+  DrawerPortal,
+  DrawerTrigger,
+} from "shadcn-solid-components/components/drawer"
+
+const DrawerDemo = () => {
+  return (
+    <Drawer>
+      <DrawerTrigger<typeof Button>
+        as={(props) => (
+          <Button variant="outline" {...props}>
+            Scrollable Content
+          </Button>
+        )}
+      />
+      <DrawerPortal>
+        <DrawerContent>
+          <DrawerHeader>
+            <DrawerLabel>Move Goal</DrawerLabel>
+            <DrawerDescription>Set your daily activity goal.</DrawerDescription>
+          </DrawerHeader>
+          <div class="overflow-y-auto px-4 text-sm">
+            <h4 class="mb-4 text-lg leading-none font-medium">Lorem Ipsum</h4>
+            <For each={Array.from({ length: 10 })}>
+              {() => (
+                <p class="mb-4 leading-normal">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                  laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                  irure dolor in reprehenderit in voluptate velit esse cillum
+                  dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                  cupidatat non proident, sunt in culpa qui officia deserunt
+                  mollit anim id est laborum.
+                </p>
+              )}
+            </For>
+          </div>
+          <DrawerFooter>
+            <Button>Submit</Button>
+            <DrawerClose<typeof Button>
+              as={(props) => (
+                <Button variant="outline" {...props}>
+                  Cancel
+                </Button>
+              )}
+            />
+          </DrawerFooter>
+        </DrawerContent>
+      </DrawerPortal>
+    </Drawer>
+  )
+}
+
+export default DrawerDemo
+  ```
+</ComponentPreview>
+
+### Side
+
+<ComponentPreview name="Drawer Side Demo">
+  <div class="mb-4 w-full">
+    <DrawerSideDemo />
+  </div>
+  ```tsx
+  import { For } from "solid-js"
+
+import { Button } from "shadcn-solid-components/components/button"
+import {
+  Drawer,
+  DrawerClose,
+  DrawerContent,
+  DrawerDescription,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerLabel,
+  DrawerPortal,
+  DrawerTrigger,
+} from "shadcn-solid-components/components/drawer"
+
+const SIDES = ["top", "right", "bottom", "left"] as const
+
+const DrawerSideDemo = () => {
+  return (
+    <div class="space-x-2">
+      <For each={SIDES}>
+        {(side) => (
+          <Drawer side={side}>
+            <DrawerTrigger<typeof Button>
+              as={(props) => (
+                <Button variant="outline" class="capitalize" {...props}>
+                  {side}
+                </Button>
+              )}
+            />
+            <DrawerPortal>
+              <DrawerContent>
+                <DrawerHeader>
+                  <DrawerLabel>Move Goal</DrawerLabel>
+                  <DrawerDescription>
+                    Set your daily activity goal.
+                  </DrawerDescription>
+                </DrawerHeader>
+                <div class="overflow-y-auto px-4 text-sm">
+                  <h4 class="mb-4 text-lg leading-none font-medium">
+                    Lorem Ipsum
+                  </h4>
+                  <For each={Array.from({ length: 10 })}>
+                    {() => (
+                      <p class="mb-4 leading-normal">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Sed do eiusmod tempor incididunt ut labore et dolore
+                        magna aliqua. Ut enim ad minim veniam, quis nostrud
+                        exercitation ullamco laboris nisi ut aliquip ex ea
+                        commodo consequat. Duis aute irure dolor in
+                        reprehenderit in voluptate velit esse cillum dolore eu
+                        fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+                        non proident, sunt in culpa qui officia deserunt mollit
+                        anim id est laborum.
+                      </p>
+                    )}
+                  </For>
+                </div>
+                <DrawerFooter>
+                  <Button>Submit</Button>
+                  <DrawerClose<typeof Button>
+                    as={(props) => (
+                      <Button variant="outline" {...props}>
+                        Cancel
+                      </Button>
+                    )}
+                  />
+                </DrawerFooter>
+              </DrawerContent>
+            </DrawerPortal>
+          </Drawer>
+        )}
+      </For>
+    </div>
+  )
+}
+
+export default DrawerSideDemo
+  ```
+</ComponentPreview>

@@ -1,0 +1,243 @@
+---
+title: App sidebar
+description: Application shell with sidebar provider, grouped menu trees, and main inset body.
+section: HOC
+toc: true
+---
+
+import AppSidebarDemo from "../../../examples/app-sidebar-demo"
+
+`AppSidebar` wraps the sidebar layout primitives and `SidebarMenuTree` into a full app chrome: header, grouped menus, footer, and a `SidebarInset` for page content.
+
+## Installation
+
+Install `shadcn-solid-components` and satisfy peer dependencies (`solid-js`, Tailwind CSS v4, `tw-animate-css`).
+
+```bash
+pnpm add shadcn-solid-components
+```
+
+## Usage
+
+```tsx
+import { AppSidebar } from "shadcn-solid-components/hoc/app-sidebar"
+
+<AppSidebar
+  header={{ icon: <Logo />, title: "My App" }}
+  menus={[
+    { group: "Main", items: [{ title: "Home", url: "/" }] },
+  ]}
+  footer={[{ title: "Settings", url: "/settings" }]}
+  body={<main>…</main>}
+/>
+```
+
+You can pass custom JSX for `header` or `footer` instead of the preset object or menu item arrays. Use `isPresetHeader` to narrow the header type when needed.
+
+Each group's `items` inside `menus` follows the same shape as `SidebarMenuTree`: you can provide
+`title`, `url`, nested `items`, or `onClick` for client-side navigation. `body` is rendered inside
+`SidebarInset`, which makes it a natural main-content area for each page. When you need to adjust
+sidebar width, collapse behavior, or pass props through to the inner `Sidebar`, use `sidebarProps`
+(`SidebarProps` from the sidebar component).
+
+When integrating with a router, you can pass the current pathname into menu item behavior, such as
+calling `navigate(url)` inside `onClick`, or highlight active items higher up based on location.
+`AppSidebar` itself does not depend on any specific routing library.
+
+## Examples
+
+### Preset header with grouped menus
+
+<ComponentPreview name="App Sidebar Demo">
+  <div class="mb-4 w-full">
+    <AppSidebarDemo />
+  </div>
+  ```tsx
+  import { AppSidebar } from "shadcn-solid-components/hoc/app-sidebar"
+  const AppSidebarDemo = () => {
+    return (
+      <div class="overflow-hidden rounded-lg border">
+        <AppSidebar
+          ref={sidebarElm}
+          header={{
+            icon: <span class="text-sm font-bold">A</span>,
+            title: "Acme",
+          }}
+          menus={[
+            {
+              group: "Main",
+              items: [
+                { title: "Dashboard", url: "/" },
+                { title: "Projects", url: "/projects" },
+              ],
+            },
+          ]}
+          footer={[{ title: "Help", url: "/help" }]}
+          body={
+            <main class="flex min-h-[220px] flex-1 flex-col gap-4 p-4">
+              <h1 class="text-lg font-semibold">Page</h1>
+            </main>
+          }
+        />
+      </div>
+    )
+  }
+
+  export default AppSidebarDemo
+  ```
+</ComponentPreview>
+
+```tsx
+import { AppSidebar } from "shadcn-solid-components/hoc/app-sidebar"
+
+export function Shell() {
+  return (
+    <AppSidebar
+      header={{
+        icon: <span class="text-sm font-bold">A</span>,
+        title: "Acme",
+      }}
+      menus={[
+        {
+          group: "Main",
+          items: [
+            { title: "Dashboard", url: "/" },
+            { title: "Projects", url: "/projects" },
+          ],
+        },
+        {
+          group: "Settings",
+          items: [{ title: "Team", url: "/settings/team" }],
+        },
+      ]}
+      footer={[{ title: "Help", url: "/help" }]}
+      body={
+        <main class="flex flex-1 flex-col gap-4 p-4">
+          <h1 class="text-lg font-semibold">Page</h1>
+        </main>
+      }
+    />
+  )
+}
+```
+
+### Custom header and footer JSX
+
+You can also pass JSX directly to `header` and `footer`: the former is rendered in
+`SidebarHeader`, and the latter in `SidebarFooter`. This is useful for branding, version text, or
+custom link groups.
+
+```tsx
+import { AppSidebar } from "shadcn-solid-components/hoc/app-sidebar"
+
+export function ShellCustomChrome() {
+  return (
+    <AppSidebar
+      header={<div class="px-2 py-1.5 text-sm font-semibold">Acme Console</div>}
+      menus={[{ group: "Main", items: [{ title: "Overview", url: "/" }] }]}
+      footer={
+        <div class="flex flex-col gap-1 p-2 text-xs text-muted-foreground">
+          <span>v1.0.0</span>
+          <a href="/legal">Legal</a>
+        </div>
+      }
+      body={
+        <main class="flex flex-1 flex-col p-4">
+          <p class="text-sm text-muted-foreground">Page content</p>
+        </main>
+      }
+    />
+  )
+}
+```
+
+### Adjust sidebar styling with `sidebarProps`
+
+```tsx
+import { AppSidebar } from "shadcn-solid-components/hoc/app-sidebar"
+
+export function ShellWithSidebarChrome() {
+  return (
+    <AppSidebar
+      sidebarProps={{ class: "border-r border-border/60" }}
+      header={{
+        icon: <span class="text-xs font-bold">P</span>,
+        title: "Portal",
+      }}
+      menus={[{ group: "Main", items: [{ title: "Home", url: "/" }] }]}
+      footer={[]}
+      body={<main class="flex flex-1 flex-col p-4">Content</main>}
+    />
+  )
+}
+```
+
+### Use `sidebarProps` for side and styling
+
+`sidebarProps` is spread onto the inner `Sidebar`, so you can set `side`, `variant`, `class`, and
+related props. The component still fixes `collapsible="icon"` internally for desktop icon-rail
+collapse behavior.
+
+```tsx
+import { AppSidebar } from "shadcn-solid-components/hoc/app-sidebar"
+
+export function ShellRightInset() {
+  return (
+    <AppSidebar
+      sidebarProps={{
+        side: "right",
+        variant: "inset",
+        class: "border-l",
+      }}
+      header={{ icon: <span class="text-xs font-bold">B</span>, title: "Beta" }}
+      menus={[{ group: "Main", items: [{ title: "Home", url: "/" }] }]}
+      footer={[]}
+      body={
+        <main class="flex flex-1 flex-col p-4">
+          <p class="text-sm text-muted-foreground">Inset + right sidebar</p>
+        </main>
+      }
+    />
+  )
+}
+```
+
+### `sidebarProps` for placement and styling
+
+`sidebarProps` is forwarded to the inner `Sidebar`, so you can configure `side`, `variant`, and
+`class` while preserving the component's built-in `collapsible="icon"` behavior. For example, use
+it when you need a floating sidebar on the right:
+
+```tsx
+import { AppSidebar } from "shadcn-solid-components/hoc/app-sidebar"
+
+export function ShellRightSidebar() {
+  return (
+    <AppSidebar
+      sidebarProps={{
+        side: "right",
+        variant: "floating",
+        class: "border-l",
+      }}
+      header={{ icon: <span class="text-xs font-bold">A</span>, title: "Acme" }}
+      menus={[{ group: "Main", items: [{ title: "Home", url: "/" }] }]}
+      footer={[]}
+      body={
+        <main class="flex flex-1 flex-col p-4">
+          <p class="text-sm text-muted-foreground">Main content</p>
+        </main>
+      }
+    />
+  )
+}
+```
+
+## Exports
+
+| Name | Description |
+| --- | --- |
+| `AppSidebar` | Layout component; sets up `SidebarProvider`, `Sidebar`, and `SidebarInset`. |
+| `AppSidebarProps` | Props: `sidebarProps`, `header`, `menus`, `footer`, `body`, plus `div` attributes. |
+| `AppSidebarMenuGroup` | `{ group: string; items }` where `items` matches `SidebarMenuTree` `items`. |
+| `AppSidebarHeaderProps` | Preset header: `{ icon; title }`. |
+| `isPresetHeader` | Type guard for preset header shape. |

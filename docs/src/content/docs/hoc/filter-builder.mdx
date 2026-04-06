@@ -1,0 +1,138 @@
+---
+title: Filter builder
+description: "Controlled UI to add rules: field, operator, and value per row."
+section: HOC
+toc: true
+---
+
+import FilterBuilderDemo from "../../../examples/filter-builder-demo"
+
+`FilterBuilder` renders rows from `fields` definitions. Each row picks a field, an operator (defaults depend on field `type`), and a value when the operator needs one.
+
+## Installation
+
+Install `shadcn-solid-components` and satisfy peer dependencies (`solid-js`, Tailwind CSS v4, `tw-animate-css`).
+
+## Usage
+
+```tsx
+import { FilterBuilder } from "shadcn-solid-components/hoc/filter-builder"
+
+<FilterBuilder
+  fields={[
+    { key: "name", label: "Name", type: "text" },
+    { key: "status", label: "Status", type: "select", options: [{ label: "Open", value: "open" }] },
+  ]}
+  value={rules()}
+  onChange={setRules}
+/>
+```
+
+`value` is a controlled array: adding a row, changing a field, or switching an operator will all
+trigger `onChange`. `maxRules` can limit the number of conditions, and `select` fields must provide
+`options`. The default operator set includes values such as `eq` and `in`.
+
+## Examples
+
+### Multiple rules across mixed field types
+
+<ComponentPreview name="Filter Builder Demo">
+  <div class="mb-4 w-full">
+    <FilterBuilderDemo />
+  </div>
+  ```tsx
+  import { createSignal } from "solid-js"
+  import { FilterBuilder, type FilterRule } from "shadcn-solid-components/hoc/filter-builder"
+
+  const FilterBuilderDemo = () => {
+    const [rules, setRules] = createSignal<FilterRule[]>([
+      { field: "title", operator: "contains", value: "" },
+    ])
+
+    return (
+      <FilterBuilder
+        maxRules={6}
+        fields={[
+          { key: "title", label: "Title", type: "text" },
+          {
+            key: "state",
+            label: "Status",
+            type: "select",
+            options: [
+              { label: "Open", value: "open" },
+              { label: "Closed", value: "closed" },
+            ],
+          },
+          { key: "updatedAt", label: "Updated at", type: "date" },
+        ]}
+        value={rules()}
+        onChange={setRules}
+      />
+    )
+  }
+
+  export default FilterBuilderDemo
+  ```
+</ComponentPreview>
+
+```tsx
+import { createSignal } from "solid-js"
+import { FilterBuilder, type FilterRule } from "shadcn-solid-components/hoc/filter-builder"
+
+export function IssueFilters() {
+  const [rules, setRules] = createSignal<FilterRule[]>([
+    { field: "title", operator: "contains", value: "" },
+  ])
+
+  return (
+    <FilterBuilder
+      maxRules={6}
+      fields={[
+        { key: "title", label: "Title", type: "text" },
+        {
+          key: "state",
+          label: "Status",
+          type: "select",
+          options: [
+            { label: "Open", value: "open" },
+            { label: "Closed", value: "closed" },
+          ],
+        },
+        { key: "updatedAt", label: "Updated at", type: "date" },
+      ]}
+      value={rules()}
+      onChange={setRules}
+    />
+  )
+}
+```
+
+## API
+
+### `FilterBuilderProps`
+
+Extends `div` props (without `onChange`).
+
+- `fields` — `FilterFieldDefinition[]`
+- `value` — `FilterRule[]`
+- `onChange` — `(rules: FilterRule[]) => void`
+- `maxRules`, `locale`
+
+### `FilterFieldDefinition`
+
+- `key`, `label`, `type` (`'text' | 'number' | 'select' | 'date'`)
+- `operators` — optional override list
+- `options` — for `select` type
+
+### `FilterRule`
+
+- `field`, `operator`, `value`
+
+### `FilterOperator`, `FilterFieldType`, `FilterFieldOption`
+
+See `src/hoc/filter-builder/index.tsx` for the operator union and defaults per type.
+
+## Exports
+
+- `FilterBuilder` — component
+- `FilterBuilderProps`, `FilterFieldDefinition`, `FilterRule`, `FilterOperator`, `FilterFieldType`, `FilterFieldOption` — types

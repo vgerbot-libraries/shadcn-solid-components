@@ -1,0 +1,68 @@
+---
+title: Separator
+description: Visual divider between sections of content.
+section: Components
+toc: true
+---
+
+import SeparatorDemo from "../../../examples/separator-demo"
+
+A thin horizontal or vertical rule styled as an `hr` (or polymorphic equivalent) for layout separation.
+
+## Installation
+
+Install `shadcn-solid-components` and satisfy peer dependencies (`solid-js`, Tailwind CSS v4, `tw-animate-css`).
+
+## Usage
+
+```tsx
+import { Separator } from "shadcn-solid-components/components/separator"
+```
+
+```tsx
+<Separator class="my-2" />
+```
+
+Pass `class` and orientation-related props as supported by the underlying Kobalte separator primitive.
+
+## Exports
+
+- `Separator`
+- Types: `SeparatorProps`
+
+
+## Examples
+
+### Default
+
+<ComponentPreview name="Separator Demo">
+  <div class="mb-4 w-full">
+    <SeparatorDemo />
+  </div>
+  ```tsx
+  import { Separator } from "shadcn-solid-components/components/separator"
+
+const SeparatorDemo = () => {
+  return (
+    <div>
+      <div class="space-y-1">
+        <h4 class="text-sm leading-none font-medium">Radix Primitives</h4>
+        <p class="text-muted-foreground text-sm">
+          An open-source UI component library.
+        </p>
+      </div>
+      <Separator class="my-4" />
+      <div class="flex h-5 items-center space-x-4 text-sm">
+        <div>Blog</div>
+        <Separator orientation="vertical" />
+        <div>Docs</div>
+        <Separator orientation="vertical" />
+        <div>Source</div>
+      </div>
+    </div>
+  )
+}
+
+export default SeparatorDemo
+  ```
+</ComponentPreview>

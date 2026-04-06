@@ -1,0 +1,46 @@
+---
+title: Component Props Map
+description: Type-level map from theme component names to each component’s props type.
+section: Libraries
+toc: true
+order: 30
+---
+
+This module connects `ComponentName` (from `shadcn-solid-components/lib/theme-context`) to the concrete props type for each UI component. It supports type-safe theme APIs such as `componentClass`. The public API is the types `ComponentPropsMap` and `ComponentPropsFor`; use `import type` when you only need those types.
+
+## Installation
+
+Install `shadcn-solid-components` and satisfy peer dependencies (`solid-js`, Tailwind CSS v4, `tw-animate-css`).
+
+## Usage
+
+```tsx
+import type { ComponentPropsMap, ComponentPropsFor } from "shadcn-solid-components/lib/component-props-map"
+```
+
+`ComponentPropsFor<N>` selects the props type for a specific `ComponentName` literal:
+
+```tsx
+import { ComponentName } from "shadcn-solid-components/lib/theme-context"
+import type { ComponentPropsFor } from "shadcn-solid-components/lib/component-props-map"
+
+function classesForButton(props: ComponentPropsFor<typeof ComponentName.Button>) {
+  // props is typed as ButtonProps
+}
+```
+
+`ComponentPropsMap` is the full mapping indexed by `ComponentName`.
+
+Use these types with `ComponentName` and theme configuration rather than in typical app UI code.
+
+## API
+
+### `ComponentPropsMap`
+
+Maps each `ComponentName` to its props type. A few entries are not the component’s main props interface: for example `DatePicker` and `Theme` use `ComponentProps<'div'>`, `Icons` uses `ComponentProps<'svg'>`, and `Sonner` uses the first argument type of `somoto`’s `Toaster`. `Chart`, `Combobox`, `Search`, and `Select` use their components’ generic props types in the map.
+
+### `ComponentPropsFor<N extends ComponentName>`
+
+Indexed access: `ComponentPropsMap[N]`.
+
+**Exports (types only):** `ComponentPropsMap`, `ComponentPropsFor`.

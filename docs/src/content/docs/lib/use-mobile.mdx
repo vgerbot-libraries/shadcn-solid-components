@@ -1,0 +1,39 @@
+---
+title: Use Mobile
+description: "Solid accessor from `useIsMobile` for the `(max-width: 767px)` media query."
+section: Libraries
+toc: true
+order: 80
+---
+
+The module exports `useIsMobile`, which listens to `window.matchMedia('(max-width: 767px)')` and returns an accessor to the current match state.
+
+## Installation
+
+Install `shadcn-solid-components` and satisfy peer dependencies (`solid-js`, Tailwind CSS v4, `tw-animate-css`).
+
+## Usage
+
+```tsx
+import { useIsMobile } from "shadcn-solid-components/lib/use-mobile"
+```
+
+The file is `use-mobile`; the exported hook is `useIsMobile`.
+
+```tsx
+const isMobile = useIsMobile()
+
+return <Show when={isMobile()}>...</Show>
+```
+
+On the server (`solid-js/web` `isServer`), the hook returns a plain function that always reads `false` (not a `createSignal` accessor).
+
+## API
+
+### `useIsMobile()`
+
+Returns a Solid accessor to `boolean`: `true` when `window.matchMedia('(max-width: 767px)')` matches. Listeners are registered with `matchMedia.addEventListener('change', …)` and removed on cleanup.
+
+On the server, returns `() => false` without subscribing to media queries.
+
+**Export:** `useIsMobile`.

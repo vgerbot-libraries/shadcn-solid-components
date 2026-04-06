@@ -1,0 +1,129 @@
+---
+title: Login form
+description: Card-styled login or register form with email, password, optional OAuth rows, and remember-me.
+section: HOC
+toc: true
+---
+
+import LoginFormDemo from "../../../examples/login-form-demo"
+
+`LoginForm` renders a `Card` with title, description, provider buttons, and a native `form` that posts via `onSubmit` with `FormData` fields `email`, `password`, `confirmPassword` (register), and `rememberMe` (login).
+
+## Installation
+
+Install `shadcn-solid-components` and satisfy peer dependencies (`solid-js`, Tailwind CSS v4, `tw-animate-css`).
+
+## Usage
+
+```tsx
+import { LoginForm } from "shadcn-solid-components/hoc/login-form"
+
+<LoginForm mode="login" onSubmit={(data) => handleAuth(data)} onModeSwitch={() => setMode("register")} />
+```
+
+`onSubmit` calls `preventDefault()` and reads the fields from the form. Login mode includes
+`rememberMe` (set to `true` when checked), while register mode adds `confirmPassword`. When
+`loading` is `true`, the submit button enters a pending state that works well with async auth
+requests. Pass a URL to `forgotPasswordHref` to show the forgot-password link, or `false` to hide
+it.
+
+## Examples
+
+### Switching between login and register with providers
+
+<ComponentPreview name="Login Form Demo">
+  <div class="mb-4 w-full">
+    <LoginFormDemo />
+  </div>
+  ```tsx
+  import { createSignal } from "solid-js"
+
+import { LoginForm, type LoginFormMode } from "shadcn-solid-components/hoc/login-form"
+
+const LoginFormDemo = () => {
+  const [mode, setMode] = createSignal<LoginFormMode>("login")
+  const [loading, setLoading] = createSignal(false)
+
+  return (
+    <LoginForm
+      mode={mode()}
+      loading={loading()}
+      forgotPasswordHref="#"
+      providers={[
+        {
+          name: "Google",
+          icon: <span class="text-xs font-medium">G</span>,
+          onSelect: () => {},
+        },
+      ]}
+      onSubmit={(data) => {
+        setLoading(true)
+        void Promise.resolve(data).finally(() => setLoading(false))
+      }}
+      onModeSwitch={() => setMode(mode() === "login" ? "register" : "login")}
+    />
+  )
+}
+
+export default LoginFormDemo
+  ```
+</ComponentPreview>
+
+```tsx
+import { createSignal } from "solid-js"
+import { LoginForm, type LoginFormMode } from "shadcn-solid-components/hoc/login-form"
+
+export function AuthCard() {
+  const [mode, setMode] = createSignal<LoginFormMode>("login")
+  const [loading, setLoading] = createSignal(false)
+
+  return (
+    <LoginForm
+      mode={mode()}
+      loading={loading()}
+      forgotPasswordHref="/reset-password"
+      providers={[
+        {
+          name: "Google",
+          icon: <span class="text-xs font-medium">G</span>,
+          onSelect: () => {
+            /* start OAuth */
+          },
+        },
+      ]}
+      onSubmit={(data) => {
+        setLoading(true)
+        void Promise.resolve(data).finally(() => setLoading(false))
+      }}
+      onModeSwitch={() => setMode(mode() === "login" ? "register" : "login")}
+      footer={<p class="text-center text-xs text-muted-foreground">By continuing, you agree to the terms of service.</p>}
+    />
+  )
+}
+```
+
+## API
+
+### `LoginFormProps`
+
+Extends `div` props (without `onSubmit`).
+
+- `mode` — `'login'` | `'register'` (default `'login'`)
+- `logo`, `title`, `description` — branding overrides
+- `providers` — `LoginFormProvider[]` (`name`, `icon`, `onSelect`)
+- `showRememberMe` — default `true` in login mode
+- `forgotPasswordHref` — string link or `false` to hide
+- `onSubmit` — receives `{ email, password, confirmPassword?, rememberMe? }`
+- `loading` — submit button pending state
+- `onModeSwitch` — footer link (e.g. switch to register)
+- `footer` — extra JSX below the form
+- `locale` — partial strings
+
+### `LoginFormProvider`
+
+- `name`, `icon`, `onSelect`
+
+## Exports
+
+- `LoginForm` — component
+- `LoginFormProps`, `LoginFormMode`, `LoginFormProvider` — types

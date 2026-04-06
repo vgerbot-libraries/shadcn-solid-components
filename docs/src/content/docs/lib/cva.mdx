@@ -1,0 +1,38 @@
+---
+title: CVA
+description: Class-variance-authority (`cva`) with Tailwind merge applied to completed class strings.
+section: Libraries
+toc: true
+order: 40
+---
+
+This module re-exports `cva`, `cx`, and `compose` from the [`cva`](https://github.com/joe-bell/cva) package (this repo pins `cva@1.0.0-beta.4`) via `defineConfig`, with an `onComplete` hook that runs `tailwind-merge` on the final class string.
+
+## Installation
+
+Install `shadcn-solid-components` and satisfy peer dependencies (`solid-js`, Tailwind CSS v4, `tw-animate-css`). The package depends on `cva` and `tailwind-merge`.
+
+## Usage
+
+```tsx
+import { cva, cx, compose } from "shadcn-solid-components/lib/cva"
+```
+
+Use `cva` for variant-driven class names, `cx` to join and merge classes, and `compose` to combine CVA configs (see upstream CVA docs).
+
+```tsx
+import { cva } from "shadcn-solid-components/lib/cva"
+
+const button = cva("inline-flex items-center", {
+  variants: {
+    size: { sm: "h-8 px-2", md: "h-10 px-4" },
+  },
+  defaultVariants: { size: "md" },
+})
+```
+
+## API
+
+Variant keys, `defaultVariants`, and `compose` follow the installed `cva` package; see upstream docs for full API.
+
+**Exports:** `cva`, `cx`, `compose` — from `defineConfig` with `twMerge` applied to completed class strings via `onComplete`.

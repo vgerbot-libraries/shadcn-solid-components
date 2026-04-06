@@ -1,0 +1,217 @@
+---
+title: Stepper
+description: Multi-step wizard with indicators, per-step validation, and optional built-in navigation.
+section: HOC
+toc: true
+---
+
+import StepperDemo from "../../../examples/stepper-demo"
+
+`Stepper` manages the active step (controlled via `activeStep` / `onActiveStepChange` or uncontrolled). Each step supplies `content` and an optional `validate` callback run before advancing. Child content can call `useStepper()` for `next`, `prev`, `goTo`, and state accessors.
+
+## Installation
+
+```bash
+pnpm add shadcn-solid-components
+```
+
+## Usage
+
+```tsx
+import { Stepper } from "shadcn-solid-components/hoc/stepper"
+
+<Stepper
+  steps={[
+    { label: "Account", content: <AccountFields /> },
+    { label: "Review", content: <Review />, validate: () => formValid() },
+  ]}
+  onComplete={() => submit()}
+/>
+```
+
+## Examples
+
+### Controlled step index
+
+<ComponentPreview name="Stepper Demo">
+  <div class="mb-4 w-full max-w-xl">
+    <StepperDemo />
+  </div>
+  ```tsx
+  import { createSignal } from "solid-js"
+
+import { Button } from "shadcn-solid-components/components/button"
+import { Stepper, useStepper } from "shadcn-solid-components/hoc/stepper"
+
+function StepContent() {
+  const api = useStepper()
+
+  return (
+    <div class="space-y-3">
+      <p class="text-muted-foreground text-sm">
+        Step {api.activeStep() + 1} of {api.totalSteps}
+      </p>
+      <div class="flex gap-2">
+        <Button disabled={api.isFirst()} type="button" variant="outline" onClick={() => api.prev()}>
+          Back
+        </Button>
+        <Button type="button" onClick={() => void api.next()}>
+          {api.isLast() ? "Finish" : "Continue"}
+        </Button>
+      </div>
+    </div>
+  )
+}
+
+const StepperDemo = () => {
+  const [agreed, setAgreed] = createSignal(false)
+
+  return (
+    <Stepper
+      showNavigation={false}
+      steps={[
+        {
+          label: "Terms",
+          content: (
+            <div class="space-y-3">
+              <label class="flex items-center gap-2 text-sm">
+                <input type="checkbox" checked={agreed()} onChange={(e) => setAgreed(e.currentTarget.checked)} />
+                I agree to the terms
+              </label>
+              <StepContent />
+            </div>
+          ),
+          validate: () => agreed(),
+        },
+        { label: "Review", content: <p class="text-sm text-muted-foreground">All steps completed.</p> },
+      ]}
+    />
+  )
+}
+
+export default StepperDemo
+  ```
+</ComponentPreview>
+
+```tsx
+import { createSignal } from "solid-js"
+import { Stepper } from "shadcn-solid-components/hoc/stepper"
+
+const [step, setStep] = createSignal(0)
+
+<Stepper
+  activeStep={step()}
+  onActiveStepChange={setStep}
+  steps={[
+    { label: "One", content: <p>First panel</p> },
+    { label: "Two", content: <p>Second panel</p> },
+  ]}
+/>
+```
+
+### Custom navigation with `useStepper`
+
+```tsx
+import { Button } from "shadcn-solid-components/components/button"
+import { Stepper, useStepper } from "shadcn-solid-components/hoc/stepper"
+
+function StepContent() {
+  const api = useStepper()
+  return (
+    <div class="space-y-3">
+      <p class="text-muted-foreground text-sm">Step {api.activeStep() + 1} of {api.totalSteps}</p>
+      <div class="flex gap-2">
+        <Button disabled={api.isFirst()} type="button" variant="outline" onClick={() => api.prev()}>
+          Back
+        </Button>
+        <Button type="button" onClick={() => void api.next()}>
+          {api.isLast() ? "Finish" : "Continue"}
+        </Button>
+      </div>
+    </div>
+  )
+}
+
+<Stepper
+  showNavigation={false}
+  steps={[
+    { label: "Account", content: <StepContent />, validate: () => true },
+    { label: "Review", content: <p>Review your answers.</p> },
+  ]}
+  onComplete={() => console.info("done")}
+/>
+```
+
+### Vertical dot variant
+
+```tsx
+import { Stepper } from "shadcn-solid-components/hoc/stepper"
+
+<Stepper
+  variant="dot"
+  orientation="vertical"
+  clickable={false}
+  steps={[
+    { label: "Draft", content: <p>Editing…</p> },
+    { label: "Published", content: <p>Live.</p> },
+  ]}
+/>
+```
+
+### `validate` blocks moving forward
+
+If the current step's `validate` returns `false` or resolves to `false`, `api.next()` will not
+advance the step index. The built-in "Next" button follows the same rule and stays blocked until
+validation passes.
+
+```tsx
+import { createSignal, type Accessor } from "solid-js"
+import { Button } from "shadcn-solid-components/components/button"
+import { Stepper, useStepper } from "shadcn-solid-components/hoc/stepper"
+
+function TermsStep(props: { agreed: Accessor<boolean>; setAgreed: (v: boolean) => void }) {
+  const api = useStepper()
+  return (
+    <div class="space-y-3">
+      <label class="flex items-center gap-2 text-sm">
+        <input
+          type="checkbox"
+          checked={props.agreed()}
+          onChange={e => props.setAgreed(e.currentTarget.checked)}
+        />
+        I agree to the terms
+      </label>
+      <Button type="button" onClick={() => void api.next()}>
+        Continue
+      </Button>
+    </div>
+  )
+}
+
+const [agreed, setAgreed] = createSignal(false)
+
+<Stepper
+  showNavigation={false}
+  steps={[
+    {
+      label: "Terms",
+      content: <TermsStep agreed={agreed} setAgreed={setAgreed} />,
+      validate: () => agreed(),
+    },
+    { label: "Done", content: <p>All steps completed.</p> },
+  ]}
+/>
+```
+
+## Exports
+
+| Name | Description |
+| --- | --- |
+| `Stepper` | Wizard component. |
+| `StepperProps` | `steps`, optional `activeStep`, `onActiveStepChange`, `variant` (`'default' \| 'circle' \| 'dot'`), `orientation`, `clickable` (defaults to `true`), `showNavigation` (defaults to `true`), `onComplete`, `locale`, plus `div` props. |
+| `StepItem` | `label`, optional `description`, `icon`, `content`, optional `validate`. |
+| `StepperVariant` | `'default' \| 'circle' \| 'dot'`. |
+| `StepperOrientation` | `'horizontal' \| 'vertical'`. |
+| `useStepper` | Returns `StepperApi` when used inside `<Stepper>`. |
+| `StepperApi` | `activeStep`, `isFirst`, `isLast` are accessors; `totalSteps` is a number; `next` is async and runs the current step’s `validate` before advancing; `prev` goes back; `goTo(step)` only updates when `step` is in range and not greater than the current step (for example when jumping to a completed step with `clickable`). |
+| `enLocale`, `zhCNLocale`, `zhTWLocale`, `jaLocale` | `StepperLocale` presets for merging or reference. |

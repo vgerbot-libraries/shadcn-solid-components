@@ -1,0 +1,60 @@
+---
+title: Theme Context
+description: Theme configuration types, `ComponentName` identifiers, and Solid context for the design system.
+section: Libraries
+toc: true
+order: 50
+---
+
+This module defines `ThemeConfig`, the `ComponentName` values used in theme helpers, and `ThemeContext` for supplying theme state. Consumers should mount `ThemeProvider` from `shadcn-solid-components/components/theme` to supply a value.
+
+`ThemeContext` is created without a default. `useContext(ThemeContext)` is therefore `undefined` outside a provider: `useComponentClass` returns `undefined` in that case, while `useTheme` throws.
+
+## Installation
+
+Install `shadcn-solid-components` and satisfy peer dependencies (`solid-js`, Tailwind CSS v4, `tw-animate-css`).
+
+## Usage
+
+```tsx
+import {
+  ComponentName,
+  ThemeContext,
+  type RadiusValue,
+  type ThemeConfig,
+  type ThemeContextValue,
+} from "shadcn-solid-components/lib/theme-context"
+```
+
+The exported `ComponentName` object shares its name with the `ComponentName` string-literal union type (TypeScript value/type merge).
+
+Provide context with `ThemeProvider`:
+
+```tsx
+import { ThemeProvider } from "shadcn-solid-components/components/theme"
+```
+
+Then read or update the theme with `useTheme` from `shadcn-solid-components/lib/use-theme`, or resolve per-component classes with `useComponentClass` from `shadcn-solid-components/lib/theme-helpers`.
+
+`ThemeConfig` includes:
+
+- `base.radius` — one of `none`, `sm`, `md`, `lg`, `xl`, `full`.
+- `componentClass` — optional function `(name, props) => string | undefined`, or an object keyed by `ComponentName` with `(props) => string | undefined`. Props are typed with `ComponentPropsFor` from `shadcn-solid-components/lib/component-props-map`.
+- `dark` and `light` — optional placeholders on the type for future overrides; the current `ThemeProvider` does not read them.
+
+`ThemeContextValue` is `{ theme: ThemeConfig; setTheme: (theme: Partial<ThemeConfig>) => void }`.
+
+## API
+
+### Types
+
+- **`RadiusValue`** — allowed values for `ThemeConfig.base.radius`.
+- **`ThemeConfig`** — theme shape: `base`, optional `componentClass`, optional `dark` / `light` placeholders.
+- **`ThemeContextValue`** — value carried by `ThemeContext`.
+
+### Context and constants
+
+- **`ComponentName`** — const object whose values are supported component id strings; the `ComponentName` type is the union of those literals.
+- **`ThemeContext`** — Solid context with no default; use a provider or handle `undefined`.
+
+**Exports:** `ComponentName` (value + type), `RadiusValue`, `ThemeConfig`, `ThemeContextValue`, `ThemeContext`.

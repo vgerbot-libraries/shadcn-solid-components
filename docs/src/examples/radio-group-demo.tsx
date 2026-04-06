@@ -1,0 +1,35 @@
+import { For } from "solid-js"
+
+import {
+  RadioGroup,
+  RadioGroupItem,
+  RadioGroupItemControl,
+  RadioGroupItemIndicator,
+  RadioGroupItemInput,
+  RadioGroupItemLabel,
+  RadioGroupItems,
+  RadioGroupLabel,
+} from "shadcn-solid-components/components/radio-group"
+
+const RadioGroupDemo = () => {
+  return (
+    <RadioGroup defaultValue="Orange">
+      <RadioGroupLabel>Favorite fruit</RadioGroupLabel>
+      <RadioGroupItems>
+        <For each={["Apple", "Orange", "Watermelon"]}>
+          {(fruit) => (
+            <RadioGroupItem value={fruit}>
+              <RadioGroupItemInput />
+              <RadioGroupItemControl>
+                <RadioGroupItemIndicator />
+              </RadioGroupItemControl>
+              <RadioGroupItemLabel>{fruit}</RadioGroupItemLabel>
+            </RadioGroupItem>
+          )}
+        </For>
+      </RadioGroupItems>
+    </RadioGroup>
+  )
+}
+
+export default RadioGroupDemo

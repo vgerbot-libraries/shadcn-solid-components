@@ -1,0 +1,100 @@
+---
+title: Mode toggle dropdown
+description: Dropdown to set color mode to light, dark, or system.
+section: HOC
+toc: true
+---
+
+import ModeToggleDropdownDemo from "../../../examples/mode-toggle-dropdown-demo"
+
+`ModeToggleDropdown` uses Kobalte `useColorMode` and the dropdown menu primitives. The trigger shows sun/moon icons with a cross-fade; menu items call `setColorMode` with `'light'`, `'dark'`, or `'system'`.
+
+## Installation
+
+Install `shadcn-solid-components` and satisfy peer dependencies (`solid-js`, Tailwind CSS v4, `tw-animate-css`).
+
+## Usage
+
+```tsx
+import { ModeToggleDropdown } from "shadcn-solid-components/hoc/mode-toggle-dropdown"
+
+<ModeToggleDropdown />
+```
+
+Optional `trigger` spreads onto the `Button` trigger (e.g. `class`).
+
+## Examples
+
+### Default trigger
+
+<ComponentPreview name="Mode Toggle Dropdown Demo">
+  <div class="mb-4 w-full">
+    <ModeToggleDropdownDemo />
+  </div>
+  ```tsx
+  import { ColorModeProvider } from "@kobalte/core"
+
+import { ModeToggleDropdown } from "shadcn-solid-components/hoc/mode-toggle-dropdown"
+
+const ModeToggleDropdownDemo = () => {
+  return (
+    <ColorModeProvider>
+      <div class="flex justify-end">
+        <ModeToggleDropdown trigger={{ class: "size-9 px-0" }} />
+      </div>
+    </ColorModeProvider>
+  )
+}
+
+export default ModeToggleDropdownDemo
+  ```
+</ComponentPreview>
+
+```tsx
+import { ModeToggleDropdown } from "shadcn-solid-components/hoc/mode-toggle-dropdown"
+
+<ModeToggleDropdown />
+```
+
+### Compact trigger and custom labels
+
+```tsx
+import { ModeToggleDropdown } from "shadcn-solid-components/hoc/mode-toggle-dropdown"
+
+<ModeToggleDropdown
+  trigger={{ class: "size-9 px-0" }}
+  locale={{ light: "Light", dark: "Dark", system: "System" }}
+/>
+```
+
+### Merging labels with `ConfigProvider`
+
+The dropdown labels are first merged with `locale.ModeToggleDropdown` from `ConfigProvider`, and
+then overridden by the component's own `locale` prop. This works well when you wrap the app root in
+a global locale pack:
+
+```tsx
+import { ConfigProvider } from "shadcn-solid-components/components/config-provider"
+import { ModeToggleDropdown } from "shadcn-solid-components/hoc/mode-toggle-dropdown"
+import { zhCN } from "shadcn-solid-components/i18n/locales/zh-CN"
+
+export function AppChrome() {
+  return (
+    <ConfigProvider locale={zhCN}>
+      <ModeToggleDropdown />
+    </ConfigProvider>
+  )
+}
+```
+
+## API
+
+### `ModeToggleDropdownProps`
+
+- `trigger` — props for the `Button` trigger (merged with defaults)
+- `locale` — partial strings for light/dark/system labels and the sr-only toggle text
+
+## Exports
+
+- `ModeToggleDropdown` — component
+- `ModeToggleDropdownProps` — type

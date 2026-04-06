@@ -1,0 +1,111 @@
+---
+title: Description list
+description: Key-value grid for detail pages with optional card wrapper and copy-to-clipboard.
+section: HOC
+toc: true
+---
+
+import DescriptionListDemo from "../../../examples/description-list-demo"
+
+`DescriptionList` renders a `dl` grid of label/value pairs. Items can span columns, use horizontal or vertical layout, and optionally show a copy control for string values.
+
+## Installation
+
+Install `shadcn-solid-components` and satisfy peer dependencies (`solid-js`, Tailwind CSS v4, `tw-animate-css`).
+
+## Usage
+
+```tsx
+import { DescriptionList } from "shadcn-solid-components/hoc/description-list"
+
+<DescriptionList
+  title="Profile"
+  columns={2}
+  items={[
+    { label: "Name", value: "Ada Lovelace" },
+    { label: "Email", value: "ada@example.com", copyable: true },
+  ]}
+/>
+```
+
+`copyable` is most useful when `value` can be serialized to a string. For more complex values
+rendered as JSX, use `render` for a custom presentation. `card` works well when you want the list
+to match the rest of a page's card-based layout.
+
+## Examples
+
+### Horizontal layout with card wrapper
+
+<ComponentPreview name="Description List Demo">
+  <div class="mb-4 w-full">
+    <DescriptionListDemo />
+  </div>
+  ```tsx
+  import { Button } from "shadcn-solid-components/components/button"
+  import { DescriptionList } from "shadcn-solid-components/hoc/description-list"
+
+  const DescriptionListDemo = () => {
+    return (
+      <DescriptionList
+        card
+        title="Account"
+        layout="horizontal"
+        columns={2}
+        actions={<Button size="sm">Edit</Button>}
+        items={[
+          { label: "Username", value: "ada" },
+          { label: "Email", value: "ada@example.com", copyable: true },
+          { label: "Plan", value: "Pro", span: 2 },
+        ]}
+      />
+    )
+  }
+
+  export default DescriptionListDemo
+  ```
+</ComponentPreview>
+
+```tsx
+import { Button } from "shadcn-solid-components/components/button"
+import { DescriptionList } from "shadcn-solid-components/hoc/description-list"
+
+export function AccountDetails() {
+  return (
+    <DescriptionList
+      card
+      title="Account"
+      layout="horizontal"
+      columns={2}
+      actions={<Button size="sm">Edit</Button>}
+      items={[
+        { label: "Username", value: "ada" },
+        { label: "Email", value: "ada@example.com", copyable: true },
+        { label: "Plan", value: "Pro", span: 2 },
+      ]}
+    />
+  )
+}
+```
+
+## API
+
+### `DescriptionListProps`
+
+Extends `div` props.
+
+- `items` — `DescriptionItem[]`
+- `columns` — `1` | `2` | `3` | `4` (default `2`)
+- `bordered` — border around each cell group
+- `layout` — `'vertical'` | `'horizontal'`
+- `title`, `actions` — header row
+- `card` — wrap in `Card` (default `false`)
+- `locale` — partial copy-button strings
+
+### `DescriptionItem`
+
+- `label`, `value` (string, number, or JSX), `span`, `copyable`, `render`
+
+## Exports
+
+- `DescriptionList` — component
+- `DescriptionListProps`, `DescriptionItem`, `DescriptionListLayout` — types

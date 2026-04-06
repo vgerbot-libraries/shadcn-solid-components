@@ -1,0 +1,51 @@
+---
+title: Use Theme
+description: Access theme state with `useTheme`, update radius, and map radius tokens to Tailwind `rounded-*` classes by component category.
+section: Libraries
+toc: true
+order: 90
+---
+
+`useTheme` reads `ThemeContext` and exposes helpers built on `theme.base.radius`. It throws if used outside a `ThemeProvider` (`shadcn-solid-components/components/theme`).
+
+## Installation
+
+Install `shadcn-solid-components` and satisfy peer dependencies (`solid-js`, Tailwind CSS v4, `tw-animate-css`).
+
+## Usage
+
+```tsx
+import { useTheme, type ComponentCategory, type UseThemeReturn } from "shadcn-solid-components/lib/use-theme"
+```
+
+Wrap the app (or subtree) with `ThemeProvider`, then:
+
+```tsx
+import { ThemeProvider } from "shadcn-solid-components/components/theme"
+import { useTheme } from "shadcn-solid-components/lib/use-theme"
+
+// inside provider:
+const { theme, setTheme, setRadius, getRadiusClass } = useTheme()
+
+const rounded = getRadiusClass("form-control")
+setRadius("lg")
+```
+
+`ComponentCategory` selects which radius template to use (`form-control`, `display`, `overlay`, `navigation`, `menu-item`, `special`). The returned Tailwind class depends on both the category and the current `theme.base.radius` value (a fixed table pairs each `RadiusValue` and category with a `rounded-*` class).
+
+`setTheme` behavior comes from `ThemeProvider`: it shallow-merges the partial config into the previous theme and deep-merges `base`, so omitted `base` keys are preserved.
+
+## API
+
+### `UseThemeReturn`
+
+- `theme` — current `ThemeConfig`
+- `setTheme` — merges a partial `ThemeConfig` via the provider’s implementation
+- `setRadius` — updates `base.radius` only
+- `getRadiusClass` — `(category: ComponentCategory) => string` derived from current `theme.base.radius`
+
+### `useTheme(): UseThemeReturn`
+
+Requires an ancestor `ThemeProvider` (`shadcn-solid-components/components/theme`).
+
+**Exports:** `useTheme`, `ComponentCategory`, `UseThemeReturn`.

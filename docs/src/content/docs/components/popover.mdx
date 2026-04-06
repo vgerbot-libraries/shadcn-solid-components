@@ -1,0 +1,247 @@
+---
+title: Popover
+description: Floating panel anchored to a trigger element.
+section: Components
+toc: true
+---
+
+import { Button } from "shadcn-solid-components/components/button"
+import { createSignal } from "solid-js"
+import {
+  Popover,
+  PopoverContent,
+  PopoverPortal,
+  PopoverTrigger,
+} from "shadcn-solid-components/components/popover"
+import PopoverDemo from "../../../examples/popover-demo"
+import PopoverControlledDemo from "../../../examples/popover-controlled-demo"
+
+Popovers show **non-modal** content (compact forms, filters, extra actions) in a positioned layer. They stay open until dismissed (click outside, Escape, or your own controls). Prefer **tooltips** for short hints on hover/focus, and **dialogs** when you need a modal focus trap and page-blocking overlay.
+
+## Installation
+
+Install `shadcn-solid-components` and satisfy peer dependencies (`solid-js`, Tailwind CSS v4, `tw-animate-css`).
+
+## Usage
+
+```tsx
+import {
+  Popover,
+  PopoverContent,
+  PopoverPortal,
+  PopoverTrigger,
+} from "shadcn-solid-components/components/popover"
+```
+
+Wrap the anchor in `PopoverTrigger` and place the surfaced UI inside `PopoverContent` (typically under `PopoverPortal` when portaling is required by the primitive). Size and padding are usually controlled with utilities on `PopoverContent`.
+
+Use `open` and `onOpenChange` on `Popover` when you need to control visibility from outside (for example closing after submit).
+
+## Examples
+
+### Default
+
+Form-style layout inside the panel, matching the common “dimensions” pattern from shadcn/ui.
+
+<ComponentPreview name="Popover Demo">
+  <div class="mb-4 w-full">
+    <PopoverDemo />
+  </div>
+  ```tsx
+  import { Button } from "shadcn-solid-components/components/button"
+  import {
+    Popover,
+    PopoverContent,
+    PopoverPortal,
+    PopoverTrigger,
+  } from "shadcn-solid-components/components/popover"
+  import {
+    TextField,
+    TextFieldInput,
+    TextFieldLabel,
+  } from "shadcn-solid-components/components/text-field"
+
+  const PopoverDemo = () => {
+    return (
+      <Popover>
+        <PopoverTrigger<typeof Button>
+          as={(props) => (
+            <Button variant="outline" {...props}>
+              Open popover
+            </Button>
+          )}
+        />
+        <PopoverPortal>
+          <PopoverContent class="w-80">
+            <div class="grid gap-4">
+              <div class="space-y-2">
+                <h4 class="leading-none font-medium">Dimensions</h4>
+                <p class="text-muted-foreground text-sm">
+                  Set the dimensions for the layer.
+                </p>
+              </div>
+              <div class="grid gap-2">
+                <TextField
+                  defaultValue="100%"
+                  class="grid grid-cols-3 items-center gap-4"
+                >
+                  <TextFieldLabel>Width</TextFieldLabel>
+                  <TextFieldInput class="col-span-2 h-8" />
+                </TextField>
+                <TextField
+                  defaultValue="300px"
+                  class="grid grid-cols-3 items-center gap-4"
+                >
+                  <TextFieldLabel>Max. width</TextFieldLabel>
+                  <TextFieldInput class="col-span-2 h-8" />
+                </TextField>
+                <TextField
+                  defaultValue="25px"
+                  class="grid grid-cols-3 items-center gap-4"
+                >
+                  <TextFieldLabel>Height</TextFieldLabel>
+                  <TextFieldInput class="col-span-2 h-8" />
+                </TextField>
+                <TextField
+                  defaultValue="none"
+                  class="grid grid-cols-3 items-center gap-4"
+                >
+                  <TextFieldLabel>Max. height</TextFieldLabel>
+                  <TextFieldInput class="col-span-2 h-8" />
+                </TextField>
+              </div>
+            </div>
+          </PopoverContent>
+        </PopoverPortal>
+      </Popover>
+    )
+  }
+
+  export default PopoverDemo
+  ```
+</ComponentPreview>
+
+### Simple content
+
+Use a popover for short explanatory copy or lightweight actions without nesting a full form.
+
+<ComponentPreview name="Popover Simple">
+  <div class="mb-4 w-full">
+    <Popover>
+      <PopoverTrigger
+        as={(props) => (
+          <Button variant="outline" {...props}>
+            Info
+          </Button>
+        )}
+      />
+      <PopoverPortal>
+        <PopoverContent class="w-72">
+            <p class="text-sm leading-relaxed">
+              Popover content can be any markup: short help text, actions, or a
+              compact form. Size the panel with utilities on{" "}
+              <code class="rounded bg-muted px-1 py-0.5 text-xs">
+                PopoverContent
+              </code>
+              .
+            </p>
+        </PopoverContent>
+      </PopoverPortal>
+    </Popover>
+  </div>
+  ```tsx
+  import { Button } from "shadcn-solid-components/components/button"
+  import {
+    Popover,
+    PopoverContent,
+    PopoverPortal,
+    PopoverTrigger,
+  } from "shadcn-solid-components/components/popover"
+
+  const PopoverSimpleDemo = () => {
+    return (
+      <Popover>
+        <PopoverTrigger<typeof Button>
+          as={(props) => (
+            <Button variant="outline" {...props}>
+              Info
+            </Button>
+          )}
+        />
+        <PopoverPortal>
+          <PopoverContent class="w-72">
+            <p class="text-sm leading-relaxed">
+              Popover content can be any markup: short help text, actions, or a
+              compact form. Size the panel with utilities on{" "}
+              <code class="rounded bg-muted px-1 py-0.5 text-xs">
+                PopoverContent
+              </code>
+              .
+            </p>
+          </PopoverContent>
+        </PopoverPortal>
+      </Popover>
+    )
+  }
+
+  export default PopoverSimpleDemo
+  ```
+</ComponentPreview>
+
+### Controlled open
+
+Drive the panel with `open` / `onOpenChange` when another action should close it or when multiple UI pieces must stay in sync.
+
+<ComponentPreview name="Popover Controlled">
+  <div class="mb-4 w-full">
+    <PopoverControlledDemo />
+  </div>
+  ```tsx
+  import { createSignal } from "solid-js"
+
+  import { Button } from "shadcn-solid-components/components/button"
+  import {
+    Popover,
+    PopoverContent,
+    PopoverPortal,
+    PopoverTrigger,
+  } from "shadcn-solid-components/components/popover"
+
+  const PopoverControlledDemo = () => {
+    const [open, setOpen] = createSignal(false)
+
+    return (
+      <Popover open={open()} onOpenChange={setOpen}>
+        <PopoverTrigger<typeof Button>
+          as={(props) => (
+            <Button variant="outline" {...props}>
+              {open() ? "Close" : "Open"} popover
+            </Button>
+          )}
+        />
+        <PopoverPortal>
+          <PopoverContent class="w-72">
+            <p class="text-muted-foreground mb-3 text-sm">
+              Controlled example: the trigger label reflects open state.
+            </p>
+            <Button
+              class="w-full"
+              variant="secondary"
+              onClick={() => setOpen(false)}
+            >
+              Close from inside
+            </Button>
+          </PopoverContent>
+        </PopoverPortal>
+      </Popover>
+    )
+  }
+
+  export default PopoverControlledDemo
+  ```
+</ComponentPreview>
+
+## Exports
+
+- `Popover`, `PopoverPortal`, `PopoverTrigger`, `PopoverContent`
+- Types: `PopoverProps`, `PopoverTriggerProps`, `PopoverContentProps`

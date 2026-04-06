@@ -1,0 +1,134 @@
+---
+title: File upload zone
+description: Drag-and-drop and file input with validation, previews, and upload progress UI.
+section: HOC
+toc: true
+---
+
+import FileUploadZoneDemo from "../../../examples/file-upload-zone-demo"
+
+`FileUploadZone` validates dropped or selected files against `accept`, `maxSize`, and `maxFiles`, then calls `onFilesAdd` with the accepted `File[]`. The file list UI is driven by the controlled `value` array of `UploadFile` objects.
+
+## Installation
+
+Install `shadcn-solid-components` and satisfy peer dependencies (`solid-js`, Tailwind CSS v4, `tw-animate-css`).
+
+## Usage
+
+```tsx
+import { FileUploadZone } from "shadcn-solid-components/hoc/file-upload-zone"
+
+<FileUploadZone
+  accept="image/*,.pdf"
+  maxSize={5 * 1024 * 1024}
+  value={files()}
+  onFilesAdd={(newFiles) => {
+    /* append to your UploadFile state */
+  }}
+  onRemove={(file) => {
+    /* remove from state */
+  }}
+/>
+```
+
+`onFilesAdd` receives browser `File[]` values. You should generate a stable `id` for each one and
+store it as an `UploadFile` entry, including fields such as `status: "pending"`. As upload progress
+changes, replace the matching item's `progress` and `status` to drive the built-in list UI.
+
+## Examples
+
+### Controlled list with add and remove
+
+<ComponentPreview name="File Upload Zone Demo">
+  <div class="mb-4 w-full">
+    <FileUploadZoneDemo />
+  </div>
+  ```tsx
+  import { createSignal } from "solid-js"
+
+  import {
+    FileUploadZone,
+    type UploadFile,
+  } from "shadcn-solid-components/hoc/file-upload-zone"
+
+  let nextId = 0
+
+  const FileUploadZoneDemo = () => {
+    const [files, setFiles] = createSignal<UploadFile[]>([])
+
+    return (
+      <FileUploadZone
+        accept="image/*,.pdf"
+        maxSize={5 * 1024 * 1024}
+        maxFiles={5}
+        value={files()}
+        onFilesAdd={(added) => {
+          const mapped: UploadFile[] = added.map((file) => ({
+            id: String(++nextId),
+            file,
+            status: "pending",
+          }))
+          setFiles((prev) => [...prev, ...mapped])
+        }}
+        onRemove={(item) => {
+          setFiles((prev) => prev.filter((file) => file.id !== item.id))
+        }}
+      />
+    )
+  }
+
+  export default FileUploadZoneDemo
+  ```
+</ComponentPreview>
+
+```tsx
+import { createSignal } from "solid-js"
+import { FileUploadZone, type UploadFile } from "shadcn-solid-components/hoc/file-upload-zone"
+
+let nextId = 0
+
+export function AttachmentsField() {
+  const [files, setFiles] = createSignal<UploadFile[]>([])
+
+  return (
+    <FileUploadZone
+      accept="image/*,.pdf"
+      maxSize={5 * 1024 * 1024}
+      maxFiles={5}
+      value={files()}
+      onFilesAdd={(added) => {
+        const mapped: UploadFile[] = added.map((file) => ({
+          id: String(++nextId),
+          file,
+          status: "pending",
+        }))
+        setFiles((prev) => [...prev, ...mapped])
+      }}
+      onRemove={(item) => {
+        setFiles((prev) => prev.filter((f) => f.id !== item.id))
+      }}
+    />
+  )
+}
+```
+
+## API
+
+### `FileUploadZoneProps`
+
+Extends `div` props.
+
+- `accept`, `maxSize`, `maxFiles`, `multiple` (default multi-select `true`)
+- `value` — `UploadFile[]`
+- `onFilesAdd`, `onRemove`
+- `disabled`, `locale`
+
+### `UploadFile`
+
+- `file`, `id`, `progress`, `status`, `error`, `preview`
+
+## Exports
+
+- `FileUploadZone` — component
+- `FileUploadZoneProps`, `UploadFile` — types
+- `enLocale`, `zhCNLocale`, `zhTWLocale`, `jaLocale` — preset locale objects

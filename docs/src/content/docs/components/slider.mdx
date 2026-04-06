@@ -1,0 +1,155 @@
+---
+title: Slider
+description: Range input with track, fill, thumb, and optional labels.
+section: Components
+toc: true
+---
+
+import SliderCustomLabelDemo from "../../../examples/slider-custom-label-demo"
+import SliderDemo from "../../../examples/slider-demo"
+import SliderVerticalDemo from "../../../examples/slider-vertical-demo"
+
+Slider composes Kobalte’s slider primitive into a track/fill/thumb layout with optional group, label, value label, description, and error slots.
+
+## Installation
+
+Install `shadcn-solid-components` and satisfy peer dependencies (`solid-js`, Tailwind CSS v4, `tw-animate-css`).
+
+## Usage
+
+```tsx
+import {
+  Slider,
+  SliderDescription,
+  SliderErrorMessage,
+  SliderFill,
+  SliderGroup,
+  SliderLabel,
+  SliderThumb,
+  SliderTrack,
+  SliderValueLabel,
+} from "shadcn-solid-components/components/slider"
+```
+
+Place `SliderTrack` with `SliderFill` and one or more `SliderThumb` children inside `Slider`. Use `SliderGroup` when combining multiple related sliders with shared chrome.
+
+## Exports
+
+- `Slider`, `SliderTrack`, `SliderFill`, `SliderThumb`, `SliderGroup`, `SliderLabel`, `SliderValueLabel`, `SliderDescription`, `SliderErrorMessage`
+- Types: matching `*Props` for each export
+
+
+## Examples
+
+### Default
+
+<ComponentPreview name="Slider Demo">
+  <div class="mb-4 w-full">
+    <SliderDemo />
+  </div>
+  ```tsx
+  import {
+  Slider,
+  SliderFill,
+  SliderThumb,
+  SliderTrack,
+} from "shadcn-solid-components/components/slider"
+
+const SliderDemo = () => {
+  return (
+    <Slider defaultValue={[50]} step={1} maxValue={100} class="w-[60%]">
+      <SliderTrack>
+        <SliderFill />
+        <SliderThumb />
+      </SliderTrack>
+    </Slider>
+  )
+}
+
+export default SliderDemo
+  ```
+</ComponentPreview>
+
+### Custom Label
+
+<ComponentPreview name="Slider Custom Label Demo">
+  <div class="mb-4 w-full">
+    <SliderCustomLabelDemo />
+  </div>
+  ```tsx
+  import { createSignal } from "solid-js"
+
+import {
+  Slider,
+  SliderDescription,
+  SliderErrorMessage,
+  SliderFill,
+  SliderGroup,
+  SliderLabel,
+  SliderThumb,
+  SliderTrack,
+  SliderValueLabel,
+} from "shadcn-solid-components/components/slider"
+
+const SliderCustomLabelDemo = () => {
+  const [values, setValues] = createSignal<number[]>([400, 1200])
+
+  return (
+    <Slider
+      class="w-[60%]"
+      value={values()}
+      onChange={setValues}
+      minValue={10}
+      maxValue={2000}
+      getValueLabel={(params) => `$${params.values[0]} - $${params.values[1]}`}
+      validationState={
+        values()[0] < 200 || values()[1] > 1500 ? "invalid" : "valid"
+      }
+    >
+      <SliderGroup>
+        <SliderLabel>Money</SliderLabel>
+        <SliderValueLabel />
+      </SliderGroup>
+      <SliderTrack>
+        <SliderFill />
+        <SliderThumb />
+        <SliderThumb />
+      </SliderTrack>
+      <SliderDescription>Money range</SliderDescription>
+      <SliderErrorMessage>Should be between $200 and $1500</SliderErrorMessage>
+    </Slider>
+  )
+}
+
+export default SliderCustomLabelDemo
+  ```
+</ComponentPreview>
+
+### Vertical
+
+<ComponentPreview name="Slider Vertical Demo">
+  <div class="mb-4 w-full">
+    <SliderVerticalDemo />
+  </div>
+  ```tsx
+  import {
+  Slider,
+  SliderFill,
+  SliderThumb,
+  SliderTrack,
+} from "shadcn-solid-components/components/slider"
+
+const SliderVerticalDemo = () => {
+  return (
+    <Slider orientation="vertical">
+      <SliderTrack>
+        <SliderFill />
+        <SliderThumb />
+      </SliderTrack>
+    </Slider>
+  )
+}
+
+export default SliderVerticalDemo
+  ```
+</ComponentPreview>

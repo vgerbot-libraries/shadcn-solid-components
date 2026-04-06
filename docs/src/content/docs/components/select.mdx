@@ -1,0 +1,148 @@
+---
+title: Select
+description: Dropdown single-select with trigger, value, and listbox parts.
+section: Components
+toc: true
+---
+
+import SelectDemo from "../../../examples/select-demo"
+import SelectErrorDemo from "../../../examples/select-error-demo"
+
+Use `Select` when you need a single choice from a list: the trigger shows the current value, and the listbox opens in a portal so it is not clipped by overflow. The API follows Kobalte’s select primitive (`options`, `itemComponent`, controlled `value` / `onChange`, and validation).
+
+## Installation
+
+Install `shadcn-solid-components` and satisfy peer dependencies (`solid-js`, Tailwind CSS v4, `tw-animate-css`).
+
+## Usage
+
+```tsx
+import {
+  HiddenSelect,
+  Select,
+  SelectContent,
+  SelectDescription,
+  SelectErrorMessage,
+  SelectItem,
+  SelectLabel,
+  SelectPortal,
+  SelectSection,
+  SelectTrigger,
+  SelectValue,
+} from "shadcn-solid-components/components/select"
+```
+
+The component is generic over option and optional group types. Place `SelectValue` inside `SelectTrigger`, and render options as `SelectItem` (and `SelectSection` when grouping). Use `SelectPortal` when the list should render outside the DOM hierarchy (typical for overlays).
+
+`HiddenSelect` keeps a native `<select>` in sync for forms and autofill when you need it.
+
+Set `validationState` and render `SelectErrorMessage` when the field is invalid, the same way as `TextField`.
+
+```tsx
+<Select /* ...same props as the custom UI... */>
+  <HiddenSelect />
+  {/* trigger, portal, listbox, etc. */}
+</Select>
+```
+
+## Accessibility
+
+The listbox follows the Kobalte select pattern: keyboard navigation inside the menu, typeahead, and Escape to close. Pair `SelectLabel` with the trigger for a visible label, or rely on `aria-label` on `SelectTrigger` when the design uses placeholder-only text.
+
+## Examples
+
+### Default
+
+<ComponentPreview name="Select Default">
+  <div class="mb-4 w-full max-w-xl">
+    <SelectDemo />
+  </div>
+  ```tsx
+  import {
+    Select,
+    SelectContent,
+    SelectItem,
+    SelectPortal,
+    SelectTrigger,
+    SelectValue,
+  } from "shadcn-solid-components/components/select"
+
+  const SelectDemo = () => {
+    return (
+      <Select
+        options={["Apple", "Banana", "Blueberry", "Grapes", "Pineapple"]}
+        placeholder="Select a fruit"
+        itemComponent={(props) => (
+          <SelectItem item={props.item}>{props.item.rawValue}</SelectItem>
+        )}
+      >
+        <SelectTrigger class="w-[180px]" aria-label="Fruit">
+          <SelectValue<string>>{(state) => state.selectedOption()}</SelectValue>
+        </SelectTrigger>
+        <SelectPortal>
+          <SelectContent />
+        </SelectPortal>
+      </Select>
+    )
+  }
+
+  export default SelectDemo
+  ```
+</ComponentPreview>
+
+### Error
+
+Invalid state is driven by `validationState` and optional messaging via `SelectErrorMessage`. The example below starts on “Grapes”; choosing **Apple** clears the error.
+
+<ComponentPreview name="Select Error">
+  <div class="mb-4 w-full max-w-xl">
+    <SelectErrorDemo />
+  </div>
+  ```tsx
+  import { createSignal } from "solid-js"
+
+  import {
+    Select,
+    SelectContent,
+    SelectErrorMessage,
+    SelectItem,
+    SelectLabel,
+    SelectPortal,
+    SelectTrigger,
+    SelectValue,
+  } from "shadcn-solid-components/components/select"
+
+  const SelectErrorDemo = () => {
+    const [value, setValue] = createSignal("Grapes")
+
+    return (
+      <Select
+        options={["Apple", "Banana", "Blueberry", "Grapes", "Pineapple"]}
+        placeholder="Select a fruit"
+        value={value()}
+        onChange={setValue}
+        validationState={value() !== "Apple" ? "invalid" : "valid"}
+        itemComponent={(props) => (
+          <SelectItem item={props.item}>{props.item.rawValue}</SelectItem>
+        )}
+      >
+        <SelectLabel>Fruit</SelectLabel>
+        <SelectTrigger class="w-[180px]" aria-label="Fruit">
+          <SelectValue<string>>{(state) => state.selectedOption()}</SelectValue>
+        </SelectTrigger>
+        <SelectPortal>
+          <SelectContent />
+        </SelectPortal>
+        <SelectErrorMessage>Hmm, I prefer apples.</SelectErrorMessage>
+      </Select>
+    )
+  }
+
+  export default SelectErrorDemo
+  ```
+</ComponentPreview>
+
+## Exports
+
+- `Select`, `SelectPortal`, `HiddenSelect`, `SelectValue`, `SelectTrigger`, `SelectContent`, `SelectItem`, `SelectSection`, `SelectDescription`, `SelectLabel`, `SelectErrorMessage`
+- Types: `SelectProps`, `SelectValueProps`, `SelectTriggerProps`, `SelectContentProps`, `SelectItemProps`, `SelectSectionProps`, `SelectDescriptionProps`, `SelectLabelProps`, `SelectErrorMessageProps`

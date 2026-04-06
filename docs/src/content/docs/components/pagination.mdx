@@ -1,0 +1,73 @@
+---
+title: Pagination
+description: Navigation control for paged lists and tables.
+section: Components
+toc: true
+---
+
+import PaginationDemo from "../../../examples/pagination-demo"
+
+Pagination wraps Kobalte’s pagination primitive with styled previous/next controls, page items, and an ellipsis helper.
+
+## Installation
+
+Install `shadcn-solid-components` and satisfy peer dependencies (`solid-js`, Tailwind CSS v4, `tw-animate-css`).
+
+## Usage
+
+```tsx
+import {
+  Pagination,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationItems,
+  PaginationNext,
+  PaginationPrevious,
+} from "shadcn-solid-components/components/pagination"
+```
+
+Use `Pagination` as the root `nav`, render `PaginationItems` for the page number strip, and compose `PaginationPrevious`, `PaginationNext`, `PaginationItem`, and `PaginationEllipsis` as needed.
+
+## Exports
+
+- `Pagination`, `PaginationItems`, `PaginationEllipsis`, `PaginationItem`, `PaginationNext`, `PaginationPrevious`
+- Types: `PaginationProps`, `PaginationEllipsisProps`, `PaginationItemProps`, `PaginationNextProps`, `PaginationPreviousProps`
+
+
+## Examples
+
+### Default
+
+<ComponentPreview name="Pagination Demo">
+  <div class="mb-4 w-full">
+    <PaginationDemo />
+  </div>
+  ```tsx
+  import {
+  Pagination,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationItems,
+  PaginationNext,
+  PaginationPrevious,
+} from "shadcn-solid-components/components/pagination"
+
+const PaginationDemo = () => {
+  return (
+    <Pagination
+      count={10}
+      itemComponent={(props) => (
+        <PaginationItem page={props.page}>{props.page}</PaginationItem>
+      )}
+      ellipsisComponent={() => <PaginationEllipsis />}
+    >
+      <PaginationPrevious />
+      <PaginationItems />
+      <PaginationNext />
+    </Pagination>
+  )
+}
+
+export default PaginationDemo
+  ```
+</ComponentPreview>

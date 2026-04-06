@@ -1,0 +1,114 @@
+---
+title: Timeline
+description: Vertical timeline for activity feeds with optional alternate layout and pending state.
+section: HOC
+toc: true
+---
+
+import TimelineDemo from "../../../examples/timeline-demo"
+
+`Timeline` maps `items` to nodes connected by a vertical line. In `alternate` mode, content switches sides on medium screens and falls back to a single column on small viewports. When `pending` is `true`, a pulsing node and localized pending label (non-`alternate` layouts) are shown after the last item.
+
+## Installation
+
+```bash
+pnpm add shadcn-solid-components
+```
+
+## Usage
+
+```tsx
+import { Timeline } from "shadcn-solid-components/hoc/timeline"
+
+<Timeline
+  mode="left"
+  items={[
+    { title: "Created", time: "10:00", description: "Order placed." },
+    { title: "Shipped", color: "text-green-500" },
+  ]}
+/>
+```
+
+## Examples
+
+### Alternate layout with rich content
+
+<ComponentPreview name="Timeline Demo">
+  <div class="mb-4 w-full max-w-2xl">
+    <TimelineDemo />
+  </div>
+  ```tsx
+  import { Timeline } from "shadcn-solid-components/hoc/timeline"
+
+  const TimelineDemo = () => {
+    return (
+      <Timeline
+        mode="alternate"
+        items={[
+          {
+            title: "Deployed",
+            time: "09:00",
+            description: "v2.4.0 to production",
+            color: "text-emerald-500",
+            content: (
+              <a class="text-xs text-primary underline" href="/releases">
+                View release
+              </a>
+            ),
+          },
+          {
+            title: "Rollback",
+            time: "11:30",
+            icon: <span class="text-lg">!</span>,
+          },
+        ]}
+      />
+    )
+  }
+
+  export default TimelineDemo
+  ```
+</ComponentPreview>
+
+```tsx
+import { Timeline } from "shadcn-solid-components/hoc/timeline"
+
+<Timeline
+  mode="alternate"
+  items={[
+    {
+      title: "Deployed",
+      time: "09:00",
+      description: "v2.4.0 to production",
+      color: "text-emerald-500",
+      content: <a class="text-xs text-primary underline" href="/releases">View release</a>,
+    },
+    {
+      title: "Rollback",
+      time: "11:30",
+      icon: <span class="text-lg">⚠️</span>,
+    },
+  ]}
+/>
+```
+
+### Pending tail state
+
+```tsx
+import { Timeline } from "shadcn-solid-components/hoc/timeline"
+
+<Timeline
+  mode="left"
+  pending
+  items={[{ title: "Queued", description: "Job is waiting." }]}
+/>
+```
+
+## Exports
+
+| Name | Description |
+| --- | --- |
+| `Timeline` | Timeline component. |
+| `TimelineProps` | `items`, optional `mode` (`'left' \| 'right' \| 'alternate'`), `pending`, `locale`, plus `div` props. |
+| `TimelineItem` | `title`, optional `description` (`string` \| JSX), `time`, `icon`, `color` (Tailwind text class), `content`. |
+| `TimelineMode` | Layout mode union type. |

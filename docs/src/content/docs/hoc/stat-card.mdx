@@ -1,0 +1,106 @@
+---
+title: Stat card
+description: Metric card with label, value, optional trend, icon, and footer slot.
+section: HOC
+toc: true
+---
+
+import StatCardDemo from "../../../examples/stat-card-demo"
+
+`StatCard` wraps content in `Card` with a header row (`label` + optional `icon`) and a prominent `value`. Trend shows an arrow and optional `trendText` when `trend` is `'up'` or `'down'`.
+
+## Installation
+
+Install `shadcn-solid-components` and satisfy peer dependencies (`solid-js`, Tailwind CSS v4, `tw-animate-css`).
+
+## Usage
+
+```tsx
+import { StatCard } from "shadcn-solid-components/hoc/stat-card"
+
+<StatCard label="Revenue" value="$12,345" trend="up" trendText="+12% vs last month" />
+```
+
+## Examples
+
+### Neutral trend and icon
+
+<ComponentPreview name="Stat Card Demo">
+  <div class="mb-4 w-full max-w-sm">
+    <StatCardDemo />
+  </div>
+  ```tsx
+  import { IconUsers } from "shadcn-solid-components/components/icons"
+  import { StatCard } from "shadcn-solid-components/hoc/stat-card"
+
+  const StatCardDemo = () => {
+    return (
+      <StatCard
+        label="Active users"
+        value={1284}
+        trend="neutral"
+        icon={<IconUsers class="text-muted-foreground size-4" />}
+      />
+    )
+  }
+
+  export default StatCardDemo
+  ```
+</ComponentPreview>
+
+```tsx
+import { IconUsers } from "shadcn-solid-components/components/icons"
+import { StatCard } from "shadcn-solid-components/hoc/stat-card"
+
+<StatCard
+  label="Active users"
+  value={1284}
+  trend="neutral"
+  icon={<IconUsers class="text-muted-foreground size-4" />}
+/>
+```
+
+### Footer slot
+
+```tsx
+import { StatCard } from "shadcn-solid-components/hoc/stat-card"
+
+<StatCard
+  label="MRR"
+  value="$4,200"
+  trend="down"
+  trendText="-3% vs last month"
+  footer={<p class="text-muted-foreground text-xs">Updated hourly</p>}
+/>
+```
+
+### Numeric `value` and longer `label`
+
+`value` accepts both `string` and `number`. Longer `label` content still works well with `icon`
+when you need to keep the header row visually balanced.
+
+```tsx
+import { StatCard } from "shadcn-solid-components/hoc/stat-card"
+
+<StatCard
+  label="Completed work orders this month (including subtasks)"
+  value={1284}
+  trend="up"
+  trendText="+8% vs previous period"
+/>
+```
+
+## API
+
+### `StatCardProps`
+
+Extends `div` props.
+
+- `label`, `value` — string or number for the metric
+- `trend` — `'up'` | `'down'` | `'neutral'`
+- `trendText`, `icon`, `footer`
+
+## Exports
+
+- `StatCard` — component
+- `StatCardProps`, `StatCardTrend` — types

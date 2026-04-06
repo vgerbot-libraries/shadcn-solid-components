@@ -1,0 +1,88 @@
+---
+title: Mode toggle group
+description: Segmented light/dark buttons using Kobalte color mode.
+section: HOC
+toc: true
+---
+
+import ModeToggleGroupDemo from "../../../examples/mode-toggle-group-demo"
+
+`ModeToggleGroup` renders two `Button`s in a muted pill container. The active mode uses the default button variant; the inactive side uses ghost.
+
+## Installation
+
+Install `shadcn-solid-components` and satisfy peer dependencies (`solid-js`, Tailwind CSS v4, `tw-animate-css`).
+
+## Usage
+
+```tsx
+import { ModeToggleGroup } from "shadcn-solid-components/hoc/mode-toggle-group"
+
+<ModeToggleGroup lightLabel="Light" darkLabel="Dark" />
+```
+
+## Examples
+
+### Localized labels
+
+<ComponentPreview name="Mode Toggle Group Demo">
+  <div class="mb-4 w-full">
+    <ModeToggleGroupDemo />
+  </div>
+  ```tsx
+  import { ColorModeProvider } from "@kobalte/core"
+
+import { ModeToggleGroup } from "shadcn-solid-components/hoc/mode-toggle-group"
+
+const ModeToggleGroupDemo = () => {
+  return (
+    <ColorModeProvider>
+      <ModeToggleGroup aria-label="Color mode" lightLabel="Light" darkLabel="Dark" />
+    </ColorModeProvider>
+  )
+}
+
+export default ModeToggleGroupDemo
+  ```
+</ComponentPreview>
+
+```tsx
+import { ModeToggleGroup } from "shadcn-solid-components/hoc/mode-toggle-group"
+
+<ModeToggleGroup lightLabel="Light" darkLabel="Dark" />
+```
+
+### Wrapper layout
+
+`ModeToggleGroup` forwards extra props to the root `div` (except `class`, which is merged with defaults).
+
+```tsx
+import { ModeToggleGroup } from "shadcn-solid-components/hoc/mode-toggle-group"
+
+<ModeToggleGroup class="ml-auto" data-testid="theme-toggle" />
+```
+
+### Root forwards test and accessibility props
+
+Aside from `class`, which is merged with the default styles, other `div` props such as
+`data-testid` and `aria-label` are forwarded directly to the outer container:
+
+```tsx
+import { ModeToggleGroup } from "shadcn-solid-components/hoc/mode-toggle-group"
+
+<ModeToggleGroup aria-label="Color mode" data-testid="mode-toggle-group" />
+```
+
+## API
+
+### `ModeToggleGroupProps`
+
+Extends `div` props.
+
+- `lightLabel` — default `'Light'`
+- `darkLabel` — default `'Dark'`
+
+## Exports
+
+- `ModeToggleGroup` — component
+- `ModeToggleGroupProps` — type

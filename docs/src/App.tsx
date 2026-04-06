@@ -1,10 +1,12 @@
 import { A, Navigate, Route, Router, useLocation, useParams } from "@solidjs/router"
 // @ts-expect-error solid-mdx does not expose compatible types here.
 import { MDXProvider } from "solid-mdx"
-import { For, Show, createEffect, createMemo } from "solid-js"
+import MiniSearch from "minisearch"
+import { For, Show, createEffect, createMemo, createSignal } from "solid-js"
 
 import { Button, buttonVariants } from "shadcn-solid-components/components/button"
 import { Separator } from "shadcn-solid-components/components/separator"
+import { TextField, TextFieldInput } from "shadcn-solid-components/components/text-field"
 import { ModeToggleDropdown } from "shadcn-solid-components/hoc/mode-toggle-dropdown"
 import { cx } from "shadcn-solid-components/lib/cva"
 
@@ -22,9 +24,20 @@ type DocRouteParams = {
   slug?: string
 }
 
+type DocsSearchItem = {
+  id: string
+  title: string
+  href: string
+  description: string
+  section: string
+  status?: string
+  headings: string
+}
+
 const siteTitle = "shadcn-solid-components Docs"
 const siteDescription =
   "Documentation infrastructure for shadcn-solid-components. Content can be added incrementally with MDX."
+const routerBase = import.meta.env.BASE_URL === "/" ? "" : import.meta.env.BASE_URL.replace(/\/$/, "")
 
 const setDocumentMeta = (title: string, description: string) => {
   document.title = title
@@ -37,6 +50,31 @@ const setDocumentMeta = (title: string, description: string) => {
   metaDescription.setAttribute("content", description)
 }
 
+const docsSearchItems: DocsSearchItem[] = docsNavigation.flatMap((section) =>
+  section.items.map((item) => {
+    const slug = item.href.replace(/^\/docs\//, "")
+    const entry = Contents[slug]
+
+    return {
+      id: item.href,
+      title: item.title,
+      href: item.href,
+      description: item.description,
+      section: section.title,
+      status: item.status,
+      headings: entry?.headings.map((heading) => heading.text).join(" ") ?? "",
+    }
+  }),
+)
+
+const docsSearch = new MiniSearch<DocsSearchItem>({
+  idField: "id",
+  fields: ["title", "description", "section", "headings"],
+  storeFields: ["title", "href", "description", "section", "status"],
+})
+
+docsSearch.addAll(docsSearchItems)
+
 const HomePage = () => {
   createEffect(() => {
     setDocumentMeta(siteTitle, siteDescription)
@@ -45,10 +83,10 @@ const HomePage = () => {
   return (
     <div class="mx-auto flex w-full max-w-7xl flex-1 flex-col px-6 py-16 sm:px-8 lg:px-12 text-center items-center justify-center">
       <div class="flex flex-col items-center gap-4">
-        <a href="https://github.com/hngngn/shadcn-solid" target="_blank" rel="noreferrer" class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80">
+        {/* <a href="https://github.com/hngngn/shadcn-solid" target="_blank" rel="noreferrer" class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80">
           <span class="mr-2">🎉</span>
           New Components: Kbd and Button Group
-        </a>
+        </a> */}
         <h1 class="text-center text-3xl font-bold leading-tight tracking-tighter md:text-6xl lg:leading-[1.1]">
           The Foundation for your Design System
         </h1>
@@ -64,7 +102,7 @@ const HomePage = () => {
           </A>
         </div>
       </div>
-      
+
       <div class="mt-16 w-full max-w-5xl items-start justify-center relative">
          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-left">
             <div class="flex flex-col gap-6 items-center">
@@ -138,23 +176,77 @@ const TableOfContents = (props: { headings: Array<{ depth: number; slug: string;
 
 const DocsSidebar = () => {
   const location = useLocation()
+  const [query, setQuery] = createSignal("")
+  const trimmedQuery = createMemo(() => query().trim())
+
+  const filteredSections = createMemo(() => {
+    if (!trimmedQuery()) {
+      return docsNavigation
+    }
+
+    const matches = docsSearch.search(trimmedQuery(), {
+      prefix: true,
+      fuzzy: 0.2,
+      fields: ["title", "description", "section", "headings"],
+    }) as unknown as DocsSearchItem[]
+
+    const matchingHrefs = new Set(matches.map((item) => item.href))
+
+    return docsNavigation
+      .map((section) => ({
+        ...section,
+        items: section.items.filter((item) => matchingHrefs.has(item.href)),
+      }))
+      .filter((section) => section.items.length > 0)
+  })
+
+  const resultCount = createMemo(() =>
+    filteredSections().reduce((count, section) => count + section.items.length, 0),
+  )
 
   return (
-    <aside class="border-border bg-background/80 w-full shrink-0 border-b backdrop-blur lg:sticky lg:top-0 lg:h-screen lg:w-72 lg:border-b-0 lg:border-r">
+    <aside class="border-border bg-background/80 w-full shrink-0 border-b backdrop-blur lg:fixed lg:top-16 lg:left-[max(0px,calc((100vw-80rem)/2))] lg:h-[calc(100vh-4rem)] lg:w-72 lg:border-b-0 lg:border-r">
       <div class="flex h-full flex-col">
         <div class="px-6 py-6">
-          <A href="/docs" class="text-foreground text-lg font-semibold tracking-tight">
-            Documentation
-          </A>
-          <p class="text-muted-foreground mt-2 text-sm">
-            MDX-driven docs navigation generated from the content directory.
-          </p>
+          <div class="space-y-3">
+            <TextField>
+              <TextFieldInput
+                type="search"
+                value={query()}
+                onInput={(event) => setQuery(event.currentTarget.value)}
+                placeholder="Search docs..."
+                aria-label="Search documentation"
+              />
+            </TextField>
+            <Show when={trimmedQuery()}>
+              <div class="text-muted-foreground flex items-center justify-between gap-3 px-1 text-xs">
+                <span>
+                  {resultCount()} result{resultCount() === 1 ? "" : "s"}
+                </span>
+                <button
+                  type="button"
+                  class="hover:text-foreground transition-colors"
+                  onClick={() => setQuery("")}
+                >
+                  Clear
+                </button>
+              </div>
+            </Show>
+          </div>
         </div>
         <Separator />
         <div class="flex-1 overflow-y-auto px-4 py-4">
           <Show when={docsNavigation.length} fallback={<p class="text-muted-foreground px-2 text-sm">Waiting for content.</p>}>
+            <Show
+              when={filteredSections().length}
+              fallback={
+                <p class="text-muted-foreground px-2 text-sm">
+                  No pages match <span class="text-foreground font-medium">{trimmedQuery()}</span>.
+                </p>
+              }
+            >
             <nav class="space-y-6">
-              <For each={docsNavigation}>
+              <For each={filteredSections()}>
                 {(section) => (
                   <section>
                     <p class="text-muted-foreground px-2 text-xs font-semibold uppercase tracking-[0.2em]">
@@ -188,6 +280,7 @@ const DocsSidebar = () => {
                 )}
               </For>
             </nav>
+            </Show>
           </Show>
         </div>
       </div>
@@ -302,7 +395,7 @@ const DocsPage = () => {
 
 const DocsLayout = (props: { children?: import("solid-js").JSX.Element }) => {
   return (
-    <div class="mx-auto flex w-full max-w-7xl flex-1 flex-col lg:flex-row">
+    <div class="mx-auto flex w-full max-w-7xl flex-1 flex-col lg:pl-72">
       <DocsSidebar />
       <div class="min-w-0 flex-1">{props.children}</div>
     </div>
@@ -351,7 +444,7 @@ const AppShell = (props: { children?: import("solid-js").JSX.Element }) => {
 
 export default function App() {
   return (
-    <Router root={AppShell}>
+    <Router root={AppShell} base={routerBase}>
       <Route path="/" component={HomePage} />
       <Route path="/docs" component={DocsLayout}>
         <Route path="/" component={DocsIndexPage} />

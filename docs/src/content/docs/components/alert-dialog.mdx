@@ -1,0 +1,93 @@
+---
+title: Alert Dialog
+navTitle: Alert Dialog
+description: Modal dialog for critical confirmations that interrupt the user flow.
+section: Components
+toc: true
+---
+
+import AlertDialogDemo from "../../../examples/alert-dialog-demo"
+
+Alert dialogs present blocking confirmation UI: overlay, title, description, and primary/secondary actions wired to Kobalte’s alert dialog primitive.
+
+## Installation
+
+Install `shadcn-solid-components` and satisfy peer dependencies (`solid-js`, Tailwind CSS v4, `tw-animate-css`).
+
+## Usage
+
+```tsx
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogOverlay,
+  AlertDialogPortal,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "shadcn-solid-components/components/alert-dialog"
+```
+
+Use `AlertDialogTrigger` to open, `AlertDialogContent` for the modal body, and `AlertDialogAction` / `AlertDialogCancel` as close buttons with appropriate button styles.
+
+## Exports
+
+- `AlertDialog`, `AlertDialogPortal`, `AlertDialogTrigger`, `AlertDialogOverlay`, `AlertDialogContent`, `AlertDialogHeader`, `AlertDialogFooter`, `AlertDialogTitle`, `AlertDialogDescription`, `AlertDialogAction`, `AlertDialogCancel`
+- Types: `AlertDialogProps`, `AlertDialogTriggerProps`, `AlertDialogOverlayProps`, `AlertDialogContentProps`, `AlertDialogHeaderProps`, `AlertDialogFooterProps`, `AlertDialogTitleProps`, `AlertDialogDescriptionProps`, `AlertDialogActionProps`, `AlertDialogCancelProps`
+
+
+## Examples
+
+### Default
+
+<ComponentPreview name="Alert Dialog Demo">
+  <div class="mb-4 w-full">
+    <AlertDialogDemo />
+  </div>
+  ```tsx
+  import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogPortal,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "shadcn-solid-components/components/alert-dialog"
+import { Button } from "shadcn-solid-components/components/button"
+
+const AlertDialogDemo = () => {
+  return (
+    <AlertDialog>
+      <AlertDialogTrigger as={Button} variant="outline">
+        Show Dialog
+      </AlertDialogTrigger>
+      <AlertDialogPortal>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+            <AlertDialogDescription>
+              This action cannot be undone. This will permanently delete your
+              account and remove your data from our servers.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogAction>Continue</AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialogPortal>
+    </AlertDialog>
+  )
+}
+
+export default AlertDialogDemo
+  ```
+</ComponentPreview>

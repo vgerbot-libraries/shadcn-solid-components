@@ -1,0 +1,252 @@
+---
+title: Confirm dialog
+description: Imperative confirmation API backed by a single root `AlertDialog` instance.
+section: HOC
+toc: true
+---
+
+import ConfirmDialogDemo from "../../../examples/confirm-dialog-demo"
+
+Mount `ConfirmDialog` once near the app root. Call `confirm()` anywhere to open the dialog and await a boolean (`true` if the user confirms).
+
+## Installation
+
+```bash
+pnpm add shadcn-solid-components
+```
+
+Also install the peer requirements: `solid-js`, Tailwind CSS v4, and `tw-animate-css`.
+
+## Usage
+
+```tsx
+import { ConfirmDialog, confirm } from "shadcn-solid-components/hoc/confirm-dialog"
+
+// In your root layout:
+<ConfirmDialog />
+
+// Elsewhere:
+const ok = await confirm({ title: "Delete item?", variant: "destructive" })
+if (ok) {
+  // proceed
+}
+```
+
+`confirm()` resolves to `false` when the user cancels, dismisses the dialog, or clicks the overlay
+when dismissal is allowed. That makes it convenient inside `async` event handlers where you want to
+write the flow sequentially without managing dialog state yourself. Mount `ConfirmDialog` only once
+near the app root; any deeply nested component can then reuse the same instance via `confirm()`.
+Use `confirmClass` and `cancelClass` to add emphasis or align the actions with your design system.
+
+In the examples below, assume your root layout already renders `<ConfirmDialog />`. Do not mount it
+again inside each button component.
+
+If you omit `variant`, the confirm action uses the default button styling, which fits non-destructive
+cases such as "Save" or "Discard". `destructive` only changes the visual emphasis of the confirm
+button.
+
+<ComponentPreview name="Confirm Dialog Demo">
+  <div class="mb-4 w-full">
+    <ConfirmDialogDemo />
+  </div>
+  ```tsx
+  import { Button } from "shadcn-solid-components/components/button"
+  import { ConfirmDialog, confirm } from "shadcn-solid-components/hoc/confirm-dialog"
+
+  const ConfirmDialogDemo = () => {
+    return (
+      <>
+        <ConfirmDialog />
+        <Button
+          variant="outline"
+          onClick={async () => {
+            await confirm({
+              title: "Unsaved changes",
+              description: "Save before leaving?",
+              variant: "default",
+              locale: { confirm: "Save and continue", cancel: "Stay on page" },
+            })
+          }}
+        >
+          Leave page
+        </Button>
+      </>
+    )
+  }
+
+  export default ConfirmDialogDemo
+  ```
+</ComponentPreview>
+
+## API
+
+### `confirm(options: ConfirmDialogOptions): Promise<boolean>`
+
+Resolves to `true` when the user confirms, `false` when cancelled or dismissed.
+
+### `ConfirmDialogOptions`
+
+- `title` — dialog title
+- `description` — optional string or JSX
+- `variant` — `'default'` | `'destructive'` (destructive styles the confirm action)
+- `locale` — partial button label overrides
+- `confirmClass`, `cancelClass` — extra classes on the action buttons
+
+## Examples
+
+### Neutral confirmation with button classes
+
+```tsx
+import { Button } from "shadcn-solid-components/components/button"
+import { confirm } from "shadcn-solid-components/hoc/confirm-dialog"
+
+export function SaveAnywayButton() {
+  return (
+    <Button
+      variant="outline"
+      onClick={async () => {
+        const ok = await confirm({
+          title: "Unsaved changes",
+          description: "Save before leaving?",
+          variant: "default",
+          locale: { confirm: "Save and continue", cancel: "Stay on page" },
+          confirmClass: "bg-primary text-primary-foreground hover:bg-primary/90",
+          cancelClass: "border border-input bg-background",
+        })
+        if (ok) {
+          /* persist then navigate */
+        }
+      }}
+    >
+      Leave page
+    </Button>
+  )
+}
+```
+
+### Confirm destructive deletion
+
+```tsx
+import { Button } from "shadcn-solid-components/components/button"
+import { confirm } from "shadcn-solid-components/hoc/confirm-dialog"
+
+/** If the root layout already renders `<ConfirmDialog />`, business components only call `confirm`. */
+export function DeleteRow(props: { id: string }) {
+  const handleDelete = async () => {
+    const ok = await confirm({
+      title: "Delete this record?",
+      description: "This action cannot be undone.",
+      variant: "destructive",
+      locale: { confirm: "Delete", cancel: "Cancel" },
+    })
+    if (ok) {
+      // await api.delete(props.id)
+    }
+  }
+
+  return (
+    <Button variant="destructive" onClick={handleDelete}>
+      Delete
+    </Button>
+  )
+}
+```
+
+### JSX description and custom button copy
+
+```tsx
+import { Button } from "shadcn-solid-components/components/button"
+import { confirm } from "shadcn-solid-components/hoc/confirm-dialog"
+
+// Assume <ConfirmDialog /> is already mounted in the root layout.
+
+export function DeleteButton(props: { onDelete: () => Promise<void> }) {
+  return (
+    <Button
+      variant="destructive"
+      onClick={async () => {
+        const ok = await confirm({
+          title: "Delete this item?",
+          description: (
+            <span>
+              This removes the item for <strong>all</strong> workspace members.
+            </span>
+          ),
+          variant: "destructive",
+          locale: { confirm: "Delete", cancel: "Cancel" },
+        })
+        if (ok) await props.onDelete()
+      }}
+    >
+      Delete
+    </Button>
+  )
+}
+```
+
+### Extra button classes with `confirmClass` and `cancelClass`
+
+```tsx
+import { Button } from "shadcn-solid-components/components/button"
+import { confirm } from "shadcn-solid-components/hoc/confirm-dialog"
+
+export function ArchiveButton() {
+  return (
+    <Button
+      variant="outline"
+      onClick={async () => {
+        const ok = await confirm({
+          title: "Archive this conversation?",
+          description: "You can still find it later in Archived.",
+          confirmClass: "min-w-24",
+          cancelClass: "min-w-24",
+          locale: { confirm: "Archive", cancel: "Cancel" },
+        })
+        if (ok) {
+          /* archive */
+        }
+      }}
+    >
+      Archive
+    </Button>
+  )
+}
+```
+
+### Default variant with button class adjustments
+
+When `variant` is omitted, the confirm action uses the standard emphasized button style. Use
+`confirmClass` and `cancelClass` to add spacing, width, or variant-aligned utility classes.
+
+```tsx
+import { Button } from "shadcn-solid-components/components/button"
+import { confirm } from "shadcn-solid-components/hoc/confirm-dialog"
+
+export function SaveSettingsButton() {
+  return (
+    <Button
+      type="button"
+      onClick={async () => {
+        const ok = await confirm({
+          title: "Save changes?",
+          description: "Your unsaved edits will be written to the current workspace.",
+          confirmClass: "min-w-24",
+          cancelClass: "min-w-24",
+          locale: { confirm: "Save", cancel: "Keep editing" },
+        })
+        if (ok) {
+          // persist
+        }
+      }}
+    >
+      Save
+    </Button>
+  )
+}
+```
+
+## Exports
+
+- `ConfirmDialog` — root component (render once)
+- `confirm` — imperative API
+- `ConfirmDialogOptions`, `ConfirmDialogVariant` — types
