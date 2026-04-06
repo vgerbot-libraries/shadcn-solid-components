@@ -1,6 +1,12 @@
 import { useColorMode } from '@kobalte/core'
 import { type Component } from 'solid-js'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from 'shadcn-solid-components/components/card'
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from 'shadcn-solid-components/components/card'
 import {
   RadioGroup,
   RadioGroupItem,
@@ -10,7 +16,13 @@ import {
   RadioGroupItems,
   RadioGroupLabel,
 } from 'shadcn-solid-components/components/radio-group'
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from 'shadcn-solid-components/components/select'
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from 'shadcn-solid-components/components/select'
 import type { Locale } from 'shadcn-solid-components/i18n/types'
 import { PageLayout } from '../components/PageLayout'
 import { setGlobalLocale } from '../store'

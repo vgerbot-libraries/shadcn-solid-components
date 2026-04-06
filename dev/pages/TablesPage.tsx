@@ -2,7 +2,13 @@ import { type Component, createEffect, createSignal } from 'solid-js'
 import { type Tabulator } from 'tabulator-tables'
 import { Badge } from 'shadcn-solid-components/components/badge'
 import { Button } from 'shadcn-solid-components/components/button'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from 'shadcn-solid-components/components/card'
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from 'shadcn-solid-components/components/card'
 import {
   DropdownMenu,
   DropdownMenuContent,

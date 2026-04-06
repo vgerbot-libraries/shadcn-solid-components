@@ -2,7 +2,13 @@ import { VisArea, VisLine } from '@unovis/solid'
 import { type Component, createSignal, For } from 'solid-js'
 import { Badge } from 'shadcn-solid-components/components/badge'
 import { Button } from 'shadcn-solid-components/components/button'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from 'shadcn-solid-components/components/card'
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from 'shadcn-solid-components/components/card'
 import { ChartContainer, ChartCrosshair } from 'shadcn-solid-components/components/chart'
 import {
   DropdownMenu,
@@ -10,9 +16,25 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from 'shadcn-solid-components/components/dropdown-menu'
-import { IconCheck, IconCreditCard, IconMail, IconSettings, IconUser } from 'shadcn-solid-components/components/icons'
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from 'shadcn-solid-components/components/table'
-import { NotificationCenter, type NotificationItem } from 'shadcn-solid-components/hoc/notification-center'
+import {
+  IconCheck,
+  IconCreditCard,
+  IconMail,
+  IconSettings,
+  IconUser,
+} from 'shadcn-solid-components/components/icons'
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from 'shadcn-solid-components/components/table'
+import {
+  NotificationCenter,
+  type NotificationItem,
+} from 'shadcn-solid-components/hoc/notification-center'
 import { PageHeader } from 'shadcn-solid-components/hoc/page-header'
 import { StatCard } from 'shadcn-solid-components/hoc/stat-card'
 import { useNotify } from 'shadcn-solid-components/hoc/use-notify'

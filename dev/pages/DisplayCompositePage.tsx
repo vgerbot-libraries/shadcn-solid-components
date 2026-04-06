@@ -1,8 +1,20 @@
 import { type Component, createSignal } from 'solid-js'
 import { Badge } from 'shadcn-solid-components/components/badge'
 import { Button } from 'shadcn-solid-components/components/button'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from 'shadcn-solid-components/components/card'
-import { IconCheck, IconCreditCard, IconLoader, IconSettings, IconUser } from 'shadcn-solid-components/components/icons'
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from 'shadcn-solid-components/components/card'
+import {
+  IconCheck,
+  IconCreditCard,
+  IconLoader,
+  IconSettings,
+  IconUser,
+} from 'shadcn-solid-components/components/icons'
 import { TextField, TextFieldInput } from 'shadcn-solid-components/components/text-field'
 import { DescriptionList } from 'shadcn-solid-components/hoc/description-list'
 import { FormField } from 'shadcn-solid-components/hoc/form-field'

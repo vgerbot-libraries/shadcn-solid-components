@@ -8,8 +8,18 @@ import {
   CalendarNav,
   CalendarTable,
 } from 'shadcn-solid-components/components/calendar'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from 'shadcn-solid-components/components/card'
-import { Checkbox, CheckboxControl, CheckboxLabel } from 'shadcn-solid-components/components/checkbox'
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from 'shadcn-solid-components/components/card'
+import {
+  Checkbox,
+  CheckboxControl,
+  CheckboxLabel,
+} from 'shadcn-solid-components/components/checkbox'
 import {
   Combobox,
   ComboboxContent,
@@ -39,7 +49,13 @@ import {
   DatePickerViewControl,
   DatePickerViewTrigger,
 } from 'shadcn-solid-components/components/date-picker'
-import { IconBold, IconItalic, IconMinus, IconPlus, IconUnderline } from 'shadcn-solid-components/components/icons'
+import {
+  IconBold,
+  IconItalic,
+  IconMinus,
+  IconPlus,
+  IconUnderline,
+} from 'shadcn-solid-components/components/icons'
 import {
   NumberField,
   NumberFieldDecrementTrigger,
@@ -64,7 +80,13 @@ import {
   RadioGroupItems,
   RadioGroupLabel,
 } from 'shadcn-solid-components/components/radio-group'
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from 'shadcn-solid-components/components/select'
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from 'shadcn-solid-components/components/select'
 import {
   Slider,
   SliderFill,
@@ -74,7 +96,12 @@ import {
   SliderTrack,
   SliderValueLabel,
 } from 'shadcn-solid-components/components/slider'
-import { Switch, SwitchControl, SwitchLabel, SwitchThumb } from 'shadcn-solid-components/components/switch'
+import {
+  Switch,
+  SwitchControl,
+  SwitchLabel,
+  SwitchThumb,
+} from 'shadcn-solid-components/components/switch'
 import { TextField, TextFieldInput } from 'shadcn-solid-components/components/text-field'
 import { ToggleButton } from 'shadcn-solid-components/components/toggle-button'
 import { ToggleGroup, ToggleGroupItem } from 'shadcn-solid-components/components/toggle-group'

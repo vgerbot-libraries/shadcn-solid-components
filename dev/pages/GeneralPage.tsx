@@ -1,8 +1,18 @@
 import { type Component } from 'solid-js'
 import { Badge } from 'shadcn-solid-components/components/badge'
 import { Button } from 'shadcn-solid-components/components/button'
-import { ButtonGroup, ButtonSeparator, ButtonText } from 'shadcn-solid-components/components/button-group'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from 'shadcn-solid-components/components/card'
+import {
+  ButtonGroup,
+  ButtonSeparator,
+  ButtonText,
+} from 'shadcn-solid-components/components/button-group'
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from 'shadcn-solid-components/components/card'
 import {
   IconBold,
   IconDownload,

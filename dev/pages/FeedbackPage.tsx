@@ -1,6 +1,12 @@
 import { type Component, createSignal } from 'solid-js'
 import { Button } from 'shadcn-solid-components/components/button'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from 'shadcn-solid-components/components/card'
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from 'shadcn-solid-components/components/card'
 import {
   IconCheck,
   IconCreditCard,
@@ -12,7 +18,10 @@ import {
 import { confirm } from 'shadcn-solid-components/hoc/confirm-dialog'
 import { EmptyState } from 'shadcn-solid-components/hoc/empty-state'
 import { ModeToggleDropdown } from 'shadcn-solid-components/hoc/mode-toggle-dropdown'
-import { NotificationCenter, type NotificationItem } from 'shadcn-solid-components/hoc/notification-center'
+import {
+  NotificationCenter,
+  type NotificationItem,
+} from 'shadcn-solid-components/hoc/notification-center'
 import { useNotify } from 'shadcn-solid-components/hoc/use-notify'
 import { PageLayout } from '../components/PageLayout'
 

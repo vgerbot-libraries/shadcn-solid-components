@@ -12,7 +12,13 @@ import {
   AlertDialogTrigger,
 } from 'shadcn-solid-components/components/alert-dialog'
 import { Button } from 'shadcn-solid-components/components/button'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from 'shadcn-solid-components/components/card'
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from 'shadcn-solid-components/components/card'
 import {
   Command,
   CommandEmpty,

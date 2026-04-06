@@ -6,7 +6,13 @@ import {
   BreadcrumbsLink,
   BreadcrumbsSeparator,
 } from 'shadcn-solid-components/components/breadcrumbs'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from 'shadcn-solid-components/components/card'
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from 'shadcn-solid-components/components/card'
 import {
   Menubar,
   MenubarCheckboxItem,

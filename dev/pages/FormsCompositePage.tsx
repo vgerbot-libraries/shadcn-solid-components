@@ -1,6 +1,12 @@
 import { type Component, createSignal } from 'solid-js'
 import { Button } from 'shadcn-solid-components/components/button'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from 'shadcn-solid-components/components/card'
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from 'shadcn-solid-components/components/card'
 import { IconBrandGithub, IconBrandGoogle } from 'shadcn-solid-components/components/icons'
 import { TextField, TextFieldInput } from 'shadcn-solid-components/components/text-field'
 import { FileUploadZone, type UploadFile } from 'shadcn-solid-components/hoc/file-upload-zone'

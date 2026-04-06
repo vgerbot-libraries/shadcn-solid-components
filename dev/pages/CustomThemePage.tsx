@@ -11,7 +11,11 @@ import {
   CardHeader,
   CardTitle,
 } from 'shadcn-solid-components/components/card'
-import { Checkbox, CheckboxControl, CheckboxLabel } from 'shadcn-solid-components/components/checkbox'
+import {
+  Checkbox,
+  CheckboxControl,
+  CheckboxLabel,
+} from 'shadcn-solid-components/components/checkbox'
 import {
   IconArrowRight,
   IconCalendar,
@@ -21,7 +25,12 @@ import {
   IconSettings,
   IconUsers,
 } from 'shadcn-solid-components/components/icons'
-import { Progress, ProgressGroup, ProgressLabel, ProgressValueLabel } from 'shadcn-solid-components/components/progress'
+import {
+  Progress,
+  ProgressGroup,
+  ProgressLabel,
+  ProgressValueLabel,
+} from 'shadcn-solid-components/components/progress'
 import { ModeToggleGroup } from 'shadcn-solid-components/hoc/mode-toggle-group'
 import {
   RadioGroup,
@@ -30,8 +39,18 @@ import {
   RadioGroupItemLabel,
 } from 'shadcn-solid-components/components/radio-group'
 import { Separator } from 'shadcn-solid-components/components/separator'
-import { Slider, SliderFill, SliderThumb, SliderTrack } from 'shadcn-solid-components/components/slider'
-import { Switch, SwitchControl, SwitchLabel, SwitchThumb } from 'shadcn-solid-components/components/switch'
+import {
+  Slider,
+  SliderFill,
+  SliderThumb,
+  SliderTrack,
+} from 'shadcn-solid-components/components/slider'
+import {
+  Switch,
+  SwitchControl,
+  SwitchLabel,
+  SwitchThumb,
+} from 'shadcn-solid-components/components/switch'
 import {
   Table,
   TableBody,
@@ -40,8 +59,18 @@ import {
   TableHeader,
   TableRow,
 } from 'shadcn-solid-components/components/table'
-import { Tabs, TabsContent, TabsIndicator, TabsList, TabsTrigger } from 'shadcn-solid-components/components/tabs'
-import { TextField, TextFieldInput, TextFieldLabel } from 'shadcn-solid-components/components/text-field'
+import {
+  Tabs,
+  TabsContent,
+  TabsIndicator,
+  TabsList,
+  TabsTrigger,
+} from 'shadcn-solid-components/components/tabs'
+import {
+  TextField,
+  TextFieldInput,
+  TextFieldLabel,
+} from 'shadcn-solid-components/components/text-field'
 import { BASE_COLORS } from '../lib/base-colors'
 import { generatePresetCss, generateThemeCssVars, RADII } from '../lib/theme-generator'
 import { generateStyleCss, STYLE_PRESETS } from '../lib/theme-styles'
@@ -289,7 +318,9 @@ export default function CustomThemePage() {
             <Card>
               <CardHeader>
                 <CardTitle>Project Setup</CardTitle>
-                <CardDescription>See how form layouts, badges, and actions respond to your theme.</CardDescription>
+                <CardDescription>
+                  See how form layouts, badges, and actions respond to your theme.
+                </CardDescription>
               </CardHeader>
               <CardContent class="flex flex-col gap-5">
                 <div class="grid gap-4 md:grid-cols-2">
@@ -329,7 +360,9 @@ export default function CustomThemePage() {
             <Card>
               <CardHeader>
                 <CardTitle>Release Readiness</CardTitle>
-                <CardDescription>Combine progress, checklist items, and compact status UI.</CardDescription>
+                <CardDescription>
+                  Combine progress, checklist items, and compact status UI.
+                </CardDescription>
               </CardHeader>
               <CardContent class="flex flex-col gap-5">
                 <Progress value={82} minValue={0} maxValue={100}>
@@ -379,7 +412,9 @@ export default function CustomThemePage() {
             <Card>
               <CardHeader>
                 <CardTitle>Inputs & Controls</CardTitle>
-                <CardDescription>Check selection states, spacing, and contrast together.</CardDescription>
+                <CardDescription>
+                  Check selection states, spacing, and contrast together.
+                </CardDescription>
               </CardHeader>
               <CardContent class="flex flex-col gap-6">
                 <div class="flex items-center justify-between gap-4 rounded-component border p-4">
@@ -459,7 +494,9 @@ export default function CustomThemePage() {
                 <div class="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
                   <div>
                     <CardTitle>Team Access</CardTitle>
-                    <CardDescription>Validate tables, badges, and compact actions in one panel.</CardDescription>
+                    <CardDescription>
+                      Validate tables, badges, and compact actions in one panel.
+                    </CardDescription>
                   </div>
                   <Button size="sm" variant="outline">
                     <IconUsers class="size-4" />

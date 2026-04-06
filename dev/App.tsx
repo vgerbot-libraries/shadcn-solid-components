@@ -17,7 +17,10 @@ import {
 } from 'shadcn-solid-components/components/icons'
 import { Skeleton } from 'shadcn-solid-components/components/skeleton'
 import { AppSidebar, type AppSidebarMenuGroup } from 'shadcn-solid-components/hoc/app-sidebar'
-import { CommandPalette, type CommandPaletteGroup } from 'shadcn-solid-components/hoc/command-palette'
+import {
+  CommandPalette,
+  type CommandPaletteGroup,
+} from 'shadcn-solid-components/hoc/command-palette'
 import { SidebarMenuTreeItem } from 'shadcn-solid-components/hoc/sidebar-menu-tree'
 import { GetHelpIcon, HeaderIcon, SettingsIcon } from './components/icons'
 

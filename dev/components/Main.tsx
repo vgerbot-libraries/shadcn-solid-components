@@ -3,7 +3,13 @@ import { type Component, createEffect, createSignal, For } from 'solid-js'
 import { type Tabulator } from 'tabulator-tables'
 import { Badge } from 'shadcn-solid-components/components/badge'
 import { Button } from 'shadcn-solid-components/components/button'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from 'shadcn-solid-components/components/card'
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from 'shadcn-solid-components/components/card'
 import { ChartContainer, ChartCrosshair } from 'shadcn-solid-components/components/chart'
 import {
   DropdownMenu,
@@ -25,7 +31,14 @@ import {
 } from 'shadcn-solid-components/components/icons'
 import { Separator } from 'shadcn-solid-components/components/separator'
 import { SidebarTrigger } from 'shadcn-solid-components/components/sidebar'
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from 'shadcn-solid-components/components/table'
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from 'shadcn-solid-components/components/table'
 import { TabulatorTable } from 'shadcn-solid-components/components/tabulator-table'
 import type {
   ColumnDef,
@@ -58,7 +71,10 @@ import { FileUploadZone, type UploadFile } from 'shadcn-solid-components/hoc/fil
 import { FilterBuilder, type FilterRule } from 'shadcn-solid-components/hoc/filter-builder'
 import { FormField } from 'shadcn-solid-components/hoc/form-field'
 import { LoginForm } from 'shadcn-solid-components/hoc/login-form'
-import { NotificationCenter, type NotificationItem } from 'shadcn-solid-components/hoc/notification-center'
+import {
+  NotificationCenter,
+  type NotificationItem,
+} from 'shadcn-solid-components/hoc/notification-center'
 import { PageHeader } from 'shadcn-solid-components/hoc/page-header'
 import { StatCard } from 'shadcn-solid-components/hoc/stat-card'
 import { Stepper } from 'shadcn-solid-components/hoc/stepper'

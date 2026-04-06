@@ -14,10 +14,24 @@ import {
   CardHeader,
   CardTitle,
 } from 'shadcn-solid-components/components/card'
-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from 'shadcn-solid-components/components/collapsible'
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from 'shadcn-solid-components/components/collapsible'
 import { IconChevronDown } from 'shadcn-solid-components/components/icons'
-import { Resizable, ResizableHandle, ResizablePanel } from 'shadcn-solid-components/components/resizable'
-import { Tabs, TabsContent, TabsIndicator, TabsList, TabsTrigger } from 'shadcn-solid-components/components/tabs'
+import {
+  Resizable,
+  ResizableHandle,
+  ResizablePanel,
+} from 'shadcn-solid-components/components/resizable'
+import {
+  Tabs,
+  TabsContent,
+  TabsIndicator,
+  TabsList,
+  TabsTrigger,
+} from 'shadcn-solid-components/components/tabs'
 import { PageLayout } from '../components/PageLayout'
 
 const LayoutPage: Component = () => {
