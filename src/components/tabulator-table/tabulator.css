@@ -566,7 +566,7 @@
       font-weight: inherit;
       font-size: inherit;
 
-      @apply flex items-center justify-end gap-1;
+      @apply flex items-center justify-end gap-2;
     }
 
     /* pagination container element */
@@ -575,16 +575,16 @@
 
       /* border: 1px solid var(--tabulator-footerBorderColor); */
 
-      @apply rounded-component border inline-block outline-none mx-3;
+      @apply rounded-md border inline-block outline-none mx-3;
     }
 
     .tabulator-pages {
-      @apply inline-flex items-center gap-1 mx-3;
+      @apply inline-flex items-center gap-2 mx-3;
     }
 
     /* pagination button */
     .tabulator-page {
-      @apply inline-flex items-center justify-center whitespace-nowrap text-sm font-medium transition-all [&_svg:not([class*=size-])]:size-4 shrink-0 outline-none disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-[invalid]:ring-destructive/20 aria-[invalid]:dark:ring-destructive/40 aria-[invalid]:border-destructive border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground hover:dark:bg-input/50 dark:bg-input/30 dark:border-input h-8 gap-1.5 px-3 has-[>svg]:px-2.5 rounded-md;
+      @apply inline-flex items-center justify-center whitespace-nowrap text-sm font-medium transition-all [&_svg:not([class*=size-])]:size-4 shrink-0 outline-none disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-[invalid]:ring-destructive/20 aria-[invalid]:dark:ring-destructive/40 aria-[invalid]:border-destructive border bg-background shadow-sm hover:bg-accent hover:text-accent-foreground hover:dark:bg-input/50 dark:bg-input/30 dark:border-input h-8 px-3 has-[>svg]:px-2.5 rounded-md;
 
       &.active {
         @apply bg-accent;

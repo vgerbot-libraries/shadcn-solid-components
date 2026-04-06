@@ -10,7 +10,7 @@ import {
 } from 'shadcn-solid-components/components/dropdown-menu'
 import { IconLaptop, IconMoon, IconSun } from 'shadcn-solid-components/components/icons'
 import type { ModeToggleDropdownLocale } from 'shadcn-solid-components/i18n/types'
-import { cx } from 'shadcn-solid-components/lib'
+import { cx } from 'shadcn-solid-components/lib/cva'
 import { enUS as defaultLocale } from './locales/en-US'
 
 /** All translatable strings used by ModeToggleDropdown. */

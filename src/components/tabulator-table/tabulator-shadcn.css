@@ -236,7 +236,7 @@
   padding: 0px;
   background: none;
   font-weight: var(--font-weight-semibold);
-  @apply bg-gray-200 px-3 py-4 border-t-gray-300 border-t-1 border-b-0 border-l-0 border-r-0;
+  @apply bg-gray-200 px-3 py-4 border-t-gray-300 border-t border-b-0 border-l-0 border-r-0;
 
   .tabulator-arrow {
     --tabulator-sortArrowActive: var(--tabulator-rowTextColor);
@@ -281,7 +281,7 @@
 .tabulator .tabulator-header .tabulator-col.tabulator-frozen.tabulator-frozen-left {
   /* display a simple line if scroll animations are not yet supported */
   @supports not (animation-timeline: scroll()) {
-    @apply border-r-1 border-r-gray-200;
+    @apply border-r border-r-gray-200;
   }
 
   /* otherwise we show a nice drop shadow whan there is some scrolling */
@@ -297,7 +297,7 @@
 .tabulator .tabulator-header .tabulator-col.tabulator-frozen.tabulator-frozen-right {
   /* display a simple line if scroll animations are not yet supported */
   @supports not (animation-timeline: scroll()) {
-    @apply border-l-1 border-l-gray-200;
+    @apply border-l border-l-gray-200;
   }
 
   /* otherwise we show a nice drop shadow whan there is some scrolling */
