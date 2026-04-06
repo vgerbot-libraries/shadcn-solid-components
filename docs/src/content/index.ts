@@ -48,11 +48,6 @@ export const Contents: Record<string, DocEntry> = {
     headings: [
     {
         "depth": 2,
-        "slug": "installation",
-        "text": "Installation"
-    },
-    {
-        "depth": 2,
         "slug": "usage",
         "text": "Usage"
     },
@@ -84,11 +79,6 @@ export const Contents: Record<string, DocEntry> = {
     "toc": true
 },
     headings: [
-    {
-        "depth": 2,
-        "slug": "installation",
-        "text": "Installation"
-    },
     {
         "depth": 2,
         "slug": "usage",
@@ -149,11 +139,6 @@ export const Contents: Record<string, DocEntry> = {
     headings: [
     {
         "depth": 2,
-        "slug": "installation",
-        "text": "Installation"
-    },
-    {
-        "depth": 2,
         "slug": "usage",
         "text": "Usage"
     },
@@ -185,11 +170,6 @@ export const Contents: Record<string, DocEntry> = {
     "toc": true
 },
     headings: [
-    {
-        "depth": 2,
-        "slug": "installation",
-        "text": "Installation"
-    },
     {
         "depth": 2,
         "slug": "usage",
@@ -240,11 +220,6 @@ export const Contents: Record<string, DocEntry> = {
     headings: [
     {
         "depth": 2,
-        "slug": "installation",
-        "text": "Installation"
-    },
-    {
-        "depth": 2,
         "slug": "usage",
         "text": "Usage"
     },
@@ -281,11 +256,6 @@ export const Contents: Record<string, DocEntry> = {
     "toc": true
 },
     headings: [
-    {
-        "depth": 2,
-        "slug": "installation",
-        "text": "Installation"
-    },
     {
         "depth": 2,
         "slug": "usage",
@@ -356,11 +326,6 @@ export const Contents: Record<string, DocEntry> = {
     headings: [
     {
         "depth": 2,
-        "slug": "installation",
-        "text": "Installation"
-    },
-    {
-        "depth": 2,
         "slug": "usage",
         "text": "Usage"
     },
@@ -392,11 +357,6 @@ export const Contents: Record<string, DocEntry> = {
     "toc": true
 },
     headings: [
-    {
-        "depth": 2,
-        "slug": "installation",
-        "text": "Installation"
-    },
     {
         "depth": 2,
         "slug": "usage",
@@ -437,11 +397,6 @@ export const Contents: Record<string, DocEntry> = {
     headings: [
     {
         "depth": 2,
-        "slug": "installation",
-        "text": "Installation"
-    },
-    {
-        "depth": 2,
         "slug": "usage",
         "text": "Usage"
     },
@@ -473,11 +428,6 @@ export const Contents: Record<string, DocEntry> = {
     "toc": true
 },
     headings: [
-    {
-        "depth": 2,
-        "slug": "installation",
-        "text": "Installation"
-    },
     {
         "depth": 2,
         "slug": "usage",
@@ -566,11 +516,6 @@ export const Contents: Record<string, DocEntry> = {
     headings: [
     {
         "depth": 2,
-        "slug": "installation",
-        "text": "Installation"
-    },
-    {
-        "depth": 2,
         "slug": "usage",
         "text": "Usage"
     },
@@ -609,11 +554,6 @@ export const Contents: Record<string, DocEntry> = {
     headings: [
     {
         "depth": 2,
-        "slug": "installation",
-        "text": "Installation"
-    },
-    {
-        "depth": 2,
         "slug": "usage",
         "text": "Usage"
     },
@@ -645,11 +585,6 @@ export const Contents: Record<string, DocEntry> = {
     "toc": true
 },
     headings: [
-    {
-        "depth": 2,
-        "slug": "installation",
-        "text": "Installation"
-    },
     {
         "depth": 2,
         "slug": "usage",
@@ -705,11 +640,6 @@ export const Contents: Record<string, DocEntry> = {
     headings: [
     {
         "depth": 2,
-        "slug": "installation",
-        "text": "Installation"
-    },
-    {
-        "depth": 2,
         "slug": "usage",
         "text": "Usage"
     },
@@ -746,11 +676,6 @@ export const Contents: Record<string, DocEntry> = {
     "toc": true
 },
     headings: [
-    {
-        "depth": 2,
-        "slug": "installation",
-        "text": "Installation"
-    },
     {
         "depth": 2,
         "slug": "usage",
@@ -796,11 +721,6 @@ export const Contents: Record<string, DocEntry> = {
     headings: [
     {
         "depth": 2,
-        "slug": "installation",
-        "text": "Installation"
-    },
-    {
-        "depth": 2,
         "slug": "usage",
         "text": "Usage"
     },
@@ -832,11 +752,6 @@ export const Contents: Record<string, DocEntry> = {
     "toc": true
 },
     headings: [
-    {
-        "depth": 2,
-        "slug": "installation",
-        "text": "Installation"
-    },
     {
         "depth": 2,
         "slug": "usage",
@@ -877,11 +792,6 @@ export const Contents: Record<string, DocEntry> = {
     headings: [
     {
         "depth": 2,
-        "slug": "installation",
-        "text": "Installation"
-    },
-    {
-        "depth": 2,
         "slug": "usage",
         "text": "Usage"
     },
@@ -913,11 +823,6 @@ export const Contents: Record<string, DocEntry> = {
     "toc": true
 },
     headings: [
-    {
-        "depth": 2,
-        "slug": "installation",
-        "text": "Installation"
-    },
     {
         "depth": 2,
         "slug": "usage",
@@ -958,11 +863,6 @@ export const Contents: Record<string, DocEntry> = {
     headings: [
     {
         "depth": 2,
-        "slug": "installation",
-        "text": "Installation"
-    },
-    {
-        "depth": 2,
         "slug": "usage",
         "text": "Usage"
     },
@@ -994,11 +894,6 @@ export const Contents: Record<string, DocEntry> = {
     "toc": true
 },
     headings: [
-    {
-        "depth": 2,
-        "slug": "installation",
-        "text": "Installation"
-    },
     {
         "depth": 2,
         "slug": "usage",
@@ -1034,11 +929,6 @@ export const Contents: Record<string, DocEntry> = {
     headings: [
     {
         "depth": 2,
-        "slug": "installation",
-        "text": "Installation"
-    },
-    {
-        "depth": 2,
         "slug": "usage",
         "text": "Usage"
     },
@@ -1072,11 +962,6 @@ export const Contents: Record<string, DocEntry> = {
     headings: [
     {
         "depth": 2,
-        "slug": "installation",
-        "text": "Installation"
-    },
-    {
-        "depth": 2,
         "slug": "usage",
         "text": "Usage"
     },
@@ -1108,11 +993,6 @@ export const Contents: Record<string, DocEntry> = {
     "toc": true
 },
     headings: [
-    {
-        "depth": 2,
-        "slug": "installation",
-        "text": "Installation"
-    },
     {
         "depth": 2,
         "slug": "usage",
@@ -1158,11 +1038,6 @@ export const Contents: Record<string, DocEntry> = {
     headings: [
     {
         "depth": 2,
-        "slug": "installation",
-        "text": "Installation"
-    },
-    {
-        "depth": 2,
         "slug": "usage",
         "text": "Usage"
     },
@@ -1194,11 +1069,6 @@ export const Contents: Record<string, DocEntry> = {
     "toc": true
 },
     headings: [
-    {
-        "depth": 2,
-        "slug": "installation",
-        "text": "Installation"
-    },
     {
         "depth": 2,
         "slug": "usage",
@@ -1239,11 +1109,6 @@ export const Contents: Record<string, DocEntry> = {
     headings: [
     {
         "depth": 2,
-        "slug": "installation",
-        "text": "Installation"
-    },
-    {
-        "depth": 2,
         "slug": "usage",
         "text": "Usage"
     },
@@ -1282,11 +1147,6 @@ export const Contents: Record<string, DocEntry> = {
     headings: [
     {
         "depth": 2,
-        "slug": "installation",
-        "text": "Installation"
-    },
-    {
-        "depth": 2,
         "slug": "usage",
         "text": "Usage"
     },
@@ -1320,11 +1180,6 @@ export const Contents: Record<string, DocEntry> = {
     headings: [
     {
         "depth": 2,
-        "slug": "installation",
-        "text": "Installation"
-    },
-    {
-        "depth": 2,
         "slug": "usage",
         "text": "Usage"
     },
@@ -1356,11 +1211,6 @@ export const Contents: Record<string, DocEntry> = {
     "toc": true
 },
     headings: [
-    {
-        "depth": 2,
-        "slug": "installation",
-        "text": "Installation"
-    },
     {
         "depth": 2,
         "slug": "usage",
@@ -1406,11 +1256,6 @@ export const Contents: Record<string, DocEntry> = {
     headings: [
     {
         "depth": 2,
-        "slug": "installation",
-        "text": "Installation"
-    },
-    {
-        "depth": 2,
         "slug": "usage",
         "text": "Usage"
     },
@@ -1444,11 +1289,6 @@ export const Contents: Record<string, DocEntry> = {
     headings: [
     {
         "depth": 2,
-        "slug": "installation",
-        "text": "Installation"
-    },
-    {
-        "depth": 2,
         "slug": "usage",
         "text": "Usage"
     },
@@ -1480,11 +1320,6 @@ export const Contents: Record<string, DocEntry> = {
     "toc": true
 },
     headings: [
-    {
-        "depth": 2,
-        "slug": "installation",
-        "text": "Installation"
-    },
     {
         "depth": 2,
         "slug": "usage",
@@ -1530,11 +1365,6 @@ export const Contents: Record<string, DocEntry> = {
     headings: [
     {
         "depth": 2,
-        "slug": "installation",
-        "text": "Installation"
-    },
-    {
-        "depth": 2,
         "slug": "usage",
         "text": "Usage"
     },
@@ -1573,11 +1403,6 @@ export const Contents: Record<string, DocEntry> = {
     headings: [
     {
         "depth": 2,
-        "slug": "installation",
-        "text": "Installation"
-    },
-    {
-        "depth": 2,
         "slug": "usage",
         "text": "Usage"
     },
@@ -1614,11 +1439,6 @@ export const Contents: Record<string, DocEntry> = {
     "toc": true
 },
     headings: [
-    {
-        "depth": 2,
-        "slug": "installation",
-        "text": "Installation"
-    },
     {
         "depth": 2,
         "slug": "usage",
@@ -1664,11 +1484,6 @@ export const Contents: Record<string, DocEntry> = {
     headings: [
     {
         "depth": 2,
-        "slug": "installation",
-        "text": "Installation"
-    },
-    {
-        "depth": 2,
         "slug": "usage",
         "text": "Usage"
     },
@@ -1700,11 +1515,6 @@ export const Contents: Record<string, DocEntry> = {
     "toc": true
 },
     headings: [
-    {
-        "depth": 2,
-        "slug": "installation",
-        "text": "Installation"
-    },
     {
         "depth": 2,
         "slug": "usage",
@@ -1740,11 +1550,6 @@ export const Contents: Record<string, DocEntry> = {
     headings: [
     {
         "depth": 2,
-        "slug": "installation",
-        "text": "Installation"
-    },
-    {
-        "depth": 2,
         "slug": "usage",
         "text": "Usage"
     },
@@ -1776,11 +1581,6 @@ export const Contents: Record<string, DocEntry> = {
     "toc": true
 },
     headings: [
-    {
-        "depth": 2,
-        "slug": "installation",
-        "text": "Installation"
-    },
     {
         "depth": 2,
         "slug": "usage",
@@ -1864,11 +1664,6 @@ export const Contents: Record<string, DocEntry> = {
     headings: [
     {
         "depth": 2,
-        "slug": "installation",
-        "text": "Installation"
-    },
-    {
-        "depth": 2,
         "slug": "usage",
         "text": "Usage"
     },
@@ -1907,11 +1702,6 @@ export const Contents: Record<string, DocEntry> = {
     headings: [
     {
         "depth": 2,
-        "slug": "installation",
-        "text": "Installation"
-    },
-    {
-        "depth": 2,
         "slug": "usage",
         "text": "Usage"
     },
@@ -1948,11 +1738,6 @@ export const Contents: Record<string, DocEntry> = {
     "toc": true
 },
     headings: [
-    {
-        "depth": 2,
-        "slug": "installation",
-        "text": "Installation"
-    },
     {
         "depth": 2,
         "slug": "usage",
@@ -2084,11 +1869,6 @@ export const Contents: Record<string, DocEntry> = {
     headings: [
     {
         "depth": 2,
-        "slug": "installation",
-        "text": "Installation"
-    },
-    {
-        "depth": 2,
         "slug": "usage",
         "text": "Usage"
     },
@@ -2142,11 +1922,6 @@ export const Contents: Record<string, DocEntry> = {
     headings: [
     {
         "depth": 2,
-        "slug": "installation",
-        "text": "Installation"
-    },
-    {
-        "depth": 2,
         "slug": "usage",
         "text": "Usage"
     },
@@ -2188,11 +1963,6 @@ export const Contents: Record<string, DocEntry> = {
     "toc": true
 },
     headings: [
-    {
-        "depth": 2,
-        "slug": "installation",
-        "text": "Installation"
-    },
     {
         "depth": 2,
         "slug": "usage",
@@ -2243,11 +2013,6 @@ export const Contents: Record<string, DocEntry> = {
     headings: [
     {
         "depth": 2,
-        "slug": "installation",
-        "text": "Installation"
-    },
-    {
-        "depth": 2,
         "slug": "usage",
         "text": "Usage"
     },
@@ -2279,11 +2044,6 @@ export const Contents: Record<string, DocEntry> = {
     "toc": true
 },
     headings: [
-    {
-        "depth": 2,
-        "slug": "installation",
-        "text": "Installation"
-    },
     {
         "depth": 2,
         "slug": "usage",
@@ -2322,11 +2082,6 @@ export const Contents: Record<string, DocEntry> = {
     "toc": true
 },
     headings: [
-    {
-        "depth": 2,
-        "slug": "installation",
-        "text": "Installation"
-    },
     {
         "depth": 2,
         "slug": "usage",
@@ -2380,11 +2135,6 @@ export const Contents: Record<string, DocEntry> = {
     "toc": true
 },
     headings: [
-    {
-        "depth": 2,
-        "slug": "installation",
-        "text": "Installation"
-    },
     {
         "depth": 2,
         "slug": "usage",
@@ -2463,11 +2213,6 @@ export const Contents: Record<string, DocEntry> = {
     "toc": true
 },
     headings: [
-    {
-        "depth": 2,
-        "slug": "installation",
-        "text": "Installation"
-    },
     {
         "depth": 2,
         "slug": "usage",
@@ -2606,11 +2351,6 @@ export const Contents: Record<string, DocEntry> = {
     headings: [
     {
         "depth": 2,
-        "slug": "installation",
-        "text": "Installation"
-    },
-    {
-        "depth": 2,
         "slug": "usage",
         "text": "Usage"
     },
@@ -2669,11 +2409,6 @@ export const Contents: Record<string, DocEntry> = {
     headings: [
     {
         "depth": 2,
-        "slug": "installation",
-        "text": "Installation"
-    },
-    {
-        "depth": 2,
         "slug": "usage",
         "text": "Usage"
     },
@@ -2727,11 +2462,6 @@ export const Contents: Record<string, DocEntry> = {
     headings: [
     {
         "depth": 2,
-        "slug": "installation",
-        "text": "Installation"
-    },
-    {
-        "depth": 2,
         "slug": "usage",
         "text": "Usage"
     },
@@ -2780,11 +2510,6 @@ export const Contents: Record<string, DocEntry> = {
     headings: [
     {
         "depth": 2,
-        "slug": "installation",
-        "text": "Installation"
-    },
-    {
-        "depth": 2,
         "slug": "usage",
         "text": "Usage"
     },
@@ -2826,11 +2551,6 @@ export const Contents: Record<string, DocEntry> = {
     "toc": true
 },
     headings: [
-    {
-        "depth": 2,
-        "slug": "installation",
-        "text": "Installation"
-    },
     {
         "depth": 2,
         "slug": "usage",
@@ -2879,11 +2599,6 @@ export const Contents: Record<string, DocEntry> = {
     "toc": true
 },
     headings: [
-    {
-        "depth": 2,
-        "slug": "installation",
-        "text": "Installation"
-    },
     {
         "depth": 2,
         "slug": "usage",
@@ -2944,11 +2659,6 @@ export const Contents: Record<string, DocEntry> = {
     headings: [
     {
         "depth": 2,
-        "slug": "installation",
-        "text": "Installation"
-    },
-    {
-        "depth": 2,
         "slug": "usage",
         "text": "Usage"
     },
@@ -2995,11 +2705,6 @@ export const Contents: Record<string, DocEntry> = {
     "toc": true
 },
     headings: [
-    {
-        "depth": 2,
-        "slug": "installation",
-        "text": "Installation"
-    },
     {
         "depth": 2,
         "slug": "usage",
@@ -3050,11 +2755,6 @@ export const Contents: Record<string, DocEntry> = {
     headings: [
     {
         "depth": 2,
-        "slug": "installation",
-        "text": "Installation"
-    },
-    {
-        "depth": 2,
         "slug": "usage",
         "text": "Usage"
     },
@@ -3086,11 +2786,6 @@ export const Contents: Record<string, DocEntry> = {
     "toc": true
 },
     headings: [
-    {
-        "depth": 2,
-        "slug": "installation",
-        "text": "Installation"
-    },
     {
         "depth": 2,
         "slug": "usage",
@@ -3146,11 +2841,6 @@ export const Contents: Record<string, DocEntry> = {
     headings: [
     {
         "depth": 2,
-        "slug": "installation",
-        "text": "Installation"
-    },
-    {
-        "depth": 2,
         "slug": "usage",
         "text": "Usage"
     },
@@ -3202,11 +2892,6 @@ export const Contents: Record<string, DocEntry> = {
     "toc": true
 },
     headings: [
-    {
-        "depth": 2,
-        "slug": "installation",
-        "text": "Installation"
-    },
     {
         "depth": 2,
         "slug": "usage",
@@ -3277,11 +2962,6 @@ export const Contents: Record<string, DocEntry> = {
     headings: [
     {
         "depth": 2,
-        "slug": "installation",
-        "text": "Installation"
-    },
-    {
-        "depth": 2,
         "slug": "usage",
         "text": "Usage"
     },
@@ -3340,11 +3020,6 @@ export const Contents: Record<string, DocEntry> = {
     headings: [
     {
         "depth": 2,
-        "slug": "installation",
-        "text": "Installation"
-    },
-    {
-        "depth": 2,
         "slug": "usage",
         "text": "Usage"
     },
@@ -3396,11 +3071,6 @@ export const Contents: Record<string, DocEntry> = {
     "toc": true
 },
     headings: [
-    {
-        "depth": 2,
-        "slug": "installation",
-        "text": "Installation"
-    },
     {
         "depth": 2,
         "slug": "usage",
@@ -3456,11 +3126,6 @@ export const Contents: Record<string, DocEntry> = {
     headings: [
     {
         "depth": 2,
-        "slug": "installation",
-        "text": "Installation"
-    },
-    {
-        "depth": 2,
         "slug": "usage",
         "text": "Usage"
     },
@@ -3512,11 +3177,6 @@ export const Contents: Record<string, DocEntry> = {
     "toc": true
 },
     headings: [
-    {
-        "depth": 2,
-        "slug": "installation",
-        "text": "Installation"
-    },
     {
         "depth": 2,
         "slug": "usage",
@@ -3572,11 +3232,6 @@ export const Contents: Record<string, DocEntry> = {
     headings: [
     {
         "depth": 2,
-        "slug": "installation",
-        "text": "Installation"
-    },
-    {
-        "depth": 2,
         "slug": "usage",
         "text": "Usage"
     },
@@ -3625,11 +3280,6 @@ export const Contents: Record<string, DocEntry> = {
     headings: [
     {
         "depth": 2,
-        "slug": "installation",
-        "text": "Installation"
-    },
-    {
-        "depth": 2,
         "slug": "usage",
         "text": "Usage"
     },
@@ -3673,11 +3323,6 @@ export const Contents: Record<string, DocEntry> = {
     headings: [
     {
         "depth": 2,
-        "slug": "installation",
-        "text": "Installation"
-    },
-    {
-        "depth": 2,
         "slug": "usage",
         "text": "Usage"
     },
@@ -3714,11 +3359,6 @@ export const Contents: Record<string, DocEntry> = {
     "toc": true
 },
     headings: [
-    {
-        "depth": 2,
-        "slug": "installation",
-        "text": "Installation"
-    },
     {
         "depth": 2,
         "slug": "usage",
@@ -3855,11 +3495,6 @@ export const Contents: Record<string, DocEntry> = {
     headings: [
     {
         "depth": 2,
-        "slug": "installation",
-        "text": "Installation"
-    },
-    {
-        "depth": 2,
         "slug": "usage",
         "text": "Usage"
     },
@@ -3893,11 +3528,6 @@ export const Contents: Record<string, DocEntry> = {
     headings: [
     {
         "depth": 2,
-        "slug": "installation",
-        "text": "Installation"
-    },
-    {
-        "depth": 2,
         "slug": "usage",
         "text": "Usage"
     },
@@ -3929,11 +3559,6 @@ export const Contents: Record<string, DocEntry> = {
     "toc": true
 },
     headings: [
-    {
-        "depth": 2,
-        "slug": "installation",
-        "text": "Installation"
-    },
     {
         "depth": 2,
         "slug": "usage",
@@ -3997,11 +3622,6 @@ export const Contents: Record<string, DocEntry> = {
     headings: [
     {
         "depth": 2,
-        "slug": "installation",
-        "text": "Installation"
-    },
-    {
-        "depth": 2,
         "slug": "usage",
         "text": "Usage"
     },
@@ -4035,11 +3655,6 @@ export const Contents: Record<string, DocEntry> = {
     headings: [
     {
         "depth": 2,
-        "slug": "installation",
-        "text": "Installation"
-    },
-    {
-        "depth": 2,
         "slug": "usage",
         "text": "Usage"
     },
@@ -4066,11 +3681,6 @@ export const Contents: Record<string, DocEntry> = {
     "toc": true
 },
     headings: [
-    {
-        "depth": 2,
-        "slug": "installation",
-        "text": "Installation"
-    },
     {
         "depth": 2,
         "slug": "usage",
@@ -4111,11 +3721,6 @@ export const Contents: Record<string, DocEntry> = {
     headings: [
     {
         "depth": 2,
-        "slug": "installation",
-        "text": "Installation"
-    },
-    {
-        "depth": 2,
         "slug": "usage",
         "text": "Usage"
     },
@@ -4142,11 +3747,6 @@ export const Contents: Record<string, DocEntry> = {
     "toc": true
 },
     headings: [
-    {
-        "depth": 2,
-        "slug": "installation",
-        "text": "Installation"
-    },
     {
         "depth": 2,
         "slug": "usage",

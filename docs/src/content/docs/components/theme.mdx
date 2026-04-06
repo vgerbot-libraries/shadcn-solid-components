@@ -10,10 +10,6 @@ import ThemeProviderDemo from "../../../examples/theme-provider-demo"
 
 `ThemeProvider` stores a `ThemeConfig` (for example `base.radius`) in Solid context so components that call theme helpers can read consistent values. It is separate from color mode; pair it with your own CSS variables or Kobalte color mode as needed. The implementation reads only `children` and `defaultTheme`; `storageKey` appears on `ThemeProviderProps` but is not used yet—see `src/components/theme/index.tsx` for the current runtime contract.
 
-## Installation
-
-Install `shadcn-solid-components` and satisfy peer dependencies (`solid-js`, Tailwind CSS v4, `tw-animate-css`).
-
 ## Usage
 
 ```tsx

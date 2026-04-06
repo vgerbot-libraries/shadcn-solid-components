@@ -300,10 +300,21 @@ const DocsIndexPage = () => {
           <p class="text-muted-foreground text-sm uppercase tracking-[0.2em]">Overview</p>
           <h1 class="text-4xl font-semibold tracking-tight">Docs base is ready</h1>
           <p class="text-muted-foreground max-w-2xl leading-7">
-            This app already includes routing, MDX rendering, generated content indexing, a docs
-            sidebar, and an optional table of contents. Add or organize content later without
-            changing the shell.
+            A set of beautifully designed components that you can customize, extend, and build on.
           </p>
+
+          <div class="pt-4 space-y-4">
+            <h2 class="text-2xl font-semibold tracking-tight">Installation</h2>
+            <p class="text-muted-foreground">
+              Install the package, then make sure the required peer dependencies are already configured in your app.
+            </p>
+            <pre class="bg-muted p-4 rounded-md overflow-x-auto text-sm">
+              <code>pnpm add shadcn-solid-components</code>
+            </pre>
+            <p class="text-muted-foreground">
+              Peer dependencies: <code class="bg-muted px-1 py-0.5 rounded text-sm">solid-js</code>, <code class="bg-muted px-1 py-0.5 rounded text-sm">tailwindcss</code> (v4), and <code class="bg-muted px-1 py-0.5 rounded text-sm">tw-animate-css</code>.
+            </p>
+          </div>
         </div>
 
         <Show when={docsNavigation.length} fallback={<DocsEmptyState />}>
