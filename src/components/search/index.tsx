@@ -1,9 +1,9 @@
 import { Search as SearchPrimitive, useSearchContext } from '@kobalte/core/search'
-import type { Accessor, JSX } from 'solid-js'
-import { type ComponentProps, Show, splitProps, type ValidComponent } from 'solid-js'
+import { cx } from 'shadcn-solid-components/lib/cva'
 import { ComponentName } from 'shadcn-solid-components/lib/theme-context'
 import { useComponentClass } from 'shadcn-solid-components/lib/theme-helpers'
-import { cx } from 'shadcn-solid-components/lib/cva'
+import type { Accessor, JSX } from 'solid-js'
+import { type ComponentProps, Show, splitProps, type ValidComponent } from 'solid-js'
 
 export const SearchPortal = SearchPrimitive.Portal
 

@@ -1,6 +1,7 @@
 import type { PolymorphicProps } from '@kobalte/core/polymorphic'
 import type { CreateEmblaCarouselType } from 'embla-carousel-solid'
 import createEmblaCarousel from 'embla-carousel-solid'
+import { cx } from 'shadcn-solid-components/lib/cva'
 import type { Accessor, ComponentProps, Setter, ValidComponent, VoidProps } from 'solid-js'
 import {
   createContext,
@@ -12,8 +13,6 @@ import {
   useContext,
 } from 'solid-js'
 import { createStore } from 'solid-js/store'
-
-import { cx } from 'shadcn-solid-components/lib/cva'
 
 import type { ButtonProps } from '../button'
 import { Button } from '../button'

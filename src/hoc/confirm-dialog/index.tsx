@@ -1,5 +1,3 @@
-import { createSignal, type JSX, Show } from 'solid-js'
-import { Portal } from 'solid-js/web'
 import {
   AlertDialog,
   AlertDialogAction,
@@ -14,6 +12,8 @@ import { buttonVariants } from 'shadcn-solid-components/components/button'
 import { useLocale } from 'shadcn-solid-components/components/config-provider'
 import type { ConfirmDialogLocale } from 'shadcn-solid-components/i18n/types'
 import { cx } from 'shadcn-solid-components/lib/cva'
+import { createSignal, type JSX, Show } from 'solid-js'
+import { Portal } from 'solid-js/web'
 import { enUS as defaultLocale } from './locales/en-US'
 
 // ============================================================================

@@ -1,9 +1,9 @@
 import { Dialog as DialogPrimitive } from '@kobalte/core/dialog'
-import type { ComponentProps, ValidComponent } from 'solid-js'
-import { mergeProps, Show, splitProps } from 'solid-js'
+import { cx } from 'shadcn-solid-components/lib/cva'
 import { ComponentName } from 'shadcn-solid-components/lib/theme-context'
 import { useComponentClass } from 'shadcn-solid-components/lib/theme-helpers'
-import { cx } from 'shadcn-solid-components/lib/cva'
+import type { ComponentProps, ValidComponent } from 'solid-js'
+import { mergeProps, Show, splitProps } from 'solid-js'
 
 export const DialogPortal = DialogPrimitive.Portal
 

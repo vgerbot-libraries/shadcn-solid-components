@@ -16,9 +16,9 @@ import type {
   DateValue,
 } from '@ark-ui/solid/date-picker'
 import { DatePicker as DatePickerPrimitive } from '@ark-ui/solid/date-picker'
+import { useLocale } from 'shadcn-solid-components/components/config-provider'
 import type { VoidProps } from 'solid-js'
 import { splitProps } from 'solid-js'
-import { useLocale } from 'shadcn-solid-components/components/config-provider'
 import { cx } from '../../lib/cva'
 import { buttonVariants } from '../button'
 

@@ -1,5 +1,4 @@
 import type { Table } from '@tanstack/solid-table'
-import { type ComponentProps, createSignal, For, type JSX, Show, splitProps } from 'solid-js'
 import { Button } from 'shadcn-solid-components/components/button'
 import { useLocale } from 'shadcn-solid-components/components/config-provider'
 import {
@@ -13,6 +12,7 @@ import {
 import { IconSearch, IconX } from 'shadcn-solid-components/components/icons'
 import type { DataTableToolbarLocale } from 'shadcn-solid-components/i18n/types'
 import { cx } from 'shadcn-solid-components/lib/cva'
+import { type ComponentProps, createSignal, For, type JSX, Show, splitProps } from 'solid-js'
 import { enUS as defaultLocale } from './locales/en-US'
 
 // ============================================================================

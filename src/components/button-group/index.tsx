@@ -1,5 +1,8 @@
 import { type ElementOf, Polymorphic, type PolymorphicProps } from '@kobalte/core'
 import type { VariantProps } from 'cva'
+import { cva, cx } from 'shadcn-solid-components/lib/cva'
+import { ComponentName } from 'shadcn-solid-components/lib/theme-context'
+import { useComponentClass } from 'shadcn-solid-components/lib/theme-helpers'
 import {
   type ComponentProps,
   createContext,
@@ -8,10 +11,6 @@ import {
   useContext,
   type ValidComponent,
 } from 'solid-js'
-
-import { cva, cx } from 'shadcn-solid-components/lib/cva'
-import { ComponentName } from 'shadcn-solid-components/lib/theme-context'
-import { useComponentClass } from 'shadcn-solid-components/lib/theme-helpers'
 
 import { Separator, type SeparatorProps } from '../separator'
 

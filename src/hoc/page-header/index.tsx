@@ -1,4 +1,3 @@
-import { type ComponentProps, For, type JSX, Show, splitProps } from 'solid-js'
 import {
   BreadcrumbList,
   Breadcrumbs,
@@ -8,6 +7,7 @@ import {
 } from 'shadcn-solid-components/components/breadcrumbs'
 import { Separator } from 'shadcn-solid-components/components/separator'
 import { cx } from 'shadcn-solid-components/lib/cva'
+import { type ComponentProps, For, type JSX, Show, splitProps } from 'solid-js'
 
 // ============================================================================
 // Types

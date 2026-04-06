@@ -31,10 +31,12 @@ import {
   getPaginationRowModel,
   getSortedRowModel,
 } from '@tanstack/solid-table'
-import type { ComponentProps, JSX } from 'solid-js'
-import { createContext, For, Match, Show, Switch, splitProps, useContext } from 'solid-js'
 import { Button } from 'shadcn-solid-components/components/button'
-import { Checkbox, CheckboxControl, CheckboxInput } from 'shadcn-solid-components/components/checkbox'
+import {
+  Checkbox,
+  CheckboxControl,
+  CheckboxInput,
+} from 'shadcn-solid-components/components/checkbox'
 import { useLocale } from 'shadcn-solid-components/components/config-provider'
 import {
   Select,
@@ -47,6 +49,8 @@ import {
 import { TextField, TextFieldInput } from 'shadcn-solid-components/components/text-field'
 import type { TanstackTableLocale } from 'shadcn-solid-components/i18n/types'
 import { cx } from 'shadcn-solid-components/lib/cva'
+import type { ComponentProps, JSX } from 'solid-js'
+import { createContext, For, Match, Show, Switch, splitProps, useContext } from 'solid-js'
 import { enUS as defaultLocale } from './locales/en-US'
 
 import './index.css'

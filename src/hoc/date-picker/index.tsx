@@ -1,8 +1,8 @@
 import type { DatePickerRootProps } from '@ark-ui/solid/date-picker'
 import { DatePicker as DatePickerPrimitive } from '@ark-ui/solid/date-picker'
-import { type ComponentProps, For, type JSX, Match, Show, Switch, splitProps } from 'solid-js'
 import { useLocale } from 'shadcn-solid-components/components/config-provider'
 import type { DatePickerFieldLocale } from 'shadcn-solid-components/i18n/types'
+import { type ComponentProps, For, type JSX, Match, Show, Switch, splitProps } from 'solid-js'
 import { enUS as defaultLocale } from './locales/en-US'
 
 export type { DateValue } from '@ark-ui/solid/date-picker'

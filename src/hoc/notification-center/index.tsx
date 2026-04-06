@@ -1,4 +1,3 @@
-import { type ComponentProps, For, type JSX, Show, splitProps } from 'solid-js'
 import { Badge } from 'shadcn-solid-components/components/badge'
 import { Button } from 'shadcn-solid-components/components/button'
 import { useLocale } from 'shadcn-solid-components/components/config-provider'
@@ -8,6 +7,7 @@ import { Separator } from 'shadcn-solid-components/components/separator'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from 'shadcn-solid-components/components/tabs'
 import type { NotificationCenterLocale } from 'shadcn-solid-components/i18n/types'
 import { cx } from 'shadcn-solid-components/lib/cva'
+import { type ComponentProps, For, type JSX, Show, splitProps } from 'solid-js'
 import { enUS as defaultLocale } from './locales/en-US'
 
 // ============================================================================

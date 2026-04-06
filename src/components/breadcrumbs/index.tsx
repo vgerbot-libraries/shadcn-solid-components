@@ -1,8 +1,7 @@
 import { Breadcrumbs as BreadcrumbsPrimitive } from '@kobalte/core/breadcrumbs'
+import { cx } from 'shadcn-solid-components/lib/cva'
 import type { VoidProps } from 'solid-js'
 import { type ComponentProps, splitProps, type ValidComponent } from 'solid-js'
-
-import { cx } from 'shadcn-solid-components/lib/cva'
 
 export type BreadcrumbsProps<T extends ValidComponent = 'nav'> = ComponentProps<
   typeof BreadcrumbsPrimitive<T>

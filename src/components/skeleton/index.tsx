@@ -1,8 +1,7 @@
 import { Root as SkeletonPrimitive } from '@kobalte/core/skeleton'
+import { cx } from 'shadcn-solid-components/lib/cva'
 import type { ComponentProps, ValidComponent } from 'solid-js'
 import { mergeProps, splitProps } from 'solid-js'
-
-import { cx } from 'shadcn-solid-components/lib/cva'
 
 export type SkeletonProps<T extends ValidComponent = 'div'> = ComponentProps<
   typeof SkeletonPrimitive<T>

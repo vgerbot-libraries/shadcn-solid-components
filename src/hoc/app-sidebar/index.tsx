@@ -1,4 +1,3 @@
-import { ComponentProps, For, type JSX, Match, Switch } from 'solid-js'
 import {
   Sidebar,
   SidebarContent,
@@ -11,6 +10,7 @@ import {
   SidebarProps,
   SidebarProvider,
 } from 'shadcn-solid-components/components/sidebar'
+import { ComponentProps, For, type JSX, Match, Switch } from 'solid-js'
 import { SidebarMenuTree, SidebarMenuTreeProps } from '../sidebar-menu-tree'
 
 export type AppSidebarMenuGroup = {

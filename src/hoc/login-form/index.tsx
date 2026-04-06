@@ -1,7 +1,17 @@
-import { type ComponentProps, For, type JSX, Show, splitProps } from 'solid-js'
 import { Button } from 'shadcn-solid-components/components/button'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from 'shadcn-solid-components/components/card'
-import { Checkbox, CheckboxControl, CheckboxInput, CheckboxLabel } from 'shadcn-solid-components/components/checkbox'
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from 'shadcn-solid-components/components/card'
+import {
+  Checkbox,
+  CheckboxControl,
+  CheckboxInput,
+  CheckboxLabel,
+} from 'shadcn-solid-components/components/checkbox'
 import { useLocale } from 'shadcn-solid-components/components/config-provider'
 import { IconLoader } from 'shadcn-solid-components/components/icons'
 import { Separator } from 'shadcn-solid-components/components/separator'
@@ -9,6 +19,7 @@ import { TextField, TextFieldInput } from 'shadcn-solid-components/components/te
 import { FormField } from 'shadcn-solid-components/hoc/form-field'
 import type { LoginFormLocale } from 'shadcn-solid-components/i18n/types'
 import { cx } from 'shadcn-solid-components/lib/cva'
+import { type ComponentProps, For, type JSX, Show, splitProps } from 'solid-js'
 import { enUS as defaultLocale } from './locales/en-US'
 
 // ============================================================================

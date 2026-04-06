@@ -18,6 +18,7 @@
     "jsxImportSource": "solid-js",
     "types": ["vite/client"],
     "paths": {
+      "shadcn-solid-components/*": ["../src/*"],
       "@docs/*": ["./src/*"],
       "@/*": ["../src/*"],
     }

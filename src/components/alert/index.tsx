@@ -1,11 +1,10 @@
 import { Alert as AlertPrimitive } from '@kobalte/core/alert'
 import type { VariantProps } from 'cva'
-import type { ComponentProps, ValidComponent } from 'solid-js'
-import { splitProps } from 'solid-js'
-
 import { cva, cx } from 'shadcn-solid-components/lib/cva'
 import { ComponentName } from 'shadcn-solid-components/lib/theme-context'
 import { useComponentClass } from 'shadcn-solid-components/lib/theme-helpers'
+import type { ComponentProps, ValidComponent } from 'solid-js'
+import { splitProps } from 'solid-js'
 
 export const alertVariants = cva({
   base: 'relative w-full border px-4 py-3 text-sm grid has-[>svg]:grid-cols-[calc(var(--spacing)*4)_1fr] grid-cols-[0_1fr] has-[>svg]:gap-x-3 gap-y-0.5 items-start [&>svg]:size-4 [&>svg]:translate-y-0.5 [&>svg]:text-current',

@@ -1,6 +1,9 @@
-import { type Accessor, createMemo, For, type JSX, Show } from 'solid-js'
 import { Badge, type BadgeProps } from 'shadcn-solid-components/components/badge'
-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from 'shadcn-solid-components/components/collapsible'
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from 'shadcn-solid-components/components/collapsible'
 import {
   SidebarMenu,
   SidebarMenuButton,
@@ -10,7 +13,13 @@ import {
   SidebarMenuSubItem,
 } from 'shadcn-solid-components/components/sidebar'
 import { cx } from 'shadcn-solid-components/lib/cva'
-import { parseUrl, type UrlInfo, type UrlInfoInput, useCurrentUrl } from 'shadcn-solid-components/lib/use-current-url'
+import {
+  parseUrl,
+  type UrlInfo,
+  type UrlInfoInput,
+  useCurrentUrl,
+} from 'shadcn-solid-components/lib/use-current-url'
+import { type Accessor, createMemo, For, type JSX, Show } from 'solid-js'
 
 export type UrlMatchStrategy = 'exact' | 'startsWith' | 'endsWith' | RegExp
 

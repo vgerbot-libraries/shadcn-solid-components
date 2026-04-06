@@ -1,3 +1,8 @@
+import { Button } from 'shadcn-solid-components/components/button'
+import { useLocale } from 'shadcn-solid-components/components/config-provider'
+import { Separator } from 'shadcn-solid-components/components/separator'
+import type { StepperLocale } from 'shadcn-solid-components/i18n/types'
+import { cx } from 'shadcn-solid-components/lib/cva'
 import {
   type Accessor,
   type ComponentProps,
@@ -9,11 +14,6 @@ import {
   splitProps,
   useContext,
 } from 'solid-js'
-import { Button } from 'shadcn-solid-components/components/button'
-import { useLocale } from 'shadcn-solid-components/components/config-provider'
-import { Separator } from 'shadcn-solid-components/components/separator'
-import type { StepperLocale } from 'shadcn-solid-components/i18n/types'
-import { cx } from 'shadcn-solid-components/lib/cva'
 import { enUS as defaultLocale } from './locales/en-US'
 
 // ============================================================================

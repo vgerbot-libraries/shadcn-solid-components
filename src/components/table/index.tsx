@@ -1,7 +1,6 @@
+import { cx } from 'shadcn-solid-components/lib/cva'
 import type { ComponentProps } from 'solid-js'
 import { splitProps } from 'solid-js'
-
-import { cx } from 'shadcn-solid-components/lib/cva'
 
 export type TableProps = ComponentProps<'table'>
 

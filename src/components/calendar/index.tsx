@@ -1,8 +1,7 @@
 import CalendarPrimitive from '@corvu/calendar'
+import { cx } from 'shadcn-solid-components/lib/cva'
 import type { ComponentProps, ValidComponent } from 'solid-js'
 import { Match, Switch, splitProps } from 'solid-js'
-
-import { cx } from 'shadcn-solid-components/lib/cva'
 
 import { buttonVariants } from '../button'
 

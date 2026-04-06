@@ -1,3 +1,4 @@
+import { cx } from 'shadcn-solid-components/lib/cva'
 import {
   type ComponentProps,
   createSignal,
@@ -7,7 +8,6 @@ import {
   Show,
   splitProps,
 } from 'solid-js'
-import { cx } from 'shadcn-solid-components/lib/cva'
 
 // ============================================================================
 // Types

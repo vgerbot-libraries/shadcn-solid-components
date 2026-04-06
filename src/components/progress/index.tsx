@@ -1,8 +1,8 @@
 import { Progress as ProgressPrimitive } from '@kobalte/core/progress'
-import { type ComponentProps, splitProps, type ValidComponent } from 'solid-js'
+import { cx } from 'shadcn-solid-components/lib/cva'
 import { ComponentName } from 'shadcn-solid-components/lib/theme-context'
 import { useComponentClass } from 'shadcn-solid-components/lib/theme-helpers'
-import { cx } from 'shadcn-solid-components/lib/cva'
+import { type ComponentProps, splitProps, type ValidComponent } from 'solid-js'
 
 export type ProgressProps<T extends ValidComponent = 'div'> = ComponentProps<
   typeof ProgressPrimitive<T>

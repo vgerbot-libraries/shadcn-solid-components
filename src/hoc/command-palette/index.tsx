@@ -1,4 +1,3 @@
-import { createEffect, createSignal, For, type JSX, onCleanup, Show, splitProps } from 'solid-js'
 import {
   CommandDialog,
   CommandEmpty,
@@ -12,6 +11,7 @@ import {
 import { useLocale } from 'shadcn-solid-components/components/config-provider'
 import { Kbd } from 'shadcn-solid-components/components/kbd'
 import type { CommandPaletteLocale } from 'shadcn-solid-components/i18n/types'
+import { createEffect, createSignal, For, type JSX, onCleanup, Show, splitProps } from 'solid-js'
 import { enUS as defaultLocale } from './locales/en-US'
 
 // ============================================================================

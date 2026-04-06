@@ -1,8 +1,7 @@
 import { SegmentedControl as SegmentedControlPrimitive } from '@kobalte/core/segmented-control'
+import { cx } from 'shadcn-solid-components/lib/cva'
 import type { ComponentProps, ValidComponent } from 'solid-js'
 import { splitProps } from 'solid-js'
-
-import { cx } from 'shadcn-solid-components/lib/cva'
 
 export type SegmentedControlProps<T extends ValidComponent = 'div'> = ComponentProps<
   typeof SegmentedControlPrimitive<T>

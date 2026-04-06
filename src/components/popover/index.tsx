@@ -1,8 +1,8 @@
 import { Popover as PopoverPrimitive } from '@kobalte/core/popover'
-import { type ComponentProps, mergeProps, splitProps, type ValidComponent } from 'solid-js'
+import { cx } from 'shadcn-solid-components/lib/cva'
 import { ComponentName } from 'shadcn-solid-components/lib/theme-context'
 import { useComponentClass } from 'shadcn-solid-components/lib/theme-helpers'
-import { cx } from 'shadcn-solid-components/lib/cva'
+import { type ComponentProps, mergeProps, splitProps, type ValidComponent } from 'solid-js'
 
 export const PopoverPortal = PopoverPrimitive.Portal
 

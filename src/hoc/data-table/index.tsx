@@ -13,7 +13,6 @@ import {
   getPaginationRowModel,
   getSortedRowModel,
 } from '@tanstack/solid-table'
-import { type ComponentProps, createSignal, For, type JSX, Show, splitProps } from 'solid-js'
 import { Card } from 'shadcn-solid-components/components/card'
 import { useLocale } from 'shadcn-solid-components/components/config-provider'
 import { Skeleton } from 'shadcn-solid-components/components/skeleton'
@@ -28,6 +27,7 @@ import { DataTableToolbar } from 'shadcn-solid-components/hoc/data-table-toolbar
 import { EmptyState } from 'shadcn-solid-components/hoc/empty-state'
 import type { DataTableLocale } from 'shadcn-solid-components/i18n/types'
 import { cx } from 'shadcn-solid-components/lib/cva'
+import { type ComponentProps, createSignal, For, type JSX, Show, splitProps } from 'solid-js'
 import { enUS as defaultLocale } from './locales/en-US'
 
 // ============================================================================

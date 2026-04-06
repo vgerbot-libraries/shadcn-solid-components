@@ -1,8 +1,7 @@
 import { Pagination as PaginationPrimitive, usePaginationContext } from '@kobalte/core/pagination'
+import { cx } from 'shadcn-solid-components/lib/cva'
 import type { VoidProps } from 'solid-js'
 import { type ComponentProps, mergeProps, splitProps, type ValidComponent } from 'solid-js'
-
-import { cx } from 'shadcn-solid-components/lib/cva'
 
 import type { ButtonProps } from '../button'
 import { buttonVariants } from '../button'

@@ -50,8 +50,8 @@ const setDocumentMeta = (title: string, description: string) => {
   metaDescription.setAttribute("content", description)
 }
 
-const docsSearchItems: DocsSearchItem[] = docsNavigation.flatMap((section) =>
-  section.items.map((item) => {
+const docsSearchItems: DocsSearchItem[] = docsNavigation.flatMap((section: any) =>
+  section.items.map((item: any) => {
     const slug = item.href.replace(/^\/docs\//, "")
     const entry = Contents[slug]
 
@@ -62,7 +62,7 @@ const docsSearchItems: DocsSearchItem[] = docsNavigation.flatMap((section) =>
       description: item.description,
       section: section.title,
       status: item.status,
-      headings: entry?.headings.map((heading) => heading.text).join(" ") ?? "",
+      headings: entry?.headings?.map((heading: any) => heading.text).join(" ") ?? "",
     }
   }),
 )
@@ -193,15 +193,15 @@ const DocsSidebar = () => {
     const matchingHrefs = new Set(matches.map((item) => item.href))
 
     return docsNavigation
-      .map((section) => ({
+      .map((section: any) => ({
         ...section,
-        items: section.items.filter((item) => matchingHrefs.has(item.href)),
+        items: section.items.filter((item: any) => matchingHrefs.has(item.href)),
       }))
-      .filter((section) => section.items.length > 0)
+      .filter((section: any) => section.items.length > 0)
   })
 
   const resultCount = createMemo(() =>
-    filteredSections().reduce((count, section) => count + section.items.length, 0),
+    filteredSections().reduce((count: number, section: any) => count + section.items.length, 0),
   )
 
   return (

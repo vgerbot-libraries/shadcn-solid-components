@@ -1,5 +1,4 @@
 import { useColorMode } from '@kobalte/core'
-import { ComponentProps } from 'solid-js'
 import { Button } from 'shadcn-solid-components/components/button'
 import { useLocale } from 'shadcn-solid-components/components/config-provider'
 import {
@@ -11,6 +10,7 @@ import {
 import { IconLaptop, IconMoon, IconSun } from 'shadcn-solid-components/components/icons'
 import type { ModeToggleDropdownLocale } from 'shadcn-solid-components/i18n/types'
 import { cx } from 'shadcn-solid-components/lib/cva'
+import { ComponentProps } from 'solid-js'
 import { enUS as defaultLocale } from './locales/en-US'
 
 /** All translatable strings used by ModeToggleDropdown. */

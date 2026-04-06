@@ -1,4 +1,3 @@
-import { For, type JSX, Show, splitProps } from 'solid-js'
 import {
   NavigationItemDescription,
   NavigationItemLabel,
@@ -12,6 +11,7 @@ import {
   navigationButtonVariant,
 } from 'shadcn-solid-components/components/navigation-menu'
 import { cx } from 'shadcn-solid-components/lib/cva'
+import { For, type JSX, Show, splitProps } from 'solid-js'
 
 // ============================================================================
 // Types

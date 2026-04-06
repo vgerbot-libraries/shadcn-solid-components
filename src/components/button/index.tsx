@@ -1,11 +1,10 @@
 import { Root as ButtonPrimitive } from '@kobalte/core/button'
 import type { VariantProps } from 'cva'
-import type { ComponentProps, ValidComponent } from 'solid-js'
-import { splitProps } from 'solid-js'
-
 import { cva, cx } from 'shadcn-solid-components/lib/cva'
 import { ComponentName } from 'shadcn-solid-components/lib/theme-context'
 import { useComponentClass } from 'shadcn-solid-components/lib/theme-helpers'
+import type { ComponentProps, ValidComponent } from 'solid-js'
+import { splitProps } from 'solid-js'
 
 export const buttonVariants = cva({
   base: [

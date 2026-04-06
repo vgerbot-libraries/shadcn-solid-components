@@ -18,7 +18,12 @@ import {
   TextFieldLabel,
 } from "shadcn-solid-components/components/text-field"
 
-import { Switch, SwitchControl, SwitchInput, SwitchThumb } from "../ui/switch"
+import {
+  Switch,
+  SwitchControl,
+  SwitchInput,
+  SwitchThumb,
+} from "shadcn-solid-components/components/switch"
 
 const formSchema = v.object({
   twoFactor: v.pipe(

@@ -16,8 +16,8 @@ const FormFieldDemo = () => {
       <TextFieldInput
         type="email"
         name="email"
-        autoComplete="email"
-        onBlur={(e) => {
+        autocomplete="email"
+        onBlur={(e: any) => {
           const value = e.currentTarget.value.trim()
           setError(value ? undefined : "Please enter an email address")
         }}

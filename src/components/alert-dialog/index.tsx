@@ -1,10 +1,10 @@
 import { AlertDialog as AlertDialogPrimitive } from '@kobalte/core/alert-dialog'
-import type { ComponentProps, ValidComponent } from 'solid-js'
-import { splitProps } from 'solid-js'
 import { buttonVariants } from 'shadcn-solid-components/components/button'
 import { cx } from 'shadcn-solid-components/lib/cva'
 import { ComponentName } from 'shadcn-solid-components/lib/theme-context'
 import { useComponentClass } from 'shadcn-solid-components/lib/theme-helpers'
+import type { ComponentProps, ValidComponent } from 'solid-js'
+import { splitProps } from 'solid-js'
 
 export const AlertDialogPortal = AlertDialogPrimitive.Portal
 

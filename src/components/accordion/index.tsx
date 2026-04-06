@@ -1,10 +1,9 @@
 import { Accordion as AccordionPrimitive } from '@kobalte/core/accordion'
-import type { ComponentProps, ValidComponent } from 'solid-js'
-import { splitProps } from 'solid-js'
-
 import { cx } from 'shadcn-solid-components/lib/cva'
 import { ComponentName } from 'shadcn-solid-components/lib/theme-context'
 import { useComponentClass } from 'shadcn-solid-components/lib/theme-helpers'
+import type { ComponentProps, ValidComponent } from 'solid-js'
+import { splitProps } from 'solid-js'
 
 export type AccordionProps<T extends ValidComponent = 'div'> = ComponentProps<
   typeof AccordionPrimitive<T>

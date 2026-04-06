@@ -1,9 +1,9 @@
 import { HoverCard as HoverCardPrimitive } from '@kobalte/core/hover-card'
-import type { ComponentProps, ValidComponent } from 'solid-js'
-import { splitProps } from 'solid-js'
+import { cx } from 'shadcn-solid-components/lib/cva'
 import { ComponentName } from 'shadcn-solid-components/lib/theme-context'
 import { useComponentClass } from 'shadcn-solid-components/lib/theme-helpers'
-import { cx } from 'shadcn-solid-components/lib/cva'
+import type { ComponentProps, ValidComponent } from 'solid-js'
+import { splitProps } from 'solid-js'
 
 export const HoverCardPortal = HoverCardPrimitive.Portal
 

@@ -24,7 +24,7 @@ const SliderCustomLabelDemo = () => {
       maxValue={2000}
       getValueLabel={(params) => `$${params.values[0]} - $${params.values[1]}`}
       validationState={
-        values()[0] < 200 || values()[1] > 1500 ? "invalid" : "valid"
+        values()[0]! < 200 || values()[1]! > 1500 ? "invalid" : "valid"
       }
     >
       <SliderGroup>

@@ -12,9 +12,13 @@ The **Toaster** component wraps the `somoto` toast renderer, sets `theme` from K
 
 ## Installation
 
-`somoto` and `@kobalte/core` are pulled in as dependencies.
+`somoto` and `@kobalte/core` are peer dependencies of this library.
 
-Mount **Toaster** once near the root of your app (for example beside your router). Trigger toasts with `toast` (and helpers such as `toast.success`) from `somoto`; that package is already a dependency of this library.
+```bash
+pnpm add somoto @kobalte/core
+```
+
+Mount **Toaster** once near the root of your app (for example beside your router). Trigger toasts with `toast` (and helpers such as `toast.success`) from `somoto`.
 
 ## Usage
 

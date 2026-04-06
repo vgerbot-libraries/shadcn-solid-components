@@ -1,9 +1,9 @@
 import { TextField as TextFieldPrimitive } from '@kobalte/core/text-field'
-import type { ComponentProps, ValidComponent } from 'solid-js'
-import { For, Match, Switch, splitProps } from 'solid-js'
+import { cx } from 'shadcn-solid-components/lib/cva'
 import { ComponentName } from 'shadcn-solid-components/lib/theme-context'
 import { useComponentClass } from 'shadcn-solid-components/lib/theme-helpers'
-import { cx } from 'shadcn-solid-components/lib/cva'
+import type { ComponentProps, ValidComponent } from 'solid-js'
+import { For, Match, Switch, splitProps } from 'solid-js'
 
 export type TextFieldProps<T extends ValidComponent = 'div'> = ComponentProps<
   typeof TextFieldPrimitive<T>

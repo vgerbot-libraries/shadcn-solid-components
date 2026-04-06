@@ -1,5 +1,4 @@
 import { useColorMode } from '@kobalte/core'
-import { type ComponentProps, For, type JSX, Show, splitProps } from 'solid-js'
 import { useLocale } from 'shadcn-solid-components/components/config-provider'
 import {
   DropdownMenu,
@@ -13,6 +12,7 @@ import {
 import { IconLaptop, IconMoon, IconSun } from 'shadcn-solid-components/components/icons'
 import type { UserMenuLocale } from 'shadcn-solid-components/i18n/types'
 import { cx } from 'shadcn-solid-components/lib/cva'
+import { type ComponentProps, For, type JSX, Show, splitProps } from 'solid-js'
 import { enUS as defaultLocale } from './locales/en-US'
 
 // ============================================================================
