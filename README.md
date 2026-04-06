@@ -2,19 +2,7 @@
 
 A collection of SolidJS components built with TailwindCSS, inspired by shadcn/ui.
 
-> 📖 **New to this library?** Check out the [Integration Guide](./INTEGRATION.md) for detailed setup instructions and examples.
-
 ## Installation
-
-```bash
-npm install shadcn-solid-components
-# or
-yarn add shadcn-solid-components
-# or
-pnpm add shadcn-solid-components
-```
-
-If you need to install directly from GitHub, use:
 
 ```bash
 npm install github:vgerbot-libraries/shadcn-solid-components
@@ -53,7 +41,7 @@ In your main CSS file (e.g., `src/index.css` or `src/app.css`):
 
 ```css
 @import "tailwindcss";
-@import "shadcn-solid-components/tailwind.preset.css";
+@import "shadcn-solid-components/src/themes/default.preset.css";
 
 /* Your custom styles here */
 ```
@@ -79,7 +67,7 @@ Then in your CSS file:
 
 ```css
 @import "tailwindcss";
-@import "shadcn-solid-components/tailwind.preset.css";
+@import "shadcn-solid-components/src/themes/default.preset.css";
 ```
 
 ### Option 3: Using PostCSS
@@ -104,7 +92,7 @@ Then in your CSS file:
 
 ```css
 @import "tailwindcss";
-@import "shadcn-solid-components/tailwind.preset.css";
+@import "shadcn-solid-components/src/themes/default.preset.css";
 ```
 
 > **Note:** TailwindCSS v4 no longer requires a `tailwind.config.js` file. Configuration is done through CSS using `@theme` and `@config` directives.
@@ -112,7 +100,7 @@ Then in your CSS file:
 ## Usage
 
 ```tsx
-import { Button } from 'shadcn-solid-components'
+import { Button } from 'shadcn-solid-components/components/button'
 
 function App() {
   return (
@@ -152,8 +140,7 @@ Dark mode is supported via the `data-kb-theme="dark"` attribute:
 
 ## Documentation
 
-- [Integration Guide](./INTEGRATION.md) - Complete setup and integration guide
-- [Component API](./README.md) - Component reference (this file)
+<https://vgerbot-libraries.github.io/shadcn-solid-components/>
 
 ## License
 
