@@ -14,6 +14,7 @@ import {
   IconRocket,
   IconSettings,
   IconStar,
+  IconUpdates,
 } from 'shadcn-solid-components/components/icons'
 import { Skeleton } from 'shadcn-solid-components/components/skeleton'
 import { AppSidebar, type AppSidebarMenuGroup } from 'shadcn-solid-components/hoc/app-sidebar'
@@ -160,6 +161,14 @@ const App: Component<AppProps> = props => {
           },
           onClick: () => navigate('/custom-theme'),
         },
+        {
+          icon: () => <IconUpdates class="size-4" />,
+          title: 'Activity Feed',
+          get isActive() {
+            return isActive('/activity-feed')
+          },
+          onClick: () => navigate('/activity-feed'),
+        },
       ],
     },
   ]
@@ -244,6 +253,12 @@ const App: Component<AppProps> = props => {
           label: 'Custom Theme',
           icon: <IconSettings class="size-4" />,
           onSelect: () => navigate('/custom-theme'),
+        },
+        {
+          id: 'activity-feed',
+          label: 'Activity Feed',
+          icon: <IconUpdates class="size-4" />,
+          onSelect: () => navigate('/activity-feed'),
         },
       ],
     },

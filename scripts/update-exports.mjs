@@ -74,6 +74,8 @@ packageJson.exports = Object.fromEntries([
   ...getEntries('src/lib', 'lib'),
   ...getEntries('src/components', 'components'),
   ...getEntries('src/hoc', 'hoc'),
+  ...getEntries('src/i18n', 'i18n'),
+  ...getEntries('src/i18n/locales', 'i18n/locales'),
   ['./*', './*'],
 ])
 

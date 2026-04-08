@@ -25,6 +25,7 @@ const FeedbackPage = lazy(() => import('./pages/FeedbackPage'))
 const DisplayCompositePage = lazy(() => import('./pages/DisplayCompositePage'))
 const SettingsPage = lazy(() => import('./pages/SettingsPage'))
 const CustomThemePage = lazy(() => import('./pages/CustomThemePage'))
+const ActivityFeedPage = lazy(() => import('./pages/ActivityFeedPage'))
 
 const Root = (props: { children?: import('solid-js').JSX.Element }) => (
   <ColorModeProvider>
@@ -57,6 +58,7 @@ const dispose = render(() => {
       <Route path="/display-composite" component={DisplayCompositePage} />
       <Route path="/settings" component={SettingsPage} />
       <Route path="/custom-theme" component={CustomThemePage} />
+      <Route path="/activity-feed" component={ActivityFeedPage} />
     </Router>
   )
 }, rootEl)
