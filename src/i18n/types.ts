@@ -152,6 +152,17 @@ export interface ModeToggleDropdownLocale {
   system: string
 }
 
+export interface SettingsLayoutLocale {
+  toggleSidebar: string
+}
+
+export interface ActivityFeedLocale {
+  empty: string
+  loading: string
+  loadMore: string
+  loadingMore: string
+}
+
 export interface Locale {
   locale: string
   LoginForm: LoginFormLocale
@@ -172,4 +183,6 @@ export interface Locale {
   CommandPalette: CommandPaletteLocale
   UserMenu: UserMenuLocale
   ModeToggleDropdown: ModeToggleDropdownLocale
+  SettingsLayout: SettingsLayoutLocale
+  ActivityFeed: ActivityFeedLocale
 }

@@ -1,3 +1,4 @@
+import { jaJP as ActivityFeed } from 'shadcn-solid-components/hoc/activity-feed/locales/ja-JP'
 import { jaJP as TanstackTable } from 'shadcn-solid-components/components/tanstack-table/locales/ja-JP'
 import { jaJP as CommandPalette } from 'shadcn-solid-components/hoc/command-palette/locales/ja-JP'
 import { jaJP as ConfirmDialog } from 'shadcn-solid-components/hoc/confirm-dialog/locales/ja-JP'
@@ -11,6 +12,7 @@ import { jaJP as LoginForm } from 'shadcn-solid-components/hoc/login-form/locale
 import { jaJP as ModeToggleDropdown } from 'shadcn-solid-components/hoc/mode-toggle-dropdown/locales/ja-JP'
 import { jaJP as NotificationCenter } from 'shadcn-solid-components/hoc/notification-center/locales/ja-JP'
 import { jaJP as OTPField } from 'shadcn-solid-components/hoc/otp-field/locales/ja-JP'
+import { jaJP as SettingsLayout } from 'shadcn-solid-components/hoc/settings-layout/locales/ja-JP'
 import { jaJP as Stepper } from 'shadcn-solid-components/hoc/stepper/locales/ja-JP'
 import { jaJP as TagInput } from 'shadcn-solid-components/hoc/tag-input/locales/ja-JP'
 import { jaJP as Timeline } from 'shadcn-solid-components/hoc/timeline/locales/ja-JP'
@@ -38,4 +40,6 @@ export const jaJP: Locale = {
   CommandPalette,
   UserMenu,
   ModeToggleDropdown,
+  SettingsLayout,
+  ActivityFeed,
 }

@@ -1,3 +1,4 @@
+import { enUS as ActivityFeed } from 'shadcn-solid-components/hoc/activity-feed/locales/en-US'
 import { enUS as TanstackTable } from 'shadcn-solid-components/components/tanstack-table/locales/en-US'
 import { enUS as CommandPalette } from 'shadcn-solid-components/hoc/command-palette/locales/en-US'
 import { enUS as ConfirmDialog } from 'shadcn-solid-components/hoc/confirm-dialog/locales/en-US'
@@ -11,6 +12,7 @@ import { enUS as LoginForm } from 'shadcn-solid-components/hoc/login-form/locale
 import { enUS as ModeToggleDropdown } from 'shadcn-solid-components/hoc/mode-toggle-dropdown/locales/en-US'
 import { enUS as NotificationCenter } from 'shadcn-solid-components/hoc/notification-center/locales/en-US'
 import { enUS as OTPField } from 'shadcn-solid-components/hoc/otp-field/locales/en-US'
+import { enUS as SettingsLayout } from 'shadcn-solid-components/hoc/settings-layout/locales/en-US'
 import { enUS as Stepper } from 'shadcn-solid-components/hoc/stepper/locales/en-US'
 import { enUS as TagInput } from 'shadcn-solid-components/hoc/tag-input/locales/en-US'
 import { enUS as Timeline } from 'shadcn-solid-components/hoc/timeline/locales/en-US'
@@ -38,4 +40,6 @@ export const enUS: Locale = {
   CommandPalette,
   UserMenu,
   ModeToggleDropdown,
+  SettingsLayout,
+  ActivityFeed,
 }
