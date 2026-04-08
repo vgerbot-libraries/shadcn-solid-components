@@ -1,46 +1,4 @@
-@import "tailwindcss";
-@import "shadcn/tailwind.css";
-@import "tw-animate-css";
-@source "../";
-
-@custom-variant dark (&:is([data-kb-theme="dark"] *));
-
-@keyframes accordion-down {
-  from {
-    height: 0;
-  }
-  to {
-    height: var(--kb-accordion-content-height);
-  }
-}
-
-@keyframes accordion-up {
-  from {
-    height: var(--kb-accordion-content-height);
-  }
-  to {
-    height: 0;
-  }
-}
-
-@keyframes collapsible-down {
-  from {
-    height: 0;
-  }
-  to {
-    height: var(--kb-collapsible-content-height);
-  }
-}
-
-@keyframes collapsible-up {
-  from {
-    height: var(--kb-collapsible-content-height);
-  }
-  to {
-    height: 0;
-  }
-}
-
+@import "./base.css";
 @theme inline {
   /* Border Radius */
   --radius-sm: calc(var(--radius) - 4px);
@@ -179,28 +137,4 @@
   body {
     @apply bg-background text-foreground;
   }
-}
-
-@utility rounded-component {
-  border-radius: var(--radius-component);
-}
-
-@utility rounded-t-component {
-  border-top-left-radius: var(--radius-component);
-  border-top-right-radius: var(--radius-component);
-}
-
-@utility rounded-r-component {
-  border-top-right-radius: var(--radius-component);
-  border-bottom-right-radius: var(--radius-component);
-}
-
-@utility rounded-l-component {
-  border-top-left-radius: var(--radius-component);
-  border-bottom-left-radius: var(--radius-component);
-}
-
-@utility rounded-b-component {
-  border-bottom-left-radius: var(--radius-component);
-  border-bottom-right-radius: var(--radius-component);
 }
