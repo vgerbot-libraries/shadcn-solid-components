@@ -14,4 +14,5 @@ export const pages: Record<string, Component> = {
   'display-composite': lazy(() => import('./DisplayCompositePage')),
   settings: lazy(() => import('./SettingsPage')),
   'activity-feed': lazy(() => import('./ActivityFeedPage')),
+  'pricing-table': lazy(() => import('./PricingTablePage')),
 }

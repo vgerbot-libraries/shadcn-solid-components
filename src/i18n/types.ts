@@ -163,6 +163,15 @@ export interface ActivityFeedLocale {
   loadingMore: string
 }
 
+export interface PricingTableLocale {
+  monthly: string
+  yearly: string
+  popular: string
+  perMonth: string
+  perYear: string
+  billedYearly: (currency: string, amount: number) => string
+}
+
 export interface Locale {
   locale: string
   LoginForm: LoginFormLocale
@@ -185,4 +194,5 @@ export interface Locale {
   ModeToggleDropdown: ModeToggleDropdownLocale
   SettingsLayout: SettingsLayoutLocale
   ActivityFeed: ActivityFeedLocale
+  PricingTable: PricingTableLocale
 }

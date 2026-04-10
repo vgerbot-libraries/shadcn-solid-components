@@ -1,4 +1,5 @@
 import { enUS as ActivityFeed } from 'shadcn-solid-components/hoc/activity-feed/locales/en-US'
+import { enUS as PricingTable } from 'shadcn-solid-components/hoc/pricing-table/locales/en-US'
 import { enUS as TanstackTable } from 'shadcn-solid-components/components/tanstack-table/locales/en-US'
 import { enUS as CommandPalette } from 'shadcn-solid-components/hoc/command-palette/locales/en-US'
 import { enUS as ConfirmDialog } from 'shadcn-solid-components/hoc/confirm-dialog/locales/en-US'
@@ -42,4 +43,5 @@ export const enUS: Locale = {
   ModeToggleDropdown,
   SettingsLayout,
   ActivityFeed,
+  PricingTable,
 }

@@ -102,6 +102,7 @@
     "./hoc/notification-center": "./src/hoc/notification-center/index.tsx",
     "./hoc/otp-field": "./src/hoc/otp-field/index.tsx",
     "./hoc/page-header": "./src/hoc/page-header/index.tsx",
+    "./hoc/pricing-table": "./src/hoc/pricing-table/index.tsx",
     "./hoc/settings-layout": "./src/hoc/settings-layout/index.tsx",
     "./hoc/sidebar-menu-tree": "./src/hoc/sidebar-menu-tree/index.tsx",
     "./hoc/stat-card": "./src/hoc/stat-card/index.tsx",

@@ -1,4 +1,5 @@
 import { jaJP as ActivityFeed } from 'shadcn-solid-components/hoc/activity-feed/locales/ja-JP'
+import { jaJP as PricingTable } from 'shadcn-solid-components/hoc/pricing-table/locales/ja-JP'
 import { jaJP as TanstackTable } from 'shadcn-solid-components/components/tanstack-table/locales/ja-JP'
 import { jaJP as CommandPalette } from 'shadcn-solid-components/hoc/command-palette/locales/ja-JP'
 import { jaJP as ConfirmDialog } from 'shadcn-solid-components/hoc/confirm-dialog/locales/ja-JP'
@@ -42,4 +43,5 @@ export const jaJP: Locale = {
   ModeToggleDropdown,
   SettingsLayout,
   ActivityFeed,
+  PricingTable,
 }

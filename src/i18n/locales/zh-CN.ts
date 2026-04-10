@@ -1,4 +1,5 @@
 import { zhCN as ActivityFeed } from 'shadcn-solid-components/hoc/activity-feed/locales/zh-CN'
+import { zhCN as PricingTable } from 'shadcn-solid-components/hoc/pricing-table/locales/zh-CN'
 import { zhCN as TanstackTable } from 'shadcn-solid-components/components/tanstack-table/locales/zh-CN'
 import { zhCN as CommandPalette } from 'shadcn-solid-components/hoc/command-palette/locales/zh-CN'
 import { zhCN as ConfirmDialog } from 'shadcn-solid-components/hoc/confirm-dialog/locales/zh-CN'
@@ -42,4 +43,5 @@ export const zhCN: Locale = {
   ModeToggleDropdown,
   SettingsLayout,
   ActivityFeed,
+  PricingTable,
 }

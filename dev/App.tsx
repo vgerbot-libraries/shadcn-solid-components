@@ -169,6 +169,14 @@ const App: Component<AppProps> = props => {
           },
           onClick: () => navigate('/activity-feed'),
         },
+        {
+          icon: () => <IconCreditCard class="size-4" />,
+          title: 'Pricing Table',
+          get isActive() {
+            return isActive('/pricing-table')
+          },
+          onClick: () => navigate('/pricing-table'),
+        },
       ],
     },
   ]
@@ -259,6 +267,12 @@ const App: Component<AppProps> = props => {
           label: 'Activity Feed',
           icon: <IconUpdates class="size-4" />,
           onSelect: () => navigate('/activity-feed'),
+        },
+        {
+          id: 'pricing-table',
+          label: 'Pricing Table',
+          icon: <IconCreditCard class="size-4" />,
+          onSelect: () => navigate('/pricing-table'),
         },
       ],
     },
