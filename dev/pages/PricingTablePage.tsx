@@ -1,4 +1,5 @@
 import type { Component } from 'solid-js'
+import { Button } from 'shadcn-solid-components/components/button'
 import {
   Card,
   CardContent,
@@ -134,6 +135,77 @@ const fourPlans: PricingPlan[] = [
   },
 ]
 
+const enhancedPlans: PricingPlan[] = [
+  {
+    name: 'Free',
+    description: 'Try us out for a quick project or two',
+    priceMonthly: 0,
+    priceYearly: 0,
+    billingText: 'Upgrade any time',
+    cta: 'Get Started',
+    features: [
+      { text: '1 active project', included: true },
+      { text: '3 MB upload limit', included: true },
+      { text: '5,000 visitors /mo', included: true },
+    ],
+    additionalFeatures: [
+      { text: 'Remove branding', included: false },
+      { text: 'QR codes', included: false },
+      { text: 'Built-in analytics', included: false },
+    ],
+  },
+  {
+    name: 'Solo',
+    description: 'Great for small projects',
+    priceMonthly: 13,
+    priceYearly: 120,
+    isPopular: true,
+    discount: '27% off',
+    cta: 'Get Started',
+    ctaInfo: '14-day money-back guarantee',
+    features: [
+      { text: '5 active projects', included: true },
+      { text: '75 MB upload limit', included: true },
+      { text: '100,000 visitors /mo', included: true },
+    ],
+    additionalFeatures: [
+      { text: 'Custom domains', included: true },
+      { text: 'Edit mode', included: true },
+      { text: 'Password protection', included: true },
+    ],
+    footerAction: (
+      <Button variant="ghost" class="text-muted-foreground w-full">
+        Compare plans
+      </Button>
+    ),
+  },
+  {
+    name: 'Pro',
+    description: 'For freelancers, agencies & companies',
+    priceMonthly: 31,
+    priceYearly: 300,
+    discount: '18% off',
+    cta: 'Get Started',
+    ctaVariant: 'secondary',
+    ctaInfo: 'Custom SLA included',
+    features: [
+      { text: 'Unlimited active projects', included: true },
+      { text: '10 GB upload limit', included: true },
+      { text: '500,000 visitors /mo', included: true },
+    ],
+    additionalFeatures: [
+      { text: 'Everything in Solo Plan', included: true },
+      { text: 'Capture emails', included: true },
+      { text: 'Add more team members', included: true },
+    ],
+    footerAction: (
+      <Button variant="ghost" class="text-muted-foreground w-full">
+        Compare plans
+      </Button>
+    ),
+  },
+]
+
 const PricingTablePage: Component = () => {
   return (
     <PageLayout
@@ -202,6 +274,19 @@ const PricingTablePage: Component = () => {
               </p>
             }
           />
+        </CardContent>
+      </Card>
+
+      {/* Enhanced features */}
+      <Card>
+        <CardHeader>
+          <CardTitle>Enhanced Features</CardTitle>
+          <CardDescription>
+            Discount badges, additional features, custom billing text, CTA info, and footer actions.
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <PricingTable plans={enhancedPlans} defaultBilling="yearly" />
         </CardContent>
       </Card>
     </PageLayout>

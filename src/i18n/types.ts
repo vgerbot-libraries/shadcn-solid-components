@@ -170,6 +170,7 @@ export interface PricingTableLocale {
   perMonth: string
   perYear: string
   billedYearly: (currency: string, amount: number) => string
+  additionalFeatures: string
 }
 
 export interface Locale {

@@ -7,4 +7,5 @@ export const zhTW: PricingTableLocale = {
   perMonth: '月',
   perYear: '年',
   billedYearly: (currency, amount) => `按年計費 ${currency}${amount}/年`,
+  additionalFeatures: '附加功能',
 }

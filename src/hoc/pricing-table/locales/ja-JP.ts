@@ -7,4 +7,5 @@ export const jaJP: PricingTableLocale = {
   perMonth: '月',
   perYear: '年',
   billedYearly: (currency, amount) => `年額 ${currency}${amount}`,
+  additionalFeatures: '追加機能',
 }

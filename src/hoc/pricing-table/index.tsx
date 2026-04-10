@@ -30,10 +30,24 @@ export interface PricingPlan {
   priceYearly: number
   /** List of features with included/excluded status. */
   features: PricingFeature[]
+  /** Additional features shown in a separate section below the main features. */
+  additionalFeatures?: PricingFeature[]
   /** Mark this plan as the recommended/popular choice. */
   isPopular?: boolean
+  /** Discount badge text (e.g. "44% off", "Best value"). */
+  discount?: string
   /** CTA button text. */
   cta: string
+  /** Override CTA button variant. Defaults to `'default'` for popular plans, `'outline'` for others. */
+  ctaVariant?: 'default' | 'destructive' | 'outline' | 'secondary' | 'ghost' | 'link'
+  /** Additional CSS class(es) for the CTA button. */
+  ctaClass?: string
+  /** Custom billing subtitle text. When set, always displayed regardless of billing cycle. */
+  billingText?: string
+  /** Info text or element shown below the CTA button. Strings get an auto info icon prefix. */
+  ctaInfo?: string | JSX.Element
+  /** Custom content rendered at the bottom of the card footer. */
+  footerAction?: JSX.Element
   /** Called when the CTA button is clicked. */
   onSelect?: () => void
 }
@@ -96,6 +110,46 @@ function IconX() {
   )
 }
 
+function IconInfo() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      class="size-3 shrink-0"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <circle cx="12" cy="12" r="10" />
+      <path d="M12 16v-4" />
+      <path d="M12 8h.01" />
+    </svg>
+  )
+}
+
+// ============================================================================
+// Helpers
+// ============================================================================
+
+function FeatureItem(props: { feature: PricingFeature }) {
+  return (
+    <li class="flex items-start gap-2 text-sm">
+      <Show when={props.feature.included} fallback={<IconX />}>
+        <IconCheck />
+      </Show>
+      <span
+        class={cx(
+          !props.feature.included && 'text-muted-foreground line-through',
+        )}
+      >
+        {props.feature.text}
+      </span>
+    </li>
+  )
+}
+
 // ============================================================================
 // Component
 // ============================================================================
@@ -123,10 +177,15 @@ function IconX() {
  *       priceMonthly: 19,
  *       priceYearly: 190,
  *       isPopular: true,
+ *       discount: '17% off',
  *       cta: 'Get started',
+ *       ctaInfo: '14-day money-back guarantee',
  *       features: [
  *         { text: 'Unlimited projects', included: true },
  *         { text: 'Custom domain', included: true },
+ *       ],
+ *       additionalFeatures: [
+ *         { text: 'Priority support', included: true },
  *       ],
  *     },
  *   ]}
@@ -220,6 +279,15 @@ export function PricingTable(props: PricingTableProps) {
                 </Badge>
               </Show>
 
+              <Show when={plan.discount}>
+                <Badge
+                  class="absolute -top-3 right-4"
+                  variant="secondary"
+                >
+                  {plan.discount}
+                </Badge>
+              </Show>
+
               <CardHeader class="space-y-1">
                 <h3 class="text-xl font-semibold">{plan.name}</h3>
                 <Show when={plan.description}>
@@ -236,9 +304,9 @@ export function PricingTable(props: PricingTableProps) {
                       /{isYearly() ? locale().perYear : locale().perMonth}
                     </span>
                   </div>
-                  <Show when={isYearly() && plan.priceMonthly > 0}>
+                  <Show when={plan.billingText ?? (isYearly() && plan.priceMonthly > 0)}>
                     <p class="text-muted-foreground mt-1 text-xs">
-                      {locale().billedYearly(currency(), plan.priceYearly)}
+                      {plan.billingText ?? locale().billedYearly(currency(), plan.priceYearly)}
                     </p>
                   </Show>
                 </div>
@@ -248,32 +316,48 @@ export function PricingTable(props: PricingTableProps) {
                 {/* Features */}
                 <ul class="flex flex-1 flex-col gap-3">
                   <For each={plan.features}>
-                    {(feature) => (
-                      <li class="flex items-start gap-2 text-sm">
-                        <Show when={feature.included} fallback={<IconX />}>
-                          <IconCheck />
-                        </Show>
-                        <span
-                          class={cx(
-                            !feature.included && 'text-muted-foreground line-through',
-                          )}
-                        >
-                          {feature.text}
-                        </span>
-                      </li>
-                    )}
+                    {(feature) => <FeatureItem feature={feature} />}
                   </For>
                 </ul>
+
+                {/* Additional Features */}
+                <Show when={plan.additionalFeatures?.length}>
+                  <div>
+                    <h4 class="mb-3 text-sm font-semibold">{locale().additionalFeatures}</h4>
+                    <ul class="flex flex-col gap-3">
+                      <For each={plan.additionalFeatures}>
+                        {(feature) => <FeatureItem feature={feature} />}
+                      </For>
+                    </ul>
+                  </div>
+                </Show>
               </CardContent>
 
-              <CardFooter>
+              <CardFooter class="flex flex-col">
                 <Button
-                  class="w-full"
-                  variant={plan.isPopular ? 'default' : 'outline'}
+                  class={cx('w-full', plan.ctaClass)}
+                  variant={plan.ctaVariant ?? (plan.isPopular ? 'default' : 'outline')}
                   onClick={() => plan.onSelect?.()}
                 >
                   {plan.cta}
                 </Button>
+
+                <Show when={plan.ctaInfo}>
+                  <div class="text-muted-foreground mt-2 flex items-center justify-center gap-1 text-xs">
+                    {typeof plan.ctaInfo === 'string' ? (
+                      <>
+                        <IconInfo />
+                        <span>{plan.ctaInfo}</span>
+                      </>
+                    ) : (
+                      plan.ctaInfo
+                    )}
+                  </div>
+                </Show>
+
+                <Show when={plan.footerAction}>
+                  <div class="mt-4 w-full">{plan.footerAction}</div>
+                </Show>
               </CardFooter>
             </Card>
           )}

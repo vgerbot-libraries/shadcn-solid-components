@@ -7,4 +7,5 @@ export const enUS: PricingTableLocale = {
   perMonth: 'mo',
   perYear: 'yr',
   billedYearly: (currency, amount) => `Billed at ${currency}${amount} /yr`,
+  additionalFeatures: 'Additional Features',
 }
