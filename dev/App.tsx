@@ -44,15 +44,12 @@ const App: Component<AppProps> = props => {
     {
       icon: () => <SettingsIcon />,
       title: 'Settings',
-      get isActive() {
-        return isActive('/settings')
-      },
       onClick: () => navigate('/settings'),
     },
     {
       icon: () => <GetHelpIcon />,
       title: 'Get Help',
-      onClick: () => {},
+      onClick: () => navigate('/helper-center'),
     },
   ]
 

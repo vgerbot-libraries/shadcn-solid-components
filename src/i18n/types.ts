@@ -173,6 +173,13 @@ export interface PricingTableLocale {
   additionalFeatures: string
 }
 
+export interface FaqSectionLocale {
+  searchPlaceholder: string
+  allCategories: string
+  emptyTitle: string
+  emptyDescription: string
+}
+
 export interface Locale {
   locale: string
   LoginForm: LoginFormLocale
@@ -195,5 +202,6 @@ export interface Locale {
   ModeToggleDropdown: ModeToggleDropdownLocale
   SettingsLayout: SettingsLayoutLocale
   ActivityFeed: ActivityFeedLocale
-  PricingTable: PricingTableLocale
+  PricingTable: PricingTableLocale,
+  FaqSection: FaqSectionLocale
 }

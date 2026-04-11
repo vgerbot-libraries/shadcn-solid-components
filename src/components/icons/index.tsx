@@ -766,3 +766,25 @@ export function IconX(props: IconProps) {
     </Icon>
   )
 }
+
+export function IconHelp(props: IconProps) {
+  return (
+    <Icon {...props}>
+      <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
+      <path d="M12 12l0 3" />
+      <path d="M12 12l3 0" />
+      <path d="M12 12l0 3" />
+      <path d="M12 12l-3 0" />
+    </Icon>
+  )
+}
+
+export function IconLock(props: IconProps) {
+  return <Icon {...props}>
+    <path d="M12 11m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
+    <path d="M6 11h12a2 2 0 0 1 2 2v6a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-6a2 2 0 0 1 2 -2" />
+    <path d="M10 11v-2a2 2 0 1 1 4 0v2" />
+    <path d="M21 12h-2" />
+    <path d="M3 12h2" />
+  </Icon>
+}
