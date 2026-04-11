@@ -20,6 +20,8 @@ export interface PricingFeature {
 }
 
 export interface PricingPlan {
+  /** Theme primary color in hex, used for border, badge, and button when plan is popular. */
+  themeColor?: string;
   /** Plan name (e.g. "Free", "Pro"). */
   name: string
   /** Short description of the plan. */
@@ -267,29 +269,35 @@ export function PricingTable(props: PricingTableProps) {
               data-slot="pricing-plan"
               class={cx(
                 'relative flex flex-col',
-                plan.isPopular && 'border-primary border-2 shadow-lg',
+                (plan.isPopular ? 'border-2 shadow-lg' : ''),
               )}
+              style={plan.themeColor && plan.isPopular ? { 'border-color': plan.themeColor } : {}}
             >
               <Show when={plan.isPopular}>
                 <Badge
-                  class="absolute -top-3 left-1/2 -translate-x-1/2"
-                  variant="default"
-                >
-                  {locale().popular}
-                </Badge>
+    class="absolute -top-3 left-1/2 -translate-x-1/2"
+    variant="default"
+    style={plan.themeColor ? { background: plan.themeColor, color: plan.themeColor ===
+   '#ffc107' ? '#222' : '#fff' } : {}}
+  >
+    {locale().popular}
+  </Badge>
               </Show>
 
-              <Show when={plan.discount}>
-                <Badge
-                  class="absolute -top-3 right-4"
-                  variant="secondary"
-                >
-                  {plan.discount}
-                </Badge>
-              </Show>
 
               <CardHeader class="space-y-1">
-                <h3 class="text-xl font-semibold">{plan.name}</h3>
+                <h3 class="text-xl font-semibold">{plan.name}
+
+                  <Show when={plan.discount}>
+                  <Badge
+                    class="float-right mt-0.5"
+                    variant="secondary"
+                    style={plan.themeColor ? { color: plan.themeColor } : {}}
+                  >
+                    {plan.discount}
+                  </Badge>
+                </Show>
+                </h3>
                 <Show when={plan.description}>
                   <p class="text-muted-foreground text-sm">{plan.description}</p>
                 </Show>
