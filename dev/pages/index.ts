@@ -16,4 +16,5 @@ export const pages: Record<string, Component> = {
   'activity-feed': lazy(() => import('./ActivityFeedPage')),
   'pricing-table': lazy(() => import('./PricingTablePage')),
   'helper-center': lazy(() => import('./HelperCenterPage')),
+  'profile-header': lazy(() => import('./ProfilePage')),
 }
