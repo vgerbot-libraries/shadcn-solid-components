@@ -15,6 +15,7 @@ import {
   IconSettings,
   IconStar,
   IconUpdates,
+  IconUser,
 } from 'shadcn-solid-components/components/icons'
 import { Skeleton } from 'shadcn-solid-components/components/skeleton'
 import { AppSidebar, type AppSidebarMenuGroup } from 'shadcn-solid-components/hoc/app-sidebar'
@@ -182,6 +183,14 @@ const App: Component<AppProps> = props => {
           },
           onClick: () => navigate('/error-page'),
         },
+        {
+          icon: () => <IconUser class="size-4" />,
+          title: 'Profile Header',
+          get isActive() {
+            return isActive('/profile-header')
+          },
+          onClick: () => navigate('/profile-header'),
+        }
       ],
     },
   ]
@@ -285,6 +294,12 @@ const App: Component<AppProps> = props => {
           icon: <IconAlertTriangle class="size-4" />,
           onSelect: () => navigate('/error-page'),
         },
+        {
+          id: 'profile-header',
+          label: 'Profile Header',
+          icon: <IconUser class="size-4" />,
+          onSelect: () => navigate('/profile-header'),
+        }
       ],
     },
     {
