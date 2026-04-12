@@ -180,6 +180,12 @@ export interface FaqSectionLocale {
   emptyDescription: string
 }
 
+export interface ErrorPageLocale {
+  titles: Record<'404' | '403' | '500' | '503' | 'generic', string>
+  descriptions: Record<'404' | '403' | '500' | '503' | 'generic', string>
+  goHome: string
+}
+
 export interface Locale {
   locale: string
   LoginForm: LoginFormLocale
@@ -204,4 +210,5 @@ export interface Locale {
   ActivityFeed: ActivityFeedLocale
   PricingTable: PricingTableLocale,
   FaqSection: FaqSectionLocale
+  ErrorPage: ErrorPageLocale
 }

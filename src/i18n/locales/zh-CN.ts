@@ -1,4 +1,5 @@
 import { zhCN as ActivityFeed } from 'shadcn-solid-components/hoc/activity-feed/locales/zh-CN'
+import { zhCN as ErrorPage } from 'shadcn-solid-components/hoc/error-page/locales/zh-CN'
 import { zhCN as PricingTable } from 'shadcn-solid-components/hoc/pricing-table/locales/zh-CN'
 import { zhCN as TanstackTable } from 'shadcn-solid-components/components/tanstack-table/locales/zh-CN'
 import { zhCN as CommandPalette } from 'shadcn-solid-components/hoc/command-palette/locales/zh-CN'
@@ -44,4 +45,5 @@ export const zhCN: Locale = {
   SettingsLayout,
   ActivityFeed,
   PricingTable,
+  ErrorPage,
 }

@@ -174,6 +174,14 @@ const App: Component<AppProps> = props => {
           },
           onClick: () => navigate('/pricing-table'),
         },
+        {
+          icon: () => <IconAlertTriangle class="size-4" />,
+          title: 'Error Page',
+          get isActive() {
+            return isActive('/error-page')
+          },
+          onClick: () => navigate('/error-page'),
+        },
       ],
     },
   ]
@@ -270,6 +278,12 @@ const App: Component<AppProps> = props => {
           label: 'Pricing Table',
           icon: <IconCreditCard class="size-4" />,
           onSelect: () => navigate('/pricing-table'),
+        },
+        {
+          id: 'error-page',
+          label: 'Error Page',
+          icon: <IconAlertTriangle class="size-4" />,
+          onSelect: () => navigate('/error-page'),
         },
       ],
     },
