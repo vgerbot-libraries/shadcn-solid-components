@@ -1,0 +1,144 @@
+---
+title: Error page
+description: Full-page error state with preset variants for 404, 403, 500, 503, and generic errors.
+section: HOC
+toc: true
+---
+
+import ErrorPageDemo from "../../../examples/error-page-demo"
+
+`ErrorPage` renders a centered error state with a large status code (or custom icon), title, description, and action buttons. Five built-in variants provide sensible defaults for common HTTP errors so you can render a complete error page with a single prop.
+
+## Usage
+
+```tsx
+import { ErrorPage } from "shadcn-solid-components/hoc/error-page"
+
+<ErrorPage variant="404" />
+```
+
+When no `variant` is specified the component defaults to `'generic'`, which shows an exclamation
+mark instead of a numeric status code. Every text — title, description, and the CTA label — can be
+overridden via props.
+
+## Examples
+
+### All preset variants
+
+<ComponentPreview name="Error Page Demo">
+  <div class="mb-4 w-full">
+    <ErrorPageDemo />
+  </div>
+  ```tsx
+  import { ErrorPage } from "shadcn-solid-components/hoc/error-page"
+
+  const ErrorPageDemo = () => {
+    return <ErrorPage variant="404" />
+  }
+
+  export default ErrorPageDemo
+  ```
+</ComponentPreview>
+
+```tsx
+import { ErrorPage } from "shadcn-solid-components/hoc/error-page"
+
+{/* 404 — Page not found */}
+<ErrorPage variant="404" />
+
+{/* 403 — Access denied */}
+<ErrorPage variant="403" />
+
+{/* 500 — Internal server error */}
+<ErrorPage variant="500" />
+
+{/* 503 — Service unavailable */}
+<ErrorPage variant="503" />
+
+{/* Generic fallback (shows "!" instead of a status code) */}
+<ErrorPage variant="generic" />
+```
+
+### Custom title, description, and actions
+
+Override the defaults for a fully branded error experience:
+
+```tsx
+import { Button } from "shadcn-solid-components/components/button"
+import { ErrorPage } from "shadcn-solid-components/hoc/error-page"
+
+<ErrorPage
+  variant="500"
+  title="Oops — something broke!"
+  description="Our team has been notified. Please try again in a moment."
+  actions={
+    <>
+      <Button as="a" href="/">Home</Button>
+      <Button variant="outline" onClick={() => location.reload()}>
+        Retry
+      </Button>
+    </>
+  }
+/>
+```
+
+### Custom icon
+
+When the `icon` prop is provided the large status-code text is replaced:
+
+```tsx
+import { ErrorPage } from "shadcn-solid-components/hoc/error-page"
+
+<ErrorPage
+  variant="404"
+  icon={<span class="text-7xl">🔍</span>}
+  title="We looked everywhere"
+  description="The page you're looking for doesn't exist."
+/>
+```
+
+### Minimal generic error
+
+```tsx
+import { ErrorPage } from "shadcn-solid-components/hoc/error-page"
+
+{/* Uses all defaults — "Something went wrong" with a "Go back home" link */}
+<ErrorPage />
+```
+
+## API
+
+### `ErrorPageProps`
+
+Extends `div` props.
+
+- `variant` — `'404'` | `'403'` | `'500'` | `'503'` | `'generic'` (default `'generic'`)
+- `title` — custom heading (overrides variant default)
+- `description` — custom body text (overrides variant default)
+- `icon` — custom icon or illustration replacing the status code display
+- `actions` — custom action buttons (default: a "Go back home" link to `/`)
+
+### Variant defaults
+
+| Variant   | Status code | Title                  | Description                                                            |
+| --------- | ----------- | ---------------------- | ---------------------------------------------------------------------- |
+| `404`     | 404         | Page not found         | Sorry, the page you are looking for doesn't exist or has been moved.   |
+| `403`     | 403         | Access denied          | You don't have permission to access this page.                         |
+| `500`     | 500         | Internal server error  | An unexpected error occurred on the server.                            |
+| `503`     | 503         | Service unavailable    | The service is temporarily unavailable.                                |
+| `generic` | !           | Something went wrong   | An unexpected error occurred. Please try again later.                  |
+
+## i18n
+
+Locale key: `ErrorPage`. Overridable strings:
+
+| Key                   | Type                                              |
+| --------------------- | ------------------------------------------------- |
+| `titles`              | `Record<ErrorPageVariant, string>`                |
+| `descriptions`        | `Record<ErrorPageVariant, string>`                |
+| `goHome`              | `string` — CTA button label (default "Go back home") |
+
+## Exports
+
+- `ErrorPage` — component
+- `ErrorPageProps`, `ErrorPageVariant` — types

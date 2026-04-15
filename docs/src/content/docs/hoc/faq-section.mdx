@@ -1,0 +1,216 @@
+---
+title: FAQ section
+description: Searchable, categorised FAQ accordion with category chips, full-text filter, and empty state.
+section: HOC
+toc: true
+---
+
+import FaqSectionDemo from "../../../examples/faq-section-demo"
+
+`FaqSection` combines a search input, category filter chips, and an accordion to build a complete
+FAQ block. Questions and answers are filtered in real time by both search query and selected
+category.
+
+## Usage
+
+```tsx
+import { FaqSection } from "shadcn-solid-components/hoc/faq-section"
+
+<FaqSection
+  items={[
+    { question: "What is this?", answer: "A reusable FAQ section.", category: "general" },
+    { question: "Can I cancel anytime?", answer: "Yes.", category: "billing" },
+  ]}
+  categories={[
+    { id: "general", label: "General" },
+    { id: "billing", label: "Billing" },
+  ]}
+/>
+```
+
+Search matches against question text, answer text (strings only), and category name. The "All"
+chip is always prepended and shows the total item count.
+
+## Examples
+
+### With categories and search
+
+<ComponentPreview name="FAQ Section Demo">
+  <div class="mb-4 w-full">
+    <FaqSectionDemo />
+  </div>
+  ```tsx
+  import { FaqSection } from "shadcn-solid-components/hoc/faq-section"
+
+  const FaqSectionDemo = () => {
+    return (
+      <FaqSection
+        categories={[
+          { id: "general", label: "General" },
+          { id: "billing", label: "Billing" },
+          { id: "technical", label: "Technical" },
+        ]}
+        items={[
+          {
+            id: "q1",
+            question: "What is this component library?",
+            answer:
+              "A collection of accessible, reusable UI components built with SolidJS and styled with Tailwind CSS.",
+            category: "general",
+          },
+          {
+            id: "q2",
+            question: "Can I cancel my subscription at any time?",
+            answer:
+              "Yes. You can cancel your subscription from the billing page and your access will continue until the end of the billing cycle.",
+            category: "billing",
+          },
+          {
+            id: "q3",
+            question: "Which frameworks are supported?",
+            answer: "Currently SolidJS is the primary target. The components use Kobalte under the hood for accessible primitives.",
+            category: "technical",
+          },
+          {
+            id: "q4",
+            question: "Is there a free tier?",
+            answer: "Yes. The library is open source and free to use in any project.",
+            category: "billing",
+          },
+        ]}
+      />
+    )
+  }
+
+  export default FaqSectionDemo
+  ```
+</ComponentPreview>
+
+```tsx
+import { FaqSection } from "shadcn-solid-components/hoc/faq-section"
+
+<FaqSection
+  categories={[
+    { id: "general", label: "General" },
+    { id: "billing", label: "Billing" },
+    { id: "technical", label: "Technical" },
+  ]}
+  items={[
+    {
+      id: "q1",
+      question: "What is this component library?",
+      answer: "A collection of accessible, reusable UI components built with SolidJS.",
+      category: "general",
+    },
+    {
+      id: "q2",
+      question: "Can I cancel my subscription at any time?",
+      answer: "Yes. You can cancel from the billing page.",
+      category: "billing",
+    },
+    {
+      id: "q3",
+      question: "Which frameworks are supported?",
+      answer: "Currently SolidJS is the primary target.",
+      category: "technical",
+    },
+  ]}
+/>
+```
+
+### Without search
+
+Disable the search input when you have a small number of items:
+
+```tsx
+<FaqSection searchable={false} items={items} />
+```
+
+### Without categories
+
+Omit the `categories` prop for a simple flat FAQ list with search:
+
+```tsx
+<FaqSection
+  items={[
+    { question: "How do I get started?", answer: "Install the package and import the components you need." },
+    { question: "Is TypeScript required?", answer: "No, but full type definitions are provided." },
+  ]}
+/>
+```
+
+### Custom empty state
+
+```tsx
+<FaqSection
+  items={items}
+  emptyTitle="No results"
+  emptyDescription="Try a different search term or browse all categories."
+/>
+```
+
+### Rich answer content
+
+The `answer` field accepts JSX for formatted content:
+
+```tsx
+<FaqSection
+  items={[
+    {
+      question: "What payment methods do you accept?",
+      answer: (
+        <ul class="list-disc pl-4 text-sm text-muted-foreground space-y-1">
+          <li>Visa / Mastercard / Amex</li>
+          <li>PayPal</li>
+          <li>Bank transfer (Enterprise only)</li>
+        </ul>
+      ),
+      category: "billing",
+    },
+  ]}
+/>
+```
+
+## API
+
+### `FaqSectionProps`
+
+Extends `section` props.
+
+- `items` — `FaqItem[]` — FAQ entries to render
+- `searchable` — `boolean` — whether to show the search input (default `true`)
+- `searchPlaceholder` — `string` — custom placeholder for the search field
+- `categories` — `FaqCategory[]` — optional category chip filters
+- `defaultCategory` — `string` — initially selected category (default `'all'`)
+- `emptyTitle` — `string` — empty state heading override
+- `emptyDescription` — `string` — empty state body override
+- `locale` — `Partial<FaqSectionLocale>` — locale string overrides
+
+### `FaqItem`
+
+- `id` — optional unique identifier (auto-generated from index if omitted)
+- `question` — question text
+- `answer` — `string` | `JSX.Element` — answer content
+- `category` — optional category ID for filtering
+
+### `FaqCategory`
+
+- `id` — unique category identifier
+- `label` — display text
+- `icon` — optional icon element
+
+## i18n
+
+Locale key: `FaqSection`. Overridable strings:
+
+| Key                 | Default                                       |
+| ------------------- | --------------------------------------------- |
+| `searchPlaceholder` | Search frequently asked questions...          |
+| `allCategories`     | All                                           |
+| `emptyTitle`        | No matching questions found                   |
+| `emptyDescription`  | Try another keyword or switch to a different category. |
+
+## Exports
+
+- `FaqSection` — component
+- `FaqSectionProps`, `FaqItem`, `FaqCategory` — types

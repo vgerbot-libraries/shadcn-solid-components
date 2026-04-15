@@ -1,0 +1,234 @@
+---
+title: Activity feed
+description: Timeline feed with avatar/icon, action text, optional date grouping, and infinite-scroll load-more.
+section: HOC
+toc: true
+---
+
+import ActivityFeedDemo from "../../../examples/activity-feed-demo"
+
+`ActivityFeed` renders a vertical timeline of user actions. Each item shows an avatar (or custom icon), action text with an optional target, timestamp, and optional metadata slot. Items can be grouped by date headers with a connecting timeline line between entries.
+
+## Usage
+
+```tsx
+import { ActivityFeed, type ActivityItem } from "shadcn-solid-components/hoc/activity-feed"
+
+const items: ActivityItem[] = [
+  {
+    id: "1",
+    user: { name: "Alice", initials: "A" },
+    action: "commented on",
+    target: "Pull Request #42",
+    timestamp: "2 hours ago",
+    group: "Today",
+  },
+]
+
+<ActivityFeed items={items} groupBy="date" />
+```
+
+When `groupBy` is `'date'`, items are visually separated under uppercase date headers derived from
+each item's `group` field. When set to `'none'` (or omitted), all items render in a flat list
+without headers.
+
+## Examples
+
+### Grouped timeline with metadata
+
+<ComponentPreview name="Activity Feed Demo">
+  <div class="mb-4 w-full max-w-xl">
+    <ActivityFeedDemo />
+  </div>
+  ```tsx
+  import { ActivityFeed, type ActivityItem } from "shadcn-solid-components/hoc/activity-feed"
+
+  const items: ActivityItem[] = [
+    {
+      id: "1",
+      user: { name: "Alice Green", initials: "AG" },
+      action: "commented on",
+      target: "Pull Request #42",
+      timestamp: "2 hours ago",
+      group: "Today",
+      meta: (
+        <p class="bg-muted rounded-md p-2 text-sm">
+          Looks great! Just one small nit on line 28.
+        </p>
+      ),
+    },
+    {
+      id: "2",
+      user: { name: "Bob Smith", initials: "BS" },
+      action: "merged",
+      target: "feat/dashboard-v2",
+      timestamp: "4 hours ago",
+      group: "Today",
+    },
+    {
+      id: "3",
+      user: { name: "Carol Davis", initials: "CD" },
+      action: "opened issue",
+      target: "#189",
+      timestamp: "Yesterday",
+      group: "Yesterday",
+    },
+  ]
+
+  const ActivityFeedDemo = () => {
+    return <ActivityFeed items={items} groupBy="date" />
+  }
+
+  export default ActivityFeedDemo
+  ```
+</ComponentPreview>
+
+```tsx
+import { ActivityFeed, type ActivityItem } from "shadcn-solid-components/hoc/activity-feed"
+
+const items: ActivityItem[] = [
+  {
+    id: "1",
+    user: { name: "Alice Green", initials: "AG" },
+    action: "commented on",
+    target: "Pull Request #42",
+    timestamp: "2 hours ago",
+    group: "Today",
+    meta: (
+      <p class="bg-muted rounded-md p-2 text-sm">
+        Looks great! Just one small nit on line 28.
+      </p>
+    ),
+  },
+  {
+    id: "2",
+    user: { name: "Bob Smith", initials: "BS" },
+    action: "merged",
+    target: "feat/dashboard-v2",
+    timestamp: "4 hours ago",
+    group: "Today",
+  },
+  {
+    id: "3",
+    user: { name: "Carol Davis", initials: "CD" },
+    action: "opened issue",
+    target: "#189",
+    timestamp: "Yesterday",
+    group: "Yesterday",
+  },
+]
+
+<ActivityFeed items={items} groupBy="date" />
+```
+
+### With custom icon
+
+Replace the default avatar with a custom icon per item:
+
+```tsx
+import { ActivityFeed } from "shadcn-solid-components/hoc/activity-feed"
+
+<ActivityFeed
+  items={[
+    {
+      id: "1",
+      user: { name: "System" },
+      action: "deployed",
+      target: "v2.4.0 to production",
+      timestamp: "10 min ago",
+      icon: <span class="text-xs">🚀</span>,
+    },
+  ]}
+/>
+```
+
+### With load more
+
+When `onLoadMore` is provided, a "Load more" button appears at the bottom. Set `loadingMore` to
+`true` while fetching additional pages.
+
+```tsx
+import { createSignal } from "solid-js"
+import { ActivityFeed, type ActivityItem } from "shadcn-solid-components/hoc/activity-feed"
+
+export function PaginatedFeed() {
+  const [items, setItems] = createSignal<ActivityItem[]>(initialItems)
+  const [loadingMore, setLoadingMore] = createSignal(false)
+
+  const loadMore = () => {
+    setLoadingMore(true)
+    fetchNextPage().then((next) => {
+      setItems((prev) => [...prev, ...next])
+      setLoadingMore(false)
+    })
+  }
+
+  return (
+    <ActivityFeed
+      items={items()}
+      groupBy="date"
+      onLoadMore={loadMore}
+      loadingMore={loadingMore()}
+    />
+  )
+}
+```
+
+### Empty and loading states
+
+```tsx
+{/* Shows the default "No activity to display" empty message */}
+<ActivityFeed items={[]} />
+
+{/* Shows "Loading activity..." */}
+<ActivityFeed items={[]} loading />
+
+{/* Custom empty state */}
+<ActivityFeed items={[]} empty="Nothing here yet — check back later!" />
+```
+
+## API
+
+### `ActivityFeedProps`
+
+Extends `div` props.
+
+- `items` — `ActivityItem[]` — array of activity entries to display
+- `groupBy` — `'date'` | `'none'` — grouping mode (default `'none'`)
+- `empty` — `string` | `JSX.Element` — custom empty-state content
+- `loading` — `boolean` — show loading indicator
+- `onLoadMore` — `() => void` — when set, renders a "Load more" button
+- `loadingMore` — `boolean` — pending state for the load-more button
+
+### `ActivityItem`
+
+- `id` — unique identifier
+- `user` — `ActivityUser` (`name`, optional `avatar`, optional `initials`)
+- `action` — `string` | `JSX.Element` — action description
+- `target` — optional action target text
+- `timestamp` — display timestamp string
+- `group` — date group label (used when `groupBy="date"`)
+- `icon` — optional custom icon replacing the avatar
+- `meta` — optional extra content (comment bubble, tags, etc.)
+
+### `ActivityUser`
+
+- `name` — display name
+- `avatar` — optional image URL
+- `initials` — fallback text inside the avatar circle (auto-derived from `name` when omitted)
+
+## i18n
+
+Locale key: `ActivityFeed`. Overridable strings:
+
+| Key            | Default                    |
+| -------------- | -------------------------- |
+| `empty`        | No activity to display     |
+| `loading`      | Loading activity...        |
+| `loadMore`     | Load more                  |
+| `loadingMore`  | Loading...                 |
+
+## Exports
+
+- `ActivityFeed` — component
+- `ActivityFeedProps`, `ActivityItem`, `ActivityUser` — types

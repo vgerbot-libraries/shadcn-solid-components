@@ -2106,6 +2106,79 @@ export const Contents: Record<string, DocEntry> = {
     }
 ]
   },
+  "hoc/activity-feed": {
+    component: lazy(() => import("@docs/content/docs/hoc/activity-feed.mdx")),
+    data: {
+    "title": "Activity feed",
+    "description": "Timeline feed with avatar/icon, action text, optional date grouping, and infinite-scroll load-more.",
+    "navTitle": "Activity feed",
+    "section": "HOC",
+    "order": 0,
+    "toc": true
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "examples",
+        "text": "Examples"
+    },
+    {
+        "depth": 3,
+        "slug": "grouped-timeline-with-metadata",
+        "text": "Grouped timeline with metadata"
+    },
+    {
+        "depth": 3,
+        "slug": "with-custom-icon",
+        "text": "With custom icon"
+    },
+    {
+        "depth": 3,
+        "slug": "with-load-more",
+        "text": "With load more"
+    },
+    {
+        "depth": 3,
+        "slug": "empty-and-loading-states",
+        "text": "Empty and loading states"
+    },
+    {
+        "depth": 2,
+        "slug": "api",
+        "text": "API"
+    },
+    {
+        "depth": 3,
+        "slug": "activityfeedprops",
+        "text": "ActivityFeedProps"
+    },
+    {
+        "depth": 3,
+        "slug": "activityitem",
+        "text": "ActivityItem"
+    },
+    {
+        "depth": 3,
+        "slug": "activityuser",
+        "text": "ActivityUser"
+    },
+    {
+        "depth": 2,
+        "slug": "i18n",
+        "text": "i18n"
+    },
+    {
+        "depth": 2,
+        "slug": "exports",
+        "text": "Exports"
+    }
+]
+  },
   "hoc/app-sidebar": {
     component: lazy(() => import("@docs/content/docs/hoc/app-sidebar.mdx")),
     data: {
@@ -2567,6 +2640,152 @@ export const Contents: Record<string, DocEntry> = {
         "depth": 3,
         "slug": "emptystateprops",
         "text": "EmptyStateProps"
+    },
+    {
+        "depth": 2,
+        "slug": "exports",
+        "text": "Exports"
+    }
+]
+  },
+  "hoc/error-page": {
+    component: lazy(() => import("@docs/content/docs/hoc/error-page.mdx")),
+    data: {
+    "title": "Error page",
+    "description": "Full-page error state with preset variants for 404, 403, 500, 503, and generic errors.",
+    "navTitle": "Error page",
+    "section": "HOC",
+    "order": 0,
+    "toc": true
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "examples",
+        "text": "Examples"
+    },
+    {
+        "depth": 3,
+        "slug": "all-preset-variants",
+        "text": "All preset variants"
+    },
+    {
+        "depth": 3,
+        "slug": "custom-title-description-and-actions",
+        "text": "Custom title, description, and actions"
+    },
+    {
+        "depth": 3,
+        "slug": "custom-icon",
+        "text": "Custom icon"
+    },
+    {
+        "depth": 3,
+        "slug": "minimal-generic-error",
+        "text": "Minimal generic error"
+    },
+    {
+        "depth": 2,
+        "slug": "api",
+        "text": "API"
+    },
+    {
+        "depth": 3,
+        "slug": "errorpageprops",
+        "text": "ErrorPageProps"
+    },
+    {
+        "depth": 3,
+        "slug": "variant-defaults",
+        "text": "Variant defaults"
+    },
+    {
+        "depth": 2,
+        "slug": "i18n",
+        "text": "i18n"
+    },
+    {
+        "depth": 2,
+        "slug": "exports",
+        "text": "Exports"
+    }
+]
+  },
+  "hoc/faq-section": {
+    component: lazy(() => import("@docs/content/docs/hoc/faq-section.mdx")),
+    data: {
+    "title": "FAQ section",
+    "description": "Searchable, categorised FAQ accordion with category chips, full-text filter, and empty state.",
+    "navTitle": "FAQ section",
+    "section": "HOC",
+    "order": 0,
+    "toc": true
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "examples",
+        "text": "Examples"
+    },
+    {
+        "depth": 3,
+        "slug": "with-categories-and-search",
+        "text": "With categories and search"
+    },
+    {
+        "depth": 3,
+        "slug": "without-search",
+        "text": "Without search"
+    },
+    {
+        "depth": 3,
+        "slug": "without-categories",
+        "text": "Without categories"
+    },
+    {
+        "depth": 3,
+        "slug": "custom-empty-state",
+        "text": "Custom empty state"
+    },
+    {
+        "depth": 3,
+        "slug": "rich-answer-content",
+        "text": "Rich answer content"
+    },
+    {
+        "depth": 2,
+        "slug": "api",
+        "text": "API"
+    },
+    {
+        "depth": 3,
+        "slug": "faqsectionprops",
+        "text": "FaqSectionProps"
+    },
+    {
+        "depth": 3,
+        "slug": "faqitem",
+        "text": "FaqItem"
+    },
+    {
+        "depth": 3,
+        "slug": "faqcategory",
+        "text": "FaqCategory"
+    },
+    {
+        "depth": 2,
+        "slug": "i18n",
+        "text": "i18n"
     },
     {
         "depth": 2,
@@ -3140,6 +3359,240 @@ export const Contents: Record<string, DocEntry> = {
         "depth": 3,
         "slug": "pageheaderprops",
         "text": "PageHeaderProps"
+    },
+    {
+        "depth": 2,
+        "slug": "exports",
+        "text": "Exports"
+    }
+]
+  },
+  "hoc/pricing-table": {
+    component: lazy(() => import("@docs/content/docs/hoc/pricing-table.mdx")),
+    data: {
+    "title": "Pricing table",
+    "description": "Responsive pricing cards with billing toggle, feature lists, popular badge, and per-plan theme colour.",
+    "navTitle": "Pricing table",
+    "section": "HOC",
+    "order": 0,
+    "toc": true
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "examples",
+        "text": "Examples"
+    },
+    {
+        "depth": 3,
+        "slug": "three-tier-pricing",
+        "text": "Three-tier pricing"
+    },
+    {
+        "depth": 3,
+        "slug": "custom-currency-and-default-billing",
+        "text": "Custom currency and default billing"
+    },
+    {
+        "depth": 3,
+        "slug": "per-plan-theme-colour",
+        "text": "Per-plan theme colour"
+    },
+    {
+        "depth": 3,
+        "slug": "custom-cta-variant-and-info-text",
+        "text": "Custom CTA variant and info text"
+    },
+    {
+        "depth": 3,
+        "slug": "with-header-and-footer",
+        "text": "With header and footer"
+    },
+    {
+        "depth": 2,
+        "slug": "api",
+        "text": "API"
+    },
+    {
+        "depth": 3,
+        "slug": "pricingtableprops",
+        "text": "PricingTableProps"
+    },
+    {
+        "depth": 3,
+        "slug": "pricingplan",
+        "text": "PricingPlan"
+    },
+    {
+        "depth": 3,
+        "slug": "pricingfeature",
+        "text": "PricingFeature"
+    },
+    {
+        "depth": 2,
+        "slug": "i18n",
+        "text": "i18n"
+    },
+    {
+        "depth": 2,
+        "slug": "exports",
+        "text": "Exports"
+    }
+]
+  },
+  "hoc/profile-header": {
+    component: lazy(() => import("@docs/content/docs/hoc/profile-header.mdx")),
+    data: {
+    "title": "Profile header",
+    "description": "User profile card with cover image, avatar, stats row, action buttons, and tabbed content panels.",
+    "navTitle": "Profile header",
+    "section": "HOC",
+    "order": 0,
+    "toc": true
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "examples",
+        "text": "Examples"
+    },
+    {
+        "depth": 3,
+        "slug": "full-profile-with-tabs",
+        "text": "Full profile with tabs"
+    },
+    {
+        "depth": 3,
+        "slug": "with-cover-image",
+        "text": "With cover image"
+    },
+    {
+        "depth": 3,
+        "slug": "initials-fallback-no-avatar",
+        "text": "Initials fallback (no avatar)"
+    },
+    {
+        "depth": 3,
+        "slug": "with-info-items",
+        "text": "With info items"
+    },
+    {
+        "depth": 3,
+        "slug": "controlled-tabs",
+        "text": "Controlled tabs"
+    },
+    {
+        "depth": 2,
+        "slug": "api",
+        "text": "API"
+    },
+    {
+        "depth": 3,
+        "slug": "profileheaderprops",
+        "text": "ProfileHeaderProps"
+    },
+    {
+        "depth": 3,
+        "slug": "profilestat",
+        "text": "ProfileStat"
+    },
+    {
+        "depth": 3,
+        "slug": "profiletab",
+        "text": "ProfileTab"
+    },
+    {
+        "depth": 2,
+        "slug": "exports",
+        "text": "Exports"
+    }
+]
+  },
+  "hoc/settings-layout": {
+    component: lazy(() => import("@docs/content/docs/hoc/settings-layout.mdx")),
+    data: {
+    "title": "Settings layout",
+    "description": "Settings page shell with sidebar navigation and content panel, responsive drawer on mobile.",
+    "navTitle": "Settings layout",
+    "section": "HOC",
+    "order": 0,
+    "toc": true
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "examples",
+        "text": "Examples"
+    },
+    {
+        "depth": 3,
+        "slug": "basic-settings-page",
+        "text": "Basic settings page"
+    },
+    {
+        "depth": 3,
+        "slug": "with-icons",
+        "text": "With icons"
+    },
+    {
+        "depth": 3,
+        "slug": "render-function-children",
+        "text": "Render function children"
+    },
+    {
+        "depth": 3,
+        "slug": "controlled-active-section",
+        "text": "Controlled active section"
+    },
+    {
+        "depth": 3,
+        "slug": "custom-sidebar-width",
+        "text": "Custom sidebar width"
+    },
+    {
+        "depth": 3,
+        "slug": "hidden-sidebar-content-only",
+        "text": "Hidden sidebar (content only)"
+    },
+    {
+        "depth": 2,
+        "slug": "api",
+        "text": "API"
+    },
+    {
+        "depth": 3,
+        "slug": "settingslayoutprops",
+        "text": "SettingsLayoutProps"
+    },
+    {
+        "depth": 3,
+        "slug": "settingssection",
+        "text": "SettingsSection"
+    },
+    {
+        "depth": 2,
+        "slug": "responsive-behaviour",
+        "text": "Responsive behaviour"
+    },
+    {
+        "depth": 2,
+        "slug": "i18n",
+        "text": "i18n"
     },
     {
         "depth": 2,
@@ -4076,6 +4529,11 @@ export const docsNavigation: DocsNavSection[] = [
     "title": "HOC",
     "items": [
       {
+        "title": "Activity feed",
+        "href": "/docs/hoc/activity-feed",
+        "description": "Timeline feed with avatar/icon, action text, optional date grouping, and infinite-scroll load-more."
+      },
+      {
         "title": "App sidebar",
         "href": "/docs/hoc/app-sidebar",
         "description": "Application shell with sidebar provider, grouped menu trees, and main inset body."
@@ -4114,6 +4572,16 @@ export const docsNavigation: DocsNavSection[] = [
         "title": "Empty state",
         "href": "/docs/hoc/empty-state",
         "description": "Centered placeholder for empty lists, search results, or missing data."
+      },
+      {
+        "title": "Error page",
+        "href": "/docs/hoc/error-page",
+        "description": "Full-page error state with preset variants for 404, 403, 500, 503, and generic errors."
+      },
+      {
+        "title": "FAQ section",
+        "href": "/docs/hoc/faq-section",
+        "description": "Searchable, categorised FAQ accordion with category chips, full-text filter, and empty state."
       },
       {
         "title": "File upload zone",
@@ -4169,6 +4637,21 @@ export const docsNavigation: DocsNavSection[] = [
         "title": "Page header",
         "href": "/docs/hoc/page-header",
         "description": "Page title row with optional breadcrumbs, description, and actions."
+      },
+      {
+        "title": "Pricing table",
+        "href": "/docs/hoc/pricing-table",
+        "description": "Responsive pricing cards with billing toggle, feature lists, popular badge, and per-plan theme colour."
+      },
+      {
+        "title": "Profile header",
+        "href": "/docs/hoc/profile-header",
+        "description": "User profile card with cover image, avatar, stats row, action buttons, and tabbed content panels."
+      },
+      {
+        "title": "Settings layout",
+        "href": "/docs/hoc/settings-layout",
+        "description": "Settings page shell with sidebar navigation and content panel, responsive drawer on mobile."
       },
       {
         "title": "Sidebar menu tree",

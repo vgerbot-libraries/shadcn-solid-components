@@ -1,0 +1,198 @@
+---
+title: Profile header
+description: User profile card with cover image, avatar, stats row, action buttons, and tabbed content panels.
+section: HOC
+toc: true
+---
+
+import ProfileHeaderDemo from "../../../examples/profile-header-demo"
+
+`ProfileHeader` renders a card-based user profile with optional cover/banner image, avatar (image
+or initials fallback), name, subtitle, bio, info items, stats row, action buttons, and tabbed
+content panels powered by the `Tabs` component.
+
+## Usage
+
+```tsx
+import { ProfileHeader } from "shadcn-solid-components/hoc/profile-header"
+
+<ProfileHeader
+  avatar="https://example.com/avatar.png"
+  name="Jane Doe"
+  subtitle="Product Designer"
+  bio="Building beautiful interfaces."
+  stats={[
+    { label: "Followers", value: "1.2k" },
+    { label: "Projects", value: 42 },
+  ]}
+/>
+```
+
+The avatar falls back to initials (from the `initials` prop, or auto-derived from the first two
+characters of `name`). When `coverImage` is provided, a banner section with gradient overlay
+renders above the avatar.
+
+## Examples
+
+### Full profile with tabs
+
+<ComponentPreview name="Profile Header Demo">
+  <div class="mb-4 w-full">
+    <ProfileHeaderDemo />
+  </div>
+  ```tsx
+  import { Badge } from "shadcn-solid-components/components/badge"
+  import { Button } from "shadcn-solid-components/components/button"
+  import { ProfileHeader } from "shadcn-solid-components/hoc/profile-header"
+
+  const ProfileHeaderDemo = () => {
+    return (
+      <ProfileHeader
+        avatar="https://i.pravatar.cc/150?u=jane"
+        initials="JD"
+        name="Jane Doe"
+        subtitle="Senior Product Designer"
+        bio="Passionate designer with 8+ years of experience building user-centred products."
+        badge={<Badge variant="secondary">Pro</Badge>}
+        stats={[
+          { label: "Followers", value: "1.2k" },
+          { label: "Projects", value: 42 },
+          { label: "Likes", value: "8.6k" },
+        ]}
+        actions={<Button size="sm">Edit Profile</Button>}
+        tabs={[
+          { id: "posts", label: "Posts", body: <div class="py-6 text-sm text-muted-foreground">Posts content goes here.</div> },
+          { id: "about", label: "About", body: <div class="py-6 text-sm text-muted-foreground">About content goes here.</div> },
+        ]}
+      />
+    )
+  }
+
+  export default ProfileHeaderDemo
+  ```
+</ComponentPreview>
+
+```tsx
+import { Badge } from "shadcn-solid-components/components/badge"
+import { Button } from "shadcn-solid-components/components/button"
+import { ProfileHeader } from "shadcn-solid-components/hoc/profile-header"
+
+<ProfileHeader
+  avatar="https://i.pravatar.cc/150?u=jane"
+  initials="JD"
+  name="Jane Doe"
+  subtitle="Senior Product Designer"
+  bio="Passionate designer with 8+ years of experience building user-centred products."
+  badge={<Badge variant="secondary">Pro</Badge>}
+  stats={[
+    { label: "Followers", value: "1.2k" },
+    { label: "Projects", value: 42 },
+    { label: "Likes", value: "8.6k" },
+  ]}
+  actions={<Button size="sm">Edit Profile</Button>}
+  tabs={[
+    { id: "posts", label: "Posts", body: <div>Posts content</div> },
+    { id: "about", label: "About", body: <div>About content</div> },
+  ]}
+/>
+```
+
+### With cover image
+
+```tsx
+<ProfileHeader
+  coverImage="https://images.unsplash.com/photo-1506744038136-46273834b3fb"
+  avatar="https://i.pravatar.cc/150?u=alex"
+  name="Alex Rivera"
+  subtitle="Photographer"
+  bio="Capturing moments around the world."
+/>
+```
+
+### Initials fallback (no avatar)
+
+When no `avatar` URL is provided, a coloured circle with initials is rendered:
+
+```tsx
+<ProfileHeader
+  name="Sam Wilson"
+  initials="SW"
+  subtitle="Engineering Manager"
+/>
+```
+
+### With info items
+
+```tsx
+<ProfileHeader
+  name="Jane Doe"
+  subtitle="Product Designer"
+  infoItems={
+    <>
+      <span class="flex items-center gap-1 text-sm">jane@example.com</span>
+      <span class="flex items-center gap-1 text-sm">San Francisco, CA</span>
+      <span class="flex items-center gap-1 text-sm">Joined March 2023</span>
+    </>
+  }
+/>
+```
+
+### Controlled tabs
+
+```tsx
+import { createSignal } from "solid-js"
+import { ProfileHeader } from "shadcn-solid-components/hoc/profile-header"
+
+export function ControlledProfile() {
+  const [tab, setTab] = createSignal("posts")
+
+  return (
+    <ProfileHeader
+      name="Jane Doe"
+      activeTab={tab()}
+      onTabChange={setTab}
+      tabs={[
+        { id: "posts", label: "Posts", body: <PostsList /> },
+        { id: "about", label: "About", body: <AboutSection /> },
+        { id: "activity", label: "Activity", body: <ActivityLog /> },
+      ]}
+    />
+  )
+}
+```
+
+## API
+
+### `ProfileHeaderProps`
+
+Extends `div` props.
+
+- `avatar` — avatar image URL
+- `initials` — fallback initials (auto-derived from `name` if omitted)
+- `name` — **required** — user display name
+- `subtitle` — secondary text (e.g. job title)
+- `bio` — short description text
+- `badge` — JSX element next to the name (e.g. `<Badge>Pro</Badge>`)
+- `coverImage` — banner image URL
+- `stats` — `ProfileStat[]` — horizontal stat items
+- `actions` — action button(s) on the right side
+- `infoItems` — JSX with extra info below the subtitle
+- `tabs` — `ProfileTab[]` — tabbed content panels
+- `activeTab` — controlled active tab ID
+- `onTabChange` — `(id: string) => void` — callback when tab changes
+
+### `ProfileStat`
+
+- `label` — stat label (e.g. "Followers")
+- `value` — `string` | `number` — stat value
+
+### `ProfileTab`
+
+- `id` — unique tab identifier
+- `label` — `JSX.Element` — tab trigger content
+- `body` — `JSX.Element` — tab panel content
+
+## Exports
+
+- `ProfileHeader` — component
+- `ProfileHeaderProps`, `ProfileStat`, `ProfileTab` — types

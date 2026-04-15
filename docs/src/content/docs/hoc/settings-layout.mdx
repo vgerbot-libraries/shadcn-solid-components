@@ -1,0 +1,243 @@
+---
+title: Settings layout
+description: Settings page shell with sidebar navigation and content panel, responsive drawer on mobile.
+section: HOC
+toc: true
+---
+
+import SettingsLayoutDemo from "../../../examples/settings-layout-demo"
+
+`SettingsLayout` provides a full-page layout for settings screens. On desktop it renders a fixed
+sidebar with navigation items; on mobile (below `lg` breakpoint) the sidebar slides in as a drawer.
+Content is keyed by section ID and swapped when the user navigates between sections.
+
+## Usage
+
+```tsx
+import { SettingsLayout } from "shadcn-solid-components/hoc/settings-layout"
+
+<SettingsLayout
+  sections={[
+    { id: "profile", label: "Profile" },
+    { id: "security", label: "Security" },
+  ]}
+  defaultActiveSection="profile"
+>
+  {{
+    profile: <ProfileSettings />,
+    security: <SecuritySettings />,
+  }}
+</SettingsLayout>
+```
+
+Children can be either a `Record<string, JSX.Element>` object keyed by section ID, or a render
+function `(sectionId: string) => JSX.Element` for lazy rendering.
+
+## Examples
+
+### Basic settings page
+
+<ComponentPreview name="Settings Layout Demo">
+  <div class="mb-4 w-full">
+    <SettingsLayoutDemo />
+  </div>
+  ```tsx
+  import { SettingsLayout } from "shadcn-solid-components/hoc/settings-layout"
+
+  const sections = [
+    { id: "profile", label: "Profile" },
+    { id: "security", label: "Security" },
+    { id: "notifications", label: "Notifications" },
+  ]
+
+  const SettingsLayoutDemo = () => {
+    return (
+      <div class="border rounded-lg overflow-hidden h-[360px] relative">
+        <SettingsLayout
+          sections={sections}
+          defaultActiveSection="profile"
+          hideSidebar={false}
+        >
+          {{
+            profile: (
+              <div class="space-y-2">
+                <h3 class="text-lg font-semibold">Profile</h3>
+                <p class="text-sm text-muted-foreground">Manage your public profile information.</p>
+              </div>
+            ),
+            security: (
+              <div class="space-y-2">
+                <h3 class="text-lg font-semibold">Security</h3>
+                <p class="text-sm text-muted-foreground">Update your password and two-factor settings.</p>
+              </div>
+            ),
+            notifications: (
+              <div class="space-y-2">
+                <h3 class="text-lg font-semibold">Notifications</h3>
+                <p class="text-sm text-muted-foreground">Configure email and push notification preferences.</p>
+              </div>
+            ),
+          }}
+        </SettingsLayout>
+      </div>
+    )
+  }
+
+  export default SettingsLayoutDemo
+  ```
+</ComponentPreview>
+
+```tsx
+import { SettingsLayout } from "shadcn-solid-components/hoc/settings-layout"
+
+const sections = [
+  { id: "profile", label: "Profile" },
+  { id: "security", label: "Security" },
+  { id: "notifications", label: "Notifications" },
+]
+
+<SettingsLayout sections={sections} defaultActiveSection="profile">
+  {{
+    profile: <ProfileSettings />,
+    security: <SecuritySettings />,
+    notifications: <NotificationSettings />,
+  }}
+</SettingsLayout>
+```
+
+### With icons
+
+```tsx
+import { SettingsLayout } from "shadcn-solid-components/hoc/settings-layout"
+
+<SettingsLayout
+  sections={[
+    {
+      id: "profile",
+      label: "Profile",
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+          <circle cx="12" cy="7" r="4" />
+        </svg>
+      ),
+    },
+    {
+      id: "security",
+      label: "Security",
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10" />
+        </svg>
+      ),
+    },
+  ]}
+  defaultActiveSection="profile"
+>
+  {{
+    profile: <ProfileSettings />,
+    security: <SecuritySettings />,
+  }}
+</SettingsLayout>
+```
+
+### Render function children
+
+Use a render function for lazy content rendering:
+
+```tsx
+import { SettingsLayout } from "shadcn-solid-components/hoc/settings-layout"
+
+<SettingsLayout sections={sections} defaultActiveSection="profile">
+  {(sectionId) => {
+    switch (sectionId) {
+      case "profile":
+        return <ProfileSettings />
+      case "security":
+        return <SecuritySettings />
+      default:
+        return <p>Unknown section</p>
+    }
+  }}
+</SettingsLayout>
+```
+
+### Controlled active section
+
+```tsx
+import { createSignal } from "solid-js"
+import { SettingsLayout } from "shadcn-solid-components/hoc/settings-layout"
+
+export function ControlledSettings() {
+  const [active, setActive] = createSignal("profile")
+
+  return (
+    <SettingsLayout
+      sections={sections}
+      activeSection={active()}
+      onSectionChange={setActive}
+    >
+      {{
+        profile: <ProfileSettings />,
+        security: <SecuritySettings />,
+      }}
+    </SettingsLayout>
+  )
+}
+```
+
+### Custom sidebar width
+
+```tsx
+<SettingsLayout sections={sections} sidebarWidth="300px">
+  {{ ... }}
+</SettingsLayout>
+```
+
+### Hidden sidebar (content only)
+
+```tsx
+<SettingsLayout sections={sections} hideSidebar>
+  {{ profile: <ProfileSettings /> }}
+</SettingsLayout>
+```
+
+## API
+
+### `SettingsLayoutProps`
+
+Extends `div` props (without `children`).
+
+- `sections` — `SettingsSection[]` — sidebar navigation items
+- `activeSection` — `string` — controlled active section ID
+- `defaultActiveSection` — `string` — default active section ID (uncontrolled)
+- `onSectionChange` — `(sectionId: string) => void` — callback on navigation
+- `children` — `Record<string, JSX.Element>` | `(sectionId: string) => JSX.Element` — content keyed by section ID
+- `sidebarWidth` — `string` — custom sidebar width CSS value (default `256px` / `w-64`)
+- `hideSidebar` — `boolean` — hide sidebar, content takes full width
+
+### `SettingsSection`
+
+- `id` — unique section identifier
+- `label` — navigation item text
+- `icon` — optional icon element
+
+## Responsive behaviour
+
+| Breakpoint | Sidebar      | Toggle button         |
+| ---------- | ------------ | --------------------- |
+| `< lg`     | Hidden (drawer) | Fixed top-left button |
+| `>= lg`    | Fixed left   | Hidden                |
+
+## i18n
+
+Locale key: `SettingsLayout`. Overridable strings:
+
+| Key              | Default          |
+| ---------------- | ---------------- |
+| `toggleSidebar`  | Toggle sidebar   |
+
+## Exports
+
+- `SettingsLayout` — component
+- `SettingsLayoutProps`, `SettingsSection` — types

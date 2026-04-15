@@ -1,0 +1,289 @@
+---
+title: Pricing table
+description: Responsive pricing cards with billing toggle, feature lists, popular badge, and per-plan theme colour.
+section: HOC
+toc: true
+---
+
+import PricingTableDemo from "../../../examples/pricing-table-demo"
+
+`PricingTable` renders a grid of plan cards with a monthly/yearly billing toggle, feature
+checklists, a "Most Popular" badge, discount badges, and CTA buttons. The grid adapts
+automatically to 1–4+ columns.
+
+## Usage
+
+```tsx
+import { PricingTable } from "shadcn-solid-components/hoc/pricing-table"
+
+<PricingTable
+  plans={[
+    {
+      name: "Free",
+      priceMonthly: 0,
+      priceYearly: 0,
+      cta: "Get started",
+      features: [
+        { text: "1 project", included: true },
+        { text: "Custom domain", included: false },
+      ],
+    },
+    {
+      name: "Pro",
+      priceMonthly: 19,
+      priceYearly: 190,
+      isPopular: true,
+      cta: "Start free trial",
+      features: [
+        { text: "Unlimited projects", included: true },
+        { text: "Custom domain", included: true },
+      ],
+    },
+  ]}
+/>
+```
+
+The billing toggle switches between `priceMonthly` and `priceYearly` on every plan simultaneously.
+Plans marked with `isPopular` receive a prominent border and a "Most Popular" badge.
+
+## Examples
+
+### Three-tier pricing
+
+<ComponentPreview name="Pricing Table Demo">
+  <div class="mb-4 w-full">
+    <PricingTableDemo />
+  </div>
+  ```tsx
+  import { PricingTable } from "shadcn-solid-components/hoc/pricing-table"
+
+  const PricingTableDemo = () => {
+    return (
+      <PricingTable
+        plans={[
+          {
+            name: "Free",
+            description: "For individuals getting started",
+            priceMonthly: 0,
+            priceYearly: 0,
+            cta: "Get started",
+            billingText: "Free forever",
+            features: [
+              { text: "1 project", included: true },
+              { text: "Basic analytics", included: true },
+              { text: "Custom domain", included: false },
+              { text: "Priority support", included: false },
+            ],
+          },
+          {
+            name: "Pro",
+            description: "For growing teams",
+            priceMonthly: 19,
+            priceYearly: 190,
+            isPopular: true,
+            discount: "17% off",
+            cta: "Start free trial",
+            ctaInfo: "14-day money-back guarantee",
+            features: [
+              { text: "Unlimited projects", included: true },
+              { text: "Advanced analytics", included: true },
+              { text: "Custom domain", included: true },
+              { text: "Priority support", included: true },
+            ],
+          },
+          {
+            name: "Enterprise",
+            description: "For large organisations",
+            priceMonthly: 49,
+            priceYearly: 490,
+            cta: "Contact sales",
+            features: [
+              { text: "Unlimited projects", included: true },
+              { text: "Advanced analytics", included: true },
+              { text: "Custom domain", included: true },
+              { text: "Priority support", included: true },
+            ],
+            additionalFeatures: [
+              { text: "SSO / SAML", included: true },
+              { text: "Dedicated account manager", included: true },
+            ],
+          },
+        ]}
+      />
+    )
+  }
+
+  export default PricingTableDemo
+  ```
+</ComponentPreview>
+
+```tsx
+import { PricingTable } from "shadcn-solid-components/hoc/pricing-table"
+
+<PricingTable
+  plans={[
+    {
+      name: "Free",
+      description: "For individuals getting started",
+      priceMonthly: 0,
+      priceYearly: 0,
+      cta: "Get started",
+      billingText: "Free forever",
+      features: [
+        { text: "1 project", included: true },
+        { text: "Basic analytics", included: true },
+        { text: "Custom domain", included: false },
+        { text: "Priority support", included: false },
+      ],
+    },
+    {
+      name: "Pro",
+      description: "For growing teams",
+      priceMonthly: 19,
+      priceYearly: 190,
+      isPopular: true,
+      discount: "17% off",
+      cta: "Start free trial",
+      ctaInfo: "14-day money-back guarantee",
+      features: [
+        { text: "Unlimited projects", included: true },
+        { text: "Advanced analytics", included: true },
+        { text: "Custom domain", included: true },
+        { text: "Priority support", included: true },
+      ],
+    },
+    {
+      name: "Enterprise",
+      description: "For large organisations",
+      priceMonthly: 49,
+      priceYearly: 490,
+      cta: "Contact sales",
+      features: [
+        { text: "Unlimited projects", included: true },
+        { text: "Advanced analytics", included: true },
+        { text: "Custom domain", included: true },
+        { text: "Priority support", included: true },
+      ],
+      additionalFeatures: [
+        { text: "SSO / SAML", included: true },
+        { text: "Dedicated account manager", included: true },
+      ],
+    },
+  ]}
+/>
+```
+
+### Custom currency and default billing
+
+```tsx
+<PricingTable currency="€" defaultBilling="yearly" plans={plans} />
+```
+
+### Per-plan theme colour
+
+Use `themeColor` on popular plans to tint the border, badge, and discount text:
+
+```tsx
+<PricingTable
+  plans={[
+    {
+      name: "Pro",
+      priceMonthly: 29,
+      priceYearly: 290,
+      isPopular: true,
+      themeColor: "#6366f1",
+      cta: "Upgrade",
+      features: [{ text: "All features", included: true }],
+    },
+  ]}
+/>
+```
+
+### Custom CTA variant and info text
+
+```tsx
+{
+  name: "Enterprise",
+  priceMonthly: 99,
+  priceYearly: 990,
+  cta: "Contact sales",
+  ctaVariant: "secondary",
+  ctaInfo: "Volume discounts available",
+  features: [{ text: "Everything in Pro", included: true }],
+  footerAction: <a href="/enterprise" class="text-xs underline">Learn more</a>,
+}
+```
+
+### With header and footer
+
+```tsx
+<PricingTable
+  plans={plans}
+  header={
+    <div class="text-center space-y-2">
+      <h2 class="text-3xl font-bold">Simple, transparent pricing</h2>
+      <p class="text-muted-foreground">No hidden fees. Cancel anytime.</p>
+    </div>
+  }
+  footer={
+    <p class="text-center text-sm text-muted-foreground">
+      All plans include a 14-day free trial. No credit card required.
+    </p>
+  }
+/>
+```
+
+## API
+
+### `PricingTableProps`
+
+Extends `div` props.
+
+- `plans` — `PricingPlan[]` — array of plan definitions
+- `defaultBilling` — `'monthly'` | `'yearly'` (default `'monthly'`)
+- `currency` — `string` — currency symbol (default `'$'`)
+- `header` — `JSX.Element` — content above the billing toggle
+- `footer` — `JSX.Element` — content below the plan grid
+- `locale` — `Partial<PricingTableLocale>` — locale string overrides
+
+### `PricingPlan`
+
+- `name` — plan name (e.g. "Free", "Pro")
+- `description` — optional short description
+- `priceMonthly`, `priceYearly` — numeric price values
+- `features` — `PricingFeature[]` — main feature list
+- `additionalFeatures` — `PricingFeature[]` — secondary feature section
+- `isPopular` — `boolean` — highlights with border and badge
+- `themeColor` — `string` — hex colour for popular border/badge tinting
+- `discount` — `string` — discount badge text (e.g. "17% off")
+- `cta` — `string` — CTA button label
+- `ctaVariant` — button variant override (default: `'default'` for popular, `'outline'` for others)
+- `ctaClass` — additional CSS class(es) for the CTA button
+- `ctaInfo` — `string` | `JSX.Element` — info text below the CTA (strings get an auto info icon)
+- `billingText` — `string` — custom billing subtitle (always shown when set)
+- `footerAction` — `JSX.Element` — custom content at bottom of card footer
+- `onSelect` — `() => void` — CTA click callback
+
+### `PricingFeature`
+
+- `text` — feature description
+- `included` — `boolean` — check or cross icon
+
+## i18n
+
+Locale key: `PricingTable`. Overridable strings:
+
+| Key                    | Default              |
+| ---------------------- | -------------------- |
+| `monthly`              | Monthly              |
+| `yearly`               | Yearly               |
+| `popular`              | Most Popular         |
+| `perMonth`             | mo                   |
+| `perYear`              | yr                   |
+| `billedYearly`         | `(currency, amount) => string` |
+| `additionalFeatures`   | Additional Features  |
+
+## Exports
+
+- `PricingTable` — component
+- `PricingTableProps`, `PricingPlan`, `PricingFeature`, `PricingBilling` — types
