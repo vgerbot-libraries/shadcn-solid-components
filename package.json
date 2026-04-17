@@ -103,6 +103,7 @@
     "./hoc/navigation-menu": "./src/hoc/navigation-menu/index.tsx",
     "./hoc/notification-center": "./src/hoc/notification-center/index.tsx",
     "./hoc/otp-field": "./src/hoc/otp-field/index.tsx",
+    "./hoc/overlay-page": "./src/hoc/overlay-page/index.tsx",
     "./hoc/page-header": "./src/hoc/page-header/index.tsx",
     "./hoc/pricing-table": "./src/hoc/pricing-table/index.tsx",
     "./hoc/profile-header": "./src/hoc/profile-header/index.tsx",
