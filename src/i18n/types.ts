@@ -156,6 +156,10 @@ export interface SettingsLayoutLocale {
   toggleSidebar: string
 }
 
+export interface OverlayPageLocale {
+  back: string
+}
+
 export interface ActivityFeedLocale {
   empty: string
   loading: string
@@ -207,6 +211,7 @@ export interface Locale {
   UserMenu: UserMenuLocale
   ModeToggleDropdown: ModeToggleDropdownLocale
   SettingsLayout: SettingsLayoutLocale
+  OverlayPage: OverlayPageLocale
   ActivityFeed: ActivityFeedLocale
   PricingTable: PricingTableLocale,
   FaqSection: FaqSectionLocale

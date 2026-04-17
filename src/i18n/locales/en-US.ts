@@ -13,6 +13,7 @@ import { enUS as FilterBuilder } from 'shadcn-solid-components/hoc/filter-builde
 import { enUS as LoginForm } from 'shadcn-solid-components/hoc/login-form/locales/en-US'
 import { enUS as ModeToggleDropdown } from 'shadcn-solid-components/hoc/mode-toggle-dropdown/locales/en-US'
 import { enUS as NotificationCenter } from 'shadcn-solid-components/hoc/notification-center/locales/en-US'
+import { enUS as OverlayPage } from 'shadcn-solid-components/hoc/overlay-page/locales/en-US'
 import { enUS as OTPField } from 'shadcn-solid-components/hoc/otp-field/locales/en-US'
 import { enUS as SettingsLayout } from 'shadcn-solid-components/hoc/settings-layout/locales/en-US'
 import { enUS as Stepper } from 'shadcn-solid-components/hoc/stepper/locales/en-US'
@@ -43,6 +44,7 @@ export const enUS: Locale = {
   UserMenu,
   ModeToggleDropdown,
   SettingsLayout,
+  OverlayPage,
   ActivityFeed,
   PricingTable,
   ErrorPage,

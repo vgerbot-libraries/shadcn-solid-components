@@ -13,6 +13,7 @@ import { jaJP as FilterBuilder } from 'shadcn-solid-components/hoc/filter-builde
 import { jaJP as LoginForm } from 'shadcn-solid-components/hoc/login-form/locales/ja-JP'
 import { jaJP as ModeToggleDropdown } from 'shadcn-solid-components/hoc/mode-toggle-dropdown/locales/ja-JP'
 import { jaJP as NotificationCenter } from 'shadcn-solid-components/hoc/notification-center/locales/ja-JP'
+import { jaJP as OverlayPage } from 'shadcn-solid-components/hoc/overlay-page/locales/ja-JP'
 import { jaJP as OTPField } from 'shadcn-solid-components/hoc/otp-field/locales/ja-JP'
 import { jaJP as SettingsLayout } from 'shadcn-solid-components/hoc/settings-layout/locales/ja-JP'
 import { jaJP as Stepper } from 'shadcn-solid-components/hoc/stepper/locales/ja-JP'
@@ -43,6 +44,7 @@ export const jaJP: Locale = {
   UserMenu,
   ModeToggleDropdown,
   SettingsLayout,
+  OverlayPage,
   ActivityFeed,
   PricingTable,
   ErrorPage,

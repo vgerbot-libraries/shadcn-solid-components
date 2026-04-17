@@ -1,5 +1,8 @@
 import { Button } from 'shadcn-solid-components/components/button'
+import { useLocale } from 'shadcn-solid-components/components/config-provider'
 import { Drawer, DrawerContent } from 'shadcn-solid-components/components/drawer'
+import { OverlayPage } from 'shadcn-solid-components/hoc/overlay-page'
+import type { OverlayPageLocale, SettingsLayoutLocale } from 'shadcn-solid-components/i18n/types'
 import { cx } from 'shadcn-solid-components/lib/cva'
 import {
   type ComponentProps,
@@ -11,6 +14,7 @@ import {
   splitProps,
   Switch,
 } from 'solid-js'
+import { enUS as defaultLocale } from './locales/en-US'
 
 // ============================================================================
 // Types
@@ -40,6 +44,26 @@ export interface SettingsLayoutProps extends Omit<ComponentProps<'div'>, 'childr
   sidebarWidth?: string
   /** When true, sidebar is hidden and content takes full width. */
   hideSidebar?: boolean
+  /** Optional page title forwarded to the shared page shell. */
+  title?: string
+  /** Optional page description forwarded to the shared page shell. */
+  description?: string | JSX.Element
+  /** Optional header actions rendered beside the mobile menu button. */
+  actions?: JSX.Element
+  /** Whether to render the shared page shell as a viewport-covering overlay. */
+  overlay?: boolean
+  /** Show the header back button. Defaults to `true`. */
+  showBackButton?: boolean
+  /** Custom click handler for the header back button. */
+  onBack?: () => void
+  /** Optional href to render the back button as a link. */
+  backHref?: string
+  /** Custom label for the back button. */
+  backLabel?: string
+  /** Locale overrides for settings-specific strings. */
+  locale?: Partial<SettingsLayoutLocale>
+  /** Locale overrides for the shared overlay shell. */
+  overlayLocale?: Partial<OverlayPageLocale>
 }
 
 // ============================================================================
@@ -48,7 +72,8 @@ export interface SettingsLayoutProps extends Omit<ComponentProps<'div'>, 'childr
 
 /**
  * A settings page layout with a sidebar navigation and content panel.
- * Responsive: sidebar slides in on mobile as a sheet, fixed on desktop.
+ * Responsive: sidebar slides in on mobile as a drawer, and docks alongside
+ * the content inside a shared page shell on desktop.
  *
  * @example
  * ```tsx
@@ -78,7 +103,24 @@ export function SettingsLayout(props: SettingsLayoutProps) {
     'children',
     'sidebarWidth',
     'hideSidebar',
+    'title',
+    'description',
+    'actions',
+    'overlay',
+    'showBackButton',
+    'onBack',
+    'backHref',
+    'backLabel',
+    'locale',
+    'overlayLocale',
   ])
+
+  const globalLocale = useLocale()
+  const locale = (): SettingsLayoutLocale => ({
+    ...defaultLocale,
+    ...globalLocale.SettingsLayout,
+    ...local.locale,
+  })
 
   // Mobile sheet state
   const [mobileOpen, setMobileOpen] = createSignal(false)
@@ -105,10 +147,7 @@ export function SettingsLayout(props: SettingsLayoutProps) {
     return local.children[active]
   }
 
-  const sidebarClasses = cx(
-    'flex flex-col gap-2 p-6',
-    local.sidebarWidth ? '' : 'w-64',
-  )
+  const sidebarClasses = 'flex flex-col gap-2 p-6'
 
   const sidebarNav = () => (
     <nav class={sidebarClasses} data-slot="settings-sidebar">
@@ -133,20 +172,22 @@ export function SettingsLayout(props: SettingsLayoutProps) {
     </nav>
   )
 
-  return (
-    <div
-      data-slot="settings-layout"
-      class={cx('bg-background min-h-screen', local.class)}
-      {...rest}
-    >
-      {/* Mobile menu button */}
-      <Show when={!local.hideSidebar}>
-        <div class="fixed top-4 left-4 z-50 lg:hidden">
+  const hasHeaderActions = () => !local.hideSidebar || !!local.actions
+
+  const headerActions = () => {
+    if (!hasHeaderActions()) {
+      return undefined
+    }
+
+    return (
+      <>
+        <Show when={!local.hideSidebar}>
           <Button
             variant="outline"
-            size="icon"
+            size="icon-sm"
+            class="lg:hidden"
             onClick={() => setMobileOpen(prev => !prev)}
-            aria-label="Toggle sidebar"
+            aria-label={locale().toggleSidebar}
           >
             <Switch>
               <Match when={mobileOpen()}>
@@ -182,37 +223,61 @@ export function SettingsLayout(props: SettingsLayoutProps) {
               </Match>
             </Switch>
           </Button>
-        </div>
+        </Show>
+        <Show when={local.actions}>{local.actions}</Show>
+      </>
+    )
+  }
 
-        {/* Desktop sidebar */}
-        <div
-          class="bg-card fixed inset-y-0 left-0 z-40 hidden border-r lg:block"
-          style={local.sidebarWidth ? { width: local.sidebarWidth } : undefined}
-        >
-          {sidebarNav()}
-        </div>
+  const sidebarStyle = () => (local.sidebarWidth ? { width: local.sidebarWidth } : undefined)
 
-        {/* Mobile drawer */}
+  return (
+    <OverlayPage
+      data-slot="settings-layout"
+      class={local.class}
+      overlay={local.overlay ?? false}
+      title={local.title}
+      description={local.description}
+      actions={headerActions()}
+      showBackButton={local.showBackButton}
+      onBack={local.onBack}
+      backHref={local.backHref}
+      backLabel={local.backLabel}
+      locale={local.overlayLocale}
+      {...rest}
+    >
+      <Show when={!local.hideSidebar}>
         <Drawer open={mobileOpen()} onOpenChange={setMobileOpen} side="left">
-          <DrawerContent class="w-64 p-0">
+          <DrawerContent
+            class={cx('p-0', local.sidebarWidth ? '' : 'w-64')}
+            style={sidebarStyle()}
+          >
             {sidebarNav()}
           </DrawerContent>
         </Drawer>
       </Show>
 
-      {/* Main content */}
-      <div
-        class={cx('p-6 lg:p-8', !local.hideSidebar && 'lg:ml-64')}
-        style={
-          !local.hideSidebar && local.sidebarWidth
-            ? { 'margin-left': local.sidebarWidth }
-            : undefined
-        }
-      >
-        <div class="mx-auto max-w-4xl" data-slot="settings-content">
-          {renderContent()}
+      <div class="mx-auto flex min-h-full w-full max-w-7xl flex-col lg:flex-row">
+        <Show when={!local.hideSidebar}>
+          <aside
+            class={cx(
+              'bg-card hidden shrink-0 border-r lg:block',
+              local.sidebarWidth ? '' : 'w-64',
+            )}
+            style={sidebarStyle()}
+          >
+            <div class="sticky top-0">
+              {sidebarNav()}
+            </div>
+          </aside>
+        </Show>
+
+        <div class="min-w-0 flex-1 p-6 lg:p-8">
+          <div class="mx-auto w-full max-w-4xl" data-slot="settings-content">
+            {renderContent()}
+          </div>
         </div>
       </div>
-    </div>
+    </OverlayPage>
   )
 }

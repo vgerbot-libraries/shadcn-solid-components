@@ -12,7 +12,10 @@ const SettingsLayoutDemo = () => {
       <SettingsLayout
         sections={sections}
         defaultActiveSection="profile"
-        hideSidebar={false}
+        title="Settings"
+        description="Manage your account preferences and workspace defaults."
+        backLabel="Back"
+        onBack={() => undefined}
       >
         {{
           profile: (

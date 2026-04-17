@@ -13,6 +13,7 @@ import { zhCN as FilterBuilder } from 'shadcn-solid-components/hoc/filter-builde
 import { zhCN as LoginForm } from 'shadcn-solid-components/hoc/login-form/locales/zh-CN'
 import { zhCN as ModeToggleDropdown } from 'shadcn-solid-components/hoc/mode-toggle-dropdown/locales/zh-CN'
 import { zhCN as NotificationCenter } from 'shadcn-solid-components/hoc/notification-center/locales/zh-CN'
+import { zhCN as OverlayPage } from 'shadcn-solid-components/hoc/overlay-page/locales/zh-CN'
 import { zhCN as OTPField } from 'shadcn-solid-components/hoc/otp-field/locales/zh-CN'
 import { zhCN as SettingsLayout } from 'shadcn-solid-components/hoc/settings-layout/locales/zh-CN'
 import { zhCN as Stepper } from 'shadcn-solid-components/hoc/stepper/locales/zh-CN'
@@ -43,6 +44,7 @@ export const zhCN: Locale = {
   UserMenu,
   ModeToggleDropdown,
   SettingsLayout,
+  OverlayPage,
   ActivityFeed,
   PricingTable,
   ErrorPage,

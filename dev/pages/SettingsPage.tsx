@@ -430,6 +430,10 @@ const SettingsPage: Component = () => {
     <SettingsLayout
       sections={sections}
       defaultActiveSection="appearance"
+      overlay={true}
+      title="Settings"
+      description="Manage appearance, language, notifications, and accessibility preferences."
+      backLabel="Back"
     >
       {{
         appearance: <AppearanceSection />,
