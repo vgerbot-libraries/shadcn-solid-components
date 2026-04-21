@@ -34,6 +34,7 @@
     "./components/alert": "./src/components/alert/index.tsx",
     "./components/alert-dialog": "./src/components/alert-dialog/index.tsx",
     "./components/badge": "./src/components/badge/index.tsx",
+    "./components/breadcrumb": "./src/components/breadcrumb/index.tsx",
     "./components/breadcrumbs": "./src/components/breadcrumbs/index.tsx",
     "./components/button": "./src/components/button/index.tsx",
     "./components/button-group": "./src/components/button-group/index.tsx",
