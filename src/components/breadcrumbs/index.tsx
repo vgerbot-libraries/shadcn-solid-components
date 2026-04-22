@@ -1,7 +1,7 @@
 import { Breadcrumbs as BreadcrumbsPrimitive } from '@kobalte/core/breadcrumbs'
 import { cx } from 'shadcn-solid-components/lib/cva'
 import type { VoidProps } from 'solid-js'
-import { type ComponentProps, splitProps, type ValidComponent } from 'solid-js'
+import { type ComponentProps, Show, splitProps, type ValidComponent } from 'solid-js'
 
 export type BreadcrumbsProps<T extends ValidComponent = 'nav'> = ComponentProps<
   typeof BreadcrumbsPrimitive<T>
@@ -85,14 +85,27 @@ export type BreadcrumbsSeparatorProps<T extends ValidComponent = 'span'> = Compo
 export const BreadcrumbsSeparator = <T extends ValidComponent = 'span'>(
   props: BreadcrumbsSeparatorProps<T>,
 ) => {
-  const [, rest] = splitProps(props as BreadcrumbsSeparatorProps, ['class'])
+  const [local, rest] = splitProps(props as BreadcrumbsSeparatorProps, ['class', 'children'])
 
   return (
-    <BreadcrumbsPrimitive.Separator
-      data-slot="breadcrumb-separator"
-      class={cx('[&>svg]:size-3.5', props.class)}
-      {...rest}
-    />
+    <Show
+      when={local.children}
+      fallback={
+        <BreadcrumbsPrimitive.Separator
+          data-slot="breadcrumb-separator"
+          class={cx('[&>svg]:size-3.5', local.class)}
+          {...rest}
+        />
+      }
+    >
+      <span
+        data-slot="breadcrumb-separator"
+        aria-hidden="true"
+        class={cx('[&>svg]:size-3.5', local.class)}
+      >
+        {local.children}
+      </span>
+    </Show>
   )
 }
 
@@ -124,5 +137,22 @@ export const BreadcrumbsEllipsis = (props: BreadcrumbsEllipsisProps) => {
       </svg>
       <span class="sr-only">More</span>
     </span>
+  )
+}
+
+export type BreadcrumbsPageProps = ComponentProps<'span'>
+
+export const BreadcrumbsPage = (props: BreadcrumbsPageProps) => {
+  const [, rest] = splitProps(props, ['class'])
+
+  return (
+    <span
+      data-slot="breadcrumb-page"
+      role="link"
+      aria-disabled="true"
+      aria-current="page"
+      class={cx('text-foreground font-normal', props.class)}
+      {...rest}
+    />
   )
 }

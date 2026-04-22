@@ -1,18 +1,11 @@
 import { type Component, createSignal } from 'solid-js'
 import {
-  Breadcrumb,
-  BreadcrumbEllipsis,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList as BreadcrumbListNew,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from 'shadcn-solid-components/components/breadcrumb'
-import {
   BreadcrumbList,
   Breadcrumbs,
+  BreadcrumbsEllipsis,
   BreadcrumbsItem,
   BreadcrumbsLink,
+  BreadcrumbsPage,
   BreadcrumbsSeparator,
 } from 'shadcn-solid-components/components/breadcrumbs'
 import { Badge } from 'shadcn-solid-components/components/badge'
@@ -94,13 +87,16 @@ const NavigationPage: Component = () => {
       title="Navigation"
       description="Navigation components: Breadcrumbs, Menubar, NavigationMenu, Pagination, SegmentedControl."
     >
-      {/* Breadcrumbs */}
+      {/* Breadcrumb*/}
       <Card>
         <CardHeader>
           <CardTitle>Breadcrumbs</CardTitle>
-          <CardDescription>Hierarchical path navigation.</CardDescription>
+          <CardDescription>
+          Flexible breadcrumb navigation patterns for sites and apps.
+          </CardDescription>
         </CardHeader>
-        <CardContent class="flex flex-col gap-4">
+        <CardContent class="flex flex-col gap-6">
+          {/* 00 - Basic breadcrumb navigation with current page indicator */}
           <Breadcrumbs>
             <BreadcrumbList>
               <BreadcrumbsItem>
@@ -116,99 +112,87 @@ const NavigationPage: Component = () => {
               </BreadcrumbsItem>
             </BreadcrumbList>
           </Breadcrumbs>
-        </CardContent>
-      </Card>
-
-      {/* Breadcrumb*/}
-      <Card>
-        <CardHeader>
-          <CardTitle>Breadcrumb</CardTitle>
-          <CardDescription>Breadcrumb</CardDescription>
-        </CardHeader>
-        <CardContent class="flex flex-col gap-6">
           {/* 01 — Pill outline */}
-          <Breadcrumb>
-            <BreadcrumbListNew class="h-8 gap-2 rounded-full border px-3 text-sm">
-              <BreadcrumbItem>
-                <BreadcrumbLink href="#">
+          <Breadcrumbs>
+            <BreadcrumbList class="h-8 gap-2 rounded-full border px-3 text-sm">
+              <BreadcrumbsItem>
+                <BreadcrumbsLink href="#">
                   <IconHome class="size-4" />
                   <span class="sr-only">Home</span>
-                </BreadcrumbLink>
-              </BreadcrumbItem>
-              <BreadcrumbSeparator />
-              <BreadcrumbItem>
-                <BreadcrumbLink href="#">Profile</BreadcrumbLink>
-              </BreadcrumbItem>
-              <BreadcrumbSeparator />
-              <BreadcrumbItem>
-                <BreadcrumbPage>Settings</BreadcrumbPage>
-              </BreadcrumbItem>
-            </BreadcrumbListNew>
-          </Breadcrumb>
+                </BreadcrumbsLink>
+              </BreadcrumbsItem>
+              <BreadcrumbsSeparator />
+              <BreadcrumbsItem>
+                <BreadcrumbsLink href="#">Profile</BreadcrumbsLink>
+              </BreadcrumbsItem>
+              <BreadcrumbsSeparator />
+              <BreadcrumbsItem>
+                <BreadcrumbsPage>Settings</BreadcrumbsPage>
+              </BreadcrumbsItem>
+            </BreadcrumbList>
+          </Breadcrumbs>
 
           {/* 02 — Slash separator */}
-          <Breadcrumb>
-            <BreadcrumbListNew>
-              <BreadcrumbItem>
-                <BreadcrumbLink href="#" class="flex items-center gap-2">
+          <Breadcrumbs separator=" / ">
+            <BreadcrumbList>
+              <BreadcrumbsItem>
+                <BreadcrumbsLink href="#" class="flex items-center gap-2">
                   <IconHome class="size-4" />
                   Home
-                </BreadcrumbLink>
-              </BreadcrumbItem>
-              <BreadcrumbSeparator>{' / '}</BreadcrumbSeparator>
-              <BreadcrumbItem>
-                <BreadcrumbLink href="#">Profile</BreadcrumbLink>
-              </BreadcrumbItem>
-              <BreadcrumbSeparator>{' / '}</BreadcrumbSeparator>
-              <BreadcrumbItem>
-                <BreadcrumbPage>Settings</BreadcrumbPage>
-              </BreadcrumbItem>
-            </BreadcrumbListNew>
-          </Breadcrumb>
+                </BreadcrumbsLink>
+              </BreadcrumbsItem>
+              <BreadcrumbsSeparator />
+              <BreadcrumbsItem>
+                <BreadcrumbsLink href="#">Profile</BreadcrumbsLink>
+              </BreadcrumbsItem>
+              <BreadcrumbsSeparator />
+              <BreadcrumbsItem>
+                <BreadcrumbsPage>Settings</BreadcrumbsPage>
+              </BreadcrumbsItem>
+            </BreadcrumbList>
+          </Breadcrumbs>
 
           {/* 03 — Browser-style with back/forward */}
-          <Breadcrumb>
-            <BreadcrumbListNew class="h-8 gap-2 rounded-lg border px-3 text-sm">
+          <Breadcrumbs separator="·">
+            <BreadcrumbList class="h-8 gap-2 rounded-lg border px-3 text-sm">
               <div class="bg-muted flex items-center rounded-full px-1.5 py-0.5 mr-1">
                 <a href="#"><IconChevronLeft class="text-foreground cursor-pointer size-4" /></a>
                 <a href="#"><IconChevronRight class="text-foreground/60 size-4" /></a>
               </div>
-              <BreadcrumbItem>
-                <BreadcrumbLink href="#">
+              <BreadcrumbsItem>
+                <BreadcrumbsLink href="#">
                   <IconHome class="size-4" />
                   <span class="sr-only">Home</span>
-                </BreadcrumbLink>
-              </BreadcrumbItem>
-              <BreadcrumbSeparator>·</BreadcrumbSeparator>
-              <BreadcrumbItem>
-                <BreadcrumbLink href="#" class="flex items-center gap-2">
+                </BreadcrumbsLink>
+              </BreadcrumbsItem>
+              <BreadcrumbsSeparator />
+              <BreadcrumbsItem>
+                <BreadcrumbsLink href="#" class="flex items-center gap-2">
                   <IconSettings class="size-4" />
                   Settings
-                </BreadcrumbLink>
-              </BreadcrumbItem>
-              <BreadcrumbSeparator>·</BreadcrumbSeparator>
-              <BreadcrumbItem>
-                <BreadcrumbPage class="flex items-center gap-2">
+                </BreadcrumbsLink>
+              </BreadcrumbsItem>
+              <BreadcrumbsSeparator />
+              <BreadcrumbsItem>
+                <BreadcrumbsPage class="flex items-center gap-2">
                   <IconUser class="inline size-4" />
                   Account
-                </BreadcrumbPage>
-              </BreadcrumbItem>
-            </BreadcrumbListNew>
-          </Breadcrumb>
+                </BreadcrumbsPage>
+              </BreadcrumbsItem>
+            </BreadcrumbList>
+          </Breadcrumbs>
 
           {/* 04 — Dropdown on middle item */}
-          <Breadcrumb>
-            <BreadcrumbListNew>
-              <BreadcrumbItem>
-                <BreadcrumbLink href="#">
+          <Breadcrumbs separator={<IconChevronsRight class="size-3.5" />}>
+            <BreadcrumbList>
+              <BreadcrumbsItem>
+                <BreadcrumbsLink href="#">
                   <IconHome class="size-4" />
                   <span class="sr-only">Home</span>
-                </BreadcrumbLink>
-              </BreadcrumbItem>
-              <BreadcrumbSeparator>
-                <IconChevronsRight class="size-3.5" />
-              </BreadcrumbSeparator>
-              <BreadcrumbItem class="flex items-center gap-2">
+                </BreadcrumbsLink>
+              </BreadcrumbsItem>
+              <BreadcrumbsSeparator />
+              <BreadcrumbsItem class="flex items-center gap-2">
                 <DropdownMenu>
                   <DropdownMenuTrigger class="flex cursor-pointer items-center gap-1">
                     <IconChevronDown class="size-4" />
@@ -219,38 +203,36 @@ const NavigationPage: Component = () => {
                     <DropdownMenuItem>Marketers</DropdownMenuItem>
                   </DropdownMenuContent>
                 </DropdownMenu>
-              </BreadcrumbItem>
-              <BreadcrumbSeparator>
-                <IconChevronsRight class="size-3.5" />
-              </BreadcrumbSeparator>
-              <BreadcrumbItem>
-                <BreadcrumbPage>Account</BreadcrumbPage>
-              </BreadcrumbItem>
-            </BreadcrumbListNew>
-          </Breadcrumb>
+              </BreadcrumbsItem>
+              <BreadcrumbsSeparator />
+              <BreadcrumbsItem>
+                <BreadcrumbsPage>Account</BreadcrumbsPage>
+              </BreadcrumbsItem>
+            </BreadcrumbList>
+          </Breadcrumbs>
 
           {/* 05 — Badge-style with dropdown on page */}
-          <Breadcrumb>
-            <BreadcrumbListNew>
-              <BreadcrumbItem>
-                <BreadcrumbLink href="#">
+          <Breadcrumbs separator=" / ">
+            <BreadcrumbList>
+              <BreadcrumbsItem>
+                <BreadcrumbsLink href="#">
                   <Badge variant="outline" class="text-muted-foreground hover:text-foreground">
                     <IconHome class="size-3" />
                     Home
                   </Badge>
-                </BreadcrumbLink>
-              </BreadcrumbItem>
-              <BreadcrumbSeparator>{' / '}</BreadcrumbSeparator>
-              <BreadcrumbItem>
-                <BreadcrumbLink href="#">
+                </BreadcrumbsLink>
+              </BreadcrumbsItem>
+              <BreadcrumbsSeparator />
+              <BreadcrumbsItem>
+                <BreadcrumbsLink href="#">
                   <Badge variant="outline" class="text-muted-foreground hover:text-foreground">
                     Design System
                   </Badge>
-                </BreadcrumbLink>
-              </BreadcrumbItem>
-              <BreadcrumbSeparator>{' / '}</BreadcrumbSeparator>
-              <BreadcrumbItem>
-                <BreadcrumbPage>
+                </BreadcrumbsLink>
+              </BreadcrumbsItem>
+              <BreadcrumbsSeparator />
+              <BreadcrumbsItem>
+                <BreadcrumbsPage>
                   <DropdownMenu>
                     <DropdownMenuTrigger class="flex items-center gap-1">
                       Components
@@ -262,22 +244,22 @@ const NavigationPage: Component = () => {
                       <DropdownMenuItem>Breadcrumb</DropdownMenuItem>
                     </DropdownMenuContent>
                   </DropdownMenu>
-                </BreadcrumbPage>
-              </BreadcrumbItem>
-            </BreadcrumbListNew>
-          </Breadcrumb>
+                </BreadcrumbsPage>
+              </BreadcrumbsItem>
+            </BreadcrumbList>
+          </Breadcrumbs>
 
           {/* 06 — Ellipsis with dropdown */}
-          <Breadcrumb>
-            <BreadcrumbListNew>
-              <BreadcrumbItem>
-                <BreadcrumbLink href="#">Home</BreadcrumbLink>
-              </BreadcrumbItem>
-              <BreadcrumbSeparator />
-              <BreadcrumbItem>
+          <Breadcrumbs>
+            <BreadcrumbList>
+              <BreadcrumbsItem>
+                <BreadcrumbsLink href="#">Home</BreadcrumbsLink>
+              </BreadcrumbsItem>
+              <BreadcrumbsSeparator />
+              <BreadcrumbsItem>
                 <DropdownMenu>
                   <DropdownMenuTrigger class="hover:text-foreground">
-                    <BreadcrumbEllipsis />
+                    <BreadcrumbsEllipsis />
                     <span class="sr-only">Toggle menu</span>
                   </DropdownMenuTrigger>
                   <DropdownMenuContent>
@@ -286,17 +268,17 @@ const NavigationPage: Component = () => {
                     <DropdownMenuItem><a href="#">Guidelines</a></DropdownMenuItem>
                   </DropdownMenuContent>
                 </DropdownMenu>
-              </BreadcrumbItem>
-              <BreadcrumbSeparator />
-              <BreadcrumbItem>
-                <BreadcrumbLink href="#">Components</BreadcrumbLink>
-              </BreadcrumbItem>
-              <BreadcrumbSeparator />
-              <BreadcrumbItem>
-                <BreadcrumbPage>Breadcrumb</BreadcrumbPage>
-              </BreadcrumbItem>
-            </BreadcrumbListNew>
-          </Breadcrumb>
+              </BreadcrumbsItem>
+              <BreadcrumbsSeparator />
+              <BreadcrumbsItem>
+                <BreadcrumbsLink href="#">Components</BreadcrumbsLink>
+              </BreadcrumbsItem>
+              <BreadcrumbsSeparator />
+              <BreadcrumbsItem>
+                <BreadcrumbsPage>Breadcrumb</BreadcrumbsPage>
+              </BreadcrumbsItem>
+            </BreadcrumbList>
+          </Breadcrumbs>
         </CardContent>
       </Card>
 
