@@ -1,0 +1,16 @@
+{
+  "name": "hoc/profile-header",
+  "displayName": "Profile Header",
+  "description": "Profile Header HOC for SolidJS UI composition.",
+  "category": "hoc",
+  "useCases": [
+    "Use Profile Header in hoc scenarios."
+  ],
+  "usage": "import { /* exported members */ } from \"shadcn-solid-components/hoc/profile-header\"",
+  "tags": [
+    "hoc",
+    "profile-header",
+    "solidjs",
+    "ui"
+  ]
+}

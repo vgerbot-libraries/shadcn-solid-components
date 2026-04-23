@@ -1,0 +1,16 @@
+{
+  "name": "hoc/file-upload-zone",
+  "displayName": "File Upload Zone",
+  "description": "File Upload Zone HOC for SolidJS UI composition.",
+  "category": "hoc",
+  "useCases": [
+    "Use File Upload Zone in hoc scenarios."
+  ],
+  "usage": "import { /* exported members */ } from \"shadcn-solid-components/hoc/file-upload-zone\"",
+  "tags": [
+    "hoc",
+    "file-upload-zone",
+    "solidjs",
+    "ui"
+  ]
+}

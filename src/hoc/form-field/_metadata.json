@@ -1,0 +1,16 @@
+{
+  "name": "hoc/form-field",
+  "displayName": "Form Field",
+  "description": "Form Field HOC for SolidJS UI composition.",
+  "category": "hoc",
+  "useCases": [
+    "Use Form Field in hoc scenarios."
+  ],
+  "usage": "import { /* exported members */ } from \"shadcn-solid-components/hoc/form-field\"",
+  "tags": [
+    "hoc",
+    "form-field",
+    "solidjs",
+    "ui"
+  ]
+}

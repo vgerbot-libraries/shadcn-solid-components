@@ -1,0 +1,16 @@
+{
+  "name": "components/hover-card",
+  "displayName": "Hover Card",
+  "description": "Hover Card component for SolidJS UI composition.",
+  "category": "components",
+  "useCases": [
+    "Use Hover Card in components scenarios."
+  ],
+  "usage": "import { /* exported members */ } from \"shadcn-solid-components/components/hover-card\"",
+  "tags": [
+    "components",
+    "hover-card",
+    "solidjs",
+    "ui"
+  ]
+}

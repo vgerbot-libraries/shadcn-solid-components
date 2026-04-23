@@ -1,0 +1,16 @@
+{
+  "name": "hoc/description-list",
+  "displayName": "Description List",
+  "description": "Description List HOC for SolidJS UI composition.",
+  "category": "hoc",
+  "useCases": [
+    "Use Description List in hoc scenarios."
+  ],
+  "usage": "import { /* exported members */ } from \"shadcn-solid-components/hoc/description-list\"",
+  "tags": [
+    "hoc",
+    "description-list",
+    "solidjs",
+    "ui"
+  ]
+}

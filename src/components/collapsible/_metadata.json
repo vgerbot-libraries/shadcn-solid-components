@@ -1,0 +1,16 @@
+{
+  "name": "components/collapsible",
+  "displayName": "Collapsible",
+  "description": "Collapsible component for SolidJS UI composition.",
+  "category": "components",
+  "useCases": [
+    "Use Collapsible in components scenarios."
+  ],
+  "usage": "import { /* exported members */ } from \"shadcn-solid-components/components/collapsible\"",
+  "tags": [
+    "components",
+    "collapsible",
+    "solidjs",
+    "ui"
+  ]
+}

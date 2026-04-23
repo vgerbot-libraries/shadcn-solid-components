@@ -1,0 +1,16 @@
+{
+  "name": "hoc/overlay-page",
+  "displayName": "Overlay Page",
+  "description": "Overlay Page HOC for SolidJS UI composition.",
+  "category": "hoc",
+  "useCases": [
+    "Use Overlay Page in hoc scenarios."
+  ],
+  "usage": "import { /* exported members */ } from \"shadcn-solid-components/hoc/overlay-page\"",
+  "tags": [
+    "hoc",
+    "overlay-page",
+    "solidjs",
+    "ui"
+  ]
+}

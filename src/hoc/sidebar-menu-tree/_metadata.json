@@ -1,0 +1,16 @@
+{
+  "name": "hoc/sidebar-menu-tree",
+  "displayName": "Sidebar Menu Tree",
+  "description": "Sidebar Menu Tree HOC for SolidJS UI composition.",
+  "category": "hoc",
+  "useCases": [
+    "Use Sidebar Menu Tree in hoc scenarios."
+  ],
+  "usage": "import { /* exported members */ } from \"shadcn-solid-components/hoc/sidebar-menu-tree\"",
+  "tags": [
+    "hoc",
+    "sidebar-menu-tree",
+    "solidjs",
+    "ui"
+  ]
+}

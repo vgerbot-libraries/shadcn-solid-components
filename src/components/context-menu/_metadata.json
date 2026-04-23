@@ -1,0 +1,16 @@
+{
+  "name": "components/context-menu",
+  "displayName": "Context Menu",
+  "description": "Context Menu component for SolidJS UI composition.",
+  "category": "components",
+  "useCases": [
+    "Use Context Menu in components scenarios."
+  ],
+  "usage": "import { /* exported members */ } from \"shadcn-solid-components/components/context-menu\"",
+  "tags": [
+    "components",
+    "context-menu",
+    "solidjs",
+    "ui"
+  ]
+}

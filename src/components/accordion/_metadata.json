@@ -1,0 +1,16 @@
+{
+  "name": "components/accordion",
+  "displayName": "Accordion",
+  "description": "Accordion component for SolidJS UI composition.",
+  "category": "components",
+  "useCases": [
+    "Use Accordion in components scenarios."
+  ],
+  "usage": "import { /* exported members */ } from \"shadcn-solid-components/components/accordion\"",
+  "tags": [
+    "components",
+    "accordion",
+    "solidjs",
+    "ui"
+  ]
+}

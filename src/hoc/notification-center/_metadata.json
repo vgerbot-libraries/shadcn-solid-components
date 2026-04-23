@@ -1,0 +1,16 @@
+{
+  "name": "hoc/notification-center",
+  "displayName": "Notification Center",
+  "description": "Notification Center HOC for SolidJS UI composition.",
+  "category": "hoc",
+  "useCases": [
+    "Use Notification Center in hoc scenarios."
+  ],
+  "usage": "import { /* exported members */ } from \"shadcn-solid-components/hoc/notification-center\"",
+  "tags": [
+    "hoc",
+    "notification-center",
+    "solidjs",
+    "ui"
+  ]
+}

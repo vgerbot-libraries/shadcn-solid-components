@@ -1,0 +1,16 @@
+{
+  "name": "components/otp-field",
+  "displayName": "Otp Field",
+  "description": "Otp Field component for SolidJS UI composition.",
+  "category": "components",
+  "useCases": [
+    "Use Otp Field in components scenarios."
+  ],
+  "usage": "import { /* exported members */ } from \"shadcn-solid-components/components/otp-field\"",
+  "tags": [
+    "components",
+    "otp-field",
+    "solidjs",
+    "ui"
+  ]
+}

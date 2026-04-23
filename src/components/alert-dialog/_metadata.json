@@ -1,0 +1,16 @@
+{
+  "name": "components/alert-dialog",
+  "displayName": "Alert Dialog",
+  "description": "Alert Dialog component for SolidJS UI composition.",
+  "category": "components",
+  "useCases": [
+    "Use Alert Dialog in components scenarios."
+  ],
+  "usage": "import { /* exported members */ } from \"shadcn-solid-components/components/alert-dialog\"",
+  "tags": [
+    "components",
+    "alert-dialog",
+    "solidjs",
+    "ui"
+  ]
+}

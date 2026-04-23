@@ -1,0 +1,16 @@
+{
+  "name": "hoc/page-header",
+  "displayName": "Page Header",
+  "description": "Page Header HOC for SolidJS UI composition.",
+  "category": "hoc",
+  "useCases": [
+    "Use Page Header in hoc scenarios."
+  ],
+  "usage": "import { /* exported members */ } from \"shadcn-solid-components/hoc/page-header\"",
+  "tags": [
+    "hoc",
+    "page-header",
+    "solidjs",
+    "ui"
+  ]
+}

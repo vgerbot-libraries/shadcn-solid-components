@@ -1,0 +1,16 @@
+{
+  "name": "components/button-group",
+  "displayName": "Button Group",
+  "description": "Button Group component for SolidJS UI composition.",
+  "category": "components",
+  "useCases": [
+    "Use Button Group in components scenarios."
+  ],
+  "usage": "import { /* exported members */ } from \"shadcn-solid-components/components/button-group\"",
+  "tags": [
+    "components",
+    "button-group",
+    "solidjs",
+    "ui"
+  ]
+}

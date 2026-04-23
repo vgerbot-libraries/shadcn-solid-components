@@ -1,0 +1,16 @@
+{
+  "name": "components/badge",
+  "displayName": "Badge",
+  "description": "Badge component for SolidJS UI composition.",
+  "category": "components",
+  "useCases": [
+    "Use Badge in components scenarios."
+  ],
+  "usage": "import { /* exported members */ } from \"shadcn-solid-components/components/badge\"",
+  "tags": [
+    "components",
+    "badge",
+    "solidjs",
+    "ui"
+  ]
+}

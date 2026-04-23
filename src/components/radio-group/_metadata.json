@@ -1,0 +1,16 @@
+{
+  "name": "components/radio-group",
+  "displayName": "Radio Group",
+  "description": "Radio Group component for SolidJS UI composition.",
+  "category": "components",
+  "useCases": [
+    "Use Radio Group in components scenarios."
+  ],
+  "usage": "import { /* exported members */ } from \"shadcn-solid-components/components/radio-group\"",
+  "tags": [
+    "components",
+    "radio-group",
+    "solidjs",
+    "ui"
+  ]
+}

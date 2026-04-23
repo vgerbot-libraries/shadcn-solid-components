@@ -1,0 +1,16 @@
+{
+  "name": "components/resizable",
+  "displayName": "Resizable",
+  "description": "Resizable component for SolidJS UI composition.",
+  "category": "components",
+  "useCases": [
+    "Use Resizable in components scenarios."
+  ],
+  "usage": "import { /* exported members */ } from \"shadcn-solid-components/components/resizable\"",
+  "tags": [
+    "components",
+    "resizable",
+    "solidjs",
+    "ui"
+  ]
+}

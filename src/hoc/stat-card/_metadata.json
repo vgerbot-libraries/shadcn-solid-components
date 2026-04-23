@@ -1,0 +1,16 @@
+{
+  "name": "hoc/stat-card",
+  "displayName": "Stat Card",
+  "description": "Stat Card HOC for SolidJS UI composition.",
+  "category": "hoc",
+  "useCases": [
+    "Use Stat Card in hoc scenarios."
+  ],
+  "usage": "import { /* exported members */ } from \"shadcn-solid-components/hoc/stat-card\"",
+  "tags": [
+    "hoc",
+    "stat-card",
+    "solidjs",
+    "ui"
+  ]
+}

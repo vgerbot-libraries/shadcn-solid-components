@@ -1,0 +1,16 @@
+{
+  "name": "hoc/transfer-list",
+  "displayName": "Transfer List",
+  "description": "Transfer List HOC for SolidJS UI composition.",
+  "category": "hoc",
+  "useCases": [
+    "Use Transfer List in hoc scenarios."
+  ],
+  "usage": "import { /* exported members */ } from \"shadcn-solid-components/hoc/transfer-list\"",
+  "tags": [
+    "hoc",
+    "transfer-list",
+    "solidjs",
+    "ui"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "name": "components/date-picker",
+  "displayName": "Date Picker",
+  "description": "Date Picker component for SolidJS UI composition.",
+  "category": "components",
+  "useCases": [
+    "Use Date Picker in components scenarios."
+  ],
+  "usage": "import { /* exported members */ } from \"shadcn-solid-components/components/date-picker\"",
+  "tags": [
+    "components",
+    "date-picker",
+    "solidjs",
+    "ui"
+  ]
+}

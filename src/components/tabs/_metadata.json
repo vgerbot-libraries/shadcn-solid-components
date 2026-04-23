@@ -1,0 +1,16 @@
+{
+  "name": "components/tabs",
+  "displayName": "Tabs",
+  "description": "Tabs component for SolidJS UI composition.",
+  "category": "components",
+  "useCases": [
+    "Use Tabs in components scenarios."
+  ],
+  "usage": "import { /* exported members */ } from \"shadcn-solid-components/components/tabs\"",
+  "tags": [
+    "components",
+    "tabs",
+    "solidjs",
+    "ui"
+  ]
+}

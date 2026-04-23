@@ -1,0 +1,16 @@
+{
+  "name": "components/button",
+  "displayName": "Button",
+  "description": "Button component for SolidJS UI composition.",
+  "category": "components",
+  "useCases": [
+    "Use Button in components scenarios."
+  ],
+  "usage": "import { /* exported members */ } from \"shadcn-solid-components/components/button\"",
+  "tags": [
+    "components",
+    "button",
+    "solidjs",
+    "ui"
+  ]
+}

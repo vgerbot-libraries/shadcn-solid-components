@@ -1,0 +1,16 @@
+{
+  "name": "hoc/app-sidebar",
+  "displayName": "App Sidebar",
+  "description": "App Sidebar HOC for SolidJS UI composition.",
+  "category": "hoc",
+  "useCases": [
+    "Use App Sidebar in hoc scenarios."
+  ],
+  "usage": "import { /* exported members */ } from \"shadcn-solid-components/hoc/app-sidebar\"",
+  "tags": [
+    "hoc",
+    "app-sidebar",
+    "solidjs",
+    "ui"
+  ]
+}

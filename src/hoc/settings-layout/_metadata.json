@@ -1,0 +1,16 @@
+{
+  "name": "hoc/settings-layout",
+  "displayName": "Settings Layout",
+  "description": "Settings Layout HOC for SolidJS UI composition.",
+  "category": "hoc",
+  "useCases": [
+    "Use Settings Layout in hoc scenarios."
+  ],
+  "usage": "import { /* exported members */ } from \"shadcn-solid-components/hoc/settings-layout\"",
+  "tags": [
+    "hoc",
+    "settings-layout",
+    "solidjs",
+    "ui"
+  ]
+}

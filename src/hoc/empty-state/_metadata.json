@@ -1,0 +1,16 @@
+{
+  "name": "hoc/empty-state",
+  "displayName": "Empty State",
+  "description": "Empty State HOC for SolidJS UI composition.",
+  "category": "hoc",
+  "useCases": [
+    "Use Empty State in hoc scenarios."
+  ],
+  "usage": "import { /* exported members */ } from \"shadcn-solid-components/hoc/empty-state\"",
+  "tags": [
+    "hoc",
+    "empty-state",
+    "solidjs",
+    "ui"
+  ]
+}

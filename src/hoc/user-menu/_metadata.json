@@ -1,0 +1,16 @@
+{
+  "name": "hoc/user-menu",
+  "displayName": "User Menu",
+  "description": "User Menu HOC for SolidJS UI composition.",
+  "category": "hoc",
+  "useCases": [
+    "Use User Menu in hoc scenarios."
+  ],
+  "usage": "import { /* exported members */ } from \"shadcn-solid-components/hoc/user-menu\"",
+  "tags": [
+    "hoc",
+    "user-menu",
+    "solidjs",
+    "ui"
+  ]
+}

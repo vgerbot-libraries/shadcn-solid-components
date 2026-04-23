@@ -1,0 +1,16 @@
+{
+  "name": "components/table",
+  "displayName": "Table",
+  "description": "Table component for SolidJS UI composition.",
+  "category": "components",
+  "useCases": [
+    "Use Table in components scenarios."
+  ],
+  "usage": "import { /* exported members */ } from \"shadcn-solid-components/components/table\"",
+  "tags": [
+    "components",
+    "table",
+    "solidjs",
+    "ui"
+  ]
+}

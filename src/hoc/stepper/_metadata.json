@@ -1,0 +1,16 @@
+{
+  "name": "hoc/stepper",
+  "displayName": "Stepper",
+  "description": "Stepper HOC for SolidJS UI composition.",
+  "category": "hoc",
+  "useCases": [
+    "Use Stepper in hoc scenarios."
+  ],
+  "usage": "import { /* exported members */ } from \"shadcn-solid-components/hoc/stepper\"",
+  "tags": [
+    "hoc",
+    "stepper",
+    "solidjs",
+    "ui"
+  ]
+}

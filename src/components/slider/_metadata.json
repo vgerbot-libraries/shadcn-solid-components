@@ -1,0 +1,16 @@
+{
+  "name": "components/slider",
+  "displayName": "Slider",
+  "description": "Slider component for SolidJS UI composition.",
+  "category": "components",
+  "useCases": [
+    "Use Slider in components scenarios."
+  ],
+  "usage": "import { /* exported members */ } from \"shadcn-solid-components/components/slider\"",
+  "tags": [
+    "components",
+    "slider",
+    "solidjs",
+    "ui"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "name": "hoc/data-table",
+  "displayName": "Data Table",
+  "description": "Data Table HOC for SolidJS UI composition.",
+  "category": "hoc",
+  "useCases": [
+    "Use Data Table in hoc scenarios."
+  ],
+  "usage": "import { /* exported members */ } from \"shadcn-solid-components/hoc/data-table\"",
+  "tags": [
+    "hoc",
+    "data-table",
+    "solidjs",
+    "ui"
+  ]
+}

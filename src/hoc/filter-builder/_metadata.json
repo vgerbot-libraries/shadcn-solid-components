@@ -1,0 +1,16 @@
+{
+  "name": "hoc/filter-builder",
+  "displayName": "Filter Builder",
+  "description": "Filter Builder HOC for SolidJS UI composition.",
+  "category": "hoc",
+  "useCases": [
+    "Use Filter Builder in hoc scenarios."
+  ],
+  "usage": "import { /* exported members */ } from \"shadcn-solid-components/hoc/filter-builder\"",
+  "tags": [
+    "hoc",
+    "filter-builder",
+    "solidjs",
+    "ui"
+  ]
+}

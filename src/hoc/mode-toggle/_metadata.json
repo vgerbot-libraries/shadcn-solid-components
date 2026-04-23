@@ -1,0 +1,16 @@
+{
+  "name": "hoc/mode-toggle",
+  "displayName": "Mode Toggle",
+  "description": "Mode Toggle HOC for SolidJS UI composition.",
+  "category": "hoc",
+  "useCases": [
+    "Use Mode Toggle in hoc scenarios."
+  ],
+  "usage": "import { /* exported members */ } from \"shadcn-solid-components/hoc/mode-toggle\"",
+  "tags": [
+    "hoc",
+    "mode-toggle",
+    "solidjs",
+    "ui"
+  ]
+}

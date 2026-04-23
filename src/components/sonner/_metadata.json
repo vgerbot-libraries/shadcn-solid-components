@@ -1,0 +1,16 @@
+{
+  "name": "components/sonner",
+  "displayName": "Sonner",
+  "description": "Sonner component for SolidJS UI composition.",
+  "category": "components",
+  "useCases": [
+    "Use Sonner in components scenarios."
+  ],
+  "usage": "import { /* exported members */ } from \"shadcn-solid-components/components/sonner\"",
+  "tags": [
+    "components",
+    "sonner",
+    "solidjs",
+    "ui"
+  ]
+}

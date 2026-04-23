@@ -1,0 +1,16 @@
+{
+  "name": "hoc/otp-field",
+  "displayName": "Otp Field",
+  "description": "Otp Field HOC for SolidJS UI composition.",
+  "category": "hoc",
+  "useCases": [
+    "Use Otp Field in hoc scenarios."
+  ],
+  "usage": "import { /* exported members */ } from \"shadcn-solid-components/hoc/otp-field\"",
+  "tags": [
+    "hoc",
+    "otp-field",
+    "solidjs",
+    "ui"
+  ]
+}

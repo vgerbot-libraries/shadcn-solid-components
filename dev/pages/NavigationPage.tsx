@@ -92,7 +92,7 @@ const NavigationPage: Component = () => {
         <CardHeader>
           <CardTitle>Breadcrumbs</CardTitle>
           <CardDescription>
-          Flexible breadcrumb navigation patterns for sites and apps.
+          Breadcrumb navigation patterns for sites and apps.
           </CardDescription>
         </CardHeader>
         <CardContent class="flex flex-col gap-6">

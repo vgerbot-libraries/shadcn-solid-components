@@ -1,0 +1,16 @@
+{
+  "name": "hoc/pricing-table",
+  "displayName": "Pricing Table",
+  "description": "Pricing Table HOC for SolidJS UI composition.",
+  "category": "hoc",
+  "useCases": [
+    "Use Pricing Table in hoc scenarios."
+  ],
+  "usage": "import { /* exported members */ } from \"shadcn-solid-components/hoc/pricing-table\"",
+  "tags": [
+    "hoc",
+    "pricing-table",
+    "solidjs",
+    "ui"
+  ]
+}

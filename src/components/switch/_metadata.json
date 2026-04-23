@@ -1,0 +1,16 @@
+{
+  "name": "components/switch",
+  "displayName": "Switch",
+  "description": "Switch component for SolidJS UI composition.",
+  "category": "components",
+  "useCases": [
+    "Use Switch in components scenarios."
+  ],
+  "usage": "import { /* exported members */ } from \"shadcn-solid-components/components/switch\"",
+  "tags": [
+    "components",
+    "switch",
+    "solidjs",
+    "ui"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "name": "hoc/timeline",
+  "displayName": "Timeline",
+  "description": "Timeline HOC for SolidJS UI composition.",
+  "category": "hoc",
+  "useCases": [
+    "Use Timeline in hoc scenarios."
+  ],
+  "usage": "import { /* exported members */ } from \"shadcn-solid-components/hoc/timeline\"",
+  "tags": [
+    "hoc",
+    "timeline",
+    "solidjs",
+    "ui"
+  ]
+}

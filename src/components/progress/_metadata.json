@@ -1,0 +1,16 @@
+{
+  "name": "components/progress",
+  "displayName": "Progress",
+  "description": "Progress component for SolidJS UI composition.",
+  "category": "components",
+  "useCases": [
+    "Use Progress in components scenarios."
+  ],
+  "usage": "import { /* exported members */ } from \"shadcn-solid-components/components/progress\"",
+  "tags": [
+    "components",
+    "progress",
+    "solidjs",
+    "ui"
+  ]
+}

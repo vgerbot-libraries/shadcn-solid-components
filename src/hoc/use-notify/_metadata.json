@@ -1,0 +1,16 @@
+{
+  "name": "hoc/use-notify",
+  "displayName": "Use Notify",
+  "description": "Use Notify HOC for SolidJS UI composition.",
+  "category": "hoc",
+  "useCases": [
+    "Use Use Notify in hoc scenarios."
+  ],
+  "usage": "import { /* exported members */ } from \"shadcn-solid-components/hoc/use-notify\"",
+  "tags": [
+    "hoc",
+    "use-notify",
+    "solidjs",
+    "ui"
+  ]
+}

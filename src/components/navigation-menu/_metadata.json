@@ -1,0 +1,16 @@
+{
+  "name": "components/navigation-menu",
+  "displayName": "Navigation Menu",
+  "description": "Navigation Menu component for SolidJS UI composition.",
+  "category": "components",
+  "useCases": [
+    "Use Navigation Menu in components scenarios."
+  ],
+  "usage": "import { /* exported members */ } from \"shadcn-solid-components/components/navigation-menu\"",
+  "tags": [
+    "components",
+    "navigation-menu",
+    "solidjs",
+    "ui"
+  ]
+}

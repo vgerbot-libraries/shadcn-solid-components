@@ -1,0 +1,16 @@
+{
+  "name": "hoc/command-palette",
+  "displayName": "Command Palette",
+  "description": "Command Palette HOC for SolidJS UI composition.",
+  "category": "hoc",
+  "useCases": [
+    "Use Command Palette in hoc scenarios."
+  ],
+  "usage": "import { /* exported members */ } from \"shadcn-solid-components/hoc/command-palette\"",
+  "tags": [
+    "hoc",
+    "command-palette",
+    "solidjs",
+    "ui"
+  ]
+}

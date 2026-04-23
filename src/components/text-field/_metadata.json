@@ -1,0 +1,16 @@
+{
+  "name": "components/text-field",
+  "displayName": "Text Field",
+  "description": "Text Field component for SolidJS UI composition.",
+  "category": "components",
+  "useCases": [
+    "Use Text Field in components scenarios."
+  ],
+  "usage": "import { /* exported members */ } from \"shadcn-solid-components/components/text-field\"",
+  "tags": [
+    "components",
+    "text-field",
+    "solidjs",
+    "ui"
+  ]
+}

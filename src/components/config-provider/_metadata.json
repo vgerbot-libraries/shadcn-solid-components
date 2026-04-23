@@ -1,0 +1,16 @@
+{
+  "name": "components/config-provider",
+  "displayName": "Config Provider",
+  "description": "Config Provider component for SolidJS UI composition.",
+  "category": "components",
+  "useCases": [
+    "Use Config Provider in components scenarios."
+  ],
+  "usage": "import { /* exported members */ } from \"shadcn-solid-components/components/config-provider\"",
+  "tags": [
+    "components",
+    "config-provider",
+    "solidjs",
+    "ui"
+  ]
+}

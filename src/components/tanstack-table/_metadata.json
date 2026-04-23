@@ -1,0 +1,16 @@
+{
+  "name": "components/tanstack-table",
+  "displayName": "Tanstack Table",
+  "description": "Tanstack Table component for SolidJS UI composition.",
+  "category": "components",
+  "useCases": [
+    "Use Tanstack Table in components scenarios."
+  ],
+  "usage": "import { /* exported members */ } from \"shadcn-solid-components/components/tanstack-table\"",
+  "tags": [
+    "components",
+    "tanstack-table",
+    "solidjs",
+    "ui"
+  ]
+}

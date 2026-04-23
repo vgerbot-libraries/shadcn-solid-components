@@ -1,0 +1,16 @@
+{
+  "name": "hoc/mode-toggle-dropdown",
+  "displayName": "Mode Toggle Dropdown",
+  "description": "Mode Toggle Dropdown HOC for SolidJS UI composition.",
+  "category": "hoc",
+  "useCases": [
+    "Use Mode Toggle Dropdown in hoc scenarios."
+  ],
+  "usage": "import { /* exported members */ } from \"shadcn-solid-components/hoc/mode-toggle-dropdown\"",
+  "tags": [
+    "hoc",
+    "mode-toggle-dropdown",
+    "solidjs",
+    "ui"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "name": "components/tabulator-table",
+  "displayName": "Tabulator Table",
+  "description": "Tabulator Table component for SolidJS UI composition.",
+  "category": "components",
+  "useCases": [
+    "Use Tabulator Table in components scenarios."
+  ],
+  "usage": "import { /* exported members */ } from \"shadcn-solid-components/components/tabulator-table\"",
+  "tags": [
+    "components",
+    "tabulator-table",
+    "solidjs",
+    "ui"
+  ]
+}

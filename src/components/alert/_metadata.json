@@ -1,0 +1,16 @@
+{
+  "name": "components/alert",
+  "displayName": "Alert",
+  "description": "Alert component for SolidJS UI composition.",
+  "category": "components",
+  "useCases": [
+    "Use Alert in components scenarios."
+  ],
+  "usage": "import { /* exported members */ } from \"shadcn-solid-components/components/alert\"",
+  "tags": [
+    "components",
+    "alert",
+    "solidjs",
+    "ui"
+  ]
+}

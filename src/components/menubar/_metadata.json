@@ -1,0 +1,16 @@
+{
+  "name": "components/menubar",
+  "displayName": "Menubar",
+  "description": "Menubar component for SolidJS UI composition.",
+  "category": "components",
+  "useCases": [
+    "Use Menubar in components scenarios."
+  ],
+  "usage": "import { /* exported members */ } from \"shadcn-solid-components/components/menubar\"",
+  "tags": [
+    "components",
+    "menubar",
+    "solidjs",
+    "ui"
+  ]
+}

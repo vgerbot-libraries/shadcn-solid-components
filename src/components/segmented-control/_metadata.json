@@ -1,0 +1,16 @@
+{
+  "name": "components/segmented-control",
+  "displayName": "Segmented Control",
+  "description": "Segmented Control component for SolidJS UI composition.",
+  "category": "components",
+  "useCases": [
+    "Use Segmented Control in components scenarios."
+  ],
+  "usage": "import { /* exported members */ } from \"shadcn-solid-components/components/segmented-control\"",
+  "tags": [
+    "components",
+    "segmented-control",
+    "solidjs",
+    "ui"
+  ]
+}

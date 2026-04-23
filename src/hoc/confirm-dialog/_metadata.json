@@ -1,0 +1,16 @@
+{
+  "name": "hoc/confirm-dialog",
+  "displayName": "Confirm Dialog",
+  "description": "Confirm Dialog HOC for SolidJS UI composition.",
+  "category": "hoc",
+  "useCases": [
+    "Use Confirm Dialog in hoc scenarios."
+  ],
+  "usage": "import { /* exported members */ } from \"shadcn-solid-components/hoc/confirm-dialog\"",
+  "tags": [
+    "hoc",
+    "confirm-dialog",
+    "solidjs",
+    "ui"
+  ]
+}

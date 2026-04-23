@@ -1,0 +1,16 @@
+{
+  "name": "components/toggle-group",
+  "displayName": "Toggle Group",
+  "description": "Toggle Group component for SolidJS UI composition.",
+  "category": "components",
+  "useCases": [
+    "Use Toggle Group in components scenarios."
+  ],
+  "usage": "import { /* exported members */ } from \"shadcn-solid-components/components/toggle-group\"",
+  "tags": [
+    "components",
+    "toggle-group",
+    "solidjs",
+    "ui"
+  ]
+}

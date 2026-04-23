@@ -14,11 +14,15 @@
     "url": "https://github.com/vgerbot-libraries/shadcn-solid-components/issues"
   },
   "files": [
-    "src"
+    "src",
+    "bin"
   ],
   "private": false,
   "sideEffects": false,
   "type": "module",
+  "bin": {
+    "ssc": "./bin/ssc.mjs"
+  },
   "browser": {},
   "exports": {
     "./lib/call-handler": "./src/lib/call-handler.ts",
@@ -133,6 +137,7 @@
     "docs:build": "pnpm --dir docs build",
     "docs:preview": "pnpm --dir docs preview",
     "build": "node scripts/update-exports.mjs",
+    "postbuild": "chmod +x ./bin/ssc.mjs",
     "test": "concurrently pnpm:test:*",
     "test:client": "vitest",
     "test:ssr": "pnpm run test:client --mode ssr",
@@ -239,6 +244,7 @@
   },
   "dependencies": {
     "cva": "1.0.0-beta.4",
+    "inquirer": "^9.3.7",
     "tailwind-merge": "^3.4.0"
   }
 }

@@ -1,0 +1,16 @@
+{
+  "name": "hoc/error-page",
+  "displayName": "Error Page",
+  "description": "Error Page HOC for SolidJS UI composition.",
+  "category": "hoc",
+  "useCases": [
+    "Use Error Page in hoc scenarios."
+  ],
+  "usage": "import { /* exported members */ } from \"shadcn-solid-components/hoc/error-page\"",
+  "tags": [
+    "hoc",
+    "error-page",
+    "solidjs",
+    "ui"
+  ]
+}

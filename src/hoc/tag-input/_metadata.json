@@ -1,0 +1,16 @@
+{
+  "name": "hoc/tag-input",
+  "displayName": "Tag Input",
+  "description": "Tag Input HOC for SolidJS UI composition.",
+  "category": "hoc",
+  "useCases": [
+    "Use Tag Input in hoc scenarios."
+  ],
+  "usage": "import { /* exported members */ } from \"shadcn-solid-components/hoc/tag-input\"",
+  "tags": [
+    "hoc",
+    "tag-input",
+    "solidjs",
+    "ui"
+  ]
+}

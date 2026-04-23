@@ -1,0 +1,16 @@
+{
+  "name": "hoc/faq-section",
+  "displayName": "Faq Section",
+  "description": "Faq Section HOC for SolidJS UI composition.",
+  "category": "hoc",
+  "useCases": [
+    "Use Faq Section in hoc scenarios."
+  ],
+  "usage": "import { /* exported members */ } from \"shadcn-solid-components/hoc/faq-section\"",
+  "tags": [
+    "hoc",
+    "faq-section",
+    "solidjs",
+    "ui"
+  ]
+}

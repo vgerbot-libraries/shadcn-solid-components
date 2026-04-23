@@ -1,0 +1,16 @@
+{
+  "name": "components/card",
+  "displayName": "Card",
+  "description": "Card component for SolidJS UI composition.",
+  "category": "components",
+  "useCases": [
+    "Use Card in components scenarios."
+  ],
+  "usage": "import { /* exported members */ } from \"shadcn-solid-components/components/card\"",
+  "tags": [
+    "components",
+    "card",
+    "solidjs",
+    "ui"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "name": "components/file-field",
+  "displayName": "File Field",
+  "description": "File Field component for SolidJS UI composition.",
+  "category": "components",
+  "useCases": [
+    "Use File Field in components scenarios."
+  ],
+  "usage": "import { /* exported members */ } from \"shadcn-solid-components/components/file-field\"",
+  "tags": [
+    "components",
+    "file-field",
+    "solidjs",
+    "ui"
+  ]
+}

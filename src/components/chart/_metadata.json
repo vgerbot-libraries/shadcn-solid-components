@@ -1,0 +1,16 @@
+{
+  "name": "components/chart",
+  "displayName": "Chart",
+  "description": "Chart component for SolidJS UI composition.",
+  "category": "components",
+  "useCases": [
+    "Use Chart in components scenarios."
+  ],
+  "usage": "import { /* exported members */ } from \"shadcn-solid-components/components/chart\"",
+  "tags": [
+    "components",
+    "chart",
+    "solidjs",
+    "ui"
+  ]
+}

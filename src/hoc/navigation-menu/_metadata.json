@@ -1,0 +1,16 @@
+{
+  "name": "hoc/navigation-menu",
+  "displayName": "Navigation Menu",
+  "description": "Navigation Menu HOC for SolidJS UI composition.",
+  "category": "hoc",
+  "useCases": [
+    "Use Navigation Menu in hoc scenarios."
+  ],
+  "usage": "import { /* exported members */ } from \"shadcn-solid-components/hoc/navigation-menu\"",
+  "tags": [
+    "hoc",
+    "navigation-menu",
+    "solidjs",
+    "ui"
+  ]
+}

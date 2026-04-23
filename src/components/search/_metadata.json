@@ -1,0 +1,16 @@
+{
+  "name": "components/search",
+  "displayName": "Search",
+  "description": "Search component for SolidJS UI composition.",
+  "category": "components",
+  "useCases": [
+    "Use Search in components scenarios."
+  ],
+  "usage": "import { /* exported members */ } from \"shadcn-solid-components/components/search\"",
+  "tags": [
+    "components",
+    "search",
+    "solidjs",
+    "ui"
+  ]
+}

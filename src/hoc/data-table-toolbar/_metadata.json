@@ -1,0 +1,16 @@
+{
+  "name": "hoc/data-table-toolbar",
+  "displayName": "Data Table Toolbar",
+  "description": "Data Table Toolbar HOC for SolidJS UI composition.",
+  "category": "hoc",
+  "useCases": [
+    "Use Data Table Toolbar in hoc scenarios."
+  ],
+  "usage": "import { /* exported members */ } from \"shadcn-solid-components/hoc/data-table-toolbar\"",
+  "tags": [
+    "hoc",
+    "data-table-toolbar",
+    "solidjs",
+    "ui"
+  ]
+}

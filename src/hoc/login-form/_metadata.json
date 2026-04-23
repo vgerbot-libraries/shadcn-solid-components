@@ -1,0 +1,16 @@
+{
+  "name": "hoc/login-form",
+  "displayName": "Login Form",
+  "description": "Login Form HOC for SolidJS UI composition.",
+  "category": "hoc",
+  "useCases": [
+    "Use Login Form in hoc scenarios."
+  ],
+  "usage": "import { /* exported members */ } from \"shadcn-solid-components/hoc/login-form\"",
+  "tags": [
+    "hoc",
+    "login-form",
+    "solidjs",
+    "ui"
+  ]
+}

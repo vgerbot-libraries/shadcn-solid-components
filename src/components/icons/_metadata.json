@@ -1,0 +1,16 @@
+{
+  "name": "components/icons",
+  "displayName": "Icons",
+  "description": "Icons component for SolidJS UI composition.",
+  "category": "components",
+  "useCases": [
+    "Use Icons in components scenarios."
+  ],
+  "usage": "import { /* exported members */ } from \"shadcn-solid-components/components/icons\"",
+  "tags": [
+    "components",
+    "icons",
+    "solidjs",
+    "ui"
+  ]
+}

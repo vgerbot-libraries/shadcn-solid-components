@@ -1,0 +1,16 @@
+{
+  "name": "hoc/activity-feed",
+  "displayName": "Activity Feed",
+  "description": "Activity Feed HOC for SolidJS UI composition.",
+  "category": "hoc",
+  "useCases": [
+    "Use Activity Feed in hoc scenarios."
+  ],
+  "usage": "import { /* exported members */ } from \"shadcn-solid-components/hoc/activity-feed\"",
+  "tags": [
+    "hoc",
+    "activity-feed",
+    "solidjs",
+    "ui"
+  ]
+}

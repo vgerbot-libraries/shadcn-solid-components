@@ -1,146 +1,146 @@
 # shadcn-solid-components
 
-A collection of SolidJS components built with TailwindCSS, inspired by shadcn/ui.
+A SolidJS component library inspired by shadcn/ui, built for Tailwind CSS v4.
+
+## Features
+
+- Rich primitive components under `components/*`
+- Reusable higher-order modules under `hoc/*`
+- Theme presets and CSS variable-based theming
+- Dark mode via `data-kb-theme="dark"`
 
 ## Installation
 
+Install from GitHub:
+
 ```bash
+# npm
 npm install github:vgerbot-libraries/shadcn-solid-components
-# or
-yarn add github:vgerbot-libraries/shadcn-solid-components
-# or
+
+# pnpm
 pnpm add github:vgerbot-libraries/shadcn-solid-components
+
+# yarn
+yarn add github:vgerbot-libraries/shadcn-solid-components
 ```
 
-> **Note:** GitHub installs build the package from source during installation. If your `pnpm` workspace restricts dependency build scripts with `onlyBuiltDependencies`, allow `shadcn-solid-components` first or run `pnpm approve-builds`.
-
-```yaml
-onlyBuiltDependencies:
-  - shadcn-solid-components
-```
-
-## Peer Dependencies
-
-This library requires the following peer dependencies:
+Install required peers:
 
 ```bash
+# npm
 npm install solid-js tailwindcss@^4.0.0 tw-animate-css
-# or
-yarn add solid-js tailwindcss@^4.0.0 tw-animate-css
-# or
+
+# pnpm
 pnpm add solid-js tailwindcss@^4.0.0 tw-animate-css
+
+# yarn
+yarn add solid-js tailwindcss@^4.0.0 tw-animate-css
 ```
 
-## TailwindCSS Configuration
+> This package exposes many optional peer dependencies (for advanced components such as table/chart/calendar ecosystems). Install those only when using related modules.
 
-This component library requires TailwindCSS v4. You need to import the preset CSS file in your main CSS file:
+## Tailwind CSS v4 setup
 
-### Option 1: Import the preset CSS file
-
-In your main CSS file (e.g., `src/index.css` or `src/app.css`):
-
-```css
-@import "tailwindcss";
-@import "shadcn-solid-components/src/themes/default.preset.css";
-
-/* Your custom styles here */
-```
-
-### Option 2: Use with Vite
-
-If you're using Vite with `@tailwindcss/vite` plugin:
-
-```js
-// vite.config.ts
-import { defineConfig } from 'vite'
-import tailwindcss from '@tailwindcss/vite'
-
-export default defineConfig({
-  plugins: [
-    tailwindcss(),
-    // ... other plugins
-  ],
-})
-```
-
-Then in your CSS file:
+Import Tailwind and a preset stylesheet in your global CSS (for example, `src/index.css`):
 
 ```css
 @import "tailwindcss";
 @import "shadcn-solid-components/src/themes/default.preset.css";
 ```
 
-### Option 3: Using PostCSS
-
-If you're using PostCSS (e.g., with other build tools):
-
-```bash
-npm install -D @tailwindcss/postcss postcss
-```
-
-Configure `postcss.config.js`:
-
-```js
-export default {
-  plugins: {
-    '@tailwindcss/postcss': {},
-  },
-}
-```
-
-Then in your CSS file:
+Alternative preset:
 
 ```css
 @import "tailwindcss";
-@import "shadcn-solid-components/src/themes/default.preset.css";
+@import "shadcn-solid-components/src/themes/supabase.preset.css";
 ```
 
-> **Note:** TailwindCSS v4 no longer requires a `tailwind.config.js` file. Configuration is done through CSS using `@theme` and `@config` directives.
+> Tailwind CSS v4 does not require `tailwind.config.js` for this library's base setup.
 
-## Usage
+## Quick start
 
 ```tsx
-import { Button } from 'shadcn-solid-components/components/button'
+import { Button } from "shadcn-solid-components/components/button"
 
-function App() {
-  return (
-    <Button variant="default" size="default">
-      Click me
-    </Button>
-  )
+export default function App() {
+  return <Button>Click me</Button>
 }
 ```
 
-## Available Components
+## CLI: copy components into your project
 
-- **Button** - A versatile button component with multiple variants
-- **Alert** - Display alert messages
-- **AlertDialog** - Modal dialogs for alerts
-- **Accordion** - Collapsible content sections
+You can use `ssc` to copy components/HOCs (with recursive dependencies) into your own source tree.
+
+### List available items
+
+```bash
+npx ssc list
+```
+
+This lists all `components/*` and `hoc/*` entries with short descriptions.
+
+### Add by arguments
+
+```bash
+# single
+npx ssc add button
+
+# multiple
+npx ssc add button card data-table
+
+# custom output directory
+npx ssc add button --out-dir src/custom/ui
+
+# preview only (no file writes)
+npx ssc add button --dry-run
+```
+
+Default output directory is `src/lib/ssc`.
+
+### Add without arguments
+
+Run `ssc add` without component names to enter keyboard-driven selection mode:
+
+```bash
+npx ssc add
+```
+
+## Import conventions
+
+- Base components: `shadcn-solid-components/components/<name>`
+- HOCs / composed modules: `shadcn-solid-components/hoc/<name>`
+- Utilities/hooks: `shadcn-solid-components/lib/<name>`
+
+Examples:
+
+```tsx
+import { Button } from "shadcn-solid-components/components/button"
+import { AppSidebar } from "shadcn-solid-components/hoc/app-sidebar"
+import { useTheme } from "shadcn-solid-components/lib/use-theme"
+```
 
 ## Theming
 
-The components use CSS variables for theming. You can customize the theme by overriding the CSS variables in your CSS file:
+The library uses CSS variables (OKLCH-based values in presets). You can override tokens globally:
 
 ```css
 :root {
-  --primary: oklch(0.5 0.2 250);
+  --primary: oklch(0.55 0.22 255);
   --background: oklch(1 0 0);
-  /* ... other variables */
 }
 ```
 
-Dark mode is supported via the `data-kb-theme="dark"` attribute:
+Enable dark mode with `data-kb-theme`:
 
 ```tsx
 <div data-kb-theme="dark">
-  {/* Your app content */}
+  {/* app content */}
 </div>
 ```
 
 ## Documentation
 
-<https://vgerbot-libraries.github.io/shadcn-solid-components/>
+- Docs site: <https://vgerbot-libraries.github.io/shadcn-solid-components/>
 
 ## License
 
