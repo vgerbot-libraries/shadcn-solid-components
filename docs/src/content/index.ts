@@ -1306,6 +1306,44 @@ export const Contents: Record<string, DocEntry> = {
     }
 ]
   },
+  "components/qr-code": {
+    component: lazy(() => import("@docs/content/docs/components/qr-code.mdx")),
+    data: {
+    "title": "QR Code",
+    "description": "Stylized SVG QR code renderer with circular data modules and rounded finder patterns.",
+    "navTitle": "QR Code",
+    "section": "Components",
+    "order": 0,
+    "toc": true
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "exports",
+        "text": "Exports"
+    },
+    {
+        "depth": 2,
+        "slug": "examples",
+        "text": "Examples"
+    },
+    {
+        "depth": 3,
+        "slug": "default",
+        "text": "Default"
+    },
+    {
+        "depth": 3,
+        "slug": "custom-colors-and-error-correction",
+        "text": "Custom colors and error correction"
+    }
+]
+  },
   "components/radio-group": {
     component: lazy(() => import("@docs/content/docs/components/radio-group.mdx")),
     data: {
@@ -4422,6 +4460,11 @@ export const docsNavigation: DocsNavSection[] = [
         "title": "Progress",
         "href": "/docs/components/progress",
         "description": "Linear progress indicator with optional label and value text."
+      },
+      {
+        "title": "QR Code",
+        "href": "/docs/components/qr-code",
+        "description": "Stylized SVG QR code renderer with circular data modules and rounded finder patterns."
       },
       {
         "title": "Radio Group",

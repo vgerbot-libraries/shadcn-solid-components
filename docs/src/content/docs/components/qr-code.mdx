@@ -1,0 +1,56 @@
+---
+title: QR Code
+description: Stylized SVG QR code renderer with circular data modules and rounded finder patterns.
+section: Components
+toc: true
+---
+
+import QrCodeDemo from "../../../examples/qr-code-demo"
+
+`QrCode` renders a scannable SVG QR image from a string value, with customizable size, foreground/background colors, and error correction level.
+
+## Usage
+
+```tsx
+import { QrCode } from "shadcn-solid-components/components/qr-code"
+```
+
+## Exports
+
+- `QrCode`
+- Types: `QrCodeProps`, `QrCodeErrorCorrectionLevel`
+
+## Examples
+
+### Default
+
+<ComponentPreview name="QR Code Demo">
+  <div class="mb-4 w-full">
+    <QrCodeDemo />
+  </div>
+  ```tsx
+  import { QrCode } from "shadcn-solid-components/components/qr-code"
+
+const QrCodeDemo = () => {
+  return (
+    <div class="flex justify-center">
+      <QrCode value="https://github.com/vgerbot-libraries/shadcn-solid-components" size={220} />
+    </div>
+  )
+}
+
+export default QrCodeDemo
+  ```
+</ComponentPreview>
+
+### Custom colors and error correction
+
+```tsx
+<QrCode
+  value="WIFI:T:WPA;S:Office-WiFi;P:supersecret123;H:false;;"
+  size={192}
+  fgColor="var(--primary)"
+  bgColor="var(--muted)"
+  errorCorrectionLevel="H"
+/>
+```

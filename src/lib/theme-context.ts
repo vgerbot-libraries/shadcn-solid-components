@@ -39,6 +39,7 @@ export const ComponentName = {
   Pagination: 'Pagination',
   Popover: 'Popover',
   Progress: 'Progress',
+  QrCode: 'QrCode',
   RadioGroup: 'RadioGroup',
   Resizable: 'Resizable',
   Search: 'Search',

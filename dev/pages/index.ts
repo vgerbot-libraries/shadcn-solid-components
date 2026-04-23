@@ -3,6 +3,7 @@ import { type Component, lazy } from 'solid-js'
 export const pages: Record<string, Component> = {
   dashboard: lazy(() => import('./DashboardPage')),
   general: lazy(() => import('./GeneralPage')),
+  'qr-code': lazy(() => import('./QrCodePage')),
   layout: lazy(() => import('./LayoutPage')),
   navigation: lazy(() => import('./NavigationPage')),
   'form-inputs': lazy(() => import('./FormInputsPage')),

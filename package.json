@@ -66,6 +66,7 @@
     "./components/pagination": "./src/components/pagination/index.tsx",
     "./components/popover": "./src/components/popover/index.tsx",
     "./components/progress": "./src/components/progress/index.tsx",
+    "./components/qr-code": "./src/components/qr-code/index.tsx",
     "./components/radio-group": "./src/components/radio-group/index.tsx",
     "./components/resizable": "./src/components/resizable/index.tsx",
     "./components/search": "./src/components/search/index.tsx",
@@ -160,6 +161,7 @@
     "@unovis/ts": "^1.6.2",
     "cmdk-solid": "^1.1.2",
     "embla-carousel-solid": "^8.6.0",
+    "qrcode": "^1.5.4",
     "shadcn": "^3.7.0",
     "solid-js": "^1.6.0",
     "somoto": "^0.0.2",
@@ -201,6 +203,9 @@
     "embla-carousel-solid": {
       "optional": true
     },
+    "qrcode": {
+      "optional": true
+    },
     "shadcn": {
       "optional": true
     },
@@ -217,11 +222,13 @@
     "@solidjs/router": "^0.15.4",
     "@tailwindcss/vite": "^4.1.18",
     "@types/node": "^20.12.12",
+    "@types/qrcode": "^1.5.6",
     "@types/tabulator-tables": "^6.3.1",
     "concurrently": "^8.2.2",
     "esbuild": "^0.21.3",
     "esbuild-plugin-solid": "^0.6.0",
     "jsdom": "^24.0.0",
+    "qrcode": "^1.5.4",
     "solid-devtools": "^0.34.5",
     "solid-js": "^1.8.17",
     "solid-sonner": "^0.3.1",

@@ -30,6 +30,7 @@ import type { OTPFieldProps } from '../components/otp-field'
 import type { PaginationProps } from '../components/pagination'
 import type { PopoverProps } from '../components/popover'
 import type { ProgressProps } from '../components/progress'
+import type { QrCodeProps } from '../components/qr-code'
 import type { RadioGroupProps } from '../components/radio-group'
 import type { ResizableProps } from '../components/resizable'
 import type { SearchProps } from '../components/search'
@@ -84,6 +85,7 @@ export interface ComponentPropsMap {
   [ComponentName.Pagination]: PaginationProps
   [ComponentName.Popover]: PopoverProps
   [ComponentName.Progress]: ProgressProps
+  [ComponentName.QrCode]: QrCodeProps
   [ComponentName.RadioGroup]: RadioGroupProps
   [ComponentName.Resizable]: ResizableProps
   [ComponentName.Search]: SearchProps<any>
