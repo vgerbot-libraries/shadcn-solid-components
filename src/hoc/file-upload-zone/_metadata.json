@@ -1,12 +1,16 @@
 {
   "name": "hoc/file-upload-zone",
   "displayName": "File Upload Zone",
-  "description": "File Upload Zone HOC for SolidJS UI composition.",
+  "description": "A drag-and-drop file-upload area HOC that visualizes drop zones, file previews, upload-progress bars, and error states. Combines FileField primitives with custom dropzone styling, progress indicators, and a file-list summary. Provides FileUploadZone, FileUploadZoneTrigger, FileUploadZoneList, FileUploadZoneItem, and FileUploadZoneProgress sub-components with full i18n support via ConfigProvider.",
   "category": "hoc",
   "useCases": [
-    "Use File Upload Zone in hoc scenarios."
+    "Bulk document uploaders in CRM or project-management tools with drag-and-drop support",
+    "Image-gallery upload flows showing thumbnails, file names, and per-file progress bars",
+    "CSV/JSON import wizards with file-type validation and row-count preview before ingestion",
+    "Profile-avatar and cover-photo uploaders with single-file constraints and crop suggestions"
   ],
-  "usage": "import { /* exported members */ } from \"shadcn-solid-components/hoc/file-upload-zone\"",
+  "usage": "import { FileUploadZone, FileUploadZoneTrigger, FileUploadZoneList, FileUploadZoneItem, FileUploadZoneProgress } from \"shadcn-solid-components/hoc/file-upload-zone\""
+,
   "tags": [
     "hoc",
     "file-upload-zone",

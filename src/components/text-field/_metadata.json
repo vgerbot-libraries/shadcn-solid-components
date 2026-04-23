@@ -1,12 +1,16 @@
 {
   "name": "components/text-field",
   "displayName": "Text Field",
-  "description": "Text Field component for SolidJS UI composition.",
+  "description": "A comprehensive text-input component supporting single-line inputs, multi-line textareas, labels, descriptions, and error messages. Provides a complete composition system with TextField, TextFieldInput, TextFieldTextArea, TextFieldLabel, TextFieldDescription, and TextFieldErrorMessage. Includes built-in file-input styling, focus-visible rings, invalid-state borders, and an error-list renderer for form-validation libraries. Built on Kobalte TextField with full ARIA support.",
   "category": "components",
   "useCases": [
-    "Use Text Field in components scenarios."
+    "Registration and login forms with email, password, and username single-line fields",
+    "Contact or support forms using TextFieldTextArea for multi-line message bodies",
+    "Inline editing cells in data tables where validation errors appear below the input",
+    "Search bars and command palettes with focus-visible rings and clear-button integration"
   ],
-  "usage": "import { /* exported members */ } from \"shadcn-solid-components/components/text-field\"",
+  "usage": "import { TextField, TextFieldInput, TextFieldTextArea, TextFieldLabel, TextFieldDescription, TextFieldErrorMessage } from \"shadcn-solid-components/components/text-field\""
+,
   "tags": [
     "components",
     "text-field",

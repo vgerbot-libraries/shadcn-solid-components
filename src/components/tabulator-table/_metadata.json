@@ -1,12 +1,16 @@
 {
   "name": "components/tabulator-table",
   "displayName": "Tabulator Table",
-  "description": "Tabulator Table component for SolidJS UI composition.",
+  "description": "A high-performance data-table component powered by the Tabulator library, wrapped in a SolidJS component with reactive options and lifecycle callbacks. Accepts Tabulator Options (or an accessor) via initOptions, exposes onInit and onDestroy callbacks, and injects CSS custom properties for row-height theming. Ideal for massive datasets requiring virtual scrolling, inline editing, grouping, and advanced filtering without building a custom table from scratch.",
   "category": "components",
   "useCases": [
-    "Use Tabulator Table in components scenarios."
+    "Financial back-office tools with thousands of rows, grouping, and Excel-like inline editing",
+    "Inventory management grids with real-time WebSocket updates and virtual scrolling",
+    "CRM contact lists requiring column filters, sorters, and persistent user preferences",
+    "Scientific data browsers with nested row trees, movable columns, and CSV export"
   ],
-  "usage": "import { /* exported members */ } from \"shadcn-solid-components/components/tabulator-table\"",
+  "usage": "import { TabulatorTable } from \"shadcn-solid-components/components/tabulator-table\""
+,
   "tags": [
     "components",
     "tabulator-table",

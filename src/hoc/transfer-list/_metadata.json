@@ -1,12 +1,16 @@
 {
   "name": "hoc/transfer-list",
   "displayName": "Transfer List",
-  "description": "Transfer List HOC for SolidJS UI composition.",
+  "description": "A dual-pane list HOC that allows users to move items between a source pool and a target selection. Provides TransferList, TransferListSource, TransferListTarget, TransferListItem, TransferListControls, TransferListSearch, and TransferListCounter primitives with keyboard navigation, drag-and-drop reordering, and select-all toggles. Composed of List, Button, Input, and Badge components with full i18n support via ConfigProvider.",
   "category": "hoc",
   "useCases": [
-    "Use Transfer List in hoc scenarios."
+    "User-role assignment panels moving permissions from 'Available' to 'Assigned' lists",
+    "Product-category builders dragging SKUs from a master catalog into a promotional collection",
+    "Email distribution-list editors selecting contacts from an organization directory",
+    "Form-field configurators choosing which questions appear in a survey from a question bank"
   ],
-  "usage": "import { /* exported members */ } from \"shadcn-solid-components/hoc/transfer-list\"",
+  "usage": "import { TransferList, TransferListSource, TransferListTarget, TransferListItem, TransferListControls } from \"shadcn-solid-components/hoc/transfer-list\""
+,
   "tags": [
     "hoc",
     "transfer-list",

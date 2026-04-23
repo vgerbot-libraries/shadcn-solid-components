@@ -1,12 +1,16 @@
 {
   "name": "hoc/data-table",
   "displayName": "Data Table",
-  "description": "Data Table HOC for SolidJS UI composition.",
+  "description": "A high-level data-table HOC that wires together Tanstack Table primitives (sorting, filtering, pagination, row selection), a toolbar, loading skeletons, and empty-state handling. Accepts ColumnDef arrays, a data accessor, and optional toolbar configuration. Composed of Card, Skeleton, TanstackTable sub-components, DataTableToolbar, and EmptyState primitives with full i18n support via ConfigProvider.",
   "category": "hoc",
   "useCases": [
-    "Use Data Table in hoc scenarios."
+    "Admin user-management grids with search, column visibility toggles, and bulk-delete actions",
+    "E-commerce order dashboards combining filters, date-range pickers, and paginated row lists",
+    "Analytics event logs with sortable timestamps, faceted severity badges, and CSV export",
+    "CRM opportunity pipelines showing multi-select checkboxes and inline status dropdown edits"
   ],
-  "usage": "import { /* exported members */ } from \"shadcn-solid-components/hoc/data-table\"",
+  "usage": "import { DataTable, type DataTableProps } from \"shadcn-solid-components/hoc/data-table\""
+,
   "tags": [
     "hoc",
     "data-table",

@@ -1,12 +1,16 @@
 {
   "name": "components/theme",
   "displayName": "Theme",
-  "description": "Theme component for SolidJS UI composition.",
+  "description": "A context provider that manages the global theme configuration (base radius, color tokens, etc.) for the shadcn-solid design system. Exposes a reactive ThemeContext with theme state and a setTheme updater, and persists preferences to localStorage via a configurable storageKey. All other components consume this context to resolve dynamic class names and CSS variable values.",
   "category": "components",
   "useCases": [
-    "Use Theme in components scenarios."
+    "Wrapping the application root to supply theme tokens to every downstream component",
+    "Runtime theme customization panels where users adjust border radius or accent colors",
+    "SSR hydration safety by reading persisted preferences from localStorage on mount",
+    "Multi-tenant white-label apps that switch entire color palettes without page reload"
   ],
-  "usage": "import { /* exported members */ } from \"shadcn-solid-components/components/theme\"",
+  "usage": "import { ThemeProvider } from \"shadcn-solid-components/components/theme\""
+,
   "tags": [
     "components",
     "theme",

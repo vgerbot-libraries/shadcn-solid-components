@@ -1,12 +1,16 @@
 {
   "name": "components/progress",
   "displayName": "Progress",
-  "description": "Progress component for SolidJS UI composition.",
+  "description": "A linear indicator that displays the completion percentage of an ongoing operation. Built on Kobalte Progress with a customizable track and animated fill bar. Composed of Progress, ProgressGroup, ProgressLabel, and ProgressValueLabel primitives. Supports theming via the component-class system and is fully accessible with ARIA value-min/max/now attributes.",
   "category": "components",
   "useCases": [
-    "Use Progress in components scenarios."
+    "File upload or download indicators showing bytes transferred versus total size",
+    "Multi-step form wizards displaying how many steps have been completed",
+    "Background task dashboards (data imports, report generation, video encoding)",
+    "Quiz or survey completion meters motivating users to finish remaining questions"
   ],
-  "usage": "import { /* exported members */ } from \"shadcn-solid-components/components/progress\"",
+  "usage": "import { Progress, ProgressGroup, ProgressLabel, ProgressValueLabel } from \"shadcn-solid-components/components/progress\""
+,
   "tags": [
     "components",
     "progress",

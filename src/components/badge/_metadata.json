@@ -1,16 +1,14 @@
 {
   "name": "components/badge",
   "displayName": "Badge",
-  "description": "Badge component for SolidJS UI composition.",
+  "description": "A small, inline status label used to highlight metadata, counts, or states. Offers four visual variants (default, secondary, destructive, outline) with auto-sizing, SVG icon support, and focus-visible rings. Built on Kobalte Badge and themeable via the cva variant system.",
   "category": "components",
   "useCases": [
-    "Use Badge in components scenarios."
+    "Status indicators on tables or cards to show 'Active', 'Pending', or 'Archived' states",
+    "Notification counters on navigation icons, messages, or cart badges",
+    "Category tags on article cards or product listings for quick filtering cues",
+    "Destructive badges for critical alerts such as 'Overdue' or 'Failed' process states"
   ],
-  "usage": "import { /* exported members */ } from \"shadcn-solid-components/components/badge\"",
-  "tags": [
-    "components",
-    "badge",
-    "solidjs",
-    "ui"
-  ]
+  "usage": "import { Badge, badgeVariants } from \"shadcn-solid-components/components/badge\"",
+  "tags": ["components", "badge", "solidjs", "ui", "kobalte", "label", "status", "tag"]
 }

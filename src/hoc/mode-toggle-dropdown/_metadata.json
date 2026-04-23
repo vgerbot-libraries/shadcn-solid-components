@@ -1,12 +1,16 @@
 {
   "name": "hoc/mode-toggle-dropdown",
   "displayName": "Mode Toggle Dropdown",
-  "description": "Mode Toggle Dropdown HOC for SolidJS UI composition.",
+  "description": "A dropdown-style theme-mode selector HOC that presents Light, Dark, and System options inside a DropdownMenu rather than a single toggle button. Composed of Button and DropdownMenu primitives with locale-aware labels via ConfigProvider. Useful when space is limited or when more than two states need to be explicitly communicated to the user.",
   "category": "hoc",
   "useCases": [
-    "Use Mode Toggle Dropdown in hoc scenarios."
+    "Compact headers where a single icon button opens a dropdown with explicit theme options",
+    "Onboarding wizards that ask the user to pick a visual preference during first-time setup",
+    "Preference modals that present all appearance settings in a unified dropdown group",
+    "Mobile navigation drawers that house theme selection alongside language and region options"
   ],
-  "usage": "import { /* exported members */ } from \"shadcn-solid-components/hoc/mode-toggle-dropdown\"",
+  "usage": "import { ModeToggleDropdown } from \"shadcn-solid-components/hoc/mode-toggle-dropdown\""
+,
   "tags": [
     "hoc",
     "mode-toggle-dropdown",

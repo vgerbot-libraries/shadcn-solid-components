@@ -1,12 +1,16 @@
 {
   "name": "components/pagination",
   "displayName": "Pagination",
-  "description": "Pagination component for SolidJS UI composition.",
+  "description": "A control that enables users to navigate through paginated data sets by selecting specific pages or moving forward and backward. Provides a complete composition system with Pagination, PaginationContent, PaginationItem, PaginationLink, PaginationPrevious, PaginationNext, PaginationFirst, PaginationLast, and PaginationEllipsis. Supports active-page highlighting, disabled boundary states, and responsive ellipsis truncation for large page counts.",
   "category": "components",
   "useCases": [
-    "Use Pagination in components scenarios."
+    "Data tables and search result grids with server-side paginated responses",
+    "Image galleries or article archives split into 10–50 items per page",
+    "Audit logs and activity feeds where chronological pages improve scan performance",
+    "API-documentation endpoints listing resources with limit/offset query parameters"
   ],
-  "usage": "import { /* exported members */ } from \"shadcn-solid-components/components/pagination\"",
+  "usage": "import { Pagination, PaginationContent, PaginationItem, PaginationLink, PaginationPrevious, PaginationNext, PaginationFirst, PaginationLast, PaginationEllipsis } from \"shadcn-solid-components/components/pagination\""
+,
   "tags": [
     "components",
     "pagination",

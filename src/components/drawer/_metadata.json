@@ -1,12 +1,16 @@
 {
   "name": "components/drawer",
   "displayName": "Drawer",
-  "description": "Drawer component for SolidJS UI composition.",
+  "description": "A slide-out panel that enters from any screen edge (top, bottom, left, right) and overlays the main content. Provides a complete composition system with Drawer, DrawerTrigger, DrawerClose, DrawerContent, DrawerLabel, DrawerDescription, DrawerHeader, and DrawerFooter. Features a draggable handle for bottom drawers, dynamic overlay opacity tied to open percentage, and smooth cubic-bezier transitions. Built on Corvu Drawer with full ARIA dialog semantics and responsive sizing.",
   "category": "components",
   "useCases": [
-    "Use Drawer in components scenarios."
+    "Mobile navigation menus that slide in from the left or right edge",
+    "Bottom sheets for filter panels, date pickers, or action lists on touch devices",
+    "Detail sidebars on desktop that reveal record properties when a table row is selected",
+    "Checkout carts and notification centers that overlay without disrupting browsing context"
   ],
-  "usage": "import { /* exported members */ } from \"shadcn-solid-components/components/drawer\"",
+  "usage": "import { Drawer, DrawerTrigger, DrawerClose, DrawerContent, DrawerLabel, DrawerDescription, DrawerHeader, DrawerFooter, DrawerPortal } from \"shadcn-solid-components/components/drawer\""
+,
   "tags": [
     "components",
     "drawer",

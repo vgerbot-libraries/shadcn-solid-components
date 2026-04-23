@@ -1,12 +1,16 @@
 {
   "name": "hoc/mode-toggle-group",
   "displayName": "Mode Toggle Group",
-  "description": "Mode Toggle Group HOC for SolidJS UI composition.",
+  "description": "A segmented-control theme-mode selector HOC that displays Light, Dark, and System options as a grouped set of toggle buttons. Composed of ToggleGroup and ToggleGroupItem primitives with icon labels and active-state styling. Ideal for settings pages or appearance panels where all three options should be visible simultaneously for quick comparison.",
   "category": "hoc",
   "useCases": [
-    "Use Mode Toggle Group in hoc scenarios."
+    "Settings-appearance pages with a dedicated segmented row for theme selection",
+    "User-preference panels in productivity apps that expose layout density alongside theme options",
+    "Admin customization wizards where every visual option is presented in a uniform control style",
+    "Onboarding profile-setup screens collecting theme preference alongside timezone and language"
   ],
-  "usage": "import { /* exported members */ } from \"shadcn-solid-components/hoc/mode-toggle-group\"",
+  "usage": "import { ModeToggleGroup } from \"shadcn-solid-components/hoc/mode-toggle-group\""
+,
   "tags": [
     "hoc",
     "mode-toggle-group",

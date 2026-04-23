@@ -1,12 +1,16 @@
 {
   "name": "components/date-picker",
   "displayName": "Date Picker",
-  "description": "Date Picker component for SolidJS UI composition.",
+  "description": "A date-selection input that combines a text field with an inline or popover calendar. Provides a complete composition system with DatePicker, DatePickerLabel, DatePickerControl, DatePickerInput, DatePickerTrigger, DatePickerContent, DatePickerContext, DatePickerPositioner, DatePickerRootProvider, DatePickerTable, DatePickerTableBody, DatePickerTableCell, DatePickerTableCellTrigger, DatePickerTableHead, DatePickerTableHeader, DatePickerTableRow, DatePickerView, DatePickerViewControl, DatePickerViewTrigger, DatePickerYearSelect, DatePickerMonthSelect, and DatePickerClearTrigger. Supports single-date and range selection, locale-aware formatting, and custom parse/format functions. Built on Ark UI DatePicker with full ARIA datepicker semantics.",
   "category": "components",
   "useCases": [
-    "Use Date Picker in components scenarios."
+    "Booking forms requiring check-in and check-out date ranges with calendar popover",
+    "Invoice or report generators where users specify a billing period or due date",
+    "Event-creation wizards with date, time, and timezone-aware inputs",
+    "Filter panels in analytics dashboards for selecting custom date ranges"
   ],
-  "usage": "import { /* exported members */ } from \"shadcn-solid-components/components/date-picker\"",
+  "usage": "import { DatePicker, DatePickerControl, DatePickerInput, DatePickerTrigger, DatePickerContent, DatePickerTable, DatePickerTableBody, DatePickerTableCell, DatePickerTableCellTrigger, DatePickerView, DatePickerViewControl, DatePickerYearSelect, DatePickerMonthSelect } from \"shadcn-solid-components/components/date-picker\""
+,
   "tags": [
     "components",
     "date-picker",

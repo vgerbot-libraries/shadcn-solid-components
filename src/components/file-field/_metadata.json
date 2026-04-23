@@ -1,12 +1,16 @@
 {
   "name": "components/file-field",
   "displayName": "File Field",
-  "description": "File Field component for SolidJS UI composition.",
+  "description": "A file-upload input with drag-and-drop zone support, file-list rendering, and remove actions. Provides a complete composition system with FileField, FileFieldDropzone, FileFieldItem, FileFieldItemDeleteTrigger, FileFieldItemMetadata, FileFieldItemName, FileFieldItemPreview, FileFieldItemSize, FileFieldLabel, FileFieldHiddenInput, and FileFieldTrigger. Supports multiple files, MIME-type and size validation, progress states, and accessible file removal. Built on Kobalte FileField with full ARIA file-input semantics.",
   "category": "components",
   "useCases": [
-    "Use File Field in components scenarios."
+    "Profile-avatar uploaders with image preview, size validation, and drag-and-drop zone",
+    "Document-attachment fields in support tickets or CRM records accepting PDFs and images",
+    "Bulk CSV or JSON importers that list selected files with individual remove buttons",
+    "Gallery-upload flows showing thumbnails, file names, and upload-progress indicators"
   ],
-  "usage": "import { /* exported members */ } from \"shadcn-solid-components/components/file-field\"",
+  "usage": "import { FileField, FileFieldDropzone, FileFieldItem, FileFieldItemDeleteTrigger, FileFieldItemName, FileFieldItemPreview, FileFieldItemSize, FileFieldLabel, FileFieldHiddenInput } from \"shadcn-solid-components/components/file-field\""
+,
   "tags": [
     "components",
     "file-field",

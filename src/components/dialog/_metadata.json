@@ -1,12 +1,16 @@
 {
   "name": "components/dialog",
   "displayName": "Dialog",
-  "description": "Dialog component for SolidJS UI composition.",
+  "description": "A modal window that appears above the main content, blocking interaction with the rest of the page until closed. Provides a complete composition system with Dialog, DialogTrigger, DialogCloseButton, DialogContent (with optional close button), DialogHeader, DialogFooter, DialogTitle, and DialogDescription. Includes overlay fade animations, content zoom transitions, and full ARIA dialog/modal semantics. Built on Kobalte Dialog with focus trapping and keyboard Esc-to-close support.",
   "category": "components",
   "useCases": [
-    "Use Dialog in components scenarios."
+    "Form modals for creating or editing records without leaving the current page",
+    "Confirmation dialogs for secondary actions such as 'Discard changes?' or 'Save draft?'",
+    "Detail inspectors that show expanded information for a selected table row or chart item",
+    "Onboarding or feature-announcement modals with header, body content, and footer actions"
   ],
-  "usage": "import { /* exported members */ } from \"shadcn-solid-components/components/dialog\"",
+  "usage": "import { Dialog, DialogTrigger, DialogCloseButton, DialogContent, DialogHeader, DialogFooter, DialogTitle, DialogDescription, DialogPortal } from \"shadcn-solid-components/components/dialog\""
+,
   "tags": [
     "components",
     "dialog",

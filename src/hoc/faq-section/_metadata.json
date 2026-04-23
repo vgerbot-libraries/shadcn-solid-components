@@ -1,12 +1,16 @@
 {
   "name": "hoc/faq-section",
   "displayName": "Faq Section",
-  "description": "Faq Section HOC for SolidJS UI composition.",
+  "description": "A ready-to-use FAQ section HOC that renders a list of question-answer pairs with collapsible items, optional grouping by category, and search filtering. Built on top of Accordion primitives and composed of FAQSection, FAQItem, FAQQuestion, FAQAnswer, and FAQSearchInput sub-components. Supports keyboard navigation, animated expand/collapse, and i18n labels via ConfigProvider.",
   "category": "hoc",
   "useCases": [
-    "Use Faq Section in hoc scenarios."
+    "Marketing landing-page FAQ blocks answering pricing, features, and security questions",
+    "Support-center help articles organized by category (Billing, Technical, Account)",
+    "Onboarding wizards with expandable step explanations and troubleshooting tips",
+    "E-commerce product pages addressing shipping, returns, and warranty policy questions"
   ],
-  "usage": "import { /* exported members */ } from \"shadcn-solid-components/hoc/faq-section\"",
+  "usage": "import { FAQSection, FAQItem, FAQQuestion, FAQAnswer, FAQSearchInput } from \"shadcn-solid-components/hoc/faq-section\""
+,
   "tags": [
     "hoc",
     "faq-section",

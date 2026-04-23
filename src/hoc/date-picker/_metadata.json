@@ -1,12 +1,16 @@
 {
   "name": "hoc/date-picker",
   "displayName": "Date Picker",
-  "description": "Date Picker HOC for SolidJS UI composition.",
+  "description": "A higher-order date-picker component that combines a DatePicker input, a Popover calendar panel, and locale-aware formatting into a single ready-to-use form field. Handles open/close state, input masking, validation messages, and custom parse/format adapters. Composed of DatePicker, Popover, Button, and TextField primitives with full i18n support via ConfigProvider.",
   "category": "hoc",
   "useCases": [
-    "Use Date Picker in hoc scenarios."
+    "Booking and reservation forms requiring a single date or date-range input with calendar popover",
+    "Invoice due-date fields in accounting applications with locale-aware long-format display",
+    "Event-creation wizards that validate date availability and prevent past-date selection",
+    "Filter panels in analytics dashboards for custom date-range pickers with quick presets"
   ],
-  "usage": "import { /* exported members */ } from \"shadcn-solid-components/hoc/date-picker\"",
+  "usage": "import { DatePickerField, type DatePickerFieldProps } from \"shadcn-solid-components/hoc/date-picker\""
+,
   "tags": [
     "hoc",
     "date-picker",

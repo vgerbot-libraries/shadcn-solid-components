@@ -1,12 +1,16 @@
 {
   "name": "components/alert-dialog",
   "displayName": "Alert Dialog",
-  "description": "Alert Dialog component for SolidJS UI composition.",
+  "description": "A critical modal dialog that interrupts the user to confirm a significant or irreversible action. Provides a complete composition system with AlertDialog, AlertDialogTrigger, AlertDialogOverlay, AlertDialogContent, AlertDialogHeader, AlertDialogFooter, AlertDialogTitle, AlertDialogDescription, AlertDialogAction, and AlertDialogCancel. Action and Cancel buttons are pre-styled with destructive and outline variants respectively. Built on Kobalte AlertDialog with full ARIA alertdialog semantics, focus trapping, and keyboard dismissal.",
   "category": "components",
   "useCases": [
-    "Use Alert Dialog in components scenarios."
+    "Destructive confirmations before deleting an account, project, or database record",
+    "Unsaved-changes warnings when navigating away from a dirty form",
+    "Logout or session-expiration prompts that require explicit user acknowledgment",
+    "Legal or compliance consent dialogs that block further interaction until confirmed"
   ],
-  "usage": "import { /* exported members */ } from \"shadcn-solid-components/components/alert-dialog\"",
+  "usage": "import { AlertDialog, AlertDialogTrigger, AlertDialogOverlay, AlertDialogContent, AlertDialogHeader, AlertDialogFooter, AlertDialogTitle, AlertDialogDescription, AlertDialogAction, AlertDialogCancel, AlertDialogPortal } from \"shadcn-solid-components/components/alert-dialog\""
+,
   "tags": [
     "components",
     "alert-dialog",

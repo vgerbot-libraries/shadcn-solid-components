@@ -1,12 +1,16 @@
 {
   "name": "hoc/pricing-table",
   "displayName": "Pricing Table",
-  "description": "Pricing Table HOC for SolidJS UI composition.",
+  "description": "A marketing-oriented pricing-table HOC that renders multiple tier cards side-by-side with feature lists, pricing highlights, and call-to-action buttons. Provides PricingTable, PricingTier, PricingTierHeader, PricingTierFeatures, and PricingTierAction primitives with responsive grid layouts, popular-tier badges, and theme-aware checkmark icons. Ideal for SaaS landing pages and plan-selection flows.",
   "category": "hoc",
   "useCases": [
-    "Use Pricing Table in hoc scenarios."
+    "SaaS marketing landing pages comparing Free, Pro, and Enterprise tier capabilities",
+    "In-app upgrade prompts showing current vs premium feature differences with upgrade CTAs",
+    "Subscription-management pages where users switch between monthly and annual billing plans",
+    "E-commerce bundle pages displaying package tiers with included services and add-on options"
   ],
-  "usage": "import { /* exported members */ } from \"shadcn-solid-components/hoc/pricing-table\"",
+  "usage": "import { PricingTable, PricingTier, PricingTierHeader, PricingTierFeatures, PricingTierAction } from \"shadcn-solid-components/hoc/pricing-table\""
+,
   "tags": [
     "hoc",
     "pricing-table",

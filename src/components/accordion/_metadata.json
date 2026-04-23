@@ -1,16 +1,14 @@
 {
   "name": "components/accordion",
   "displayName": "Accordion",
-  "description": "Accordion component for SolidJS UI composition.",
+  "description": "A vertically stacked set of interactive headings that each reveal a section of content. Supports single and multiple expanded panels, built on Kobalte Accordion with smooth expand/collapse animations (accordion-up/accordion-down), full keyboard navigation, and ARIA accessibility. Composed of Accordion, AccordionItem, AccordionTrigger, and AccordionContent primitives.",
   "category": "components",
   "useCases": [
-    "Use Accordion in components scenarios."
+    "FAQ pages to collapse common questions and answers, reducing vertical scroll length",
+    "Settings panels to group configuration options by category and keep the interface clean",
+    "Product detail pages to fold secondary information such as specifications and return policies",
+    "Multi-step form result summaries to show or hide details of each completed step"
   ],
-  "usage": "import { /* exported members */ } from \"shadcn-solid-components/components/accordion\"",
-  "tags": [
-    "components",
-    "accordion",
-    "solidjs",
-    "ui"
-  ]
+  "usage": "import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from \"shadcn-solid-components/components/accordion\"",
+  "tags": ["components", "accordion", "solidjs", "ui", "kobalte", "a11y", "animation", "collapsible"]
 }

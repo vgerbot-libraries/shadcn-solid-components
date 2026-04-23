@@ -1,12 +1,16 @@
 {
   "name": "components/number-field",
   "displayName": "Number Field",
-  "description": "Number Field component for SolidJS UI composition.",
+  "description": "A numeric input that supports spinner increment/decrement buttons, min/max constraints, and formatting. Provides a complete composition system with NumberField, NumberFieldGroup, NumberFieldInput, NumberFieldLabel, NumberFieldDescription, NumberFieldErrorMessage, NumberFieldDecrementTrigger, and NumberFieldIncrementTrigger. Supports keyboard arrow-stepping, long-press acceleration, and locale-aware formatting. Built on Kobalte NumberField with full ARIA spinbutton semantics.",
   "category": "components",
   "useCases": [
-    "Use Number Field in components scenarios."
+    "Quantity selectors in e-commerce carts with plus/minus buttons and max-stock limits",
+    "Price or budget inputs that format currency and clamp to positive values",
+    "Pagination size choosers letting users pick 10, 25, 50, or 100 rows per page",
+    "Rating or score inputs where arrow keys increment a value within a 1–10 range"
   ],
-  "usage": "import { /* exported members */ } from \"shadcn-solid-components/components/number-field\"",
+  "usage": "import { NumberField, NumberFieldGroup, NumberFieldInput, NumberFieldLabel, NumberFieldDescription, NumberFieldErrorMessage, NumberFieldDecrementTrigger, NumberFieldIncrementTrigger } from \"shadcn-solid-components/components/number-field\""
+,
   "tags": [
     "components",
     "number-field",

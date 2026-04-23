@@ -1,12 +1,16 @@
 {
   "name": "components/otp-field",
   "displayName": "Otp Field",
-  "description": "Otp Field component for SolidJS UI composition.",
+  "description": "A one-time-password input composed of multiple adjacent character slots that auto-focus and handle paste events across all slots. Provides a complete composition system with OTPField, OTPFieldGroup, OTPFieldSlot, and OTPFieldCaret. Supports configurable length, numeric or alphanumeric masks, disabled states, and automatic caret positioning in the active slot. Built on Corvu OTPField with full ARIA textbox semantics and paste-event handling.",
   "category": "components",
   "useCases": [
-    "Use Otp Field in components scenarios."
+    "Two-factor authentication (2FA) flows during login or sensitive-action confirmation",
+    "Phone-number verification screens after SMS or voice-message code delivery",
+    "Password-reset confirmation inputs where the user enters a emailed reset token",
+    "API-key or invite-code redemption fields that visually segment a long token into chunks"
   ],
-  "usage": "import { /* exported members */ } from \"shadcn-solid-components/components/otp-field\"",
+  "usage": "import { OTPField, OTPFieldGroup, OTPFieldSlot, OTPFieldCaret } from \"shadcn-solid-components/components/otp-field\""
+,
   "tags": [
     "components",
     "otp-field",

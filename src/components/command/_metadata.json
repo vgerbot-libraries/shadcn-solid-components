@@ -1,12 +1,16 @@
 {
   "name": "components/command",
   "displayName": "Command",
-  "description": "Command component for SolidJS UI composition.",
+  "description": "A fast, keyboard-first command palette inspired by VS Code and Spotlight. Provides a complete composition system with Command, CommandDialog, CommandInput, CommandList, CommandEmpty, CommandGroup, CommandItem, CommandSeparator, and CommandShortcut. Supports fuzzy search filtering, grouped results, empty states, dialog overlay presentation, and full arrow-key + Enter navigation. Built on cmdk-solid with ARIA listbox semantics.",
   "category": "components",
   "useCases": [
-    "Use Command in components scenarios."
+    "Global command palettes activated by 'Ctrl+K' or 'Cmd+K' for quick page navigation",
+    "Action centers where users search and execute app-level commands (e.g., 'Create Invoice')",
+    "Settings finders that let users type keywords to jump directly to a specific preference panel",
+    "Documentation search overlays combining page titles, headings, and command shortcuts"
   ],
-  "usage": "import { /* exported members */ } from \"shadcn-solid-components/components/command\"",
+  "usage": "import { Command, CommandDialog, CommandInput, CommandList, CommandEmpty, CommandGroup, CommandItem, CommandSeparator, CommandShortcut } from \"shadcn-solid-components/components/command\""
+,
   "tags": [
     "components",
     "command",

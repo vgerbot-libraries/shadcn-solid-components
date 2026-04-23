@@ -1,12 +1,16 @@
 {
   "name": "components/resizable",
   "displayName": "Resizable",
-  "description": "Resizable component for SolidJS UI composition.",
+  "description": "A draggable panel-splitter that allows users to resize adjacent layout regions in real time. Provides ResizablePanelGroup, ResizablePanel, and ResizableHandle primitives with orientation support (horizontal or vertical), collapsible panels, minimum and maximum size constraints, and persistence of user-adjusted dimensions. Built with native pointer events for smooth dragging and full keyboard resize support.",
   "category": "components",
   "useCases": [
-    "Use Resizable in components scenarios."
+    "IDE-style layouts with resizable file-tree, editor, and preview panes",
+    "Dashboard builders where users adjust widget widths to prioritize key metrics",
+    "Image-comparison tools with a draggable vertical or horizontal splitter overlay",
+    "Documentation sites with a resizable sidebar table-of-contents next to the article body"
   ],
-  "usage": "import { /* exported members */ } from \"shadcn-solid-components/components/resizable\"",
+  "usage": "import { ResizablePanelGroup, ResizablePanel, ResizableHandle } from \"shadcn-solid-components/components/resizable\""
+,
   "tags": [
     "components",
     "resizable",

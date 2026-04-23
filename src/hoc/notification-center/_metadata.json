@@ -1,12 +1,16 @@
 {
   "name": "hoc/notification-center",
   "displayName": "Notification Center",
-  "description": "Notification Center HOC for SolidJS UI composition.",
+  "description": "A composite notification-bell popover HOC that groups unread/read notifications into tabbed categories, shows timestamps, icons, and action buttons, and marks items as read. Composed of Popover, Tabs, Badge, Button, Separator, and IconBell primitives with full i18n support via ConfigProvider. Provides NotificationCenter, NotificationList, NotificationItem, and related sub-components with category grouping and empty-state handling.",
   "category": "hoc",
   "useCases": [
-    "Use Notification Center in hoc scenarios."
+    "SaaS application headers with a bell icon that opens a tabbed notification drawer",
+    "Social-media platforms showing likes, mentions, follows, and system alerts in grouped tabs",
+    "Project-management tools notifying users of task assignments, due-date reminders, and comments",
+    "E-commerce order-tracking notifications for shipping, delivery, and return status updates"
   ],
-  "usage": "import { /* exported members */ } from \"shadcn-solid-components/hoc/notification-center\"",
+  "usage": "import { NotificationCenter, type NotificationCenterProps, type NotificationItem, type NotificationCategory } from \"shadcn-solid-components/hoc/notification-center\""
+,
   "tags": [
     "hoc",
     "notification-center",

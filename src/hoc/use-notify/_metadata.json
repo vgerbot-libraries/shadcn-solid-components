@@ -1,12 +1,16 @@
 {
   "name": "hoc/use-notify",
   "displayName": "Use Notify",
-  "description": "Use Notify HOC for SolidJS UI composition.",
+  "description": "A headless notification hook and provider HOC that exposes an imperative API for pushing, updating, and dismissing toast notifications from anywhere in the application. Wraps the Sonner toast system with custom positioning, lifecycle callbacks, and batch-update capabilities. Provides useNotify hook and NotificationProvider context for centralized notification state management.",
   "category": "hoc",
   "useCases": [
-    "Use Use Notify in hoc scenarios."
+    "Global error boundaries that capture exceptions and push fatal-error toast notifications",
+    "Async data-fetching hooks that notify users of success, loading, or network-failure states",
+    "Background job processors (image resizing, report generation) surfacing progress toasts",
+    "Real-time collaboration apps broadcasting incoming messages, mentions, or system alerts"
   ],
-  "usage": "import { /* exported members */ } from \"shadcn-solid-components/hoc/use-notify\"",
+  "usage": "import { useNotify, NotificationProvider } from \"shadcn-solid-components/hoc/use-notify\""
+,
   "tags": [
     "hoc",
     "use-notify",

@@ -1,12 +1,16 @@
 {
   "name": "components/checkbox",
   "displayName": "Checkbox",
-  "description": "Checkbox component for SolidJS UI composition.",
+  "description": "A form control that allows users to select one or more items from a set. Provides a complete composition system with Checkbox, CheckboxLabel, CheckboxDescription, CheckboxInput, and CheckboxControl (including a built-in checkmark indicator). Supports invalid states, disabled states, and full keyboard accessibility via Kobalte Checkbox primitives.",
   "category": "components",
   "useCases": [
-    "Use Checkbox in components scenarios."
+    "Multi-select filters in search panels and data-table toolbars",
+    "Consent and terms-of-service agreements in registration flows",
+    "Bulk action selection in list views and email inboxes",
+    "Feature toggles in settings forms where multiple options can be enabled simultaneously"
   ],
-  "usage": "import { /* exported members */ } from \"shadcn-solid-components/components/checkbox\"",
+  "usage": "import { Checkbox, CheckboxLabel, CheckboxDescription, CheckboxInput, CheckboxControl } from \"shadcn-solid-components/components/checkbox\""
+,
   "tags": [
     "components",
     "checkbox",

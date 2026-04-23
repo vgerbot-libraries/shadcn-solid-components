@@ -1,12 +1,16 @@
 {
   "name": "components/carousel",
   "displayName": "Carousel",
-  "description": "Carousel component for SolidJS UI composition.",
+  "description": "A scrollable content slider that cycles through a set of items horizontally or vertically, with optional navigation arrows, dot indicators, and autoplay. Provides a complete composition system with Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext, and CarouselDots. Supports touch swipe, keyboard arrow navigation, responsive item counts, and loop modes.",
   "category": "components",
   "useCases": [
-    "Use Carousel in components scenarios."
+    "Hero banners on marketing landing pages rotating through feature highlights and CTAs",
+    "Product-image galleries in e-commerce detail pages with thumbnail navigation",
+    "Testimonial or review sliders showing customer quotes one at a time",
+    "Card-based recommendation carousels for related articles, products, or videos"
   ],
-  "usage": "import { /* exported members */ } from \"shadcn-solid-components/components/carousel\"",
+  "usage": "import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext, CarouselDots } from \"shadcn-solid-components/components/carousel\""
+,
   "tags": [
     "components",
     "carousel",

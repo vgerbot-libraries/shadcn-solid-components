@@ -1,12 +1,16 @@
 {
   "name": "hoc/filter-builder",
   "displayName": "Filter Builder",
-  "description": "Filter Builder HOC for SolidJS UI composition.",
+  "description": "A visual query-builder HOC that lets users construct complex filters by adding rule rows, choosing fields, operators, and values, and grouping conditions with AND/OR logic. Provides FilterBuilder, FilterBuilderGroup, FilterBuilderRule, FilterBuilderField, FilterBuilderOperator, and FilterBuilderValue sub-components. Supports nested groups, validation, and i18n labels. Composed of Select, Input, Button, and Card primitives with full ConfigProvider locale support.",
   "category": "hoc",
   "useCases": [
-    "Use Filter Builder in hoc scenarios."
+    "Advanced search panels in CRM and ERP systems for multi-field lead or contact filtering",
+    "Log-analysis dashboards where users stack severity, source, timestamp, and message rules",
+    "E-commerce admin order grids with nested filters for status, date-range, and customer tier",
+    "Data-science workbenches building dataset queries without writing raw SQL or query DSL"
   ],
-  "usage": "import { /* exported members */ } from \"shadcn-solid-components/hoc/filter-builder\"",
+  "usage": "import { FilterBuilder, type FilterBuilderProps, type FilterCondition } from \"shadcn-solid-components/hoc/filter-builder\""
+,
   "tags": [
     "hoc",
     "filter-builder",

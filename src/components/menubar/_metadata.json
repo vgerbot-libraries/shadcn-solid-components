@@ -1,12 +1,16 @@
 {
   "name": "components/menubar",
   "displayName": "Menubar",
-  "description": "Menubar component for SolidJS UI composition.",
+  "description": "A persistent horizontal menu bar modeled after desktop application toolbars, containing multiple top-level menus that each open into dropdown panels. Supports nested sub-menus, checkbox items, radio groups, separators, and keyboard shortcuts. Built on Kobalte Menubar with full arrow-key traversal, typeahead search, and ARIA menubar semantics. Composed of Menubar, MenubarMenu, MenubarTrigger, MenubarContent, MenubarItem, and related sub-primitives.",
   "category": "components",
   "useCases": [
-    "Use Menubar in components scenarios."
+    "Desktop-style web applications with File, Edit, View, and Help menu bars",
+    "Rich-text editors exposing formatting menus (Font, Paragraph, Styles, Insert)",
+    "IDE-like interfaces with Run, Debug, Tools, and Window management menus",
+    "Data-analysis tools with Data, Transform, Visualize, and Export top-level menus"
   ],
-  "usage": "import { /* exported members */ } from \"shadcn-solid-components/components/menubar\"",
+  "usage": "import { Menubar, MenubarMenu, MenubarTrigger, MenubarContent, MenubarItem, MenubarSeparator, MenubarCheckboxItem, MenubarRadioGroup, MenubarRadioItem, MenubarSub, MenubarSubTrigger, MenubarSubContent } from \"shadcn-solid-components/components/menubar\""
+,
   "tags": [
     "components",
     "menubar",

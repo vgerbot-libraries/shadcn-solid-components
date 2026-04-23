@@ -1,12 +1,16 @@
 {
   "name": "components/collapsible",
   "displayName": "Collapsible",
-  "description": "Collapsible component for SolidJS UI composition.",
+  "description": "An interactive wrapper that expands or collapses a content section with smooth height animations (collapsible-up/collapsible-down). Composed of Collapsible, CollapsibleTrigger, and CollapsibleContent. Lighter-weight than Accordion when only a single toggleable region is needed, with full Kobalte accessibility support.",
   "category": "components",
   "useCases": [
-    "Use Collapsible in components scenarios."
+    "Expandable code blocks or JSON viewers in documentation pages",
+    "Show-more/show-less toggles for long product descriptions or article excerpts",
+    "Inline filter panels that can be collapsed to save vertical space in search UIs",
+    "Mobile navigation sub-menus that expand on demand without an accordion structure"
   ],
-  "usage": "import { /* exported members */ } from \"shadcn-solid-components/components/collapsible\"",
+  "usage": "import { Collapsible, CollapsibleTrigger, CollapsibleContent } from \"shadcn-solid-components/components/collapsible\""
+,
   "tags": [
     "components",
     "collapsible",

@@ -1,12 +1,16 @@
 {
   "name": "components/tanstack-table",
   "displayName": "Tanstack Table",
-  "description": "Tanstack Table component for SolidJS UI composition.",
+  "description": "A headless table component built on @tanstack/solid-table that provides pre-wired primitives for sorting, filtering, pagination, row selection, grouping, and faceted values. Exports createSolidTable, flexRender, and all built-in row-model helpers (getCoreRowModel, getFilteredRowModel, getSortedRowModel, getPaginationRowModel, getGroupedRowModel, getExpandedRowModel, and faceted-value helpers) alongside reusable UI sub-components such as DataTable, DataTablePagination, DataTableToolbar, DataTableViewOptions, and DataTableColumnHeader.",
   "category": "components",
   "useCases": [
-    "Use Tanstack Table in components scenarios."
+    "Admin dashboards with client-side sorted/filtered tables under 10,000 rows",
+    "Data-exploration interfaces combining column filters, faceted unique-value badges, and pagination",
+    "Row-selection grids for bulk operations (delete, export, assign) with controlled checkboxes",
+    "Expandable grouped tables that collapse/expand category summaries with nested detail rows"
   ],
-  "usage": "import { /* exported members */ } from \"shadcn-solid-components/components/tanstack-table\"",
+  "usage": "import { DataTable, DataTablePagination, DataTableToolbar, DataTableViewOptions, DataTableColumnHeader, createSolidTable, flexRender } from \"shadcn-solid-components/components/tanstack-table\""
+,
   "tags": [
     "components",
     "tanstack-table",

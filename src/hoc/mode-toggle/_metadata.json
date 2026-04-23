@@ -1,12 +1,16 @@
 {
   "name": "hoc/mode-toggle",
   "displayName": "Mode Toggle",
-  "description": "Mode Toggle HOC for SolidJS UI composition.",
+  "description": "A theme-mode toggle button HOC that switches between light, dark, and system color schemes. Composed of Button and DropdownMenu primitives, it persists the selected preference to localStorage and reacts to system preference changes. Provides an accessible toggle with icon indicators (Sun, Moon, Monitor) and is typically placed in the application header or settings panel.",
   "category": "hoc",
   "useCases": [
-    "Use Mode Toggle in hoc scenarios."
+    "Header toolbar buttons in documentation sites and dashboards for quick theme switching",
+    "Settings panels offering Light, Dark, and System preference options with persistent storage",
+    "Marketing landing pages that respect OS theme settings while allowing manual override",
+    "Accessibility-focused apps that expose high-contrast or low-light mode toggles"
   ],
-  "usage": "import { /* exported members */ } from \"shadcn-solid-components/hoc/mode-toggle\"",
+  "usage": "import { ModeToggle } from \"shadcn-solid-components/hoc/mode-toggle\""
+,
   "tags": [
     "hoc",
     "mode-toggle",

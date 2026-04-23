@@ -1,12 +1,16 @@
 {
   "name": "components/chart",
   "displayName": "Chart",
-  "description": "Chart component for SolidJS UI composition.",
+  "description": "A data-visualization wrapper built on top of @unovis that provides theme-aware chart primitives including ChartContainer, ChartTooltip, ChartLegend, ChartCrosshair, and area/line/bar primitives. Supports light/dark CSS variable theming via ChartStyle, responsive single and XY containers, and automatic tooltip/legend composition. Designed for dashboards and analytics pages that need consistent color tokens with the rest of the shadcn-solid design system.",
   "category": "components",
   "useCases": [
-    "Use Chart in components scenarios."
+    "Dashboard metric cards displaying revenue trends over time with area or line charts",
+    "Analytics pages showing user-activity bar charts segmented by device or channel",
+    "Sales reports combining multiple chart types (line + bar) in a single XY container",
+    "Health or IoT monitoring dashboards rendering real-time streaming data with crosshair tooltips"
   ],
-  "usage": "import { /* exported members */ } from \"shadcn-solid-components/components/chart\"",
+  "usage": "import { ChartContainer, ChartTooltip, ChartLegend, ChartCrosshair, ChartStyle } from \"shadcn-solid-components/components/chart\""
+,
   "tags": [
     "components",
     "chart",

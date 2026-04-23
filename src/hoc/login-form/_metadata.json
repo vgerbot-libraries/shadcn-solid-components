@@ -1,12 +1,16 @@
 {
   "name": "hoc/login-form",
   "displayName": "Login Form",
-  "description": "Login Form HOC for SolidJS UI composition.",
+  "description": "A complete authentication-form HOC that supports both login and registration modes, social-provider buttons, email/password fields, 'remember me' checkbox, and loading states. Composed of Card, TextField, Checkbox, Button, Separator, and FormField primitives with i18n labels via ConfigProvider. Exposes mode toggling, provider callback handling, and submit-action wiring in a single ready-to-use component.",
   "category": "hoc",
   "useCases": [
-    "Use Login Form in hoc scenarios."
+    "Application login and registration pages with Google/GitHub OAuth provider buttons",
+    "Onboarding flows that start with email signup and transition to profile completion",
+    "Admin or member-portal authentication screens with 'remember me' and password-reset links",
+    "SaaS multi-tenant sign-in pages that switch between login and register modes dynamically"
   ],
-  "usage": "import { /* exported members */ } from \"shadcn-solid-components/hoc/login-form\"",
+  "usage": "import { LoginForm, type LoginFormProps, type LoginFormMode, type LoginFormProvider } from \"shadcn-solid-components/hoc/login-form\""
+,
   "tags": [
     "hoc",
     "login-form",

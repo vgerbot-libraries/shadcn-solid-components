@@ -1,12 +1,16 @@
 {
   "name": "components/breadcrumbs",
   "displayName": "Breadcrumbs",
-  "description": "Breadcrumbs component for SolidJS UI composition.",
+  "description": "A navigation aid that reveals the user's current location within a hierarchical page structure, typically displayed as a horizontal trail of links separated by chevrons or slashes. Built with native anchor elements and separator slots, supporting responsive truncation and themeable text colors for active vs inactive states.",
   "category": "components",
   "useCases": [
-    "Use Breadcrumbs in components scenarios."
+    "E-commerce category hierarchies such as Home > Electronics > Laptops > MacBook Pro",
+    "Documentation sites showing the nested topic path for quick upward navigation",
+    "Admin dashboards with deep resource routing (Projects > Alpha > Tasks > #1024)",
+    "Content-management systems where editors jump between folder levels"
   ],
-  "usage": "import { /* exported members */ } from \"shadcn-solid-components/components/breadcrumbs\"",
+  "usage": "import { Breadcrumbs, BreadcrumbItem, BreadcrumbLink, BreadcrumbPage, BreadcrumbSeparator, BreadcrumbEllipsis } from \"shadcn-solid-components/components/breadcrumbs\""
+,
   "tags": [
     "components",
     "breadcrumbs",

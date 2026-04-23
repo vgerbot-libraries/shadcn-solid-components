@@ -1,12 +1,16 @@
 {
   "name": "components/navigation-menu",
   "displayName": "Navigation Menu",
-  "description": "Navigation Menu component for SolidJS UI composition.",
+  "description": "A responsive top-level navigation system with support for mega-menu dropdowns, nested links, and active-state indicators. Provides a complete composition system with NavigationMenu, NavigationMenuList, NavigationMenuItem, NavigationMenuTrigger, NavigationMenuContent, NavigationMenuLink, and NavigationMenuIndicator. Built on Kobalte NavigationMenu with viewport animation support, keyboard arrow navigation, and ARIA navigation semantics suitable for primary site headers.",
   "category": "components",
   "useCases": [
-    "Use Navigation Menu in components scenarios."
+    "SaaS marketing-site headers with product, solutions, resources, and pricing mega-menus",
+    "Admin platform primary nav mixing top-level routes and grouped sub-menus",
+    "Documentation sites with version switchers and category flyouts inside the header",
+    "E-commerce storefronts exposing shop-by-category panels with featured images and links"
   ],
-  "usage": "import { /* exported members */ } from \"shadcn-solid-components/components/navigation-menu\"",
+  "usage": "import { NavigationMenu, NavigationMenuList, NavigationMenuItem, NavigationMenuTrigger, NavigationMenuContent, NavigationMenuLink, NavigationMenuIndicator } from \"shadcn-solid-components/components/navigation-menu\""
+,
   "tags": [
     "components",
     "navigation-menu",

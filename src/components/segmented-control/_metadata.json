@@ -1,12 +1,16 @@
 {
   "name": "components/segmented-control",
   "displayName": "Segmented Control",
-  "description": "Segmented Control component for SolidJS UI composition.",
+  "description": "A set of mutually exclusive buttons visually grouped as a single control, resembling native iOS or macOS segmented controls. Provides a complete composition system with SegmentedControl, SegmentedControlItemInput, SegmentedControlItemLabel, and SegmentedControlItem. Supports single selection only, keyboard arrow navigation, and accessible radio-input semantics under the hood. Built on Kobalte SegmentedControl with full ARIA radiogroup support.",
   "category": "components",
   "useCases": [
-    "Use Segmented Control in components scenarios."
+    "View-mode toggles (List, Grid, Map) in search-result or gallery interfaces",
+    "Time-range selectors (Day, Week, Month, Year) in calendar and analytics apps",
+    "Chart-type switchers (Line, Bar, Pie, Area) inside data-visualization toolbars",
+    "Filter scope controls (All, Active, Archived) in compact table or list headers"
   ],
-  "usage": "import { /* exported members */ } from \"shadcn-solid-components/components/segmented-control\"",
+  "usage": "import { SegmentedControl, SegmentedControlItemInput, SegmentedControlItemLabel } from \"shadcn-solid-components/components/segmented-control\""
+,
   "tags": [
     "components",
     "segmented-control",

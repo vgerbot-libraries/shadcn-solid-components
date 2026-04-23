@@ -1,12 +1,16 @@
 {
   "name": "components/search",
   "displayName": "Search",
-  "description": "Search component for SolidJS UI composition.",
+  "description": "An autocomplete search input with a dropdown of filterable results, optimized for query-heavy interfaces. Provides a complete composition system with Search, SearchIcon, SearchInput, SearchClearButton, SearchListbox, SearchNoResult, SearchSection, SearchItem, SearchItemLabel, SearchItemDescription, SearchItemIndicator, and SearchPortal. Supports type-ahead filtering, clear-button reset, grouped sections, no-result states, and full keyboard navigation. Built on Kobalte Search with ARIA combobox semantics.",
   "category": "components",
   "useCases": [
-    "Use Search in components scenarios."
+    "Global site search bars in headers that suggest pages, articles, and products",
+    "User-directory lookups for assigning tasks, mentioning colleagues, or adding team members",
+    "Product-catalog searches that filter SKUs, names, and categories in real time",
+    "Command or settings search within large applications to surface actions and preferences"
   ],
-  "usage": "import { /* exported members */ } from \"shadcn-solid-components/components/search\"",
+  "usage": "import { Search, SearchIcon, SearchInput, SearchClearButton, SearchListbox, SearchNoResult, SearchSection, SearchItem, SearchItemLabel, SearchItemDescription, SearchItemIndicator, SearchPortal } from \"shadcn-solid-components/components/search\""
+,
   "tags": [
     "components",
     "search",

@@ -1,12 +1,16 @@
 {
   "name": "hoc/profile-header",
   "displayName": "Profile Header",
-  "description": "Profile Header HOC for SolidJS UI composition.",
+  "description": "A user-profile header HOC that combines an avatar, display name, role or subtitle, action buttons, and tabbed navigation into a single responsive layout. Provides ProfileHeader, ProfileHeaderAvatar, ProfileHeaderInfo, ProfileHeaderActions, and ProfileHeaderTabs primitives with cover-photo support, status badges, and editable fields. Composed of Avatar, Button, Tabs, and Badge components with theme-aware spacing.",
   "category": "hoc",
   "useCases": [
-    "Use Profile Header in hoc scenarios."
+    "Social-media profile pages with avatar, bio, follower stats, and 'Follow' or 'Message' actions",
+    "Team-directory cards showing employee photos, job titles, departments, and contact buttons",
+    "E-commerce seller storefront headers with store logo, rating, and 'Contact Seller' tabs",
+    "Admin user-detail pages combining identity info, role badges, and edit/delete actions"
   ],
-  "usage": "import { /* exported members */ } from \"shadcn-solid-components/hoc/profile-header\"",
+  "usage": "import { ProfileHeader, ProfileHeaderAvatar, ProfileHeaderInfo, ProfileHeaderActions } from \"shadcn-solid-components/hoc/profile-header\""
+,
   "tags": [
     "hoc",
     "profile-header",

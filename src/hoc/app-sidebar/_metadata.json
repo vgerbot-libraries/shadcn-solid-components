@@ -1,12 +1,16 @@
 {
   "name": "hoc/app-sidebar",
   "displayName": "App Sidebar",
-  "description": "App Sidebar HOC for SolidJS UI composition.",
+  "description": "A high-level application-sidebar layout HOC that wires together SidebarProvider, Sidebar, SidebarMenuTree, and the main body content area. Accepts a header (icon + title), grouped menu items, a footer, and responsive body content. Automatically handles collapsible icon-only mode and is ideal for dashboard or admin applications that need a persistent left-hand navigation rail.",
   "category": "hoc",
   "useCases": [
-    "Use App Sidebar in hoc scenarios."
+    "SaaS admin dashboards with grouped navigation (Analytics, Users, Billing, Settings)",
+    "Documentation sites with collapsible topic-tree sidebars and article content insets",
+    "CRM or ERP platforms requiring role-based sidebar sections and quick-access footer links",
+    "Internal tooling applications where the sidebar adapts between desktop and mobile drawer modes"
   ],
-  "usage": "import { /* exported members */ } from \"shadcn-solid-components/hoc/app-sidebar\"",
+  "usage": "import { AppSidebar, type AppSidebarProps, type AppSidebarMenuGroup, type AppSidebarHeaderProps } from \"shadcn-solid-components/hoc/app-sidebar\""
+,
   "tags": [
     "hoc",
     "app-sidebar",

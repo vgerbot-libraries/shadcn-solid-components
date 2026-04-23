@@ -1,12 +1,16 @@
 {
   "name": "hoc/page-header",
   "displayName": "Page Header",
-  "description": "Page Header HOC for SolidJS UI composition.",
+  "description": "A reusable page-header layout HOC that standardizes the top section of application pages with a title, optional subtitle or breadcrumb trail, and action-button slots. Provides PageHeader, PageHeaderTitle, PageHeaderDescription, and PageHeaderAction primitives with responsive flex layouts and consistent typography. Often combined with Breadcrumbs and Button components for admin dashboards and content-management pages.",
   "category": "hoc",
   "useCases": [
-    "Use Page Header in hoc scenarios."
+    "Admin list pages with a 'Users' title, breadcrumb (Home / Users), and a 'Create User' button",
+    "Settings-category headers displaying the section name, a description, and a save-action button",
+    "Content-management edit pages with the article title, publish status, and preview/delete actions",
+    "Analytics report pages showing the report name, date-range subtitle, and export/share controls"
   ],
-  "usage": "import { /* exported members */ } from \"shadcn-solid-components/hoc/page-header\"",
+  "usage": "import { PageHeader, PageHeaderTitle, PageHeaderDescription, PageHeaderAction } from \"shadcn-solid-components/hoc/page-header\""
+,
   "tags": [
     "hoc",
     "page-header",

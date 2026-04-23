@@ -1,16 +1,14 @@
 {
   "name": "components/alert",
   "displayName": "Alert",
-  "description": "Alert component for SolidJS UI composition.",
+  "description": "A callout box that displays important messages, warnings, or feedback to users. Provides two visual variants (default and destructive) with automatic icon grid layout, title and description composition, and built-in support for keyboard focus rings. Based on Kobalte Alert with full ARIA live-region support.",
   "category": "components",
   "useCases": [
-    "Use Alert in components scenarios."
+    "Form validation feedback to inform users of submission success or required corrections",
+    "System status banners to communicate maintenance windows or service outages",
+    "Destructive alerts for irreversible action confirmations (e.g., deleting an account or resource)",
+    "Inline contextual hints within dashboards or wizard steps to guide user decisions"
   ],
-  "usage": "import { /* exported members */ } from \"shadcn-solid-components/components/alert\"",
-  "tags": [
-    "components",
-    "alert",
-    "solidjs",
-    "ui"
-  ]
+  "usage": "import { Alert, AlertTitle, AlertDescription, alertVariants } from \"shadcn-solid-components/components/alert\"",
+  "tags": ["components", "alert", "solidjs", "ui", "kobalte", "a11y", "feedback", "callout"]
 }

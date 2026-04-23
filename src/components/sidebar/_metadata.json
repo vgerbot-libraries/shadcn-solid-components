@@ -1,12 +1,16 @@
 {
   "name": "components/sidebar",
   "displayName": "Sidebar",
-  "description": "Sidebar component for SolidJS UI composition.",
+  "description": "A persistent or collapsible vertical navigation rail commonly used in dashboard and admin applications. Provides a complete composition system with Sidebar, SidebarHeader, SidebarContent, SidebarFooter, SidebarGroup, SidebarGroupLabel, SidebarMenu, SidebarMenuItem, SidebarMenuButton, SidebarMenuAction, SidebarMenuBadge, SidebarMenuSkeleton, SidebarRail, SidebarInset, SidebarTrigger, SidebarProvider, and useSidebar context. Supports collapsed icon-only mode, collapsible groups, nested menus, and responsive drawer behavior on mobile.",
   "category": "components",
   "useCases": [
-    "Use Sidebar in components scenarios."
+    "Admin dashboards with collapsible left rails for Dashboard, Users, Settings, and Analytics",
+    "Documentation sites with a sticky table-of-contents sidebar that collapses on mobile",
+    "Mail or chat applications with folder lists (Inbox, Sent, Drafts, Trash) and compose action",
+    "Multi-tenant SaaS apps where sidebar sections adapt to the user's role and permissions"
   ],
-  "usage": "import { /* exported members */ } from \"shadcn-solid-components/components/sidebar\"",
+  "usage": "import { Sidebar, SidebarProvider, SidebarTrigger, SidebarHeader, SidebarContent, SidebarFooter, SidebarGroup, SidebarGroupLabel, SidebarMenu, SidebarMenuItem, SidebarMenuButton, SidebarRail, useSidebar } from \"shadcn-solid-components/components/sidebar\""
+,
   "tags": [
     "components",
     "sidebar",

@@ -1,12 +1,16 @@
 {
   "name": "hoc/stat-card",
   "displayName": "Stat Card",
-  "description": "Stat Card HOC for SolidJS UI composition.",
+  "description": "A dashboard metric card HOC that displays a numeric KPI value, a label, an optional trend indicator (up/down percentage), and a sparkline or icon accent. Provides StatCard, StatCardValue, StatCardLabel, StatCardTrend, and StatCardIcon primitives with responsive sizing, theme-aware color coding for positive/negative trends, and Skeleton placeholders for loading states. Composed of Card, Badge, and Icons with full ConfigProvider locale support.",
   "category": "hoc",
   "useCases": [
-    "Use Stat Card in hoc scenarios."
+    "Admin dashboard grids showing Monthly Revenue, Active Users, Conversion Rate, and Churn",
+    "E-commerce analytics panels displaying Orders, Average Order Value, and Return Rate cards",
+    "SaaS health-monitoring widgets for API latency, error rate, throughput, and uptime stats",
+    "Marketing campaign dashboards summarizing impressions, clicks, CTR, and cost-per-conversion"
   ],
-  "usage": "import { /* exported members */ } from \"shadcn-solid-components/hoc/stat-card\"",
+  "usage": "import { StatCard, StatCardValue, StatCardLabel, StatCardTrend, StatCardIcon } from \"shadcn-solid-components/hoc/stat-card\""
+,
   "tags": [
     "hoc",
     "stat-card",

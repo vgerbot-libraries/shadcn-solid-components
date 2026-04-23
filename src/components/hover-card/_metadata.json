@@ -1,12 +1,16 @@
 {
   "name": "components/hover-card",
   "displayName": "Hover Card",
-  "description": "Hover Card component for SolidJS UI composition.",
+  "description": "A lightweight preview card that appears on hover (with optional focus support) and disappears when the pointer leaves. Similar to a tooltip but designed to host richer content such as headers, descriptions, and media. Built on Kobalte HoverCard with configurable open and close delays, multiple placements, and smooth fade/zoom/slide animations. Uses ARIA hover-card semantics for accessibility.",
   "category": "components",
   "useCases": [
-    "Use Hover Card in components scenarios."
+    "User profile previews that show avatar, name, role, and follow button on hover",
+    "Product quick-look cards in e-commerce grids revealing price, rating, and add-to-cart",
+    "Link destination previews in social feeds or wikis before the user clicks through",
+    "Issue or PR hover cards in developer tools showing status, assignee, and labels"
   ],
-  "usage": "import { /* exported members */ } from \"shadcn-solid-components/components/hover-card\"",
+  "usage": "import { HoverCard, HoverCardTrigger, HoverCardContent } from \"shadcn-solid-components/components/hover-card\""
+,
   "tags": [
     "components",
     "hover-card",

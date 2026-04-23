@@ -1,12 +1,16 @@
 {
   "name": "components/toggle-group",
   "displayName": "Toggle Group",
-  "description": "Toggle Group component for SolidJS UI composition.",
+  "description": "A set of mutually exclusive or multiple toggle buttons grouped together with shared styling and borders. Inherits toggle-button variants (default, outline) and sizes (sm, default, lg) via context, automatically removing internal double-borders and rounding only the outer corners. Built on Kobalte ToggleGroup and composed of ToggleGroup and ToggleGroupItem primitives.",
   "category": "components",
   "useCases": [
-    "Use Toggle Group in components scenarios."
+    "Text-alignment controls (Left, Center, Right, Justify) in rich-text editors",
+    "View-density selectors (Compact, Comfortable, Spacious) in data-table toolbars",
+    "Filter chip groups where one or more categories can be toggled on a search page",
+    "Segmented tool palettes in design or diagramming applications"
   ],
-  "usage": "import { /* exported members */ } from \"shadcn-solid-components/components/toggle-group\"",
+  "usage": "import { ToggleGroup, ToggleGroupItem } from \"shadcn-solid-components/components/toggle-group\""
+,
   "tags": [
     "components",
     "toggle-group",

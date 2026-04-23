@@ -1,12 +1,16 @@
 {
   "name": "hoc/timeline",
   "displayName": "Timeline",
-  "description": "Timeline HOC for SolidJS UI composition.",
+  "description": "A chronological event-display HOC that renders a vertical list of timestamped milestones with customizable node icons, color accents, and content expansion. Supports left, right, and alternate layout modes, optional loading indicators, and pending-item placeholders. Composed of Timeline, TimelineItem, TimelineNode, and TimelineContent primitives with full i18n support via ConfigProvider.",
   "category": "hoc",
   "useCases": [
-    "Use Timeline in hoc scenarios."
+    "Order-tracking pages showing Ordered, Processing, Shipped, and Delivered milestones",
+    "Project-management roadmaps displaying sprint cycles, release dates, and blocker events",
+    "User-account audit logs listing login history, password changes, and permission updates",
+    "Application changelogs or release-note pages with version tags and feature summaries"
   ],
-  "usage": "import { /* exported members */ } from \"shadcn-solid-components/hoc/timeline\"",
+  "usage": "import { Timeline, TimelineItem, TimelineNode, TimelineContent } from \"shadcn-solid-components/hoc/timeline\""
+,
   "tags": [
     "hoc",
     "timeline",

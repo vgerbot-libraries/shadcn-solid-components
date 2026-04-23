@@ -1,12 +1,16 @@
 {
   "name": "components/popover",
   "displayName": "Popover",
-  "description": "Popover component for SolidJS UI composition.",
+  "description": "A floating container that appears next to a trigger element, supporting richer content than a tooltip. Provides a complete composition system with Popover, PopoverTrigger, PopoverContent, and PopoverPortal. Supports configurable gutter spacing, multiple placement directions, and entrance/exit animations (fade + zoom + slide). Built on Kobalte Popover with full ARIA popover semantics and focus management, ideal for forms, pickers, and detailed info panels.",
   "category": "components",
   "useCases": [
-    "Use Popover in components scenarios."
+    "Inline date or color pickers that open from an input trigger without leaving the page",
+    "User-info cards that appear when hovering or clicking an avatar in a comment thread",
+    "Filter panels with multiple checkboxes and inputs that float above a table toolbar",
+    "Confirmation mini-forms such as 'Rename' or 'Add tag' triggered from list-item menus"
   ],
-  "usage": "import { /* exported members */ } from \"shadcn-solid-components/components/popover\"",
+  "usage": "import { Popover, PopoverTrigger, PopoverContent, PopoverPortal } from \"shadcn-solid-components/components/popover\""
+,
   "tags": [
     "components",
     "popover",

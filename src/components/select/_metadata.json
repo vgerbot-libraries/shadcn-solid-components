@@ -1,12 +1,16 @@
 {
   "name": "components/select",
   "displayName": "Select",
-  "description": "Select component for SolidJS UI composition.",
+  "description": "A dropdown selection control that allows users to pick one or more options from a predefined list. Provides a complete composition system with Select, SelectValue, SelectTrigger, SelectContent, SelectListbox, SelectItem, SelectItemLabel, SelectItemIndicator, SelectSection, SelectLabel, SelectDescription, SelectErrorMessage, SelectHiddenSelect, and SelectPortal. Supports single and multi-selection, item grouping, placeholder text, clear-button integration, and full keyboard navigation. Built on Kobalte Select with ARIA listbox semantics.",
   "category": "components",
   "useCases": [
-    "Use Select in components scenarios."
+    "Country, language, or timezone selectors in user-profile and settings forms",
+    "Status or priority dropdowns in task-management and issue-tracking interfaces",
+    "Multi-select category tags in content-management systems and e-commerce admin panels",
+    "Sort-order and page-size controls in data-table toolbars and pagination headers"
   ],
-  "usage": "import { /* exported members */ } from \"shadcn-solid-components/components/select\"",
+  "usage": "import { Select, SelectValue, SelectTrigger, SelectContent, SelectListbox, SelectItem, SelectItemLabel, SelectItemIndicator, SelectSection, SelectLabel, SelectDescription, SelectErrorMessage, SelectHiddenSelect, SelectPortal } from \"shadcn-solid-components/components/select\""
+,
   "tags": [
     "components",
     "select",

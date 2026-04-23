@@ -1,12 +1,16 @@
 {
   "name": "hoc/navigation-menu",
   "displayName": "Navigation Menu",
-  "description": "Navigation Menu HOC for SolidJS UI composition.",
+  "description": "A higher-level site-header navigation HOC that wraps NavigationMenu primitives with responsive mobile drawer behavior, logo placement, and user-action slots. Provides a ready-to-use AppNavigationMenu component combining NavigationMenu, Sidebar, Drawer, and Button primitives. Supports mega-menu content panels, mobile hamburger toggle, and i18n labels via ConfigProvider.",
   "category": "hoc",
   "useCases": [
-    "Use Navigation Menu in hoc scenarios."
+    "SaaS marketing sites with product, solutions, pricing, and docs mega-menu headers",
+    "Admin platforms requiring a responsive top nav that collapses into a mobile drawer",
+    "Documentation sites with version switchers, search triggers, and category flyouts",
+    "E-commerce storefronts exposing category panels, promotions, and account links in a unified header"
   ],
-  "usage": "import { /* exported members */ } from \"shadcn-solid-components/hoc/navigation-menu\"",
+  "usage": "import { AppNavigationMenu } from \"shadcn-solid-components/hoc/navigation-menu\""
+,
   "tags": [
     "hoc",
     "navigation-menu",

@@ -1,12 +1,16 @@
 {
   "name": "hoc/user-menu",
   "displayName": "User Menu",
-  "description": "User Menu HOC for SolidJS UI composition.",
+  "description": "A user-profile dropdown menu HOC that combines an avatar trigger, display name, email subtitle, and a structured list of action items (settings, billing, logout) inside a DropdownMenu. Provides UserMenu, UserMenuTrigger, UserMenuContent, UserMenuItem, UserMenuLabel, UserMenuSeparator, and UserMenuGroup primitives with theme-aware spacing, avatar fallback initials, and keyboard-accessible navigation. Composed of Avatar, Button, DropdownMenu, and Badge with full i18n support via ConfigProvider.",
   "category": "hoc",
   "useCases": [
-    "Use User Menu in hoc scenarios."
+    "Application header user-profile menus with avatar, name, email, and account links",
+    "Team-collaboration tools exposing profile, workspace switcher, and sign-out actions",
+    "SaaS dashboards with quick links to Billing, API Keys, Team Members, and Support",
+    "E-commerce storefronts showing order history, saved addresses, and loyalty-status badges"
   ],
-  "usage": "import { /* exported members */ } from \"shadcn-solid-components/hoc/user-menu\"",
+  "usage": "import { UserMenu, UserMenuTrigger, UserMenuContent, UserMenuItem, UserMenuLabel, UserMenuSeparator, UserMenuGroup } from \"shadcn-solid-components/hoc/user-menu\""
+,
   "tags": [
     "hoc",
     "user-menu",

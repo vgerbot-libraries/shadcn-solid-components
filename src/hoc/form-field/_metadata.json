@@ -1,12 +1,16 @@
 {
   "name": "hoc/form-field",
   "displayName": "Form Field",
-  "description": "Form Field HOC for SolidJS UI composition.",
+  "description": "A reusable form-field wrapper HOC that combines a label, input, description, and error message into a single layout unit. Provides FormField, FormFieldLabel, FormFieldInput, FormFieldDescription, and FormFieldErrorMessage primitives. Automatically wires aria-describedby and aria-invalid attributes between the label, input, and error elements for full accessibility. Designed to integrate with validation libraries (Zod, Valibot, etc.) and theme-aware via component-class tokens.",
   "category": "hoc",
   "useCases": [
-    "Use Form Field in hoc scenarios."
+    "Registration and checkout forms where each row needs a label, input, helper text, and error",
+    "Settings panels with multiple field types (text, select, switch) sharing a consistent layout",
+    "Survey builders that dynamically render labeled questions with real-time validation feedback",
+    "Multi-step wizards where each step reuses the same field structure across different input types"
   ],
-  "usage": "import { /* exported members */ } from \"shadcn-solid-components/hoc/form-field\"",
+  "usage": "import { FormField, FormFieldLabel, FormFieldInput, FormFieldDescription, FormFieldErrorMessage } from \"shadcn-solid-components/hoc/form-field\""
+,
   "tags": [
     "hoc",
     "form-field",

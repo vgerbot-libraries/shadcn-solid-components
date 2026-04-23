@@ -1,12 +1,16 @@
 {
   "name": "hoc/command-palette",
   "displayName": "Command Palette",
-  "description": "Command Palette HOC for SolidJS UI composition.",
+  "description": "A higher-level command-palette wrapper around the Command component that manages open/close state, keyboard shortcut registration (Ctrl+K / Cmd+K), grouped items, and empty-state handling. Renders items inside a CommandDialog with optional icon, shortcut badges via Kbd, and i18n label support. Composed of Command primitives, Kbd, and Popover components.",
   "category": "hoc",
   "useCases": [
-    "Use Command Palette in hoc scenarios."
+    "Global 'Spotlight' search in productivity apps for pages, actions, and settings",
+    "Developer-tool command centers for running queries, switching projects, or opening docs",
+    "CMS quick-navigation palettes for jumping to posts, media, users, or plugins",
+    "Keyboard-first workflow apps that expose every action via a searchable command dialog"
   ],
-  "usage": "import { /* exported members */ } from \"shadcn-solid-components/hoc/command-palette\"",
+  "usage": "import { CommandPalette, type CommandPaletteProps, type CommandPaletteItem, type CommandPaletteGroup } from \"shadcn-solid-components/hoc/command-palette\""
+,
   "tags": [
     "hoc",
     "command-palette",

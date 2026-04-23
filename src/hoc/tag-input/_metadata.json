@@ -1,12 +1,16 @@
 {
   "name": "hoc/tag-input",
   "displayName": "Tag Input",
-  "description": "Tag Input HOC for SolidJS UI composition.",
+  "description": "An input component that allows users to create, edit, and remove multiple tags or chips inline. Provides TagInput, TagInputItem, TagInputDeleteTrigger, and TagInputField primitives with keyboard navigation (Backspace to remove, Enter to add), duplicate prevention, max-count limits, and validation hooks. Composed of Badge, Input, and Button with full i18n support via ConfigProvider.",
   "category": "hoc",
   "useCases": [
-    "Use Tag Input in hoc scenarios."
+    "Blog-post tag editors allowing writers to add SEO keywords and topic categories",
+    "Product-management attribute selectors for colors, sizes, and material tags on SKU forms",
+    "Email recipient fields with autocomplete from address-book contacts and free-text entry",
+    "Filter-builder interfaces where users stack multiple criteria tags before executing a search"
   ],
-  "usage": "import { /* exported members */ } from \"shadcn-solid-components/hoc/tag-input\"",
+  "usage": "import { TagInput, TagInputItem, TagInputDeleteTrigger, TagInputField } from \"shadcn-solid-components/hoc/tag-input\""
+,
   "tags": [
     "hoc",
     "tag-input",

@@ -1,12 +1,16 @@
 {
   "name": "hoc/error-page",
   "displayName": "Error Page",
-  "description": "Error Page HOC for SolidJS UI composition.",
+  "description": "A pre-styled error-state page HOC that displays HTTP status codes (404, 500, 403, etc.) with an illustration, a descriptive message, and a primary action button to navigate home or retry. Provides ErrorPage, ErrorPageIcon, ErrorPageTitle, ErrorPageDescription, and ErrorPageAction primitives with responsive centering and theme-aware muted colors. Ideal for catch-all route fallbacks and global error boundaries.",
   "category": "hoc",
   "useCases": [
-    "Use Error Page in hoc scenarios."
+    "404 Not Found fallback routes when a user navigates to an invalid or deleted resource URL",
+    "500 Internal Server Error pages triggered by global error boundaries after an uncaught exception",
+    "403 Unauthorized screens for role-restricted pages with a button to request access or contact support",
+    "503 Maintenance mode pages displaying a countdown timer and a retry-action button"
   ],
-  "usage": "import { /* exported members */ } from \"shadcn-solid-components/hoc/error-page\"",
+  "usage": "import { ErrorPage, ErrorPageIcon, ErrorPageTitle, ErrorPageDescription, ErrorPageAction } from \"shadcn-solid-components/hoc/error-page\""
+,
   "tags": [
     "hoc",
     "error-page",

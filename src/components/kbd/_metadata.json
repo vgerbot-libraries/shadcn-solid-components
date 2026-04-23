@@ -1,12 +1,16 @@
 {
   "name": "components/kbd",
   "displayName": "Kbd",
-  "description": "Kbd component for SolidJS UI composition.",
+  "description": "A styled keyboard key component that visually represents keyboard shortcuts and hotkeys. Provides Kbd and KbdGroup primitives with automatic sizing, monospace font, muted background, and special theming when placed inside TooltipContent. Ideal for help menus, command palettes, and onboarding tooltips that teach shortcuts.",
   "category": "components",
   "useCases": [
-    "Use Kbd in components scenarios."
+    "Command palette shortcut hints such as 'Ctrl + K' or 'Cmd + P'",
+    "Onboarding tours and feature-discovery tooltips that explain keyboard navigation",
+    "Settings pages listing all available application shortcuts in a readable grid",
+    "Inline documentation inside modals or drawers to show alternate input methods"
   ],
-  "usage": "import { /* exported members */ } from \"shadcn-solid-components/components/kbd\"",
+  "usage": "import { Kbd, KbdGroup } from \"shadcn-solid-components/components/kbd\""
+,
   "tags": [
     "components",
     "kbd",

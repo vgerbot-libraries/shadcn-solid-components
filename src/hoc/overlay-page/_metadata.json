@@ -1,12 +1,16 @@
 {
   "name": "hoc/overlay-page",
   "displayName": "Overlay Page",
-  "description": "Overlay Page HOC for SolidJS UI composition.",
+  "description": "A layout HOC that presents a secondary page or panel as a modal overlay rather than a full route transition. Provides OverlayPage, OverlayPageHeader, OverlayPageContent, and OverlayPageFooter primitives with slide-in animations and backdrop dimming. Useful for detail inspectors, quick-edit forms, or wizards that the user should be able to dismiss and return to the underlying page context.",
   "category": "hoc",
   "useCases": [
-    "Use Overlay Page in hoc scenarios."
+    "Quick-edit side panels for CRM records that overlay the contact list without navigation",
+    "Product-detail overlays in e-commerce grids allowing back-button or backdrop dismissal",
+    "Settings sub-panels that appear over a dashboard so the user does not lose spatial context",
+    "Mobile drawer-style forms triggered from map pins or calendar events for rapid data entry"
   ],
-  "usage": "import { /* exported members */ } from \"shadcn-solid-components/hoc/overlay-page\"",
+  "usage": "import { OverlayPage, OverlayPageHeader, OverlayPageContent, OverlayPageFooter } from \"shadcn-solid-components/hoc/overlay-page\""
+,
   "tags": [
     "hoc",
     "overlay-page",

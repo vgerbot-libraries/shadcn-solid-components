@@ -1,12 +1,16 @@
 {
   "name": "hoc/otp-field",
   "displayName": "Otp Field",
-  "description": "Otp Field HOC for SolidJS UI composition.",
+  "description": "A ready-to-use one-time-password input HOC that renders a label, a slot-based OTP field, an optional resend timer button, and error messaging. Wraps the OTPField primitive with FormField layout, Button resend logic, and i18n labels (remaining time, resend action) via ConfigProvider. Provides OTPFieldForm, OTPFieldResendButton, and OTPFieldLabel sub-components for rapid 2FA and verification flows.",
   "category": "hoc",
   "useCases": [
-    "Use Otp Field in hoc scenarios."
+    "Two-factor authentication (2FA) login flows with a resend-code timer and error handling",
+    "Phone-number verification screens after SMS delivery with auto-focus and paste support",
+    "Password-reset token entry with visual slot separation and validation feedback",
+    "Invite-code or API-key redemption forms that accept segmented alphanumeric tokens"
   ],
-  "usage": "import { /* exported members */ } from \"shadcn-solid-components/hoc/otp-field\"",
+  "usage": "import { OTPFieldForm, type OTPFieldFormProps } from \"shadcn-solid-components/hoc/otp-field\""
+,
   "tags": [
     "hoc",
     "otp-field",

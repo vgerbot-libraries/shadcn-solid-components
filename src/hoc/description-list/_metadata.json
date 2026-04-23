@@ -1,12 +1,16 @@
 {
   "name": "hoc/description-list",
   "displayName": "Description List",
-  "description": "Description List HOC for SolidJS UI composition.",
+  "description": "A structured key-value list component for displaying metadata, properties, or read-only field sets in a compact two-column layout. Provides DescriptionList, DescriptionTerm, and DescriptionDetails primitives with consistent typography, border separators, and responsive stacking on narrow viewports. Ideal for detail panels, summary cards, and entity-property views.",
   "category": "hoc",
   "useCases": [
-    "Use Description List in hoc scenarios."
+    "User-profile detail panels showing Email, Role, Department, and Joined Date key-value pairs",
+    "Product specification sheets listing Dimensions, Weight, Material, and Warranty properties",
+    "Order-summary sidebars displaying Subtotal, Tax, Shipping, and Total line items",
+    "API-documentation parameter tables rendered as readable definition lists instead of HTML tables"
   ],
-  "usage": "import { /* exported members */ } from \"shadcn-solid-components/hoc/description-list\"",
+  "usage": "import { DescriptionList, DescriptionTerm, DescriptionDetails } from \"shadcn-solid-components/hoc/description-list\""
+,
   "tags": [
     "hoc",
     "description-list",

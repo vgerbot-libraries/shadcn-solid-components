@@ -1,12 +1,16 @@
 {
   "name": "components/sonner",
   "displayName": "Sonner",
-  "description": "Sonner component for SolidJS UI composition.",
+  "description": "An opinionated toast notification system that displays ephemeral messages in a stack, originating from the top or bottom of the viewport. Provides Toaster positioning, Toast styling variants (default, success, info, warning, error, loading), and rich content support including titles, descriptions, action buttons, and close controls. Built on Solid Sonner with promise-aware toast states, swipe-to-dismiss, and customizable durations.",
   "category": "components",
   "useCases": [
-    "Use Sonner in components scenarios."
+    "Success toasts after form submissions, file uploads, or payment completions",
+    "Error and warning alerts for network failures, validation issues, or rate limits",
+    "Loading toasts tied to async promises that auto-resolve or reject with custom messages",
+    "Undo-action toasts that allow users to reverse a destructive operation within a timeout"
   ],
-  "usage": "import { /* exported members */ } from \"shadcn-solid-components/components/sonner\"",
+  "usage": "import { Toaster, toast } from \"shadcn-solid-components/components/sonner\""
+,
   "tags": [
     "components",
     "sonner",

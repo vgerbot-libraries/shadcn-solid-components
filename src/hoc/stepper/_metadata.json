@@ -1,12 +1,16 @@
 {
   "name": "hoc/stepper",
   "displayName": "Stepper",
-  "description": "Stepper HOC for SolidJS UI composition.",
+  "description": "A multi-step wizard HOC that guides users through a linear sequence of stages with step indicators, labels, navigation buttons, and completion badges. Provides Stepper, StepperStep, StepperHeader, StepperContent, StepperNavigation, StepperPrevious, StepperNext, and StepperFinish primitives with optional step validation, disabled-state guards, and progress-bar integration. Composed of Button, Progress, and Badge with full i18n support via ConfigProvider.",
   "category": "hoc",
   "useCases": [
-    "Use Stepper in hoc scenarios."
+    "Account-setup wizards collecting profile, company, team, and billing information in stages",
+    "Checkout flows segmented into Cart, Shipping, Payment, and Confirmation steps",
+    "Form-heavy onboarding processes such as medical intake or insurance quote applications",
+    "Multi-step content-creation wizards for blog posts, courses, or product listings with validation"
   ],
-  "usage": "import { /* exported members */ } from \"shadcn-solid-components/hoc/stepper\"",
+  "usage": "import { Stepper, StepperStep, StepperHeader, StepperContent, StepperNavigation } from \"shadcn-solid-components/hoc/stepper\""
+,
   "tags": [
     "hoc",
     "stepper",

@@ -1,12 +1,16 @@
 {
   "name": "components/tooltip",
   "displayName": "Tooltip",
-  "description": "Tooltip component for SolidJS UI composition.",
+  "description": "A small floating overlay that displays supplementary information when a user hovers or focuses on an element. Provides a complete composition system with Tooltip, TooltipTrigger, TooltipContent, and TooltipPortal. Supports configurable open/close delays, multiple placement directions, an animated arrow, and slide-in entrance transitions. Built on Kobalte Tooltip with full ARIA tooltip role and focus management.",
   "category": "components",
   "useCases": [
-    "Use Tooltip in components scenarios."
+    "Icon-only action buttons that need text labels for accessibility and discoverability",
+    "Truncated table cells or headings that reveal the full text on hover",
+    "Keyboard-shortcut hints on toolbar buttons to aid power-user onboarding",
+    "Data-visualization charts where hovering a data point shows exact values and dates"
   ],
-  "usage": "import { /* exported members */ } from \"shadcn-solid-components/components/tooltip\"",
+  "usage": "import { Tooltip, TooltipTrigger, TooltipContent, TooltipPortal } from \"shadcn-solid-components/components/tooltip\""
+,
   "tags": [
     "components",
     "tooltip",

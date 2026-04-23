@@ -1,12 +1,16 @@
 {
   "name": "components/button",
   "displayName": "Button",
-  "description": "Button component for SolidJS UI composition.",
+  "description": "The primary interactive element for triggering actions. Provides six visual variants (default, destructive, outline, secondary, ghost, link) and four size options (sm, default, lg, icon/icon-sm/icon-lg). Built on Kobalte Button with automatic focus-visible rings, disabled state styling, aria-invalid support, and consistent SVG icon sizing via the cva variant system.",
   "category": "components",
   "useCases": [
-    "Use Button in components scenarios."
+    "Primary form submission, save, cancel, and next-step actions",
+    "Destructive variant for dangerous actions such as delete, remove, or permanent data erasure",
+    "Icon variants (icon, icon-sm, icon-lg) for compact toolbar buttons and header actions",
+    "Ghost and link variants for low-emphasis actions inside dropdowns, tables, or inline text"
   ],
-  "usage": "import { /* exported members */ } from \"shadcn-solid-components/components/button\"",
+  "usage": "import { Button, buttonVariants } from \"shadcn-solid-components/components/button\""
+,
   "tags": [
     "components",
     "button",

@@ -1,12 +1,16 @@
 {
   "name": "components/separator",
   "displayName": "Separator",
-  "description": "Separator component for SolidJS UI composition.",
+  "description": "A visual divider that separates content into distinct sections. Supports both horizontal and vertical orientations via data attributes, with automatic dimension rules (horizontal = full width, 1px height; vertical = full height, 1px width). Built on Kobalte Separator and fully accessible with the correct ARIA role. Styled with theme border colors and no visible border element.",
   "category": "components",
   "useCases": [
-    "Use Separator in components scenarios."
+    "Dividing navigation menu items or dropdown menu groups",
+    "Separating metadata rows such as date, author, and tags in article cards",
+    "Horizontal rules between form sections or checkout steps",
+    "Vertical dividers between buttons inside a toolbar or pagination group"
   ],
-  "usage": "import { /* exported members */ } from \"shadcn-solid-components/components/separator\"",
+  "usage": "import { Separator } from \"shadcn-solid-components/components/separator\""
+,
   "tags": [
     "components",
     "separator",

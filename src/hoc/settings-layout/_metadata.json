@@ -1,12 +1,16 @@
 {
   "name": "hoc/settings-layout",
   "displayName": "Settings Layout",
-  "description": "Settings Layout HOC for SolidJS UI composition.",
+  "description": "A settings-page layout HOC that pairs a left-hand navigation list with a scrollable content area, automatically adapting to a mobile drawer on narrow viewports. Provides SettingsLayout, SettingsLayoutNav, SettingsLayoutNavItem, SettingsLayoutContent, and SettingsLayoutHeader primitives with active-section highlighting, smooth scrolling, and i18n labels. Composed of Card, Drawer, Button, and Sidebar primitives with full ConfigProvider locale support.",
   "category": "hoc",
   "useCases": [
-    "Use Settings Layout in hoc scenarios."
+    "User account settings with sidebar links (Profile, Security, Notifications, Billing) and content panes",
+    "Admin system-configuration pages grouping General, API Keys, Integrations, and Team settings",
+    "Multi-step preference wizards where each section is a discrete settings category with validation",
+    "SaaS tenant-customization portals allowing white-label, branding, and feature-flag configuration"
   ],
-  "usage": "import { /* exported members */ } from \"shadcn-solid-components/hoc/settings-layout\"",
+  "usage": "import { SettingsLayout, SettingsLayoutNav, SettingsLayoutNavItem, SettingsLayoutContent, SettingsLayoutHeader } from \"shadcn-solid-components/hoc/settings-layout\""
+,
   "tags": [
     "hoc",
     "settings-layout",

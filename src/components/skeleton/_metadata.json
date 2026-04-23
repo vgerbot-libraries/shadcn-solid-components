@@ -1,12 +1,16 @@
 {
   "name": "components/skeleton",
   "displayName": "Skeleton",
-  "description": "Skeleton component for SolidJS UI composition.",
+  "description": "A placeholder loading state that mimics the shape of upcoming content to reduce perceived latency. Uses Kobalte Skeleton under the hood with a configurable corner radius, animated pulse effect, and an after-element overlay that applies the muted background. Automatically activates when data is pending and is fully themeable via CSS data attributes.",
   "category": "components",
   "useCases": [
-    "Use Skeleton in components scenarios."
+    "Card and list placeholders while fetching dashboard metrics or feed items",
+    "Table row skeletons to indicate that paginated data is being loaded",
+    "Avatar and text-line skeletons inside user-profile headers during initial load",
+    "Form skeletons for SSR or slow connections so the layout does not jump on hydration"
   ],
-  "usage": "import { /* exported members */ } from \"shadcn-solid-components/components/skeleton\"",
+  "usage": "import { Skeleton } from \"shadcn-solid-components/components/skeleton\""
+,
   "tags": [
     "components",
     "skeleton",

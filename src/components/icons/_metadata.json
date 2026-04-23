@@ -1,12 +1,16 @@
 {
   "name": "components/icons",
   "displayName": "Icons",
-  "description": "Icons component for SolidJS UI composition.",
+  "description": "A curated set of 60+ inline SVG icon components designed for the shadcn-solid design system. Each icon is a lightweight SolidJS component that accepts standard SVG props and automatically applies consistent stroke width, currentColor fill, and size-4 default sizing. Covers UI essentials (arrows, actions, status, brands, device types) with no external icon-library dependency.",
   "category": "components",
   "useCases": [
-    "Use Icons in components scenarios."
+    "Navigation and breadcrumb chevrons, home, and menu icons",
+    "Action buttons for download, upload, copy, trash, and external-link operations",
+    "Status indicators using check, alert-triangle, circle-check, and loader spinner icons",
+    "Brand and social icons (Github, Google, Apple, Instagram, Youtube, X, Paypal, Reddit) for auth and marketing"
   ],
-  "usage": "import { /* exported members */ } from \"shadcn-solid-components/components/icons\"",
+  "usage": "import { IconCheck, IconChevronDown, IconSearch, IconTrash, IconUser, IconPlus, IconLogo, IconSettings, /* 60+ named exports */ } from \"shadcn-solid-components/components/icons\""
+,
   "tags": [
     "components",
     "icons",

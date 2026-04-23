@@ -1,12 +1,16 @@
 {
   "name": "components/tabs",
   "displayName": "Tabs",
-  "description": "Tabs component for SolidJS UI composition.",
+  "description": "An accessible tabbed interface that organizes content into mutually exclusive panels. Provides a complete composition system with Tabs, TabsList, TabsTrigger, TabsContent, and TabsIndicator. Supports both horizontal and vertical orientations, an animated selection indicator, and full ARIA tablist/tabpanel semantics. Built on Kobalte Tabs with arrow-key navigation and focus-visible rings.",
   "category": "components",
   "useCases": [
-    "Use Tabs in components scenarios."
+    "Product detail pages switching between Description, Specifications, and Reviews",
+    "Settings pages with categorized tabs (Account, Security, Notifications, Billing)",
+    "Dashboard widgets that alternate between Chart, Table, and Summary views",
+    "Documentation sites with language or version switchers using tab triggers"
   ],
-  "usage": "import { /* exported members */ } from \"shadcn-solid-components/components/tabs\"",
+  "usage": "import { Tabs, TabsList, TabsTrigger, TabsContent, TabsIndicator } from \"shadcn-solid-components/components/tabs\""
+,
   "tags": [
     "components",
     "tabs",

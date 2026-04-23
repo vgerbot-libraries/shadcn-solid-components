@@ -1,12 +1,16 @@
 {
   "name": "components/calendar",
   "displayName": "Calendar",
-  "description": "Calendar component for SolidJS UI composition.",
+  "description": "An interactive date-picker calendar grid that allows users to browse months and years and select individual dates. Provides a complete composition system with Calendar, CalendarNav, CalendarGrid, CalendarGridHeader, CalendarGridBody, CalendarHeaderCell, CalendarCell, CalendarCellTrigger, and related primitives. Supports navigation chevrons, year/month pagination, and selected-date highlighting. Built on Corvu Calendar with full ARIA grid semantics and keyboard arrow navigation.",
   "category": "components",
   "useCases": [
-    "Use Calendar in components scenarios."
+    "Inline date selection in booking and reservation forms",
+    "Birthdate or anniversary pickers in user-profile edit flows",
+    "Date-range visualization in analytics dashboards showing activity heatmaps",
+    "Scheduling tools where users click a calendar cell to create or edit an event"
   ],
-  "usage": "import { /* exported members */ } from \"shadcn-solid-components/components/calendar\"",
+  "usage": "import { Calendar, CalendarNav, CalendarGrid, CalendarGridHeader, CalendarGridBody, CalendarHeaderCell, CalendarCell, CalendarCellTrigger } from \"shadcn-solid-components/components/calendar\""
+,
   "tags": [
     "components",
     "calendar",

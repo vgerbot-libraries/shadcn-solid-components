@@ -1,12 +1,16 @@
 {
   "name": "components/table",
   "displayName": "Table",
-  "description": "Table component for SolidJS UI composition.",
+  "description": "A semantic HTML table wrapper with styled rows, headers, and cells designed for data-dense layouts. Provides a complete composition system with Table, TableHeader, TableBody, TableFooter, TableRow, TableHead, TableCell, and TableCaption. Includes hover states on rows, selected-row highlighting, checkbox alignment helpers, and responsive overflow scrolling. Uses native table elements under the hood for maximum accessibility.",
   "category": "components",
   "useCases": [
-    "Use Table in components scenarios."
+    "Data tables listing users, orders, or transactions with sortable column headers",
+    "Invoice line-item breakdowns using TableHeader, TableBody, and TableFooter for totals",
+    "Comparison matrices (pricing, features) with highlighted rows and caption descriptions",
+    "Admin audit logs with selectable rows for bulk export or deletion actions"
   ],
-  "usage": "import { /* exported members */ } from \"shadcn-solid-components/components/table\"",
+  "usage": "import { Table, TableHeader, TableBody, TableFooter, TableRow, TableHead, TableCell, TableCaption } from \"shadcn-solid-components/components/table\""
+,
   "tags": [
     "components",
     "table",

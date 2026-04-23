@@ -1,12 +1,16 @@
 {
   "name": "components/radio-group",
   "displayName": "Radio Group",
-  "description": "Radio Group component for SolidJS UI composition.",
+  "description": "A set of mutually exclusive options where only one item can be selected at a time. Provides a complete composition system with RadioGroup, RadioGroupItems, RadioGroupItem, RadioGroupItemInput, RadioGroupItemControl, RadioGroupItemIndicator, RadioGroupLabel, RadioGroupItemLabel, RadioGroupDescription, and RadioGroupErrorMessage. Built on Kobalte Radio Group with full keyboard navigation, invalid-state styling, and ARIA support.",
   "category": "components",
   "useCases": [
-    "Use Radio Group in components scenarios."
+    "Payment method selection (Credit Card, PayPal, Bank Transfer) in checkout flows",
+    "Shipping speed options (Standard, Express, Overnight) on order review pages",
+    "Theme preference selectors (Light, Dark, System) in user settings",
+    "Single-answer survey questions where only one choice is allowed per question"
   ],
-  "usage": "import { /* exported members */ } from \"shadcn-solid-components/components/radio-group\"",
+  "usage": "import { RadioGroup, RadioGroupItems, RadioGroupItem, RadioGroupItemControl, RadioGroupItemIndicator, RadioGroupLabel, RadioGroupItemLabel, RadioGroupDescription, RadioGroupErrorMessage } from \"shadcn-solid-components/components/radio-group\""
+,
   "tags": [
     "components",
     "radio-group",

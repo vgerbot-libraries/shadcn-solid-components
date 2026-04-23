@@ -1,12 +1,16 @@
 {
   "name": "hoc/activity-feed",
   "displayName": "Activity Feed",
-  "description": "Activity Feed HOC for SolidJS UI composition.",
+  "description": "A composite activity-feed component that renders a chronological list of user actions with avatar, action text, target links, timestamps, date grouping, and optional meta content. Consumes the ConfigProvider locale context for i18n labels and is composed of Button and Badge primitives. Supports grouped date headers, fallback initials, and rich JSX action/target content.",
   "category": "hoc",
   "useCases": [
-    "Use Activity Feed in hoc scenarios."
+    "Project-management audit logs showing who created, edited, or deleted tasks and when",
+    "Social-media notification feeds displaying likes, comments, and follows with user avatars",
+    "E-commerce order-activity timelines tracking placed, shipped, and delivered events",
+    "CRM contact-history panels summarizing calls, emails, and meetings per customer record"
   ],
-  "usage": "import { /* exported members */ } from \"shadcn-solid-components/hoc/activity-feed\"",
+  "usage": "import { ActivityFeed, type ActivityFeedProps, type ActivityItem, type ActivityUser } from \"shadcn-solid-components/hoc/activity-feed\""
+,
   "tags": [
     "hoc",
     "activity-feed",

@@ -1,12 +1,16 @@
 {
   "name": "hoc/data-table-toolbar",
   "displayName": "Data Table Toolbar",
-  "description": "Data Table Toolbar HOC for SolidJS UI composition.",
+  "description": "A toolbar HOC designed to sit above a DataTable, providing search input, column-filter chips, view-options dropdown (column visibility), and global action buttons (export, add, delete). Integrates directly with the Tanstack Table instance for reactive state synchronization. Composed of Input, Button, DropdownMenu, and Select primitives with i18n label support.",
   "category": "hoc",
   "useCases": [
-    "Use Data Table Toolbar in hoc scenarios."
+    "Search-and-filter bars above user or product grids with text search and status filter chips",
+    "Export-toolbars combining CSV download, print view, and column-visibility toggles",
+    "Bulk-action toolbars that enable/disable based on current row-selection state",
+    "Analytics log viewers with faceted filters for severity, source, and date-range"
   ],
-  "usage": "import { /* exported members */ } from \"shadcn-solid-components/hoc/data-table-toolbar\"",
+  "usage": "import { DataTableToolbar, type DataTableToolbarProps } from \"shadcn-solid-components/hoc/data-table-toolbar\""
+,
   "tags": [
     "hoc",
     "data-table-toolbar",

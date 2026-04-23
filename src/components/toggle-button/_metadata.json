@@ -1,12 +1,16 @@
 {
   "name": "components/toggle-button",
   "displayName": "Toggle Button",
-  "description": "Toggle Button component for SolidJS UI composition.",
+  "description": "A button that can be pressed to toggle an on/off state, commonly used in toolbars and formatting controls. Provides default and outline variants with sm/default/lg sizes, and exposes the underlying toggleButtonVariants cva definition for reuse. Built on Kobalte ToggleButton with data-[pressed] state styling and full keyboard operability.",
   "category": "components",
   "useCases": [
-    "Use Toggle Button in components scenarios."
+    "Rich-text editor toolbars for Bold, Italic, Underline, and Strikethrough toggles",
+    "View-mode switches such as Grid vs List in file managers or galleries",
+    "Annotation tools in drawing apps (brush, eraser, selection) that stay active while pressed",
+    "Favorite or bookmark buttons that visually reflect an active/inactive state"
   ],
-  "usage": "import { /* exported members */ } from \"shadcn-solid-components/components/toggle-button\"",
+  "usage": "import { ToggleButton, toggleButtonVariants } from \"shadcn-solid-components/components/toggle-button\""
+,
   "tags": [
     "components",
     "toggle-button",

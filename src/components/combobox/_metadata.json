@@ -1,12 +1,16 @@
 {
   "name": "components/combobox",
   "displayName": "Combobox",
-  "description": "Combobox component for SolidJS UI composition.",
+  "description": "An autocomplete input that combines a text field with a dropdown list of filterable options. Provides a complete composition system with Combobox, ComboboxInput, ComboboxTrigger, ComboboxContent, ComboboxListbox, ComboboxItem, ComboboxItemLabel, ComboboxItemIndicator, ComboboxSection, ComboboxHiddenSelect, and ComboboxPortal. Supports type-ahead filtering, multi-selection, grouped sections, and full keyboard navigation. Built on Kobalte Combobox with ARIA combobox semantics.",
   "category": "components",
   "useCases": [
-    "Use Combobox in components scenarios."
+    "Country or city selectors with hundreds of options and real-time search filtering",
+    "User-mention inputs in comments or messages that autocomplete from a user directory",
+    "Tag or category creation fields that allow both selection from existing and free-text entry",
+    "Product-code lookups in inventory management where typing a SKU narrows the dropdown"
   ],
-  "usage": "import { /* exported members */ } from \"shadcn-solid-components/components/combobox\"",
+  "usage": "import { Combobox, ComboboxInput, ComboboxTrigger, ComboboxContent, ComboboxListbox, ComboboxItem, ComboboxItemLabel, ComboboxItemIndicator, ComboboxSection, ComboboxHiddenSelect, ComboboxPortal } from \"shadcn-solid-components/components/combobox\""
+,
   "tags": [
     "components",
     "combobox",

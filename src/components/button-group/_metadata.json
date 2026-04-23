@@ -1,12 +1,16 @@
 {
   "name": "components/button-group",
   "displayName": "Button Group",
-  "description": "Button Group component for SolidJS UI composition.",
+  "description": "A container that groups related buttons or inputs together with shared borders and rounded corners, eliminating double borders between adjacent items. Supports horizontal and vertical orientations and automatically coordinates focus rings and separator styling. Composed of ButtonGroup, ButtonText, and ButtonSeparator primitives.",
   "category": "components",
   "useCases": [
-    "Use Button Group in components scenarios."
+    "Pagination controls grouped as Previous, page numbers, and Next buttons",
+    "Formatting toolbars in rich-text editors to group Bold, Italic, and Underline toggles",
+    "Split buttons where a primary action sits next to a dropdown trigger",
+    "Input-button combinations such as a search field with a submit button"
   ],
-  "usage": "import { /* exported members */ } from \"shadcn-solid-components/components/button-group\"",
+  "usage": "import { ButtonGroup, ButtonText, ButtonSeparator } from \"shadcn-solid-components/components/button-group\""
+,
   "tags": [
     "components",
     "button-group",

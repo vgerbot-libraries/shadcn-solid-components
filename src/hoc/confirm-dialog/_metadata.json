@@ -1,12 +1,16 @@
 {
   "name": "hoc/confirm-dialog",
   "displayName": "Confirm Dialog",
-  "description": "Confirm Dialog HOC for SolidJS UI composition.",
+  "description": "A reusable confirmation-dialog HOC built on top of AlertDialog that standardizes title, description, confirm/cancel button labels, and destructive-state styling. Exposes an imperative show/hide API (or declarative open prop) so any component can trigger a confirmation without duplicating modal markup. Composed of AlertDialog primitives, Button variants, and locale-aware labels via ConfigProvider.",
   "category": "hoc",
   "useCases": [
-    "Use Confirm Dialog in hoc scenarios."
+    "Delete confirmations before removing a user, file, or database record from a list",
+    "Publish confirmations in CMS workflows that warn about irreversible public visibility",
+    "Bulk-action confirmations when a user selects multiple items and clicks 'Archive' or 'Delete'",
+    "Unsaved-changes prompts when navigating away from a form with dirty state"
   ],
-  "usage": "import { /* exported members */ } from \"shadcn-solid-components/hoc/confirm-dialog\"",
+  "usage": "import { ConfirmDialog, useConfirmDialog } from \"shadcn-solid-components/hoc/confirm-dialog\""
+,
   "tags": [
     "hoc",
     "confirm-dialog",

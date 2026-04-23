@@ -1,12 +1,16 @@
 {
   "name": "components/switch",
   "displayName": "Switch",
-  "description": "Switch component for SolidJS UI composition.",
+  "description": "A toggle control that represents an on/off state with a sliding thumb animation. Provides a complete composition system with Switch, SwitchControl, SwitchThumb, SwitchInput, SwitchLabel, SwitchErrorMessage, and SwitchDescription. Built on Kobalte Switch with full keyboard operability (Space to toggle), invalid and disabled state styling, and ARIA checked/pressed semantics.",
   "category": "components",
   "useCases": [
-    "Use Switch in components scenarios."
+    "Feature toggles in settings panels (e.g., Dark Mode, Notifications, Auto-save)",
+    "Privacy controls for enabling/disabling tracking, cookies, or location services",
+    "Billing plan toggles such as Monthly vs Annual subscription switching",
+    "Inline row actions in tables or lists to quickly activate or deactivate records"
   ],
-  "usage": "import { /* exported members */ } from \"shadcn-solid-components/components/switch\"",
+  "usage": "import { Switch, SwitchControl, SwitchThumb, SwitchInput, SwitchLabel, SwitchErrorMessage, SwitchDescription } from \"shadcn-solid-components/components/switch\""
+,
   "tags": [
     "components",
     "switch",
