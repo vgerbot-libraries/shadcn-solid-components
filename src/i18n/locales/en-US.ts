@@ -18,7 +18,7 @@ import { enUS as OTPField } from 'shadcn-solid-components/hoc/otp-field/locales/
 import { enUS as SettingsLayout } from 'shadcn-solid-components/hoc/settings-layout/locales/en-US'
 import { enUS as Stepper } from 'shadcn-solid-components/hoc/stepper/locales/en-US'
 import { enUS as TagInput } from 'shadcn-solid-components/hoc/tag-input/locales/en-US'
-import { enUS as Timeline } from 'shadcn-solid-components/hoc/timeline/locales/en-US'
+import { enUS as Timeline } from 'shadcn-solid-components/components/timeline/locales/en-US'
 import { enUS as TransferList } from 'shadcn-solid-components/hoc/transfer-list/locales/en-US'
 import { enUS as UserMenu } from 'shadcn-solid-components/hoc/user-menu/locales/en-US'
 import type { Locale } from '../types'

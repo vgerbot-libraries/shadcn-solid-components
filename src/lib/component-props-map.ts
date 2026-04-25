@@ -4,6 +4,7 @@ import { Toaster as Sonner } from 'somoto'
 import type { AccordionProps } from '../components/accordion'
 import type { AlertProps } from '../components/alert'
 import type { AlertDialogProps } from '../components/alert-dialog'
+import type { AppleDockProps } from '../components/apple-dock'
 import type { BadgeProps } from '../components/badge'
 import type { BreadcrumbsProps } from '../components/breadcrumbs'
 import type { ButtonProps } from '../components/button'
@@ -14,9 +15,9 @@ import type { CarouselProps } from '../components/carousel'
 import type { ChartContainerProps } from '../components/chart'
 import type { CheckboxProps } from '../components/checkbox'
 import type { CollapsibleProps } from '../components/collapsible'
+import type { ColorPickerProps } from '../components/color-picker'
 import type { ComboboxProps } from '../components/combobox'
 import type { CommandProps } from '../components/command'
-import type { ColorPickerProps } from '../components/color-picker'
 import type { ContextMenuProps } from '../components/context-menu'
 import type { DialogProps } from '../components/dialog'
 import type { DrawerProps } from '../components/drawer'
@@ -45,6 +46,7 @@ import type { SwitchProps } from '../components/switch'
 import type { TableProps } from '../components/table'
 import type { TabsProps } from '../components/tabs'
 import type { TextFieldProps } from '../components/text-field'
+import type { TimelineProps } from '../components/timeline'
 import type { ToggleButtonProps } from '../components/toggle-button'
 import type { ToggleGroupProps } from '../components/toggle-group'
 import type { TooltipProps } from '../components/tooltip'
@@ -58,6 +60,7 @@ export interface ComponentPropsMap {
   [ComponentName.Accordion]: AccordionProps
   [ComponentName.Alert]: AlertProps
   [ComponentName.AlertDialog]: AlertDialogProps
+  [ComponentName.AppleDock]: AppleDockProps
   [ComponentName.Badge]: BadgeProps
   [ComponentName.Breadcrumbs]: BreadcrumbsProps
   [ComponentName.Button]: ButtonProps
@@ -103,6 +106,7 @@ export interface ComponentPropsMap {
   [ComponentName.Tabs]: TabsProps
   [ComponentName.TextField]: TextFieldProps
   [ComponentName.Theme]: ComponentProps<'div'>
+  [ComponentName.Timeline]: TimelineProps
   [ComponentName.ToggleButton]: ToggleButtonProps
   [ComponentName.ToggleGroup]: ToggleGroupProps
   [ComponentName.Tooltip]: TooltipProps

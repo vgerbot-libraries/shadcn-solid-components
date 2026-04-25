@@ -18,7 +18,7 @@ import { zhCN as OTPField } from 'shadcn-solid-components/hoc/otp-field/locales/
 import { zhCN as SettingsLayout } from 'shadcn-solid-components/hoc/settings-layout/locales/zh-CN'
 import { zhCN as Stepper } from 'shadcn-solid-components/hoc/stepper/locales/zh-CN'
 import { zhCN as TagInput } from 'shadcn-solid-components/hoc/tag-input/locales/zh-CN'
-import { zhCN as Timeline } from 'shadcn-solid-components/hoc/timeline/locales/zh-CN'
+import { zhCN as Timeline } from 'shadcn-solid-components/components/timeline/locales/zh-CN'
 import { zhCN as TransferList } from 'shadcn-solid-components/hoc/transfer-list/locales/zh-CN'
 import { zhCN as UserMenu } from 'shadcn-solid-components/hoc/user-menu/locales/zh-CN'
 import type { Locale } from '../types'

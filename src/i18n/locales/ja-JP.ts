@@ -18,7 +18,7 @@ import { jaJP as OTPField } from 'shadcn-solid-components/hoc/otp-field/locales/
 import { jaJP as SettingsLayout } from 'shadcn-solid-components/hoc/settings-layout/locales/ja-JP'
 import { jaJP as Stepper } from 'shadcn-solid-components/hoc/stepper/locales/ja-JP'
 import { jaJP as TagInput } from 'shadcn-solid-components/hoc/tag-input/locales/ja-JP'
-import { jaJP as Timeline } from 'shadcn-solid-components/hoc/timeline/locales/ja-JP'
+import { jaJP as Timeline } from 'shadcn-solid-components/components/timeline/locales/ja-JP'
 import { jaJP as TransferList } from 'shadcn-solid-components/hoc/transfer-list/locales/ja-JP'
 import { jaJP as UserMenu } from 'shadcn-solid-components/hoc/user-menu/locales/ja-JP'
 import type { Locale } from '../types'

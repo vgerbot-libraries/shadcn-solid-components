@@ -24,6 +24,7 @@ import {
   type CommandPaletteGroup,
 } from 'shadcn-solid-components/hoc/command-palette'
 import { SidebarMenuTreeItem } from 'shadcn-solid-components/hoc/sidebar-menu-tree'
+import { AppDock } from './dock'
 import { GetHelpIcon, HeaderIcon, SettingsIcon } from './components/icons'
 
 interface AppProps {
@@ -353,6 +354,7 @@ const App: Component<AppProps> = props => {
           </Suspense>
         }
       />
+      <AppDock />
     </>
   )
 }

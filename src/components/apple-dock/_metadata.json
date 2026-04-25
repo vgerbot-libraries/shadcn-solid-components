@@ -1,0 +1,14 @@
+{
+  "name": "components/apple-dock",
+  "displayName": "AppleDock",
+  "description": "A macOS-style dock container with proximity-based icon magnification for app launcher and quick action interfaces.",
+  "category": "components",
+  "useCases": [
+    "Application launcher strips in dashboard layouts",
+    "Quick action docks in editor and productivity workspaces",
+    "Floating navigation rows with icon-focused interactions",
+    "Interactive icon trays for media or utility controls"
+  ],
+  "usage": "import { AppleDock, AppleDockIcon } from \"shadcn-solid-components/components/apple-dock\"",
+  "tags": ["components", "apple-dock", "dock", "solidjs", "ui"]
+}
