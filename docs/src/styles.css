@@ -2,6 +2,10 @@
 @source "../../src";
 @source "./";
 
+@theme {
+  --container-9xl: 96rem;
+}
+
 
 @layer base {
   html {

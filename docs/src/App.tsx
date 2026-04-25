@@ -81,7 +81,7 @@ const HomePage = () => {
   })
 
   return (
-    <div class="mx-auto flex w-full max-w-7xl flex-1 flex-col px-6 py-16 sm:px-8 lg:px-12 text-center items-center justify-center">
+    <div class="mx-auto flex w-full max-w-9xl flex-1 flex-col px-6 py-16 sm:px-8 lg:px-12 text-center items-center justify-center">
       <div class="flex flex-col items-center gap-4">
         {/* <a href="https://github.com/hngngn/shadcn-solid" target="_blank" rel="noreferrer" class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80">
           <span class="mr-2">🎉</span>
@@ -205,7 +205,7 @@ const DocsSidebar = () => {
   )
 
   return (
-    <aside class="border-border bg-background/80 w-full shrink-0 border-b backdrop-blur lg:fixed lg:top-16 lg:left-[max(0px,calc((100vw-80rem)/2))] lg:h-[calc(100vh-4rem)] lg:w-72 lg:border-b-0 lg:border-r">
+    <aside class="border-border bg-background/80 w-full shrink-0 border-b backdrop-blur lg:fixed lg:top-16 lg:left-[max(0px,calc((100vw-96rem)/2))] lg:h-[calc(100vh-4rem)] lg:w-72 lg:border-b-0 lg:border-r">
       <div class="flex h-full flex-col">
         <div class="px-6 py-6">
           <div class="space-y-3">
@@ -406,7 +406,7 @@ const DocsPage = () => {
 
 const DocsLayout = (props: { children?: import("solid-js").JSX.Element }) => {
   return (
-    <div class="mx-auto flex w-full max-w-7xl flex-1 flex-col lg:pl-72">
+    <div class="mx-auto flex w-full max-w-9xl flex-1 flex-col lg:pl-72">
       <DocsSidebar />
       <div class="min-w-0 flex-1">{props.children}</div>
     </div>
@@ -417,7 +417,7 @@ const AppShell = (props: { children?: import("solid-js").JSX.Element }) => {
   return (
     <div class="bg-background text-foreground flex min-h-screen flex-col">
       <header class="border-border bg-background/80 sticky top-0 z-40 border-b backdrop-blur">
-        <div class="mx-auto flex h-16 w-full max-w-7xl items-center justify-between px-6 sm:px-8 lg:px-12">
+        <div class="mx-auto flex h-16 w-full max-w-9xl items-center justify-between px-6 sm:px-8 lg:px-12">
           <div class="flex items-center gap-6">
             <A href="/" class="text-foreground text-base font-semibold tracking-tight">
               shadcn-solid-components
@@ -436,7 +436,7 @@ const AppShell = (props: { children?: import("solid-js").JSX.Element }) => {
       </header>
       <main class="flex flex-1">{props.children}</main>
       <footer class="border-border border-t">
-        <div class="text-muted-foreground mx-auto flex w-full max-w-7xl items-center justify-between gap-4 px-6 py-4 text-sm sm:px-8 lg:px-12">
+        <div class="text-muted-foreground mx-auto flex w-full max-w-9xl items-center justify-between gap-4 px-6 py-4 text-sm sm:px-8 lg:px-12">
           <span>Docs infrastructure ready for incremental MDX content.</span>
           <Button
             as="a"
