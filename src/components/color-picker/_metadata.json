@@ -1,0 +1,14 @@
+{
+  "name": "components/color-picker",
+  "displayName": "Color Picker 2",
+  "description": "A redesigned color picker component with decomposed sub-components: ColorPanel (saturation-value 2D board), HueSlider, AlphaSlider, ColorInput (editable HEX/RGB/HSL with format switching), ColorPreview (old/new comparison), and ColorSwatches (preset palette). Supports inline and popover modes, alpha channel, and EyeDropper API.",
+  "category": "components",
+  "useCases": [
+    "Theme customization UIs with editable color inputs and preset swatches",
+    "Design tools requiring precise color control with old/new preview comparison",
+    "Form fields needing compact popover color selection with alpha support",
+    "Applications needing format-agnostic color input (HEX, RGB, HSL) with live switching"
+  ],
+  "usage": "import { ColorPicker } from \"shadcn-solid-components/components/color-picker\"",
+  "tags": ["components", "color-picker", "color-picker", "solidjs", "ui"]
+}

@@ -16,6 +16,7 @@ import type { CheckboxProps } from '../components/checkbox'
 import type { CollapsibleProps } from '../components/collapsible'
 import type { ComboboxProps } from '../components/combobox'
 import type { CommandProps } from '../components/command'
+import type { ColorPickerProps } from '../components/color-picker'
 import type { ContextMenuProps } from '../components/context-menu'
 import type { DialogProps } from '../components/dialog'
 import type { DrawerProps } from '../components/drawer'
@@ -69,6 +70,7 @@ export interface ComponentPropsMap {
   [ComponentName.Collapsible]: CollapsibleProps
   [ComponentName.Combobox]: ComboboxProps<any>
   [ComponentName.Command]: CommandProps
+  [ComponentName.ColorPicker]: ColorPickerProps
   [ComponentName.ContextMenu]: ContextMenuProps
   [ComponentName.DatePicker]: ComponentProps<'div'>
   [ComponentName.Dialog]: DialogProps

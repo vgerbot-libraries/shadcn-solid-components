@@ -1,0 +1,150 @@
+---
+title: Color Picker
+description: Color selection widget with saturation-value board, hue and alpha sliders, editable input, and swatches — in inline or popover mode.
+section: Components
+toc: true
+---
+
+import ColorPickerDemo from "../../../examples/color-picker-demo"
+import ColorPickerPopoverDemo from "../../../examples/color-picker-popover-demo"
+import ColorPickerNoAlphaDemo from "../../../examples/color-picker-no-alpha-demo"
+
+ColorPicker is a self-contained color selection widget. It renders a saturation-value 2D board, a hue slider, an optional alpha slider, a color preview bar, editable color input with format switching (HEX/RGB/HSL), preset swatches, and an eyedropper button. Use it for theme customization, design tools, or any form field that needs color input.
+
+The component supports two layout modes: **inline** (the panel renders directly in the DOM) and **popover** (the panel is wrapped in a [Popover](/docs/components/popover) triggered by a color swatch button).
+
+## Usage
+
+```tsx
+import { ColorPicker } from "shadcn-solid-components/components/color-picker"
+```
+
+Render `ColorPicker` with a controlled `value` and `onValueChange` callback, or pass `defaultValue` for uncontrolled usage. Set `mode` to `"inline"` (default) or `"popover"` depending on the layout.
+
+## Exports
+
+- `ColorPicker`
+- Types: `ColorPickerProps`, `ColorPickerMode`, `ColorFormat`
+
+## Examples
+
+### Inline
+
+The default mode renders the full color panel inline in the page.
+
+<ComponentPreview name="Color Picker Demo">
+  <div class="mb-4 w-full">
+    <ColorPickerDemo />
+  </div>
+
+  ```tsx
+  import { createSignal } from "solid-js"
+  import { ColorPicker } from "shadcn-solid-components/components/color-picker"
+
+  const ColorPickerDemo = () => {
+    const [color, setColor] = createSignal("#4A86E8")
+
+    return (
+      <ColorPicker
+        value={color()}
+        onValueChange={setColor}
+        mode="inline"
+      />
+    )
+  }
+
+  export default ColorPickerDemo
+  ```
+</ComponentPreview>
+
+### Popover
+
+Set `mode="popover"` to wrap the panel in a [Popover](/docs/components/popover). The trigger displays a small color swatch and the current value string. When the popover opens, the previous color is shown alongside the new selection for comparison.
+
+<ComponentPreview name="Color Picker Popover Demo">
+  <div class="mb-4 w-full">
+    <ColorPickerPopoverDemo />
+  </div>
+
+  ```tsx
+  import { createSignal } from "solid-js"
+  import { ColorPicker } from "shadcn-solid-components/components/color-picker"
+
+  const ColorPickerPopoverDemo = () => {
+    const [color, setColor] = createSignal("#FF9900")
+
+    return (
+      <ColorPicker
+        value={color()}
+        onValueChange={setColor}
+        mode="popover"
+        showAlpha
+      />
+    )
+  }
+
+  export default ColorPickerPopoverDemo
+  ```
+</ComponentPreview>
+
+### Without alpha
+
+Pass `showAlpha={false}` to hide the alpha slider and omit the alpha channel from the output string. The color value is always fully opaque in this mode.
+
+<ComponentPreview name="Color Picker No Alpha Demo">
+  <div class="mb-4 w-full">
+    <ColorPickerNoAlphaDemo />
+  </div>
+
+  ```tsx
+  import { createSignal } from "solid-js"
+  import { ColorPicker } from "shadcn-solid-components/components/color-picker"
+
+  const ColorPickerNoAlphaDemo = () => {
+    const [color, setColor] = createSignal("#00FF00")
+
+    return (
+      <ColorPicker
+        value={color()}
+        onValueChange={setColor}
+        mode="inline"
+        showAlpha={false}
+      />
+    )
+  }
+
+  export default ColorPickerNoAlphaDemo
+  ```
+</ComponentPreview>
+
+## API
+
+### `ColorPickerProps`
+
+Extends `div` props (omitting `onChange`). Notable fields:
+
+- `value` — controlled color string (HEX, RGB, or HSL format)
+- `defaultValue` — initial color when uncontrolled (default `"#000000"`)
+- `onValueChange` — called with the new color string on every change
+- `format` — controlled color format: `"hex"` | `"rgb"` | `"hsl"` (default `"hex"`)
+- `onFormatChange` — called when the user switches format via the input area buttons
+- `mode` — `"inline"` | `"popover"` (default `"inline"`)
+- `showAlpha` — show the alpha slider and include alpha in the output (default `true`)
+- `swatches` — array of preset color strings, or `null` to hide swatches entirely (default built-in 24-color palette)
+- `disabled` — disable all interactive elements
+
+### `ColorFormat`
+
+`"hex"` | `"rgb"` | `"hsl"` — the format used for the editable color input and the `onValueChange` output string.
+
+### Output string behavior
+
+The string emitted by `onValueChange` depends on the active `format` and `showAlpha`:
+
+- **HEX** — `#RRGGBB` when alpha is 1 or `showAlpha` is false; `#RRGGBBAA` when alpha < 1
+- **RGB** — `rgb(r, g, b)` when alpha is 1 or `showAlpha` is false; `rgba(r, g, b, a)` when alpha < 1
+- **HSL** — `hsl(h, s%, l%)` when alpha is 1 or `showAlpha` is false; `hsla(h, s%, l%, a)` when alpha < 1
+
+### Eyedropper
+
+The eyedropper button uses the browser [EyeDropper API](https://developer.mozilla.org/en-US/docs/Web/API/EyeDropper_API). It is only available in Chromium-based browsers. The button is automatically disabled when the API is not present.

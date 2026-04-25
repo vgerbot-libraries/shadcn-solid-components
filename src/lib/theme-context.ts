@@ -23,6 +23,7 @@ export const ComponentName = {
   Collapsible: 'Collapsible',
   Combobox: 'Combobox',
   Command: 'Command',
+  ColorPicker: 'ColorPicker',
   ContextMenu: 'ContextMenu',
   DatePicker: 'DatePicker',
   Dialog: 'Dialog',

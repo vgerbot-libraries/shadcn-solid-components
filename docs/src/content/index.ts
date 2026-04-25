@@ -584,6 +584,74 @@ export const Contents: Record<string, DocEntry> = {
     }
 ]
   },
+  "components/color-picker": {
+    component: lazy(() => import("@docs/content/docs/components/color-picker.mdx")),
+    data: {
+    "title": "Color Picker",
+    "description": "Color selection widget with saturation-value board, hue and alpha sliders, editable input, and swatches — in inline or popover mode.",
+    "navTitle": "Color Picker",
+    "section": "Components",
+    "order": 0,
+    "toc": true
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "exports",
+        "text": "Exports"
+    },
+    {
+        "depth": 2,
+        "slug": "examples",
+        "text": "Examples"
+    },
+    {
+        "depth": 3,
+        "slug": "inline",
+        "text": "Inline"
+    },
+    {
+        "depth": 3,
+        "slug": "popover",
+        "text": "Popover"
+    },
+    {
+        "depth": 3,
+        "slug": "without-alpha",
+        "text": "Without alpha"
+    },
+    {
+        "depth": 2,
+        "slug": "api",
+        "text": "API"
+    },
+    {
+        "depth": 3,
+        "slug": "colorpickerprops",
+        "text": "ColorPickerProps"
+    },
+    {
+        "depth": 3,
+        "slug": "colorformat",
+        "text": "ColorFormat"
+    },
+    {
+        "depth": 3,
+        "slug": "output-string-behavior",
+        "text": "Output string behavior"
+    },
+    {
+        "depth": 3,
+        "slug": "eyedropper",
+        "text": "Eyedropper"
+    }
+]
+  },
   "components/combobox": {
     component: lazy(() => import("@docs/content/docs/components/combobox.mdx")),
     data: {
@@ -4365,6 +4433,11 @@ export const docsNavigation: DocsNavSection[] = [
         "title": "Collapsible",
         "href": "/docs/components/collapsible",
         "description": "Show or hide content with an animated region."
+      },
+      {
+        "title": "Color Picker",
+        "href": "/docs/components/color-picker",
+        "description": "Color selection widget with saturation-value board, hue and alpha sliders, editable input, and swatches — in inline or popover mode."
       },
       {
         "title": "Combobox",

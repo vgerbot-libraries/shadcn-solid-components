@@ -1,5 +1,6 @@
 @import "shadcn-solid-components/src/themes/default.preset.css";
-
+@source "../../src";
+@source "./";
 
 
 @layer base {

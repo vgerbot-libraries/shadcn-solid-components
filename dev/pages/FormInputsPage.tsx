@@ -29,6 +29,7 @@ import {
   ComboboxItemLabel,
   ComboboxTrigger,
 } from 'shadcn-solid-components/components/combobox'
+import { ColorPicker } from 'shadcn-solid-components/components/color-picker'
 import {
   DatePicker,
   DatePickerContent,
@@ -115,6 +116,8 @@ const fruits = ['Apple', 'Banana', 'Cherry', 'Date', 'Elderberry', 'Fig', 'Grape
 const FormInputsPage: Component = () => {
   const [togglePressed, setTogglePressed] = createSignal(false)
   const [sliderValue, setSliderValue] = createSignal([50])
+  const [inlineColor, setInlineColor] = createSignal('#3B82F6')
+  const [popoverColor, setPopoverColor] = createSignal('rgba(16, 185, 129, 0.75)')
 
   return (
     <PageLayout
@@ -316,6 +319,39 @@ const FormInputsPage: Component = () => {
                 <SliderThumb />
               </SliderTrack>
             </Slider>
+          </CardContent>
+        </Card>
+
+        {/* Color Picker */}
+        <Card>
+          <CardHeader>
+            <CardTitle>Color Picker</CardTitle>
+            <CardDescription>
+              Color selection with board, hue/alpha sliders, editable inputs, and preset swatches.
+            </CardDescription>
+          </CardHeader>
+          <CardContent class="flex flex-col gap-4">
+            <div class="grid gap-2">
+              <span class="text-sm font-medium">Inline mode</span>
+              <ColorPicker
+                mode="inline"
+                value={inlineColor()}
+                onValueChange={setInlineColor}
+                format="hex"
+              />
+              <p class="text-xs text-muted-foreground">Value: {inlineColor()}</p>
+            </div>
+
+            <div class="grid gap-2">
+              <span class="text-sm font-medium">Popover mode</span>
+              <ColorPicker
+                mode="popover"
+                value={popoverColor()}
+                onValueChange={setPopoverColor}
+                format="rgb"
+              />
+              <p class="text-xs text-muted-foreground">Value: {popoverColor()}</p>
+            </div>
           </CardContent>
         </Card>
       </div>

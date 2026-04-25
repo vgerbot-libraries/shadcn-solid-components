@@ -47,6 +47,7 @@
     "./components/chart": "./src/components/chart/index.tsx",
     "./components/checkbox": "./src/components/checkbox/index.tsx",
     "./components/collapsible": "./src/components/collapsible/index.tsx",
+    "./components/color-picker": "./src/components/color-picker/index.tsx",
     "./components/combobox": "./src/components/combobox/index.tsx",
     "./components/command": "./src/components/command/index.tsx",
     "./components/config-provider": "./src/components/config-provider/index.tsx",
