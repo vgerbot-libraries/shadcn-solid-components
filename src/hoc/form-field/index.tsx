@@ -47,7 +47,9 @@ export interface FormFieldProps extends ComponentProps<'div'> {
  * @example
  * ```tsx
  * <FormField label="Email" required error={errors().email}>
- *   <TextFieldInput type="email" placeholder="you@example.com" />
+ *   <TextField>
+ *     <TextFieldInput type="email" placeholder="you@example.com" />
+ *   </TextField>
  * </FormField>
  * ```
  */

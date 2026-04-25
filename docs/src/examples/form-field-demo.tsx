@@ -1,6 +1,6 @@
 import { createSignal } from "solid-js"
 
-import { TextFieldInput } from "shadcn-solid-components/components/text-field"
+import { TextField, TextFieldInput } from "shadcn-solid-components/components/text-field"
 import { FormField } from "shadcn-solid-components/hoc/form-field"
 
 const FormFieldDemo = () => {
@@ -13,15 +13,17 @@ const FormFieldDemo = () => {
       description="Used only for account notifications and never shown publicly."
       error={error()}
     >
-      <TextFieldInput
-        type="email"
-        name="email"
-        autocomplete="email"
-        onBlur={(e: any) => {
-          const value = e.currentTarget.value.trim()
-          setError(value ? undefined : "Please enter an email address")
-        }}
-      />
+      <TextField>
+        <TextFieldInput
+          type="email"
+          name="email"
+          autocomplete="email"
+          onBlur={(e: any) => {
+            const value = e.currentTarget.value.trim()
+            setError(value ? undefined : "Please enter an email address")
+          }}
+        />
+      </TextField>
     </FormField>
   )
 }
