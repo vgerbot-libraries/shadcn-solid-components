@@ -3908,7 +3908,7 @@ export const Contents: Record<string, DocEntry> = {
     component: lazy(() => import("@docs/content/docs/hoc/timeline.mdx")),
     data: {
     "title": "Timeline",
-    "description": "Vertical timeline for activity feeds with optional alternate layout and pending state.",
+    "description": "Vertical timeline for activity feeds with left, right, and alternate layouts, custom icons, color accents, and a pending-tail indicator.",
     "navTitle": "Timeline",
     "section": "HOC",
     "order": 0,
@@ -3927,13 +3927,53 @@ export const Contents: Record<string, DocEntry> = {
     },
     {
         "depth": 3,
-        "slug": "alternate-layout-with-rich-content",
-        "text": "Alternate layout with rich content"
+        "slug": "left-layout",
+        "text": "Left layout"
     },
     {
         "depth": 3,
-        "slug": "pending-tail-state",
-        "text": "Pending tail state"
+        "slug": "right-layout",
+        "text": "Right layout"
+    },
+    {
+        "depth": 3,
+        "slug": "alternate-layout",
+        "text": "Alternate layout"
+    },
+    {
+        "depth": 3,
+        "slug": "pending-tail",
+        "text": "Pending tail"
+    },
+    {
+        "depth": 3,
+        "slug": "custom-icons-and-colors",
+        "text": "Custom icons and colors"
+    },
+    {
+        "depth": 3,
+        "slug": "order-tracking",
+        "text": "Order tracking"
+    },
+    {
+        "depth": 2,
+        "slug": "api",
+        "text": "API"
+    },
+    {
+        "depth": 3,
+        "slug": "timelineprops",
+        "text": "TimelineProps"
+    },
+    {
+        "depth": 3,
+        "slug": "timelineitem",
+        "text": "TimelineItem"
+    },
+    {
+        "depth": 3,
+        "slug": "timelinelocale",
+        "text": "TimelineLocale"
     },
     {
         "depth": 2,
@@ -4792,7 +4832,7 @@ export const docsNavigation: DocsNavSection[] = [
       {
         "title": "Timeline",
         "href": "/docs/hoc/timeline",
-        "description": "Vertical timeline for activity feeds with optional alternate layout and pending state."
+        "description": "Vertical timeline for activity feeds with left, right, and alternate layouts, custom icons, color accents, and a pending-tail indicator."
       },
       {
         "title": "Transfer list",

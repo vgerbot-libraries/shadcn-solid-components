@@ -1,6 +1,6 @@
 import { Timeline } from "shadcn-solid-components/components/timeline"
 
-const TimelineDemo = () => {
+const TimelineAlternateDemo = () => {
   return (
     <Timeline
       mode="alternate"
@@ -52,4 +52,4 @@ const TimelineDemo = () => {
   )
 }
 
-export default TimelineDemo
+export default TimelineAlternateDemo

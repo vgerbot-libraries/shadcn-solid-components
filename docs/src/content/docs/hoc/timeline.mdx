@@ -1,13 +1,26 @@
 ---
 title: Timeline
-description: Vertical timeline for activity feeds with optional alternate layout and pending state.
+description: Vertical timeline for activity feeds with left, right, and alternate layouts, custom icons, color accents, and a pending-tail indicator.
 section: HOC
 toc: true
 ---
 
-import TimelineDemo from "../../../examples/timeline-demo"
+import TimelineLeftDemo from "../../../examples/timeline-left-demo"
+import TimelineRightDemo from "../../../examples/timeline-right-demo"
+import TimelineAlternateDemo from "../../../examples/timeline-alternate-demo"
+import TimelinePendingDemo from "../../../examples/timeline-pending-demo"
+import TimelineCustomIconDemo from "../../../examples/timeline-custom-icon-demo"
+import TimelineOrderTrackingDemo from "../../../examples/timeline-order-tracking-demo"
 
-`Timeline` maps `items` to nodes connected by a vertical line. In `alternate` mode, content switches sides on medium screens and falls back to a single column on small viewports. When `pending` is `true`, a pulsing node and localized pending label (non-`alternate` layouts) are shown after the last item.
+`Timeline` renders a vertical list of events connected by a line. Each event is a **node** (dot or custom icon) paired with a **content block** (title, description, time, and optional rich content).
+
+Three layout modes are available:
+
+- **`left`** (default) — all events aligned to the left.
+- **`right`** — all events aligned to the right.
+- **`alternate`** — events alternate left and right on medium+ screens; collapses to left-aligned on mobile.
+
+When `pending` is `true`, a pulsing node and a localized "Loading…" label are appended after the last item, useful for streams that are still in progress.
 
 ## Usage
 
@@ -25,84 +38,189 @@ import { Timeline } from "shadcn-solid-components/hoc/timeline"
 
 ## Examples
 
-### Alternate layout with rich content
+### Left layout
 
-<ComponentPreview name="Timeline Demo">
-  <div class="mb-4 w-full max-w-2xl">
-    <TimelineDemo />
+The default mode. All events appear on the left side with the timeline line running down the left edge.
+
+<ComponentPreview name="Timeline Left Demo">
+  <div class="mb-4 w-full max-w-lg">
+    <TimelineLeftDemo />
   </div>
   ```tsx
   import { Timeline } from "shadcn-solid-components/hoc/timeline"
 
-  const TimelineDemo = () => {
-    return (
-      <Timeline
-        mode="alternate"
-        items={[
-          {
-            title: "Deployed",
-            time: "09:00",
-            description: "v2.4.0 to production",
-            color: "text-emerald-500",
-            content: (
-              <a class="text-xs text-primary underline" href="/releases">
-                View release
-              </a>
-            ),
-          },
-          {
-            title: "Rollback",
-            time: "11:30",
-            icon: <span class="text-lg">!</span>,
-          },
-        ]}
-      />
-    )
-  }
-
-  export default TimelineDemo
+  <Timeline
+    mode="left"
+    items={[
+      { title: "Meeting scheduled", time: "09:00", description: "Weekly standup with the design team." },
+      { title: "Design review", time: "10:30", description: "Reviewed the new dashboard mockups.", color: "text-blue-500" },
+      { title: "Code merged", time: "14:00", description: "PR #142 merged into main branch.", color: "text-emerald-500" },
+      { title: "Deployed", time: "15:30", description: "v2.4.0 deployed to production.", color: "text-emerald-500" },
+    ]}
+  />
   ```
 </ComponentPreview>
 
-```tsx
-import { Timeline } from "shadcn-solid-components/hoc/timeline"
+### Right layout
 
-<Timeline
-  mode="alternate"
-  items={[
-    {
-      title: "Deployed",
-      time: "09:00",
-      description: "v2.4.0 to production",
-      color: "text-emerald-500",
-      content: <a class="text-xs text-primary underline" href="/releases">View release</a>,
-    },
-    {
-      title: "Rollback",
-      time: "11:30",
-      icon: <span class="text-lg">⚠️</span>,
-    },
-  ]}
-/>
-```
+All events are right-aligned. Useful when the timeline sits on the right side of a two-column layout.
 
-### Pending tail state
+<ComponentPreview name="Timeline Right Demo">
+  <div class="mb-4 w-full max-w-lg">
+    <TimelineRightDemo />
+  </div>
+  ```tsx
+  import { Timeline } from "shadcn-solid-components/hoc/timeline"
 
-```tsx
-import { Timeline } from "shadcn-solid-components/hoc/timeline"
+  <Timeline
+    mode="right"
+    items={[
+      { title: "Application submitted", time: "Jan 15", description: "Your application has been received." },
+      { title: "Under review", time: "Jan 18", description: "The admissions team is reviewing your file.", color: "text-amber-500" },
+      { title: "Interview scheduled", time: "Jan 22", description: "Video interview set for Feb 1.", color: "text-blue-500" },
+      { title: "Accepted", time: "Feb 5", description: "Congratulations! You have been admitted.", color: "text-emerald-500" },
+    ]}
+  />
+  ```
+</ComponentPreview>
 
-<Timeline
-  mode="left"
-  pending
-  items={[{ title: "Queued", description: "Job is waiting." }]}
-/>
-```
+### Alternate layout
+
+Events alternate sides on medium+ screens. Each item can include `content` for rich sub-content like links or cards.
+
+<ComponentPreview name="Timeline Alternate Demo">
+  <div class="mb-4 w-full max-w-2xl">
+    <TimelineAlternateDemo />
+  </div>
+  ```tsx
+  import { Timeline } from "shadcn-solid-components/hoc/timeline"
+
+  <Timeline
+    mode="alternate"
+    items={[
+      { title: "Project created", time: "2024-01-01", description: "Repository initialized.", color: "text-blue-500" },
+      { title: "First milestone", time: "2024-02-15", description: "Core UI components completed.", color: "text-emerald-500",
+        content: <div class="rounded-md border bg-muted/50 p-2 text-xs">12 components shipped</div> },
+      { title: "Bug discovered", time: "2024-03-03", description: "Memory leak in reactive subscriptions.", color: "text-red-500",
+        icon: <span class="text-sm">🐛</span> },
+      { title: "Patch released", time: "2024-03-05", description: "v1.0.1 fixes the subscription leak.", color: "text-amber-500",
+        content: <a class="text-xs text-primary underline" href="/releases">View changelog</a> },
+      { title: "v2.0 launch", time: "2024-06-01", description: "Major release with new design system.", color: "text-emerald-500",
+        icon: <span class="text-sm">🚀</span> },
+    ]}
+  />
+  ```
+</ComponentPreview>
+
+### Pending tail
+
+Set `pending` to append a pulsing indicator after the last item. In non-alternate modes a localized label ("Loading…") is shown beside the dot.
+
+<ComponentPreview name="Timeline Pending Demo">
+  <div class="mb-4 w-full max-w-lg">
+    <TimelinePendingDemo />
+  </div>
+  ```tsx
+  import { Timeline } from "shadcn-solid-components/hoc/timeline"
+
+  <Timeline
+    mode="left"
+    pending
+    items={[
+      { title: "Order placed", time: "10:00", description: "Your order #12345 has been received.", color: "text-blue-500" },
+      { title: "Payment confirmed", time: "10:05", description: "Payment of $49.99 processed.", color: "text-emerald-500" },
+      { title: "Processing", time: "10:30", description: "Warehouse is preparing your items.", color: "text-amber-500" },
+    ]}
+  />
+  ```
+</ComponentPreview>
+
+### Custom icons and colors
+
+Each item can override the default dot with a custom `icon` and apply a Tailwind text-colour class via `color`.
+
+<ComponentPreview name="Timeline Custom Icon Demo">
+  <div class="mb-4 w-full max-w-lg">
+    <TimelineCustomIconDemo />
+  </div>
+  ```tsx
+  import { Timeline } from "shadcn-solid-components/hoc/timeline"
+
+  <Timeline
+    mode="left"
+    items={[
+      { title: "User registered", time: "09:00", description: "New account created via email.", icon: <span class="text-sm">👤</span>, color: "text-blue-500" },
+      { title: "Email verified", time: "09:15", description: "Confirmation link clicked.", icon: <span class="text-sm">✉️</span>, color: "text-emerald-500" },
+      { title: "Profile completed", time: "09:45", description: "Avatar and bio updated.", icon: <span class="text-sm">✅</span>, color: "text-emerald-500" },
+      { title: "First purchase", time: "11:20", description: "Ordered the Starter plan.", icon: <span class="text-sm">💳</span>, color: "text-violet-500",
+        content: <div class="rounded-md border bg-muted/50 p-2 text-xs">$9.99/month · Renews on May 1</div> },
+      { title: "Support ticket", time: "14:00", description: "Opened ticket #678 for billing inquiry.", icon: <span class="text-sm">🎧</span>, color: "text-amber-500" },
+    ]}
+  />
+  ```
+</ComponentPreview>
+
+### Order tracking
+
+A real-world pattern combining `pending`, custom icons, `color`, and `content` for a shipment tracker.
+
+<ComponentPreview name="Timeline Order Tracking Demo">
+  <div class="mb-4 w-full max-w-lg">
+    <TimelineOrderTrackingDemo />
+  </div>
+  ```tsx
+  import { Timeline } from "shadcn-solid-components/hoc/timeline"
+
+  <Timeline
+    mode="left"
+    pending
+    items={[
+      { title: "Order confirmed", time: "Mar 10, 09:00", description: "Order #20240310-001 has been placed.", icon: <span class="text-sm">📦</span>, color: "text-blue-500" },
+      { title: "Picked & packed", time: "Mar 10, 14:30", description: "Items packed at Warehouse B.", icon: <span class="text-sm">📋</span>, color: "text-amber-500" },
+      { title: "Shipped", time: "Mar 11, 08:00", description: "Carrier: FastShip Express. Tracking: FS-884312.", icon: <span class="text-sm">🚚</span>, color: "text-violet-500",
+        content: <a class="text-xs text-primary underline" href="https://example.com/track/FS-884312">Track shipment</a> },
+      { title: "Out for delivery", time: "Mar 12, 07:30", description: "With local courier — arriving today.", icon: <span class="text-sm">🏠</span>, color: "text-emerald-500" },
+    ]}
+  />
+  ```
+</ComponentPreview>
+
+## API
+
+### TimelineProps
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `items` | `TimelineItem[]` | — | The events to display. **Required.** |
+| `mode` | `'left' \| 'right' \| 'alternate'` | `'left'` | Layout mode. |
+| `pending` | `boolean` | `false` | Show a pulsing indicator after the last item. |
+| `locale` | `Partial<TimelineLocale>` | — | Override the pending label text. |
+| `class` | `string` | — | Additional CSS classes on the root element. |
+
+### TimelineItem
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `title` | `string` | — | Primary heading for the event. **Required.** |
+| `description` | `string \| JSX.Element` | — | Secondary text below the title. |
+| `time` | `string` | — | Timestamp or date displayed beside the title. |
+| `icon` | `JSX.Element` | — | Custom node icon. Defaults to a coloured dot. |
+| `color` | `string` | — | Tailwind text-colour class for the node (e.g. `'text-blue-500'`). |
+| `content` | `JSX.Element` | — | Extra content rendered below title/description. |
+
+### TimelineLocale
+
+| Key | Type | Default (`en-US`) |
+| --- | --- | --- |
+| `pending` | `string` | `'Loading...'` |
+
+Override via the `locale` prop or globally through `ConfigProvider`.
 
 ## Exports
 
 | Name | Description |
 | --- | --- |
 | `Timeline` | Timeline component. |
-| `TimelineProps` | `items`, optional `mode` (`'left' \| 'right' \| 'alternate'`), `pending`, `locale`, plus `div` props. |
-| `TimelineItem` | `title`, optional `description` (`string` \| JSX), `time`, `icon`, `color` (Tailwind text class), `content`. |
-| `TimelineMode` | Layout mode union type. |
+| `TimelineProps` | Props type for `Timeline`. |
+| `TimelineItem` | Item descriptor type. |
+| `TimelineMode` | `'left' \| 'right' \| 'alternate'` union type. |

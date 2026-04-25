@@ -1,6 +1,8 @@
 import { useLocale } from 'shadcn-solid-components/components/config-provider'
 import type { TimelineLocale } from 'shadcn-solid-components/i18n/types'
 import { cx } from 'shadcn-solid-components/lib/cva'
+import { ComponentName } from 'shadcn-solid-components/lib/theme-context'
+import { useComponentClass } from 'shadcn-solid-components/lib/theme-helpers'
 import { type ComponentProps, For, type JSX, Show, splitProps } from 'solid-js'
 import { enUS as defaultLocale } from './locales/en-US'
 
@@ -48,13 +50,53 @@ export interface TimelineProps extends ComponentProps<'div'> {
 function TimelineNode(props: { icon?: JSX.Element; color?: string }) {
   return (
     <div
-      class={cx(
-        'relative z-10 flex shrink-0 items-center justify-center rounded-full',
-        props.icon ? 'size-8 bg-background border' : 'size-3 border-2',
-        props.color ?? (props.icon ? 'text-foreground' : 'border-primary bg-primary'),
-      )}
+      data-slot="timeline-node"
+      class="relative z-10 flex size-8 shrink-0 items-center justify-center"
     >
-      <Show when={props.icon}>{props.icon}</Show>
+      <Show
+        when={props.icon}
+        fallback={
+          <div
+            class={cx(
+              'size-3 rounded-full border-2',
+              props.color ?? 'border-primary bg-primary',
+            )}
+          />
+        }
+      >
+        <div
+          class={cx(
+            'flex size-8 items-center justify-center rounded-full border bg-background',
+            props.color ?? 'text-foreground',
+          )}
+        >
+          {props.icon}
+        </div>
+      </Show>
+    </div>
+  )
+}
+
+function TimelineContent(props: { item: TimelineItem; align: 'left' | 'right' }) {
+  return (
+    <div
+      data-slot="timeline-content"
+      class={cx('pb-8', props.align === 'right' && 'text-right')}
+    >
+      <div class="flex flex-col gap-1">
+        <div class={cx('flex items-center gap-2', props.align === 'right' && 'justify-end')}>
+          <span class="text-sm font-semibold">{props.item.title}</span>
+          <Show when={props.item.time}>
+            <span class="text-muted-foreground text-xs">{props.item.time}</span>
+          </Show>
+        </div>
+        <Show when={props.item.description}>
+          <div class="text-muted-foreground text-sm">{props.item.description}</div>
+        </Show>
+      </div>
+      <Show when={props.item.content}>
+        <div class="mt-2">{props.item.content}</div>
+      </Show>
     </div>
   )
 }
@@ -77,8 +119,10 @@ function TimelineNode(props: { icon?: JSX.Element; color?: string }) {
  * />
  * ```
  */
-export function Timeline(props: TimelineProps) {
+export const Timeline = (props: TimelineProps) => {
   const [local, rest] = splitProps(props, ['class', 'items', 'mode', 'pending', 'locale'])
+
+  const componentClass = useComponentClass(ComponentName.Timeline, props)
 
   const globalLocale = useLocale()
   const locale = (): TimelineLocale => ({
@@ -95,7 +139,11 @@ export function Timeline(props: TimelineProps) {
   }
 
   return (
-    <div data-slot="timeline" class={cx('relative w-full', local.class)} {...rest}>
+    <div
+      data-slot="timeline"
+      class={cx('relative w-full', componentClass, local.class)}
+      {...rest}
+    >
       <For each={local.items}>
         {(item, index) => {
           const right = () => isRight(index())
@@ -103,6 +151,7 @@ export function Timeline(props: TimelineProps) {
 
           return (
             <div
+              data-slot="timeline-item"
               class={cx(
                 'group relative flex gap-4',
                 mode() === 'alternate' && 'md:gap-0',
@@ -112,13 +161,12 @@ export function Timeline(props: TimelineProps) {
               {/* Vertical line */}
               <Show when={!isLast() || local.pending}>
                 <div
+                  data-slot="timeline-line"
                   class={cx(
                     'absolute top-0 bottom-0 w-px bg-border',
                     mode() === 'alternate'
                       ? 'left-[calc(50%-0.5px)] hidden md:block'
-                      : item.icon
-                        ? 'left-4'
-                        : 'left-1.5',
+                      : 'left-4',
                   )}
                 />
               </Show>
@@ -175,35 +223,17 @@ export function Timeline(props: TimelineProps) {
 
       {/* Pending indicator */}
       <Show when={local.pending}>
-        <div class={cx('relative flex gap-4', mode() === 'alternate' && 'justify-center')}>
-          <div class="relative flex flex-col items-center">
+        <div
+          data-slot="timeline-pending"
+          class={cx('relative flex gap-4', mode() === 'alternate' && 'justify-center')}
+        >
+          <div class="relative flex size-8 shrink-0 items-center justify-center">
             <div class="size-3 animate-pulse rounded-full bg-muted-foreground" />
           </div>
           <Show when={mode() !== 'alternate'}>
             <span class="text-muted-foreground text-sm">{locale().pending}</span>
           </Show>
         </div>
-      </Show>
-    </div>
-  )
-}
-
-function TimelineContent(props: { item: TimelineItem; align: 'left' | 'right' }) {
-  return (
-    <div class={cx('pb-8', props.align === 'right' && 'text-right')}>
-      <div class="flex flex-col gap-1">
-        <div class={cx('flex items-center gap-2', props.align === 'right' && 'justify-end')}>
-          <span class="text-sm font-semibold">{props.item.title}</span>
-          <Show when={props.item.time}>
-            <span class="text-muted-foreground text-xs">{props.item.time}</span>
-          </Show>
-        </div>
-        <Show when={props.item.description}>
-          <div class="text-muted-foreground text-sm">{props.item.description}</div>
-        </Show>
-      </div>
-      <Show when={props.item.content}>
-        <div class="mt-2">{props.item.content}</div>
       </Show>
     </div>
   )

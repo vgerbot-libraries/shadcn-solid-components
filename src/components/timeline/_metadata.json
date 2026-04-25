@@ -1,0 +1,19 @@
+{
+  "name": "components/timeline",
+  "displayName": "Timeline",
+  "description": "A primitive vertical timeline for rendering chronological events with customizable node icons, color accents, and rich content. Supports left, right, and alternate layout modes, optional pending-tail indicator, and full i18n integration via ConfigProvider.",
+  "category": "components",
+  "useCases": [
+    "Order-tracking pages showing Ordered, Processing, Shipped, and Delivered milestones",
+    "Project-management roadmaps displaying sprint cycles, release dates, and blocker events",
+    "User-account audit logs listing login history, password changes, and permission updates",
+    "Application changelogs or release-note pages with version tags and feature summaries"
+  ],
+  "usage": "import { Timeline } from \"shadcn-solid-components/components/timeline\"",
+  "tags": [
+    "components",
+    "timeline",
+    "solidjs",
+    "ui"
+  ]
+}
