@@ -24,7 +24,7 @@ export const PageLayout: Component<PageLayoutProps> = props => {
         </div>
         {props.actions && <div class="ml-auto flex items-center gap-2">{props.actions}</div>}
       </header>
-      <div class="flex flex-1 flex-col gap-6 p-4 md:p-6">
+      <div class="flex flex-1 flex-col gap-6 p-4 md:p-6 overflow-auto">
         <div>
           <h2 class="text-2xl font-bold tracking-tight">{props.title}</h2>
           {props.description && <p class="text-muted-foreground mt-1">{props.description}</p>}

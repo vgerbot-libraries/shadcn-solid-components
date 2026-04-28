@@ -339,6 +339,7 @@ const App: Component<AppProps> = props => {
           icon: <HeaderIcon />,
           title: 'Shadcn Solid',
         }}
+        class="h-screen"
         menus={menus}
         footer={makeFooterMenus(navigate)}
         body={

@@ -34,8 +34,8 @@ export type AppSidebarHeaderProps = {
 export function AppSidebar(props: AppSidebarProps) {
   const { header } = props
   return (
-    <SidebarProvider>
-      <Sidebar variant="sidebar" {...props.sidebarProps} collapsible="icon">
+    <SidebarProvider class={props.class}>
+      <Sidebar variant="sidebar" collapsible="icon" {...props.sidebarProps}>
         <SidebarHeader>
           <Switch fallback={header as JSX.Element}>
             <Match when={isPresetHeader(header)}>
