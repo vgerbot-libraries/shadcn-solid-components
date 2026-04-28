@@ -1,0 +1,21 @@
+{
+  "name": "components/dual-sidebar",
+  "displayName": "Dual Sidebar",
+  "description": "A standalone two-column navigation primitive: a slim always-visible icon rail on the left plus a wider, offcanvas-collapsible secondary panel that swaps its contents based on the active rail item. Ships fine-grained composable parts (DualSidebarProvider, DualSidebar, DualSidebarRail/Header/Content/Footer/Item, DualSidebarPanel/Header/Content/Footer/Title, DualSidebarSection, DualSidebarTrigger, DualSidebarInset, DualSidebarMenu/Item/Button, useDualSidebar). Implements its own context, panel collapse, mobile Drawer, keyboard shortcut (Ctrl/Cmd+B), and active-section state without depending on the regular Sidebar component.",
+  "category": "components",
+  "useCases": [
+    "Admin or SaaS dashboards needing a permanent icon rail plus a switchable secondary navigation panel (e.g., Dashboard / Apps / Pages)",
+    "Documentation or knowledge-base apps where each top-level area exposes its own sub-tree alongside a persistent app rail",
+    "Productivity tools (mail, project management, dev tools) that mimic the VS Code activity bar + side panel pattern",
+    "Multi-module enterprise apps where switching modules should swap the secondary nav without losing the primary chrome"
+  ],
+  "usage": "import { DualSidebarProvider, DualSidebar, DualSidebarRail, DualSidebarRailHeader, DualSidebarRailContent, DualSidebarRailFooter, DualSidebarRailItem, DualSidebarPanel, DualSidebarPanelHeader, DualSidebarPanelContent, DualSidebarPanelFooter, DualSidebarPanelTitle, DualSidebarSection, DualSidebarTrigger, DualSidebarInset, DualSidebarMenu, DualSidebarMenuItem, DualSidebarMenuButton, useDualSidebar } from \"shadcn-solid-components/components/dual-sidebar\"",
+  "tags": [
+    "components",
+    "dual-sidebar",
+    "navigation",
+    "layout",
+    "solidjs",
+    "ui"
+  ]
+}

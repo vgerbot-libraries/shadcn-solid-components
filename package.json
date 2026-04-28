@@ -57,6 +57,7 @@
     "./components/dialog": "./src/components/dialog/index.tsx",
     "./components/drawer": "./src/components/drawer/index.tsx",
     "./components/dropdown-menu": "./src/components/dropdown-menu/index.tsx",
+    "./components/dual-sidebar": "./src/components/dual-sidebar/index.tsx",
     "./components/file-field": "./src/components/file-field/index.tsx",
     "./components/hover-card": "./src/components/hover-card/index.tsx",
     "./components/icons": "./src/components/icons/index.tsx",

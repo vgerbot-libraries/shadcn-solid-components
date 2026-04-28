@@ -976,6 +976,89 @@ export const Contents: Record<string, DocEntry> = {
     }
 ]
   },
+  "components/dual-sidebar": {
+    component: lazy(() => import("@docs/content/docs/components/dual-sidebar.mdx")),
+    data: {
+    "title": "Dual Sidebar",
+    "description": "Two-column navigation primitive with an always-visible icon rail and a collapsible secondary panel.",
+    "navTitle": "Dual Sidebar",
+    "section": "Components",
+    "order": 0,
+    "toc": true
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "exports",
+        "text": "Exports"
+    },
+    {
+        "depth": 2,
+        "slug": "examples",
+        "text": "Examples"
+    },
+    {
+        "depth": 3,
+        "slug": "default",
+        "text": "Default"
+    },
+    {
+        "depth": 3,
+        "slug": "controlled-active-section",
+        "text": "Controlled active section"
+    },
+    {
+        "depth": 3,
+        "slug": "customizing-widths",
+        "text": "Customizing widths"
+    },
+    {
+        "depth": 3,
+        "slug": "reading-state",
+        "text": "Reading state"
+    },
+    {
+        "depth": 2,
+        "slug": "api",
+        "text": "API"
+    },
+    {
+        "depth": 3,
+        "slug": "dualsidebarproviderprops",
+        "text": "DualSidebarProviderProps"
+    },
+    {
+        "depth": 3,
+        "slug": "dualsidebarcontextvalue",
+        "text": "DualSidebarContextValue"
+    },
+    {
+        "depth": 3,
+        "slug": "dualsidebarrailitemprops",
+        "text": "DualSidebarRailItemProps"
+    },
+    {
+        "depth": 3,
+        "slug": "dualsidebarsectionprops",
+        "text": "DualSidebarSectionProps"
+    },
+    {
+        "depth": 3,
+        "slug": "dualsidebarmenubuttonprops",
+        "text": "DualSidebarMenuButtonProps"
+    },
+    {
+        "depth": 3,
+        "slug": "css-variables",
+        "text": "CSS variables"
+    }
+]
+  },
   "components/file-field": {
     component: lazy(() => import("@docs/content/docs/components/file-field.mdx")),
     data: {
@@ -4518,6 +4601,11 @@ export const docsNavigation: DocsNavSection[] = [
         "title": "Dropdown Menu",
         "href": "/docs/components/dropdown-menu",
         "description": "Floating menu triggered from a control, with items, groups, and submenus."
+      },
+      {
+        "title": "Dual Sidebar",
+        "href": "/docs/components/dual-sidebar",
+        "description": "Two-column navigation primitive with an always-visible icon rail and a collapsible secondary panel."
       },
       {
         "title": "File Field",

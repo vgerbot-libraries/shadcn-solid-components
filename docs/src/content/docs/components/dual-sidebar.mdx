@@ -1,0 +1,289 @@
+---
+title: Dual Sidebar
+description: Two-column navigation primitive with an always-visible icon rail and a collapsible secondary panel.
+section: Components
+toc: true
+---
+
+import DualSidebarDemo from "../../../examples/dual-sidebar-demo"
+
+`DualSidebar` is a standalone composition system that reproduces the popular
+"VS Code activity bar" / shadcn `sidebar-03` pattern: a slim icon rail that
+stays visible at all times, plus a wider secondary panel that swaps its
+contents based on the active rail item and can be collapsed (offcanvas).
+
+It is fully self-contained — it does **not** import anything from the regular
+[Sidebar](/docs/components/sidebar) component. State (panel open/closed,
+active section, mobile drawer) is managed by its own `DualSidebarProvider`,
+and the panel switches to a `Drawer` on small viewports.
+
+The component tree follows this structure:
+
+```tsx
+<DualSidebarProvider>
+  <DualSidebar>
+    <DualSidebarRail>
+      <DualSidebarRailHeader>{/* logo */}</DualSidebarRailHeader>
+      <DualSidebarRailContent>
+        <DualSidebarRailItem sectionKey="...">{/* icon */}</DualSidebarRailItem>
+      </DualSidebarRailContent>
+      <DualSidebarRailFooter>{/* settings, avatar */}</DualSidebarRailFooter>
+    </DualSidebarRail>
+
+    <DualSidebarPanel>
+      <DualSidebarSection sectionKey="...">
+        <DualSidebarPanelHeader>
+          <DualSidebarPanelTitle>Title</DualSidebarPanelTitle>
+        </DualSidebarPanelHeader>
+        <DualSidebarPanelContent>{/* menu, search, etc. */}</DualSidebarPanelContent>
+        <DualSidebarPanelFooter>{/* optional */}</DualSidebarPanelFooter>
+      </DualSidebarSection>
+    </DualSidebarPanel>
+
+    <DualSidebarInset>
+      <header><DualSidebarTrigger /></header>
+      <main>{/* page */}</main>
+    </DualSidebarInset>
+  </DualSidebar>
+</DualSidebarProvider>
+```
+
+## Usage
+
+```tsx
+import {
+  DualSidebar,
+  DualSidebarInset,
+  DualSidebarMenu,
+  DualSidebarMenuButton,
+  DualSidebarMenuItem,
+  DualSidebarPanel,
+  DualSidebarPanelContent,
+  DualSidebarPanelFooter,
+  DualSidebarPanelHeader,
+  DualSidebarPanelTitle,
+  DualSidebarProvider,
+  DualSidebarRail,
+  DualSidebarRailContent,
+  DualSidebarRailFooter,
+  DualSidebarRailHeader,
+  DualSidebarRailItem,
+  DualSidebarSection,
+  DualSidebarTrigger,
+  useDualSidebar,
+} from "shadcn-solid-components/components/dual-sidebar"
+```
+
+`DualSidebarRailItem` accepts a `sectionKey`. When clicked, it sets the
+active key on the provider and (by default) opens the panel. Each
+`DualSidebarSection` renders only when its `sectionKey` matches the active
+key, so you can colocate the panel content for every section directly inside
+`DualSidebarPanel`.
+
+`DualSidebarTrigger` toggles the panel open/closed. On viewports under
+`md`, the panel renders inside a `Drawer`; the rail keeps its position.
+
+`Ctrl/Cmd + B` toggles the panel from anywhere in the document.
+
+## Exports
+
+- `DualSidebarProvider`, `useDualSidebar` — context and hook
+- `DualSidebar`, `DualSidebarInset`, `DualSidebarTrigger` — layout
+- `DualSidebarRail`, `DualSidebarRailHeader`, `DualSidebarRailContent`, `DualSidebarRailFooter`, `DualSidebarRailItem`, `dualSidebarRailItemVariants` — rail
+- `DualSidebarPanel`, `DualSidebarPanelHeader`, `DualSidebarPanelContent`, `DualSidebarPanelFooter`, `DualSidebarPanelTitle`, `DualSidebarSection` — panel
+- `DualSidebarMenu`, `DualSidebarMenuItem`, `DualSidebarMenuButton`, `dualSidebarMenuButtonVariants` — menu primitives
+- Types: `DualSidebarProviderProps`, `DualSidebarContextValue`, `DualSidebarProps`, `DualSidebarRailProps`, `DualSidebarRailHeaderProps`, `DualSidebarRailContentProps`, `DualSidebarRailFooterProps`, `DualSidebarRailItemProps`, `DualSidebarRailItemOptions`, `DualSidebarPanelProps`, `DualSidebarPanelHeaderProps`, `DualSidebarPanelContentProps`, `DualSidebarPanelFooterProps`, `DualSidebarPanelTitleProps`, `DualSidebarSectionProps`, `DualSidebarTriggerProps`, `DualSidebarInsetProps`, `DualSidebarMenuProps`, `DualSidebarMenuItemProps`, `DualSidebarMenuButtonProps`, `DualSidebarMenuButtonOptions`
+
+## Examples
+
+### Default
+
+<ComponentPreview name="Dual Sidebar Demo">
+  <div class="mb-4 w-full">
+    <DualSidebarDemo />
+  </div>
+  ```tsx
+  import { For } from "solid-js"
+  import {
+    DualSidebar,
+    DualSidebarInset,
+    DualSidebarMenu,
+    DualSidebarMenuButton,
+    DualSidebarMenuItem,
+    DualSidebarPanel,
+    DualSidebarPanelContent,
+    DualSidebarPanelHeader,
+    DualSidebarPanelTitle,
+    DualSidebarProvider,
+    DualSidebarRail,
+    DualSidebarRailContent,
+    DualSidebarRailFooter,
+    DualSidebarRailHeader,
+    DualSidebarRailItem,
+    DualSidebarSection,
+    DualSidebarTrigger,
+  } from "shadcn-solid-components/components/dual-sidebar"
+
+  const sections = [
+    { key: "dashboard", label: "Dashboard", items: ["Overview", "Analytics"] },
+    { key: "apps", label: "Apps", items: ["Contacts", "Chats", "Email"] },
+  ]
+
+  export default function Demo() {
+    return (
+      <DualSidebarProvider defaultActiveKey="dashboard">
+        <DualSidebar>
+          <DualSidebarRail>
+            <DualSidebarRailContent>
+              <For each={sections}>
+                {(section) => (
+                  <DualSidebarRailItem
+                    sectionKey={section.key}
+                    tooltip={section.label}
+                  >
+                    {/* icon */}
+                  </DualSidebarRailItem>
+                )}
+              </For>
+            </DualSidebarRailContent>
+          </DualSidebarRail>
+
+          <DualSidebarPanel>
+            <For each={sections}>
+              {(section) => (
+                <DualSidebarSection sectionKey={section.key}>
+                  <DualSidebarPanelHeader>
+                    <DualSidebarPanelTitle>{section.label}</DualSidebarPanelTitle>
+                  </DualSidebarPanelHeader>
+                  <DualSidebarPanelContent>
+                    <DualSidebarMenu>
+                      <For each={section.items}>
+                        {(item) => (
+                          <DualSidebarMenuItem>
+                            <DualSidebarMenuButton>
+                              <span>{item}</span>
+                            </DualSidebarMenuButton>
+                          </DualSidebarMenuItem>
+                        )}
+                      </For>
+                    </DualSidebarMenu>
+                  </DualSidebarPanelContent>
+                </DualSidebarSection>
+              )}
+            </For>
+          </DualSidebarPanel>
+
+          <DualSidebarInset>
+            <header class="flex h-12 items-center gap-2 border-b px-3">
+              <DualSidebarTrigger />
+            </header>
+            <main class="flex-1 p-4" />
+          </DualSidebarInset>
+        </DualSidebar>
+      </DualSidebarProvider>
+    )
+  }
+  ```
+</ComponentPreview>
+
+### Controlled active section
+
+```tsx
+import { createSignal } from "solid-js"
+import { DualSidebarProvider } from "shadcn-solid-components/components/dual-sidebar"
+
+const [active, setActive] = createSignal("dashboard")
+
+<DualSidebarProvider activeKey={active()} onActiveKeyChange={setActive}>
+  {/* ... */}
+</DualSidebarProvider>
+```
+
+### Customizing widths
+
+The provider exposes three CSS variables you can override via `style`:
+
+```tsx
+import { DualSidebarProvider } from "shadcn-solid-components/components/dual-sidebar"
+
+<DualSidebarProvider
+  style={{
+    "--dual-sidebar-rail-width": "3.5rem",
+    "--dual-sidebar-panel-width": "16rem",
+    "--dual-sidebar-panel-mobile-width": "20rem",
+  }}
+>
+  {/* ... */}
+</DualSidebarProvider>
+```
+
+### Reading state
+
+```tsx
+import { useDualSidebar } from "shadcn-solid-components/components/dual-sidebar"
+
+function PanelStatus() {
+  const { state, activeKey } = useDualSidebar()
+  return (
+    <span>
+      panel: {state()} · active: {activeKey() ?? "none"}
+    </span>
+  )
+}
+```
+
+## API
+
+### `DualSidebarProviderProps`
+
+Extends `div` props. Notable fields:
+
+- `defaultOpen` — initial panel open state (default `true`)
+- `open` — controlled panel open state
+- `onOpenChange` — callback when panel open state changes
+- `defaultActiveKey` — initial active section key (uncontrolled)
+- `activeKey` — controlled active section key
+- `onActiveKeyChange` — callback when the active section key changes
+
+### `DualSidebarContextValue`
+
+Returned by `useDualSidebar()`:
+
+- `state` — `Accessor<'expanded' | 'collapsed'>`, current panel state
+- `open`, `setOpen` — panel open signal
+- `openMobile`, `setOpenMobile` — mobile drawer open signal
+- `isMobile` — `Accessor<boolean>`, whether the viewport is below the `md` breakpoint
+- `togglePanel` — toggle the panel open/closed
+- `activeKey` — `Accessor<string | undefined>`, current active section key
+- `setActiveKey(key, options?)` — set the active section key; `options.openOnSelect` defaults to `true`
+
+### `DualSidebarRailItemProps`
+
+Extends button props via `Polymorphic`. Notable fields:
+
+- `sectionKey` — key that identifies the section this item activates
+- `isActive` — override the active state (defaults to matching `activeKey`)
+- `tooltip` — string or `TooltipContent` props for a tooltip on hover
+- `openOnSelect` — whether clicking opens the panel (default `true`)
+- `onSelect` — callback fired with the `sectionKey` when clicked
+- `size` — `'default'` | `'sm'` | `'lg'` (via `dualSidebarRailItemVariants`)
+
+### `DualSidebarSectionProps`
+
+- `sectionKey` — key that must match the provider's `activeKey` for this section to render
+- `forceMount` — mount the section DOM even when inactive (useful for transitions); hidden via the `hidden` attribute instead
+
+### `DualSidebarMenuButtonProps`
+
+Extends button props via `Polymorphic`. Notable fields:
+
+- `isActive` — highlight the button as the current item
+- `size` — `'default'` | `'sm'` | `'lg'` (via `dualSidebarMenuButtonVariants`)
+
+### CSS variables
+
+Override on `DualSidebarProvider` `style`:
+
+- `--dual-sidebar-rail-width` — icon rail width (default `3rem`)
+- `--dual-sidebar-panel-width` — secondary panel width (default `14rem`)
+- `--dual-sidebar-panel-mobile-width` — panel width in mobile drawer (default `18rem`)
