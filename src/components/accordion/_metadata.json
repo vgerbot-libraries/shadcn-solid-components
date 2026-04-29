@@ -10,5 +10,14 @@
     "Multi-step form result summaries to show or hide details of each completed step"
   ],
   "usage": "import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from \"shadcn-solid-components/components/accordion\"",
-  "tags": ["components", "accordion", "solidjs", "ui", "kobalte", "a11y", "animation", "collapsible"]
+  "tags": [
+    "components",
+    "accordion",
+    "solidjs",
+    "ui",
+    "kobalte",
+    "a11y",
+    "animation",
+    "collapsible"
+  ]
 }

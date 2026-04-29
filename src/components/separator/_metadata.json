@@ -9,12 +9,6 @@
     "Horizontal rules between form sections or checkout steps",
     "Vertical dividers between buttons inside a toolbar or pagination group"
   ],
-  "usage": "import { Separator } from \"shadcn-solid-components/components/separator\""
-,
-  "tags": [
-    "components",
-    "separator",
-    "solidjs",
-    "ui"
-  ]
+  "usage": "import { Separator } from \"shadcn-solid-components/components/separator\"",
+  "tags": ["components", "separator", "solidjs", "ui"]
 }

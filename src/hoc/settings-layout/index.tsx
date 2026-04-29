@@ -248,10 +248,7 @@ export function SettingsLayout(props: SettingsLayoutProps) {
     >
       <Show when={!local.hideSidebar}>
         <Drawer open={mobileOpen()} onOpenChange={setMobileOpen} side="left">
-          <DrawerContent
-            class={cx('p-0', local.sidebarWidth ? '' : 'w-64')}
-            style={sidebarStyle()}
-          >
+          <DrawerContent class={cx('p-0', local.sidebarWidth ? '' : 'w-64')} style={sidebarStyle()}>
             {sidebarNav()}
           </DrawerContent>
         </Drawer>
@@ -266,9 +263,7 @@ export function SettingsLayout(props: SettingsLayoutProps) {
             )}
             style={sidebarStyle()}
           >
-            <div class="sticky top-0">
-              {sidebarNav()}
-            </div>
+            <div class="sticky top-0">{sidebarNav()}</div>
           </aside>
         </Show>
 

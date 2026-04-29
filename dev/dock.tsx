@@ -37,15 +37,22 @@ export function AppDock() {
         <Popover placement="top">
           <PopoverTrigger as={AppleDockIcon} class="relative">
             <IconBell class="size-5" />
-            <span class="pointer-events-none absolute -right-0.5 -top-0.5 flex size-4 items-center justify-center rounded-full bg-red-500 text-[10px] font-medium text-white">2</span>
+            <span class="pointer-events-none absolute -right-0.5 -top-0.5 flex size-4 items-center justify-center rounded-full bg-red-500 text-[10px] font-medium text-white">
+              2
+            </span>
           </PopoverTrigger>
           <PopoverContent class="w-72 overflow-hidden p-0">
             <div class="flex items-center justify-between border-b px-4 py-3">
               <div class="flex items-center gap-2">
                 <p class="text-sm font-medium">Notifications</p>
-                <Badge variant="secondary" class="h-5 px-1.5 text-xs">2</Badge>
+                <Badge variant="secondary" class="h-5 px-1.5 text-xs">
+                  2
+                </Badge>
               </div>
-              <button type="button" class="inline-flex size-6 cursor-pointer items-center justify-center rounded-full p-1 transition-colors hover:bg-muted hover:text-foreground">
+              <button
+                type="button"
+                class="inline-flex size-6 cursor-pointer items-center justify-center rounded-full p-1 transition-colors hover:bg-muted hover:text-foreground"
+              >
                 <IconX class="size-4" />
               </button>
             </div>
@@ -54,7 +61,9 @@ export function AppDock() {
                 <For each={notifications}>
                   {n => (
                     <div class="flex cursor-pointer items-start gap-3 rounded-lg p-2 transition-colors hover:bg-muted">
-                      <span class={`mt-1.5 size-2 shrink-0 rounded-full ${n.unread ? 'bg-blue-500' : 'bg-transparent'}`} />
+                      <span
+                        class={`mt-1.5 size-2 shrink-0 rounded-full ${n.unread ? 'bg-blue-500' : 'bg-transparent'}`}
+                      />
                       <div class="flex-1">
                         <p class="text-sm leading-snug">{n.title}</p>
                         <p class="mt-0.5 text-xs text-muted-foreground">{n.time}</p>
@@ -62,12 +71,18 @@ export function AppDock() {
                     </div>
                   )}
                 </For>
-                <button type="button" class="mt-1 flex h-7 w-full items-center justify-center gap-1 rounded-md px-2.5 text-xs transition-colors hover:bg-muted hover:text-foreground">
+                <button
+                  type="button"
+                  class="mt-1 flex h-7 w-full items-center justify-center gap-1 rounded-md px-2.5 text-xs transition-colors hover:bg-muted hover:text-foreground"
+                >
                   Mark all as read
                 </button>
               </div>
               <Separator class="my-3" />
-              <a href="#" class="flex items-center justify-between text-xs text-muted-foreground transition-colors hover:text-foreground">
+              <a
+                href="#"
+                class="flex items-center justify-between text-xs text-muted-foreground transition-colors hover:text-foreground"
+              >
                 View all notifications
                 <IconArrowRight class="size-3" />
               </a>
@@ -80,9 +95,7 @@ export function AppDock() {
               <TooltipTrigger as={AppleDockIcon} onClick={() => navigate(item.path)}>
                 <item.icon class="size-5" />
               </TooltipTrigger>
-              <TooltipContent class="text-xs">
-                {item.label}
-              </TooltipContent>
+              <TooltipContent class="text-xs">{item.label}</TooltipContent>
             </Tooltip>
           )}
         </For>

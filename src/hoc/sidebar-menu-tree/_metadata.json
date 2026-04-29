@@ -9,12 +9,6 @@
     "File-manager folder trees displaying directories with nested sub-folders and file counts",
     "Settings sidebars grouping categories into expandable parent items with child links"
   ],
-  "usage": "import { SidebarMenuTree, SidebarMenuTreeItem, SidebarMenuTreeGroup, SidebarMenuTreeGroupLabel } from \"shadcn-solid-components/hoc/sidebar-menu-tree\""
-,
-  "tags": [
-    "hoc",
-    "sidebar-menu-tree",
-    "solidjs",
-    "ui"
-  ]
+  "usage": "import { SidebarMenuTree, SidebarMenuTreeItem, SidebarMenuTreeGroup, SidebarMenuTreeGroupLabel } from \"shadcn-solid-components/hoc/sidebar-menu-tree\"",
+  "tags": ["hoc", "sidebar-menu-tree", "solidjs", "ui"]
 }

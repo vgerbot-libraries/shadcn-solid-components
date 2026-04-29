@@ -9,12 +9,6 @@
     "Product-catalog searches that filter SKUs, names, and categories in real time",
     "Command or settings search within large applications to surface actions and preferences"
   ],
-  "usage": "import { Search, SearchIcon, SearchInput, SearchClearButton, SearchListbox, SearchNoResult, SearchSection, SearchItem, SearchItemLabel, SearchItemDescription, SearchItemIndicator, SearchPortal } from \"shadcn-solid-components/components/search\""
-,
-  "tags": [
-    "components",
-    "search",
-    "solidjs",
-    "ui"
-  ]
+  "usage": "import { Search, SearchIcon, SearchInput, SearchClearButton, SearchListbox, SearchNoResult, SearchSection, SearchItem, SearchItemLabel, SearchItemDescription, SearchItemIndicator, SearchPortal } from \"shadcn-solid-components/components/search\"",
+  "tags": ["components", "search", "solidjs", "ui"]
 }

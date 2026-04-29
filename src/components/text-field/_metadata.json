@@ -9,12 +9,6 @@
     "Inline editing cells in data tables where validation errors appear below the input",
     "Search bars and command palettes with focus-visible rings and clear-button integration"
   ],
-  "usage": "import { TextField, TextFieldInput, TextFieldTextArea, TextFieldLabel, TextFieldDescription, TextFieldErrorMessage } from \"shadcn-solid-components/components/text-field\""
-,
-  "tags": [
-    "components",
-    "text-field",
-    "solidjs",
-    "ui"
-  ]
+  "usage": "import { TextField, TextFieldInput, TextFieldTextArea, TextFieldLabel, TextFieldDescription, TextFieldErrorMessage } from \"shadcn-solid-components/components/text-field\"",
+  "tags": ["components", "text-field", "solidjs", "ui"]
 }

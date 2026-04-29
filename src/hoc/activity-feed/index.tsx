@@ -131,7 +131,11 @@ export function ActivityFeed(props: ActivityFeedProps) {
             when={local.loading}
             fallback={
               <div class="text-muted-foreground flex flex-col items-center justify-center gap-2 py-12 text-center text-sm">
-                {typeof local.empty === 'string' ? <p>{local.empty}</p> : local.empty || <p>{locale().empty}</p>}
+                {typeof local.empty === 'string' ? (
+                  <p>{local.empty}</p>
+                ) : (
+                  local.empty || <p>{locale().empty}</p>
+                )}
               </div>
             }
           >
@@ -220,11 +224,7 @@ export function ActivityFeed(props: ActivityFeedProps) {
       {/* Load more button */}
       <Show when={local.onLoadMore}>
         <div class="flex justify-center pt-4">
-          <Button
-            variant="outline"
-            onClick={local.onLoadMore}
-            disabled={local.loadingMore}
-          >
+          <Button variant="outline" onClick={local.onLoadMore} disabled={local.loadingMore}>
             {local.loadingMore ? locale().loadingMore : locale().loadMore}
           </Button>
         </div>

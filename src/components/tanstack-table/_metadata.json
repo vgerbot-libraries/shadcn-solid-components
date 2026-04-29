@@ -9,12 +9,6 @@
     "Row-selection grids for bulk operations (delete, export, assign) with controlled checkboxes",
     "Expandable grouped tables that collapse/expand category summaries with nested detail rows"
   ],
-  "usage": "import { DataTable, DataTablePagination, DataTableToolbar, DataTableViewOptions, DataTableColumnHeader, createSolidTable, flexRender } from \"shadcn-solid-components/components/tanstack-table\""
-,
-  "tags": [
-    "components",
-    "tanstack-table",
-    "solidjs",
-    "ui"
-  ]
+  "usage": "import { DataTable, DataTablePagination, DataTableToolbar, DataTableViewOptions, DataTableColumnHeader, createSolidTable, flexRender } from \"shadcn-solid-components/components/tanstack-table\"",
+  "tags": ["components", "tanstack-table", "solidjs", "ui"]
 }

@@ -9,7 +9,7 @@ import { ThemeProvider } from '../src/components/theme'
 import { ConfirmDialog } from '../src/hoc/confirm-dialog'
 import App from './App'
 import { globalLocale } from './store'
-import { pages } from './pages';
+import { pages } from './pages'
 
 export { globalLocale, setGlobalLocale } from './store'
 
@@ -49,7 +49,9 @@ const dispose = render(() => {
   return (
     <Router root={Root}>
       <Route path="/" component={DashboardPage} />
-      <For each={Object.keys(pages)}>{page => <Route path={`/${page}`} component={pages[page]} />}</For>
+      <For each={Object.keys(pages)}>
+        {page => <Route path={`/${page}`} component={pages[page]} />}
+      </For>
     </Router>
   )
 }, rootEl)

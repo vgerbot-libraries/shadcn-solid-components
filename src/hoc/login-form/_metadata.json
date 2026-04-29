@@ -9,12 +9,6 @@
     "Admin or member-portal authentication screens with 'remember me' and password-reset links",
     "SaaS multi-tenant sign-in pages that switch between login and register modes dynamically"
   ],
-  "usage": "import { LoginForm, type LoginFormProps, type LoginFormMode, type LoginFormProvider } from \"shadcn-solid-components/hoc/login-form\""
-,
-  "tags": [
-    "hoc",
-    "login-form",
-    "solidjs",
-    "ui"
-  ]
+  "usage": "import { LoginForm, type LoginFormProps, type LoginFormMode, type LoginFormProvider } from \"shadcn-solid-components/hoc/login-form\"",
+  "tags": ["hoc", "login-form", "solidjs", "ui"]
 }

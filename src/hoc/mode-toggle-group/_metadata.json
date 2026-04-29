@@ -9,12 +9,6 @@
     "Admin customization wizards where every visual option is presented in a uniform control style",
     "Onboarding profile-setup screens collecting theme preference alongside timezone and language"
   ],
-  "usage": "import { ModeToggleGroup } from \"shadcn-solid-components/hoc/mode-toggle-group\""
-,
-  "tags": [
-    "hoc",
-    "mode-toggle-group",
-    "solidjs",
-    "ui"
-  ]
+  "usage": "import { ModeToggleGroup } from \"shadcn-solid-components/hoc/mode-toggle-group\"",
+  "tags": ["hoc", "mode-toggle-group", "solidjs", "ui"]
 }

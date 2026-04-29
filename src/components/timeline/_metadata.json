@@ -10,10 +10,5 @@
     "Application changelogs or release-note pages with version tags and feature summaries"
   ],
   "usage": "import { Timeline } from \"shadcn-solid-components/components/timeline\"",
-  "tags": [
-    "components",
-    "timeline",
-    "solidjs",
-    "ui"
-  ]
+  "tags": ["components", "timeline", "solidjs", "ui"]
 }

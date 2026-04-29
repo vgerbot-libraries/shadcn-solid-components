@@ -9,12 +9,6 @@
     "Bulk CSV or JSON importers that list selected files with individual remove buttons",
     "Gallery-upload flows showing thumbnails, file names, and upload-progress indicators"
   ],
-  "usage": "import { FileField, FileFieldDropzone, FileFieldItem, FileFieldItemDeleteTrigger, FileFieldItemName, FileFieldItemPreview, FileFieldItemSize, FileFieldLabel, FileFieldHiddenInput } from \"shadcn-solid-components/components/file-field\""
-,
-  "tags": [
-    "components",
-    "file-field",
-    "solidjs",
-    "ui"
-  ]
+  "usage": "import { FileField, FileFieldDropzone, FileFieldItem, FileFieldItemDeleteTrigger, FileFieldItemName, FileFieldItemPreview, FileFieldItemSize, FileFieldLabel, FileFieldHiddenInput } from \"shadcn-solid-components/components/file-field\"",
+  "tags": ["components", "file-field", "solidjs", "ui"]
 }

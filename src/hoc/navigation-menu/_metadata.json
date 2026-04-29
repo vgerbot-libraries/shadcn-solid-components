@@ -9,12 +9,6 @@
     "Documentation sites with version switchers, search triggers, and category flyouts",
     "E-commerce storefronts exposing category panels, promotions, and account links in a unified header"
   ],
-  "usage": "import { AppNavigationMenu } from \"shadcn-solid-components/hoc/navigation-menu\""
-,
-  "tags": [
-    "hoc",
-    "navigation-menu",
-    "solidjs",
-    "ui"
-  ]
+  "usage": "import { AppNavigationMenu } from \"shadcn-solid-components/hoc/navigation-menu\"",
+  "tags": ["hoc", "navigation-menu", "solidjs", "ui"]
 }

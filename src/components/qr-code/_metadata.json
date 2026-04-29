@@ -3,16 +3,7 @@
   "displayName": "QrCode",
   "description": "QR code SVG renderer with rounded finder patterns and circular data modules.",
   "category": "components",
-  "useCases": [
-    "Render a scannable QR code for URLs, tokens, or arbitrary text in SolidJS apps."
-  ],
+  "useCases": ["Render a scannable QR code for URLs, tokens, or arbitrary text in SolidJS apps."],
   "usage": "import { QrCode } from \"shadcn-solid-components/components/qr-code\"",
-  "tags": [
-    "components",
-    "qr-code",
-    "qrcode",
-    "svg",
-    "solidjs",
-    "ui"
-  ]
+  "tags": ["components", "qr-code", "qrcode", "svg", "solidjs", "ui"]
 }

@@ -9,12 +9,6 @@
     "Logout or session-expiration prompts that require explicit user acknowledgment",
     "Legal or compliance consent dialogs that block further interaction until confirmed"
   ],
-  "usage": "import { AlertDialog, AlertDialogTrigger, AlertDialogOverlay, AlertDialogContent, AlertDialogHeader, AlertDialogFooter, AlertDialogTitle, AlertDialogDescription, AlertDialogAction, AlertDialogCancel, AlertDialogPortal } from \"shadcn-solid-components/components/alert-dialog\""
-,
-  "tags": [
-    "components",
-    "alert-dialog",
-    "solidjs",
-    "ui"
-  ]
+  "usage": "import { AlertDialog, AlertDialogTrigger, AlertDialogOverlay, AlertDialogContent, AlertDialogHeader, AlertDialogFooter, AlertDialogTitle, AlertDialogDescription, AlertDialogAction, AlertDialogCancel, AlertDialogPortal } from \"shadcn-solid-components/components/alert-dialog\"",
+  "tags": ["components", "alert-dialog", "solidjs", "ui"]
 }

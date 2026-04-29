@@ -9,12 +9,6 @@
     "Mail or chat applications with folder lists (Inbox, Sent, Drafts, Trash) and compose action",
     "Multi-tenant SaaS apps where sidebar sections adapt to the user's role and permissions"
   ],
-  "usage": "import { Sidebar, SidebarProvider, SidebarTrigger, SidebarHeader, SidebarContent, SidebarFooter, SidebarGroup, SidebarGroupLabel, SidebarMenu, SidebarMenuItem, SidebarMenuButton, SidebarRail, useSidebar } from \"shadcn-solid-components/components/sidebar\""
-,
-  "tags": [
-    "components",
-    "sidebar",
-    "solidjs",
-    "ui"
-  ]
+  "usage": "import { Sidebar, SidebarProvider, SidebarTrigger, SidebarHeader, SidebarContent, SidebarFooter, SidebarGroup, SidebarGroupLabel, SidebarMenu, SidebarMenuItem, SidebarMenuButton, SidebarRail, useSidebar } from \"shadcn-solid-components/components/sidebar\"",
+  "tags": ["components", "sidebar", "solidjs", "ui"]
 }

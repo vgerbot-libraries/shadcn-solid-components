@@ -9,12 +9,6 @@
     "Email distribution-list editors selecting contacts from an organization directory",
     "Form-field configurators choosing which questions appear in a survey from a question bank"
   ],
-  "usage": "import { TransferList, TransferListSource, TransferListTarget, TransferListItem, TransferListControls } from \"shadcn-solid-components/hoc/transfer-list\""
-,
-  "tags": [
-    "hoc",
-    "transfer-list",
-    "solidjs",
-    "ui"
-  ]
+  "usage": "import { TransferList, TransferListSource, TransferListTarget, TransferListItem, TransferListControls } from \"shadcn-solid-components/hoc/transfer-list\"",
+  "tags": ["hoc", "transfer-list", "solidjs", "ui"]
 }

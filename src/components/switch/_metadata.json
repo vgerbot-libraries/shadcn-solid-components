@@ -9,12 +9,6 @@
     "Billing plan toggles such as Monthly vs Annual subscription switching",
     "Inline row actions in tables or lists to quickly activate or deactivate records"
   ],
-  "usage": "import { Switch, SwitchControl, SwitchThumb, SwitchInput, SwitchLabel, SwitchErrorMessage, SwitchDescription } from \"shadcn-solid-components/components/switch\""
-,
-  "tags": [
-    "components",
-    "switch",
-    "solidjs",
-    "ui"
-  ]
+  "usage": "import { Switch, SwitchControl, SwitchThumb, SwitchInput, SwitchLabel, SwitchErrorMessage, SwitchDescription } from \"shadcn-solid-components/components/switch\"",
+  "tags": ["components", "switch", "solidjs", "ui"]
 }

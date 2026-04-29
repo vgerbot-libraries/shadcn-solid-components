@@ -91,9 +91,7 @@ const NavigationPage: Component = () => {
       <Card>
         <CardHeader>
           <CardTitle>Breadcrumbs</CardTitle>
-          <CardDescription>
-          Breadcrumb navigation patterns for sites and apps.
-          </CardDescription>
+          <CardDescription>Breadcrumb navigation patterns for sites and apps.</CardDescription>
         </CardHeader>
         <CardContent class="flex flex-col gap-6">
           {/* 00 - Basic breadcrumb navigation with current page indicator */}
@@ -156,8 +154,12 @@ const NavigationPage: Component = () => {
           <Breadcrumbs separator="·">
             <BreadcrumbList class="h-8 gap-2 rounded-lg border px-3 text-sm">
               <div class="bg-muted flex items-center rounded-full px-1.5 py-0.5 mr-1">
-                <a href="#"><IconChevronLeft class="text-foreground cursor-pointer size-4" /></a>
-                <a href="#"><IconChevronRight class="text-foreground/60 size-4" /></a>
+                <a href="#">
+                  <IconChevronLeft class="text-foreground cursor-pointer size-4" />
+                </a>
+                <a href="#">
+                  <IconChevronRight class="text-foreground/60 size-4" />
+                </a>
               </div>
               <BreadcrumbsItem>
                 <BreadcrumbsLink href="#">
@@ -263,9 +265,15 @@ const NavigationPage: Component = () => {
                     <span class="sr-only">Toggle menu</span>
                   </DropdownMenuTrigger>
                   <DropdownMenuContent>
-                    <DropdownMenuItem><a href="#">Design System</a></DropdownMenuItem>
-                    <DropdownMenuItem><a href="#">Accessibility</a></DropdownMenuItem>
-                    <DropdownMenuItem><a href="#">Guidelines</a></DropdownMenuItem>
+                    <DropdownMenuItem>
+                      <a href="#">Design System</a>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem>
+                      <a href="#">Accessibility</a>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem>
+                      <a href="#">Guidelines</a>
+                    </DropdownMenuItem>
                   </DropdownMenuContent>
                 </DropdownMenu>
               </BreadcrumbsItem>

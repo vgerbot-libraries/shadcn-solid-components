@@ -9,12 +9,6 @@
     "Settings pages listing all available application shortcuts in a readable grid",
     "Inline documentation inside modals or drawers to show alternate input methods"
   ],
-  "usage": "import { Kbd, KbdGroup } from \"shadcn-solid-components/components/kbd\""
-,
-  "tags": [
-    "components",
-    "kbd",
-    "solidjs",
-    "ui"
-  ]
+  "usage": "import { Kbd, KbdGroup } from \"shadcn-solid-components/components/kbd\"",
+  "tags": ["components", "kbd", "solidjs", "ui"]
 }

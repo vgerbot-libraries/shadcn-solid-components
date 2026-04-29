@@ -20,7 +20,15 @@ const FORMAT_OPTIONS: { label: string; value: ColorFormat }[] = [
 ]
 
 export const ColorInput = (props: ColorInputProps) => {
-  const [local, rest] = splitProps(props, ['class', 'hsva', 'format', 'showAlpha', 'disabled', 'onChange', 'onFormatChange'])
+  const [local, rest] = splitProps(props, [
+    'class',
+    'hsva',
+    'format',
+    'showAlpha',
+    'disabled',
+    'onChange',
+    'onFormatChange',
+  ])
 
   const [hexInput, setHexInput] = createSignal('')
   const [rInput, setRInput] = createSignal('')
@@ -101,11 +109,7 @@ export const ColorInput = (props: ColorInputProps) => {
     'h-7 w-full min-w-0 rounded-md border border-input bg-background px-2 text-xs shadow-none focus:outline-none focus:ring-1 focus:ring-ring disabled:cursor-not-allowed disabled:opacity-50'
 
   return (
-    <div
-      data-slot="color-picker-input"
-      class={cx('flex flex-col gap-2', local.class)}
-      {...rest}
-    >
+    <div data-slot="color-picker-input" class={cx('flex flex-col gap-2', local.class)} {...rest}>
       {/* Format selector */}
       <div class="flex gap-1">
         {FORMAT_OPTIONS.map(opt => (

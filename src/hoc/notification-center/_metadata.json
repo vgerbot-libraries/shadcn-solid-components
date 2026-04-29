@@ -9,12 +9,6 @@
     "Project-management tools notifying users of task assignments, due-date reminders, and comments",
     "E-commerce order-tracking notifications for shipping, delivery, and return status updates"
   ],
-  "usage": "import { NotificationCenter, type NotificationCenterProps, type NotificationItem, type NotificationCategory } from \"shadcn-solid-components/hoc/notification-center\""
-,
-  "tags": [
-    "hoc",
-    "notification-center",
-    "solidjs",
-    "ui"
-  ]
+  "usage": "import { NotificationCenter, type NotificationCenterProps, type NotificationItem, type NotificationCategory } from \"shadcn-solid-components/hoc/notification-center\"",
+  "tags": ["hoc", "notification-center", "solidjs", "ui"]
 }

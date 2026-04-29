@@ -9,12 +9,6 @@
     "CRM contact lists requiring column filters, sorters, and persistent user preferences",
     "Scientific data browsers with nested row trees, movable columns, and CSV export"
   ],
-  "usage": "import { TabulatorTable } from \"shadcn-solid-components/components/tabulator-table\""
-,
-  "tags": [
-    "components",
-    "tabulator-table",
-    "solidjs",
-    "ui"
-  ]
+  "usage": "import { TabulatorTable } from \"shadcn-solid-components/components/tabulator-table\"",
+  "tags": ["components", "tabulator-table", "solidjs", "ui"]
 }

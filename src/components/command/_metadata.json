@@ -9,12 +9,6 @@
     "Settings finders that let users type keywords to jump directly to a specific preference panel",
     "Documentation search overlays combining page titles, headings, and command shortcuts"
   ],
-  "usage": "import { Command, CommandDialog, CommandInput, CommandList, CommandEmpty, CommandGroup, CommandItem, CommandSeparator, CommandShortcut } from \"shadcn-solid-components/components/command\""
-,
-  "tags": [
-    "components",
-    "command",
-    "solidjs",
-    "ui"
-  ]
+  "usage": "import { Command, CommandDialog, CommandInput, CommandList, CommandEmpty, CommandGroup, CommandItem, CommandSeparator, CommandShortcut } from \"shadcn-solid-components/components/command\"",
+  "tags": ["components", "command", "solidjs", "ui"]
 }

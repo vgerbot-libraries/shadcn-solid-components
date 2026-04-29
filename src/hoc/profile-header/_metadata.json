@@ -9,12 +9,6 @@
     "E-commerce seller storefront headers with store logo, rating, and 'Contact Seller' tabs",
     "Admin user-detail pages combining identity info, role badges, and edit/delete actions"
   ],
-  "usage": "import { ProfileHeader, ProfileHeaderAvatar, ProfileHeaderInfo, ProfileHeaderActions } from \"shadcn-solid-components/hoc/profile-header\""
-,
-  "tags": [
-    "hoc",
-    "profile-header",
-    "solidjs",
-    "ui"
-  ]
+  "usage": "import { ProfileHeader, ProfileHeaderAvatar, ProfileHeaderInfo, ProfileHeaderActions } from \"shadcn-solid-components/hoc/profile-header\"",
+  "tags": ["hoc", "profile-header", "solidjs", "ui"]
 }

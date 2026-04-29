@@ -8,14 +8,18 @@ import {
   CardHeader,
   CardTitle,
 } from 'shadcn-solid-components/components/card'
+import { IconCalendar, IconMail, IconUser } from 'shadcn-solid-components/components/icons'
 import {
-  IconCalendar,
-  IconMail,
-  IconUser,
-} from 'shadcn-solid-components/components/icons'
-import { TextField, TextFieldInput, TextFieldLabel } from 'shadcn-solid-components/components/text-field'
+  TextField,
+  TextFieldInput,
+  TextFieldLabel,
+} from 'shadcn-solid-components/components/text-field'
 import { Separator } from 'shadcn-solid-components/components/separator'
-import { ProfileHeader, type ProfileStat, type ProfileTab } from 'shadcn-solid-components/hoc/profile-header'
+import {
+  ProfileHeader,
+  type ProfileStat,
+  type ProfileTab,
+} from 'shadcn-solid-components/hoc/profile-header'
 import { PageLayout } from '../components/PageLayout'
 
 const stats: ProfileStat[] = [
@@ -81,7 +85,10 @@ const profileTabs: ProfileTab[] = [
               <div class="text-base">Account Status</div>
               <p class="text-muted-foreground text-sm">Your account is currently active</p>
             </div>
-            <Badge variant="outline" class="border-green-200 bg-green-50 text-green-700 dark:border-green-800 dark:bg-green-950 dark:text-green-400">
+            <Badge
+              variant="outline"
+              class="border-green-200 bg-green-50 text-green-700 dark:border-green-800 dark:bg-green-950 dark:text-green-400"
+            >
               Active
             </Badge>
           </div>
@@ -120,7 +127,10 @@ const profileTabs: ProfileTab[] = [
               <div class="text-base">Two-Factor Authentication</div>
               <p class="text-muted-foreground text-sm">Add an extra layer of security</p>
             </div>
-            <Badge variant="outline" class="border-green-200 bg-green-50 text-green-700 dark:border-green-800 dark:bg-green-950 dark:text-green-400">
+            <Badge
+              variant="outline"
+              class="border-green-200 bg-green-50 text-green-700 dark:border-green-800 dark:bg-green-950 dark:text-green-400"
+            >
               Enabled
             </Badge>
           </div>
@@ -171,9 +181,7 @@ const ProfilePage: Component = () => {
       <Card>
         <CardHeader>
           <CardTitle>Cover Image & Stats</CardTitle>
-          <CardDescription>
-            Profile with a banner cover image and a stats row.
-          </CardDescription>
+          <CardDescription>Profile with a banner cover image and a stats row.</CardDescription>
         </CardHeader>
         <CardContent>
           <ProfileHeader
@@ -222,10 +230,7 @@ const ProfilePage: Component = () => {
             <CardDescription>Name and subtitle only.</CardDescription>
           </CardHeader>
           <CardContent>
-            <ProfileHeader
-              name="Alex Smith"
-              subtitle="Guest User"
-            />
+            <ProfileHeader name="Alex Smith" subtitle="Guest User" />
           </CardContent>
         </Card>
       </div>

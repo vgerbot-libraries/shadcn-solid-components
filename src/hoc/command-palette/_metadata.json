@@ -9,12 +9,6 @@
     "CMS quick-navigation palettes for jumping to posts, media, users, or plugins",
     "Keyboard-first workflow apps that expose every action via a searchable command dialog"
   ],
-  "usage": "import { CommandPalette, type CommandPaletteProps, type CommandPaletteItem, type CommandPaletteGroup } from \"shadcn-solid-components/hoc/command-palette\""
-,
-  "tags": [
-    "hoc",
-    "command-palette",
-    "solidjs",
-    "ui"
-  ]
+  "usage": "import { CommandPalette, type CommandPaletteProps, type CommandPaletteItem, type CommandPaletteGroup } from \"shadcn-solid-components/hoc/command-palette\"",
+  "tags": ["hoc", "command-palette", "solidjs", "ui"]
 }

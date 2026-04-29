@@ -128,10 +128,7 @@ export const DualSidebarProvider = (props: DualSidebarProviderProps) => {
 
   createEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
-      if (
-        event.key === DUAL_SIDEBAR_KEYBOARD_SHORTCUT &&
-        (event.metaKey || event.ctrlKey)
-      ) {
+      if (event.key === DUAL_SIDEBAR_KEYBOARD_SHORTCUT && (event.metaKey || event.ctrlKey)) {
         event.preventDefault()
         togglePanel()
       }
@@ -183,13 +180,7 @@ export type DualSidebarProps = ComponentProps<'div'>
 
 export const DualSidebar = (props: DualSidebarProps) => {
   const [, rest] = splitProps(props, ['class'])
-  return (
-    <div
-      data-slot="dual-sidebar"
-      class={cx('flex min-h-svh w-full', props.class)}
-      {...rest}
-    />
-  )
+  return <div data-slot="dual-sidebar" class={cx('flex min-h-svh w-full', props.class)} {...rest} />
 }
 
 /* -------------------------------------------------------------------------- */
@@ -279,7 +270,8 @@ export const dualSidebarRailItemVariants = cva({
   },
 })
 
-export interface DualSidebarRailItemOptions extends VariantProps<typeof dualSidebarRailItemVariants> {
+export interface DualSidebarRailItemOptions
+  extends VariantProps<typeof dualSidebarRailItemVariants> {
   sectionKey?: string
   isActive?: boolean
   tooltip?: string | ComponentProps<typeof TooltipContent>
@@ -364,9 +356,7 @@ export const DualSidebarRailItem = <T extends ValidComponent = 'button'>(
         />
         <TooltipPortal>
           <TooltipContent
-            {...(typeof merge.tooltip === 'string'
-              ? { children: merge.tooltip }
-              : merge.tooltip)}
+            {...(typeof merge.tooltip === 'string' ? { children: merge.tooltip } : merge.tooltip)}
           />
         </TooltipPortal>
       </Tooltip>
@@ -407,11 +397,7 @@ export const DualSidebarPanel = (props: DualSidebarPanelProps) => {
       }
     >
       <Match when={ctx.isMobile()}>
-        <Drawer
-          open={ctx.openMobile()}
-          onOpenChange={ctx.setOpenMobile}
-          side="left"
-        >
+        <Drawer open={ctx.openMobile()} onOpenChange={ctx.setOpenMobile} side="left">
           <DrawerContent
             data-slot="dual-sidebar-panel"
             data-mobile="true"
@@ -619,13 +605,7 @@ export type DualSidebarMenuItemProps = ComponentProps<'li'>
 
 export const DualSidebarMenuItem = (props: DualSidebarMenuItemProps) => {
   const [, rest] = splitProps(props, ['class'])
-  return (
-    <li
-      data-slot="dual-sidebar-menu-item"
-      class={cx('relative', props.class)}
-      {...rest}
-    />
-  )
+  return <li data-slot="dual-sidebar-menu-item" class={cx('relative', props.class)} {...rest} />
 }
 
 export const dualSidebarMenuButtonVariants = cva({

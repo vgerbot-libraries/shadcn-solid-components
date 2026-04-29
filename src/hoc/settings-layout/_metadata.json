@@ -9,12 +9,6 @@
     "Multi-step preference wizards where each section is a discrete settings category with validation",
     "SaaS tenant-customization portals allowing white-label, branding, and feature-flag configuration"
   ],
-  "usage": "import { SettingsLayout, SettingsLayoutNav, SettingsLayoutNavItem, SettingsLayoutContent, SettingsLayoutHeader } from \"shadcn-solid-components/hoc/settings-layout\""
-,
-  "tags": [
-    "hoc",
-    "settings-layout",
-    "solidjs",
-    "ui"
-  ]
+  "usage": "import { SettingsLayout, SettingsLayoutNav, SettingsLayoutNavItem, SettingsLayoutContent, SettingsLayoutHeader } from \"shadcn-solid-components/hoc/settings-layout\"",
+  "tags": ["hoc", "settings-layout", "solidjs", "ui"]
 }

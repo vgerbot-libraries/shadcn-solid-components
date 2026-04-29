@@ -9,12 +9,6 @@
     "Chart-type switchers (Line, Bar, Pie, Area) inside data-visualization toolbars",
     "Filter scope controls (All, Active, Archived) in compact table or list headers"
   ],
-  "usage": "import { SegmentedControl, SegmentedControlItemInput, SegmentedControlItemLabel } from \"shadcn-solid-components/components/segmented-control\""
-,
-  "tags": [
-    "components",
-    "segmented-control",
-    "solidjs",
-    "ui"
-  ]
+  "usage": "import { SegmentedControl, SegmentedControlItemInput, SegmentedControlItemLabel } from \"shadcn-solid-components/components/segmented-control\"",
+  "tags": ["components", "segmented-control", "solidjs", "ui"]
 }

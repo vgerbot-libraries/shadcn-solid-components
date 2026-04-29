@@ -9,12 +9,6 @@
     "E-commerce order-activity timelines tracking placed, shipped, and delivered events",
     "CRM contact-history panels summarizing calls, emails, and meetings per customer record"
   ],
-  "usage": "import { ActivityFeed, type ActivityFeedProps, type ActivityItem, type ActivityUser } from \"shadcn-solid-components/hoc/activity-feed\""
-,
-  "tags": [
-    "hoc",
-    "activity-feed",
-    "solidjs",
-    "ui"
-  ]
+  "usage": "import { ActivityFeed, type ActivityFeedProps, type ActivityItem, type ActivityUser } from \"shadcn-solid-components/hoc/activity-feed\"",
+  "tags": ["hoc", "activity-feed", "solidjs", "ui"]
 }

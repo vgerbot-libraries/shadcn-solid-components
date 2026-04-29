@@ -9,12 +9,6 @@
     "Event-creation wizards that validate date availability and prevent past-date selection",
     "Filter panels in analytics dashboards for custom date-range pickers with quick presets"
   ],
-  "usage": "import { DatePickerField, type DatePickerFieldProps } from \"shadcn-solid-components/hoc/date-picker\""
-,
-  "tags": [
-    "hoc",
-    "date-picker",
-    "solidjs",
-    "ui"
-  ]
+  "usage": "import { DatePickerField, type DatePickerFieldProps } from \"shadcn-solid-components/hoc/date-picker\"",
+  "tags": ["hoc", "date-picker", "solidjs", "ui"]
 }

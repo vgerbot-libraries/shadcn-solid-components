@@ -9,12 +9,6 @@
     "Bulk-action toolbars that enable/disable based on current row-selection state",
     "Analytics log viewers with faceted filters for severity, source, and date-range"
   ],
-  "usage": "import { DataTableToolbar, type DataTableToolbarProps } from \"shadcn-solid-components/hoc/data-table-toolbar\""
-,
-  "tags": [
-    "hoc",
-    "data-table-toolbar",
-    "solidjs",
-    "ui"
-  ]
+  "usage": "import { DataTableToolbar, type DataTableToolbarProps } from \"shadcn-solid-components/hoc/data-table-toolbar\"",
+  "tags": ["hoc", "data-table-toolbar", "solidjs", "ui"]
 }

@@ -9,12 +9,6 @@
     "Background job processors (image resizing, report generation) surfacing progress toasts",
     "Real-time collaboration apps broadcasting incoming messages, mentions, or system alerts"
   ],
-  "usage": "import { useNotify, NotificationProvider } from \"shadcn-solid-components/hoc/use-notify\""
-,
-  "tags": [
-    "hoc",
-    "use-notify",
-    "solidjs",
-    "ui"
-  ]
+  "usage": "import { useNotify, NotificationProvider } from \"shadcn-solid-components/hoc/use-notify\"",
+  "tags": ["hoc", "use-notify", "solidjs", "ui"]
 }

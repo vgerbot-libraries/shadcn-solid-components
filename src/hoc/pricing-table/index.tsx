@@ -21,7 +21,7 @@ export interface PricingFeature {
 
 export interface PricingPlan {
   /** Theme primary color in hex, used for border, badge, and button when plan is popular. */
-  themeColor?: string;
+  themeColor?: string
   /** Plan name (e.g. "Free", "Pro"). */
   name: string
   /** Short description of the plan. */
@@ -141,11 +141,7 @@ function FeatureItem(props: { feature: PricingFeature }) {
       <Show when={props.feature.included} fallback={<IconX />}>
         <IconCheck />
       </Show>
-      <span
-        class={cx(
-          !props.feature.included && 'text-muted-foreground line-through',
-        )}
-      >
+      <span class={cx(!props.feature.included && 'text-muted-foreground line-through')}>
         {props.feature.text}
       </span>
     </li>
@@ -264,39 +260,42 @@ export function PricingTable(props: PricingTableProps) {
         )}
       >
         <For each={local.plans}>
-          {(plan) => (
+          {plan => (
             <Card
               data-slot="pricing-plan"
-              class={cx(
-                'relative flex flex-col',
-                (plan.isPopular ? 'border-2 shadow-lg' : ''),
-              )}
+              class={cx('relative flex flex-col', plan.isPopular ? 'border-2 shadow-lg' : '')}
               style={plan.themeColor && plan.isPopular ? { 'border-color': plan.themeColor } : {}}
             >
               <Show when={plan.isPopular}>
                 <Badge
-    class="absolute -top-3 left-1/2 -translate-x-1/2"
-    variant="default"
-    style={plan.themeColor ? { background: plan.themeColor, color: plan.themeColor ===
-   '#ffc107' ? '#222' : '#fff' } : {}}
-  >
-    {locale().popular}
-  </Badge>
+                  class="absolute -top-3 left-1/2 -translate-x-1/2"
+                  variant="default"
+                  style={
+                    plan.themeColor
+                      ? {
+                          background: plan.themeColor,
+                          color: plan.themeColor === '#ffc107' ? '#222' : '#fff',
+                        }
+                      : {}
+                  }
+                >
+                  {locale().popular}
+                </Badge>
               </Show>
 
-
               <CardHeader class="space-y-1">
-                <h3 class="text-xl font-semibold">{plan.name}
+                <h3 class="text-xl font-semibold">
+                  {plan.name}
 
                   <Show when={plan.discount}>
-                  <Badge
-                    class="float-right mt-0.5"
-                    variant="secondary"
-                    style={plan.themeColor ? { color: plan.themeColor } : {}}
-                  >
-                    {plan.discount}
-                  </Badge>
-                </Show>
+                    <Badge
+                      class="float-right mt-0.5"
+                      variant="secondary"
+                      style={plan.themeColor ? { color: plan.themeColor } : {}}
+                    >
+                      {plan.discount}
+                    </Badge>
+                  </Show>
                 </h3>
                 <Show when={plan.description}>
                   <p class="text-muted-foreground text-sm">{plan.description}</p>
@@ -323,9 +322,7 @@ export function PricingTable(props: PricingTableProps) {
 
                 {/* Features */}
                 <ul class="flex flex-1 flex-col gap-3">
-                  <For each={plan.features}>
-                    {(feature) => <FeatureItem feature={feature} />}
-                  </For>
+                  <For each={plan.features}>{feature => <FeatureItem feature={feature} />}</For>
                 </ul>
 
                 {/* Additional Features */}
@@ -334,7 +331,7 @@ export function PricingTable(props: PricingTableProps) {
                     <h4 class="mb-3 text-sm font-semibold">{locale().additionalFeatures}</h4>
                     <ul class="flex flex-col gap-3">
                       <For each={plan.additionalFeatures}>
-                        {(feature) => <FeatureItem feature={feature} />}
+                        {feature => <FeatureItem feature={feature} />}
                       </For>
                     </ul>
                   </div>

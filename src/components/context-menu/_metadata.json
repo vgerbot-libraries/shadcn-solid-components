@@ -9,12 +9,6 @@
     "Data-table row context menus for quick filters, exports, or bulk actions",
     "Text-editor context menus with Cut, Copy, Paste, and formatting options"
   ],
-  "usage": "import { ContextMenu, ContextMenuTrigger, ContextMenuContent, ContextMenuItem, ContextMenuCheckboxItem, ContextMenuRadioItem, ContextMenuSub, ContextMenuSubTrigger, ContextMenuSubContent, ContextMenuGroup, ContextMenuSeparator, ContextMenuShortcut, ContextMenuRadioGroup } from \"shadcn-solid-components/components/context-menu\""
-,
-  "tags": [
-    "components",
-    "context-menu",
-    "solidjs",
-    "ui"
-  ]
+  "usage": "import { ContextMenu, ContextMenuTrigger, ContextMenuContent, ContextMenuItem, ContextMenuCheckboxItem, ContextMenuRadioItem, ContextMenuSub, ContextMenuSubTrigger, ContextMenuSubContent, ContextMenuGroup, ContextMenuSeparator, ContextMenuShortcut, ContextMenuRadioGroup } from \"shadcn-solid-components/components/context-menu\"",
+  "tags": ["components", "context-menu", "solidjs", "ui"]
 }

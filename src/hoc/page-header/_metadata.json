@@ -9,12 +9,6 @@
     "Content-management edit pages with the article title, publish status, and preview/delete actions",
     "Analytics report pages showing the report name, date-range subtitle, and export/share controls"
   ],
-  "usage": "import { PageHeader, PageHeaderTitle, PageHeaderDescription, PageHeaderAction } from \"shadcn-solid-components/hoc/page-header\""
-,
-  "tags": [
-    "hoc",
-    "page-header",
-    "solidjs",
-    "ui"
-  ]
+  "usage": "import { PageHeader, PageHeaderTitle, PageHeaderDescription, PageHeaderAction } from \"shadcn-solid-components/hoc/page-header\"",
+  "tags": ["hoc", "page-header", "solidjs", "ui"]
 }

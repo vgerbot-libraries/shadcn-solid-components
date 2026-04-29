@@ -9,12 +9,6 @@
     "Audit logs and activity feeds where chronological pages improve scan performance",
     "API-documentation endpoints listing resources with limit/offset query parameters"
   ],
-  "usage": "import { Pagination, PaginationContent, PaginationItem, PaginationLink, PaginationPrevious, PaginationNext, PaginationFirst, PaginationLast, PaginationEllipsis } from \"shadcn-solid-components/components/pagination\""
-,
-  "tags": [
-    "components",
-    "pagination",
-    "solidjs",
-    "ui"
-  ]
+  "usage": "import { Pagination, PaginationContent, PaginationItem, PaginationLink, PaginationPrevious, PaginationNext, PaginationFirst, PaginationLast, PaginationEllipsis } from \"shadcn-solid-components/components/pagination\"",
+  "tags": ["components", "pagination", "solidjs", "ui"]
 }

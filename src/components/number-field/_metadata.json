@@ -9,12 +9,6 @@
     "Pagination size choosers letting users pick 10, 25, 50, or 100 rows per page",
     "Rating or score inputs where arrow keys increment a value within a 1–10 range"
   ],
-  "usage": "import { NumberField, NumberFieldGroup, NumberFieldInput, NumberFieldLabel, NumberFieldDescription, NumberFieldErrorMessage, NumberFieldDecrementTrigger, NumberFieldIncrementTrigger } from \"shadcn-solid-components/components/number-field\""
-,
-  "tags": [
-    "components",
-    "number-field",
-    "solidjs",
-    "ui"
-  ]
+  "usage": "import { NumberField, NumberFieldGroup, NumberFieldInput, NumberFieldLabel, NumberFieldDescription, NumberFieldErrorMessage, NumberFieldDecrementTrigger, NumberFieldIncrementTrigger } from \"shadcn-solid-components/components/number-field\"",
+  "tags": ["components", "number-field", "solidjs", "ui"]
 }

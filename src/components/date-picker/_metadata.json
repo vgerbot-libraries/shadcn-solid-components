@@ -9,12 +9,6 @@
     "Event-creation wizards with date, time, and timezone-aware inputs",
     "Filter panels in analytics dashboards for selecting custom date ranges"
   ],
-  "usage": "import { DatePicker, DatePickerControl, DatePickerInput, DatePickerTrigger, DatePickerContent, DatePickerTable, DatePickerTableBody, DatePickerTableCell, DatePickerTableCellTrigger, DatePickerView, DatePickerViewControl, DatePickerYearSelect, DatePickerMonthSelect } from \"shadcn-solid-components/components/date-picker\""
-,
-  "tags": [
-    "components",
-    "date-picker",
-    "solidjs",
-    "ui"
-  ]
+  "usage": "import { DatePicker, DatePickerControl, DatePickerInput, DatePickerTrigger, DatePickerContent, DatePickerTable, DatePickerTableBody, DatePickerTableCell, DatePickerTableCellTrigger, DatePickerView, DatePickerViewControl, DatePickerYearSelect, DatePickerMonthSelect } from \"shadcn-solid-components/components/date-picker\"",
+  "tags": ["components", "date-picker", "solidjs", "ui"]
 }

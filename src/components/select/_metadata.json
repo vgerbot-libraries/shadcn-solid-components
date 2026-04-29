@@ -9,12 +9,6 @@
     "Multi-select category tags in content-management systems and e-commerce admin panels",
     "Sort-order and page-size controls in data-table toolbars and pagination headers"
   ],
-  "usage": "import { Select, SelectValue, SelectTrigger, SelectContent, SelectListbox, SelectItem, SelectItemLabel, SelectItemIndicator, SelectSection, SelectLabel, SelectDescription, SelectErrorMessage, SelectHiddenSelect, SelectPortal } from \"shadcn-solid-components/components/select\""
-,
-  "tags": [
-    "components",
-    "select",
-    "solidjs",
-    "ui"
-  ]
+  "usage": "import { Select, SelectValue, SelectTrigger, SelectContent, SelectListbox, SelectItem, SelectItemLabel, SelectItemIndicator, SelectSection, SelectLabel, SelectDescription, SelectErrorMessage, SelectHiddenSelect, SelectPortal } from \"shadcn-solid-components/components/select\"",
+  "tags": ["components", "select", "solidjs", "ui"]
 }

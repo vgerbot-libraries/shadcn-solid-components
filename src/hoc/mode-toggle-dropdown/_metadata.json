@@ -9,12 +9,6 @@
     "Preference modals that present all appearance settings in a unified dropdown group",
     "Mobile navigation drawers that house theme selection alongside language and region options"
   ],
-  "usage": "import { ModeToggleDropdown } from \"shadcn-solid-components/hoc/mode-toggle-dropdown\""
-,
-  "tags": [
-    "hoc",
-    "mode-toggle-dropdown",
-    "solidjs",
-    "ui"
-  ]
+  "usage": "import { ModeToggleDropdown } from \"shadcn-solid-components/hoc/mode-toggle-dropdown\"",
+  "tags": ["hoc", "mode-toggle-dropdown", "solidjs", "ui"]
 }

@@ -9,12 +9,6 @@
     "Dashboard widgets that have no recent activity and suggest creating a first record",
     "Admin tables after applying restrictive filters, prompting the user to broaden their criteria"
   ],
-  "usage": "import { EmptyState, EmptyStateIcon, EmptyStateTitle, EmptyStateDescription, EmptyStateAction } from \"shadcn-solid-components/hoc/empty-state\""
-,
-  "tags": [
-    "hoc",
-    "empty-state",
-    "solidjs",
-    "ui"
-  ]
+  "usage": "import { EmptyState, EmptyStateIcon, EmptyStateTitle, EmptyStateDescription, EmptyStateAction } from \"shadcn-solid-components/hoc/empty-state\"",
+  "tags": ["hoc", "empty-state", "solidjs", "ui"]
 }

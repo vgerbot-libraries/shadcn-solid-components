@@ -25,9 +25,30 @@ export type { ColorFormat } from './color-utils'
 export type ColorPickerMode = 'inline' | 'popover'
 
 const DEFAULT_SWATCHES = [
-  '#000000', '#434343', '#666666', '#999999', '#B7B7B7', '#CCCCCC', '#D9D9D9', '#FFFFFF',
-  '#980000', '#FF0000', '#FF9900', '#FFFF00', '#00FF00', '#00FFFF', '#4A86E8', '#0000FF',
-  '#9900FF', '#FF00FF', '#E6B8AF', '#F4CCCC', '#FCE5CD', '#FFF2CC', '#D9EAD3', '#D0E0E3',
+  '#000000',
+  '#434343',
+  '#666666',
+  '#999999',
+  '#B7B7B7',
+  '#CCCCCC',
+  '#D9D9D9',
+  '#FFFFFF',
+  '#980000',
+  '#FF0000',
+  '#FF9900',
+  '#FFFF00',
+  '#00FF00',
+  '#00FFFF',
+  '#4A86E8',
+  '#0000FF',
+  '#9900FF',
+  '#FF00FF',
+  '#E6B8AF',
+  '#F4CCCC',
+  '#FCE5CD',
+  '#FFF2CC',
+  '#D9EAD3',
+  '#D0E0E3',
 ]
 
 export interface ColorPickerProps extends Omit<ComponentProps<'div'>, 'onChange'> {
@@ -131,11 +152,7 @@ export const ColorPicker = (props: ColorPickerProps) => {
       class={cx('flex h-auto w-72 flex-col gap-3', local.class)}
       {...rest}
     >
-      <ColorPanel
-        hsva={hsva()}
-        disabled={local.disabled}
-        onChange={commitColor}
-      />
+      <ColorPanel hsva={hsva()} disabled={local.disabled} onChange={commitColor} />
 
       <HueSlider
         hue={hsva().h}
@@ -151,11 +168,7 @@ export const ColorPicker = (props: ColorPickerProps) => {
         />
       </Show>
 
-      <ColorPreview
-        hsva={hsva()}
-        previousColor={previousColor()}
-        showAlpha={showAlpha()}
-      />
+      <ColorPreview hsva={hsva()} previousColor={previousColor()} showAlpha={showAlpha()} />
 
       <ColorInput
         hsva={hsva()}

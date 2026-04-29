@@ -9,12 +9,6 @@
     "View-option menus mixing checkbox items (Show columns) and radio groups (Sort by)",
     "Toolbar overflow menus that house secondary actions when screen space is limited"
   ],
-  "usage": "import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem, DropdownMenuCheckboxItem, DropdownMenuRadioItem, DropdownMenuSub, DropdownMenuSubTrigger, DropdownMenuSubContent, DropdownMenuGroup, DropdownMenuGroupLabel, DropdownMenuItemLabel, DropdownMenuSeparator, DropdownMenuShortcut, DropdownMenuRadioGroup, DropdownMenuPortal } from \"shadcn-solid-components/components/dropdown-menu\""
-,
-  "tags": [
-    "components",
-    "dropdown-menu",
-    "solidjs",
-    "ui"
-  ]
+  "usage": "import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem, DropdownMenuCheckboxItem, DropdownMenuRadioItem, DropdownMenuSub, DropdownMenuSubTrigger, DropdownMenuSubContent, DropdownMenuGroup, DropdownMenuGroupLabel, DropdownMenuItemLabel, DropdownMenuSeparator, DropdownMenuShortcut, DropdownMenuRadioGroup, DropdownMenuPortal } from \"shadcn-solid-components/components/dropdown-menu\"",
+  "tags": ["components", "dropdown-menu", "solidjs", "ui"]
 }

@@ -9,12 +9,6 @@
     "Split buttons where a primary action sits next to a dropdown trigger",
     "Input-button combinations such as a search field with a submit button"
   ],
-  "usage": "import { ButtonGroup, ButtonText, ButtonSeparator } from \"shadcn-solid-components/components/button-group\""
-,
-  "tags": [
-    "components",
-    "button-group",
-    "solidjs",
-    "ui"
-  ]
+  "usage": "import { ButtonGroup, ButtonText, ButtonSeparator } from \"shadcn-solid-components/components/button-group\"",
+  "tags": ["components", "button-group", "solidjs", "ui"]
 }

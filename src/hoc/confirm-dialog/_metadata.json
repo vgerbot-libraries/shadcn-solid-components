@@ -9,12 +9,6 @@
     "Bulk-action confirmations when a user selects multiple items and clicks 'Archive' or 'Delete'",
     "Unsaved-changes prompts when navigating away from a form with dirty state"
   ],
-  "usage": "import { ConfirmDialog, useConfirmDialog } from \"shadcn-solid-components/hoc/confirm-dialog\""
-,
-  "tags": [
-    "hoc",
-    "confirm-dialog",
-    "solidjs",
-    "ui"
-  ]
+  "usage": "import { ConfirmDialog, useConfirmDialog } from \"shadcn-solid-components/hoc/confirm-dialog\"",
+  "tags": ["hoc", "confirm-dialog", "solidjs", "ui"]
 }

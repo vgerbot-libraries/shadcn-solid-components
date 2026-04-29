@@ -9,12 +9,6 @@
     "Survey builders that dynamically render labeled questions with real-time validation feedback",
     "Multi-step wizards where each step reuses the same field structure across different input types"
   ],
-  "usage": "import { FormField, FormFieldLabel, FormFieldInput, FormFieldDescription, FormFieldErrorMessage } from \"shadcn-solid-components/hoc/form-field\""
-,
-  "tags": [
-    "hoc",
-    "form-field",
-    "solidjs",
-    "ui"
-  ]
+  "usage": "import { FormField, FormFieldLabel, FormFieldInput, FormFieldDescription, FormFieldErrorMessage } from \"shadcn-solid-components/hoc/form-field\"",
+  "tags": ["hoc", "form-field", "solidjs", "ui"]
 }

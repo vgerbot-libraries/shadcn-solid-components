@@ -1,5 +1,11 @@
 import { Card, CardContent } from 'shadcn-solid-components/components/card'
-import { Tabs, TabsContent, TabsIndicator, TabsList, TabsTrigger } from 'shadcn-solid-components/components/tabs'
+import {
+  Tabs,
+  TabsContent,
+  TabsIndicator,
+  TabsList,
+  TabsTrigger,
+} from 'shadcn-solid-components/components/tabs'
 import { cx } from 'shadcn-solid-components/lib/cva'
 import { type ComponentProps, For, type JSX, Show, splitProps } from 'solid-js'
 
@@ -132,20 +138,13 @@ export function ProfileHeader(props: ProfileHeaderProps) {
         {/* Cover image */}
         <Show when={local.coverImage}>
           <div data-slot="profile-cover" class="relative h-32 md:h-48">
-            <img
-              src={local.coverImage}
-              alt=""
-              class="h-full w-full object-cover"
-            />
+            <img src={local.coverImage} alt="" class="h-full w-full object-cover" />
             <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
           </div>
         </Show>
 
         <CardContent
-          class={cx(
-            'flex flex-col gap-4 md:gap-6',
-            local.coverImage && '-mt-10 md:-mt-12 z-1',
-          )}
+          class={cx('flex flex-col gap-4 md:gap-6', local.coverImage && '-mt-10 md:-mt-12 z-1')}
         >
           <div class="flex flex-col items-start gap-4 md:flex-row md:items-center md:gap-6">
             {/* Avatar */}
@@ -186,10 +185,7 @@ export function ProfileHeader(props: ProfileHeaderProps) {
 
           {/* Stats row */}
           <Show when={local.stats?.length}>
-            <div
-              data-slot="profile-stats"
-              class="border-t pt-4"
-            >
+            <div data-slot="profile-stats" class="border-t pt-4">
               <div class="flex flex-wrap gap-6 md:gap-8">
                 <For each={local.stats}>
                   {stat => (
@@ -207,11 +203,11 @@ export function ProfileHeader(props: ProfileHeaderProps) {
 
       {/* Tabs */}
       <Show when={local.tabs?.length}>
-        <Tabs
-          defaultValue={local.activeTab ?? local.tabs![0]?.id}
-          onChange={local.onTabChange}
-        >
-          <TabsList class="grid w-full" style={{ 'grid-template-columns': `repeat(${local.tabs!.length}, minmax(0, 1fr))` }}>
+        <Tabs defaultValue={local.activeTab ?? local.tabs![0]?.id} onChange={local.onTabChange}>
+          <TabsList
+            class="grid w-full"
+            style={{ 'grid-template-columns': `repeat(${local.tabs!.length}, minmax(0, 1fr))` }}
+          >
             <For each={local.tabs}>
               {tab => <TabsTrigger value={tab.id}>{tab.label}</TabsTrigger>}
             </For>

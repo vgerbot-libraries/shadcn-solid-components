@@ -9,12 +9,6 @@
     "Theme preference selectors (Light, Dark, System) in user settings",
     "Single-answer survey questions where only one choice is allowed per question"
   ],
-  "usage": "import { RadioGroup, RadioGroupItems, RadioGroupItem, RadioGroupItemControl, RadioGroupItemIndicator, RadioGroupLabel, RadioGroupItemLabel, RadioGroupDescription, RadioGroupErrorMessage } from \"shadcn-solid-components/components/radio-group\""
-,
-  "tags": [
-    "components",
-    "radio-group",
-    "solidjs",
-    "ui"
-  ]
+  "usage": "import { RadioGroup, RadioGroupItems, RadioGroupItem, RadioGroupItemControl, RadioGroupItemIndicator, RadioGroupLabel, RadioGroupItemLabel, RadioGroupDescription, RadioGroupErrorMessage } from \"shadcn-solid-components/components/radio-group\"",
+  "tags": ["components", "radio-group", "solidjs", "ui"]
 }

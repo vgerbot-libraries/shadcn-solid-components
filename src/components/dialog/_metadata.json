@@ -9,12 +9,6 @@
     "Detail inspectors that show expanded information for a selected table row or chart item",
     "Onboarding or feature-announcement modals with header, body content, and footer actions"
   ],
-  "usage": "import { Dialog, DialogTrigger, DialogCloseButton, DialogContent, DialogHeader, DialogFooter, DialogTitle, DialogDescription, DialogPortal } from \"shadcn-solid-components/components/dialog\""
-,
-  "tags": [
-    "components",
-    "dialog",
-    "solidjs",
-    "ui"
-  ]
+  "usage": "import { Dialog, DialogTrigger, DialogCloseButton, DialogContent, DialogHeader, DialogFooter, DialogTitle, DialogDescription, DialogPortal } from \"shadcn-solid-components/components/dialog\"",
+  "tags": ["components", "dialog", "solidjs", "ui"]
 }

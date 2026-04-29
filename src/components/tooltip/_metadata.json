@@ -9,12 +9,6 @@
     "Keyboard-shortcut hints on toolbar buttons to aid power-user onboarding",
     "Data-visualization charts where hovering a data point shows exact values and dates"
   ],
-  "usage": "import { Tooltip, TooltipTrigger, TooltipContent, TooltipPortal } from \"shadcn-solid-components/components/tooltip\""
-,
-  "tags": [
-    "components",
-    "tooltip",
-    "solidjs",
-    "ui"
-  ]
+  "usage": "import { Tooltip, TooltipTrigger, TooltipContent, TooltipPortal } from \"shadcn-solid-components/components/tooltip\"",
+  "tags": ["components", "tooltip", "solidjs", "ui"]
 }

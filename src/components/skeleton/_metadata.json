@@ -9,12 +9,6 @@
     "Avatar and text-line skeletons inside user-profile headers during initial load",
     "Form skeletons for SSR or slow connections so the layout does not jump on hydration"
   ],
-  "usage": "import { Skeleton } from \"shadcn-solid-components/components/skeleton\""
-,
-  "tags": [
-    "components",
-    "skeleton",
-    "solidjs",
-    "ui"
-  ]
+  "usage": "import { Skeleton } from \"shadcn-solid-components/components/skeleton\"",
+  "tags": ["components", "skeleton", "solidjs", "ui"]
 }

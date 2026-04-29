@@ -213,7 +213,7 @@ export interface Locale {
   SettingsLayout: SettingsLayoutLocale
   OverlayPage: OverlayPageLocale
   ActivityFeed: ActivityFeedLocale
-  PricingTable: PricingTableLocale,
+  PricingTable: PricingTableLocale
   FaqSection: FaqSectionLocale
   ErrorPage: ErrorPageLocale
 }

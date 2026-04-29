@@ -47,10 +47,7 @@ export const ColorPreview = (props: ColorPreviewProps) => {
           />
         </div>
       )}
-      <div
-        class="relative flex-1"
-        style={{ 'background-color': currentCss() }}
-      >
+      <div class="relative flex-1" style={{ 'background-color': currentCss() }}>
         <div
           class="absolute inset-0"
           style={{

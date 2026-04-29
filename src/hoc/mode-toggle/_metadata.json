@@ -9,12 +9,6 @@
     "Marketing landing pages that respect OS theme settings while allowing manual override",
     "Accessibility-focused apps that expose high-contrast or low-light mode toggles"
   ],
-  "usage": "import { ModeToggle } from \"shadcn-solid-components/hoc/mode-toggle\""
-,
-  "tags": [
-    "hoc",
-    "mode-toggle",
-    "solidjs",
-    "ui"
-  ]
+  "usage": "import { ModeToggle } from \"shadcn-solid-components/hoc/mode-toggle\"",
+  "tags": ["hoc", "mode-toggle", "solidjs", "ui"]
 }

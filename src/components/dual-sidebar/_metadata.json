@@ -10,12 +10,5 @@
     "Multi-module enterprise apps where switching modules should swap the secondary nav without losing the primary chrome"
   ],
   "usage": "import { DualSidebarProvider, DualSidebar, DualSidebarRail, DualSidebarRailHeader, DualSidebarRailContent, DualSidebarRailFooter, DualSidebarRailItem, DualSidebarPanel, DualSidebarPanelHeader, DualSidebarPanelContent, DualSidebarPanelFooter, DualSidebarPanelTitle, DualSidebarSection, DualSidebarTrigger, DualSidebarInset, DualSidebarMenu, DualSidebarMenuItem, DualSidebarMenuButton, useDualSidebar } from \"shadcn-solid-components/components/dual-sidebar\"",
-  "tags": [
-    "components",
-    "dual-sidebar",
-    "navigation",
-    "layout",
-    "solidjs",
-    "ui"
-  ]
+  "tags": ["components", "dual-sidebar", "navigation", "layout", "solidjs", "ui"]
 }

@@ -1,4 +1,9 @@
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from 'shadcn-solid-components/components/accordion'
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from 'shadcn-solid-components/components/accordion'
 import { Badge } from 'shadcn-solid-components/components/badge'
 import { Button } from 'shadcn-solid-components/components/button'
 import { TextField, TextFieldInput } from 'shadcn-solid-components/components/text-field'
@@ -108,7 +113,7 @@ export function FaqSection(props: FaqSectionProps) {
     const q = normalizedQuery()
     const category = selectedCategory()
 
-    return local.items.filter((item) => {
+    return local.items.filter(item => {
       const inCategory = category === 'all' || item.category === category
       if (!inCategory) return false
 
@@ -121,7 +126,7 @@ export function FaqSection(props: FaqSectionProps) {
   })
 
   const categoryCount = (categoryId: string) =>
-    local.items.filter((item) => categoryId === 'all' || item.category === categoryId).length
+    local.items.filter(item => categoryId === 'all' || item.category === categoryId).length
 
   return (
     <section data-slot="faq-section" class={cx('flex flex-col gap-6', local.class)} {...rest}>
@@ -131,7 +136,8 @@ export function FaqSection(props: FaqSectionProps) {
             <TextFieldInput
               value={query()}
               onInput={(event: InputEvent & { currentTarget: HTMLInputElement }) =>
-                setQuery(event.currentTarget.value)}
+                setQuery(event.currentTarget.value)
+              }
               placeholder={local.searchPlaceholder ?? locale().searchPlaceholder}
               aria-label={local.searchPlaceholder ?? locale().searchPlaceholder}
             />
@@ -155,7 +161,7 @@ export function FaqSection(props: FaqSectionProps) {
           </Button>
 
           <For each={local.categories}>
-            {(category) => (
+            {category => (
               <Button
                 type="button"
                 variant={selectedCategory() === category.id ? 'default' : 'outline'}
@@ -181,7 +187,9 @@ export function FaqSection(props: FaqSectionProps) {
             data-slot="faq-empty"
             class="border-border bg-card text-muted-foreground rounded-lg border border-dashed p-8 text-center"
           >
-            <p class="text-foreground text-base font-medium">{local.emptyTitle ?? locale().emptyTitle}</p>
+            <p class="text-foreground text-base font-medium">
+              {local.emptyTitle ?? locale().emptyTitle}
+            </p>
             <p class="mt-2 text-sm">{local.emptyDescription ?? locale().emptyDescription}</p>
           </div>
         }

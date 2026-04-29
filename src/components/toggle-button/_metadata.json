@@ -9,12 +9,6 @@
     "Annotation tools in drawing apps (brush, eraser, selection) that stay active while pressed",
     "Favorite or bookmark buttons that visually reflect an active/inactive state"
   ],
-  "usage": "import { ToggleButton, toggleButtonVariants } from \"shadcn-solid-components/components/toggle-button\""
-,
-  "tags": [
-    "components",
-    "toggle-button",
-    "solidjs",
-    "ui"
-  ]
+  "usage": "import { ToggleButton, toggleButtonVariants } from \"shadcn-solid-components/components/toggle-button\"",
+  "tags": ["components", "toggle-button", "solidjs", "ui"]
 }

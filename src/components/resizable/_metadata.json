@@ -9,12 +9,6 @@
     "Image-comparison tools with a draggable vertical or horizontal splitter overlay",
     "Documentation sites with a resizable sidebar table-of-contents next to the article body"
   ],
-  "usage": "import { ResizablePanelGroup, ResizablePanel, ResizableHandle } from \"shadcn-solid-components/components/resizable\""
-,
-  "tags": [
-    "components",
-    "resizable",
-    "solidjs",
-    "ui"
-  ]
+  "usage": "import { ResizablePanelGroup, ResizablePanel, ResizableHandle } from \"shadcn-solid-components/components/resizable\"",
+  "tags": ["components", "resizable", "solidjs", "ui"]
 }

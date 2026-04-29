@@ -9,12 +9,6 @@
     "403 Unauthorized screens for role-restricted pages with a button to request access or contact support",
     "503 Maintenance mode pages displaying a countdown timer and a retry-action button"
   ],
-  "usage": "import { ErrorPage, ErrorPageIcon, ErrorPageTitle, ErrorPageDescription, ErrorPageAction } from \"shadcn-solid-components/hoc/error-page\""
-,
-  "tags": [
-    "hoc",
-    "error-page",
-    "solidjs",
-    "ui"
-  ]
+  "usage": "import { ErrorPage, ErrorPageIcon, ErrorPageTitle, ErrorPageDescription, ErrorPageAction } from \"shadcn-solid-components/hoc/error-page\"",
+  "tags": ["hoc", "error-page", "solidjs", "ui"]
 }

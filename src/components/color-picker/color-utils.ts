@@ -45,17 +45,23 @@ export const hsvaToRgba = (color: HSVA): RGBA => {
   let b = 0
 
   if (h < 60) {
-    r = c; g = x
+    r = c
+    g = x
   } else if (h < 120) {
-    r = x; g = c
+    r = x
+    g = c
   } else if (h < 180) {
-    g = c; b = x
+    g = c
+    b = x
   } else if (h < 240) {
-    g = x; b = c
+    g = x
+    b = c
   } else if (h < 300) {
-    r = x; b = c
+    r = x
+    b = c
   } else {
-    r = c; b = x
+    r = c
+    b = x
   }
 
   return normalizeRgba({ r: (r + m) * 255, g: (g + m) * 255, b: (b + m) * 255, a })
@@ -130,17 +136,23 @@ const hslToRgba = (color: HSLA): RGBA => {
   let b = 0
 
   if (h < 60) {
-    r = c; g = x
+    r = c
+    g = x
   } else if (h < 120) {
-    r = x; g = c
+    r = x
+    g = c
   } else if (h < 180) {
-    g = c; b = x
+    g = c
+    b = x
   } else if (h < 240) {
-    g = x; b = c
+    g = x
+    b = c
   } else if (h < 300) {
-    r = x; b = c
+    r = x
+    b = c
   } else {
-    r = c; b = x
+    r = c
+    b = x
   }
 
   return normalizeRgba({ r: (r + m) * 255, g: (g + m) * 255, b: (b + m) * 255, a: color.a })
@@ -194,7 +206,10 @@ const parseHex = (input: string): RGBA | null => {
 
   const full =
     body.length === 3 || body.length === 4
-      ? body.split('').map(char => char + char).join('')
+      ? body
+          .split('')
+          .map(char => char + char)
+          .join('')
       : body
 
   const hasAlpha = full.length === 8

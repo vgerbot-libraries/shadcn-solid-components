@@ -6,7 +6,12 @@ import {
   CardHeader,
   CardTitle,
 } from 'shadcn-solid-components/components/card'
-import { IconCreditCard, IconHelp, IconLock, IconRocket } from 'shadcn-solid-components/components/icons'
+import {
+  IconCreditCard,
+  IconHelp,
+  IconLock,
+  IconRocket,
+} from 'shadcn-solid-components/components/icons'
 import { FaqSection, type FaqCategory, type FaqItem } from 'shadcn-solid-components/hoc/faq-section'
 import { PageLayout } from '../components/PageLayout'
 
@@ -90,9 +95,7 @@ const HelperCenterPage: Component = () => {
       <Card>
         <CardHeader>
           <CardTitle>FAQ Section — No Categories</CardTitle>
-          <CardDescription>
-            Minimal setup using only searchable FAQ items.
-          </CardDescription>
+          <CardDescription>Minimal setup using only searchable FAQ items.</CardDescription>
         </CardHeader>
         <CardContent>
           <FaqSection items={faqItems.slice(0, 4)} searchable />

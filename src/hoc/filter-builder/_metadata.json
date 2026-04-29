@@ -9,12 +9,6 @@
     "E-commerce admin order grids with nested filters for status, date-range, and customer tier",
     "Data-science workbenches building dataset queries without writing raw SQL or query DSL"
   ],
-  "usage": "import { FilterBuilder, type FilterBuilderProps, type FilterCondition } from \"shadcn-solid-components/hoc/filter-builder\""
-,
-  "tags": [
-    "hoc",
-    "filter-builder",
-    "solidjs",
-    "ui"
-  ]
+  "usage": "import { FilterBuilder, type FilterBuilderProps, type FilterCondition } from \"shadcn-solid-components/hoc/filter-builder\"",
+  "tags": ["hoc", "filter-builder", "solidjs", "ui"]
 }

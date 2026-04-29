@@ -9,12 +9,6 @@
     "Filter panels with multiple checkboxes and inputs that float above a table toolbar",
     "Confirmation mini-forms such as 'Rename' or 'Add tag' triggered from list-item menus"
   ],
-  "usage": "import { Popover, PopoverTrigger, PopoverContent, PopoverPortal } from \"shadcn-solid-components/components/popover\""
-,
-  "tags": [
-    "components",
-    "popover",
-    "solidjs",
-    "ui"
-  ]
+  "usage": "import { Popover, PopoverTrigger, PopoverContent, PopoverPortal } from \"shadcn-solid-components/components/popover\"",
+  "tags": ["components", "popover", "solidjs", "ui"]
 }

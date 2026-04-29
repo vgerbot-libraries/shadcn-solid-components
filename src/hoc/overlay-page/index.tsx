@@ -154,7 +154,10 @@ export function OverlayPage(props: OverlayPageProps) {
                       data-slot="overlay-page-description"
                       class="text-muted-foreground mt-1 text-sm"
                     >
-                      <Show when={typeof local.description === 'string'} fallback={local.description}>
+                      <Show
+                        when={typeof local.description === 'string'}
+                        fallback={local.description}
+                      >
                         <p>{local.description}</p>
                       </Show>
                     </div>

@@ -48,7 +48,11 @@ export const HueSlider = (props: HueSliderProps) => {
   return (
     <div
       data-slot="color-picker-hue-slider"
-      class={cx('relative h-3 w-full touch-none select-none', local.disabled && 'opacity-60', local.class)}
+      class={cx(
+        'relative h-3 w-full touch-none select-none',
+        local.disabled && 'opacity-60',
+        local.class,
+      )}
       {...rest}
     >
       <div
@@ -115,7 +119,11 @@ export const AlphaSlider = (props: AlphaSliderProps) => {
   return (
     <div
       data-slot="color-picker-alpha-slider"
-      class={cx('relative h-3 w-full touch-none select-none', local.disabled && 'opacity-60', local.class)}
+      class={cx(
+        'relative h-3 w-full touch-none select-none',
+        local.disabled && 'opacity-60',
+        local.class,
+      )}
       {...rest}
     >
       <div
@@ -123,7 +131,10 @@ export const AlphaSlider = (props: AlphaSliderProps) => {
         class="relative h-full w-full cursor-pointer rounded-full overflow-hidden"
         onPointerDown={onPointerDown}
       >
-        <div class="absolute inset-0 rounded-full" style={{ background: CHECKERBOARD_PATTERN, 'background-size': '8px 8px' }} />
+        <div
+          class="absolute inset-0 rounded-full"
+          style={{ background: CHECKERBOARD_PATTERN, 'background-size': '8px 8px' }}
+        />
         <div class="absolute inset-0 rounded-full" style={{ background: alphaBackground() }} />
       </div>
       <div

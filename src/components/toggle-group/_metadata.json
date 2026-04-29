@@ -9,12 +9,6 @@
     "Filter chip groups where one or more categories can be toggled on a search page",
     "Segmented tool palettes in design or diagramming applications"
   ],
-  "usage": "import { ToggleGroup, ToggleGroupItem } from \"shadcn-solid-components/components/toggle-group\""
-,
-  "tags": [
-    "components",
-    "toggle-group",
-    "solidjs",
-    "ui"
-  ]
+  "usage": "import { ToggleGroup, ToggleGroupItem } from \"shadcn-solid-components/components/toggle-group\"",
+  "tags": ["components", "toggle-group", "solidjs", "ui"]
 }

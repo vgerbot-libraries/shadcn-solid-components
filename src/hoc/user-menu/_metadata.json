@@ -9,12 +9,6 @@
     "SaaS dashboards with quick links to Billing, API Keys, Team Members, and Support",
     "E-commerce storefronts showing order history, saved addresses, and loyalty-status badges"
   ],
-  "usage": "import { UserMenu, UserMenuTrigger, UserMenuContent, UserMenuItem, UserMenuLabel, UserMenuSeparator, UserMenuGroup } from \"shadcn-solid-components/hoc/user-menu\""
-,
-  "tags": [
-    "hoc",
-    "user-menu",
-    "solidjs",
-    "ui"
-  ]
+  "usage": "import { UserMenu, UserMenuTrigger, UserMenuContent, UserMenuItem, UserMenuLabel, UserMenuSeparator, UserMenuGroup } from \"shadcn-solid-components/hoc/user-menu\"",
+  "tags": ["hoc", "user-menu", "solidjs", "ui"]
 }

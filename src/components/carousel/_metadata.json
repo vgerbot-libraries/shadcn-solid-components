@@ -9,12 +9,6 @@
     "Testimonial or review sliders showing customer quotes one at a time",
     "Card-based recommendation carousels for related articles, products, or videos"
   ],
-  "usage": "import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext, CarouselDots } from \"shadcn-solid-components/components/carousel\""
-,
-  "tags": [
-    "components",
-    "carousel",
-    "solidjs",
-    "ui"
-  ]
+  "usage": "import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext, CarouselDots } from \"shadcn-solid-components/components/carousel\"",
+  "tags": ["components", "carousel", "solidjs", "ui"]
 }

@@ -9,12 +9,6 @@
     "Inline filter panels that can be collapsed to save vertical space in search UIs",
     "Mobile navigation sub-menus that expand on demand without an accordion structure"
   ],
-  "usage": "import { Collapsible, CollapsibleTrigger, CollapsibleContent } from \"shadcn-solid-components/components/collapsible\""
-,
-  "tags": [
-    "components",
-    "collapsible",
-    "solidjs",
-    "ui"
-  ]
+  "usage": "import { Collapsible, CollapsibleTrigger, CollapsibleContent } from \"shadcn-solid-components/components/collapsible\"",
+  "tags": ["components", "collapsible", "solidjs", "ui"]
 }

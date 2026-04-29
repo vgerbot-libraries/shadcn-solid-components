@@ -9,12 +9,6 @@
     "Detail sidebars on desktop that reveal record properties when a table row is selected",
     "Checkout carts and notification centers that overlay without disrupting browsing context"
   ],
-  "usage": "import { Drawer, DrawerTrigger, DrawerClose, DrawerContent, DrawerLabel, DrawerDescription, DrawerHeader, DrawerFooter, DrawerPortal } from \"shadcn-solid-components/components/drawer\""
-,
-  "tags": [
-    "components",
-    "drawer",
-    "solidjs",
-    "ui"
-  ]
+  "usage": "import { Drawer, DrawerTrigger, DrawerClose, DrawerContent, DrawerLabel, DrawerDescription, DrawerHeader, DrawerFooter, DrawerPortal } from \"shadcn-solid-components/components/drawer\"",
+  "tags": ["components", "drawer", "solidjs", "ui"]
 }

@@ -4,7 +4,13 @@ import { useLocale } from 'shadcn-solid-components/components/config-provider'
 import { IconBell } from 'shadcn-solid-components/components/icons'
 import { Popover, PopoverContent, PopoverTrigger } from 'shadcn-solid-components/components/popover'
 import { Separator } from 'shadcn-solid-components/components/separator'
-import { Tabs, TabsContent, TabsIndicator, TabsList, TabsTrigger } from 'shadcn-solid-components/components/tabs'
+import {
+  Tabs,
+  TabsContent,
+  TabsIndicator,
+  TabsList,
+  TabsTrigger,
+} from 'shadcn-solid-components/components/tabs'
 import type { NotificationCenterLocale } from 'shadcn-solid-components/i18n/types'
 import { cx } from 'shadcn-solid-components/lib/cva'
 import { type ComponentProps, For, type JSX, Show, splitProps } from 'solid-js'

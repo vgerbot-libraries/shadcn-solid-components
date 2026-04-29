@@ -57,10 +57,7 @@ function TimelineNode(props: { icon?: JSX.Element; color?: string }) {
         when={props.icon}
         fallback={
           <div
-            class={cx(
-              'size-3 rounded-full border-2',
-              props.color ?? 'border-primary bg-primary',
-            )}
+            class={cx('size-3 rounded-full border-2', props.color ?? 'border-primary bg-primary')}
           />
         }
       >
@@ -79,10 +76,7 @@ function TimelineNode(props: { icon?: JSX.Element; color?: string }) {
 
 function TimelineContent(props: { item: TimelineItem; align: 'left' | 'right' }) {
   return (
-    <div
-      data-slot="timeline-content"
-      class={cx('pb-8', props.align === 'right' && 'text-right')}
-    >
+    <div data-slot="timeline-content" class={cx('pb-8', props.align === 'right' && 'text-right')}>
       <div class="flex flex-col gap-1">
         <div class={cx('flex items-center gap-2', props.align === 'right' && 'justify-end')}>
           <span class="text-sm font-semibold">{props.item.title}</span>
@@ -139,11 +133,7 @@ export const Timeline = (props: TimelineProps) => {
   }
 
   return (
-    <div
-      data-slot="timeline"
-      class={cx('relative w-full', componentClass, local.class)}
-      {...rest}
-    >
+    <div data-slot="timeline" class={cx('relative w-full', componentClass, local.class)} {...rest}>
       <For each={local.items}>
         {(item, index) => {
           const right = () => isRight(index())
@@ -164,9 +154,7 @@ export const Timeline = (props: TimelineProps) => {
                   data-slot="timeline-line"
                   class={cx(
                     'absolute top-0 bottom-0 w-px bg-border',
-                    mode() === 'alternate'
-                      ? 'left-[calc(50%-0.5px)] hidden md:block'
-                      : 'left-4',
+                    mode() === 'alternate' ? 'left-[calc(50%-0.5px)] hidden md:block' : 'left-4',
                   )}
                 />
               </Show>

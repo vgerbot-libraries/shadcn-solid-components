@@ -15,11 +15,7 @@ export interface QrCodeProps extends Omit<ComponentProps<'svg'>, 'children'> {
 }
 
 function isInFinderPattern(row: number, col: number, size: number): boolean {
-  return (
-    (row < 7 && col < 7) ||
-    (row < 7 && col >= size - 7) ||
-    (row >= size - 7 && col < 7)
-  )
+  return (row < 7 && col < 7) || (row < 7 && col >= size - 7) || (row >= size - 7 && col < 7)
 }
 
 export const QrCode = (props: QrCodeProps) => {
@@ -73,10 +69,7 @@ export const QrCode = (props: QrCodeProps) => {
     const circles: Array<{ cx: number; cy: number }> = []
     for (let row = 0; row < moduleCount; row++) {
       for (let col = 0; col < moduleCount; col++) {
-        if (
-          data.modules.get(row, col) &&
-          !isInFinderPattern(row, col, moduleCount)
-        ) {
+        if (data.modules.get(row, col) && !isInFinderPattern(row, col, moduleCount)) {
           circles.push({
             cx: (col + 0.5) * moduleSize,
             cy: (row + 0.5) * moduleSize,
@@ -111,13 +104,7 @@ export const QrCode = (props: QrCodeProps) => {
           class={cx('block', componentClass, props.class)}
           {...rest}
         >
-          <rect
-            width={g().totalSize}
-            height={g().totalSize}
-            fill={bgColor()}
-            rx="12"
-            ry="12"
-          />
+          <rect width={g().totalSize} height={g().totalSize} fill={bgColor()} rx="12" ry="12" />
           <For each={g().finderPositions}>
             {([r, c]) => {
               const x = c * g().moduleSize
@@ -156,9 +143,7 @@ export const QrCode = (props: QrCodeProps) => {
             }}
           </For>
           <For each={g().circles}>
-            {({ cx: x, cy: y }) => (
-              <circle cx={x} cy={y} r={g().circleRadius} fill={fgColor()} />
-            )}
+            {({ cx: x, cy: y }) => <circle cx={x} cy={y} r={g().circleRadius} fill={fgColor()} />}
           </For>
         </svg>
       )}

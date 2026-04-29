@@ -9,12 +9,6 @@
     "Icon variants (icon, icon-sm, icon-lg) for compact toolbar buttons and header actions",
     "Ghost and link variants for low-emphasis actions inside dropdowns, tables, or inline text"
   ],
-  "usage": "import { Button, buttonVariants } from \"shadcn-solid-components/components/button\""
-,
-  "tags": [
-    "components",
-    "button",
-    "solidjs",
-    "ui"
-  ]
+  "usage": "import { Button, buttonVariants } from \"shadcn-solid-components/components/button\"",
+  "tags": ["components", "button", "solidjs", "ui"]
 }

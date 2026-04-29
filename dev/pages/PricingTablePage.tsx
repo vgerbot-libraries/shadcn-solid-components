@@ -7,10 +7,7 @@ import {
   CardHeader,
   CardTitle,
 } from 'shadcn-solid-components/components/card'
-import {
-  PricingTable,
-  type PricingPlan,
-} from 'shadcn-solid-components/hoc/pricing-table'
+import { PricingTable, type PricingPlan } from 'shadcn-solid-components/hoc/pricing-table'
 import { PageLayout } from '../components/PageLayout'
 
 const basicPlans: PricingPlan[] = [
@@ -31,8 +28,8 @@ const basicPlans: PricingPlan[] = [
   {
     name: 'Pro',
     themeColor: '#ffc107',
-    ctaClass: "bg-[#ffc107] hover:bg-[#e0a800] text-black",
-    borderClass: "border-[#ffc107]",
+    ctaClass: 'bg-[#ffc107] hover:bg-[#e0a800] text-black',
+    borderClass: 'border-[#ffc107]',
     description: 'For growing teams',
     priceMonthly: 19,
     priceYearly: 190,
@@ -116,8 +113,8 @@ const fourPlans: PricingPlan[] = [
   {
     name: 'Pro',
     themeColor: '#ffc107',
-    ctaClass: "bg-[#ffc107] hover:bg-[#e0a800] text-black",
-    borderClass: "border-[#ffc107]",
+    ctaClass: 'bg-[#ffc107] hover:bg-[#e0a800] text-black',
+    borderClass: 'border-[#ffc107]',
     priceMonthly: 29,
     priceYearly: 290,
     isPopular: true,
@@ -145,8 +142,8 @@ const enhancedPlans: PricingPlan[] = [
   {
     name: 'Free',
     themeColor: '#222',
-    ctaClass: "bg-black hover:bg-gray-800 text-white",
-    borderClass: "border-black",
+    ctaClass: 'bg-black hover:bg-gray-800 text-white',
+    borderClass: 'border-black',
     description: 'Try us out for a quick project or two',
     priceMonthly: 0,
     priceYearly: 0,
@@ -166,8 +163,8 @@ const enhancedPlans: PricingPlan[] = [
   {
     name: 'Solo',
     themeColor: '#8a2be2',
-    ctaClass: "bg-[#8a2be2] hover:bg-[#7a24cc] text-white",
-    borderClass: "border-[#8a2be2]",
+    ctaClass: 'bg-[#8a2be2] hover:bg-[#7a24cc] text-white',
+    borderClass: 'border-[#8a2be2]',
     description: 'Great for small projects',
     priceMonthly: 13,
     priceYearly: 120,
@@ -194,8 +191,8 @@ const enhancedPlans: PricingPlan[] = [
   {
     name: 'Pro',
     themeColor: '#ffc107',
-    ctaClass: "bg-[#ffc107] hover:bg-[#e0a800] text-black",
-    borderClass: "border-[#ffc107]",
+    ctaClass: 'bg-[#ffc107] hover:bg-[#e0a800] text-black',
+    borderClass: 'border-[#ffc107]',
     description: 'For freelancers, agencies & companies',
     priceMonthly: 31,
     priceYearly: 300,
@@ -244,9 +241,7 @@ const PricingTablePage: Component = () => {
       <Card>
         <CardHeader>
           <CardTitle>Two Plans</CardTitle>
-          <CardDescription>
-            Simple two-column layout for straightforward pricing.
-          </CardDescription>
+          <CardDescription>Simple two-column layout for straightforward pricing.</CardDescription>
         </CardHeader>
         <CardContent>
           <PricingTable plans={twoPlans} defaultBilling="yearly" />
@@ -257,9 +252,7 @@ const PricingTablePage: Component = () => {
       <Card>
         <CardHeader>
           <CardTitle>Four Plans</CardTitle>
-          <CardDescription>
-            Four-tier pricing grid with responsive columns.
-          </CardDescription>
+          <CardDescription>Four-tier pricing grid with responsive columns.</CardDescription>
         </CardHeader>
         <CardContent>
           <PricingTable plans={fourPlans} />
@@ -270,9 +263,7 @@ const PricingTablePage: Component = () => {
       <Card>
         <CardHeader>
           <CardTitle>With Header & Footer</CardTitle>
-          <CardDescription>
-            Custom header and footer slots for additional context.
-          </CardDescription>
+          <CardDescription>Custom header and footer slots for additional context.</CardDescription>
         </CardHeader>
         <CardContent>
           <PricingTable

@@ -101,7 +101,16 @@ const sections: SettingsSection[] = [
     id: 'appearance',
     label: 'Appearance',
     icon: (
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-4 w-4"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
         <circle cx="12" cy="12" r="4" />
         <path d="M12 2v2" />
         <path d="M12 20v2" />
@@ -118,7 +127,16 @@ const sections: SettingsSection[] = [
     id: 'language',
     label: 'Language',
     icon: (
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-4 w-4"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
         <path d="m5 8 6 6" />
         <path d="m4 14 6-6 2-3" />
         <path d="M2 5h12" />
@@ -132,7 +150,16 @@ const sections: SettingsSection[] = [
     id: 'notifications',
     label: 'Notifications',
     icon: (
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-4 w-4"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
         <path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9" />
         <path d="M10.3 21a1.94 1.94 0 0 0 3.4 0" />
       </svg>
@@ -142,7 +169,16 @@ const sections: SettingsSection[] = [
     id: 'profile',
     label: 'Profile',
     icon: (
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-4 w-4"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
         <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
         <circle cx="12" cy="7" r="4" />
       </svg>
@@ -152,7 +188,16 @@ const sections: SettingsSection[] = [
     id: 'accessibility',
     label: 'Accessibility',
     icon: (
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-4 w-4"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
         <circle cx="16" cy="4" r="1" />
         <path d="m18 19 1-7-6 1" />
         <path d="m5 8 3-3 5.5 3-2.36 3.5" />
@@ -276,7 +321,11 @@ const NotificationsSection: Component = () => {
           <CardDescription>Choose how you want to receive notifications.</CardDescription>
         </CardHeader>
         <CardContent class="space-y-4">
-          <Switch checked={emailEnabled()} onChange={setEmailEnabled} class="flex items-center justify-between gap-4">
+          <Switch
+            checked={emailEnabled()}
+            onChange={setEmailEnabled}
+            class="flex items-center justify-between gap-4"
+          >
             <SwitchInput />
             <div class="flex-1">
               <SwitchLabel>Email Notifications</SwitchLabel>
@@ -287,7 +336,11 @@ const NotificationsSection: Component = () => {
             </SwitchControl>
           </Switch>
           <Separator />
-          <Switch checked={pushEnabled()} onChange={setPushEnabled} class="flex items-center justify-between gap-4">
+          <Switch
+            checked={pushEnabled()}
+            onChange={setPushEnabled}
+            class="flex items-center justify-between gap-4"
+          >
             <SwitchInput />
             <div class="flex-1">
               <SwitchLabel>Push Notifications</SwitchLabel>
@@ -377,7 +430,11 @@ const AccessibilitySection: Component = () => {
           <CardDescription>Adjust visual settings for better accessibility.</CardDescription>
         </CardHeader>
         <CardContent class="space-y-4">
-          <Switch checked={reduceMotion()} onChange={setReduceMotion} class="flex items-center justify-between gap-4">
+          <Switch
+            checked={reduceMotion()}
+            onChange={setReduceMotion}
+            class="flex items-center justify-between gap-4"
+          >
             <SwitchInput />
             <div class="flex-1">
               <SwitchLabel>Reduce Motion</SwitchLabel>
@@ -388,11 +445,17 @@ const AccessibilitySection: Component = () => {
             </SwitchControl>
           </Switch>
           <Separator />
-          <Switch checked={highContrast()} onChange={setHighContrast} class="flex items-center justify-between gap-4">
+          <Switch
+            checked={highContrast()}
+            onChange={setHighContrast}
+            class="flex items-center justify-between gap-4"
+          >
             <SwitchInput />
             <div class="flex-1">
               <SwitchLabel>High Contrast</SwitchLabel>
-              <SwitchDescription>Increase color contrast for improved readability.</SwitchDescription>
+              <SwitchDescription>
+                Increase color contrast for improved readability.
+              </SwitchDescription>
             </div>
             <SwitchControl>
               <SwitchThumb />

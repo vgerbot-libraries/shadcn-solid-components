@@ -9,12 +9,6 @@
     "Comparison matrices (pricing, features) with highlighted rows and caption descriptions",
     "Admin audit logs with selectable rows for bulk export or deletion actions"
   ],
-  "usage": "import { Table, TableHeader, TableBody, TableFooter, TableRow, TableHead, TableCell, TableCaption } from \"shadcn-solid-components/components/table\""
-,
-  "tags": [
-    "components",
-    "table",
-    "solidjs",
-    "ui"
-  ]
+  "usage": "import { Table, TableHeader, TableBody, TableFooter, TableRow, TableHead, TableCell, TableCaption } from \"shadcn-solid-components/components/table\"",
+  "tags": ["components", "table", "solidjs", "ui"]
 }

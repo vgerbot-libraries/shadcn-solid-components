@@ -9,12 +9,6 @@
     "Link destination previews in social feeds or wikis before the user clicks through",
     "Issue or PR hover cards in developer tools showing status, assignee, and labels"
   ],
-  "usage": "import { HoverCard, HoverCardTrigger, HoverCardContent } from \"shadcn-solid-components/components/hover-card\""
-,
-  "tags": [
-    "components",
-    "hover-card",
-    "solidjs",
-    "ui"
-  ]
+  "usage": "import { HoverCard, HoverCardTrigger, HoverCardContent } from \"shadcn-solid-components/components/hover-card\"",
+  "tags": ["components", "hover-card", "solidjs", "ui"]
 }

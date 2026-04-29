@@ -9,12 +9,6 @@
     "Background task dashboards (data imports, report generation, video encoding)",
     "Quiz or survey completion meters motivating users to finish remaining questions"
   ],
-  "usage": "import { Progress, ProgressGroup, ProgressLabel, ProgressValueLabel } from \"shadcn-solid-components/components/progress\""
-,
-  "tags": [
-    "components",
-    "progress",
-    "solidjs",
-    "ui"
-  ]
+  "usage": "import { Progress, ProgressGroup, ProgressLabel, ProgressValueLabel } from \"shadcn-solid-components/components/progress\"",
+  "tags": ["components", "progress", "solidjs", "ui"]
 }

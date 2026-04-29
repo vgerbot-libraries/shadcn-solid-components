@@ -7,11 +7,7 @@ import {
   CardHeader,
   CardTitle,
 } from 'shadcn-solid-components/components/card'
-import {
-  IconAlertTriangle,
-  IconLock,
-  IconSearch,
-} from 'shadcn-solid-components/components/icons'
+import { IconAlertTriangle, IconLock, IconSearch } from 'shadcn-solid-components/components/icons'
 import { ErrorPage } from 'shadcn-solid-components/hoc/error-page'
 import { PageLayout } from '../components/PageLayout'
 
@@ -40,9 +36,7 @@ const ErrorPageDemo: Component = () => {
         <Card>
           <CardHeader>
             <CardTitle>403 — Forbidden</CardTitle>
-            <CardDescription>
-              Access denied page with all defaults from locale.
-            </CardDescription>
+            <CardDescription>Access denied page with all defaults from locale.</CardDescription>
           </CardHeader>
           <CardContent>
             <ErrorPage variant="403" class="min-h-[40vh]" />
@@ -53,9 +47,7 @@ const ErrorPageDemo: Component = () => {
         <Card>
           <CardHeader>
             <CardTitle>500 — Server Error</CardTitle>
-            <CardDescription>
-              Internal server error page.
-            </CardDescription>
+            <CardDescription>Internal server error page.</CardDescription>
           </CardHeader>
           <CardContent>
             <ErrorPage variant="500" class="min-h-[40vh]" />
@@ -66,9 +58,7 @@ const ErrorPageDemo: Component = () => {
         <Card>
           <CardHeader>
             <CardTitle>503 — Service Unavailable</CardTitle>
-            <CardDescription>
-              Service unavailable error page.
-            </CardDescription>
+            <CardDescription>Service unavailable error page.</CardDescription>
           </CardHeader>
           <CardContent>
             <ErrorPage variant="503" class="min-h-[40vh]" />

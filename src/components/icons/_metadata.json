@@ -9,12 +9,6 @@
     "Status indicators using check, alert-triangle, circle-check, and loader spinner icons",
     "Brand and social icons (Github, Google, Apple, Instagram, Youtube, X, Paypal, Reddit) for auth and marketing"
   ],
-  "usage": "import { IconCheck, IconChevronDown, IconSearch, IconTrash, IconUser, IconPlus, IconLogo, IconSettings, /* 60+ named exports */ } from \"shadcn-solid-components/components/icons\""
-,
-  "tags": [
-    "components",
-    "icons",
-    "solidjs",
-    "ui"
-  ]
+  "usage": "import { IconCheck, IconChevronDown, IconSearch, IconTrash, IconUser, IconPlus, IconLogo, IconSettings, /* 60+ named exports */ } from \"shadcn-solid-components/components/icons\"",
+  "tags": ["components", "icons", "solidjs", "ui"]
 }

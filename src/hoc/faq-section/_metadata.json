@@ -9,12 +9,6 @@
     "Onboarding wizards with expandable step explanations and troubleshooting tips",
     "E-commerce product pages addressing shipping, returns, and warranty policy questions"
   ],
-  "usage": "import { FAQSection, FAQItem, FAQQuestion, FAQAnswer, FAQSearchInput } from \"shadcn-solid-components/hoc/faq-section\""
-,
-  "tags": [
-    "hoc",
-    "faq-section",
-    "solidjs",
-    "ui"
-  ]
+  "usage": "import { FAQSection, FAQItem, FAQQuestion, FAQAnswer, FAQSearchInput } from \"shadcn-solid-components/hoc/faq-section\"",
+  "tags": ["hoc", "faq-section", "solidjs", "ui"]
 }

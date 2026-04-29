@@ -9,12 +9,6 @@
     "Loading toasts tied to async promises that auto-resolve or reject with custom messages",
     "Undo-action toasts that allow users to reverse a destructive operation within a timeout"
   ],
-  "usage": "import { Toaster, toast } from \"shadcn-solid-components/components/sonner\""
-,
-  "tags": [
-    "components",
-    "sonner",
-    "solidjs",
-    "ui"
-  ]
+  "usage": "import { Toaster, toast } from \"shadcn-solid-components/components/sonner\"",
+  "tags": ["components", "sonner", "solidjs", "ui"]
 }

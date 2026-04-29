@@ -9,12 +9,6 @@
     "Password-reset confirmation inputs where the user enters a emailed reset token",
     "API-key or invite-code redemption fields that visually segment a long token into chunks"
   ],
-  "usage": "import { OTPField, OTPFieldGroup, OTPFieldSlot, OTPFieldCaret } from \"shadcn-solid-components/components/otp-field\""
-,
-  "tags": [
-    "components",
-    "otp-field",
-    "solidjs",
-    "ui"
-  ]
+  "usage": "import { OTPField, OTPFieldGroup, OTPFieldSlot, OTPFieldCaret } from \"shadcn-solid-components/components/otp-field\"",
+  "tags": ["components", "otp-field", "solidjs", "ui"]
 }

@@ -9,12 +9,6 @@
     "Email recipient fields with autocomplete from address-book contacts and free-text entry",
     "Filter-builder interfaces where users stack multiple criteria tags before executing a search"
   ],
-  "usage": "import { TagInput, TagInputItem, TagInputDeleteTrigger, TagInputField } from \"shadcn-solid-components/hoc/tag-input\""
-,
-  "tags": [
-    "hoc",
-    "tag-input",
-    "solidjs",
-    "ui"
-  ]
+  "usage": "import { TagInput, TagInputItem, TagInputDeleteTrigger, TagInputField } from \"shadcn-solid-components/hoc/tag-input\"",
+  "tags": ["hoc", "tag-input", "solidjs", "ui"]
 }

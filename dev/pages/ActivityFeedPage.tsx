@@ -178,9 +178,7 @@ const ActivityFeedPage: Component = () => {
         <Card>
           <CardHeader>
             <CardTitle>Flat List</CardTitle>
-            <CardDescription>
-              Activity items without date grouping.
-            </CardDescription>
+            <CardDescription>Activity items without date grouping.</CardDescription>
           </CardHeader>
           <CardContent>
             <ActivityFeed items={baseItems.slice(0, 4)} groupBy="none" />

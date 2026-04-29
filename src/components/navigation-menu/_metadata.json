@@ -9,12 +9,6 @@
     "Documentation sites with version switchers and category flyouts inside the header",
     "E-commerce storefronts exposing shop-by-category panels with featured images and links"
   ],
-  "usage": "import { NavigationMenu, NavigationMenuList, NavigationMenuItem, NavigationMenuTrigger, NavigationMenuContent, NavigationMenuLink, NavigationMenuIndicator } from \"shadcn-solid-components/components/navigation-menu\""
-,
-  "tags": [
-    "components",
-    "navigation-menu",
-    "solidjs",
-    "ui"
-  ]
+  "usage": "import { NavigationMenu, NavigationMenuList, NavigationMenuItem, NavigationMenuTrigger, NavigationMenuContent, NavigationMenuLink, NavigationMenuIndicator } from \"shadcn-solid-components/components/navigation-menu\"",
+  "tags": ["components", "navigation-menu", "solidjs", "ui"]
 }

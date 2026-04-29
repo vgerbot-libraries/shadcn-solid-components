@@ -199,7 +199,7 @@ const App: Component<AppProps> = props => {
             return isActive('/profile-header')
           },
           onClick: () => navigate('/profile-header'),
-        }
+        },
       ],
     },
   ]
@@ -314,7 +314,7 @@ const App: Component<AppProps> = props => {
           label: 'Profile Header',
           icon: <IconUser class="size-4" />,
           onSelect: () => navigate('/profile-header'),
-        }
+        },
       ],
     },
     {

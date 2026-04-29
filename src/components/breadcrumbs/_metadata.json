@@ -9,12 +9,6 @@
     "Admin dashboards with deep resource routing (Projects > Alpha > Tasks > #1024)",
     "Content-management systems where editors jump between folder levels"
   ],
-  "usage": "import { Breadcrumbs, BreadcrumbItem, BreadcrumbLink, BreadcrumbPage, BreadcrumbSeparator, BreadcrumbEllipsis } from \"shadcn-solid-components/components/breadcrumbs\""
-,
-  "tags": [
-    "components",
-    "breadcrumbs",
-    "solidjs",
-    "ui"
-  ]
+  "usage": "import { Breadcrumbs, BreadcrumbItem, BreadcrumbLink, BreadcrumbPage, BreadcrumbSeparator, BreadcrumbEllipsis } from \"shadcn-solid-components/components/breadcrumbs\"",
+  "tags": ["components", "breadcrumbs", "solidjs", "ui"]
 }

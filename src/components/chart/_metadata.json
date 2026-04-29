@@ -9,12 +9,6 @@
     "Sales reports combining multiple chart types (line + bar) in a single XY container",
     "Health or IoT monitoring dashboards rendering real-time streaming data with crosshair tooltips"
   ],
-  "usage": "import { ChartContainer, ChartTooltip, ChartLegend, ChartCrosshair, ChartStyle } from \"shadcn-solid-components/components/chart\""
-,
-  "tags": [
-    "components",
-    "chart",
-    "solidjs",
-    "ui"
-  ]
+  "usage": "import { ChartContainer, ChartTooltip, ChartLegend, ChartCrosshair, ChartStyle } from \"shadcn-solid-components/components/chart\"",
+  "tags": ["components", "chart", "solidjs", "ui"]
 }

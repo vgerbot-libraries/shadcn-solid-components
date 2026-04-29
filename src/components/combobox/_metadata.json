@@ -9,12 +9,6 @@
     "Tag or category creation fields that allow both selection from existing and free-text entry",
     "Product-code lookups in inventory management where typing a SKU narrows the dropdown"
   ],
-  "usage": "import { Combobox, ComboboxInput, ComboboxTrigger, ComboboxContent, ComboboxListbox, ComboboxItem, ComboboxItemLabel, ComboboxItemIndicator, ComboboxSection, ComboboxHiddenSelect, ComboboxPortal } from \"shadcn-solid-components/components/combobox\""
-,
-  "tags": [
-    "components",
-    "combobox",
-    "solidjs",
-    "ui"
-  ]
+  "usage": "import { Combobox, ComboboxInput, ComboboxTrigger, ComboboxContent, ComboboxListbox, ComboboxItem, ComboboxItemLabel, ComboboxItemIndicator, ComboboxSection, ComboboxHiddenSelect, ComboboxPortal } from \"shadcn-solid-components/components/combobox\"",
+  "tags": ["components", "combobox", "solidjs", "ui"]
 }

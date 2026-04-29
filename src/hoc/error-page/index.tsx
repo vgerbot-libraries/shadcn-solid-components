@@ -114,10 +114,7 @@ export function ErrorPage(props: ErrorPageProps) {
         <h1 data-slot="error-page-title" class="text-2xl font-bold tracking-tight sm:text-3xl">
           {title()}
         </h1>
-        <p
-          data-slot="error-page-description"
-          class="text-muted-foreground text-sm sm:text-base"
-        >
+        <p data-slot="error-page-description" class="text-muted-foreground text-sm sm:text-base">
           {description()}
         </p>
       </div>

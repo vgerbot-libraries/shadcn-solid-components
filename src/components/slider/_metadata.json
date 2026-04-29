@@ -9,12 +9,6 @@
     "Rating or satisfaction score inputs where a numeric value maps to a label",
     "Zoom level or timeline scrubbers in map and video applications"
   ],
-  "usage": "import { Slider, SliderTrack, SliderFill, SliderThumb, SliderGroup, SliderLabel, SliderValueLabel, SliderDescription, SliderErrorMessage } from \"shadcn-solid-components/components/slider\""
-,
-  "tags": [
-    "components",
-    "slider",
-    "solidjs",
-    "ui"
-  ]
+  "usage": "import { Slider, SliderTrack, SliderFill, SliderThumb, SliderGroup, SliderLabel, SliderValueLabel, SliderDescription, SliderErrorMessage } from \"shadcn-solid-components/components/slider\"",
+  "tags": ["components", "slider", "solidjs", "ui"]
 }

@@ -9,12 +9,6 @@
     "SSR hydration safety by reading persisted preferences from localStorage on mount",
     "Multi-tenant white-label apps that switch entire color palettes without page reload"
   ],
-  "usage": "import { ThemeProvider } from \"shadcn-solid-components/components/theme\""
-,
-  "tags": [
-    "components",
-    "theme",
-    "solidjs",
-    "ui"
-  ]
+  "usage": "import { ThemeProvider } from \"shadcn-solid-components/components/theme\"",
+  "tags": ["components", "theme", "solidjs", "ui"]
 }

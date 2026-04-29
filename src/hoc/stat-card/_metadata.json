@@ -9,12 +9,6 @@
     "SaaS health-monitoring widgets for API latency, error rate, throughput, and uptime stats",
     "Marketing campaign dashboards summarizing impressions, clicks, CTR, and cost-per-conversion"
   ],
-  "usage": "import { StatCard, StatCardValue, StatCardLabel, StatCardTrend, StatCardIcon } from \"shadcn-solid-components/hoc/stat-card\""
-,
-  "tags": [
-    "hoc",
-    "stat-card",
-    "solidjs",
-    "ui"
-  ]
+  "usage": "import { StatCard, StatCardValue, StatCardLabel, StatCardTrend, StatCardIcon } from \"shadcn-solid-components/hoc/stat-card\"",
+  "tags": ["hoc", "stat-card", "solidjs", "ui"]
 }

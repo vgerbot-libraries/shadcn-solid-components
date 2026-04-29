@@ -9,12 +9,6 @@
     "Password-reset token entry with visual slot separation and validation feedback",
     "Invite-code or API-key redemption forms that accept segmented alphanumeric tokens"
   ],
-  "usage": "import { OTPFieldForm, type OTPFieldFormProps } from \"shadcn-solid-components/hoc/otp-field\""
-,
-  "tags": [
-    "hoc",
-    "otp-field",
-    "solidjs",
-    "ui"
-  ]
+  "usage": "import { OTPFieldForm, type OTPFieldFormProps } from \"shadcn-solid-components/hoc/otp-field\"",
+  "tags": ["hoc", "otp-field", "solidjs", "ui"]
 }

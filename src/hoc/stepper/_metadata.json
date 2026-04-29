@@ -9,12 +9,6 @@
     "Form-heavy onboarding processes such as medical intake or insurance quote applications",
     "Multi-step content-creation wizards for blog posts, courses, or product listings with validation"
   ],
-  "usage": "import { Stepper, StepperStep, StepperHeader, StepperContent, StepperNavigation } from \"shadcn-solid-components/hoc/stepper\""
-,
-  "tags": [
-    "hoc",
-    "stepper",
-    "solidjs",
-    "ui"
-  ]
+  "usage": "import { Stepper, StepperStep, StepperHeader, StepperContent, StepperNavigation } from \"shadcn-solid-components/hoc/stepper\"",
+  "tags": ["hoc", "stepper", "solidjs", "ui"]
 }

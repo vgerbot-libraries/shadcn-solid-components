@@ -12,7 +12,9 @@ import { TextField, TextFieldInput } from 'shadcn-solid-components/components/te
 import { PageLayout } from '../components/PageLayout'
 
 const QrCodePage: Component = () => {
-  const [value, setValue] = createSignal('https://github.com/vgerbot-libraries/shadcn-solid-components')
+  const [value, setValue] = createSignal(
+    'https://github.com/vgerbot-libraries/shadcn-solid-components',
+  )
   const [size, setSize] = createSignal(220)
 
   const sizeLabel = createMemo(() => `${size()} px`)
@@ -25,7 +27,9 @@ const QrCodePage: Component = () => {
       <Card>
         <CardHeader>
           <CardTitle>Interactive</CardTitle>
-          <CardDescription>Update content and size, then preview the generated code.</CardDescription>
+          <CardDescription>
+            Update content and size, then preview the generated code.
+          </CardDescription>
         </CardHeader>
         <CardContent class="grid gap-6 lg:grid-cols-[minmax(0,1fr)_320px]">
           <div class="space-y-4">
@@ -67,7 +71,9 @@ const QrCodePage: Component = () => {
                 size="sm"
                 variant="outline"
                 onClick={() =>
-                  setValue('otpauth://totp/Example:alice@sample.com?secret=JBSWY3DPEHPK3PXP&issuer=Example')
+                  setValue(
+                    'otpauth://totp/Example:alice@sample.com?secret=JBSWY3DPEHPK3PXP&issuer=Example',
+                  )
                 }
               >
                 OTP URI
@@ -83,7 +89,9 @@ const QrCodePage: Component = () => {
                 size="sm"
                 variant="outline"
                 onClick={() =>
-                  setValue('BEGIN:VCARD\nFN:Jane Doe\nORG:Acme Inc\nTEL:+1-555-0100\nEMAIL:jane@example.com\nEND:VCARD')
+                  setValue(
+                    'BEGIN:VCARD\nFN:Jane Doe\nORG:Acme Inc\nTEL:+1-555-0100\nEMAIL:jane@example.com\nEND:VCARD',
+                  )
                 }
               >
                 vCard
@@ -101,7 +109,9 @@ const QrCodePage: Component = () => {
         <Card>
           <CardHeader>
             <CardTitle>Theme Colors</CardTitle>
-            <CardDescription>Uses foreground and background CSS variables by default.</CardDescription>
+            <CardDescription>
+              Uses foreground and background CSS variables by default.
+            </CardDescription>
           </CardHeader>
           <CardContent class="flex items-center justify-center rounded-lg border border-dashed p-6">
             <QrCode value="Theme aware QR code" size={180} />
