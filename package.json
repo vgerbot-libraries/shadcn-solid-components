@@ -99,6 +99,7 @@
     "./hoc/data-table-toolbar": "./src/hoc/data-table-toolbar/index.tsx",
     "./hoc/date-picker": "./src/hoc/date-picker/index.tsx",
     "./hoc/description-list": "./src/hoc/description-list/index.tsx",
+    "./hoc/dual-app-sidebar": "./src/hoc/dual-app-sidebar/index.tsx",
     "./hoc/empty-state": "./src/hoc/empty-state/index.tsx",
     "./hoc/error-page": "./src/hoc/error-page/index.tsx",
     "./hoc/faq-section": "./src/hoc/faq-section/index.tsx",

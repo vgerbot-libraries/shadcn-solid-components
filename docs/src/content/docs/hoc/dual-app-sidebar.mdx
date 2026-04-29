@@ -1,0 +1,274 @@
+---
+title: Dual App Sidebar
+description: High-level dual-rail sidebar with icon rail, swappable panel sections, grouped menu trees, and main inset body.
+section: HOC
+toc: true
+---
+
+import DualAppSidebarDemo from "../../../examples/dual-app-sidebar-demo"
+
+`DualAppSidebar` wraps the [Dual Sidebar](/docs/components/dual-sidebar) primitives and
+[SidebarMenuTree](/docs/hoc/sidebar-menu-tree) into a full application chrome: a slim
+always-visible icon rail on the left, a wider secondary panel that swaps its contents based
+on the active rail item, and a `DualSidebarInset` for page content.
+
+It is the dual-rail counterpart to [App Sidebar](/docs/hoc/app-sidebar). Where `AppSidebar`
+uses a single collapsible sidebar, `DualAppSidebar` uses the VS Code–style activity bar +
+side panel pattern.
+
+## Usage
+
+```tsx
+import { DualAppSidebar } from "shadcn-solid-components/hoc/dual-app-sidebar"
+
+<DualAppSidebar
+  header={{ icon: <Logo />, title: "My App" }}
+  sections={[
+    {
+      key: "dashboard",
+      label: "Dashboard",
+      icon: <DashboardIcon />,
+      menus: [
+        { group: "Main", items: [{ title: "Overview", url: "/" }] },
+      ],
+    },
+  ]}
+  body={<main>…</main>}
+/>
+```
+
+The `header` prop follows the same convention as `AppSidebar`: pass `{ icon, title }` for
+the preset rendering (icon square with primary background), or a custom `JSX.Element` for
+full control. Since the rail is icon-only, the `title` is used as the tooltip.
+
+Each entry in `sections` becomes a rail item (icon + tooltip) and a corresponding panel
+section. The panel header defaults to a `DualSidebarPanelTitle` showing `label`; override it
+with the `header` field on the section. Menu groups inside each section use `SidebarMenuTree`,
+so you get collapsible sub-trees, URL matching, badges, and loading states for free.
+
+The `railFooter` prop accepts either an array of `{ icon, tooltip?, sectionKey?, onClick? }`
+items (rendered as `DualSidebarRailItem`) or a custom `JSX.Element`.
+
+`body` is rendered inside `DualSidebarInset`, which makes it the main-content area.
+
+`Ctrl/Cmd + B` toggles the panel from anywhere in the document.
+
+## Examples
+
+### Preset header with grouped sections
+
+<ComponentPreview name="Dual App Sidebar Demo">
+  <div class="mb-4 w-full">
+    <DualAppSidebarDemo />
+  </div>
+  ```tsx
+  import { DualAppSidebar } from "shadcn-solid-components/hoc/dual-app-sidebar"
+
+  export default function Demo() {
+    return (
+      <DualAppSidebar
+        header={{ icon: <LogoIcon />, title: "Studio" }}
+        sections={[
+          {
+            key: "dashboard",
+            label: "Dashboard",
+            icon: <DashboardIcon />,
+            menus: [
+              {
+                group: "Overview",
+                items: [
+                  { title: "Overview", url: "/" },
+                  { title: "Analytics", url: "/analytics" },
+                ],
+              },
+            ],
+          },
+          {
+            key: "apps",
+            label: "Apps",
+            icon: <AppsIcon />,
+            menus: [
+              {
+                group: "Communication",
+                items: [
+                  { title: "Contacts", url: "/contacts" },
+                  { title: "Chats", url: "/chats" },
+                ],
+              },
+            ],
+          },
+        ]}
+        railFooter={[
+          { icon: <SettingsIcon />, tooltip: "Settings" },
+        ]}
+        defaultActiveKey="dashboard"
+        body={<main class="flex-1 p-4">Content</main>}
+      />
+    )
+  }
+  ```
+</ComponentPreview>
+
+### Custom header and footer JSX
+
+You can pass JSX directly to `header` and to each section's `header` / `footer` for
+branding, version text, or custom link groups.
+
+```tsx
+import { DualAppSidebar } from "shadcn-solid-components/hoc/dual-app-sidebar"
+
+export function ShellCustomChrome() {
+  return (
+    <DualAppSidebar
+      header={
+        <div class="flex size-8 items-center justify-center rounded-full bg-primary text-xs font-semibold text-primary-foreground">
+          C
+        </div>
+      }
+      sections={[
+        {
+          key: "main",
+          label: "Main",
+          icon: <HomeIcon />,
+          header: <div class="px-3 py-2 text-sm font-semibold">Custom Header</div>,
+          menus: [{ group: "Pages", items: [{ title: "Home", url: "/" }] }],
+          footer: (
+            <div class="flex flex-col gap-1 p-2 text-xs text-muted-foreground">
+              <span>v1.0.0</span>
+            </div>
+          ),
+        },
+      ]}
+      body={<main class="flex flex-1 flex-col p-4">Content</main>}
+    />
+  )
+}
+```
+
+### Controlled active section
+
+```tsx
+import { createSignal } from "solid-js"
+import { DualAppSidebar } from "shadcn-solid-components/hoc/dual-app-sidebar"
+
+const [active, setActive] = createSignal("dashboard")
+
+<DualAppSidebar
+  activeKey={active()}
+  onActiveKeyChange={setActive}
+  header={{ icon: <Logo />, title: "App" }}
+  sections={[/* ... */]}
+  body={<main>Content</main>}
+/>
+```
+
+### Controlled panel open state
+
+```tsx
+import { createSignal } from "solid-js"
+import { DualAppSidebar } from "shadcn-solid-components/hoc/dual-app-sidebar"
+
+const [open, setOpen] = createSignal(true)
+
+<DualAppSidebar
+  open={open()}
+  onOpenChange={setOpen}
+  header={{ icon: <Logo />, title: "App" }}
+  sections={[/* ... */]}
+  body={<main>Content</main>}
+/>
+```
+
+### Section footer as menu items
+
+Each section's `footer` accepts either `JSX.Element` or an array of `SidebarMenuTreeItem[]`,
+mirroring the `AppSidebar` footer convention.
+
+```tsx
+import { DualAppSidebar } from "shadcn-solid-components/hoc/dual-app-sidebar"
+
+<DualAppSidebar
+  header={{ icon: <Logo />, title: "App" }}
+  sections={[
+    {
+      key: "main",
+      label: "Main",
+      icon: <HomeIcon />,
+      menus: [{ group: "Pages", items: [{ title: "Home", url: "/" }] }],
+      footer: [
+        { title: "Help", url: "/help" },
+        { title: "Settings", url: "/settings" },
+      ],
+    },
+  ]}
+  body={<main>Content</main>}
+/>
+```
+
+### Rail footer as JSX
+
+```tsx
+import { DualAppSidebar } from "shadcn-solid-components/hoc/dual-app-sidebar"
+
+<DualAppSidebar
+  header={{ icon: <Logo />, title: "App" }}
+  sections={[/* ... */]}
+  railFooter={
+    <div class="flex flex-col items-center gap-1 py-2">
+      <Avatar />
+    </div>
+  }
+  body={<main>Content</main>}
+/>
+```
+
+## Exports
+
+| Name | Description |
+| --- | --- |
+| `DualAppSidebar` | Layout component; sets up `DualSidebarProvider`, rail, panel, and inset. |
+| `DualAppSidebarProps` | Props: `header`, `sections`, `railFooter`, `body`, plus controlled/uncontrolled `activeKey`/`open` state and `div` attributes. |
+| `DualAppSidebarSection` | Section shape: `key`, `label`, `icon`, `tooltip?`, `header?`, `menus`, `footer?`. |
+| `DualAppSidebarRailFooterItem` | Rail footer item: `icon`, `tooltip?`, `sectionKey?`, `onClick?`. |
+
+## API
+
+### `DualAppSidebarProps`
+
+Extends `div` props. Notable fields:
+
+- `header` — `{ icon, title }` (preset) or `JSX.Element` for the rail header
+- `sections` — array of `DualAppSidebarSection` (see below)
+- `railFooter` — `DualAppSidebarRailFooterItem[]` or `JSX.Element`
+- `body` — `JSX.Element`, rendered inside `DualSidebarInset`
+- `defaultActiveKey` — initial active section key (uncontrolled)
+- `activeKey` — controlled active section key
+- `onActiveKeyChange` — callback when the active section key changes
+- `defaultOpen` — initial panel open state (default `true`)
+- `open` — controlled panel open state
+- `onOpenChange` — callback when panel open state changes
+
+### `DualAppSidebarSection`
+
+- `key` — `string`, identifies the section; matched against `activeKey`
+- `label` — `string`, used as default rail tooltip and default panel title
+- `icon` — `JSX.Element`, rendered inside the rail item
+- `tooltip` — `string`, override rail tooltip (defaults to `label`)
+- `header` — `JSX.Element`, override panel header (defaults to `<DualSidebarPanelTitle>{label}</DualSidebarPanelTitle>`)
+- `menus` — `AppSidebarMenuGroup[]`, groups rendered with `SidebarMenuTree`
+- `footer` — `JSX.Element | SidebarMenuTreeItem[]`, optional panel footer
+
+### `DualAppSidebarRailFooterItem`
+
+- `icon` — `JSX.Element`, rendered inside the rail item
+- `tooltip` — `string`, optional tooltip on hover
+- `sectionKey` — `string`, if provided the item activates a section on click
+- `onClick` — `() => void`, optional click handler
+
+### CSS variables
+
+Inherited from `DualSidebarProvider`; override on `DualAppSidebar` `style`:
+
+- `--dual-sidebar-rail-width` — icon rail width (default `3rem`)
+- `--dual-sidebar-panel-width` — secondary panel width (default `14rem`)
+- `--dual-sidebar-panel-mobile-width` — panel width in mobile drawer (default `18rem`)

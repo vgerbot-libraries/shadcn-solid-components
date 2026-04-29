@@ -1,0 +1,14 @@
+{
+  "name": "hoc/dual-app-sidebar",
+  "displayName": "Dual App Sidebar",
+  "description": "A high-level dual-rail application sidebar HOC: combines a slim icon rail with a swappable secondary panel and main inset body. Accepts a rail header, structured sections (icon + grouped menu items + optional footer), an optional rail footer (icon items or JSX), and body content. Built on top of DualSidebar primitives and SidebarMenuTree, with full keyboard/mobile support inherited from DualSidebarProvider.",
+  "category": "hoc",
+  "useCases": [
+    "VS Code-like layouts: persistent activity bar plus contextual secondary navigation",
+    "Multi-module SaaS apps where each top-level module has its own grouped sub-navigation",
+    "Admin consoles needing both global icon shortcuts and rich nested menus per area",
+    "Documentation portals with persistent rail and per-area sub-trees plus a main reading pane"
+  ],
+  "usage": "import { DualAppSidebar, type DualAppSidebarProps, type DualAppSidebarSection, type DualAppSidebarRailFooterItem } from \"shadcn-solid-components/hoc/dual-app-sidebar\"",
+  "tags": ["hoc", "dual-app-sidebar", "navigation", "layout", "solidjs", "ui"]
+}

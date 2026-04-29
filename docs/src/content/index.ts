@@ -2794,6 +2794,89 @@ export const Contents: Record<string, DocEntry> = {
     }
 ]
   },
+  "hoc/dual-app-sidebar": {
+    component: lazy(() => import("@docs/content/docs/hoc/dual-app-sidebar.mdx")),
+    data: {
+    "title": "Dual App Sidebar",
+    "description": "High-level dual-rail sidebar with icon rail, swappable panel sections, grouped menu trees, and main inset body.",
+    "navTitle": "Dual App Sidebar",
+    "section": "HOC",
+    "order": 0,
+    "toc": true
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "examples",
+        "text": "Examples"
+    },
+    {
+        "depth": 3,
+        "slug": "preset-header-with-grouped-sections",
+        "text": "Preset header with grouped sections"
+    },
+    {
+        "depth": 3,
+        "slug": "custom-header-and-footer-jsx",
+        "text": "Custom header and footer JSX"
+    },
+    {
+        "depth": 3,
+        "slug": "controlled-active-section",
+        "text": "Controlled active section"
+    },
+    {
+        "depth": 3,
+        "slug": "controlled-panel-open-state",
+        "text": "Controlled panel open state"
+    },
+    {
+        "depth": 3,
+        "slug": "section-footer-as-menu-items",
+        "text": "Section footer as menu items"
+    },
+    {
+        "depth": 3,
+        "slug": "rail-footer-as-jsx",
+        "text": "Rail footer as JSX"
+    },
+    {
+        "depth": 2,
+        "slug": "exports",
+        "text": "Exports"
+    },
+    {
+        "depth": 2,
+        "slug": "api",
+        "text": "API"
+    },
+    {
+        "depth": 3,
+        "slug": "dualappsidebarprops",
+        "text": "DualAppSidebarProps"
+    },
+    {
+        "depth": 3,
+        "slug": "dualappsidebarsection",
+        "text": "DualAppSidebarSection"
+    },
+    {
+        "depth": 3,
+        "slug": "dualappsidebarrailfooteritem",
+        "text": "DualAppSidebarRailFooterItem"
+    },
+    {
+        "depth": 3,
+        "slug": "css-variables",
+        "text": "CSS variables"
+    }
+]
+  },
   "hoc/empty-state": {
     component: lazy(() => import("@docs/content/docs/hoc/empty-state.mdx")),
     data: {
@@ -4811,6 +4894,11 @@ export const docsNavigation: DocsNavSection[] = [
         "title": "Description list",
         "href": "/docs/hoc/description-list",
         "description": "Key-value grid for detail pages with optional card wrapper and copy-to-clipboard."
+      },
+      {
+        "title": "Dual App Sidebar",
+        "href": "/docs/hoc/dual-app-sidebar",
+        "description": "High-level dual-rail sidebar with icon rail, swappable panel sections, grouped menu trees, and main inset body."
       },
       {
         "title": "Empty state",
