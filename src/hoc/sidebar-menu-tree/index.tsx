@@ -35,8 +35,15 @@ export type UrlMatchConfig = {
   searchParams?: Record<string, SearchParamMatchValue>
 }
 
+export type ActivePathItem = {
+  key: string
+  title: string
+  url?: string
+}
+
 export type SidebarMenuTreeItem = {
   collapsible?: boolean
+  key?: string
   title: string
   url?: string
   onClick?: () => void
@@ -68,6 +75,7 @@ export type SidebarMenuTreeItem = {
 export type SidebarMenuTreeProps = {
   items: SidebarMenuTreeItem[]
   currentUrl?: UrlInfoInput
+  onActivePathChange?: (path: ActivePathItem[]) => void
 }
 
 const matchString = (value: string, pattern: string, strategy: UrlMatchStrategy): boolean => {
@@ -145,6 +153,8 @@ const matchUrl = (
 
   return matches
 }
+
+const getItemKey = (item: SidebarMenuTreeItem): string => item.key ?? item.url ?? item.title
 
 // Recursively check if menu item and its children match URL (memoized)
 const createItemMatcher = (
@@ -232,7 +242,13 @@ const renderBadge = (badge: SidebarMenuTreeItem['badge']) => {
   )
 }
 
-const renderSubItem = (subItem: SidebarMenuTreeItem, currentUrl: Accessor<UrlInfo>) => {
+const renderSubItem = (
+  subItem: SidebarMenuTreeItem,
+  currentUrl: Accessor<UrlInfo>,
+  parentPath: ActivePathItem[],
+  onActivePathChange?: (path: ActivePathItem[]) => void,
+) => {
+  const currentPath = [...parentPath, { key: getItemKey(subItem), title: subItem.title, url: subItem.url }]
   const isVisible = subItem.visible !== false
 
   // URL matching automatically activates (reactive with memoization)
@@ -264,8 +280,17 @@ const renderSubItem = (subItem: SidebarMenuTreeItem, currentUrl: Accessor<UrlInf
       props.href = subItem.url
     }
 
-    if (subItem.onClick && !subItem.disabled && !subItem.loading) {
-      props.onClick = subItem.onClick
+    if (!subItem.disabled && !subItem.loading) {
+      const hasNavigation = subItem.url || subItem.onClick
+      if (hasNavigation && onActivePathChange) {
+        const originalOnClick = subItem.onClick
+        props.onClick = () => {
+          onActivePathChange(currentPath)
+          originalOnClick?.()
+        }
+      } else if (subItem.onClick) {
+        props.onClick = subItem.onClick
+      }
     }
 
     return props
@@ -318,7 +343,7 @@ const renderSubItem = (subItem: SidebarMenuTreeItem, currentUrl: Accessor<UrlInf
             <CollapsibleContent>
               <SidebarMenuSub>
                 <For each={subItem.items}>
-                  {nestedItem => renderSubItem(nestedItem, currentUrl)}
+                  {nestedItem => renderSubItem(nestedItem, currentUrl, currentPath, onActivePathChange)}
                 </For>
               </SidebarMenuSub>
             </CollapsibleContent>
@@ -340,7 +365,7 @@ const renderSubItem = (subItem: SidebarMenuTreeItem, currentUrl: Accessor<UrlInf
           {renderBadge(subItem.badge)}
         </SidebarMenuSubButton>
         <SidebarMenuSub>
-          <For each={subItem.items}>{nestedItem => renderSubItem(nestedItem, currentUrl)}</For>
+          <For each={subItem.items}>{nestedItem => renderSubItem(nestedItem, currentUrl, currentPath, onActivePathChange)}</For>
         </SidebarMenuSub>
       </SidebarMenuSubItem>
     )
@@ -363,8 +388,11 @@ const renderSubItem = (subItem: SidebarMenuTreeItem, currentUrl: Accessor<UrlInf
 const SidebarMenuTreeItem = (props: {
   item: SidebarMenuTreeItem
   currentUrl: Accessor<UrlInfo>
+  parentPath?: ActivePathItem[]
+  onActivePathChange?: (path: ActivePathItem[]) => void
 }) => {
-  const { item, currentUrl } = props
+  const { item, currentUrl, parentPath = [], onActivePathChange } = props
+  const currentPath = [...parentPath, { key: getItemKey(item), title: item.title, url: item.url }]
 
   const isVisible = item.visible !== false
 
@@ -399,8 +427,17 @@ const SidebarMenuTreeItem = (props: {
         props.href = item.url
       }
 
-      if (item.onClick && !item.disabled && !item.loading) {
-        props.onClick = item.onClick
+      if (!item.disabled && !item.loading) {
+        const hasNavigation = item.url || item.onClick
+        if (hasNavigation && onActivePathChange) {
+          const originalOnClick = item.onClick
+          props.onClick = () => {
+            onActivePathChange(currentPath)
+            originalOnClick?.()
+          }
+        } else if (item.onClick) {
+          props.onClick = item.onClick
+        }
       }
     }
 
@@ -412,7 +449,7 @@ const SidebarMenuTreeItem = (props: {
 
     return (
       <SidebarMenuSub>
-        <For each={item.items}>{subItem => renderSubItem(subItem, currentUrl)}</For>
+        <For each={item.items}>{subItem => renderSubItem(subItem, currentUrl, currentPath, onActivePathChange)}</For>
       </SidebarMenuSub>
     )
   }
@@ -504,7 +541,7 @@ export const SidebarMenuTree = (props: SidebarMenuTreeProps) => {
   return (
     <SidebarMenu>
       <For each={props.items}>
-        {item => <SidebarMenuTreeItem item={item} currentUrl={currentUrl} />}
+        {item => <SidebarMenuTreeItem item={item} currentUrl={currentUrl} onActivePathChange={props.onActivePathChange} />}
       </For>
     </SidebarMenu>
   )

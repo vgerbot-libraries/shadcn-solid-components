@@ -1,6 +1,8 @@
 import { AppSidebar } from "shadcn-solid-components/hoc/app-sidebar"
+import { createSignal, Show } from "solid-js"
 
 const AppSidebarDemo = () => {
+  const [breadcrumb, setBreadcrumb] = createSignal<string[]>([])
   return (
     <div class="overflow-hidden rounded-lg border">
       <AppSidebar
@@ -21,8 +23,14 @@ const AppSidebarDemo = () => {
           },
         ]}
         footer={[{ title: "Help", url: "/help" }]}
+        onActiveKeyChange={(_key, path) => setBreadcrumb(path.map(p => p.title))}
         body={
           <main class="flex min-h-[220px] flex-1 flex-col gap-4 p-4">
+            <Show when={breadcrumb().length > 0}>
+              <nav class="text-sm text-muted-foreground">
+                {breadcrumb().join(" / ")}
+              </nav>
+            </Show>
             <h1 class="text-lg font-semibold">Page</h1>
           </main>
         }

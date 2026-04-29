@@ -22,6 +22,7 @@ import {
 } from 'solid-js'
 
 import { Button, type ButtonProps } from '../button'
+import type { ActivePathItem } from '../../hoc/sidebar-menu-tree'
 import { Drawer, DrawerContent } from '../drawer'
 import { Tooltip, TooltipContent, TooltipPortal, TooltipTrigger } from '../tooltip'
 
@@ -43,7 +44,7 @@ export interface DualSidebarContextValue {
   isMobile: Accessor<boolean>
   togglePanel: () => void
   activeKey: Accessor<string | undefined>
-  setActiveKey: (key: string, options?: { openOnSelect?: boolean }) => void
+  setActiveKey: (key: string, options?: { openOnSelect?: boolean; path?: ActivePathItem[] }) => void
 }
 
 const DualSidebarContext = createContext<DualSidebarContextValue | null>(null)
@@ -66,7 +67,7 @@ export type DualSidebarProviderProps = ComponentProps<'div'> & {
   onOpenChange?: (open: boolean) => void
   activeKey?: string
   defaultActiveKey?: string
-  onActiveKeyChange?: (key: string) => void
+  onActiveKeyChange?: (key: string, path?: ActivePathItem[]) => void
 }
 
 export const DualSidebarProvider = (props: DualSidebarProviderProps) => {
@@ -108,7 +109,7 @@ export const DualSidebarProvider = (props: DualSidebarProviderProps) => {
     if (merge.activeKey === undefined) {
       _setActiveKey(key)
     }
-    merge.onActiveKeyChange?.(key)
+    merge.onActiveKeyChange?.(key, options?.path)
     if (options?.openOnSelect !== false) {
       if (isMobile()) {
         setOpenMobile(true)

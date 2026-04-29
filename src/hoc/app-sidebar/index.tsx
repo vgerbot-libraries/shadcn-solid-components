@@ -11,7 +11,7 @@ import {
   SidebarProvider,
 } from 'shadcn-solid-components/components/sidebar'
 import { ComponentProps, For, type JSX, Match, Switch } from 'solid-js'
-import { SidebarMenuTree, SidebarMenuTreeProps } from '../sidebar-menu-tree'
+import { SidebarMenuTree, SidebarMenuTreeProps, type ActivePathItem } from '../sidebar-menu-tree'
 
 export type AppSidebarMenuGroup = {
   group: string
@@ -24,6 +24,7 @@ export type AppSidebarProps = ComponentProps<'div'> & {
   menus: AppSidebarMenuGroup[]
   footer: JSX.Element | SidebarMenuTreeProps['items']
   body: JSX.Element
+  onActiveKeyChange?: (key: string, path: ActivePathItem[]) => void
 }
 
 export type AppSidebarHeaderProps = {
@@ -58,7 +59,7 @@ export function AppSidebar(props: AppSidebarProps) {
               <SidebarGroup>
                 <SidebarGroupLabel>{menu.group}</SidebarGroupLabel>
                 <SidebarGroupContent>
-                  <SidebarMenuTree items={menu.items}></SidebarMenuTree>
+                  <SidebarMenuTree items={menu.items} onActivePathChange={path => props.onActiveKeyChange?.(path[path.length - 1]?.key ?? '', path)}></SidebarMenuTree>
                 </SidebarGroupContent>
               </SidebarGroup>
             )}
@@ -69,6 +70,7 @@ export function AppSidebar(props: AppSidebarProps) {
             <Match when={Array.isArray(props.footer)}>
               <SidebarMenuTree
                 items={props.footer as SidebarMenuTreeProps['items']}
+                onActivePathChange={path => props.onActiveKeyChange?.(path[path.length - 1]?.key ?? '', path)}
               ></SidebarMenuTree>
             </Match>
           </Switch>

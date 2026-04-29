@@ -1,4 +1,5 @@
 import { DualAppSidebar } from "shadcn-solid-components/hoc/dual-app-sidebar"
+import { createSignal, Show } from "solid-js"
 
 const DashboardIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" class="size-4" viewBox="0 0 24 24">
@@ -65,6 +66,7 @@ const SettingsIcon = () => (
 )
 
 const DualAppSidebarDemo = () => {
+  const [breadcrumb, setBreadcrumb] = createSignal<string[]>([])
   return (
     <div class="overflow-hidden rounded-lg border">
       <DualAppSidebar
@@ -126,8 +128,14 @@ const DualAppSidebarDemo = () => {
           { icon: <SettingsIcon />, tooltip: "Settings", onClick: () => {} },
         ]}
         defaultActiveKey="dashboard"
+        onActiveKeyChange={(_key, path) => path && setBreadcrumb(path.map(p => p.title))}
         body={
           <main class="flex flex-1 flex-col gap-2 p-4">
+            <Show when={breadcrumb().length > 0}>
+              <nav class="text-sm text-muted-foreground">
+                {breadcrumb().join(" / ")}
+              </nav>
+            </Show>
             <div class="h-3 w-2/3 rounded bg-muted" />
             <div class="h-3 w-1/2 rounded bg-muted" />
             <div class="h-3 w-3/4 rounded bg-muted" />

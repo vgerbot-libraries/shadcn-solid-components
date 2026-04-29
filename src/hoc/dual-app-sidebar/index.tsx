@@ -22,7 +22,7 @@ import {
   SidebarProvider,
 } from 'shadcn-solid-components/components/sidebar'
 import { AppSidebarHeaderProps, AppSidebarMenuGroup, isPresetHeader } from '../app-sidebar'
-import { SidebarMenuTree, SidebarMenuTreeProps } from '../sidebar-menu-tree'
+import { SidebarMenuTree, SidebarMenuTreeProps, type ActivePathItem } from '../sidebar-menu-tree'
 import { ComponentProps, For, type JSX, Match, Show, Switch } from 'solid-js'
 
 export type DualAppSidebarRailFooterItem = {
@@ -49,7 +49,7 @@ export type DualAppSidebarProps = ComponentProps<'div'> & {
   body: JSX.Element
   defaultActiveKey?: string
   activeKey?: string
-  onActiveKeyChange?: (key: string) => void
+  onActiveKeyChange?: (key: string, path?: ActivePathItem[]) => void
   defaultOpen?: boolean
   open?: boolean
   onOpenChange?: (open: boolean) => void
@@ -74,7 +74,10 @@ export function DualAppSidebar(props: DualAppSidebarProps) {
       class={props.class}
       defaultActiveKey={defaultActiveKey}
       activeKey={activeKey}
-      onActiveKeyChange={onActiveKeyChange}
+      onActiveKeyChange={(key, path) => {
+        const sectionPath = path ?? [{ key, title: sections.find(s => s.key === key)?.label ?? key }]
+        onActiveKeyChange?.(key, sectionPath)
+      }}
       defaultOpen={defaultOpen}
       open={open}
       onOpenChange={onOpenChange}
@@ -148,7 +151,7 @@ export function DualAppSidebar(props: DualAppSidebarProps) {
                         <SidebarGroup>
                           <SidebarGroupLabel>{group.group}</SidebarGroupLabel>
                           <SidebarGroupContent>
-                            <SidebarMenuTree items={group.items} />
+                            <SidebarMenuTree items={group.items} onActivePathChange={menuPath => onActiveKeyChange?.(section.key, [{ key: section.key, title: section.label }, ...menuPath])} />
                           </SidebarGroupContent>
                         </SidebarGroup>
                       )}
@@ -163,6 +166,7 @@ export function DualAppSidebar(props: DualAppSidebarProps) {
                         <SidebarProvider>
                           <SidebarMenuTree
                             items={section.footer as SidebarMenuTreeProps['items']}
+                            onActivePathChange={menuPath => onActiveKeyChange?.(section.key, [{ key: section.key, title: section.label }, ...menuPath])}
                           />
                         </SidebarProvider>
                       </Match>
