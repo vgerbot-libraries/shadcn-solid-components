@@ -66,6 +66,7 @@
     "./components/navigation-menu": "./src/components/navigation-menu/index.tsx",
     "./components/number-field": "./src/components/number-field/index.tsx",
     "./components/otp-field": "./src/components/otp-field/index.tsx",
+    "./components/page-layout": "./src/components/page-layout/index.tsx",
     "./components/pagination": "./src/components/pagination/index.tsx",
     "./components/popover": "./src/components/popover/index.tsx",
     "./components/progress": "./src/components/progress/index.tsx",
