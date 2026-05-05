@@ -63,6 +63,7 @@
     "./components/icons": "./src/components/icons/index.tsx",
     "./components/landing-hero": "./src/components/landing-hero/index.tsx",
     "./components/kbd": "./src/components/kbd/index.tsx",
+    "./components/marquee": "./src/components/marquee/index.tsx",
     "./components/menubar": "./src/components/menubar/index.tsx",
     "./components/navigation-menu": "./src/components/navigation-menu/index.tsx",
     "./components/number-field": "./src/components/number-field/index.tsx",

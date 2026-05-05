@@ -34,6 +34,7 @@ export const ComponentName = {
   HoverCard: 'HoverCard',
   Icons: 'Icons',
   Kbd: 'Kbd',
+  Marquee: 'Marquee',
   Menubar: 'Menubar',
   NavigationMenu: 'NavigationMenu',
   NumberField: 'NumberField',

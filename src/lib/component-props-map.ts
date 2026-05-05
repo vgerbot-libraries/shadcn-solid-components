@@ -25,6 +25,7 @@ import type { DropdownMenuProps } from '../components/dropdown-menu'
 import type { FileFieldProps } from '../components/file-field'
 import type { HoverCardProps } from '../components/hover-card'
 import type { KbdProps } from '../components/kbd'
+import type { MarqueeProps } from '../components/marquee'
 import type { MenubarProps } from '../components/menubar'
 import type { NavigationMenuProps } from '../components/navigation-menu'
 import type { NumberFieldProps } from '../components/number-field'
@@ -83,6 +84,7 @@ export interface ComponentPropsMap {
   [ComponentName.HoverCard]: HoverCardProps
   [ComponentName.Icons]: ComponentProps<'svg'>
   [ComponentName.Kbd]: KbdProps
+  [ComponentName.Marquee]: MarqueeProps
   [ComponentName.Menubar]: MenubarProps
   [ComponentName.NavigationMenu]: NavigationMenuProps
   [ComponentName.NumberField]: NumberFieldProps

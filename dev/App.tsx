@@ -76,6 +76,14 @@ const App: Component<AppProps> = props => {
           onClick: () => navigate('/qr-code'),
         },
         {
+          icon: () => <IconUpdates class="size-4" />,
+          title: 'Marquee',
+          get isActive() {
+            return isActive('/marquee')
+          },
+          onClick: () => navigate('/marquee'),
+        },
+        {
           icon: () => <IconFullscreen class="size-4" />,
           title: 'Layout',
           get isActive() {
@@ -227,6 +235,12 @@ const App: Component<AppProps> = props => {
           label: 'QR Code',
           icon: <IconHash class="size-4" />,
           onSelect: () => navigate('/qr-code'),
+        },
+        {
+          id: 'marquee',
+          label: 'Marquee',
+          icon: <IconUpdates class="size-4" />,
+          onSelect: () => navigate('/marquee'),
         },
         {
           id: 'layout',
