@@ -1,6 +1,4 @@
 import { useLocation, useNavigate } from '@solidjs/router'
-import type { JSX } from 'solid-js'
-import { type Component, Suspense } from 'solid-js'
 import {
   IconAlertTriangle,
   IconArrowRight,
@@ -24,8 +22,10 @@ import {
   type CommandPaletteGroup,
 } from 'shadcn-solid-components/hoc/command-palette'
 import { SidebarMenuTreeItem } from 'shadcn-solid-components/hoc/sidebar-menu-tree'
-import { AppDock } from './dock'
+import type { JSX } from 'solid-js'
+import { type Component, Suspense } from 'solid-js'
 import { GetHelpIcon, HeaderIcon, SettingsIcon } from './components/icons'
+import { AppDock } from './dock'
 
 interface AppProps {
   children?: JSX.Element
@@ -200,6 +200,14 @@ const App: Component<AppProps> = props => {
           },
           onClick: () => navigate('/profile-header'),
         },
+        {
+          icon: () => <IconRocket class="size-4" />,
+          title: 'Landing Hero',
+          get isActive() {
+            return isActive('/landing-hero')
+          },
+          onClick: () => navigate('/landing-hero'),
+        },
       ],
     },
   ]
@@ -314,6 +322,12 @@ const App: Component<AppProps> = props => {
           label: 'Profile Header',
           icon: <IconUser class="size-4" />,
           onSelect: () => navigate('/profile-header'),
+        },
+        {
+          id: 'landing-hero',
+          label: 'Landing Hero',
+          icon: <IconRocket class="size-4" />,
+          onSelect: () => navigate('/landing-hero'),
         },
       ],
     },

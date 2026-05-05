@@ -20,4 +20,5 @@ export const pages: Record<string, Component> = {
   'profile-header': lazy(() => import('./ProfilePage')),
   'error-page': lazy(() => import('./ErrorPage')),
   'custom-theme': lazy(() => import('./CustomThemePage')),
+  'landing-hero': lazy(() => import('./LandingHeroPage')),
 }

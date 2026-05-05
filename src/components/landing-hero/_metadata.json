@@ -1,0 +1,14 @@
+{
+  "name": "components/landing-hero",
+  "displayName": "Landing Hero",
+  "description": "A responsive landing header with a three-zone desktop layout and a mobile slide-over menu. LandingHero composes a left brand block, centered navigation, and right-side primary/secondary action groups. On mobile, primary actions remain visible while navigation and secondary actions collapse into an animated right-side drawer with overlay, keyboard escape handling, and close interactions.",
+  "category": "components",
+  "useCases": [
+    "SaaS landing pages that need a reusable top hero/header with desktop and mobile parity",
+    "Marketing sites that keep primary CTA actions visible while collapsing secondary actions into mobile menu",
+    "Product websites requiring configurable nav items with optional nested links",
+    "Design systems that need a slot-based brand/nav/actions header primitive"
+  ],
+  "usage": "import { LandingHero } from \"shadcn-solid-components/components/landing-hero\"",
+  "tags": ["components", "landing-hero", "navigation", "responsive", "solidjs", "ui"]
+}
