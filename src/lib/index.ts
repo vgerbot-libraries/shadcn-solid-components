@@ -6,3 +6,4 @@ export * from './theme-helpers'
 export * from './use-current-url'
 export * from './use-mobile'
 export * from './use-theme'
+export * from './ShadcnRoot';

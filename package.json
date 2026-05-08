@@ -29,6 +29,7 @@
     "./lib/combine-style": "./src/lib/combine-style.ts",
     "./lib/component-props-map": "./src/lib/component-props-map.ts",
     "./lib/cva": "./src/lib/cva.ts",
+    "./lib/ShadcnRoot": "./src/lib/ShadcnRoot.tsx",
     "./lib/theme-context": "./src/lib/theme-context.ts",
     "./lib/theme-helpers": "./src/lib/theme-helpers.ts",
     "./lib/use-current-url": "./src/lib/use-current-url.ts",
@@ -61,8 +62,8 @@
     "./components/file-field": "./src/components/file-field/index.tsx",
     "./components/hover-card": "./src/components/hover-card/index.tsx",
     "./components/icons": "./src/components/icons/index.tsx",
-    "./components/landing-hero": "./src/components/landing-hero/index.tsx",
     "./components/kbd": "./src/components/kbd/index.tsx",
+    "./components/landing-hero": "./src/components/landing-hero/index.tsx",
     "./components/marquee": "./src/components/marquee/index.tsx",
     "./components/menubar": "./src/components/menubar/index.tsx",
     "./components/navigation-menu": "./src/components/navigation-menu/index.tsx",
@@ -162,7 +163,6 @@
     "@corvu/drawer": "^0.2.4",
     "@corvu/otp-field": "^0.1.4",
     "@corvu/resizable": "^0.2.5",
-    "@kobalte/core": "^0.13.11",
     "@tanstack/solid-table": "^8.21.3",
     "@unovis/solid": "^1.6.2",
     "@unovis/ts": "^1.6.2",
@@ -259,6 +259,7 @@
   "dependencies": {
     "cva": "1.0.0-beta.4",
     "inquirer": "^9.3.7",
-    "tailwind-merge": "^3.4.0"
+    "tailwind-merge": "^3.4.0",
+    "@kobalte/core": "^0.13.11"
   }
 }
