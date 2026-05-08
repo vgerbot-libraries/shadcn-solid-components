@@ -36,8 +36,6 @@ export interface LandingHeroProps extends Omit<ComponentProps<'header'>, 'childr
   navItems?: LandingHeroNavItem[]
   primaryActions?: JSX.Element
   secondaryActions?: JSX.Element
-  actionsA?: JSX.Element
-  actionsB?: JSX.Element
   open?: boolean
   defaultOpen?: boolean
   onOpenChange?: (open: boolean) => void
@@ -261,8 +259,6 @@ export function LandingHero(props: LandingHeroProps) {
     'navItems',
     'primaryActions',
     'secondaryActions',
-    'actionsA',
-    'actionsB',
     'open',
     'defaultOpen',
     'onOpenChange',
@@ -296,8 +292,8 @@ export function LandingHero(props: LandingHeroProps) {
 
   const activeBreakpoint = () => local.mobileBreakpoint ?? 'lg'
   const visibilityClasses = () => breakpointClasses[activeBreakpoint()]
-  const primaryActions = () => local.primaryActions ?? local.actionsA
-  const secondaryActions = () => local.secondaryActions ?? local.actionsB
+  const primaryActions = () => local.primaryActions
+  const secondaryActions = () => local.secondaryActions
 
   return (
     <header class={cx('border-border/80 bg-background border-b', local.class)} {...rest}>
