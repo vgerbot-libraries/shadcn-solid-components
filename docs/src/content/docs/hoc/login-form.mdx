@@ -52,51 +52,37 @@ const LoginFormDemo = () => {
           onSelect: () => {},
         },
       ]}
+      onValidate={(data) => {
+        const errors: { email?: string; password?: string; confirmPassword?: string } = {}
+        if (!data.email.includes("@")) {
+          errors.email = "Please enter a valid email address"
+        }
+        if (data.password.length < 8) {
+          errors.password = "Password must be at least 8 characters"
+        }
+        if (mode() === "register" && data.confirmPassword !== data.password) {
+          errors.confirmPassword = "Passwords do not match"
+        }
+        return Object.keys(errors).length > 0
+          ? { valid: false, errors }
+          : { valid: true }
+      }}
       onSubmit={(data) => {
         setLoading(true)
         void Promise.resolve(data).finally(() => setLoading(false))
       }}
       onModeSwitch={() => setMode(mode() === "login" ? "register" : "login")}
+      footer={
+        <p class="text-center text-xs text-muted-foreground">
+          By continuing, you agree to the terms of service.
+        </p>
+      }
     />
   )
 }
-
 export default LoginFormDemo
   ```
 </ComponentPreview>
-
-```tsx
-import { createSignal } from "solid-js"
-import { LoginForm, type LoginFormMode } from "shadcn-solid-components/hoc/login-form"
-
-export function AuthCard() {
-  const [mode, setMode] = createSignal<LoginFormMode>("login")
-  const [loading, setLoading] = createSignal(false)
-
-  return (
-    <LoginForm
-      mode={mode()}
-      loading={loading()}
-      forgotPasswordHref="/reset-password"
-      providers={[
-        {
-          name: "Google",
-          icon: <span class="text-xs font-medium">G</span>,
-          onSelect: () => {
-            /* start OAuth */
-          },
-        },
-      ]}
-      onSubmit={(data) => {
-        setLoading(true)
-        void Promise.resolve(data).finally(() => setLoading(false))
-      }}
-      onModeSwitch={() => setMode(mode() === "login" ? "register" : "login")}
-      footer={<p class="text-center text-xs text-muted-foreground">By continuing, you agree to the terms of service.</p>}
-    />
-  )
-}
-```
 
 ## API
 
@@ -109,11 +95,17 @@ Extends `div` props (without `onSubmit`).
 - `providers` — `LoginFormProvider[]` (`name`, `icon`, `onSelect`)
 - `showRememberMe` — default `true` in login mode
 - `forgotPasswordHref` — string link or `false` to hide
+- `onValidate` — called before `onSubmit`; receives form data and returns `LoginFormValidationResult` or `Promise<LoginFormValidationResult>`
 - `onSubmit` — receives `{ email, password, confirmPassword?, rememberMe? }`
 - `loading` — submit button pending state
 - `onModeSwitch` — footer link (e.g. switch to register)
 - `footer` — extra JSX below the form
 - `locale` — partial strings
+
+### `LoginFormValidationResult`
+
+- `valid` — `boolean`; when `false`, submission is blocked
+- `errors` — optional `{ email?: string, password?: string, confirmPassword?: string }`; messages are shown under each field
 
 ### `LoginFormProvider`
 
@@ -122,4 +114,4 @@ Extends `div` props (without `onSubmit`).
 ## Exports
 
 - `LoginForm` — component
-- `LoginFormProps`, `LoginFormMode`, `LoginFormProvider` — types
+- `LoginFormProps`, `LoginFormMode`, `LoginFormProvider`, `LoginFormValidationResult` — types

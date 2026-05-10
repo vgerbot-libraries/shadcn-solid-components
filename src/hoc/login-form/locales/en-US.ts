@@ -20,4 +20,9 @@ export const enUS: LoginFormLocale = {
   registerFooter: 'Already have an account?',
   registerFooterLink: 'Sign in',
   orContinueWith: 'Or continue with',
+  emailRequired: 'Email is required',
+  invalidEmail: 'Please enter a valid email address',
+  passwordRequired: 'Password is required',
+  passwordTooShort: 'Password must be at least 8 characters',
+  confirmPasswordMismatch: 'Passwords do not match',
 }

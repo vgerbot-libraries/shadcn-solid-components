@@ -18,6 +18,11 @@ export interface LoginFormLocale {
   registerFooter: string
   registerFooterLink: string
   orContinueWith: string
+  emailRequired: string
+  invalidEmail: string
+  passwordRequired: string
+  passwordTooShort: string
+  confirmPasswordMismatch: string
 }
 
 export interface TanstackTableLocale {

@@ -20,4 +20,9 @@ export const zhCN: LoginFormLocale = {
   registerFooter: '已有账户？',
   registerFooterLink: '登录',
   orContinueWith: '或通过以下方式继续',
+  emailRequired: '请输入邮箱',
+  invalidEmail: '请输入有效的邮箱地址',
+  passwordRequired: '请输入密码',
+  passwordTooShort: '密码至少需要8个字符',
+  confirmPasswordMismatch: '两次输入的密码不一致',
 }

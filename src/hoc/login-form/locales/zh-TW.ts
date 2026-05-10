@@ -20,4 +20,9 @@ export const zhTW: LoginFormLocale = {
   registerFooter: '已有帳戶？',
   registerFooterLink: '登入',
   orContinueWith: '或透過以下方式繼續',
+  emailRequired: '請輸入電子郵件',
+  invalidEmail: '請輸入有效的電子郵件地址',
+  passwordRequired: '請輸入密碼',
+  passwordTooShort: '密碼至少需要8個字元',
+  confirmPasswordMismatch: '兩次輸入的密碼不一致',
 }

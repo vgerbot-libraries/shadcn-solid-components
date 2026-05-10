@@ -20,4 +20,9 @@ export const jaJP: LoginFormLocale = {
   registerFooter: 'すでにアカウントをお持ちの方は',
   registerFooterLink: 'ログイン',
   orContinueWith: 'または以下で続行',
+  emailRequired: 'メールアドレスを入力してください',
+  invalidEmail: '有効なメールアドレスを入力してください',
+  passwordRequired: 'パスワードを入力してください',
+  passwordTooShort: 'パスワードは8文字以上である必要があります',
+  confirmPasswordMismatch: 'パスワードが一致しません',
 }

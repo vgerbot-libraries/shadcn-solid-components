@@ -19,7 +19,7 @@ import { TextField, TextFieldInput } from 'shadcn-solid-components/components/te
 import { FormField } from 'shadcn-solid-components/hoc/form-field'
 import type { LoginFormLocale } from 'shadcn-solid-components/i18n/types'
 import { cx } from 'shadcn-solid-components/lib/cva'
-import { type ComponentProps, For, type JSX, Show, splitProps } from 'solid-js'
+import { type ComponentProps, createSignal, For, type JSX, Show, splitProps } from 'solid-js'
 import { enUS as defaultLocale } from './locales/en-US'
 
 // ============================================================================
@@ -37,6 +37,15 @@ export interface LoginFormProvider {
   onSelect: () => void
 }
 
+export interface LoginFormValidationResult {
+  valid: boolean
+  errors?: {
+    email?: string
+    password?: string
+    confirmPassword?: string
+  }
+}
+
 export interface LoginFormProps extends Omit<ComponentProps<'div'>, 'onSubmit'> {
   /** Form mode. Defaults to `'login'`. */
   mode?: LoginFormMode
@@ -52,6 +61,13 @@ export interface LoginFormProps extends Omit<ComponentProps<'div'>, 'onSubmit'> 
   showRememberMe?: boolean
   /** Href for the "Forgot password" link. Set to `false` to hide. */
   forgotPasswordHref?: string | false
+  /** Called before submit to validate form data. Return `{ valid: false, errors }` to block submission. */
+  onValidate?: (data: {
+    email: string
+    password: string
+    confirmPassword?: string
+    rememberMe?: boolean
+  }) => LoginFormValidationResult | Promise<LoginFormValidationResult>
   /** Called when the form is submitted. */
   onSubmit?: (data: {
     email: string
@@ -101,6 +117,7 @@ export function LoginForm(props: LoginFormProps) {
     'providers',
     'showRememberMe',
     'forgotPasswordHref',
+    'onValidate',
     'onSubmit',
     'loading',
     'onModeSwitch',
@@ -119,16 +136,34 @@ export function LoginForm(props: LoginFormProps) {
   const showRememberMe = () => local.showRememberMe !== false && isLogin()
   const showForgotPassword = () => local.forgotPasswordHref !== false && isLogin()
 
-  const handleSubmit = (e: SubmitEvent) => {
+  const [fieldErrors, setFieldErrors] = createSignal<{
+    email?: string
+    password?: string
+    confirmPassword?: string
+  }>({})
+
+  const handleSubmit = async (e: SubmitEvent) => {
     e.preventDefault()
     const form = e.currentTarget as HTMLFormElement
     const formData = new FormData(form)
-    local.onSubmit?.({
+    const data = {
       email: formData.get('email') as string,
       password: formData.get('password') as string,
       confirmPassword: isLogin() ? undefined : (formData.get('confirmPassword') as string),
       rememberMe: formData.get('rememberMe') === 'on',
-    })
+    }
+
+    if (local.onValidate) {
+      const result = local.onValidate(data)
+      const validation = result instanceof Promise ? await result : result
+      if (!validation.valid) {
+        setFieldErrors(validation.errors || {})
+        return
+      }
+      setFieldErrors({})
+    }
+
+    local.onSubmit?.(data)
   }
 
   return (
@@ -175,7 +210,7 @@ export function LoginForm(props: LoginFormProps) {
           </Show>
 
           {/* Email */}
-          <FormField label={locale().emailLabel}>
+          <FormField label={locale().emailLabel} error={fieldErrors().email}>
             <TextField name="email" required>
               <TextFieldInput
                 type="email"
@@ -200,6 +235,7 @@ export function LoginForm(props: LoginFormProps) {
                 </Show>
               </div>
             }
+            error={fieldErrors().password}
           >
             <TextField name="password" required>
               <TextFieldInput
@@ -212,7 +248,7 @@ export function LoginForm(props: LoginFormProps) {
 
           {/* Confirm password (register mode) */}
           <Show when={!isLogin()}>
-            <FormField label={locale().confirmPasswordLabel}>
+            <FormField label={locale().confirmPasswordLabel} error={fieldErrors().confirmPassword}>
               <TextField name="confirmPassword" required>
                 <TextFieldInput
                   type="password"

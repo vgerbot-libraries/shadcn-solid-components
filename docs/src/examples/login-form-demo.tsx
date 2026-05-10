@@ -18,6 +18,21 @@ const LoginFormDemo = () => {
           onSelect: () => {},
         },
       ]}
+      onValidate={(data) => {
+        const errors: { email?: string; password?: string; confirmPassword?: string } = {}
+        if (!data.email.includes("@")) {
+          errors.email = "Please enter a valid email address"
+        }
+        if (data.password.length < 8) {
+          errors.password = "Password must be at least 8 characters"
+        }
+        if (mode() === "register" && data.confirmPassword !== data.password) {
+          errors.confirmPassword = "Passwords do not match"
+        }
+        return Object.keys(errors).length > 0
+          ? { valid: false, errors }
+          : { valid: true }
+      }}
       onSubmit={(data) => {
         setLoading(true)
         void Promise.resolve(data).finally(() => setLoading(false))
