@@ -1,0 +1,111 @@
+---
+title: Marquee
+navTitle: Marquee
+description: A looping marquee container for horizontal or vertical scrolling content strips.
+section: Components
+order: 1003
+toc: true
+---
+
+import MarqueeDemo from "../../../examples/marquee-demo"
+import MarqueeVerticalDemo from "../../../examples/marquee-vertical-demo"
+
+`Marquee` repeats children into a continuous moving strip. Use it for partner logos, status tickers, or animated highlight rails in landing pages.
+
+## Usage
+
+```tsx
+import { Marquee } from "shadcn-solid-components/components/marquee"
+```
+
+## Exports
+
+- `Marquee`
+- Type: `MarqueeProps`
+
+## Examples
+
+### Horizontal strip
+
+<ComponentPreview name="Marquee Demo">
+  <div class="mb-4 w-full">
+    <MarqueeDemo />
+  </div>
+
+  ```tsx
+  import { For } from "solid-js"
+
+  import { Marquee } from "shadcn-solid-components/components/marquee"
+
+  const badges = ["SolidJS", "TypeScript", "Tailwind", "Kobalte", "Vite", "Biome"]
+
+  const MarqueeDemo = () => {
+    return (
+      <Marquee class="[--duration:24s] [--gap:0.75rem]">
+        <For each={badges}>
+          {(badge) => (
+            <div class="rounded-component border bg-muted px-3 py-1 text-sm font-medium">
+              {badge}
+            </div>
+          )}
+        </For>
+      </Marquee>
+    )
+  }
+
+  export default MarqueeDemo
+  ```
+</ComponentPreview>
+
+### Vertical reverse
+
+Combine `vertical`, `reverse`, and custom `repeat` to build ticker-style side rails.
+
+<ComponentPreview name="Marquee Vertical Demo">
+  <div class="mb-4 w-full">
+    <MarqueeVerticalDemo />
+  </div>
+
+  ```tsx
+  import { For } from "solid-js"
+
+  import { Marquee } from "shadcn-solid-components/components/marquee"
+
+  const items = ["Deploy finished", "3 new signups", "Payment received", "Backup completed"]
+
+  const MarqueeVerticalDemo = () => {
+    return (
+      <div class="h-40 overflow-hidden rounded-lg border p-2">
+        <Marquee
+          vertical
+          reverse
+          repeat={3}
+          class="h-full [--duration:16s] [--gap:0.5rem]"
+        >
+          <For each={items}>
+            {(item) => <div class="rounded-md bg-muted px-3 py-2 text-sm">{item}</div>}
+          </For>
+        </Marquee>
+      </div>
+    )
+  }
+
+  export default MarqueeVerticalDemo
+  ```
+</ComponentPreview>
+
+## API
+
+### `MarqueeProps`
+
+Extends `div` props. Notable props:
+
+- `reverse` — reverse animation direction
+- `pauseOnHover` — pause animation when hovering the marquee group
+- `vertical` — use vertical motion instead of horizontal
+- `repeat` — number of repeated content blocks (minimum `1`, default `4`)
+
+You can also tune speed and spacing via CSS custom properties in `class`:
+
+- `--duration` (e.g. `"[--duration:24s]"`)
+- `--gap` (e.g. `"[--gap:0.75rem]"`)

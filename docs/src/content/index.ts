@@ -2295,6 +2295,208 @@ export const Contents: Record<string, DocEntry> = {
     }
 ]
   },
+  "components/apple-dock": {
+    component: lazy(() => import("@docs/content/docs/components/apple-dock.mdx")),
+    data: {
+    "title": "Apple Dock",
+    "description": "A macOS-style dock container with proximity-based icon magnification for launcher and quick-action interfaces.",
+    "navTitle": "Apple Dock",
+    "section": "Components",
+    "order": 1001,
+    "toc": true
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "exports",
+        "text": "Exports"
+    },
+    {
+        "depth": 2,
+        "slug": "examples",
+        "text": "Examples"
+    },
+    {
+        "depth": 3,
+        "slug": "default",
+        "text": "Default"
+    },
+    {
+        "depth": 3,
+        "slug": "disable-magnification",
+        "text": "Disable magnification"
+    },
+    {
+        "depth": 2,
+        "slug": "api",
+        "text": "API"
+    },
+    {
+        "depth": 3,
+        "slug": "appledockprops",
+        "text": "AppleDockProps"
+    },
+    {
+        "depth": 3,
+        "slug": "appledockiconprops",
+        "text": "AppleDockIconProps"
+    }
+]
+  },
+  "components/landing-hero": {
+    component: lazy(() => import("@docs/content/docs/components/landing-hero.mdx")),
+    data: {
+    "title": "Landing Hero",
+    "description": "A responsive marketing header with brand slot, navigation, action groups, and a mobile drawer menu.",
+    "navTitle": "Landing Hero",
+    "section": "Components",
+    "order": 1002,
+    "toc": true
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "exports",
+        "text": "Exports"
+    },
+    {
+        "depth": 2,
+        "slug": "examples",
+        "text": "Examples"
+    },
+    {
+        "depth": 3,
+        "slug": "basic",
+        "text": "Basic"
+    },
+    {
+        "depth": 3,
+        "slug": "nested-menu-items",
+        "text": "Nested menu items"
+    },
+    {
+        "depth": 2,
+        "slug": "api",
+        "text": "API"
+    },
+    {
+        "depth": 3,
+        "slug": "landingheroprops",
+        "text": "LandingHeroProps"
+    }
+]
+  },
+  "components/marquee": {
+    component: lazy(() => import("@docs/content/docs/components/marquee.mdx")),
+    data: {
+    "title": "Marquee",
+    "description": "A looping marquee container for horizontal or vertical scrolling content strips.",
+    "navTitle": "Marquee",
+    "section": "Components",
+    "order": 1003,
+    "toc": true
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "exports",
+        "text": "Exports"
+    },
+    {
+        "depth": 2,
+        "slug": "examples",
+        "text": "Examples"
+    },
+    {
+        "depth": 3,
+        "slug": "horizontal-strip",
+        "text": "Horizontal strip"
+    },
+    {
+        "depth": 3,
+        "slug": "vertical-reverse",
+        "text": "Vertical reverse"
+    },
+    {
+        "depth": 2,
+        "slug": "api",
+        "text": "API"
+    },
+    {
+        "depth": 3,
+        "slug": "marqueeprops",
+        "text": "MarqueeProps"
+    }
+]
+  },
+  "components/page-layout": {
+    component: lazy(() => import("@docs/content/docs/components/page-layout.mdx")),
+    data: {
+    "title": "Page Layout",
+    "description": "A full-height page skeleton with optional scroll container header and a composable page header primitive.",
+    "navTitle": "Page Layout",
+    "section": "Components",
+    "order": 1004,
+    "toc": true
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "exports",
+        "text": "Exports"
+    },
+    {
+        "depth": 2,
+        "slug": "examples",
+        "text": "Examples"
+    },
+    {
+        "depth": 3,
+        "slug": "default-layout",
+        "text": "Default layout"
+    },
+    {
+        "depth": 3,
+        "slug": "custom-header-content",
+        "text": "Custom header content"
+    },
+    {
+        "depth": 2,
+        "slug": "api",
+        "text": "API"
+    },
+    {
+        "depth": 3,
+        "slug": "pagelayoutprops",
+        "text": "PageLayoutProps"
+    },
+    {
+        "depth": 3,
+        "slug": "pagelayoutheaderprops",
+        "text": "PageLayoutHeaderProps"
+    }
+]
+  },
   "hoc/activity-feed": {
     component: lazy(() => import("@docs/content/docs/hoc/activity-feed.mdx")),
     data: {
@@ -4854,6 +5056,26 @@ export const docsNavigation: DocsNavSection[] = [
         "title": "Tooltip",
         "href": "/docs/components/tooltip",
         "description": "Tooltip root, trigger, portal, and styled content with arrow on Kobalte."
+      },
+      {
+        "title": "Apple Dock",
+        "href": "/docs/components/apple-dock",
+        "description": "A macOS-style dock container with proximity-based icon magnification for launcher and quick-action interfaces."
+      },
+      {
+        "title": "Landing Hero",
+        "href": "/docs/components/landing-hero",
+        "description": "A responsive marketing header with brand slot, navigation, action groups, and a mobile drawer menu."
+      },
+      {
+        "title": "Marquee",
+        "href": "/docs/components/marquee",
+        "description": "A looping marquee container for horizontal or vertical scrolling content strips."
+      },
+      {
+        "title": "Page Layout",
+        "href": "/docs/components/page-layout",
+        "description": "A full-height page skeleton with optional scroll container header and a composable page header primitive."
       }
     ]
   },

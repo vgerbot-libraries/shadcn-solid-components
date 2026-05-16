@@ -1,0 +1,134 @@
+---
+title: Page Layout
+navTitle: Page Layout
+description: A full-height page skeleton with optional scroll container header and a composable page header primitive.
+section: Components
+order: 1004
+toc: true
+---
+
+import PageLayoutDemo from "../../../examples/page-layout-demo"
+import PageLayoutCustomHeaderDemo from "../../../examples/page-layout-custom-header-demo"
+
+`PageLayout` provides a consistent page structure: optional header slot + scrollable body + inner content wrapper. `PageLayoutHeader` is a composable header row with `leading`, `content`, `actions`, and `trailing` slots.
+
+## Usage
+
+```tsx
+import { PageLayout, PageLayoutHeader } from "shadcn-solid-components/components/page-layout"
+```
+
+## Exports
+
+- `PageLayout`, `PageLayoutHeader`
+- Types: `PageLayoutProps`, `PageLayoutHeaderProps`
+
+## Examples
+
+### Default layout
+
+<ComponentPreview name="Page Layout Demo">
+  <div class="mb-4 w-full">
+    <PageLayoutDemo />
+  </div>
+
+  ```tsx
+  import { For } from "solid-js"
+
+  import { Button } from "shadcn-solid-components/components/button"
+  import { PageLayout, PageLayoutHeader } from "shadcn-solid-components/components/page-layout"
+
+  const cards = [
+    "Revenue +18%",
+    "Conversion 3.4%",
+    "Active users 12.8k",
+    "Errors 0.12%",
+  ]
+
+  const PageLayoutDemo = () => {
+    return (
+      <div class="h-[360px] overflow-hidden rounded-lg border">
+        <PageLayout
+          header={
+            <PageLayoutHeader
+              content={<h3 class="truncate text-sm font-semibold">Dashboard Overview</h3>}
+              actions={<Button size="sm">Export</Button>}
+            />
+          }
+        >
+          <div class="grid gap-3 md:grid-cols-2">
+            <For each={cards}>
+              {(card) => <div class="rounded-lg border p-4 text-sm">{card}</div>}
+            </For>
+          </div>
+        </PageLayout>
+      </div>
+    )
+  }
+
+  export default PageLayoutDemo
+  ```
+</ComponentPreview>
+
+### Custom header content
+
+Provide `children` to `PageLayoutHeader` when you need full control over header structure.
+
+<ComponentPreview name="Page Layout Custom Header Demo">
+  <div class="mb-4 w-full">
+    <PageLayoutCustomHeaderDemo />
+  </div>
+
+  ```tsx
+  import { PageLayout, PageLayoutHeader } from "shadcn-solid-components/components/page-layout"
+
+  const PageLayoutCustomHeaderDemo = () => {
+    return (
+      <div class="h-[320px] overflow-hidden rounded-lg border">
+        <PageLayout
+          header={
+            <PageLayoutHeader fixed={false}>
+              <div class="flex w-full items-center justify-between gap-3">
+                <div>
+                  <p class="text-xs text-muted-foreground">Project</p>
+                  <p class="text-sm font-semibold">Mobile Redesign</p>
+                </div>
+                <span class="rounded-md border px-2 py-1 text-xs">In Progress</span>
+              </div>
+            </PageLayoutHeader>
+          }
+        >
+          <div class="space-y-3 text-sm text-muted-foreground">
+            <p>Use the children escape hatch to fully control header markup.</p>
+            <p>Set fixed=false when header should scroll with content.</p>
+            <p>
+              This keeps layout behavior predictable while allowing custom branded
+              header structures.
+            </p>
+          </div>
+        </PageLayout>
+      </div>
+    )
+  }
+
+  export default PageLayoutCustomHeaderDemo
+  ```
+</ComponentPreview>
+
+## API
+
+### `PageLayoutProps`
+
+Extends `div` props. Notable props:
+
+- `header` — optional element rendered before page content in the scroll container
+- `bodyClass` / `bodyProps` — customizations for the scrollable body container
+- `contentClass` / `contentProps` — customizations for the inner content wrapper
+
+### `PageLayoutHeaderProps`
+
+Extends `header` props. Notable props:
+
+- `leading`, `content`, `actions`, `trailing` — slot-based composition areas
+- `fixed` — sticky header behavior (default `true`)
+- `children` — overrides slot rendering for fully custom header markup

@@ -1,0 +1,122 @@
+---
+title: Apple Dock
+navTitle: Apple Dock
+description: A macOS-style dock container with proximity-based icon magnification for launcher and quick-action interfaces.
+section: Components
+order: 1001
+toc: true
+---
+
+import AppleDockDemo from "../../../examples/apple-dock-demo"
+import AppleDockStaticDemo from "../../../examples/apple-dock-static-demo"
+
+`AppleDock` provides a container that tracks cursor position and magnifies nearby icons. Pair it with `AppleDockIcon` to build launchers, tool palettes, or floating action strips.
+
+## Usage
+
+```tsx
+import { AppleDock, AppleDockIcon } from "shadcn-solid-components/components/apple-dock"
+```
+
+## Exports
+
+- `AppleDock`, `AppleDockIcon`, `appleDockVariants`
+- Types: `AppleDockProps`, `AppleDockIconProps`
+
+## Examples
+
+### Default
+
+<ComponentPreview name="Apple Dock Demo">
+  <div class="mb-4 w-full">
+    <AppleDockDemo />
+  </div>
+
+  ```tsx
+  import { For } from "solid-js"
+
+  import { AppleDock, AppleDockIcon } from "shadcn-solid-components/components/apple-dock"
+
+  const apps = [
+    { label: "Mail", color: "bg-blue-500" },
+    { label: "Calendar", color: "bg-orange-500" },
+    { label: "Notes", color: "bg-yellow-500" },
+    { label: "Music", color: "bg-pink-500" },
+    { label: "Settings", color: "bg-zinc-500" },
+  ]
+
+  const AppleDockDemo = () => {
+    return (
+      <AppleDock class="border-border bg-background rounded-xl">
+        <For each={apps}>
+          {(app) => (
+            <AppleDockIcon class="rounded-xl" title={app.label}>
+              <div
+                class={`text-primary-foreground grid size-full place-items-center rounded-lg text-[10px] font-semibold ${app.color}`}
+              >
+                {app.label.slice(0, 2)}
+              </div>
+            </AppleDockIcon>
+          )}
+        </For>
+      </AppleDock>
+    )
+  }
+
+  export default AppleDockDemo
+  ```
+</ComponentPreview>
+
+### Disable magnification
+
+Set `disableMagnification` when you want dock spacing and pointer behaviors without scaling animation.
+
+<ComponentPreview name="Apple Dock Static Demo">
+  <div class="mb-4 w-full">
+    <AppleDockStaticDemo />
+  </div>
+
+  ```tsx
+  import { For } from "solid-js"
+
+  import { AppleDock, AppleDockIcon } from "shadcn-solid-components/components/apple-dock"
+
+  const actions = ["Upload", "Share", "Export", "Archive"]
+
+  const AppleDockStaticDemo = () => {
+    return (
+      <AppleDock
+        disableMagnification
+        direction="bottom"
+        class="border-border bg-background rounded-xl"
+      >
+        <For each={actions}>
+          {(action) => (
+            <AppleDockIcon disableMagnification class="rounded-lg border bg-muted px-3">
+              <span class="text-xs font-medium">{action}</span>
+            </AppleDockIcon>
+          )}
+        </For>
+      </AppleDock>
+    )
+  }
+
+  export default AppleDockStaticDemo
+  ```
+</ComponentPreview>
+
+## API
+
+### `AppleDockProps`
+
+Extends `div` props. Notable props:
+
+- `direction` — vertical alignment of icons in the dock: `"top" | "middle" | "bottom"` (default `"middle"`)
+- `iconSize` — base icon size in pixels (default `40`)
+- `iconMagnification` — target icon size near the cursor (default `60`)
+- `iconDistance` — interaction range around the cursor in pixels (default `140`)
+- `disableMagnification` — disable proximity scaling while keeping dock layout
+
+### `AppleDockIconProps`
+
+Extends `div` props. Each icon can override dock-level values with `size`, `magnification`, `distance`, and `disableMagnification`.

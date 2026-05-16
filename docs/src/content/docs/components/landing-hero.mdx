@@ -1,0 +1,122 @@
+---
+title: Landing Hero
+navTitle: Landing Hero
+description: A responsive marketing header with brand slot, navigation, action groups, and a mobile drawer menu.
+section: Components
+order: 1002
+toc: true
+---
+
+import LandingHeroDemo from "../../../examples/landing-hero-demo"
+import LandingHeroMenuDemo from "../../../examples/landing-hero-menu-demo"
+
+`LandingHero` is a top-level header primitive for landing and marketing pages. It supports desktop navigation, optional nested menu items, primary and secondary action areas, and a responsive mobile drawer.
+
+## Usage
+
+```tsx
+import { LandingHero } from "shadcn-solid-components/components/landing-hero"
+```
+
+## Exports
+
+- `LandingHero`
+- Types: `LandingHeroProps`, `LandingHeroBrandConfig`, `LandingHeroNavItem`, `LandingHeroNavChildItem`, `LandingHeroMobileBreakpoint`
+
+## Examples
+
+### Basic
+
+<ComponentPreview name="Landing Hero Demo">
+  <div class="mb-4 w-full">
+    <LandingHeroDemo />
+  </div>
+
+  ```tsx
+  import { Button } from "shadcn-solid-components/components/button"
+  import { LandingHero } from "shadcn-solid-components/components/landing-hero"
+
+  const LandingHeroDemo = () => {
+    return (
+      <div class="overflow-hidden rounded-lg border">
+        <LandingHero
+          brand={{ title: "Acme Cloud", href: "#" }}
+          navItems={[
+            { label: "Features", href: "#" },
+            { label: "Pricing", href: "#" },
+            { label: "Docs", href: "#" },
+          ]}
+          primaryActions={<Button size="sm">Get Started</Button>}
+          secondaryActions={<Button size="sm" variant="ghost">Sign In</Button>}
+          closeOnSelect
+        />
+      </div>
+    )
+  }
+
+  export default LandingHeroDemo
+  ```
+</ComponentPreview>
+
+### Nested menu items
+
+Use `children` inside each `navItems` entry to render dropdown menus on desktop and grouped links in mobile drawer mode.
+
+<ComponentPreview name="Landing Hero Menu Demo">
+  <div class="mb-4 w-full">
+    <LandingHeroMenuDemo />
+  </div>
+
+  ```tsx
+  import { Button } from "shadcn-solid-components/components/button"
+  import { LandingHero } from "shadcn-solid-components/components/landing-hero"
+
+  const LandingHeroMenuDemo = () => {
+    return (
+      <div class="overflow-hidden rounded-lg border">
+        <LandingHero
+          brand={{ title: "Nova Studio", href: "#" }}
+          navItems={[
+            {
+              label: "Products",
+              children: [
+                { label: "Analytics", href: "#" },
+                { label: "Automation", href: "#" },
+                { label: "Integrations", href: "#" },
+              ],
+            },
+            { label: "Templates", href: "#" },
+            {
+              label: "Company",
+              children: [
+                { label: "About", href: "#" },
+                { label: "Careers", href: "#" },
+              ],
+            },
+          ]}
+          primaryActions={<Button size="sm">Start Free</Button>}
+          secondaryActions={<Button size="sm" variant="outline">Book Demo</Button>}
+          mobileBreakpoint="xl"
+        />
+      </div>
+    )
+  }
+
+  export default LandingHeroMenuDemo
+  ```
+</ComponentPreview>
+
+## API
+
+### `LandingHeroProps`
+
+Extends `header` props (without `children`). Notable props:
+
+- `brand` — required object with `title`, optional `logo`, optional `href`
+- `navItems` — array of top-level items; each item can define `children`
+- `primaryActions` / `secondaryActions` — custom action nodes
+- `open`, `defaultOpen`, `onOpenChange` — controlled/uncontrolled mobile drawer state
+- `closeOnSelect` — close mobile drawer after item click (default `true`)
+- `mobileBreakpoint` — switch point for desktop vs mobile (`"lg" | "xl"`, default `"lg"`)
+- `menuButtonLabel`, `menuPanelLabel` — accessibility labels for mobile menu controls
+- `containerClass`, `brandClass`, `navClass`, `actionsClass`, `mobileMenuClass` — class overrides
