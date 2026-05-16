@@ -25,6 +25,56 @@ export interface LoginFormLocale {
   confirmPasswordMismatch: string
 }
 
+export interface AuthFormLocale {
+  loginTitle: string
+  loginDescription: string
+  registerTitle: string
+  registerDescription: string
+  resetTitle: string
+  resetDescription: string
+  modeLogin: string
+  modeRegister: string
+  modeReset: string
+  methodPassword: string
+  methodPhoneOtp: string
+  methodEmailOtp: string
+  methodOauth: string
+  emailLabel: string
+  emailPlaceholder: string
+  phoneLabel: string
+  phonePlaceholder: string
+  passwordLabel: string
+  passwordPlaceholder: string
+  newPasswordLabel: string
+  newPasswordPlaceholder: string
+  confirmPasswordLabel: string
+  confirmPasswordPlaceholder: string
+  otpCodeLabel: string
+  otpCodePlaceholder: string
+  sendCodeButton: string
+  codeSentTo: string
+  changeTarget: string
+  rememberMe: string
+  forgotPassword: string
+  loginButton: string
+  registerButton: string
+  resetButton: string
+  loginFooter: string
+  loginFooterLink: string
+  registerFooter: string
+  registerFooterLink: string
+  backToLogin: string
+  orContinueWith: string
+  emailRequired: string
+  phoneRequired: string
+  invalidEmail: string
+  passwordRequired: string
+  passwordTooShort: string
+  confirmPasswordMismatch: string
+  otpCodeRequired: string
+  otpVerifyFailed: string
+}
+
 export interface TanstackTableLocale {
   noResults: string
   selectAll: string
@@ -198,6 +248,7 @@ export interface ErrorPageLocale {
 export interface Locale {
   locale: string
   LoginForm: LoginFormLocale
+  AuthForm: AuthFormLocale
   TanstackTable: TanstackTableLocale
   DatePickerField: DatePickerFieldLocale
   OTPField: OTPFieldLocale

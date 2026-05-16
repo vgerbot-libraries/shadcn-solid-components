@@ -62,6 +62,11 @@ import {
   TanstackTableProvider,
 } from 'shadcn-solid-components/components/tanstack-table'
 import { TextField, TextFieldInput } from 'shadcn-solid-components/components/text-field'
+import {
+  AuthForm,
+  type AuthMethod,
+  type AuthMode,
+} from 'shadcn-solid-components/hoc/auth-form'
 import { confirm } from 'shadcn-solid-components/hoc/confirm-dialog'
 import { DataTable } from 'shadcn-solid-components/hoc/data-table'
 import { DataTableToolbar } from 'shadcn-solid-components/hoc/data-table-toolbar'
@@ -70,7 +75,6 @@ import { EmptyState } from 'shadcn-solid-components/hoc/empty-state'
 import { FileUploadZone, type UploadFile } from 'shadcn-solid-components/hoc/file-upload-zone'
 import { FilterBuilder, type FilterRule } from 'shadcn-solid-components/hoc/filter-builder'
 import { FormField } from 'shadcn-solid-components/hoc/form-field'
-import { LoginForm } from 'shadcn-solid-components/hoc/login-form'
 import {
   NotificationCenter,
   type NotificationItem,
@@ -487,8 +491,9 @@ export const Main: Component = () => {
   // -- FileUploadZone demo --
   const [uploadedFiles, setUploadedFiles] = createSignal<UploadFile[]>([])
 
-  // -- LoginForm demo --
-  const [loginMode, setLoginMode] = createSignal<'login' | 'register'>('login')
+  // -- AuthForm demo --
+  const [authMode, setAuthMode] = createSignal<AuthMode>('login')
+  const [authMethod, setAuthMethod] = createSignal<AuthMethod>('password')
 
   // -- TagInput demo --
   const [tags, setTags] = createSignal<string[]>(['SolidJS', 'TypeScript'])
@@ -1365,17 +1370,80 @@ export const Main: Component = () => {
           </CardContent>
         </Card>
 
-        {/* LoginForm Demo */}
+        {/* AuthForm Demo */}
         <Card>
           <CardHeader>
-            <CardTitle>Login Form</CardTitle>
+            <CardTitle>Auth Form</CardTitle>
             <CardDescription>
-              Pre-built authentication form with social providers and mode switching.
+              Unified authentication form with external mode and method controls.
             </CardDescription>
           </CardHeader>
-          <CardContent class="flex justify-center py-6">
-            <LoginForm
-              mode={loginMode()}
+          <CardContent class="flex flex-col items-center gap-4 py-6">
+            <div class="flex flex-wrap justify-center gap-2">
+              <Button
+                type="button"
+                size="sm"
+                variant={authMode() === 'login' ? 'default' : 'outline'}
+                onClick={() => setAuthMode('login')}
+              >
+                Login
+              </Button>
+              <Button
+                type="button"
+                size="sm"
+                variant={authMode() === 'register' ? 'default' : 'outline'}
+                onClick={() => setAuthMode('register')}
+              >
+                Register
+              </Button>
+              <Button
+                type="button"
+                size="sm"
+                variant={authMode() === 'reset' ? 'default' : 'outline'}
+                onClick={() => setAuthMode('reset')}
+              >
+                Reset
+              </Button>
+            </div>
+
+            <div class="flex flex-wrap justify-center gap-2">
+              <Button
+                type="button"
+                size="sm"
+                variant={authMethod() === 'password' ? 'secondary' : 'outline'}
+                onClick={() => setAuthMethod('password')}
+              >
+                Password
+              </Button>
+              <Button
+                type="button"
+                size="sm"
+                variant={authMethod() === 'phone-otp' ? 'secondary' : 'outline'}
+                onClick={() => setAuthMethod('phone-otp')}
+              >
+                Phone OTP
+              </Button>
+              <Button
+                type="button"
+                size="sm"
+                variant={authMethod() === 'email-otp' ? 'secondary' : 'outline'}
+                onClick={() => setAuthMethod('email-otp')}
+              >
+                Email OTP
+              </Button>
+              <Button
+                type="button"
+                size="sm"
+                variant={authMethod() === 'oauth' ? 'secondary' : 'outline'}
+                onClick={() => setAuthMethod('oauth')}
+              >
+                OAuth
+              </Button>
+            </div>
+
+            <AuthForm
+              mode={authMode()}
+              method={authMethod()}
               providers={[
                 {
                   name: 'Google',
@@ -1388,13 +1456,19 @@ export const Main: Component = () => {
                   onSelect: () => notify.info('GitHub sign-in'),
                 },
               ]}
-              forgotPasswordHref="#"
-              onSubmit={data => {
-                notify.success(
-                  `${loginMode() === 'login' ? 'Signed in' : 'Registered'} as ${data.email}`,
-                )
+              onModeChange={next => setAuthMode(next)}
+              onMethodChange={next => setAuthMethod(next)}
+              onSendOtp={async () => {
+                await Promise.resolve()
+                notify.success('OTP sent')
               }}
-              onModeSwitch={() => setLoginMode(m => (m === 'login' ? 'register' : 'login'))}
+              onVerifyOtp={async payload => {
+                await Promise.resolve(payload)
+                return payload.otpCode === '123456'
+              }}
+              onSubmit={data => {
+                notify.success(`Auth submitted: ${data.mode} / ${data.method}`)
+              }}
             />
           </CardContent>
         </Card>

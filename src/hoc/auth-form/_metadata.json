@@ -1,0 +1,14 @@
+{
+  "name": "hoc/auth-form",
+  "displayName": "Advanced Auth Form",
+  "description": "A unified authentication-form HOC that supports login, registration, and password-reset flows across password, phone OTP, email OTP, and OAuth methods. Includes configurable OTP inline/step modes, provider actions, mode/method switching, validation hooks, and async submission orchestration in a single composable card layout.",
+  "category": "hoc",
+  "useCases": [
+    "Product authentication pages that need password and OTP fallback in one component",
+    "SaaS onboarding where users can switch between register and login without route jumps",
+    "Security-first reset flows requiring OTP verification and new-password confirmation",
+    "Internationalized auth screens with configurable methods and provider-specific OAuth entry points"
+  ],
+  "usage": "import { AuthForm, type AuthFormProps, type AdvancedAuthMode, type AdvancedAuthMethod, type AdvancedAuthOtpFlow, type AdvancedAuthProvider, type AdvancedAuthValidationResult, type AdvancedAuthSubmitPayload } from \"shadcn-solid-components/hoc/auth-form\"",
+  "tags": ["hoc", "auth", "login", "register", "otp", "oauth", "solidjs", "ui"]
+}

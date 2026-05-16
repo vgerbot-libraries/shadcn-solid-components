@@ -97,6 +97,7 @@
     "./components/tooltip": "./src/components/tooltip/index.tsx",
     "./hoc/activity-feed": "./src/hoc/activity-feed/index.tsx",
     "./hoc/app-sidebar": "./src/hoc/app-sidebar/index.tsx",
+    "./hoc/auth-form": "./src/hoc/auth-form/index.tsx",
     "./hoc/command-palette": "./src/hoc/command-palette/index.tsx",
     "./hoc/confirm-dialog": "./src/hoc/confirm-dialog/index.tsx",
     "./hoc/data-table": "./src/hoc/data-table/index.tsx",
