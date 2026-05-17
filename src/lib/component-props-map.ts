@@ -44,6 +44,7 @@ import type { SeparatorProps } from '../components/separator'
 import type { SidebarProps } from '../components/sidebar'
 import type { SkeletonProps } from '../components/skeleton'
 import type { SliderProps } from '../components/slider'
+import type { StatusIndicatorProps } from '../components/status-indicator'
 import type { SwitchProps } from '../components/switch'
 import type { TableProps } from '../components/table'
 import type { TabsProps } from '../components/tabs'
@@ -106,6 +107,7 @@ export interface ComponentPropsMap {
   [ComponentName.Skeleton]: SkeletonProps
   [ComponentName.Slider]: SliderProps
   [ComponentName.Sonner]: Parameters<typeof Sonner>[0]
+  [ComponentName.StatusIndicator]: StatusIndicatorProps
   [ComponentName.Switch]: SwitchProps
   [ComponentName.Table]: TableProps
   [ComponentName.Tabs]: TabsProps

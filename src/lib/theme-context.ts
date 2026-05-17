@@ -54,6 +54,7 @@ export const ComponentName = {
   Skeleton: 'Skeleton',
   Slider: 'Slider',
   Sonner: 'Sonner',
+  StatusIndicator: 'StatusIndicator',
   Switch: 'Switch',
   Table: 'Table',
   Tabs: 'Tabs',

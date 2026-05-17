@@ -1,0 +1,14 @@
+{
+  "name": "components/status-indicator",
+  "displayName": "StatusIndicator",
+  "description": "A compact status dot/indicator primitive for presence and process state signaling. Supports semantic statuses, multiple sizes, and optional pulse animation for live or in-progress activity.",
+  "category": "components",
+  "useCases": [
+    "Online/offline presence next to avatars in messaging, CRM, and admin dashboards",
+    "In-progress/busy markers for tasks, background jobs, or deployment pipelines",
+    "Availability indicators in assignee lists, team switchers, and participant rows",
+    "Compact state chips in dense tables where full text badges are too large"
+  ],
+  "usage": "import { StatusDot, StatusIndicator, statusIndicatorVariants } from \"shadcn-solid-components/components/status-indicator\"",
+  "tags": ["components", "status", "indicator", "dot", "presence", "avatar", "solidjs", "ui"]
+}

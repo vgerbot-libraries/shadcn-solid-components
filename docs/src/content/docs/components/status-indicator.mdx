@@ -1,0 +1,57 @@
+---
+title: StatusIndicator
+description: Compact status dot for presence and process state cues.
+section: Components
+toc: true
+---
+
+import StatusIndicatorDemo from "../../../examples/status-indicator-demo"
+import StatusIndicatorWithAvatarDemo from "../../../examples/status-indicator-with-avatar-demo"
+import StatusIndicatorPulseDemo from "../../../examples/status-indicator-pulse-demo"
+
+`StatusIndicator` renders a small semantic dot for online/offline/presence and in-progress states. Use `StatusDot` as an alias when you prefer a shorter name. Supported statuses are `online`, `away`, `busy`, `offline`, and `in-progress`.
+
+## Usage
+
+```tsx
+import {
+  StatusDot,
+  StatusIndicator,
+  statusIndicatorVariants,
+} from "shadcn-solid-components/components/status-indicator"
+```
+
+```tsx
+<StatusIndicator status="online" />
+```
+
+## Exports
+
+- `StatusIndicator`, `StatusDot`, `statusIndicatorVariants`
+- Types: `StatusIndicatorProps`
+
+## Examples
+
+### Basic statuses
+
+<ComponentPreview name="StatusIndicator Default" source="examples/status-indicator-demo.tsx">
+  <div class="mb-4 w-full">
+    <StatusIndicatorDemo />
+  </div>
+</ComponentPreview>
+
+### Avatar integration
+
+<ComponentPreview name="StatusIndicator Avatar" source="examples/status-indicator-with-avatar-demo.tsx">
+  <div class="mb-4 w-full">
+    <StatusIndicatorWithAvatarDemo />
+  </div>
+</ComponentPreview>
+
+### Pulse animation
+
+<ComponentPreview name="StatusIndicator Pulse" source="examples/status-indicator-pulse-demo.tsx">
+  <div class="mb-4 w-full">
+    <StatusIndicatorPulseDemo />
+  </div>
+</ComponentPreview>

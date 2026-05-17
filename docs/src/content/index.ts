@@ -1913,6 +1913,49 @@ export const Contents: Record<string, DocEntry> = {
     }
 ]
   },
+  "components/status-indicator": {
+    component: lazy(() => import("@docs/content/docs/components/status-indicator.mdx")),
+    data: {
+    "title": "StatusIndicator",
+    "description": "Compact status dot for presence and process state cues.",
+    "navTitle": "StatusIndicator",
+    "section": "Components",
+    "order": 0,
+    "toc": true
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "exports",
+        "text": "Exports"
+    },
+    {
+        "depth": 2,
+        "slug": "examples",
+        "text": "Examples"
+    },
+    {
+        "depth": 3,
+        "slug": "basic-statuses",
+        "text": "Basic statuses"
+    },
+    {
+        "depth": 3,
+        "slug": "avatar-integration",
+        "text": "Avatar integration"
+    },
+    {
+        "depth": 3,
+        "slug": "pulse-animation",
+        "text": "Pulse animation"
+    }
+]
+  },
   "components/switch": {
     component: lazy(() => import("@docs/content/docs/components/switch.mdx")),
     data: {
@@ -5112,6 +5155,11 @@ export const docsNavigation: DocsNavSection[] = [
         "title": "Sonner",
         "href": "/docs/components/sonner",
         "description": "Toast host wired to Kobalte color mode and design tokens via somoto."
+      },
+      {
+        "title": "StatusIndicator",
+        "href": "/docs/components/status-indicator",
+        "description": "Compact status dot for presence and process state cues."
       },
       {
         "title": "Switch",
