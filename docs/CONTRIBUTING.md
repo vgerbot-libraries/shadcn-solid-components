@@ -74,15 +74,10 @@ import { ComponentName } from "shadcn-solid-components/<category>/component-name
 
 ### Default
 
-<ComponentPreview name="Component Name Demo">
+<ComponentPreview name="Component Name Demo" source="examples/demo-name.tsx">
   <div class="mb-4 w-full">
     <DemoName />
   </div>
-
-  ```tsx
-  <full runnable code for the demo>
-  ```
-
 </ComponentPreview>
 
 ### Variant Name
@@ -296,19 +291,43 @@ Wrap the live component in a `<div>` with appropriate spacing and width:
 ```mdx
 import DataTableDemo from "../../../examples/data-table-demo"
 
-<ComponentPreview name="Data Table Demo">
+<ComponentPreview name="Data Table Demo" source="examples/data-table-demo.tsx">
   <div class="mb-4 w-full">
     <DataTableDemo />
   </div>
-
-  ```tsx
-  import DataTableDemo from "../../../examples/data-table-demo"
-  ```
-
 </ComponentPreview>
 ```
 
-When the example is too large to show inline, the code block may reference the example file with just the import line, as shown above.
+Use inline code blocks only when you intentionally need a short, doc-local snippet.
+
+### 6.5 SourceFile Usage
+
+Use `<SourceFile />` when you need to show source code without rendering a live preview.
+
+Common cases:
+
+- Show helper files, config snippets, or alternate implementations alongside prose.
+- Display additional code blocks that are not the primary live demo in `<ComponentPreview>`.
+
+Accepted `path` formats:
+
+- `examples/button-demo.tsx` (recommended)
+- `src/examples/button-demo.tsx`
+- `/src/examples/button-demo.tsx`
+
+Current scope: `SourceFile` resolves files from `docs/src/examples/`.
+
+Default language is inferred from the file extension. Override with `language` when needed.
+
+```mdx
+<SourceFile path="examples/button-demo.tsx" />
+```
+
+```mdx
+<SourceFile path="examples/theme-config.json" language="json" />
+```
+
+Use `SourceFile` for code-only display. Use `ComponentPreview` for live rendering.
 
 ---
 
