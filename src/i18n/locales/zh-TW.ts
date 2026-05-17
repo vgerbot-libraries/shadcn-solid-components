@@ -12,7 +12,6 @@ import { zhTW as ErrorPage } from '../../hoc/error-page/locales/zh-TW'
 import { zhTW as FaqSection } from '../../hoc/faq-section/locales/zh-TW'
 import { zhTW as FileUploadZone } from '../../hoc/file-upload-zone/locales/zh-TW'
 import { zhTW as FilterBuilder } from '../../hoc/filter-builder/locales/zh-TW'
-import { zhTW as LoginForm } from '../../hoc/login-form/locales/zh-TW'
 import { zhTW as ModeToggleDropdown } from '../../hoc/mode-toggle-dropdown/locales/zh-TW'
 import { zhTW as NotificationCenter } from '../../hoc/notification-center/locales/zh-TW'
 import { zhTW as OTPField } from '../../hoc/otp-field/locales/zh-TW'
@@ -27,7 +26,6 @@ import type { Locale } from '../types'
 
 export const zhTW: Locale = {
   locale: 'zh-TW',
-  LoginForm,
   AuthForm,
   TanstackTable,
   DatePickerField,

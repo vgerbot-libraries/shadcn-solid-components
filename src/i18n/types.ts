@@ -1,30 +1,3 @@
-export interface LoginFormLocale {
-  loginTitle: string
-  loginDescription: string
-  registerTitle: string
-  registerDescription: string
-  emailLabel: string
-  emailPlaceholder: string
-  passwordLabel: string
-  passwordPlaceholder: string
-  confirmPasswordLabel: string
-  confirmPasswordPlaceholder: string
-  rememberMe: string
-  forgotPassword: string
-  loginButton: string
-  registerButton: string
-  loginFooter: string
-  loginFooterLink: string
-  registerFooter: string
-  registerFooterLink: string
-  orContinueWith: string
-  emailRequired: string
-  invalidEmail: string
-  passwordRequired: string
-  passwordTooShort: string
-  confirmPasswordMismatch: string
-}
-
 export interface AuthFormLocale {
   loginTitle: string
   loginDescription: string
@@ -247,7 +220,6 @@ export interface ErrorPageLocale {
 
 export interface Locale {
   locale: string
-  LoginForm: LoginFormLocale
   AuthForm: AuthFormLocale
   TanstackTable: TanstackTableLocale
   DatePickerField: DatePickerFieldLocale

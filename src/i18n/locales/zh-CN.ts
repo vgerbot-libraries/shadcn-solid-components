@@ -12,7 +12,6 @@ import { zhCN as ErrorPage } from '../../hoc/error-page/locales/zh-CN'
 import { zhCN as FaqSection } from '../../hoc/faq-section/locales/zh-CN'
 import { zhCN as FileUploadZone } from '../../hoc/file-upload-zone/locales/zh-CN'
 import { zhCN as FilterBuilder } from '../../hoc/filter-builder/locales/zh-CN'
-import { zhCN as LoginForm } from '../../hoc/login-form/locales/zh-CN'
 import { zhCN as ModeToggleDropdown } from '../../hoc/mode-toggle-dropdown/locales/zh-CN'
 import { zhCN as NotificationCenter } from '../../hoc/notification-center/locales/zh-CN'
 import { zhCN as OTPField } from '../../hoc/otp-field/locales/zh-CN'
@@ -27,7 +26,6 @@ import type { Locale } from '../types'
 
 export const zhCN: Locale = {
   locale: 'zh-CN',
-  LoginForm,
   AuthForm,
   TanstackTable,
   DatePickerField,

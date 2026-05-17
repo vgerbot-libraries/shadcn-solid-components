@@ -12,7 +12,6 @@ import { jaJP as ErrorPage } from '../../hoc/error-page/locales/ja-JP'
 import { jaJP as FaqSection } from '../../hoc/faq-section/locales/ja-JP'
 import { jaJP as FileUploadZone } from '../../hoc/file-upload-zone/locales/ja-JP'
 import { jaJP as FilterBuilder } from '../../hoc/filter-builder/locales/ja-JP'
-import { jaJP as LoginForm } from '../../hoc/login-form/locales/ja-JP'
 import { jaJP as ModeToggleDropdown } from '../../hoc/mode-toggle-dropdown/locales/ja-JP'
 import { jaJP as NotificationCenter } from '../../hoc/notification-center/locales/ja-JP'
 import { jaJP as OTPField } from '../../hoc/otp-field/locales/ja-JP'
@@ -27,7 +26,6 @@ import type { Locale } from '../types'
 
 export const jaJP: Locale = {
   locale: 'ja-JP',
-  LoginForm,
   AuthForm,
   TanstackTable,
   DatePickerField,

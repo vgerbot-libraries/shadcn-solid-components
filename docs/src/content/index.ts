@@ -3485,59 +3485,6 @@ export const Contents: Record<string, DocEntry> = {
     }
 ]
   },
-  "hoc/login-form": {
-    component: lazy(() => import("@docs/content/docs/hoc/login-form.mdx")),
-    data: {
-    "title": "Login form",
-    "description": "Card-styled login or register form with email, password, optional OAuth rows, and remember-me.",
-    "navTitle": "Login form",
-    "section": "HOC",
-    "order": 0,
-    "toc": true
-},
-    headings: [
-    {
-        "depth": 2,
-        "slug": "usage",
-        "text": "Usage"
-    },
-    {
-        "depth": 2,
-        "slug": "examples",
-        "text": "Examples"
-    },
-    {
-        "depth": 3,
-        "slug": "switching-between-login-and-register-with-providers",
-        "text": "Switching between login and register with providers"
-    },
-    {
-        "depth": 2,
-        "slug": "api",
-        "text": "API"
-    },
-    {
-        "depth": 3,
-        "slug": "loginformprops",
-        "text": "LoginFormProps"
-    },
-    {
-        "depth": 3,
-        "slug": "loginformvalidationresult",
-        "text": "LoginFormValidationResult"
-    },
-    {
-        "depth": 3,
-        "slug": "loginformprovider",
-        "text": "LoginFormProvider"
-    },
-    {
-        "depth": 2,
-        "slug": "exports",
-        "text": "Exports"
-    }
-]
-  },
   "hoc/mode-toggle": {
     component: lazy(() => import("@docs/content/docs/hoc/mode-toggle.mdx")),
     data: {
@@ -5224,11 +5171,6 @@ export const docsNavigation: DocsNavSection[] = [
         "title": "Form field",
         "href": "/docs/hoc/form-field",
         "description": "Label, required marker, error list, and description around arbitrary field children."
-      },
-      {
-        "title": "Login form",
-        "href": "/docs/hoc/login-form",
-        "description": "Card-styled login or register form with email, password, optional OAuth rows, and remember-me."
       },
       {
         "title": "Mode toggle",

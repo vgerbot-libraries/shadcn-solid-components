@@ -111,7 +111,6 @@
     "./hoc/file-upload-zone": "./src/hoc/file-upload-zone/index.tsx",
     "./hoc/filter-builder": "./src/hoc/filter-builder/index.tsx",
     "./hoc/form-field": "./src/hoc/form-field/index.tsx",
-    "./hoc/login-form": "./src/hoc/login-form/index.tsx",
     "./hoc/mode-toggle": "./src/hoc/mode-toggle/index.tsx",
     "./hoc/mode-toggle-dropdown": "./src/hoc/mode-toggle-dropdown/index.tsx",
     "./hoc/mode-toggle-group": "./src/hoc/mode-toggle-group/index.tsx",

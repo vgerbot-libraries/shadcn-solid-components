@@ -14,10 +14,10 @@ import { mdxCustomComponents } from "@docs/components/mdx"
 import { Contents, docsNavigation } from "@docs/content"
 
 import AccordionDemo from "./examples/accordion-demo"
+import AuthFormDemo from "./examples/auth-form-demo"
 import CalendarDemo from "./examples/calendar-demo"
 import CardDemo from "./examples/card-demo"
 import CommandDemo from "./examples/command-demo"
-import LoginFormDemo from "./examples/login-form-demo"
 import TabsDemo from "./examples/tabs-demo"
 
 type DocRouteParams = {
@@ -118,7 +118,7 @@ const HomePage = () => {
                  <CalendarDemo />
               </div>
               <div class="w-full max-w-sm relative bg-card text-card-foreground shadow-sm rounded-xl">
-                 <LoginFormDemo />
+                 <AuthFormDemo />
               </div>
             </div>
             <div class="hidden lg:flex lg:flex-col gap-6 lg:items-center">
