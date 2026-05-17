@@ -9,6 +9,7 @@ import {
 import { useLocale } from 'shadcn-solid-components/components/config-provider'
 import { IconLoader } from 'shadcn-solid-components/components/icons'
 import { Separator } from 'shadcn-solid-components/components/separator'
+import { Tabs, TabsIndicator, TabsList, TabsTrigger } from 'shadcn-solid-components/components/tabs'
 import { TextField, TextFieldInput } from 'shadcn-solid-components/components/text-field'
 import { FormField } from 'shadcn-solid-components/hoc/form-field'
 import type { AuthFormLocale } from 'shadcn-solid-components/i18n/types'
@@ -28,6 +29,32 @@ import { enUS as defaultLocale } from './locales/en-US'
 export type AuthMode = 'login' | 'register' | 'reset'
 
 export type AuthMethod = 'password' | 'phone-otp' | 'email-otp' | 'oauth'
+
+export type AuthCredentialMethod = 'password' | 'phone-otp' | 'email-otp'
+
+export interface AuthCredentialMethodConfig {
+  key: AuthCredentialMethod
+  label?: string
+  icon?: JSX.Element
+}
+
+export type AuthCredentialMethodControl =
+  | AuthCredentialMethodConfig[]
+  | JSX.Element
+  | (() => JSX.Element)
+
+const isAuthCredentialMethod = (value: unknown): value is AuthCredentialMethod =>
+  value === 'password' || value === 'phone-otp' || value === 'email-otp'
+
+const isAuthCredentialMethodConfig = (value: unknown): value is AuthCredentialMethodConfig => {
+  if (!value || typeof value !== 'object') return false
+  if (!('key' in value)) return false
+  return isAuthCredentialMethod((value as { key: unknown }).key)
+}
+
+const isAuthCredentialMethodConfigArray = (
+  value: AuthCredentialMethodControl | undefined,
+): value is AuthCredentialMethodConfig[] => Array.isArray(value) && value.every(isAuthCredentialMethodConfig)
 
 export type AuthFieldErrorKey =
   | 'email'
@@ -91,6 +118,7 @@ export interface AuthFormProps extends Omit<ComponentProps<'div'>, 'onSubmit'> {
     payload: AuthSubmitPayload,
   ) => AuthValidationResult | Promise<AuthValidationResult>
   onSubmit?: (payload: AuthSubmitPayload) => void
+  credentialMethodControl?: AuthCredentialMethodControl
   footer?: JSX.Element
   locale?: Partial<AuthFormLocale>
 }
@@ -117,6 +145,7 @@ export function AuthForm(props: AuthFormProps) {
     'onVerifyOtp',
     'onValidate',
     'onSubmit',
+    'credentialMethodControl',
     'footer',
     'locale',
   ])
@@ -402,6 +431,77 @@ export function AuthForm(props: AuthFormProps) {
 
   const showForgotPassword = () => !!local.onForgotPassword && isLoginMode() && isPasswordMethod()
 
+  const enabledCredentialMethods = createMemo(() =>
+    enabledMethods().filter((item): item is AuthCredentialMethod => item !== 'oauth'),
+  )
+
+  const credentialMethodOptions = createMemo<AuthCredentialMethodConfig[]>(() => {
+    const control = local.credentialMethodControl
+    if (!isAuthCredentialMethodConfigArray(control)) return []
+
+    const enabled = enabledCredentialMethods()
+    const seen = new Set<AuthCredentialMethod>()
+
+    return control.filter(config => {
+      if (!enabled.includes(config.key) || seen.has(config.key)) {
+        return false
+      }
+      seen.add(config.key)
+      return true
+    })
+  })
+
+  const credentialMethodLabel = (credentialMethod: AuthCredentialMethod) => {
+    if (credentialMethod === 'password') return locale().methodPassword
+    if (credentialMethod === 'phone-otp') return locale().methodPhoneOtp
+    return locale().methodEmailOtp
+  }
+
+  const handleCredentialMethodTabChange = (nextMethod: string) => {
+    if (nextMethod === 'password' || nextMethod === 'phone-otp' || nextMethod === 'email-otp') {
+      setMethod(nextMethod)
+    }
+  }
+
+  const renderCredentialMethodControl = () => {
+    const control = local.credentialMethodControl
+    if (!control) return null
+
+    if (Array.isArray(control) && !isAuthCredentialMethodConfigArray(control)) {
+      return null
+    }
+
+    if (isAuthCredentialMethodConfigArray(control)) {
+      const options = credentialMethodOptions()
+      if (options.length === 0) return null
+
+      return (
+        <Tabs value={method()} onChange={handleCredentialMethodTabChange}>
+          <TabsList
+            class="grid w-full"
+            style={{ 'grid-template-columns': `repeat(${options.length}, minmax(0, 1fr))` }}
+          >
+            <For each={options}>
+              {config => (
+                <TabsTrigger value={config.key}>
+                  <Show when={config.icon}>{config.icon}</Show>
+                  <span>{config.label ?? credentialMethodLabel(config.key)}</span>
+                </TabsTrigger>
+              )}
+            </For>
+            <TabsIndicator />
+          </TabsList>
+        </Tabs>
+      )
+    }
+
+    if (typeof control === 'function') {
+      return control()
+    }
+
+    return control
+  }
+
   return (
     <Card data-slot="auth-form" class={cx('w-full max-w-md', local.class)} {...rest}>
       <CardHeader class="text-center">
@@ -440,7 +540,7 @@ export function AuthForm(props: AuthFormProps) {
               </div>
             </Show>
           </Show>
-
+          <Show when={!isOauthMethod()}>{renderCredentialMethodControl()}</Show>
           <Show when={!isOauthMethod()}>
             <Show when={isPasswordMethod()}>
               <FormField label={locale().emailLabel} error={fieldErrors().email}>

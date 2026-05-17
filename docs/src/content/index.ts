@@ -2650,6 +2650,11 @@ export const Contents: Record<string, DocEntry> = {
         "text": "External mode/method controls + unified auth form"
     },
     {
+        "depth": 3,
+        "slug": "interactive-credential-method-control-slot",
+        "text": "Interactive credential method control slot"
+    },
+    {
         "depth": 2,
         "slug": "api",
         "text": "API"
@@ -2668,6 +2673,11 @@ export const Contents: Record<string, DocEntry> = {
         "depth": 3,
         "slug": "authvalidationresult",
         "text": "AuthValidationResult"
+    },
+    {
+        "depth": 3,
+        "slug": "authcredentialmethodconfig",
+        "text": "AuthCredentialMethodConfig"
     },
     {
         "depth": 2,

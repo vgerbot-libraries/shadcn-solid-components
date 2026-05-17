@@ -6,10 +6,11 @@ toc: true
 ---
 
 import AuthFormDemo from "../../../examples/auth-form-demo"
+import AuthFormCredentialMethodControlDemo from "../../../examples/auth-form-credential-method-control-demo"
 
 `AuthForm` provides a unified authentication workflow with mode switching (`login`, `register`, `reset`) and method switching (`password`, `phone-otp`, `email-otp`, `oauth`) in a single card.
 
-`auth-form` no longer includes built-in mode/method switcher UI, so app code should control `mode` and `method` through external controls (for example, button groups, tabs, or quick entry actions).
+`auth-form` does not include built-in mode switcher UI, so app code should control `mode` through external controls. For credential methods (`password` / `phone-otp` / `email-otp`), you can provide `credentialMethodControl` to render built-in tabs (config array) or custom UI (JSX element / render function).
 
 ## Usage
 
@@ -19,6 +20,11 @@ import { AuthForm } from "shadcn-solid-components/hoc/auth-form"
 <AuthForm
   enabledModes={["login", "register", "reset"]}
   enabledMethods={["password", "phone-otp", "email-otp", "oauth"]}
+  credentialMethodControl={[
+    { key: "password" },
+    { key: "phone-otp" },
+    { key: "email-otp" },
+  ]}
   onSendOtp={async ({ method, target }) => sendCode(method, target)}
   onVerifyOtp={async ({ otpCode }) => verifyCode(otpCode)}
   onSubmit={(payload) => handleAuth(payload)}
@@ -83,6 +89,57 @@ import { AuthForm } from "shadcn-solid-components/hoc/auth-form"
   ```
 </ComponentPreview>
 
+### Interactive credential method control slot
+
+<ComponentPreview name="Auth Form Credential Method Control Demo">
+  <div class="mb-4 w-full">
+    <AuthFormCredentialMethodControlDemo />
+  </div>
+  ```tsx
+  import { createMemo, createSignal } from "solid-js"
+
+  import {
+    AuthForm,
+    type AuthCredentialMethodControl,
+    type AuthMethod,
+    type AuthMode,
+  } from "shadcn-solid-components/hoc/auth-form"
+
+  const Demo = () => {
+    const [mode, setMode] = createSignal<AuthMode>("login")
+    const [method, setMethod] = createSignal<AuthMethod>("password")
+    const [kind, setKind] = createSignal<"tabs" | "custom-element" | "custom-render">("tabs")
+
+    const credentialMethodControl = createMemo<AuthCredentialMethodControl>(() => {
+      if (kind() === "tabs") {
+        return [
+          { key: "password", label: "Password" },
+          { key: "phone-otp", label: "Phone OTP" },
+          { key: "email-otp", label: "Email OTP" },
+        ]
+      }
+
+      if (kind() === "custom-element") {
+        return <div>{/* your custom jsx controls */}</div>
+      }
+
+      return () => <div>{/* your custom render function controls */}</div>
+    })
+
+    return (
+      <AuthForm
+        mode={mode()}
+        method={method()}
+        credentialMethodControl={credentialMethodControl()}
+        onModeChange={setMode}
+        onMethodChange={setMethod}
+      />
+    )
+  }
+  export default Demo
+  ```
+</ComponentPreview>
+
 ## API
 
 ### `AuthFormProps`
@@ -93,6 +150,11 @@ Extends `div` props (without `onSubmit`).
 - `method` / `defaultMethod` / `onMethodChange` — current auth method and control hooks
 - `enabledModes` — allowed modes (`login`, `register`, `reset`)
 - `enabledMethods` — allowed methods (`password`, `phone-otp`, `email-otp`, `oauth`)
+- `credentialMethodControl` — credential method slot renderer, supports:
+  - `AuthCredentialMethodConfig[]` (built-in tabs)
+  - `JSX.Element`
+  - `() => JSX.Element`
+- The `credentialMethodControl` slot is hidden when current `method` is `oauth`
 - OTP fields are inline-only (`target + verification code + send code`)
 - `providers` — OAuth providers (`name`, `icon`, `onSelect`)
 - `onForgotPassword` — callback for forgot-password action (shown in login + password mode)
@@ -114,7 +176,13 @@ Extends `div` props (without `onSubmit`).
 - `valid` — boolean
 - `errors` — field-level errors keyed by `AuthFieldErrorKey`
 
+### `AuthCredentialMethodConfig`
+
+- `key` — `"password" | "phone-otp" | "email-otp"`
+- `label?` — custom tab label (fallback to locale method label)
+- `icon?` — optional icon node rendered before label
+
 ## Exports
 
 - `AuthForm` — component
-- `AuthFormProps`, `AuthMode`, `AuthMethod`, `AuthProvider`, `AuthSubmitPayload`, `AuthValidationResult` — types
+- `AuthFormProps`, `AuthMode`, `AuthMethod`, `AuthCredentialMethod`, `AuthCredentialMethodConfig`, `AuthCredentialMethodControl`, `AuthProvider`, `AuthSubmitPayload`, `AuthValidationResult` — types
