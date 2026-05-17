@@ -57,8 +57,12 @@ export interface StepItem {
   description?: string
   /** Optional icon for the step indicator. If omitted, the step number is shown. */
   icon?: JSX.Element
-  /** Content rendered when this step is active. */
-  content: JSX.Element
+  /**
+   * Content rendered when this step is active.
+   * Use `() => JSX.Element` when child content calls `useStepper()`
+   * so it is created inside the Stepper context.
+   */
+  content: JSX.Element | (() => JSX.Element)
   /**
    * Async validation function called before advancing to the next step.
    * Return `true` to allow advancing, `false` to block.
@@ -325,7 +329,10 @@ export function Stepper(props: StepperProps) {
 
         {/* Step content */}
         <div data-slot="stepper-content" class="min-h-0">
-          {local.steps[activeStep()]?.content}
+          {(() => {
+            const c = local.steps[activeStep()]?.content
+            return typeof c === 'function' ? (c as () => JSX.Element)() : c
+          })()}
         </div>
 
         {/* Navigation */}
