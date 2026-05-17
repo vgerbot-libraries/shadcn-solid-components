@@ -2570,59 +2570,6 @@ export const Contents: Record<string, DocEntry> = {
     }
 ]
   },
-  "hoc/advanced-auth-form": {
-    component: lazy(() => import("@docs/content/docs/hoc/advanced-auth-form.mdx")),
-    data: {
-    "title": "Advanced auth form",
-    "description": "Unified auth card supporting login/register/reset across password, phone OTP, email OTP, and OAuth.",
-    "navTitle": "Advanced auth form",
-    "section": "HOC",
-    "order": 0,
-    "toc": true
-},
-    headings: [
-    {
-        "depth": 2,
-        "slug": "usage",
-        "text": "Usage"
-    },
-    {
-        "depth": 2,
-        "slug": "examples",
-        "text": "Examples"
-    },
-    {
-        "depth": 3,
-        "slug": "external-modemethod-controls--unified-auth-form",
-        "text": "External mode/method controls + unified auth form"
-    },
-    {
-        "depth": 2,
-        "slug": "api",
-        "text": "API"
-    },
-    {
-        "depth": 3,
-        "slug": "authformprops",
-        "text": "AuthFormProps"
-    },
-    {
-        "depth": 3,
-        "slug": "advancedauthsubmitpayload",
-        "text": "AdvancedAuthSubmitPayload"
-    },
-    {
-        "depth": 3,
-        "slug": "advancedauthvalidationresult",
-        "text": "AdvancedAuthValidationResult"
-    },
-    {
-        "depth": 2,
-        "slug": "exports",
-        "text": "Exports"
-    }
-]
-  },
   "hoc/app-sidebar": {
     component: lazy(() => import("@docs/content/docs/hoc/app-sidebar.mdx")),
     data: {
@@ -5192,11 +5139,6 @@ export const docsNavigation: DocsNavSection[] = [
         "title": "Activity feed",
         "href": "/docs/hoc/activity-feed",
         "description": "Timeline feed with avatar/icon, action text, optional date grouping, and infinite-scroll load-more."
-      },
-      {
-        "title": "Advanced auth form",
-        "href": "/docs/hoc/advanced-auth-form",
-        "description": "Unified auth card supporting login/register/reset across password, phone OTP, email OTP, and OAuth."
       },
       {
         "title": "App sidebar",
