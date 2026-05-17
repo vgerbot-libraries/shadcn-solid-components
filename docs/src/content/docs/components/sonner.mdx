@@ -42,41 +42,12 @@ Props are forwarded to the underlying `somoto` `Toaster` (same parameter type as
 
 - `Toaster`
 
-
 ## Examples
 
 ### Default
 
-<ComponentPreview name="Sonner Demo">
+<ComponentPreview name="Sonner Demo" source="examples/sonner-demo.tsx">
   <div class="mb-4 w-full">
     <SonnerDemo />
   </div>
-  ```tsx
-  import { toast } from "somoto"
-
-import { Button } from "shadcn-solid-components/components/button"
-
-const SonnerDemo = () => {
-  return (
-    <Button
-      variant="outline"
-      onClick={() =>
-        toast("Event has been created", {
-          description: "Sunday, December 03, 2023 at 9:00 AM",
-          action: {
-            label: "Undo",
-            onClick: () => {
-              console.log("Undo")
-            },
-          },
-        })
-      }
-    >
-      Show Toast
-    </Button>
-  )
-}
-
-export default SonnerDemo
-  ```
 </ComponentPreview>

@@ -49,107 +49,26 @@ import { alertVariants } from "shadcn-solid-components/components/alert"
 
 ### Default
 
-<ComponentPreview name="Alert Default">
+<ComponentPreview name="Alert Default" source="examples/alert-demo.tsx">
   <div class="mb-4 w-full max-w-xl">
     <AlertDemo />
   </div>
-  ```tsx
-  import { Alert, AlertDescription, AlertTitle } from "shadcn-solid-components/components/alert"
-
-  const AlertDemo = () => {
-    return (
-      <Alert>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          class="size-4"
-          viewBox="0 0 24 24"
-        >
-          <g
-            fill="none"
-            stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-          >
-            <circle cx="12" cy="12" r="10" />
-            <path d="m9 12l2 2l4-4" />
-          </g>
-        </svg>
-        <AlertTitle>Success! Your changes have been saved</AlertTitle>
-        <AlertDescription>
-          This is an alert with icon, title and description.
-        </AlertDescription>
-      </Alert>
-    )
-  }
-
-  export default AlertDemo
-  ```
 </ComponentPreview>
 
 ### Static Informational Alert
 
-<ComponentPreview name="Alert Static">
+<ComponentPreview name="Alert Static" source="examples/alert-static-demo.tsx">
   <div class="mb-4 w-full max-w-xl">
     <AlertStaticDemo />
   </div>
-  ```tsx
-  import { Alert, AlertDescription, AlertTitle } from "shadcn-solid-components/components/alert"
-
-  const AlertStaticDemo = () => {
-    return (
-      <Alert as="div">
-        <AlertTitle>Heads up!</AlertTitle>
-        <AlertDescription>
-          This alert is purely informational, so it renders as a div instead of a button.
-        </AlertDescription>
-      </Alert>
-    )
-  }
-
-  export default AlertStaticDemo
-  ```
 </ComponentPreview>
 
 ### Destructive
 
-<ComponentPreview name="Alert Destructive">
+<ComponentPreview name="Alert Destructive" source="examples/alert-destructive-demo.tsx">
   <div class="mb-4 w-full max-w-xl">
     <AlertDestructiveDemo />
   </div>
-  ```tsx
-  import { Alert, AlertDescription, AlertTitle } from "shadcn-solid-components/components/alert"
-
-  const AlertDestructiveDemo = () => {
-    return (
-      <Alert variant="destructive">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          class="size-4"
-          viewBox="0 0 24 24"
-        >
-          <g
-            fill="none"
-            stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-          >
-            <circle cx="12" cy="12" r="10" />
-            <path d="M12 8v4" />
-            <path d="M12 16h.01" />
-          </g>
-        </svg>
-        <AlertTitle>Something went wrong!</AlertTitle>
-        <AlertDescription>
-          Your session has expired. Please log in again.
-        </AlertDescription>
-      </Alert>
-    )
-  }
-
-  export default AlertDestructiveDemo
-  ```
 </ComponentPreview>
 
 ## Exports

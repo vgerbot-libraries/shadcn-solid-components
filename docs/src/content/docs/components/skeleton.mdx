@@ -22,30 +22,12 @@ Apply `class` (for example width/height or rounded corners) to match the eventua
 - `Skeleton`
 - Types: `SkeletonProps`
 
-
 ## Examples
 
 ### Default
 
-<ComponentPreview name="Skeleton Demo">
+<ComponentPreview name="Skeleton Demo" source="examples/skeleton-demo.tsx">
   <div class="mb-4 w-full">
     <SkeletonDemo />
   </div>
-  ```tsx
-  import { Skeleton } from "shadcn-solid-components/components/skeleton"
-
-const SkeletonDemo = () => {
-  return (
-    <div class="flex items-center space-x-4">
-      <Skeleton radius={100} height={48} width={48} />
-      <div class="space-y-2">
-        <Skeleton height={16} width={250} />
-        <Skeleton height={16} width={200} />
-      </div>
-    </div>
-  )
-}
-
-export default SkeletonDemo
-  ```
 </ComponentPreview>

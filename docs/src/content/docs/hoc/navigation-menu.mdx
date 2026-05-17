@@ -32,38 +32,10 @@ import { NavMenu } from "shadcn-solid-components/hoc/navigation-menu"
 
 When a group has `href` and no `items` / `content`, the trigger is a plain link.
 
-<ComponentPreview name="Navigation Menu Demo">
+<ComponentPreview name="Navigation Menu Demo" source="examples/navigation-menu-demo.tsx">
   <div class="mb-4 w-full">
     <NavigationMenuDemo />
   </div>
-  ```tsx
-  import { NavMenu } from "shadcn-solid-components/hoc/navigation-menu"
-
-  const NavigationMenuDemo = () => {
-    return (
-      <NavMenu
-        menus={[
-          { trigger: "Docs", href: "/docs" },
-          {
-            trigger: "Solutions",
-            featured: {
-              label: "Platform",
-              description: "One place for analytics and billing.",
-              href: "/platform",
-            },
-            items: [
-              { label: "Analytics", description: "Dashboards", href: "/analytics" },
-              { label: "Billing", description: "Invoices", href: "/billing" },
-            ],
-          },
-        ]}
-        gutter={8}
-      />
-    )
-  }
-
-  export default NavigationMenuDemo
-  ```
 </ComponentPreview>
 
 ```tsx

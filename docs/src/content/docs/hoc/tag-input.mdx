@@ -29,31 +29,10 @@ const [tags, setTags] = createSignal<string[]>([])
 
 ### Suggestions only (no free-form tags)
 
-<ComponentPreview name="Tag Input Demo">
+<ComponentPreview name="Tag Input Demo" source="examples/tag-input-demo.tsx">
   <div class="mb-4 w-full max-w-md">
     <TagInputDemo />
   </div>
-  ```tsx
-  import { createSignal } from "solid-js"
-
-  import { TagInput } from "shadcn-solid-components/hoc/tag-input"
-
-  const TagInputDemo = () => {
-    const [tags, setTags] = createSignal<string[]>(["solid"])
-
-    return (
-      <TagInput
-        value={tags()}
-        onChange={setTags}
-        suggestions={["solid", "tailwind", "kobalte"]}
-        allowCreate={false}
-        placeholder="Pick from the list..."
-      />
-    )
-  }
-
-  export default TagInputDemo
-  ```
 </ComponentPreview>
 
 ```tsx

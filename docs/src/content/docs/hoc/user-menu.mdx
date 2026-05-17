@@ -39,39 +39,10 @@ import { UserMenu } from "shadcn-solid-components/hoc/user-menu"
 
 ### Avatar image and destructive action
 
-<ComponentPreview name="User Menu Demo">
+<ComponentPreview name="User Menu Demo" source="examples/user-menu-demo.tsx">
   <div class="mb-4 flex w-full justify-end">
     <UserMenuDemo />
   </div>
-  ```tsx
-  import { ColorModeProvider } from "@kobalte/core"
-
-  import { UserMenu } from "shadcn-solid-components/hoc/user-menu"
-
-  const UserMenuDemo = () => {
-    return (
-      <ColorModeProvider>
-        <div class="flex justify-end">
-          <UserMenu
-            name="Jane Doe"
-            email="jane@example.com"
-            groups={[
-              {
-                items: [
-                  { label: "Profile", onSelect: () => {} },
-                  { label: "Delete account", variant: "destructive", onSelect: () => {} },
-                ],
-              },
-            ]}
-            onSignOut={() => {}}
-          />
-        </div>
-      </ColorModeProvider>
-    )
-  }
-
-  export default UserMenuDemo
-  ```
 </ComponentPreview>
 
 ```tsx

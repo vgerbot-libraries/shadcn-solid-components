@@ -28,27 +28,10 @@ theme attribute written by Kobalte.
 
 ### Used with `ColorModeProvider`
 
-<ComponentPreview name="Mode Toggle Demo">
+<ComponentPreview name="Mode Toggle Demo" source="examples/mode-toggle.tsx">
   <div class="mb-4 flex w-full justify-end">
     <ModeToggleDemo />
   </div>
-  ```tsx
-  import { useColorMode } from "@kobalte/core"
-
-  import { Button } from "shadcn-solid-components/components/button"
-
-const ModeToggle = () => {
-  const { toggleColorMode } = useColorMode()
-
-  return (
-    <Button onClick={toggleColorMode} size="icon" variant="ghost">
-      {/* light/dark icons omitted for brevity */}
-    </Button>
-  )
-}
-
-export default ModeToggle
-  ```
 </ComponentPreview>
 
 ```tsx

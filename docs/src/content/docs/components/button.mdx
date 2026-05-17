@@ -6,6 +6,14 @@ toc: true
 ---
 
 import { Button } from "shadcn-solid-components/components/button"
+import ButtonDemo from "../../../examples/button-demo"
+import ButtonSecondaryDemo from "../../../examples/button-secondary-demo"
+import ButtonDestructiveDemo from "../../../examples/button-destructive-demo"
+import ButtonOutlineDemo from "../../../examples/button-outline-demo"
+import ButtonGhostDemo from "../../../examples/button-ghost-demo"
+import ButtonLinkDemo from "../../../examples/button-link-demo"
+import ButtonWithIconDemo from "../../../examples/button-with-icon-demo"
+import ButtonLoadingDemo from "../../../examples/button-loading-demo"
 
 The button component supports multiple visual variants and sizes through `buttonVariants`. It can render as different underlying elements via the polymorphic `as` prop.
 
@@ -21,132 +29,66 @@ Use `Button` for interactive actions. Import `buttonVariants` when you need the 
 
 ### Default
 
-<ComponentPreview name="Button Default">
+<ComponentPreview name="Button Default" source="examples/button-demo.tsx">
   <div class="mb-4">
-    <Button>Button</Button>
+    <ButtonDemo />
   </div>
-  ```tsx
-  import { Button } from "shadcn-solid-components/components/button"
-
-  export function ButtonDemo() {
-    return <Button>Button</Button>
-  }
-  ```
 </ComponentPreview>
 
 ### Secondary
 
-<ComponentPreview name="Button Secondary">
+<ComponentPreview name="Button Secondary" source="examples/button-secondary-demo.tsx">
   <div class="mb-4">
-    <Button variant="secondary">Secondary</Button>
+    <ButtonSecondaryDemo />
   </div>
-  ```tsx
-  import { Button } from "shadcn-solid-components/components/button"
-
-  export function ButtonSecondary() {
-    return <Button variant="secondary">Secondary</Button>
-  }
-  ```
 </ComponentPreview>
 
 ### Destructive
 
-<ComponentPreview name="Button Destructive">
+<ComponentPreview name="Button Destructive" source="examples/button-destructive-demo.tsx">
   <div class="mb-4">
-    <Button variant="destructive">Destructive</Button>
+    <ButtonDestructiveDemo />
   </div>
-  ```tsx
-  import { Button } from "shadcn-solid-components/components/button"
-
-  export function ButtonDestructive() {
-    return <Button variant="destructive">Destructive</Button>
-  }
-  ```
 </ComponentPreview>
 
 ### Outline
 
-<ComponentPreview name="Button Outline">
+<ComponentPreview name="Button Outline" source="examples/button-outline-demo.tsx">
   <div class="mb-4">
-    <Button variant="outline">Outline</Button>
+    <ButtonOutlineDemo />
   </div>
-  ```tsx
-  import { Button } from "shadcn-solid-components/components/button"
-
-  export function ButtonOutline() {
-    return <Button variant="outline">Outline</Button>
-  }
-  ```
 </ComponentPreview>
 
 ### Ghost
 
-<ComponentPreview name="Button Ghost">
+<ComponentPreview name="Button Ghost" source="examples/button-ghost-demo.tsx">
   <div class="mb-4">
-    <Button variant="ghost">Ghost</Button>
+    <ButtonGhostDemo />
   </div>
-  ```tsx
-  import { Button } from "shadcn-solid-components/components/button"
-
-  export function ButtonGhost() {
-    return <Button variant="ghost">Ghost</Button>
-  }
-  ```
 </ComponentPreview>
 
 ### Link
 
-<ComponentPreview name="Button Link">
+<ComponentPreview name="Button Link" source="examples/button-link-demo.tsx">
   <div class="mb-4">
-    <Button variant="link">Link</Button>
+    <ButtonLinkDemo />
   </div>
-  ```tsx
-  import { Button } from "shadcn-solid-components/components/button"
-
-  export function ButtonLink() {
-    return <Button variant="link">Link</Button>
-  }
-  ```
 </ComponentPreview>
 
 ### With Icon
 
-<ComponentPreview name="Button With Icon">
+<ComponentPreview name="Button With Icon" source="examples/button-with-icon-demo.tsx">
   <div class="mb-4">
-    <Button><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>Login with Email</Button>
+    <ButtonWithIconDemo />
   </div>
-  ```tsx
-  import { Button } from "shadcn-solid-components/components/button"
-
-  export function ButtonWithIcon() {
-    return (
-      <Button>
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-        Login with Email
-      </Button>
-    )
-  }
-  ```
 </ComponentPreview>
 
 ### Loading
 
-<ComponentPreview name="Button Loading">
+<ComponentPreview name="Button Loading" source="examples/button-loading-demo.tsx">
   <div class="mb-4">
-    <Button disabled><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-loader-2 animate-spin"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg>Please wait</Button>
+    <ButtonLoadingDemo />
   </div>
-  ```tsx
-  import { Button } from "shadcn-solid-components/components/button"
-
-  export function ButtonLoading() {
-    return (
-      <Button disabled>
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-loader-2 animate-spin"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg>
-        Please wait
-      </Button>
-    )
-  }
-  ```
 </ComponentPreview>
 
 ## Exports

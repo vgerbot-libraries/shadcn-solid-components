@@ -98,92 +98,10 @@ key, so you can colocate the panel content for every section directly inside
 
 ### Default
 
-<ComponentPreview name="Dual Sidebar Demo">
+<ComponentPreview name="Dual Sidebar Demo" source="examples/dual-sidebar-demo.tsx">
   <div class="mb-4 w-full">
     <DualSidebarDemo />
   </div>
-  ```tsx
-  import { For } from "solid-js"
-  import {
-    DualSidebar,
-    DualSidebarInset,
-    DualSidebarMenu,
-    DualSidebarMenuButton,
-    DualSidebarMenuItem,
-    DualSidebarPanel,
-    DualSidebarPanelContent,
-    DualSidebarPanelHeader,
-    DualSidebarPanelTitle,
-    DualSidebarProvider,
-    DualSidebarRail,
-    DualSidebarRailContent,
-    DualSidebarRailFooter,
-    DualSidebarRailHeader,
-    DualSidebarRailItem,
-    DualSidebarSection,
-    DualSidebarTrigger,
-  } from "shadcn-solid-components/components/dual-sidebar"
-
-  const sections = [
-    { key: "dashboard", label: "Dashboard", items: ["Overview", "Analytics"] },
-    { key: "apps", label: "Apps", items: ["Contacts", "Chats", "Email"] },
-  ]
-
-  export default function Demo() {
-    return (
-      <DualSidebarProvider defaultActiveKey="dashboard">
-        <DualSidebar>
-          <DualSidebarRail>
-            <DualSidebarRailContent>
-              <For each={sections}>
-                {(section) => (
-                  <DualSidebarRailItem
-                    sectionKey={section.key}
-                    tooltip={section.label}
-                  >
-                    {/* icon */}
-                  </DualSidebarRailItem>
-                )}
-              </For>
-            </DualSidebarRailContent>
-          </DualSidebarRail>
-
-          <DualSidebarPanel>
-            <For each={sections}>
-              {(section) => (
-                <DualSidebarSection sectionKey={section.key}>
-                  <DualSidebarPanelHeader>
-                    <DualSidebarPanelTitle>{section.label}</DualSidebarPanelTitle>
-                  </DualSidebarPanelHeader>
-                  <DualSidebarPanelContent>
-                    <DualSidebarMenu>
-                      <For each={section.items}>
-                        {(item) => (
-                          <DualSidebarMenuItem>
-                            <DualSidebarMenuButton>
-                              <span>{item}</span>
-                            </DualSidebarMenuButton>
-                          </DualSidebarMenuItem>
-                        )}
-                      </For>
-                    </DualSidebarMenu>
-                  </DualSidebarPanelContent>
-                </DualSidebarSection>
-              )}
-            </For>
-          </DualSidebarPanel>
-
-          <DualSidebarInset>
-            <header class="flex h-12 items-center gap-2 border-b px-3">
-              <DualSidebarTrigger />
-            </header>
-            <main class="flex-1 p-4" />
-          </DualSidebarInset>
-        </DualSidebar>
-      </DualSidebarProvider>
-    )
-  }
-  ```
 </ComponentPreview>
 
 ### Controlled active section

@@ -29,27 +29,10 @@ be any icon component or illustration, and `action` typically holds a primary ac
 
 ### With icon and action
 
-<ComponentPreview name="Empty State Demo">
+<ComponentPreview name="Empty State Demo" source="examples/empty-state-demo.tsx">
   <div class="mb-4 w-full">
     <EmptyStateDemo />
   </div>
-  ```tsx
-  import { Button } from "shadcn-solid-components/components/button"
-  import { EmptyState } from "shadcn-solid-components/hoc/empty-state"
-
-  const EmptyStateDemo = () => {
-    return (
-      <EmptyState
-        icon={<span class="text-4xl">📂</span>}
-        title="No projects yet"
-        description="Create a project or adjust your filters."
-        action={<Button>Create project</Button>}
-      />
-    )
-  }
-
-  export default EmptyStateDemo
-  ```
 </ComponentPreview>
 
 ```tsx

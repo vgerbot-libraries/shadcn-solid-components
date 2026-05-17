@@ -23,27 +23,10 @@ Optional `trigger` spreads onto the `Button` trigger (e.g. `class`).
 
 ### Default trigger
 
-<ComponentPreview name="Mode Toggle Dropdown Demo">
+<ComponentPreview name="Mode Toggle Dropdown Demo" source="examples/mode-toggle-dropdown-demo.tsx">
   <div class="mb-4 w-full">
     <ModeToggleDropdownDemo />
   </div>
-  ```tsx
-  import { ColorModeProvider } from "@kobalte/core"
-
-import { ModeToggleDropdown } from "shadcn-solid-components/hoc/mode-toggle-dropdown"
-
-const ModeToggleDropdownDemo = () => {
-  return (
-    <ColorModeProvider>
-      <div class="flex justify-end">
-        <ModeToggleDropdown trigger={{ class: "size-9 px-0" }} />
-      </div>
-    </ColorModeProvider>
-  )
-}
-
-export default ModeToggleDropdownDemo
-  ```
 </ComponentPreview>
 
 ```tsx

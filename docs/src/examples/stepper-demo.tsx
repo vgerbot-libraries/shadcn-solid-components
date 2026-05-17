@@ -1,7 +1,6 @@
-import { createSignal } from "solid-js"
-
-import { Button } from "shadcn-solid-components/components/button"
-import { Stepper, useStepper } from "shadcn-solid-components/hoc/stepper"
+import { Button } from 'shadcn-solid-components/components/button'
+import { Stepper, useStepper } from 'shadcn-solid-components/hoc/stepper'
+import { createSignal } from 'solid-js'
 
 function StepContent() {
   const api = useStepper()
@@ -16,7 +15,7 @@ function StepContent() {
           Back
         </Button>
         <Button type="button" onClick={() => void api.next()}>
-          {api.isLast() ? "Finish" : "Continue"}
+          {api.isLast() ? 'Finish' : 'Continue'}
         </Button>
       </div>
     </div>
@@ -31,14 +30,14 @@ const StepperDemo = () => {
       showNavigation={false}
       steps={[
         {
-          label: "Terms",
-          content: (
+          label: 'Terms',
+          content: () => (
             <div class="space-y-3">
               <label class="flex items-center gap-2 text-sm">
                 <input
                   type="checkbox"
                   checked={agreed()}
-                  onChange={(e) => setAgreed(e.currentTarget.checked)}
+                  onChange={e => setAgreed(e.currentTarget.checked)}
                 />
                 I agree to the terms
               </label>
@@ -48,7 +47,7 @@ const StepperDemo = () => {
           validate: () => agreed(),
         },
         {
-          label: "Review",
+          label: 'Review',
           content: <p class="text-sm text-muted-foreground">All steps completed.</p>,
         },
       ]}

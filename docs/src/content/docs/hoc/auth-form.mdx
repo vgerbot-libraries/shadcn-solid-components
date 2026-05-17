@@ -35,109 +35,18 @@ import { AuthForm } from "shadcn-solid-components/hoc/auth-form"
 
 ### External mode/method controls + unified auth form
 
-<ComponentPreview name="Auth Form Demo">
+<ComponentPreview name="Auth Form Demo" source="examples/auth-form-demo.tsx">
   <div class="mb-4 w-full">
     <AuthFormDemo />
   </div>
-  ```tsx
-  import { createSignal } from "solid-js"
-
-  import {
-    AuthForm,
-    type AuthMethod,
-    type AuthMode,
-  } from "shadcn-solid-components/hoc/auth-form"
-
-  const AuthFormDemo = () => {
-    const [mode, setMode] = createSignal<AuthMode>("login")
-    const [method, setMethod] = createSignal<AuthMethod>("password")
-
-    return (
-      <>
-        <div class="flex flex-col gap-2">
-          <div class="flex flex-wrap gap-2">
-            <button type="button" onClick={() => setMode("login")}>Login</button>
-            <button type="button" onClick={() => setMode("register")}>Register</button>
-            <button type="button" onClick={() => setMode("reset")}>Reset</button>
-          </div>
-
-          <div class="flex flex-wrap gap-2">
-            <button type="button" onClick={() => setMethod("password")}>Password</button>
-            <button type="button" onClick={() => setMethod("phone-otp")}>Phone OTP</button>
-            <button type="button" onClick={() => setMethod("email-otp")}>Email OTP</button>
-            <button type="button" onClick={() => setMethod("oauth")}>OAuth</button>
-          </div>
-        </div>
-
-        <AuthForm
-          mode={mode()}
-          method={method()}
-          providers={[
-            { name: "Google", icon: <span>G</span>, onSelect: () => {} },
-            { name: "GitHub", icon: <span>GH</span>, onSelect: () => {} },
-          ]}
-          onModeChange={setMode}
-          onMethodChange={setMethod}
-          onSendOtp={async () => {}}
-          onVerifyOtp={async ({ otpCode }) => otpCode === "123456"}
-          onSubmit={(payload) => console.log(payload)}
-        />
-      </>
-    )
-  }
-  export default AuthFormDemo
-  ```
 </ComponentPreview>
 
 ### Interactive credential method control slot
 
-<ComponentPreview name="Auth Form Credential Method Control Demo">
+<ComponentPreview name="Auth Form Credential Method Control Demo" source="examples/auth-form-credential-method-control-demo.tsx">
   <div class="mb-4 w-full">
     <AuthFormCredentialMethodControlDemo />
   </div>
-  ```tsx
-  import { createMemo, createSignal } from "solid-js"
-
-  import {
-    AuthForm,
-    type AuthCredentialMethodControl,
-    type AuthMethod,
-    type AuthMode,
-  } from "shadcn-solid-components/hoc/auth-form"
-
-  const Demo = () => {
-    const [mode, setMode] = createSignal<AuthMode>("login")
-    const [method, setMethod] = createSignal<AuthMethod>("password")
-    const [kind, setKind] = createSignal<"tabs" | "custom-element" | "custom-render">("tabs")
-
-    const credentialMethodControl = createMemo<AuthCredentialMethodControl>(() => {
-      if (kind() === "tabs") {
-        return [
-          { key: "password", label: "Password" },
-          { key: "phone-otp", label: "Phone OTP" },
-          { key: "email-otp", label: "Email OTP" },
-        ]
-      }
-
-      if (kind() === "custom-element") {
-        return <div>{/* your custom jsx controls */}</div>
-      }
-
-      return () => <div>{/* your custom render function controls */}</div>
-    })
-
-    return (
-      <AuthForm
-        mode={mode()}
-        method={method()}
-        credentialMethodControl={credentialMethodControl()}
-        onModeChange={setMode}
-        onMethodChange={setMethod}
-      />
-    )
-  }
-  export default Demo
-  ```
 </ComponentPreview>
 
 ## API

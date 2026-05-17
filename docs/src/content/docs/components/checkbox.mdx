@@ -6,6 +6,8 @@ toc: true
 ---
 
 import { Checkbox, CheckboxControl, CheckboxDescription, CheckboxInput, CheckboxLabel } from "shadcn-solid-components/components/checkbox"
+import CheckboxDemo from "../../../examples/checkbox-demo"
+import CheckboxDisabledDemo from "../../../examples/checkbox-disabled-demo"
 
 Checkboxes follow Kobalte’s checkbox pattern: root, label, optional description, hidden input, control, and indicator parts.
 
@@ -25,73 +27,18 @@ import {
 
 ### Default
 
-<ComponentPreview name="Checkbox Default">
+<ComponentPreview name="Checkbox Default" source="examples/checkbox-demo.tsx">
   <div class="mb-4">
-    <Checkbox class="flex items-start space-x-2">
-      <CheckboxInput />
-      <CheckboxControl />
-      <div class="grid gap-1.5 leading-none">
-        <CheckboxLabel>Accept terms and conditions</CheckboxLabel>
-        <CheckboxDescription>
-          You agree to our Terms of Service and Privacy Policy.
-        </CheckboxDescription>
-      </div>
-    </Checkbox>
+    <CheckboxDemo />
   </div>
-  ```tsx
-  import {
-    Checkbox,
-    CheckboxControl,
-    CheckboxDescription,
-    CheckboxInput,
-    CheckboxLabel,
-  } from "shadcn-solid-components/components/checkbox"
-
-  export function CheckboxDemo() {
-    return (
-      <Checkbox class="flex items-start space-x-2">
-        <CheckboxInput />
-        <CheckboxControl />
-        <div class="grid gap-1.5 leading-none">
-          <CheckboxLabel>Accept terms and conditions</CheckboxLabel>
-          <CheckboxDescription>
-            You agree to our Terms of Service and Privacy Policy.
-          </CheckboxDescription>
-        </div>
-      </Checkbox>
-    )
-  }
-  ```
 </ComponentPreview>
 
 ### Disabled
 
-<ComponentPreview name="Checkbox Disabled">
+<ComponentPreview name="Checkbox Disabled" source="examples/checkbox-disabled-demo.tsx">
   <div class="mb-4">
-    <Checkbox disabled class="flex items-center space-x-2">
-      <CheckboxInput />
-      <CheckboxControl />
-      <CheckboxLabel>Accept terms and conditions</CheckboxLabel>
-    </Checkbox>
+    <CheckboxDisabledDemo />
   </div>
-  ```tsx
-  import {
-    Checkbox,
-    CheckboxControl,
-    CheckboxInput,
-    CheckboxLabel,
-  } from "shadcn-solid-components/components/checkbox"
-
-  export function CheckboxDisabled() {
-    return (
-      <Checkbox disabled class="flex items-center space-x-2">
-        <CheckboxInput />
-        <CheckboxControl />
-        <CheckboxLabel>Accept terms and conditions</CheckboxLabel>
-      </Checkbox>
-    )
-  }
-  ```
 </ComponentPreview>
 
 ## Exports

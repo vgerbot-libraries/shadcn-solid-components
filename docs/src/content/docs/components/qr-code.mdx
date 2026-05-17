@@ -24,23 +24,10 @@ import { QrCode } from "shadcn-solid-components/components/qr-code"
 
 ### Default
 
-<ComponentPreview name="QR Code Demo">
+<ComponentPreview name="QR Code Demo" source="examples/qr-code-demo.tsx">
   <div class="mb-4 w-full">
     <QrCodeDemo />
   </div>
-  ```tsx
-  import { QrCode } from "shadcn-solid-components/components/qr-code"
-
-const QrCodeDemo = () => {
-  return (
-    <div class="flex justify-center">
-      <QrCode value="https://github.com/vgerbot-libraries/shadcn-solid-components" size={220} />
-    </div>
-  )
-}
-
-export default QrCodeDemo
-  ```
 </ComponentPreview>
 
 ### Custom colors and error correction

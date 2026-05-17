@@ -27,82 +27,20 @@ import { AppleDock, AppleDockIcon } from "shadcn-solid-components/components/app
 
 ### Default
 
-<ComponentPreview name="Apple Dock Demo">
+<ComponentPreview name="Apple Dock Demo" source="examples/apple-dock-demo.tsx">
   <div class="mb-4 w-full">
     <AppleDockDemo />
   </div>
-
-  ```tsx
-  import { For } from "solid-js"
-
-  import { AppleDock, AppleDockIcon } from "shadcn-solid-components/components/apple-dock"
-
-  const apps = [
-    { label: "Mail", color: "bg-blue-500" },
-    { label: "Calendar", color: "bg-orange-500" },
-    { label: "Notes", color: "bg-yellow-500" },
-    { label: "Music", color: "bg-pink-500" },
-    { label: "Settings", color: "bg-zinc-500" },
-  ]
-
-  const AppleDockDemo = () => {
-    return (
-      <AppleDock class="border-border bg-background rounded-xl">
-        <For each={apps}>
-          {(app) => (
-            <AppleDockIcon class="rounded-xl" title={app.label}>
-              <div
-                class={`text-primary-foreground grid size-full place-items-center rounded-lg text-[10px] font-semibold ${app.color}`}
-              >
-                {app.label.slice(0, 2)}
-              </div>
-            </AppleDockIcon>
-          )}
-        </For>
-      </AppleDock>
-    )
-  }
-
-  export default AppleDockDemo
-  ```
 </ComponentPreview>
 
 ### Disable magnification
 
 Set `disableMagnification` when you want dock spacing and pointer behaviors without scaling animation.
 
-<ComponentPreview name="Apple Dock Static Demo">
+<ComponentPreview name="Apple Dock Static Demo" source="examples/apple-dock-static-demo.tsx">
   <div class="mb-4 w-full">
     <AppleDockStaticDemo />
   </div>
-
-  ```tsx
-  import { For } from "solid-js"
-
-  import { AppleDock, AppleDockIcon } from "shadcn-solid-components/components/apple-dock"
-
-  const actions = ["Upload", "Share", "Export", "Archive"]
-
-  const AppleDockStaticDemo = () => {
-    return (
-      <AppleDock
-        disableMagnification
-        direction="bottom"
-        class="border-border bg-background rounded-xl"
-      >
-        <For each={actions}>
-          {(action) => (
-            <AppleDockIcon disableMagnification class="rounded-lg border bg-muted px-3">
-              <span class="text-xs font-medium">{action}</span>
-            </AppleDockIcon>
-          )}
-        </For>
-      </AppleDock>
-    )
-  }
-
-  export default AppleDockStaticDemo
-  ```
 </ComponentPreview>
 
 ## API

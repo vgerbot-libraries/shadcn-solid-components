@@ -21,38 +21,10 @@ import { OTPFieldGroup } from "shadcn-solid-components/hoc/otp-field"
 
 ### Controlled value and validation error
 
-<ComponentPreview name="OTP Field Demo">
+<ComponentPreview name="OTP Field Demo" source="examples/otp-field-group-demo.tsx">
   <div class="mb-4 w-full max-w-md">
     <OTPFieldGroupDemo />
   </div>
-  ```tsx
-  import { createSignal } from "solid-js"
-  import { OTPFieldGroup } from "shadcn-solid-components/hoc/otp-field"
-
-  const OTPFieldGroupDemo = () => {
-    const [code, setCode] = createSignal("")
-    const [error, setError] = createSignal<string>()
-
-    return (
-      <OTPFieldGroup
-        maxLength={6}
-        label="Verification code"
-        value={code()}
-        onValueChange={(value) => {
-          setCode(value)
-          setError(undefined)
-        }}
-        onComplete={(value) => {
-          if (value !== "123456") setError("The verification code is incorrect")
-        }}
-        error={error()}
-        required
-      />
-    )
-  }
-
-  export default OTPFieldGroupDemo
-  ```
 </ComponentPreview>
 
 ```tsx

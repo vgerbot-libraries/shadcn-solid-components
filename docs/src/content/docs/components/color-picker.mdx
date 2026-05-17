@@ -32,89 +32,30 @@ Render `ColorPicker` with a controlled `value` and `onValueChange` callback, or 
 
 The default mode renders the full color panel inline in the page.
 
-<ComponentPreview name="Color Picker Demo">
+<ComponentPreview name="Color Picker Demo" source="examples/color-picker-demo.tsx">
   <div class="mb-4 w-full">
     <ColorPickerDemo />
   </div>
-
-  ```tsx
-  import { createSignal } from "solid-js"
-  import { ColorPicker } from "shadcn-solid-components/components/color-picker"
-
-  const ColorPickerDemo = () => {
-    const [color, setColor] = createSignal("#4A86E8")
-
-    return (
-      <ColorPicker
-        value={color()}
-        onValueChange={setColor}
-        mode="inline"
-      />
-    )
-  }
-
-  export default ColorPickerDemo
-  ```
 </ComponentPreview>
 
 ### Popover
 
 Set `mode="popover"` to wrap the panel in a [Popover](/docs/components/popover). The trigger displays a small color swatch and the current value string. When the popover opens, the previous color is shown alongside the new selection for comparison.
 
-<ComponentPreview name="Color Picker Popover Demo">
+<ComponentPreview name="Color Picker Popover Demo" source="examples/color-picker-popover-demo.tsx">
   <div class="mb-4 w-full">
     <ColorPickerPopoverDemo />
   </div>
-
-  ```tsx
-  import { createSignal } from "solid-js"
-  import { ColorPicker } from "shadcn-solid-components/components/color-picker"
-
-  const ColorPickerPopoverDemo = () => {
-    const [color, setColor] = createSignal("#FF9900")
-
-    return (
-      <ColorPicker
-        value={color()}
-        onValueChange={setColor}
-        mode="popover"
-        showAlpha
-      />
-    )
-  }
-
-  export default ColorPickerPopoverDemo
-  ```
 </ComponentPreview>
 
 ### Without alpha
 
 Pass `showAlpha={false}` to hide the alpha slider and omit the alpha channel from the output string. The color value is always fully opaque in this mode.
 
-<ComponentPreview name="Color Picker No Alpha Demo">
+<ComponentPreview name="Color Picker No Alpha Demo" source="examples/color-picker-no-alpha-demo.tsx">
   <div class="mb-4 w-full">
     <ColorPickerNoAlphaDemo />
   </div>
-
-  ```tsx
-  import { createSignal } from "solid-js"
-  import { ColorPicker } from "shadcn-solid-components/components/color-picker"
-
-  const ColorPickerNoAlphaDemo = () => {
-    const [color, setColor] = createSignal("#00FF00")
-
-    return (
-      <ColorPicker
-        value={color()}
-        onValueChange={setColor}
-        mode="inline"
-        showAlpha={false}
-      />
-    )
-  }
-
-  export default ColorPickerNoAlphaDemo
-  ```
 </ComponentPreview>
 
 ## API

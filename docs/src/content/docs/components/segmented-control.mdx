@@ -36,95 +36,20 @@ Each segment uses `SegmentedControlItem` with `SegmentedControlItemInput` and `S
 - `SegmentedControl`, `SegmentedControlList`, `SegmentedControlItems`, `SegmentedControlItem`, `SegmentedControlItemInput`, `SegmentedControlItemLabel`, `SegmentedControlItemDescription`, `SegmentedControlIndicator`, `SegmentedControlLabel`, `SegmentedControlDescription`, `SegmentedControlErrorMessage`
 - Types: `SegmentedControlProps`, `SegmentedControlListProps`, `SegmentedControlItemsProps`, `SegmentedControlItemProps`, `SegmentedControlItemInputProps`, `SegmentedControlItemLabelProps`, `SegmentedControlItemDescriptionProps`, `SegmentedControlIndicatorProps`, `SegmentedControlLabelProps`, `SegmentedControlDescriptionProps`, `SegmentedControlErrorMessageProps`
 
-
 ## Examples
 
 ### Default
 
-<ComponentPreview name="Segmented Control Demo">
+<ComponentPreview name="Segmented Control Demo" source="examples/segmented-control-demo.tsx">
   <div class="mb-4 w-full">
     <SegmentedControlDemo />
   </div>
-  ```tsx
-  import { For } from "solid-js"
-
-import {
-  SegmentedControl,
-  SegmentedControlIndicator,
-  SegmentedControlItem,
-  SegmentedControlItemInput,
-  SegmentedControlItemLabel,
-  SegmentedControlItems,
-  SegmentedControlLabel,
-  SegmentedControlList,
-} from "shadcn-solid-components/components/segmented-control"
-
-const SegmentedControlDemo = () => {
-  return (
-    <SegmentedControl defaultValue="Orange">
-      <SegmentedControlLabel>Favorite fruit</SegmentedControlLabel>
-      <SegmentedControlList>
-        <SegmentedControlIndicator />
-        <SegmentedControlItems>
-          <For each={["Apple", "Orange", "Watermelon"]}>
-            {(fruit) => (
-              <SegmentedControlItem value={fruit}>
-                <SegmentedControlItemInput />
-                <SegmentedControlItemLabel>{fruit}</SegmentedControlItemLabel>
-              </SegmentedControlItem>
-            )}
-          </For>
-        </SegmentedControlItems>
-      </SegmentedControlList>
-    </SegmentedControl>
-  )
-}
-
-export default SegmentedControlDemo
-  ```
 </ComponentPreview>
 
 ### Orientation
 
-<ComponentPreview name="Segmented Control Orientation Demo">
+<ComponentPreview name="Segmented Control Orientation Demo" source="examples/segmented-control-orientation-demo.tsx">
   <div class="mb-4 w-full">
     <SegmentedControlOrientationDemo />
   </div>
-  ```tsx
-  import { For } from "solid-js"
-
-import {
-  SegmentedControl,
-  SegmentedControlIndicator,
-  SegmentedControlItem,
-  SegmentedControlItemInput,
-  SegmentedControlItemLabel,
-  SegmentedControlItems,
-  SegmentedControlLabel,
-  SegmentedControlList,
-} from "shadcn-solid-components/components/segmented-control"
-
-const SegmentedControlOrientationDemo = () => {
-  return (
-    <SegmentedControl orientation="vertical" defaultValue="Orange">
-      <SegmentedControlLabel>Favorite fruit</SegmentedControlLabel>
-      <SegmentedControlList>
-        <SegmentedControlIndicator />
-        <SegmentedControlItems>
-          <For each={["Apple", "Orange", "Watermelon"]}>
-            {(fruit) => (
-              <SegmentedControlItem value={fruit}>
-                <SegmentedControlItemInput />
-                <SegmentedControlItemLabel>{fruit}</SegmentedControlItemLabel>
-              </SegmentedControlItem>
-            )}
-          </For>
-        </SegmentedControlItems>
-      </SegmentedControlList>
-    </SegmentedControl>
-  )
-}
-
-export default SegmentedControlOrientationDemo
-  ```
 </ComponentPreview>

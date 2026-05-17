@@ -57,41 +57,10 @@ const initOptions: Options = {
 Import `tabulator-shadcn.css` in your app entry or page so the table styles stay aligned with the
 theme tokens. The preview demo below already imports that stylesheet.
 
-<ComponentPreview name="Tabulator Table Demo">
+<ComponentPreview name="Tabulator Table Demo" source="examples/tabulator-table-demo.tsx">
   <div class="mb-4 w-full">
     <TabulatorTableDemo />
   </div>
-  ```tsx
-  import { TabulatorTable } from "shadcn-solid-components/components/tabulator-table"
-
-  import "shadcn-solid-components/src/components/tabulator-table/tabulator-shadcn.css"
-
-  const TabulatorTableDemo = () => {
-    return (
-      <div class="w-full max-w-3xl">
-        <TabulatorTable
-          class="w-full overflow-hidden rounded-md border"
-          initOptions={{
-            data: [
-              { id: 1, name: "Alpha", role: "Admin" },
-              { id: 2, name: "Beta", role: "Editor" },
-              { id: 3, name: "Gamma", role: "Viewer" },
-            ],
-            columns: [
-              { title: "ID", field: "id", width: 72, hozAlign: "center" },
-              { title: "Name", field: "name" },
-              { title: "Role", field: "role" },
-            ],
-            layout: "fitColumns",
-            height: 200,
-          }}
-        />
-      </div>
-    )
-  }
-
-  export default TabulatorTableDemo
-  ```
 </ComponentPreview>
 
 ### `onInit` and instance access
@@ -100,49 +69,8 @@ theme tokens. The preview demo below already imports that stylesheet.
 or call the Tabulator API. The component destroys the instance on unmount; if you store a reference
 in Solid state, clean up any app-level subscriptions in `onDestroy` if needed.
 
-<ComponentPreview name="Tabulator OnInit Demo">
+<ComponentPreview name="Tabulator OnInit Demo" source="examples/tabulator-oninit-demo.tsx">
   <div class="mb-4 w-full">
     <TabulatorOnInitDemo />
   </div>
-  ```tsx
-  import { createSignal } from "solid-js"
-
-  import { TabulatorTable } from "shadcn-solid-components/components/tabulator-table"
-
-  import "shadcn-solid-components/src/components/tabulator-table/tabulator-shadcn.css"
-
-  const TabulatorOnInitDemo = () => {
-    const [status, setStatus] = createSignal("Mounting...")
-
-    return (
-      <div class="w-full max-w-3xl space-y-2">
-        <p class="text-muted-foreground text-sm">
-          <span class="text-foreground font-medium">onInit:</span>
-          {status()}
-        </p>
-        <TabulatorTable
-          class="w-full overflow-hidden rounded-md border"
-          initOptions={{
-            data: [
-              { id: 1, name: "North", value: 12 },
-              { id: 2, name: "South", value: 8 },
-            ],
-            columns: [
-              { title: "ID", field: "id", width: 64, hozAlign: "center" },
-              { title: "Region", field: "name" },
-              { title: "Count", field: "value", hozAlign: "right" },
-            ],
-            layout: "fitColumns",
-            height: 160,
-          }}
-          onInit={(instance) => {
-            setStatus(`Table ready with ${instance.getDataCount()} rows`)
-          }}
-        />
-      </div>
-    )
-  }
-
-  export default TabulatorOnInitDemo
-  ```
 </ComponentPreview>

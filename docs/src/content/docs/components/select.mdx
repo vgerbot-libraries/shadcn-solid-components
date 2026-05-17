@@ -49,93 +49,20 @@ The listbox follows the Kobalte select pattern: keyboard navigation inside the m
 
 ### Default
 
-<ComponentPreview name="Select Default">
+<ComponentPreview name="Select Default" source="examples/select-demo.tsx">
   <div class="mb-4 w-full max-w-xl">
     <SelectDemo />
   </div>
-  ```tsx
-  import {
-    Select,
-    SelectContent,
-    SelectItem,
-    SelectPortal,
-    SelectTrigger,
-    SelectValue,
-  } from "shadcn-solid-components/components/select"
-
-  const SelectDemo = () => {
-    return (
-      <Select
-        options={["Apple", "Banana", "Blueberry", "Grapes", "Pineapple"]}
-        placeholder="Select a fruit"
-        itemComponent={(props) => (
-          <SelectItem item={props.item}>{props.item.rawValue}</SelectItem>
-        )}
-      >
-        <SelectTrigger class="w-[180px]" aria-label="Fruit">
-          <SelectValue<string>>{(state) => state.selectedOption()}</SelectValue>
-        </SelectTrigger>
-        <SelectPortal>
-          <SelectContent />
-        </SelectPortal>
-      </Select>
-    )
-  }
-
-  export default SelectDemo
-  ```
 </ComponentPreview>
 
 ### Error
 
 Invalid state is driven by `validationState` and optional messaging via `SelectErrorMessage`. The example below starts on “Grapes”; choosing **Apple** clears the error.
 
-<ComponentPreview name="Select Error">
+<ComponentPreview name="Select Error" source="examples/select-error-demo.tsx">
   <div class="mb-4 w-full max-w-xl">
     <SelectErrorDemo />
   </div>
-  ```tsx
-  import { createSignal } from "solid-js"
-
-  import {
-    Select,
-    SelectContent,
-    SelectErrorMessage,
-    SelectItem,
-    SelectLabel,
-    SelectPortal,
-    SelectTrigger,
-    SelectValue,
-  } from "shadcn-solid-components/components/select"
-
-  const SelectErrorDemo = () => {
-    const [value, setValue] = createSignal("Grapes")
-
-    return (
-      <Select
-        options={["Apple", "Banana", "Blueberry", "Grapes", "Pineapple"]}
-        placeholder="Select a fruit"
-        value={value()}
-        onChange={setValue}
-        validationState={value() !== "Apple" ? "invalid" : "valid"}
-        itemComponent={(props) => (
-          <SelectItem item={props.item}>{props.item.rawValue}</SelectItem>
-        )}
-      >
-        <SelectLabel>Fruit</SelectLabel>
-        <SelectTrigger class="w-[180px]" aria-label="Fruit">
-          <SelectValue<string>>{(state) => state.selectedOption()}</SelectValue>
-        </SelectTrigger>
-        <SelectPortal>
-          <SelectContent />
-        </SelectPortal>
-        <SelectErrorMessage>Hmm, I prefer apples.</SelectErrorMessage>
-      </Select>
-    )
-  }
-
-  export default SelectErrorDemo
-  ```
 </ComponentPreview>
 
 ## Exports

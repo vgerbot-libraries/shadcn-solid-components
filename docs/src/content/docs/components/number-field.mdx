@@ -33,91 +33,20 @@ Wrap `NumberFieldInput` with `NumberFieldGroup` and wire triggers for step up/do
 - `NumberField`, `NumberFieldGroup`, `NumberFieldLabel`, `NumberFieldInput`, `NumberFieldDecrementTrigger`, `NumberFieldIncrementTrigger`, `NumberFieldErrorMessage`, `NumberFieldDescription`
 - Types: `NumberFieldProps`, `NumberFieldGroupProps`, `NumberFieldLabelProps`, `NumberFieldInputProps`, `NumberFieldDecrementTriggerProps`, `NumberFieldIncrementTriggerProps`, `NumberFieldErrorMessageProps`, `NumberFieldDescriptionProps`
 
-
 ## Examples
 
 ### Default
 
-<ComponentPreview name="Number Field Demo">
+<ComponentPreview name="Number Field Demo" source="examples/number-field-demo.tsx">
   <div class="mb-4 w-full">
     <NumberFieldDemo />
   </div>
-  ```tsx
-  import {
-  NumberField,
-  NumberFieldDecrementTrigger,
-  NumberFieldGroup,
-  NumberFieldIncrementTrigger,
-  NumberFieldInput,
-  NumberFieldLabel,
-} from "shadcn-solid-components/components/number-field"
-
-const NumberFieldDemo = () => {
-  const thisYear = () => new Date(Date.now()).getUTCFullYear()
-  const age = () => thisYear() - 2001
-
-  return (
-    <NumberField defaultValue={age()} minValue={0}>
-      <NumberFieldLabel>Age</NumberFieldLabel>
-      <NumberFieldGroup>
-        <NumberFieldInput />
-        <NumberFieldDecrementTrigger aria-label="Decrement" />
-        <NumberFieldIncrementTrigger aria-label="Increment" />
-      </NumberFieldGroup>
-    </NumberField>
-  )
-}
-
-export default NumberFieldDemo
-  ```
 </ComponentPreview>
 
 ### Error
 
-<ComponentPreview name="Number Field Error Demo">
+<ComponentPreview name="Number Field Error Demo" source="examples/number-field-error-demo.tsx">
   <div class="mb-4 w-full">
     <NumberFieldErrorDemo />
   </div>
-  ```tsx
-  import { createSignal } from "solid-js"
-
-import {
-  NumberField,
-  NumberFieldDecrementTrigger,
-  NumberFieldErrorMessage,
-  NumberFieldGroup,
-  NumberFieldIncrementTrigger,
-  NumberFieldInput,
-  NumberFieldLabel,
-} from "shadcn-solid-components/components/number-field"
-
-const NumberFieldErrorDemo = () => {
-  const [value, setValue] = createSignal(1000)
-
-  return (
-    <NumberField
-      formatOptions={{
-        style: "currency",
-        currency: "VND",
-      }}
-      rawValue={value()}
-      onRawValueChange={setValue}
-      validationState={value() >= 1000 ? "valid" : "invalid"}
-      minValue={0}
-    >
-      <NumberFieldLabel>Payment</NumberFieldLabel>
-      <NumberFieldGroup>
-        <NumberFieldInput />
-        <NumberFieldDecrementTrigger aria-label="Decrement" />
-        <NumberFieldIncrementTrigger aria-label="Increment" />
-      </NumberFieldGroup>
-      <NumberFieldErrorMessage>
-        Min ₫1000 to send payment
-      </NumberFieldErrorMessage>
-    </NumberField>
-  )
-}
-
-export default NumberFieldErrorDemo
-  ```
 </ComponentPreview>

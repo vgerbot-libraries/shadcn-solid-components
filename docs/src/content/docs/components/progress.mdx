@@ -27,34 +27,12 @@ Use `Progress` for the track and fill; add `ProgressLabel` and `ProgressValueLab
 - `Progress`, `ProgressGroup`, `ProgressLabel`, `ProgressValueLabel`
 - Types: `ProgressProps`, `ProgressGroupProps`, `ProgressLabelProps`, `ProgressValueLabelProps`
 
-
 ## Examples
 
 ### Default
 
-<ComponentPreview name="Progress Demo">
+<ComponentPreview name="Progress Demo" source="examples/progress-demo.tsx">
   <div class="mb-4 w-full">
     <ProgressDemo />
   </div>
-  ```tsx
-  import {
-  Progress,
-  ProgressGroup,
-  ProgressLabel,
-  ProgressValueLabel,
-} from "shadcn-solid-components/components/progress"
-
-const ProgressDemo = () => {
-  return (
-    <Progress value={80} class="max-w-xs">
-      <ProgressGroup>
-        <ProgressLabel>Progress</ProgressLabel>
-        <ProgressValueLabel />
-      </ProgressGroup>
-    </Progress>
-  )
-}
-
-export default ProgressDemo
-  ```
 </ComponentPreview>

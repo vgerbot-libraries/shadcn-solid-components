@@ -57,56 +57,10 @@ items (rendered as `DualSidebarRailItem`) or a custom `JSX.Element`.
 
 ### Preset header with grouped sections
 
-<ComponentPreview name="Dual App Sidebar Demo">
+<ComponentPreview name="Dual App Sidebar Demo" source="examples/dual-app-sidebar-demo.tsx">
   <div class="mb-4 w-full">
     <DualAppSidebarDemo />
   </div>
-  ```tsx
-  import { DualAppSidebar } from "shadcn-solid-components/hoc/dual-app-sidebar"
-
-  export default function Demo() {
-    return (
-      <DualAppSidebar
-        header={{ icon: <LogoIcon />, title: "Studio" }}
-        sections={[
-          {
-            key: "dashboard",
-            label: "Dashboard",
-            icon: <DashboardIcon />,
-            menus: [
-              {
-                group: "Overview",
-                items: [
-                  { title: "Overview", url: "/" },
-                  { title: "Analytics", url: "/analytics" },
-                ],
-              },
-            ],
-          },
-          {
-            key: "apps",
-            label: "Apps",
-            icon: <AppsIcon />,
-            menus: [
-              {
-                group: "Communication",
-                items: [
-                  { title: "Contacts", url: "/contacts" },
-                  { title: "Chats", url: "/chats" },
-                ],
-              },
-            ],
-          },
-        ]}
-        railFooter={[
-          { icon: <SettingsIcon />, tooltip: "Settings" },
-        ]}
-        defaultActiveKey="dashboard"
-        body={<main class="flex-1 p-4">Content</main>}
-      />
-    )
-  }
-  ```
 </ComponentPreview>
 
 ### Custom header and footer JSX

@@ -35,46 +35,10 @@ changes, replace the matching item's `progress` and `status` to drive the built-
 
 ### Controlled list with add and remove
 
-<ComponentPreview name="File Upload Zone Demo">
+<ComponentPreview name="File Upload Zone Demo" source="examples/file-upload-zone-demo.tsx">
   <div class="mb-4 w-full">
     <FileUploadZoneDemo />
   </div>
-  ```tsx
-  import { createSignal } from "solid-js"
-
-  import {
-    FileUploadZone,
-    type UploadFile,
-  } from "shadcn-solid-components/hoc/file-upload-zone"
-
-  let nextId = 0
-
-  const FileUploadZoneDemo = () => {
-    const [files, setFiles] = createSignal<UploadFile[]>([])
-
-    return (
-      <FileUploadZone
-        accept="image/*,.pdf"
-        maxSize={5 * 1024 * 1024}
-        maxFiles={5}
-        value={files()}
-        onFilesAdd={(added) => {
-          const mapped: UploadFile[] = added.map((file) => ({
-            id: String(++nextId),
-            file,
-            status: "pending",
-          }))
-          setFiles((prev) => [...prev, ...mapped])
-        }}
-        onRemove={(item) => {
-          setFiles((prev) => prev.filter((file) => file.id !== item.id))
-        }}
-      />
-    )
-  }
-
-  export default FileUploadZoneDemo
-  ```
 </ComponentPreview>
 
 ```tsx

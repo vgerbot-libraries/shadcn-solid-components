@@ -35,43 +35,12 @@ Place one `OTPFieldSlot` per digit inside `OTPFieldGroup`, with a single `OTPFie
 - `OTPField`, `OTPFieldGroup`, `OTPFieldSlot`, `OTPFieldSeparator`, `OTPFieldInput`
 - Types: `OTPFieldProps`, `OTPFieldGroupProps`, `OTPFieldSlotProps`, `OTPFieldSeparatorProps`, `OTPFieldInputProps`
 
-
 ## Examples
 
 ### Default
 
-<ComponentPreview name="Otp Field Demo">
+<ComponentPreview name="Otp Field Demo" source="examples/otp-field-demo.tsx">
   <div class="mb-4 w-full">
     <OtpFieldDemo />
   </div>
-  ```tsx
-  import {
-  OTPField,
-  OTPFieldGroup,
-  OTPFieldInput,
-  OTPFieldSeparator,
-  OTPFieldSlot,
-} from "shadcn-solid-components/components/otp-field"
-
-const OTPFieldDemo = () => {
-  return (
-    <OTPField maxLength={6}>
-      <OTPFieldInput />
-      <OTPFieldGroup>
-        <OTPFieldSlot index={0} />
-        <OTPFieldSlot index={1} />
-        <OTPFieldSlot index={2} />
-      </OTPFieldGroup>
-      <OTPFieldSeparator />
-      <OTPFieldGroup>
-        <OTPFieldSlot index={3} />
-        <OTPFieldSlot index={4} />
-        <OTPFieldSlot index={5} />
-      </OTPFieldGroup>
-    </OTPField>
-  )
-}
-
-export default OTPFieldDemo
-  ```
 </ComponentPreview>

@@ -2,6 +2,7 @@ import {
   Card,
   CardContent,
   CardDescription,
+  CardFooter,
   CardHeader,
   CardTitle,
 } from "shadcn-solid-components/components/card"
@@ -10,24 +11,32 @@ const CardDemo = () => {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Meeting Notes</CardTitle>
-        <CardDescription>
-          Transcript from the meeting with the client.
-        </CardDescription>
+        <CardTitle>Create project</CardTitle>
+        <CardDescription>Deploy your new project in one-click.</CardDescription>
       </CardHeader>
-      <CardContent class="text-sm">
-        <p>
-          Client requested dashboard redesign with focus on mobile
-          responsiveness.
-        </p>
-        <ol class="mt-4 flex list-decimal flex-col gap-2 pl-6">
-          <li>New analytics widgets for daily/weekly metrics</li>
-          <li>Simplified navigation menu</li>
-          <li>Dark mode support</li>
-          <li>Timeline: 6 weeks</li>
-          <li>Follow-up meeting scheduled for next Tuesday</li>
-        </ol>
+      <CardContent>
+        <form>
+          <div class="grid w-full items-center gap-4">
+            <div class="flex flex-col space-y-1.5">
+              <label class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" for="name">Name</label>
+              <input class="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50" id="name" placeholder="Name of your project" />
+            </div>
+            <div class="flex flex-col space-y-1.5">
+              <label class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" for="framework">Framework</label>
+              <select class="flex h-9 w-full items-center justify-between rounded-md border border-input bg-transparent px-3 py-2 text-sm shadow-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-ring disabled:cursor-not-allowed disabled:opacity-50" id="framework">
+                <option value="solid">Solid</option>
+                <option value="react">React</option>
+                <option value="vue">Vue</option>
+                <option value="svelte">Svelte</option>
+              </select>
+            </div>
+          </div>
+        </form>
       </CardContent>
+      <CardFooter class="flex justify-between">
+        <button class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2">Cancel</button>
+        <button class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground shadow hover:bg-primary/90 h-9 px-4 py-2">Deploy</button>
+      </CardFooter>
     </Card>
   )
 }

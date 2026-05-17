@@ -37,37 +37,10 @@ If you omit `variant`, the confirm action uses the default button styling, which
 cases such as "Save" or "Discard". `destructive` only changes the visual emphasis of the confirm
 button.
 
-<ComponentPreview name="Confirm Dialog Demo">
+<ComponentPreview name="Confirm Dialog Demo" source="examples/confirm-dialog-demo.tsx">
   <div class="mb-4 w-full">
     <ConfirmDialogDemo />
   </div>
-  ```tsx
-  import { Button } from "shadcn-solid-components/components/button"
-  import { ConfirmDialog, confirm } from "shadcn-solid-components/hoc/confirm-dialog"
-
-  const ConfirmDialogDemo = () => {
-    return (
-      <>
-        <ConfirmDialog />
-        <Button
-          variant="outline"
-          onClick={async () => {
-            await confirm({
-              title: "Unsaved changes",
-              description: "Save before leaving?",
-              variant: "default",
-              locale: { confirm: "Save and continue", cancel: "Stay on page" },
-            })
-          }}
-        >
-          Leave page
-        </Button>
-      </>
-    )
-  }
-
-  export default ConfirmDialogDemo
-  ```
 </ComponentPreview>
 
 ## API
