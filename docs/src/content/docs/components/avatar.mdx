@@ -1,0 +1,109 @@
+---
+title: Avatar
+description: User avatar primitives with image fallback and stacked avatar groups.
+section: Components
+toc: true
+---
+
+import AvatarDemo from "../../../examples/avatar-demo"
+import AvatarGroupDemo from "../../../examples/avatar-group-demo"
+
+`Avatar` provides composable image/fallback slots for profile photos. Use `AvatarGroup` to stack multiple users and optionally show an overflow counter with `max` + `total`.
+
+## Usage
+
+```tsx
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarGroup,
+  AvatarImage,
+} from "shadcn-solid-components/components/avatar"
+```
+
+```tsx
+<Avatar src="https://github.com/shadcn.png">
+  <AvatarImage alt="Shadcn" />
+  <AvatarFallback>SC</AvatarFallback>
+</Avatar>
+```
+
+## Exports
+
+- `Avatar`, `AvatarImage`, `AvatarFallback`, `AvatarGroup`
+- Types: `AvatarProps`, `AvatarImageProps`, `AvatarFallbackProps`, `AvatarGroupProps`
+
+## Examples
+
+### Avatar with image and fallback
+
+<ComponentPreview name="Avatar Demo">
+  <div class="mb-4 w-full">
+    <AvatarDemo />
+  </div>
+  ```tsx
+  import { Avatar, AvatarFallback, AvatarImage } from "shadcn-solid-components/components/avatar"
+
+const AvatarDemo = () => {
+  return (
+    <div class="flex items-center gap-4">
+      <Avatar src="https://github.com/shadcn.png">
+        <AvatarImage alt="Shadcn" />
+        <AvatarFallback>SC</AvatarFallback>
+      </Avatar>
+
+      <Avatar class="size-12">
+        <AvatarFallback>JY</AvatarFallback>
+      </Avatar>
+    </div>
+  )
+}
+
+export default AvatarDemo
+  ```
+</ComponentPreview>
+
+### Stacked avatar group
+
+<ComponentPreview name="Avatar Group Demo">
+  <div class="mb-4 w-full">
+    <AvatarGroupDemo />
+  </div>
+  ```tsx
+  import {
+  Avatar,
+  AvatarFallback,
+  AvatarGroup,
+  AvatarImage,
+} from "shadcn-solid-components/components/avatar"
+
+const AvatarGroupDemo = () => {
+  return (
+    <AvatarGroup max={4} total={6}>
+      <Avatar src="https://github.com/shadcn.png" class="size-9">
+        <AvatarImage alt="Shadcn" />
+        <AvatarFallback>SC</AvatarFallback>
+      </Avatar>
+      <Avatar src="https://i.pravatar.cc/80?img=8" class="size-9">
+        <AvatarImage alt="Mia" />
+        <AvatarFallback>MI</AvatarFallback>
+      </Avatar>
+      <Avatar src="https://i.pravatar.cc/80?img=12" class="size-9">
+        <AvatarImage alt="Noah" />
+        <AvatarFallback>NO</AvatarFallback>
+      </Avatar>
+      <Avatar src="https://i.pravatar.cc/80?img=22" class="size-9">
+        <AvatarImage alt="Ava" />
+        <AvatarFallback>AV</AvatarFallback>
+      </Avatar>
+      <Avatar src="https://i.pravatar.cc/80?img=31" class="size-9">
+        <AvatarImage alt="Liam" />
+        <AvatarFallback>LI</AvatarFallback>
+      </Avatar>
+    </AvatarGroup>
+  )
+}
+
+export default AvatarGroupDemo
+  ```
+</ComponentPreview>

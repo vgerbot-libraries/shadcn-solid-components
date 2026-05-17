@@ -1,0 +1,14 @@
+{
+  "name": "components/watermark",
+  "displayName": "Watermark",
+  "description": "A page-level watermark overlay for enterprise anti-screenshot scenarios. Renders repeated text or image marks across a container with configurable spacing, rotation, offset, layer order, and typography.",
+  "category": "components",
+  "useCases": [
+    "Display user identity or session metadata as a repeated page watermark",
+    "Mark internal dashboards and analytics pages as confidential",
+    "Overlay tenant name or environment label in multi-tenant enterprise systems",
+    "Apply custom image-based security marks on sensitive operation pages"
+  ],
+  "usage": "import { Watermark } from \"shadcn-solid-components/components/watermark\"",
+  "tags": ["components", "watermark", "security", "solidjs", "overlay", "enterprise"]
+}

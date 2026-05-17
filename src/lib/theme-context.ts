@@ -12,6 +12,7 @@ export const ComponentName = {
   Alert: 'Alert',
   AlertDialog: 'AlertDialog',
   AppleDock: 'AppleDock',
+  Avatar: 'Avatar',
   Badge: 'Badge',
   Breadcrumbs: 'Breadcrumbs',
   Button: 'Button',
@@ -62,6 +63,7 @@ export const ComponentName = {
   ToggleButton: 'ToggleButton',
   ToggleGroup: 'ToggleGroup',
   Tooltip: 'Tooltip',
+  Watermark: 'Watermark',
 } as const
 
 export type ComponentName = (typeof ComponentName)[keyof typeof ComponentName]

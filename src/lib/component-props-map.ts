@@ -5,6 +5,7 @@ import type { AccordionProps } from '../components/accordion'
 import type { AlertProps } from '../components/alert'
 import type { AlertDialogProps } from '../components/alert-dialog'
 import type { AppleDockProps } from '../components/apple-dock'
+import type { AvatarProps } from '../components/avatar'
 import type { BadgeProps } from '../components/badge'
 import type { BreadcrumbsProps } from '../components/breadcrumbs'
 import type { ButtonProps } from '../components/button'
@@ -51,6 +52,7 @@ import type { TimelineProps } from '../components/timeline'
 import type { ToggleButtonProps } from '../components/toggle-button'
 import type { ToggleGroupProps } from '../components/toggle-group'
 import type { TooltipProps } from '../components/tooltip'
+import type { WatermarkProps } from '../components/watermark'
 import type { ComponentName } from './theme-context'
 
 /**
@@ -62,6 +64,7 @@ export interface ComponentPropsMap {
   [ComponentName.Alert]: AlertProps
   [ComponentName.AlertDialog]: AlertDialogProps
   [ComponentName.AppleDock]: AppleDockProps
+  [ComponentName.Avatar]: AvatarProps
   [ComponentName.Badge]: BadgeProps
   [ComponentName.Breadcrumbs]: BreadcrumbsProps
   [ComponentName.Button]: ButtonProps
@@ -112,6 +115,7 @@ export interface ComponentPropsMap {
   [ComponentName.ToggleButton]: ToggleButtonProps
   [ComponentName.ToggleGroup]: ToggleGroupProps
   [ComponentName.Tooltip]: TooltipProps
+  [ComponentName.Watermark]: WatermarkProps
 }
 
 /**

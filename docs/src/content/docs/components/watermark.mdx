@@ -1,0 +1,122 @@
+---
+title: Watermark
+description: Repeated page watermark overlay for confidential or audit-sensitive UI.
+section: Components
+toc: true
+---
+
+import WatermarkDemo from "../../../examples/watermark-demo"
+import WatermarkImageDemo from "../../../examples/watermark-image-demo"
+
+`Watermark` renders a repeated overlay across a container to mark sensitive content. Use it on dashboards, operation consoles, and internal reports where screenshot traceability is required.
+
+## Usage
+
+```tsx
+import { Watermark } from "shadcn-solid-components/components/watermark"
+```
+
+Wrap the content you want to protect with `Watermark`. Configure `content` for text marks or `image` for a logo mark.
+
+## Exports
+
+- `Watermark`
+- Types: `WatermarkProps`, `WatermarkFont`
+
+## Examples
+
+### Text watermark
+
+Use multi-line text content to display confidentiality level and operator identity.
+
+<ComponentPreview name="Watermark Demo">
+  <div class="mb-4 w-full">
+    <WatermarkDemo />
+  </div>
+
+  ```tsx
+  import { Watermark } from "shadcn-solid-components/components/watermark"
+
+  const WatermarkDemo = () => {
+    return (
+      <Watermark
+        content={["Confidential", "alice@acme.com"]}
+        gap={[80, 80]}
+        font={{
+          color: "rgba(14, 24, 39, 0.18)",
+          fontSize: 14,
+          fontWeight: 600,
+        }}
+      >
+        <div class="rounded-component border bg-background p-6">
+          <h3 class="text-base font-semibold">Quarterly finance report</h3>
+          <p class="text-muted-foreground mt-2 text-sm leading-6">
+            Revenue, cash flow, and operating margin details appear in this panel.
+          </p>
+        </div>
+      </Watermark>
+    )
+  }
+
+  export default WatermarkDemo
+  ```
+
+</ComponentPreview>
+
+### Image watermark
+
+Use an image mark when policy requires a branded watermark pattern.
+
+<ComponentPreview name="Watermark Image Demo">
+  <div class="mb-4 w-full">
+    <WatermarkImageDemo />
+  </div>
+
+  ```tsx
+  import { Watermark } from "shadcn-solid-components/components/watermark"
+
+  const COMPANY_MARK =
+    "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='48' viewBox='0 0 120 48'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Crect width='120' height='48' rx='8' fill='rgba(29,78,216,0.12)'/%3E%3Cpath d='M22 14h9l7 10l7-10h9L41 34z' fill='rgba(29,78,216,0.5)'/%3E%3C/g%3E%3C/svg%3E"
+
+  const WatermarkImageDemo = () => {
+    return (
+      <Watermark image={COMPANY_MARK} width={120} height={48} gap={[96, 88]} rotate={-18}>
+        <div class="rounded-component border bg-background p-6">
+          <h3 class="text-base font-semibold">Internal operation center</h3>
+          <p class="text-muted-foreground mt-2 text-sm leading-6">
+            Use an image mark when policy requires a branded anti-capture overlay across
+            audit-sensitive pages.
+          </p>
+        </div>
+      </Watermark>
+    )
+  }
+
+  export default WatermarkImageDemo
+  ```
+
+</ComponentPreview>
+
+## API
+
+### `WatermarkProps`
+
+Extends `div` props. Notable props:
+
+- `content` — watermark text, accepts a string or string array
+- `image` — watermark image URL or data URL
+- `width` / `height` — single watermark mark size in pixels
+- `rotate` — watermark rotation angle in degrees
+- `gap` — horizontal and vertical spacing between repeated marks
+- `offset` — x/y start offset of the tiled pattern
+- `zIndex` — overlay layer order inside the watermark container
+- `font` — text style configuration for text watermark mode
+
+### `WatermarkFont`
+
+- `color` — text color (supports rgba for transparency)
+- `fontSize` — text size in pixels
+- `fontWeight` — text weight
+- `fontFamily` — font family
+- `fontStyle` — text style
+- `lineHeight` — line height for multi-line content

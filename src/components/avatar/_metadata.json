@@ -1,0 +1,14 @@
+{
+  "name": "components/avatar",
+  "displayName": "Avatar",
+  "description": "A user avatar primitive with image/fallback composition and an AvatarGroup helper for stacked team presence. Supports delayed fallback rendering for slow image loads, overflow count handling, and theme-aware class overrides.",
+  "category": "components",
+  "useCases": [
+    "User profile photos in app headers, comments, and activity feeds",
+    "Team member presence rows in dashboards and project cards",
+    "Assignee chips in task lists with fallback initials when images fail",
+    "Collaborator stacks on files, docs, and pull request review UIs"
+  ],
+  "usage": "import { Avatar, AvatarFallback, AvatarGroup, AvatarImage } from \"shadcn-solid-components/components/avatar\"",
+  "tags": ["components", "avatar", "avatar-group", "solidjs", "ui", "user", "profile", "dashboard"]
+}

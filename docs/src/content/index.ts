@@ -159,6 +159,44 @@ export const Contents: Record<string, DocEntry> = {
     }
 ]
   },
+  "components/avatar": {
+    component: lazy(() => import("@docs/content/docs/components/avatar.mdx")),
+    data: {
+    "title": "Avatar",
+    "description": "User avatar primitives with image fallback and stacked avatar groups.",
+    "navTitle": "Avatar",
+    "section": "Components",
+    "order": 0,
+    "toc": true
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "exports",
+        "text": "Exports"
+    },
+    {
+        "depth": 2,
+        "slug": "examples",
+        "text": "Examples"
+    },
+    {
+        "depth": 3,
+        "slug": "avatar-with-image-and-fallback",
+        "text": "Avatar with image and fallback"
+    },
+    {
+        "depth": 3,
+        "slug": "stacked-avatar-group",
+        "text": "Stacked avatar group"
+    }
+]
+  },
   "components/badge": {
     component: lazy(() => import("@docs/content/docs/components/badge.mdx")),
     data: {
@@ -2292,6 +2330,59 @@ export const Contents: Record<string, DocEntry> = {
         "depth": 2,
         "slug": "exports",
         "text": "Exports"
+    }
+]
+  },
+  "components/watermark": {
+    component: lazy(() => import("@docs/content/docs/components/watermark.mdx")),
+    data: {
+    "title": "Watermark",
+    "description": "Repeated page watermark overlay for confidential or audit-sensitive UI.",
+    "navTitle": "Watermark",
+    "section": "Components",
+    "order": 0,
+    "toc": true
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "exports",
+        "text": "Exports"
+    },
+    {
+        "depth": 2,
+        "slug": "examples",
+        "text": "Examples"
+    },
+    {
+        "depth": 3,
+        "slug": "text-watermark",
+        "text": "Text watermark"
+    },
+    {
+        "depth": 3,
+        "slug": "image-watermark",
+        "text": "Image watermark"
+    },
+    {
+        "depth": 2,
+        "slug": "api",
+        "text": "API"
+    },
+    {
+        "depth": 3,
+        "slug": "watermarkprops",
+        "text": "WatermarkProps"
+    },
+    {
+        "depth": 3,
+        "slug": "watermarkfont",
+        "text": "WatermarkFont"
     }
 ]
   },
@@ -4808,6 +4899,11 @@ export const docsNavigation: DocsNavSection[] = [
         "description": "Modal dialog for critical confirmations that interrupt the user flow."
       },
       {
+        "title": "Avatar",
+        "href": "/docs/components/avatar",
+        "description": "User avatar primitives with image fallback and stacked avatar groups."
+      },
+      {
         "title": "Badge",
         "href": "/docs/components/badge",
         "description": "Small label for status, counts, or metadata."
@@ -5066,6 +5162,11 @@ export const docsNavigation: DocsNavSection[] = [
         "title": "Tooltip",
         "href": "/docs/components/tooltip",
         "description": "Tooltip root, trigger, portal, and styled content with arrow on Kobalte."
+      },
+      {
+        "title": "Watermark",
+        "href": "/docs/components/watermark",
+        "description": "Repeated page watermark overlay for confidential or audit-sensitive UI."
       },
       {
         "title": "Apple Dock",
