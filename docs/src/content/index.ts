@@ -1913,6 +1913,59 @@ export const Contents: Record<string, DocEntry> = {
     }
 ]
   },
+  "components/spinner": {
+    component: lazy(() => import("@docs/content/docs/components/spinner.mdx")),
+    data: {
+    "title": "Spinner",
+    "description": "Lightweight spinning indicator for loading states.",
+    "navTitle": "Spinner",
+    "section": "Components",
+    "order": 0,
+    "toc": true
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "exports",
+        "text": "Exports"
+    },
+    {
+        "depth": 2,
+        "slug": "examples",
+        "text": "Examples"
+    },
+    {
+        "depth": 3,
+        "slug": "default",
+        "text": "Default"
+    },
+    {
+        "depth": 3,
+        "slug": "variants",
+        "text": "Variants"
+    },
+    {
+        "depth": 3,
+        "slug": "custom-icon",
+        "text": "Custom Icon"
+    },
+    {
+        "depth": 3,
+        "slug": "size",
+        "text": "Size"
+    },
+    {
+        "depth": 3,
+        "slug": "button",
+        "text": "Button"
+    }
+]
+  },
   "components/status-indicator": {
     component: lazy(() => import("@docs/content/docs/components/status-indicator.mdx")),
     data: {
@@ -3619,6 +3672,64 @@ export const Contents: Record<string, DocEntry> = {
     }
 ]
   },
+  "hoc/invoice": {
+    component: lazy(() => import("@docs/content/docs/hoc/invoice.mdx")),
+    data: {
+    "title": "Invoice",
+    "description": "Admin-style invoice layout with line items, payment/status fields, totals, and built-in print support.",
+    "navTitle": "Invoice",
+    "section": "HOC",
+    "order": 0,
+    "toc": true
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "exports",
+        "text": "Exports"
+    },
+    {
+        "depth": 2,
+        "slug": "examples",
+        "text": "Examples"
+    },
+    {
+        "depth": 3,
+        "slug": "default-invoice-layout",
+        "text": "Default invoice layout"
+    },
+    {
+        "depth": 3,
+        "slug": "status-and-payment-focused-invoice",
+        "text": "Status and payment-focused invoice"
+    },
+    {
+        "depth": 3,
+        "slug": "print-override-onprint-returns-false",
+        "text": "Print override (onPrint returns false)"
+    },
+    {
+        "depth": 2,
+        "slug": "api",
+        "text": "API"
+    },
+    {
+        "depth": 3,
+        "slug": "invoiceprops",
+        "text": "InvoiceProps"
+    },
+    {
+        "depth": 2,
+        "slug": "i18n",
+        "text": "i18n"
+    }
+]
+  },
   "hoc/mode-toggle": {
     component: lazy(() => import("@docs/content/docs/hoc/mode-toggle.mdx")),
     data: {
@@ -5157,6 +5268,11 @@ export const docsNavigation: DocsNavSection[] = [
         "description": "Toast host wired to Kobalte color mode and design tokens via somoto."
       },
       {
+        "title": "Spinner",
+        "href": "/docs/components/spinner",
+        "description": "Lightweight spinning indicator for loading states."
+      },
+      {
         "title": "StatusIndicator",
         "href": "/docs/components/status-indicator",
         "description": "Compact status dot for presence and process state cues."
@@ -5320,6 +5436,11 @@ export const docsNavigation: DocsNavSection[] = [
         "title": "Form field",
         "href": "/docs/hoc/form-field",
         "description": "Label, required marker, error list, and description around arbitrary field children."
+      },
+      {
+        "title": "Invoice",
+        "href": "/docs/hoc/invoice",
+        "description": "Admin-style invoice layout with line items, payment/status fields, totals, and built-in print support."
       },
       {
         "title": "Mode toggle",

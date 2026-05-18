@@ -12,6 +12,7 @@ import { zhCN as ErrorPage } from '../../hoc/error-page/locales/zh-CN'
 import { zhCN as FaqSection } from '../../hoc/faq-section/locales/zh-CN'
 import { zhCN as FileUploadZone } from '../../hoc/file-upload-zone/locales/zh-CN'
 import { zhCN as FilterBuilder } from '../../hoc/filter-builder/locales/zh-CN'
+import { zhCN as Invoice } from '../../hoc/invoice/locales/zh-CN'
 import { zhCN as ModeToggleDropdown } from '../../hoc/mode-toggle-dropdown/locales/zh-CN'
 import { zhCN as NotificationCenter } from '../../hoc/notification-center/locales/zh-CN'
 import { zhCN as OTPField } from '../../hoc/otp-field/locales/zh-CN'
@@ -48,6 +49,7 @@ export const zhCN: Locale = {
   OverlayPage,
   ActivityFeed,
   PricingTable,
+  Invoice,
   ErrorPage,
   FaqSection,
 }

@@ -12,6 +12,7 @@ import { enUS as ErrorPage } from '../../hoc/error-page/locales/en-US'
 import { enUS as FaqSection } from '../../hoc/faq-section/locales/en-US'
 import { enUS as FileUploadZone } from '../../hoc/file-upload-zone/locales/en-US'
 import { enUS as FilterBuilder } from '../../hoc/filter-builder/locales/en-US'
+import { enUS as Invoice } from '../../hoc/invoice/locales/en-US'
 import { enUS as ModeToggleDropdown } from '../../hoc/mode-toggle-dropdown/locales/en-US'
 import { enUS as NotificationCenter } from '../../hoc/notification-center/locales/en-US'
 import { enUS as OTPField } from '../../hoc/otp-field/locales/en-US'
@@ -48,6 +49,7 @@ export const enUS: Locale = {
   OverlayPage,
   ActivityFeed,
   PricingTable,
+  Invoice,
   ErrorPage,
   FaqSection,
 }

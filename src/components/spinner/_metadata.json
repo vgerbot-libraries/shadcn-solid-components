@@ -1,0 +1,14 @@
+{
+  "name": "components/spinner",
+  "displayName": "Spinner",
+  "description": "A variant-driven loading indicator with extensible animation and icon rendering. Includes built-in spinner styles and supports custom icon plus animation composition.",
+  "category": "components",
+  "useCases": [
+    "Inline loading feedback inside buttons and action controls",
+    "Selecting visual styles by context such as dots, bars, pulse, and orbital",
+    "Custom loading indicators by injecting icon and animation class",
+    "General asynchronous state feedback without layout shift"
+  ],
+  "usage": "import { Spinner } from \"shadcn-solid-components/components/spinner\"",
+  "tags": ["components", "spinner", "loading", "variants", "animation", "solidjs", "ui"]
+}

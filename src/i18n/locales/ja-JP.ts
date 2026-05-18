@@ -12,6 +12,7 @@ import { jaJP as ErrorPage } from '../../hoc/error-page/locales/ja-JP'
 import { jaJP as FaqSection } from '../../hoc/faq-section/locales/ja-JP'
 import { jaJP as FileUploadZone } from '../../hoc/file-upload-zone/locales/ja-JP'
 import { jaJP as FilterBuilder } from '../../hoc/filter-builder/locales/ja-JP'
+import { jaJP as Invoice } from '../../hoc/invoice/locales/ja-JP'
 import { jaJP as ModeToggleDropdown } from '../../hoc/mode-toggle-dropdown/locales/ja-JP'
 import { jaJP as NotificationCenter } from '../../hoc/notification-center/locales/ja-JP'
 import { jaJP as OTPField } from '../../hoc/otp-field/locales/ja-JP'
@@ -48,6 +49,7 @@ export const jaJP: Locale = {
   OverlayPage,
   ActivityFeed,
   PricingTable,
+  Invoice,
   ErrorPage,
   FaqSection,
 }

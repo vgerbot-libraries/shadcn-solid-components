@@ -1,0 +1,84 @@
+---
+title: Spinner
+description: Lightweight spinning indicator for loading states.
+section: Components
+toc: true
+---
+
+import SpinnerDemo from "../../../examples/spinner-demo"
+import SpinnerSizeDemo from "../../../examples/spinner-size-demo"
+import SpinnerButtonDemo from "../../../examples/spinner-button-demo"
+import SpinnerVariantsDemo from "../../../examples/spinner-variants-demo"
+import SpinnerCustomDemo from "../../../examples/spinner-custom-demo"
+
+`Spinner` renders a compact loading indicator with multiple built-in looks. Use `variant` and `speed` for common loading styles (including `cube-grid`, `fading-circle`, and `folding-cube`), or provide `icon` and `animationClass` to compose a custom spinner from the same generic base.
+
+## Usage
+
+```tsx
+import { Spinner } from "shadcn-solid-components/components/spinner"
+```
+
+```tsx
+<Spinner />
+```
+
+Use `class` to change visual size (for example `size-6`) and pass accessibility attributes when needed.
+
+```tsx
+<Spinner variant="bars" speed="fast" class="size-5 text-primary" />
+```
+
+```tsx
+<Spinner
+  animationClass="animate-bounce"
+  icon={<svg viewBox="0 0 24 24" fill="currentColor">...</svg>}
+/>
+```
+
+## Exports
+
+- `Spinner`, `spinnerVariants`
+- Types: `SpinnerProps`, `SpinnerVariant`, `SpinnerSpeed`
+
+## Examples
+
+### Default
+
+<ComponentPreview name="Spinner Default" source="examples/spinner-demo.tsx">
+  <div class="mb-4 w-full">
+    <SpinnerDemo />
+  </div>
+</ComponentPreview>
+
+### Variants
+
+<ComponentPreview name="Spinner Variants" source="examples/spinner-variants-demo.tsx">
+  <div class="mb-4 w-full">
+    <SpinnerVariantsDemo />
+  </div>
+</ComponentPreview>
+
+### Custom Icon
+
+<ComponentPreview name="Spinner Custom Icon" source="examples/spinner-custom-demo.tsx">
+  <div class="mb-4 w-full">
+    <SpinnerCustomDemo />
+  </div>
+</ComponentPreview>
+
+### Size
+
+<ComponentPreview name="Spinner Size" source="examples/spinner-size-demo.tsx">
+  <div class="mb-4 w-full">
+    <SpinnerSizeDemo />
+  </div>
+</ComponentPreview>
+
+### Button
+
+<ComponentPreview name="Spinner Button" source="examples/spinner-button-demo.tsx">
+  <div class="mb-4 w-full">
+    <SpinnerButtonDemo />
+  </div>
+</ComponentPreview>

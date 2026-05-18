@@ -1,0 +1,93 @@
+---
+title: Invoice
+description: Admin-style invoice layout with line items, payment/status fields, totals, and built-in print support.
+section: HOC
+toc: true
+---
+
+import InvoiceDemo from "../../../examples/invoice-demo"
+import InvoiceStatusPaymentDemo from "../../../examples/invoice-status-payment-demo"
+import InvoicePrintOverrideDemo from "../../../examples/invoice-print-override-demo"
+
+`Invoice` composes a production-ready invoice view for detail and print pages: issuer/customer blocks, invoice meta, itemized table, totals summary, payment details, notes/terms, and a print action.
+
+## Usage
+
+```tsx
+import { Invoice } from "shadcn-solid-components/hoc/invoice"
+
+<Invoice
+  invoiceNumber="INV-2026-001"
+  status="sent"
+  paymentStatus="partial"
+  issuer={{ name: "AdminLTE, Inc." }}
+  customer={{ name: "Acme Corp" }}
+  items={[{ quantity: 1, item: "Service", amount: 120 }]}
+/>
+```
+
+When `onPrint` is provided, it runs first. Returning `false` prevents the default `window.print()` behavior.
+
+## Exports
+
+- `Invoice` — component
+- Types: `InvoiceProps`, `InvoiceStatus`, `InvoicePaymentStatus`, `InvoiceParty`, `InvoiceLineItem`, `InvoiceMetaItem`, `InvoiceTotals`
+
+## Examples
+
+### Default invoice layout
+
+<ComponentPreview name="Invoice Demo" source="examples/invoice-demo.tsx">
+  <div class="mb-4 w-full">
+    <InvoiceDemo />
+  </div>
+</ComponentPreview>
+
+### Status and payment-focused invoice
+
+<ComponentPreview name="Invoice Status Payment Demo" source="examples/invoice-status-payment-demo.tsx">
+  <div class="mb-4 w-full">
+    <InvoiceStatusPaymentDemo />
+  </div>
+</ComponentPreview>
+
+### Print override (`onPrint` returns `false`)
+
+<ComponentPreview name="Invoice Print Override Demo" source="examples/invoice-print-override-demo.tsx">
+  <div class="mb-4 w-full">
+    <InvoicePrintOverrideDemo />
+  </div>
+</ComponentPreview>
+
+## API
+
+### `InvoiceProps`
+
+Extends `div` props.
+
+- `items` — `InvoiceLineItem[]` — invoice line items (required)
+- `issuer`, `customer` — `InvoiceParty` — sender and recipient blocks
+- `invoiceNumber`, `orderId`, `issueDate`, `dueDate`, `accountId` — invoice metadata fields
+- `status` — `InvoiceStatus | string` — business status badge
+- `paymentStatus` — `InvoicePaymentStatus | string` — payment status badge
+- `paymentMethod`, `paymentReference`, `paidAt` — payment-related metadata
+- `meta` — `InvoiceMetaItem[]` — extra key-value metadata rows
+- `currency` — currency prefix symbol (default `"$"`)
+- `totals` — `InvoiceTotals` — subtotal/tax/shipping/discount/total/paid/due overrides
+- `paymentDetails`, `notes`, `terms` — extra content sections below line items
+- `actions` — custom footer actions (rendered before print button)
+- `showPrintButton` — boolean (default `true`)
+- `onPrint` — `() => boolean | void` — called before default print; return `false` to skip `window.print()`
+- `locale` — `Partial<InvoiceLocale>` — i18n overrides
+
+## i18n
+
+Locale key: `Invoice`.
+
+Notable keys include:
+
+- Section labels: `title`, `from`, `to`, `paymentDetails`, `notes`, `terms`
+- Metadata labels: `invoiceNumber`, `orderId`, `issueDate`, `dueDate`, `accountId`, `status`, `paymentStatus`, `paymentMethod`, `paymentReference`, `paidAt`
+- Table/totals labels: `quantity`, `item`, `sku`, `description`, `amount`, `subTotal`, `tax`, `shipping`, `discount`, `total`, `amountPaid`, `amountDue`, `noItems`
+- Actions: `print`
+- State dictionaries: `statuses`, `paymentStatuses`

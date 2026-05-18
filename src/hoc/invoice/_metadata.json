@@ -1,0 +1,14 @@
+{
+  "name": "hoc/invoice",
+  "displayName": "Invoice",
+  "description": "A business-ready invoice HOC for display and print workflows, with issuer/customer sections, invoice metadata, status and payment badges, itemized line table, totals summary, and optional notes/terms blocks. Includes built-in print action with callback override and locale support for internationalized finance pages.",
+  "category": "hoc",
+  "useCases": [
+    "Admin back-office invoice details with printable line-item breakdowns",
+    "SaaS billing pages showing issue date, due date, payment status, and amount due",
+    "Operations dashboards rendering B2B invoices with account references and custom notes",
+    "Client-facing order receipts with tax, shipping, discounts, and payment method information"
+  ],
+  "usage": "import { Invoice, type InvoiceProps } from \"shadcn-solid-components/hoc/invoice\"",
+  "tags": ["hoc", "invoice", "billing", "print", "solidjs", "ui"]
+}

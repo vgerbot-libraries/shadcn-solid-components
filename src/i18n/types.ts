@@ -205,6 +205,41 @@ export interface PricingTableLocale {
   additionalFeatures: string
 }
 
+export interface InvoiceLocale {
+  title: string
+  from: string
+  to: string
+  invoiceNumber: string
+  orderId: string
+  issueDate: string
+  dueDate: string
+  accountId: string
+  status: string
+  paymentStatus: string
+  paymentMethod: string
+  paymentReference: string
+  paidAt: string
+  quantity: string
+  item: string
+  sku: string
+  description: string
+  amount: string
+  paymentDetails: string
+  notes: string
+  terms: string
+  subTotal: string
+  tax: string
+  shipping: string
+  discount: string
+  total: string
+  amountPaid: string
+  amountDue: string
+  print: string
+  noItems: string
+  statuses: Record<'draft' | 'sent' | 'paid' | 'overdue' | 'cancelled', string>
+  paymentStatuses: Record<'unpaid' | 'partial' | 'paid' | 'refunded', string>
+}
+
 export interface FaqSectionLocale {
   searchPlaceholder: string
   allCategories: string
@@ -242,6 +277,7 @@ export interface Locale {
   OverlayPage: OverlayPageLocale
   ActivityFeed: ActivityFeedLocale
   PricingTable: PricingTableLocale
+  Invoice: InvoiceLocale
   FaqSection: FaqSectionLocale
   ErrorPage: ErrorPageLocale
 }
