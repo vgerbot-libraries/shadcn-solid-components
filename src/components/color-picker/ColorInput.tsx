@@ -1,8 +1,7 @@
 import { cx } from 'shadcn-solid-components/lib/cva'
 import { type ComponentProps, createSignal, Show, splitProps } from 'solid-js'
-import type { HSVA } from './color-utils'
-import { hsvaToRgba, rgbaToHsva, parseColor, stringifyColor } from './color-utils'
-import type { ColorFormat } from './color-utils'
+import type { ColorFormat, HSVA } from './color-utils'
+import { hsvaToRgba, parseColor, rgbaToHsva, stringifyColor } from './color-utils'
 
 export interface ColorInputProps extends Omit<ComponentProps<'div'>, 'onChange'> {
   hsva: HSVA

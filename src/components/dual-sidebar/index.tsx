@@ -16,13 +16,12 @@ import {
   mergeProps,
   onCleanup,
   Show,
-  splitProps,
   Switch,
+  splitProps,
   useContext,
 } from 'solid-js'
-
-import { Button, type ButtonProps } from '../button'
 import type { ActivePathItem } from '../../hoc/sidebar-menu-tree'
+import { Button, type ButtonProps } from '../button'
 import { Drawer, DrawerContent } from '../drawer'
 import { Tooltip, TooltipContent, TooltipPortal, TooltipTrigger } from '../tooltip'
 

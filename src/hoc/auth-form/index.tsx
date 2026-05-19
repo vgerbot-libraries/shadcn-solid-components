@@ -54,7 +54,8 @@ const isAuthCredentialMethodConfig = (value: unknown): value is AuthCredentialMe
 
 const isAuthCredentialMethodConfigArray = (
   value: AuthCredentialMethodControl | undefined,
-): value is AuthCredentialMethodConfig[] => Array.isArray(value) && value.every(isAuthCredentialMethodConfig)
+): value is AuthCredentialMethodConfig[] =>
+  Array.isArray(value) && value.every(isAuthCredentialMethodConfig)
 
 export type AuthFieldErrorKey =
   | 'email'
@@ -114,9 +115,7 @@ export interface AuthFormProps extends Omit<ComponentProps<'div'>, 'onSubmit'> {
     target: string
     otpCode: string
   }) => boolean | Promise<boolean>
-  onValidate?: (
-    payload: AuthSubmitPayload,
-  ) => AuthValidationResult | Promise<AuthValidationResult>
+  onValidate?: (payload: AuthSubmitPayload) => AuthValidationResult | Promise<AuthValidationResult>
   onSubmit?: (payload: AuthSubmitPayload) => void
   credentialMethodControl?: AuthCredentialMethodControl
   footer?: JSX.Element
@@ -157,17 +156,13 @@ export function AuthForm(props: AuthFormProps) {
     ...local.locale,
   })
 
-  const [internalMode, setInternalMode] = createSignal<AuthMode>(
-    local.defaultMode ?? 'login',
-  )
+  const [internalMode, setInternalMode] = createSignal<AuthMode>(local.defaultMode ?? 'login')
   const [internalMethod, setInternalMethod] = createSignal<AuthMethod>(
     local.defaultMethod ?? 'password',
   )
   const [sendingOtp, setSendingOtp] = createSignal(false)
   const [verifyingOtp, setVerifyingOtp] = createSignal(false)
-  const [fieldErrors, setFieldErrors] = createSignal<
-    Partial<Record<AuthFieldErrorKey, string>>
-  >({})
+  const [fieldErrors, setFieldErrors] = createSignal<Partial<Record<AuthFieldErrorKey, string>>>({})
 
   let formRef: HTMLFormElement | undefined
 

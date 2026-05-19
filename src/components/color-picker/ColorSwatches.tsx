@@ -1,7 +1,7 @@
 import { cx } from 'shadcn-solid-components/lib/cva'
 import { type ComponentProps, splitProps } from 'solid-js'
-import { parseColor } from './color-utils'
 import type { HSVA } from './color-utils'
+import { parseColor } from './color-utils'
 
 export interface ColorSwatchesProps extends Omit<ComponentProps<'div'>, 'onChange'> {
   colors: string[]

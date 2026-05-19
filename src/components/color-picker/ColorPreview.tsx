@@ -1,7 +1,7 @@
 import { cx } from 'shadcn-solid-components/lib/cva'
 import { type ComponentProps, splitProps } from 'solid-js'
 import type { HSVA } from './color-utils'
-import { hsvaToRgba, formatRgb } from './color-utils'
+import { formatRgb, hsvaToRgba } from './color-utils'
 
 const CHECKERBOARD_PATTERN =
   'url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAMUlEQVQ4T2NkYGAQYcAP3uCTZhw1gGGYhAGBZIA/nYDCgBDAm9BGDWAAJyRCgLaBCAAgXwixzAS0pgAAAABJRU5ErkJggg==") left center'

@@ -50,10 +50,7 @@ export function PageLayout(props: PageLayoutProps) {
         <Show when={local.header}>{local.header}</Show>
         <div
           data-slot="page-layout-content"
-          class={cx(
-            'flex flex-1 flex-col gap-6 p-4 md:p-6',
-            local.contentClass,
-          )}
+          class={cx('flex flex-1 flex-col gap-6 p-4 md:p-6', local.contentClass)}
           {...local.contentProps}
         >
           {local.children}
@@ -113,30 +110,36 @@ export function PageLayoutHeader(props: PageLayoutHeaderProps) {
       )}
       {...rest}
     >
-      <Show when={local.children} fallback={
-        <>
-          <Show when={local.leading}>
-            <div data-slot="page-layout-header-leading" class="flex shrink-0 items-center gap-2">
-              {local.leading}
-            </div>
-          </Show>
-          <Show when={local.content}>
-            <div data-slot="page-layout-header-content" class="flex flex-1 min-w-0 items-center gap-2">
-              {local.content}
-            </div>
-          </Show>
-          <Show when={local.actions}>
-            <div data-slot="page-layout-header-actions" class="flex shrink-0 items-center gap-2">
-              {local.actions}
-            </div>
-          </Show>
-          <Show when={local.trailing}>
-            <div data-slot="page-layout-header-trailing" class="flex shrink-0 items-center gap-2">
-              {local.trailing}
-            </div>
-          </Show>
-        </>
-      }>
+      <Show
+        when={local.children}
+        fallback={
+          <>
+            <Show when={local.leading}>
+              <div data-slot="page-layout-header-leading" class="flex shrink-0 items-center gap-2">
+                {local.leading}
+              </div>
+            </Show>
+            <Show when={local.content}>
+              <div
+                data-slot="page-layout-header-content"
+                class="flex flex-1 min-w-0 items-center gap-2"
+              >
+                {local.content}
+              </div>
+            </Show>
+            <Show when={local.actions}>
+              <div data-slot="page-layout-header-actions" class="flex shrink-0 items-center gap-2">
+                {local.actions}
+              </div>
+            </Show>
+            <Show when={local.trailing}>
+              <div data-slot="page-layout-header-trailing" class="flex shrink-0 items-center gap-2">
+                {local.trailing}
+              </div>
+            </Show>
+          </>
+        }
+      >
         {local.children}
       </Show>
     </header>

@@ -7,7 +7,6 @@ import {
 } from 'shadcn-solid-components/components/popover'
 import { cx } from 'shadcn-solid-components/lib/cva'
 import { type ComponentProps, createEffect, createSignal, Show, splitProps } from 'solid-js'
-import { AlphaSlider, HueSlider } from './Slider'
 import { ColorInput } from './ColorInput'
 import { ColorPanel } from './ColorPanel'
 import { ColorPreview } from './ColorPreview'
@@ -20,6 +19,7 @@ import {
   parseColor,
   stringifyColor,
 } from './color-utils'
+import { AlphaSlider, HueSlider } from './Slider'
 
 export type { ColorFormat } from './color-utils'
 export type ColorPickerMode = 'inline' | 'popover'

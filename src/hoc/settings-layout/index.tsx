@@ -11,8 +11,8 @@ import {
   type JSX,
   Match,
   Show,
-  splitProps,
   Switch,
+  splitProps,
 } from 'solid-js'
 import { enUS as defaultLocale } from './locales/en-US'
 

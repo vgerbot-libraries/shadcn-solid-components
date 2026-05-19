@@ -1,7 +1,7 @@
-import { PropsWithChildren } from 'solid-js'
 import { ColorModeProvider, ColorModeProviderProps } from '@kobalte/core'
-import { ThemeProviderProps, ThemeProvider } from '../components/theme'
-import { ConfigProviderProps, ConfigProvider } from '../components/config-provider'
+import { PropsWithChildren } from 'solid-js'
+import { ConfigProvider, ConfigProviderProps } from '../components/config-provider'
+import { ThemeProvider, ThemeProviderProps } from '../components/theme'
 
 export type ShadcnRootProps = PropsWithChildren<{
   colorModeOptions?: Omit<ColorModeProviderProps, 'children'>
@@ -10,7 +10,6 @@ export type ShadcnRootProps = PropsWithChildren<{
 }>
 
 export function ShadcnRoot(props: ShadcnRootProps) {
-
   return (
     <ColorModeProvider {...(props.colorModeOptions ?? {})}>
       <ThemeProvider {...(props.themeOptions ?? {})}>

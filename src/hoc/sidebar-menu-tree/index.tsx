@@ -248,7 +248,10 @@ const renderSubItem = (
   parentPath: ActivePathItem[],
   onActivePathChange?: (path: ActivePathItem[]) => void,
 ) => {
-  const currentPath = [...parentPath, { key: getItemKey(subItem), title: subItem.title, url: subItem.url }]
+  const currentPath = [
+    ...parentPath,
+    { key: getItemKey(subItem), title: subItem.title, url: subItem.url },
+  ]
   const isVisible = subItem.visible !== false
 
   // URL matching automatically activates (reactive with memoization)
@@ -343,7 +346,9 @@ const renderSubItem = (
             <CollapsibleContent>
               <SidebarMenuSub>
                 <For each={subItem.items}>
-                  {nestedItem => renderSubItem(nestedItem, currentUrl, currentPath, onActivePathChange)}
+                  {nestedItem =>
+                    renderSubItem(nestedItem, currentUrl, currentPath, onActivePathChange)
+                  }
                 </For>
               </SidebarMenuSub>
             </CollapsibleContent>
@@ -365,7 +370,9 @@ const renderSubItem = (
           {renderBadge(subItem.badge)}
         </SidebarMenuSubButton>
         <SidebarMenuSub>
-          <For each={subItem.items}>{nestedItem => renderSubItem(nestedItem, currentUrl, currentPath, onActivePathChange)}</For>
+          <For each={subItem.items}>
+            {nestedItem => renderSubItem(nestedItem, currentUrl, currentPath, onActivePathChange)}
+          </For>
         </SidebarMenuSub>
       </SidebarMenuSubItem>
     )
@@ -449,7 +456,9 @@ const SidebarMenuTreeItem = (props: {
 
     return (
       <SidebarMenuSub>
-        <For each={item.items}>{subItem => renderSubItem(subItem, currentUrl, currentPath, onActivePathChange)}</For>
+        <For each={item.items}>
+          {subItem => renderSubItem(subItem, currentUrl, currentPath, onActivePathChange)}
+        </For>
       </SidebarMenuSub>
     )
   }
@@ -541,7 +550,13 @@ export const SidebarMenuTree = (props: SidebarMenuTreeProps) => {
   return (
     <SidebarMenu>
       <For each={props.items}>
-        {item => <SidebarMenuTreeItem item={item} currentUrl={currentUrl} onActivePathChange={props.onActivePathChange} />}
+        {item => (
+          <SidebarMenuTreeItem
+            item={item}
+            currentUrl={currentUrl}
+            onActivePathChange={props.onActivePathChange}
+          />
+        )}
       </For>
     </SidebarMenu>
   )

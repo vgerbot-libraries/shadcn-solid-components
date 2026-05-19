@@ -6,8 +6,9 @@ import {
 } from 'shadcn-solid-components/components/accordion'
 import { Badge } from 'shadcn-solid-components/components/badge'
 import { Button } from 'shadcn-solid-components/components/button'
-import { TextField, TextFieldInput } from 'shadcn-solid-components/components/text-field'
 import { useLocale } from 'shadcn-solid-components/components/config-provider'
+import { TextField, TextFieldInput } from 'shadcn-solid-components/components/text-field'
+import type { FaqSectionLocale } from 'shadcn-solid-components/i18n/types'
 import { cx } from 'shadcn-solid-components/lib/cva'
 import {
   type ComponentProps,
@@ -18,7 +19,6 @@ import {
   Show,
   splitProps,
 } from 'solid-js'
-import type { FaqSectionLocale } from 'shadcn-solid-components/i18n/types'
 import { enUS as defaultLocale } from './locales/en-US'
 
 // ============================================================================

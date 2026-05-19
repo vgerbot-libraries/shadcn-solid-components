@@ -1,4 +1,4 @@
-import type { FaqSectionLocale } from '../types'
+import type { FaqSectionLocale } from 'shadcn-solid-components/i18n/types'
 
 export const zhTW: FaqSectionLocale = {
   searchPlaceholder: '搜尋常見問題...',
