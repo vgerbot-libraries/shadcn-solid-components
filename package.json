@@ -50,6 +50,7 @@
     "./components/color-picker": "./src/components/color-picker/index.tsx",
     "./components/combobox": "./src/components/combobox/index.tsx",
     "./components/command": "./src/components/command/index.tsx",
+    "./components/countup": "./src/components/countup/index.tsx",
     "./components/config-provider": "./src/components/config-provider/index.tsx",
     "./components/context-menu": "./src/components/context-menu/index.tsx",
     "./components/date-picker": "./src/components/date-picker/index.tsx",

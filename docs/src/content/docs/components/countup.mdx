@@ -1,0 +1,71 @@
+---
+title: Countup
+description: Animated number component for statistic cards and KPI displays.
+section: Components
+toc: true
+---
+
+import CountupDemo from "../../../examples/countup-demo"
+import CountupOnViewDemo from "../../../examples/countup-on-view-demo"
+import CountupFormatDemo from "../../../examples/countup-format-demo"
+
+`Countup` animates numbers from a start value to a target value. It is useful for dashboard metrics where progressive motion improves readability and perceived responsiveness.
+
+## Usage
+
+```tsx
+import { Countup } from "shadcn-solid-components/components/countup"
+```
+
+```tsx
+<Countup value={12500} />
+```
+
+Use `startOnView` when you want the animation to begin only after the element enters the viewport. Use `format` when application-specific display formats (for example compact `K/M`) are needed.
+
+## Exports
+
+- `Countup`
+- Types: `CountupProps`, `CountupEasing`, `CountupFormat`
+
+## Examples
+
+### Default stat cards
+
+<ComponentPreview name="Countup Default" source="examples/countup-demo.tsx">
+  <div class="mb-4 w-full">
+    <CountupDemo />
+  </div>
+</ComponentPreview>
+
+### Start on view
+
+<ComponentPreview name="Countup On View" source="examples/countup-on-view-demo.tsx">
+  <div class="mb-4 w-full">
+    <CountupOnViewDemo />
+  </div>
+</ComponentPreview>
+
+### Custom format callback
+
+<ComponentPreview name="Countup Custom Format" source="examples/countup-format-demo.tsx">
+  <div class="mb-4 w-full">
+    <CountupFormatDemo />
+  </div>
+</ComponentPreview>
+
+## API
+
+- `value: number` — Target value to animate to.
+- `from?: number` — Start value, default `0`.
+- `duration?: number` — Duration in milliseconds, default `1200`.
+- `delay?: number` — Delay before animation starts, default `0`.
+- `decimals?: number` — Decimal precision for built-in formatting, default `0`.
+- `locale?: string | string[]` — Locale passed to `Intl.NumberFormat`.
+- `useGrouping?: boolean` — Grouping separator toggle for built-in formatting, default `true`.
+- `format?: (value: number) => string` — Custom formatter callback.
+- `startOnView?: boolean` — Start only after entering viewport, default `false`.
+- `once?: boolean` — For viewport mode, animate once and then keep final value, default `true`.
+- `easing?: 'linear' | 'easeOut'` — Built-in easing curve, default `easeOut`.
+- `onStart?: () => void` — Fires when animation begins.
+- `onEnd?: (finalValue: number) => void` — Fires when animation ends.

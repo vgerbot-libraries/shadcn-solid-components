@@ -862,6 +862,54 @@ export const Contents: Record<string, DocEntry> = {
     }
 ]
   },
+  "components/countup": {
+    component: lazy(() => import("@docs/content/docs/components/countup.mdx")),
+    data: {
+    "title": "Countup",
+    "description": "Animated number component for statistic cards and KPI displays.",
+    "navTitle": "Countup",
+    "section": "Components",
+    "order": 0,
+    "toc": true
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "exports",
+        "text": "Exports"
+    },
+    {
+        "depth": 2,
+        "slug": "examples",
+        "text": "Examples"
+    },
+    {
+        "depth": 3,
+        "slug": "default-stat-cards",
+        "text": "Default stat cards"
+    },
+    {
+        "depth": 3,
+        "slug": "start-on-view",
+        "text": "Start on view"
+    },
+    {
+        "depth": 3,
+        "slug": "custom-format-callback",
+        "text": "Custom format callback"
+    },
+    {
+        "depth": 2,
+        "slug": "api",
+        "text": "API"
+    }
+]
+  },
   "components/date-picker": {
     component: lazy(() => import("@docs/content/docs/components/date-picker.mdx")),
     data: {
@@ -5131,6 +5179,11 @@ export const docsNavigation: DocsNavSection[] = [
         "title": "Context Menu",
         "href": "/docs/components/context-menu",
         "description": "Right-click (or long-press) menu built on Kobalte."
+      },
+      {
+        "title": "Countup",
+        "href": "/docs/components/countup",
+        "description": "Animated number component for statistic cards and KPI displays."
       },
       {
         "title": "Date Picker",

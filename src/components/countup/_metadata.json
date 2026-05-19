@@ -1,0 +1,14 @@
+{
+  "name": "components/countup",
+  "displayName": "Countup",
+  "description": "Animated number display for metrics and dashboard stats with configurable duration, viewport-triggered start, and customizable formatting.",
+  "category": "components",
+  "useCases": [
+    "Animate KPI values inside dashboard statistic cards",
+    "Reveal business metrics when sections enter the viewport",
+    "Display finance and growth counters with locale-aware separators",
+    "Apply product-specific number labels via custom format callback"
+  ],
+  "usage": "import { Countup } from \"shadcn-solid-components/components/countup\"",
+  "tags": ["components", "countup", "counter", "animation", "dashboard", "solidjs", "ui"]
+}

@@ -20,6 +20,7 @@ import type { ColorPickerProps } from '../components/color-picker'
 import type { ComboboxProps } from '../components/combobox'
 import type { CommandProps } from '../components/command'
 import type { ContextMenuProps } from '../components/context-menu'
+import type { CountupProps } from '../components/countup'
 import type { DialogProps } from '../components/dialog'
 import type { DrawerProps } from '../components/drawer'
 import type { DropdownMenuProps } from '../components/dropdown-menu'
@@ -79,6 +80,7 @@ export interface ComponentPropsMap {
   [ComponentName.Collapsible]: CollapsibleProps
   [ComponentName.Combobox]: ComboboxProps<any>
   [ComponentName.Command]: CommandProps
+  [ComponentName.Countup]: CountupProps
   [ComponentName.ColorPicker]: ColorPickerProps
   [ComponentName.ContextMenu]: ContextMenuProps
   [ComponentName.DatePicker]: ComponentProps<'div'>
