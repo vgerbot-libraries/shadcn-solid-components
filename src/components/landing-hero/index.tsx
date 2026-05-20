@@ -1,4 +1,4 @@
-import { Drawer, DrawerClose, DrawerContent } from 'shadcn-solid-components/components/drawer'
+import { Drawer, DrawerClose, DrawerContent, DrawerPortal } from 'shadcn-solid-components/components/drawer'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -33,9 +33,11 @@ export type LandingHeroMobileBreakpoint = 'lg' | 'xl'
 
 export interface LandingHeroProps extends Omit<ComponentProps<'header'>, 'children'> {
   brand: LandingHeroBrandConfig
+  brandLeading?: JSX.Element
   navItems?: LandingHeroNavItem[]
   primaryActions?: JSX.Element
   secondaryActions?: JSX.Element
+  showMobileMenuButton?: boolean
   open?: boolean
   defaultOpen?: boolean
   onOpenChange?: (open: boolean) => void
@@ -256,9 +258,11 @@ function renderMobileNavItem(item: LandingHeroNavItem, onSelect: () => void) {
 export function LandingHero(props: LandingHeroProps) {
   const [local, rest] = splitProps(props, [
     'brand',
+    'brandLeading',
     'navItems',
     'primaryActions',
     'secondaryActions',
+    'showMobileMenuButton',
     'open',
     'defaultOpen',
     'onOpenChange',
@@ -294,6 +298,8 @@ export function LandingHero(props: LandingHeroProps) {
   const visibilityClasses = () => breakpointClasses[activeBreakpoint()]
   const primaryActions = () => local.primaryActions
   const secondaryActions = () => local.secondaryActions
+  const shouldShowMobileMenu = () =>
+    local.showMobileMenuButton !== false && (!!local.navItems?.length || !!secondaryActions())
 
   return (
     <header class={cx('border-border/80 bg-background border-b', local.class)} {...rest}>
@@ -303,7 +309,12 @@ export function LandingHero(props: LandingHeroProps) {
           local.containerClass,
         )}
       >
-        <div class="min-w-0 shrink-0">{renderBrand(local.brand, local.brandClass)}</div>
+        <div class="flex min-w-0 shrink-0 items-center gap-2">
+          <Show when={local.brandLeading}>
+            <div class="flex items-center">{local.brandLeading}</div>
+          </Show>
+          <div class="min-w-0">{renderBrand(local.brand, local.brandClass)}</div>
+        </div>
 
         <Show when={local.navItems?.length}>
           <nav class={cx('flex-1 justify-center', visibilityClasses().desktopFlex, local.navClass)}>
@@ -325,126 +336,132 @@ export function LandingHero(props: LandingHeroProps) {
             </div>
           </Show>
 
-          <button
-            type="button"
-            class={cx(
-              'text-muted-foreground hover:text-foreground hover:bg-accent focus-visible:ring-ring/50 inline-flex size-9 items-center justify-center rounded-md transition-colors outline-none focus-visible:ring-2',
-              visibilityClasses().mobileOnly,
-            )}
-            onClick={() => setOpen(true)}
-            aria-label={local.menuButtonLabel ?? DEFAULT_MENU_BUTTON_LABEL}
-            aria-expanded={open()}
-            aria-controls="landing-hero-mobile-menu"
-          >
-            <Show
-              when={open()}
-              fallback={
+          <Show when={shouldShowMobileMenu()}>
+            <button
+              type="button"
+              class={cx(
+                'text-muted-foreground hover:text-foreground hover:bg-accent focus-visible:ring-ring/50 inline-flex size-9 items-center justify-center rounded-md transition-colors outline-none focus-visible:ring-2',
+                visibilityClasses().mobileOnly,
+              )}
+              onClick={() => setOpen(true)}
+              aria-label={local.menuButtonLabel ?? DEFAULT_MENU_BUTTON_LABEL}
+              aria-expanded={open()}
+              aria-controls="landing-hero-mobile-menu"
+            >
+              <Show
+                when={open()}
+                fallback={
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    class="size-5"
+                    aria-hidden="true"
+                  >
+                    <line
+                      x1="4"
+                      y1="6"
+                      x2="20"
+                      y2="6"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                    />
+                    <line
+                      x1="4"
+                      y1="12"
+                      x2="20"
+                      y2="12"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                    />
+                    <line
+                      x1="4"
+                      y1="18"
+                      x2="20"
+                      y2="18"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                    />
+                  </svg>
+                }
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
                   class="size-5"
                   aria-hidden="true"
                 >
-                  <line
-                    x1="4"
-                    y1="6"
-                    x2="20"
-                    y2="6"
+                  <path
                     fill="none"
                     stroke="currentColor"
                     stroke-width="2"
                     stroke-linecap="round"
-                  />
-                  <line
-                    x1="4"
-                    y1="12"
-                    x2="20"
-                    y2="12"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                  />
-                  <line
-                    x1="4"
-                    y1="18"
-                    x2="20"
-                    y2="18"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M18 6L6 18M6 6l12 12"
                   />
                 </svg>
-              }
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                class="size-5"
-                aria-hidden="true"
-              >
-                <path
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M18 6L6 18M6 6l12 12"
-                />
-              </svg>
-            </Show>
-          </button>
+              </Show>
+            </button>
+          </Show>
         </div>
       </div>
 
-      <Drawer open={open()} onOpenChange={setOpen} side="right">
-        <DrawerContent
-          class={cx('w-[85vw] max-w-[320px] p-0', local.mobileMenuClass)}
-          id="landing-hero-mobile-menu"
-          aria-label={local.menuPanelLabel ?? DEFAULT_MENU_PANEL_LABEL}
-        >
-          <div class="flex items-center justify-between border-b px-4 py-3">
-            <span class="text-sm font-medium">
-              {local.menuPanelLabel ?? DEFAULT_MENU_PANEL_LABEL}
-            </span>
-            <DrawerClose
-              class="text-muted-foreground hover:text-foreground hover:bg-accent focus-visible:ring-ring/50 inline-flex size-8 items-center justify-center rounded-md outline-none transition-colors focus-visible:ring-2"
-              aria-label="Close"
+      <Show when={shouldShowMobileMenu()}>
+        <Drawer open={open()} onOpenChange={setOpen} side="right" preventScroll={false}>
+          <DrawerPortal>
+            <DrawerContent
+              class={cx('w-[85vw] max-w-[320px] p-0', local.mobileMenuClass)}
+              id="landing-hero-mobile-menu"
+              aria-label={local.menuPanelLabel ?? DEFAULT_MENU_PANEL_LABEL}
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                class="size-4"
-                aria-hidden="true"
-              >
-                <path
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M18 6L6 18M6 6l12 12"
-                />
-              </svg>
-            </DrawerClose>
-          </div>
-
-          <div class="space-y-5 p-4">
-            <Show when={local.navItems?.length}>
-              <nav class="space-y-2">
-                <For each={local.navItems}>{item => renderMobileNavItem(item, onSelect)}</For>
-              </nav>
-            </Show>
-
-            <Show when={secondaryActions()}>
-              <div class="border-t pt-4">
-                <div class="flex flex-wrap items-center gap-2">{secondaryActions()}</div>
+              <div class="flex items-center justify-between border-b px-4 py-3">
+                <span class="text-sm font-medium">
+                  {local.menuPanelLabel ?? DEFAULT_MENU_PANEL_LABEL}
+                </span>
+                <DrawerClose
+                  class="text-muted-foreground hover:text-foreground hover:bg-accent focus-visible:ring-ring/50 inline-flex size-8 items-center justify-center rounded-md outline-none transition-colors focus-visible:ring-2"
+                  aria-label="Close"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    class="size-4"
+                    aria-hidden="true"
+                  >
+                    <path
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M18 6L6 18M6 6l12 12"
+                    />
+                  </svg>
+                </DrawerClose>
               </div>
-            </Show>
-          </div>
-        </DrawerContent>
-      </Drawer>
+
+              <div class="space-y-5 p-4">
+                <Show when={local.navItems?.length}>
+                  <nav class="space-y-2">
+                    <For each={local.navItems}>{item => renderMobileNavItem(item, onSelect)}</For>
+                  </nav>
+                </Show>
+
+                <Show when={secondaryActions()}>
+                  <div class="border-t pt-4">
+                    <div class="flex flex-wrap items-center gap-2">{secondaryActions()}</div>
+                  </div>
+                </Show>
+              </div>
+            </DrawerContent>
+          </DrawerPortal>
+        </Drawer>
+      </Show>
     </header>
   )
 }
