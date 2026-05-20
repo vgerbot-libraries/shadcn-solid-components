@@ -5,9 +5,22 @@ import MiniSearch from "minisearch"
 import { For, Show, createEffect, createMemo, createSignal } from "solid-js"
 
 import { Button, buttonVariants } from "shadcn-solid-components/components/button"
+import { LandingHero } from "shadcn-solid-components/components/landing-hero"
 import { Separator } from "shadcn-solid-components/components/separator"
+import {
+  Sidebar,
+  SidebarContent,
+  SidebarGroup,
+  SidebarGroupContent,
+  SidebarGroupLabel,
+  SidebarHeader,
+  SidebarProvider,
+  SidebarTrigger,
+  useSidebar,
+} from "shadcn-solid-components/components/sidebar"
 import { TextField, TextFieldInput } from "shadcn-solid-components/components/text-field"
 import { ModeToggleDropdown } from "shadcn-solid-components/hoc/mode-toggle-dropdown"
+import { SidebarMenuTree } from "shadcn-solid-components/hoc/sidebar-menu-tree"
 import { cx } from "shadcn-solid-components/lib/cva"
 
 import { mdxCustomComponents } from "@docs/components/mdx"
@@ -74,6 +87,11 @@ const docsSearch = new MiniSearch<DocsSearchItem>({
 })
 
 docsSearch.addAll(docsSearchItems)
+
+const topNavItems = [
+  { label: "Home", href: "/" },
+  { label: "Docs", href: "/docs" },
+]
 
 const HomePage = () => {
   createEffect(() => {
@@ -175,7 +193,6 @@ const TableOfContents = (props: { headings: Array<{ depth: number; slug: string;
 }
 
 const DocsSidebar = () => {
-  const location = useLocation()
   const [query, setQuery] = createSignal("")
   const trimmedQuery = createMemo(() => query().trim())
 
@@ -204,87 +221,75 @@ const DocsSidebar = () => {
     filteredSections().reduce((count: number, section: any) => count + section.items.length, 0),
   )
 
+  const toSidebarItems = (items: any[]) =>
+    items.map((item: any) => ({
+      title: item.title,
+      url: item.href,
+      badge: item.status
+        ? {
+            content: item.status,
+            class: "text-[10px] uppercase tracking-[0.18em]",
+          }
+        : undefined,
+    }))
+
   return (
-    <aside class="border-border bg-background/80 w-full shrink-0 border-b backdrop-blur lg:fixed lg:top-16 lg:left-[max(0px,calc((100vw-96rem)/2))] lg:h-[calc(100vh-4rem)] lg:w-72 lg:border-b-0 lg:border-r">
-      <div class="flex h-full flex-col">
-        <div class="px-6 py-6">
-          <div class="space-y-3">
-            <TextField>
-              <TextFieldInput
-                type="search"
-                value={query()}
-                onInput={(event) => setQuery(event.currentTarget.value)}
-                placeholder="Search docs..."
-                aria-label="Search documentation"
-              />
-            </TextField>
-            <Show when={trimmedQuery()}>
-              <div class="text-muted-foreground flex items-center justify-between gap-3 px-1 text-xs">
-                <span>
-                  {resultCount()} result{resultCount() === 1 ? "" : "s"}
-                </span>
-                <button
-                  type="button"
-                  class="hover:text-foreground transition-colors"
-                  onClick={() => setQuery("")}
-                >
-                  Clear
-                </button>
-              </div>
-            </Show>
-          </div>
-        </div>
-        <Separator />
-        <div class="flex-1 overflow-y-auto px-4 py-4">
-          <Show when={docsNavigation.length} fallback={<p class="text-muted-foreground px-2 text-sm">Waiting for content.</p>}>
-            <Show
-              when={filteredSections().length}
-              fallback={
-                <p class="text-muted-foreground px-2 text-sm">
-                  No pages match <span class="text-foreground font-medium">{trimmedQuery()}</span>.
-                </p>
-              }
-            >
-            <nav class="space-y-6">
-              <For each={filteredSections()}>
-                {(section) => (
-                  <section>
-                    <p class="text-muted-foreground px-2 text-xs font-semibold uppercase tracking-[0.2em]">
-                      {section.title}
-                    </p>
-                    <div class="mt-2 space-y-1">
-                      <For each={section.items}>
-                        {(item) => (
-                          <A
-                            href={item.href}
-                            class={cx(
-                              "block rounded-xl px-3 py-2 text-sm transition-colors",
-                              location.pathname === item.href
-                                ? "bg-muted text-foreground font-medium"
-                                : "text-muted-foreground hover:bg-muted/70 hover:text-foreground",
-                            )}
-                          >
-                            <div class="flex items-center justify-between gap-3">
-                              <span>{item.title}</span>
-                              <Show when={item.status}>
-                                <span class="border-border bg-background rounded-full border px-2 py-0.5 text-[10px] uppercase tracking-[0.18em]">
-                                  {item.status}
-                                </span>
-                              </Show>
-                            </div>
-                          </A>
-                        )}
-                      </For>
-                    </div>
-                  </section>
-                )}
-              </For>
-            </nav>
-            </Show>
+    <Sidebar class="top-16 h-[calc(100svh-4rem)] border-r" variant="sidebar" collapsible="offcanvas">
+      <SidebarHeader class="px-4 py-4">
+        <div class="space-y-3">
+          <TextField>
+            <TextFieldInput
+              type="search"
+              value={query()}
+              onInput={(event) => setQuery(event.currentTarget.value)}
+              placeholder="Search docs..."
+              aria-label="Search documentation"
+            />
+          </TextField>
+          <Show when={trimmedQuery()}>
+            <div class="text-muted-foreground flex items-center justify-between gap-3 px-1 text-xs">
+              <span>
+                {resultCount()} result{resultCount() === 1 ? "" : "s"}
+              </span>
+              <button
+                type="button"
+                class="hover:text-foreground transition-colors"
+                onClick={() => setQuery("")}
+              >
+                Clear
+              </button>
+            </div>
           </Show>
         </div>
-      </div>
-    </aside>
+      </SidebarHeader>
+      <Separator />
+      <SidebarContent class="px-2 py-4">
+        <Show
+          when={docsNavigation.length}
+          fallback={<p class="text-muted-foreground px-2 text-sm">Waiting for content.</p>}
+        >
+          <Show
+            when={filteredSections().length}
+            fallback={
+              <p class="text-muted-foreground px-2 text-sm">
+                No pages match <span class="text-foreground font-medium">{trimmedQuery()}</span>.
+              </p>
+            }
+          >
+            <For each={filteredSections()}>
+              {(section) => (
+                <SidebarGroup>
+                  <SidebarGroupLabel>{section.title}</SidebarGroupLabel>
+                  <SidebarGroupContent>
+                    <SidebarMenuTree items={toSidebarItems(section.items)} />
+                  </SidebarGroupContent>
+                </SidebarGroup>
+              )}
+            </For>
+          </Show>
+        </Show>
+      </SidebarContent>
+    </Sidebar>
   )
 }
 
@@ -406,70 +411,91 @@ const DocsPage = () => {
 
 const DocsLayout = (props: { children?: import("solid-js").JSX.Element }) => {
   return (
-    <div class="mx-auto flex w-full max-w-9xl flex-1 flex-col lg:pl-72">
+    <div class="flex w-full flex-1 min-h-0">
       <DocsSidebar />
-      <div class="min-w-0 flex-1">{props.children}</div>
+      <div class="min-w-0 flex-1 overflow-auto">{props.children}</div>
     </div>
   )
 }
 
-const AppShell = (props: { children?: import("solid-js").JSX.Element }) => {
+const AppFooter = (props: { isDocsRoute: boolean }) => {
+  const { isMobile, open } = useSidebar()
+
+  const footerClass = createMemo(() =>
+    cx(
+      "border-border border-t transition-[margin] duration-200 ease-linear",
+      props.isDocsRoute && !isMobile() && open() && "md:ml-[var(--sidebar-width)]",
+    ),
+  )
+
   return (
-    <div class="bg-background text-foreground flex min-h-screen flex-col">
-      <header class="border-border bg-background/80 sticky top-0 z-40 border-b backdrop-blur">
-        <div class="mx-auto flex h-16 w-full max-w-9xl items-center justify-between px-6 sm:px-8 lg:px-12">
-          <div class="flex items-center gap-6">
-            <A href="/" class="text-foreground text-base font-semibold tracking-tight">
-              shadcn-solid-components
-            </A>
-            <nav class="hidden items-center gap-4 text-sm md:flex">
-              <A href="/" class="text-muted-foreground hover:text-foreground transition-colors">
-                Home
-              </A>
-              <A href="/docs" class="text-muted-foreground hover:text-foreground transition-colors">
-                Docs
-              </A>
-            </nav>
-          </div>
-          <div class="flex items-center gap-2">
-            <Button
-              as="a"
-              href="https://github.com/vgerbot-libraries/shadcn-solid-components"
-              variant="ghost"
-              class="size-9 p-0"
-              target="_blank"
-              rel="noreferrer"
-              aria-label="GitHub repository"
-            >
-              <svg
-                aria-hidden="true"
-                viewBox="0 0 24 24"
-                class="size-5"
-                fill="currentColor"
+    <footer class={footerClass()}>
+      <div class="text-muted-foreground mx-auto flex w-full max-w-9xl items-center justify-between gap-4 px-6 py-4 text-sm sm:px-8 lg:px-12">
+        <span>Docs infrastructure ready for incremental MDX content.</span>
+        <Button
+          as="a"
+          href="/docs"
+          variant="ghost"
+          size="sm"
+          class="hidden sm:inline-flex"
+        >
+          Browse docs
+        </Button>
+      </div>
+    </footer>
+  )
+}
+
+const AppShell = (props: { children?: import("solid-js").JSX.Element }) => {
+  const location = useLocation()
+  const isDocsRoute = createMemo(() => location.pathname.startsWith("/docs"))
+
+  return (
+    <SidebarProvider>
+      <div class="bg-background text-foreground flex h-svh w-full flex-col overflow-hidden">
+        <LandingHero
+          class="sticky top-0 z-40 border-border bg-background/80 backdrop-blur"
+          containerClass={cx(
+            isDocsRoute() ? "max-w-none px-4" : "mx-auto max-w-9xl px-4 sm:px-8 lg:px-12",
+          )}
+          brandLeading={
+            <Show when={isDocsRoute()}>
+              <SidebarTrigger />
+            </Show>
+          }
+          brand={{
+            title: "shadcn-solid-components",
+            href: "/",
+          }}
+          navItems={topNavItems}
+          secondaryActions={
+            <>
+              <Button
+                as="a"
+                href="https://github.com/vgerbot-libraries/shadcn-solid-components"
+                variant="ghost"
+                class="size-9 p-0"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="GitHub repository"
               >
-                <path d="M12 2C6.477 2 2 6.59 2 12.253c0 4.53 2.865 8.374 6.839 9.73.5.095.682-.22.682-.49 0-.238-.009-.868-.014-1.703-2.782.615-3.369-1.372-3.369-1.372-.455-1.185-1.11-1.5-1.11-1.5-.909-.637.069-.624.069-.624 1.004.072 1.532 1.058 1.532 1.058.892 1.56 2.341 1.11 2.91.85.092-.665.35-1.11.636-1.366-2.22-.258-4.555-1.14-4.555-5.075 0-1.122.39-2.039 1.029-2.758-.103-.26-.446-1.303.098-2.716 0 0 .84-.274 2.75 1.054A9.325 9.325 0 0 1 12 6.844a9.29 9.29 0 0 1 2.504.348c1.909-1.328 2.747-1.054 2.747-1.054.546 1.413.203 2.456.1 2.716.64.719 1.027 1.636 1.027 2.758 0 3.945-2.339 4.814-4.566 5.067.359.318.678.946.678 1.907 0 1.376-.012 2.485-.012 2.823 0 .272.18.59.688.49C19.138 20.623 22 16.781 22 12.253 22 6.59 17.523 2 12 2Z" />
-              </svg>
-            </Button>
-            <ModeToggleDropdown trigger={{ class: "w-9 px-0" }} />
-          </div>
-        </div>
-      </header>
-      <main class="flex flex-1">{props.children}</main>
-      <footer class="border-border border-t">
-        <div class="text-muted-foreground mx-auto flex w-full max-w-9xl items-center justify-between gap-4 px-6 py-4 text-sm sm:px-8 lg:px-12">
-          <span>Docs infrastructure ready for incremental MDX content.</span>
-          <Button
-            as="a"
-            href="/docs"
-            variant="ghost"
-            size="sm"
-            class="hidden sm:inline-flex"
-          >
-            Browse docs
-          </Button>
-        </div>
-      </footer>
-    </div>
+                <svg
+                  aria-hidden="true"
+                  viewBox="0 0 24 24"
+                  class="size-5"
+                  fill="currentColor"
+                >
+                  <path d="M12 2C6.477 2 2 6.59 2 12.253c0 4.53 2.865 8.374 6.839 9.73.5.095.682-.22.682-.49 0-.238-.009-.868-.014-1.703-2.782.615-3.369-1.372-3.369-1.372-.455-1.185-1.11-1.5-1.11-1.5-.909-.637.069-.624.069-.624 1.004.072 1.532 1.058 1.532 1.058.892 1.56 2.341 1.11 2.91.85.092-.665.35-1.11.636-1.366-2.22-.258-4.555-1.14-4.555-5.075 0-1.122.39-2.039 1.029-2.758-.103-.26-.446-1.303.098-2.716 0 0 .84-.274 2.75 1.054A9.325 9.325 0 0 1 12 6.844a9.29 9.29 0 0 1 2.504.348c1.909-1.328 2.747-1.054 2.747-1.054.546 1.413.203 2.456.1 2.716.64.719 1.027 1.636 1.027 2.758 0 3.945-2.339 4.814-4.566 5.067.359.318.678.946.678 1.907 0 1.376-.012 2.485-.012 2.823 0 .272.18.59.688.49C19.138 20.623 22 16.781 22 12.253 22 6.59 17.523 2 12 2Z" />
+                </svg>
+              </Button>
+              <ModeToggleDropdown trigger={{ class: "w-9 px-0" }} />
+            </>
+          }
+        />
+        <main class="flex flex-1 min-h-0">{props.children}</main>
+        <AppFooter isDocsRoute={isDocsRoute()} />
+      </div>
+    </SidebarProvider>
   )
 }
 
