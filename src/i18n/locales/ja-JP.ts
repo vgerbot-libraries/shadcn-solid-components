@@ -18,6 +18,7 @@ import { jaJP as NotificationCenter } from '../../hoc/notification-center/locale
 import { jaJP as OTPField } from '../../hoc/otp-field/locales/ja-JP'
 import { jaJP as OverlayPage } from '../../hoc/overlay-page/locales/ja-JP'
 import { jaJP as PricingTable } from '../../hoc/pricing-table/locales/ja-JP'
+import { jaJP as SchemaForm } from '../../hoc/schema-form/locales/ja-JP'
 import { jaJP as SettingsLayout } from '../../hoc/settings-layout/locales/ja-JP'
 import { jaJP as Stepper } from '../../hoc/stepper/locales/ja-JP'
 import { jaJP as TagInput } from '../../hoc/tag-input/locales/ja-JP'
@@ -52,4 +53,5 @@ export const jaJP: Locale = {
   Invoice,
   ErrorPage,
   FaqSection,
+  SchemaForm,
 }

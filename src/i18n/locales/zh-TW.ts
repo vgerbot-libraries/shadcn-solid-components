@@ -18,6 +18,7 @@ import { zhTW as NotificationCenter } from '../../hoc/notification-center/locale
 import { zhTW as OTPField } from '../../hoc/otp-field/locales/zh-TW'
 import { zhTW as OverlayPage } from '../../hoc/overlay-page/locales/zh-TW'
 import { zhTW as PricingTable } from '../../hoc/pricing-table/locales/zh-TW'
+import { zhTW as SchemaForm } from '../../hoc/schema-form/locales/zh-TW'
 import { zhTW as SettingsLayout } from '../../hoc/settings-layout/locales/zh-TW'
 import { zhTW as Stepper } from '../../hoc/stepper/locales/zh-TW'
 import { zhTW as TagInput } from '../../hoc/tag-input/locales/zh-TW'
@@ -52,4 +53,5 @@ export const zhTW: Locale = {
   Invoice,
   ErrorPage,
   FaqSection,
+  SchemaForm,
 }

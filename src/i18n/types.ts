@@ -253,6 +253,35 @@ export interface ErrorPageLocale {
   goHome: string
 }
 
+export interface SchemaFormLocale {
+  submit: string
+  addItem: string
+  removeItem: string
+  arrayItem: string
+  booleanLabel: string
+  selectPlaceholder: string
+  loadingOptions: string
+  fieldRequired: string
+  constInvalid: string
+  enumInvalid: string
+  invalidString: string
+  invalidNumber: string
+  invalidInteger: string
+  invalidBoolean: string
+  invalidArray: string
+  invalidObject: string
+  minLength: (min: number) => string
+  maxLength: (max: number) => string
+  patternMismatch: string
+  minimum: (min: number) => string
+  maximum: (max: number) => string
+  exclusiveMinimum: (min: number) => string
+  exclusiveMaximum: (max: number) => string
+  multipleOf: (unit: number) => string
+  minItems: (min: number) => string
+  maxItems: (max: number) => string
+}
+
 export interface Locale {
   locale: string
   AuthForm: AuthFormLocale
@@ -280,4 +309,5 @@ export interface Locale {
   Invoice: InvoiceLocale
   FaqSection: FaqSectionLocale
   ErrorPage: ErrorPageLocale
+  SchemaForm: SchemaFormLocale
 }

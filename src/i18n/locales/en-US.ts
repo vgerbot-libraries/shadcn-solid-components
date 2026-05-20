@@ -18,6 +18,7 @@ import { enUS as NotificationCenter } from '../../hoc/notification-center/locale
 import { enUS as OTPField } from '../../hoc/otp-field/locales/en-US'
 import { enUS as OverlayPage } from '../../hoc/overlay-page/locales/en-US'
 import { enUS as PricingTable } from '../../hoc/pricing-table/locales/en-US'
+import { enUS as SchemaForm } from '../../hoc/schema-form/locales/en-US'
 import { enUS as SettingsLayout } from '../../hoc/settings-layout/locales/en-US'
 import { enUS as Stepper } from '../../hoc/stepper/locales/en-US'
 import { enUS as TagInput } from '../../hoc/tag-input/locales/en-US'
@@ -52,4 +53,5 @@ export const enUS: Locale = {
   Invoice,
   ErrorPage,
   FaqSection,
+  SchemaForm,
 }

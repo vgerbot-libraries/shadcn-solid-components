@@ -13,7 +13,10 @@
   "bugs": {
     "url": "https://github.com/vgerbot-libraries/shadcn-solid-components/issues"
   },
-  "files": ["src", "bin"],
+  "files": [
+    "src",
+    "bin"
+  ],
   "private": false,
   "sideEffects": false,
   "type": "module",
@@ -50,9 +53,9 @@
     "./components/color-picker": "./src/components/color-picker/index.tsx",
     "./components/combobox": "./src/components/combobox/index.tsx",
     "./components/command": "./src/components/command/index.tsx",
-    "./components/countup": "./src/components/countup/index.tsx",
     "./components/config-provider": "./src/components/config-provider/index.tsx",
     "./components/context-menu": "./src/components/context-menu/index.tsx",
+    "./components/countup": "./src/components/countup/index.tsx",
     "./components/date-picker": "./src/components/date-picker/index.tsx",
     "./components/dialog": "./src/components/dialog/index.tsx",
     "./components/drawer": "./src/components/drawer/index.tsx",
@@ -124,6 +127,7 @@
     "./hoc/page-header": "./src/hoc/page-header/index.tsx",
     "./hoc/pricing-table": "./src/hoc/pricing-table/index.tsx",
     "./hoc/profile-header": "./src/hoc/profile-header/index.tsx",
+    "./hoc/schema-form": "./src/hoc/schema-form/index.tsx",
     "./hoc/settings-layout": "./src/hoc/settings-layout/index.tsx",
     "./hoc/sidebar-menu-tree": "./src/hoc/sidebar-menu-tree/index.tsx",
     "./hoc/stat-card": "./src/hoc/stat-card/index.tsx",
@@ -251,7 +255,9 @@
     "vite-tsconfig-paths": "^6.0.5",
     "vitest": "^1.6.0"
   },
-  "keywords": ["solid"],
+  "keywords": [
+    "solid"
+  ],
   "packageManager": "pnpm@9.1.1",
   "engines": {
     "node": ">=18",

@@ -1,0 +1,139 @@
+---
+title: Schema form
+description: JSON Schema draft-2020-12 driven dynamic form HOC with x-ui extension hooks and Zod-compatible validation.
+section: HOC
+toc: true
+---
+
+import SchemaFormBasicDemo from "../../../examples/schema-form-basic-demo"
+import SchemaFormLinkageDemo from "../../../examples/schema-form-linkage-demo"
+import SchemaFormAdvancedDemo from "../../../examples/schema-form-advanced-demo"
+
+`SchemaForm` renders form UI from JSON Schema draft-2020-12 and supports `x-ui:*` extension fields for widget selection, dynamic linkage, and async option loading.
+
+## Usage
+
+```tsx
+import { SchemaForm } from "shadcn-solid-components/hoc/schema-form"
+
+<SchemaForm
+  schema={schema}
+  value={values()}
+  onChange={setValues}
+  zodSchema={zodSchema}
+  optionLoaders={{
+    regionOptions: async ({ values }) => fetchRegions(values.country),
+  }}
+  onSubmit={(payload) => save(payload)}
+/>
+```
+
+The default validation pipeline is JSON Schema keyword validation. Add `zodSchema` for business-level validation and `onValidate` for custom rule composition.
+
+## Exports
+
+- `SchemaForm` — component
+- Types: `SchemaFormProps`, `SchemaFormSchema`, `SchemaFormFieldSchema`, `SchemaFormUiSchema`, `SchemaFormUiFieldConfig`, `SchemaFormOption`, `SchemaFormOptionLoader`, `SchemaFormOptionLoaderContext`, `SchemaFormValidationResult`, `SchemaFormZodSchemaLike`, `SchemaFormWidgetRenderer`, `SchemaFormWidgetProps`, `SchemaFormDynamicRule`, `SchemaFormDynamicRuleObject`, `SchemaFormObject`, `SchemaFormValue`
+
+## Examples
+
+### Basic JSON Schema form
+
+<ComponentPreview name="Schema Form Basic Demo" source="examples/schema-form-basic-demo.tsx">
+  <div class="mb-4 w-full">
+    <SchemaFormBasicDemo />
+  </div>
+</ComponentPreview>
+
+### Field linkage and dynamic options
+
+<ComponentPreview name="Schema Form Linkage Demo" source="examples/schema-form-linkage-demo.tsx">
+  <div class="mb-4 w-full">
+    <SchemaFormLinkageDemo />
+  </div>
+</ComponentPreview>
+
+### Nested object/array with Zod-compatible validation
+
+<ComponentPreview name="Schema Form Advanced Demo" source="examples/schema-form-advanced-demo.tsx">
+  <div class="mb-4 w-full">
+    <SchemaFormAdvancedDemo />
+  </div>
+</ComponentPreview>
+
+## API
+
+### `SchemaFormProps`
+
+Extends `form` props (without native `onChange` and `onSubmit`).
+
+- `schema` — `SchemaFormSchema` — JSON Schema draft-2020-12 input
+- `uiSchema` — `SchemaFormUiSchema` — path-based UI override map
+- `value`, `defaultValue`, `onChange` — controlled/uncontrolled value pipeline
+- `onSubmit` — submit callback after validation passes
+- `onValidate` — custom validation hook (`SchemaFormValidationResult`)
+- `zodSchema` — Zod-compatible schema object (`safeParse` or `parse`)
+- `optionLoaders` — async/sync loader map for `x-ui:optionsSource`
+- `widgetRegistry` — custom widget renderer map
+- `validateOn` — `'submit' | 'change'`
+- `showSubmitButton`, `submitText` — built-in submit action control
+- `locale` — `Partial<SchemaFormLocale>`
+
+### Supported JSON Schema keywords
+
+- Structural: `type`, `properties`, `required`, `items`
+- Display: `title`, `description`, `default`, `format`
+- Value constraints:
+  - string: `minLength`, `maxLength`, `pattern`
+  - number/integer: `minimum`, `maximum`, `exclusiveMinimum`, `exclusiveMaximum`, `multipleOf`
+  - enum/const: `enum`, `const`
+  - array: `minItems`, `maxItems`
+
+### `x-ui:*` extension fields
+
+- `'x-ui:widget'` — widget key (`text`, `textarea`, `number`, `date`, `select`, `radio`, `checkbox`, `switch`)
+- `'x-ui:placeholder'`, `'x-ui:help'` — field-level UI hints
+- `'x-ui:options'` — static options for select/radio
+- `'x-ui:optionsSource'` — option loader key from `optionLoaders`
+- `'x-ui:dependsOn'` — dependency paths used by option loaders
+- `'x-ui:visibleWhen'`, `'x-ui:disabledWhen'`, `'x-ui:readonlyWhen'`, `'x-ui:requiredWhen'` — dynamic rule hooks
+
+### Zod integration
+
+`SchemaForm` accepts a Zod-compatible object with either `safeParse` or `parse`.
+
+```tsx
+import { z } from "zod"
+
+const profileSchema = z
+  .object({
+  profile: z.object({
+      fullName: z.string().min(3, "Full name must be at least 3 characters"),
+      website: z.string().url().optional().or(z.literal("")),
+    }),
+    contacts: z
+      .array(
+        z.object({
+          type: z.enum(["email", "phone"]),
+          value: z.string().min(3, "Contact value is too short"),
+          primary: z.boolean().default(false),
+        }),
+      )
+      .min(1, "At least one contact is required"),
+  }),
+  )
+  .superRefine((data, ctx) => {
+    const hasPrimary = data.contacts.some(item => item.primary)
+    if (!hasPrimary) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        path: ["contacts"],
+        message: "At least one contact must be marked as primary",
+      })
+    }
+  })
+
+<SchemaForm schema={schema} zodSchema={profileSchema} />
+```
+
+You can combine `zodSchema` and `onValidate`. Use Zod for business rules and keep `onValidate` for async/server-backed checks.

@@ -18,6 +18,7 @@ import { zhCN as NotificationCenter } from '../../hoc/notification-center/locale
 import { zhCN as OTPField } from '../../hoc/otp-field/locales/zh-CN'
 import { zhCN as OverlayPage } from '../../hoc/overlay-page/locales/zh-CN'
 import { zhCN as PricingTable } from '../../hoc/pricing-table/locales/zh-CN'
+import { zhCN as SchemaForm } from '../../hoc/schema-form/locales/zh-CN'
 import { zhCN as SettingsLayout } from '../../hoc/settings-layout/locales/zh-CN'
 import { zhCN as Stepper } from '../../hoc/stepper/locales/zh-CN'
 import { zhCN as TagInput } from '../../hoc/tag-input/locales/zh-CN'
@@ -52,4 +53,5 @@ export const zhCN: Locale = {
   Invoice,
   ErrorPage,
   FaqSection,
+  SchemaForm,
 }

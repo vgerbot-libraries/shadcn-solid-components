@@ -1,0 +1,14 @@
+{
+  "name": "hoc/schema-form",
+  "displayName": "Schema Form",
+  "description": "A JSON Schema draft-2020-12 driven form HOC with x-ui extension support, dynamic field linkage, nested object/array rendering, option loaders, custom widget registry, and optional Zod-compatible validation integration.",
+  "category": "hoc",
+  "useCases": [
+    "Dynamic admin configuration forms generated from backend-managed JSON schemas",
+    "Enterprise onboarding flows requiring field dependency logic and conditional required rules",
+    "Operations dashboards that mix static enum options with async option sources",
+    "Product forms that need nested object and array editing with extensible widgets"
+  ],
+  "usage": "import { SchemaForm, type SchemaFormSchema, type SchemaFormProps } from \"shadcn-solid-components/hoc/schema-form\"",
+  "tags": ["hoc", "schema-form", "json-schema", "zod", "dynamic-form", "solidjs"]
+}

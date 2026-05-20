@@ -6,6 +6,9 @@
   --container-9xl: 96rem;
 }
 
+:root {
+  overflow: hidden;
+}
 
 @layer base {
   html {

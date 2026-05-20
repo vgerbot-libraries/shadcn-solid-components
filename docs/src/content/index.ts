@@ -4300,6 +4300,74 @@ export const Contents: Record<string, DocEntry> = {
     }
 ]
   },
+  "hoc/schema-form": {
+    component: lazy(() => import("@docs/content/docs/hoc/schema-form.mdx")),
+    data: {
+    "title": "Schema form",
+    "description": "JSON Schema draft-2020-12 driven dynamic form HOC with x-ui extension hooks and Zod-compatible validation.",
+    "navTitle": "Schema form",
+    "section": "HOC",
+    "order": 0,
+    "toc": true
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "exports",
+        "text": "Exports"
+    },
+    {
+        "depth": 2,
+        "slug": "examples",
+        "text": "Examples"
+    },
+    {
+        "depth": 3,
+        "slug": "basic-json-schema-form",
+        "text": "Basic JSON Schema form"
+    },
+    {
+        "depth": 3,
+        "slug": "field-linkage-and-dynamic-options",
+        "text": "Field linkage and dynamic options"
+    },
+    {
+        "depth": 3,
+        "slug": "nested-objectarray-with-zod-compatible-validation",
+        "text": "Nested object/array with Zod-compatible validation"
+    },
+    {
+        "depth": 2,
+        "slug": "api",
+        "text": "API"
+    },
+    {
+        "depth": 3,
+        "slug": "schemaformprops",
+        "text": "SchemaFormProps"
+    },
+    {
+        "depth": 3,
+        "slug": "supported-json-schema-keywords",
+        "text": "Supported JSON Schema keywords"
+    },
+    {
+        "depth": 3,
+        "slug": "x-ui-extension-fields",
+        "text": "x-ui: extension fields"
+    },
+    {
+        "depth": 3,
+        "slug": "zod-integration",
+        "text": "Zod integration"
+    }
+]
+  },
   "hoc/settings-layout": {
     component: lazy(() => import("@docs/content/docs/hoc/settings-layout.mdx")),
     data: {
@@ -5539,6 +5607,11 @@ export const docsNavigation: DocsNavSection[] = [
         "title": "Profile header",
         "href": "/docs/hoc/profile-header",
         "description": "User profile card with cover image, avatar, stats row, action buttons, and tabbed content panels."
+      },
+      {
+        "title": "Schema form",
+        "href": "/docs/hoc/schema-form",
+        "description": "JSON Schema draft-2020-12 driven dynamic form HOC with x-ui extension hooks and Zod-compatible validation."
       },
       {
         "title": "Settings layout",

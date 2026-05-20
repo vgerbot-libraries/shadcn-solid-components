@@ -99,7 +99,7 @@ const HomePage = () => {
   })
 
   return (
-    <div class="mx-auto flex w-full max-w-9xl flex-1 flex-col px-6 py-16 sm:px-8 lg:px-12 text-center items-center justify-center">
+    <div class="mx-auto flex w-full max-w-9xl min-h-0 flex-1 flex-col items-center overflow-y-auto px-6 py-16 text-center sm:px-8 lg:px-12">
       <div class="flex flex-col items-center gap-4">
         {/* <a href="https://github.com/hngngn/shadcn-solid" target="_blank" rel="noreferrer" class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80">
           <span class="mr-2">🎉</span>
