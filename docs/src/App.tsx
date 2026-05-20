@@ -431,7 +431,27 @@ const AppShell = (props: { children?: import("solid-js").JSX.Element }) => {
               </A>
             </nav>
           </div>
-          <ModeToggleDropdown trigger={{ class: "w-9 px-0" }} />
+          <div class="flex items-center gap-2">
+            <Button
+              as="a"
+              href="https://github.com/vgerbot-libraries/shadcn-solid-components"
+              variant="ghost"
+              class="size-9 p-0"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="GitHub repository"
+            >
+              <svg
+                aria-hidden="true"
+                viewBox="0 0 24 24"
+                class="size-5"
+                fill="currentColor"
+              >
+                <path d="M12 2C6.477 2 2 6.59 2 12.253c0 4.53 2.865 8.374 6.839 9.73.5.095.682-.22.682-.49 0-.238-.009-.868-.014-1.703-2.782.615-3.369-1.372-3.369-1.372-.455-1.185-1.11-1.5-1.11-1.5-.909-.637.069-.624.069-.624 1.004.072 1.532 1.058 1.532 1.058.892 1.56 2.341 1.11 2.91.85.092-.665.35-1.11.636-1.366-2.22-.258-4.555-1.14-4.555-5.075 0-1.122.39-2.039 1.029-2.758-.103-.26-.446-1.303.098-2.716 0 0 .84-.274 2.75 1.054A9.325 9.325 0 0 1 12 6.844a9.29 9.29 0 0 1 2.504.348c1.909-1.328 2.747-1.054 2.747-1.054.546 1.413.203 2.456.1 2.716.64.719 1.027 1.636 1.027 2.758 0 3.945-2.339 4.814-4.566 5.067.359.318.678.946.678 1.907 0 1.376-.012 2.485-.012 2.823 0 .272.18.59.688.49C19.138 20.623 22 16.781 22 12.253 22 6.59 17.523 2 12 2Z" />
+              </svg>
+            </Button>
+            <ModeToggleDropdown trigger={{ class: "w-9 px-0" }} />
+          </div>
         </div>
       </header>
       <main class="flex flex-1">{props.children}</main>
