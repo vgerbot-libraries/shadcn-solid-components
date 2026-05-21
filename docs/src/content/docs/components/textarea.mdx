@@ -1,0 +1,84 @@
+---
+title: Textarea
+description: Multiline text input with optional auto-resize and character count helpers.
+section: Components
+toc: true
+---
+
+import TextareaAutoResizeDemo from "../../../examples/textarea-auto-resize-demo"
+import TextareaDemo from "../../../examples/textarea-demo"
+import TextareaDisabledDemo from "../../../examples/textarea-disabled-demo"
+import TextareaFormDemo from "../../../examples/textarea-form-demo"
+import TextareaMaxLengthDemo from "../../../examples/textarea-max-length-demo"
+import TextareaWithButtonDemo from "../../../examples/textarea-with-button-demo"
+
+`Textarea` provides a styled multiline text input with size variants, invalid-state visuals, and optional auto-resize behavior. Use `TextareaField`, `TextareaLabel`, and `TextareaDescription` to keep field composition aligned with other form controls, and add `TextareaCount` when you want character guidance.
+
+## Usage
+
+```tsx
+import {
+  Textarea,
+  TextareaCount,
+  TextareaDescription,
+  TextareaField,
+  TextareaLabel,
+} from "shadcn-solid-components/components/textarea"
+```
+
+Set `autoResize` to grow with content and pair `maxLength` with `TextareaCount` for user feedback.
+
+## Exports
+
+- `Textarea`, `TextareaField`, `TextareaLabel`, `TextareaDescription`, `TextareaCount`, `textareaVariants`
+- Types: `TextareaProps`, `TextareaFieldProps`, `TextareaLabelProps`, `TextareaDescriptionProps`, `TextareaCountProps`, `TextareaCountFormatter`
+
+## Examples
+
+### Default
+
+<ComponentPreview name="Textarea Default" source="examples/textarea-demo.tsx">
+  <div class="mb-4 w-full">
+    <TextareaDemo />
+  </div>
+</ComponentPreview>
+
+### Max length
+
+<ComponentPreview name="Textarea Max Length" source="examples/textarea-max-length-demo.tsx">
+  <div class="mb-4 w-full">
+    <TextareaMaxLengthDemo />
+  </div>
+</ComponentPreview>
+
+### Disabled
+
+<ComponentPreview name="Textarea Disabled" source="examples/textarea-disabled-demo.tsx">
+  <div class="mb-4 w-full">
+    <TextareaDisabledDemo />
+  </div>
+</ComponentPreview>
+
+### With button
+
+<ComponentPreview name="Textarea With Button" source="examples/textarea-with-button-demo.tsx">
+  <div class="mb-4 w-full">
+    <TextareaWithButtonDemo />
+  </div>
+</ComponentPreview>
+
+### Form
+
+<ComponentPreview name="Textarea Form" source="examples/textarea-form-demo.tsx">
+  <div class="mb-4 w-full">
+    <TextareaFormDemo />
+  </div>
+</ComponentPreview>
+
+### Auto resize
+
+<ComponentPreview name="Textarea Auto Resize" source="examples/textarea-auto-resize-demo.tsx">
+  <div class="mb-4 w-full">
+    <TextareaAutoResizeDemo />
+  </div>
+</ComponentPreview>

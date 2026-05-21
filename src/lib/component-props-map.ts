@@ -52,6 +52,7 @@ import type { SwitchProps } from '../components/switch'
 import type { TableProps } from '../components/table'
 import type { TabsProps } from '../components/tabs'
 import type { TextFieldProps } from '../components/text-field'
+import type { TextareaProps } from '../components/textarea'
 import type { TimelineProps } from '../components/timeline'
 import type { ToggleButtonProps } from '../components/toggle-button'
 import type { ToggleGroupProps } from '../components/toggle-group'
@@ -118,6 +119,7 @@ export interface ComponentPropsMap {
   [ComponentName.Table]: TableProps
   [ComponentName.Tabs]: TabsProps
   [ComponentName.TextField]: TextFieldProps
+  [ComponentName.Textarea]: TextareaProps
   [ComponentName.Theme]: ComponentProps<'div'>
   [ComponentName.Timeline]: TimelineProps
   [ComponentName.ToggleButton]: ToggleButtonProps

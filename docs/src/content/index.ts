@@ -2398,6 +2398,64 @@ export const Contents: Record<string, DocEntry> = {
     }
 ]
   },
+  "components/textarea": {
+    component: lazy(() => import("@docs/content/docs/components/textarea.mdx")),
+    data: {
+    "title": "Textarea",
+    "description": "Multiline text input with optional auto-resize and character count helpers.",
+    "navTitle": "Textarea",
+    "section": "Components",
+    "order": 0,
+    "toc": true
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "exports",
+        "text": "Exports"
+    },
+    {
+        "depth": 2,
+        "slug": "examples",
+        "text": "Examples"
+    },
+    {
+        "depth": 3,
+        "slug": "default",
+        "text": "Default"
+    },
+    {
+        "depth": 3,
+        "slug": "max-length",
+        "text": "Max length"
+    },
+    {
+        "depth": 3,
+        "slug": "disabled",
+        "text": "Disabled"
+    },
+    {
+        "depth": 3,
+        "slug": "with-button",
+        "text": "With button"
+    },
+    {
+        "depth": 3,
+        "slug": "form",
+        "text": "Form"
+    },
+    {
+        "depth": 3,
+        "slug": "auto-resize",
+        "text": "Auto resize"
+    }
+]
+  },
   "components/theme": {
     component: lazy(() => import("@docs/content/docs/components/theme.mdx")),
     data: {
@@ -5563,6 +5621,11 @@ export const docsNavigation: DocsNavSection[] = [
         "title": "Text Field",
         "href": "/docs/components/text-field",
         "description": "Labelled text input, textarea, validation, and description built on Kobalte."
+      },
+      {
+        "title": "Textarea",
+        "href": "/docs/components/textarea",
+        "description": "Multiline text input with optional auto-resize and character count helpers."
       },
       {
         "title": "Theme",

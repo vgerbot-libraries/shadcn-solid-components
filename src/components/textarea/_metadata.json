@@ -1,0 +1,14 @@
+{
+  "name": "components/textarea",
+  "displayName": "Textarea",
+  "description": "A multiline text input primitive with theme-aware styling, optional auto-resize behavior, and helper subcomponents for label, description, and character counting.",
+  "category": "components",
+  "useCases": [
+    "Collecting longer free-form user input such as comments, notes, and descriptions",
+    "Message composers that grow with content using autoResize",
+    "Forms that need inline character counts for max-length guidance",
+    "Settings pages with labelled and described multiline fields"
+  ],
+  "usage": "import { Textarea, TextareaCount, TextareaDescription, TextareaField, TextareaLabel } from \"shadcn-solid-components/components/textarea\"",
+  "tags": ["components", "textarea", "form", "input", "solidjs", "ui"]
+}

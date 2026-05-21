@@ -92,6 +92,7 @@
     "./components/tabulator-table": "./src/components/tabulator-table/index.tsx",
     "./components/tanstack-table": "./src/components/tanstack-table/index.tsx",
     "./components/text-field": "./src/components/text-field/index.tsx",
+    "./components/textarea": "./src/components/textarea/index.tsx",
     "./components/theme": "./src/components/theme/index.tsx",
     "./components/timeline": "./src/components/timeline/index.tsx",
     "./components/toggle-button": "./src/components/toggle-button/index.tsx",

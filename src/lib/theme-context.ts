@@ -62,6 +62,7 @@ export const ComponentName = {
   Table: 'Table',
   Tabs: 'Tabs',
   TextField: 'TextField',
+  Textarea: 'Textarea',
   Timeline: 'Timeline',
   Theme: 'Theme',
   ToggleButton: 'ToggleButton',
