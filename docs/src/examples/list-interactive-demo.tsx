@@ -63,7 +63,7 @@ const ListInteractiveDemo = () => {
                     size="icon-sm"
                     variant="ghost"
                     aria-label={isExpanded() ? 'Collapse row' : 'Expand row'}
-                    onClick={event => {
+                    onClick={(event: MouseEvent) => {
                       event.stopPropagation()
                       setExpandedId(isExpanded() ? null : ticket.id)
                     }}

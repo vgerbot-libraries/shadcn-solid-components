@@ -1,0 +1,83 @@
+---
+title: Data list
+description: High-level list HOC with columns-to-slot mapping, request pipeline, and list-first data interactions.
+section: HOC
+toc: true
+---
+
+import DataListDemo from "../../../examples/data-list-demo"
+
+`DataList` builds on `List` primitives and introduces ProList-style orchestration for application data: `columns + listSlot` rendering, async `request`, keyword search, pagination, row selection, expandable rows, and manual control through `actionRef`.
+
+## Usage
+
+```tsx
+import { DataList, type DataListColumn } from "shadcn-solid-components/hoc/data-list"
+
+type Project = {
+  id: string
+  name: string
+  owner: string
+}
+
+const columns: DataListColumn<Project>[] = [
+  { dataIndex: "name", listSlot: "title" },
+  { dataIndex: "owner", listSlot: "subTitle" },
+]
+
+<DataList<Project>
+  columns={columns}
+  rowKey="id"
+  request={async params => ({ data: [], success: true, total: 0 })}
+/>
+```
+
+Use `listSlot` to control where each column appears in the row (`title`, `subTitle`, `avatar`, `description`, `content`, `actions`, `aside`, `type`).
+
+## Examples
+
+### Request, search, pagination, selection, and expandable rows
+
+<ComponentPreview name="Data List Demo" source="examples/data-list-demo.tsx">
+  <div class="mb-4 w-full">
+    <DataListDemo />
+  </div>
+</ComponentPreview>
+
+## API
+
+### `DataListProps<TData, TParams>`
+
+Extends `div` props (excluding native `onLoad`/`search`). Notable fields:
+
+- `columns` — array of `DataListColumn<TData>` with optional `listSlot`
+- `dataSource` — local data source when `request` is not used
+- `request` — async loader receiving `{ current, pageSize, keyword, ...params }`
+- `params` — extra request params; changes trigger reload
+- `postData` — transform data before rendering
+- `rowKey` — key field or key resolver
+- `search` — `false` to disable, object to configure placeholder
+- `pagination` — `false` to disable or object with `current/pageSize/pageSizeOptions`
+- `manualRequest` — skip auto-first-request; use `actionRef.current?.reload()` manually
+- `actionRef` — exposes `reload`, `reloadAndRest`, `reset`, `clearSelected`
+- `rowSelection` — selected keys and `onChange`
+- `expandable` — expanded keys, `expandedRowRender`, and change callback
+- `toolBarRender` — custom toolbar area
+- `itemRender` — customize row rendering from default composed node
+- `onItem` — row click callback
+- `onLoad` / `onLoadingChange` / `onRequestError` — request lifecycle hooks
+- `locale` — partial `DataListLocale` overrides
+
+### `DataListColumn<TData>`
+
+- `dataIndex`, `key`, `title` — field mapping metadata
+- `listSlot` — slot position in list row
+- `search` — include/exclude from keyword search
+- `valueEnum` — enum text mapping for scalar values
+- `render` — custom renderer `(value, record, index) => JSX.Element`
+
+## Exports
+
+- `DataList` — component
+- Types: `DataListProps`, `DataListColumn`, `DataListSlot`, `DataListActionType`, `DataListActionRef`, `DataListRequestParams`, `DataListRequestResult`, `DataListPagination`, `DataListSearch`
+- `enLocale`, `zhCNLocale`, `zhTWLocale`, `jaLocale` — preset `DataListLocale` objects

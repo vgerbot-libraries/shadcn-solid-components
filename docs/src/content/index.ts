@@ -3140,6 +3140,54 @@ export const Contents: Record<string, DocEntry> = {
     }
 ]
   },
+  "hoc/data-list": {
+    component: lazy(() => import("@docs/content/docs/hoc/data-list.mdx")),
+    data: {
+    "title": "Data list",
+    "description": "High-level list HOC with columns-to-slot mapping, request pipeline, and list-first data interactions.",
+    "navTitle": "Data list",
+    "section": "HOC",
+    "order": 0,
+    "toc": true
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "examples",
+        "text": "Examples"
+    },
+    {
+        "depth": 3,
+        "slug": "request-search-pagination-selection-and-expandable-rows",
+        "text": "Request, search, pagination, selection, and expandable rows"
+    },
+    {
+        "depth": 2,
+        "slug": "api",
+        "text": "API"
+    },
+    {
+        "depth": 3,
+        "slug": "datalistpropstdata-tparams",
+        "text": "DataListProps<TData, TParams>"
+    },
+    {
+        "depth": 3,
+        "slug": "datalistcolumntdata",
+        "text": "DataListColumn<TData>"
+    },
+    {
+        "depth": 2,
+        "slug": "exports",
+        "text": "Exports"
+    }
+]
+  },
   "hoc/data-table": {
     component: lazy(() => import("@docs/content/docs/hoc/data-table.mdx")),
     data: {
@@ -5580,6 +5628,11 @@ export const docsNavigation: DocsNavSection[] = [
         "title": "Confirm dialog",
         "href": "/docs/hoc/confirm-dialog",
         "description": "Imperative confirmation API backed by a single root `AlertDialog` instance."
+      },
+      {
+        "title": "Data list",
+        "href": "/docs/hoc/data-list",
+        "description": "High-level list HOC with columns-to-slot mapping, request pipeline, and list-first data interactions."
       },
       {
         "title": "Data table",

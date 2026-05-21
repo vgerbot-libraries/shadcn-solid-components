@@ -4,6 +4,7 @@ import { jaJP as ActivityFeed } from '../../hoc/activity-feed/locales/ja-JP'
 import { jaJP as AuthForm } from '../../hoc/auth-form/locales/ja-JP'
 import { jaJP as CommandPalette } from '../../hoc/command-palette/locales/ja-JP'
 import { jaJP as ConfirmDialog } from '../../hoc/confirm-dialog/locales/ja-JP'
+import { jaJP as DataList } from '../../hoc/data-list/locales/ja-JP'
 import { jaJP as DataTable } from '../../hoc/data-table/locales/ja-JP'
 import { jaJP as DataTableToolbar } from '../../hoc/data-table-toolbar/locales/ja-JP'
 import { jaJP as DatePickerField } from '../../hoc/date-picker/locales/ja-JP'
@@ -37,6 +38,7 @@ export const jaJP: Locale = {
   DataTableToolbar,
   FilterBuilder,
   DataTable,
+  DataList,
   Stepper,
   TagInput,
   DescriptionList,

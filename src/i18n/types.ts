@@ -121,6 +121,15 @@ export interface DataTableLocale {
   emptyDescription: string
 }
 
+export interface DataListLocale {
+  searchPlaceholder: string
+  emptyText: string
+  reload: string
+  reset: string
+  expand: string
+  collapse: string
+}
+
 export interface StepperLocale {
   next: string
   previous: string
@@ -293,6 +302,7 @@ export interface Locale {
   DataTableToolbar: DataTableToolbarLocale
   FilterBuilder: FilterBuilderLocale
   DataTable: DataTableLocale
+  DataList: DataListLocale
   Stepper: StepperLocale
   TagInput: TagInputLocale
   DescriptionList: DescriptionListLocale

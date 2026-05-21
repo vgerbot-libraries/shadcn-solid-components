@@ -4,6 +4,7 @@ import { enUS as ActivityFeed } from '../../hoc/activity-feed/locales/en-US'
 import { enUS as AuthForm } from '../../hoc/auth-form/locales/en-US'
 import { enUS as CommandPalette } from '../../hoc/command-palette/locales/en-US'
 import { enUS as ConfirmDialog } from '../../hoc/confirm-dialog/locales/en-US'
+import { enUS as DataList } from '../../hoc/data-list/locales/en-US'
 import { enUS as DataTable } from '../../hoc/data-table/locales/en-US'
 import { enUS as DataTableToolbar } from '../../hoc/data-table-toolbar/locales/en-US'
 import { enUS as DatePickerField } from '../../hoc/date-picker/locales/en-US'
@@ -37,6 +38,7 @@ export const enUS: Locale = {
   DataTableToolbar,
   FilterBuilder,
   DataTable,
+  DataList,
   Stepper,
   TagInput,
   DescriptionList,

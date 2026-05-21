@@ -4,6 +4,7 @@ import { zhCN as ActivityFeed } from '../../hoc/activity-feed/locales/zh-CN'
 import { zhCN as AuthForm } from '../../hoc/auth-form/locales/zh-CN'
 import { zhCN as CommandPalette } from '../../hoc/command-palette/locales/zh-CN'
 import { zhCN as ConfirmDialog } from '../../hoc/confirm-dialog/locales/zh-CN'
+import { zhCN as DataList } from '../../hoc/data-list/locales/zh-CN'
 import { zhCN as DataTable } from '../../hoc/data-table/locales/zh-CN'
 import { zhCN as DataTableToolbar } from '../../hoc/data-table-toolbar/locales/zh-CN'
 import { zhCN as DatePickerField } from '../../hoc/date-picker/locales/zh-CN'
@@ -37,6 +38,7 @@ export const zhCN: Locale = {
   DataTableToolbar,
   FilterBuilder,
   DataTable,
+  DataList,
   Stepper,
   TagInput,
   DescriptionList,

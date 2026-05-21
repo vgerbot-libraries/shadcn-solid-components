@@ -1,0 +1,14 @@
+{
+  "name": "hoc/data-list",
+  "displayName": "Data List",
+  "description": "A high-level list HOC that maps column definitions into list slots and orchestrates request-driven data loading, search, pagination, row selection, and expandable rows. Composed from List primitives and utility controls with i18n support through ConfigProvider.",
+  "category": "hoc",
+  "useCases": [
+    "Project and product feeds that need async loading plus list-first presentation",
+    "Issue and ticket lists combining slot-based rendering with searchable metadata",
+    "Mobile-friendly data views where list layout is preferred over table grids",
+    "Operational task boards with row selection and inline expanded details"
+  ],
+  "usage": "import { DataList, type DataListProps, type DataListColumn } from \"shadcn-solid-components/hoc/data-list\"",
+  "tags": ["hoc", "data-list", "list", "request", "solidjs", "ui"]
+}
