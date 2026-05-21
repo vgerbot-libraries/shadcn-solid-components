@@ -36,6 +36,7 @@ export const ComponentName = {
   HoverCard: 'HoverCard',
   Icons: 'Icons',
   Kbd: 'Kbd',
+  List: 'List',
   Marquee: 'Marquee',
   Menubar: 'Menubar',
   NavigationMenu: 'NavigationMenu',

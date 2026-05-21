@@ -1,0 +1,129 @@
+---
+title: List
+description: Composable list primitives for feed, catalog, and task-style item layouts.
+section: Components
+toc: true
+---
+
+import ListDemo from "../../../examples/list-demo"
+import ListLayoutDemo from "../../../examples/list-layout-demo"
+import ListVariantsDemo from "../../../examples/list-variants-demo"
+import ListInteractiveDemo from "../../../examples/list-interactive-demo"
+import ListToolbarDemo from "../../../examples/list-toolbar-demo"
+
+`List` provides slot-based primitives for building advanced list UIs with consistent spacing, visual variants, and helper states. It stays presentation-focused so you can compose request logic, filters, and pagination outside the primitive layer.
+
+## Usage
+
+```tsx
+import {
+  List,
+  ListBody,
+  ListEmpty,
+  ListHeader,
+  ListItem,
+  ListItemActions,
+  ListItemDescription,
+  ListItemMain,
+  ListItemMedia,
+  ListItemMeta,
+  ListItemSubTitle,
+  ListItemTitle,
+  ListSkeleton,
+  ListToolbar,
+} from "shadcn-solid-components/components/list"
+```
+
+```tsx
+<List variant="outlined" split itemLayout="horizontal">
+  <ListBody>
+    <ListItem selected>
+      <ListItemMain>
+        <ListItemTitle>Retail Intelligence Dashboard</ListItemTitle>
+        <ListItemDescription>Operational analytics and conversion tracking.</ListItemDescription>
+      </ListItemMain>
+      <ListItemActions>...</ListItemActions>
+    </ListItem>
+  </ListBody>
+</List>
+```
+
+Use `ListItem` props `selected` and `expanded` to apply state styles. Use `ListSkeleton` and `ListEmpty` for loading and empty states.
+
+## Exports
+
+- `List`, `listVariants`, `ListHeader`, `ListToolbar`, `ListBody`, `ListItem`, `listItemVariants`, `ListItemMedia`, `ListItemMain`, `ListItemType`, `ListItemTitle`, `ListItemSubTitle`, `ListItemDescription`, `ListItemMeta`, `ListItemContent`, `ListItemAside`, `ListItemActions`, `ListFooter`, `ListEmpty`, `ListSkeleton`
+- Types: `ListProps`, `ListVariant`, `ListSize`, `ListItemLayout`, `ListHeaderProps`, `ListToolbarProps`, `ListBodyProps`, `ListItemProps`, `ListItemMediaProps`, `ListItemMainProps`, `ListItemTypeProps`, `ListItemTitleProps`, `ListItemSubTitleProps`, `ListItemDescriptionProps`, `ListItemMetaProps`, `ListItemContentProps`, `ListItemAsideProps`, `ListItemActionsProps`, `ListFooterProps`, `ListEmptyProps`, `ListSkeletonProps`
+
+## Examples
+
+### Default
+
+<ComponentPreview name="List Default" source="examples/list-demo.tsx">
+  <div class="mb-4 w-full">
+    <ListDemo />
+  </div>
+</ComponentPreview>
+
+### Layout
+
+<ComponentPreview name="List Layout" source="examples/list-layout-demo.tsx">
+  <div class="mb-4 w-full">
+    <ListLayoutDemo />
+  </div>
+</ComponentPreview>
+
+### Variants
+
+<ComponentPreview name="List Variants" source="examples/list-variants-demo.tsx">
+  <div class="mb-4 w-full">
+    <ListVariantsDemo />
+  </div>
+</ComponentPreview>
+
+### Interactive States
+
+<ComponentPreview name="List Interactive States" source="examples/list-interactive-demo.tsx">
+  <div class="mb-4 w-full">
+    <ListInteractiveDemo />
+  </div>
+</ComponentPreview>
+
+### Toolbar, Loading, and Empty
+
+<ComponentPreview name="List Toolbar" source="examples/list-toolbar-demo.tsx">
+  <div class="mb-4 w-full">
+    <ListToolbarDemo />
+  </div>
+</ComponentPreview>
+
+## API
+
+### `ListProps`
+
+Extends `div` props. Notable fields:
+
+- `variant` — `'default' | 'outlined' | 'filled' | 'borderless'`
+- `size` — `'sm' | 'default' | 'lg'`
+- `split` — whether adjacent rows use dividing lines (default `true`)
+- `itemLayout` — default row layout for child items: `'horizontal' | 'vertical'`
+
+### `ListItemProps`
+
+Extends `div` props. Notable fields:
+
+- `layout` — per-item layout override (`horizontal` or `vertical`)
+- `size` — per-item density override (`sm`, `default`, `lg`)
+- `selected` — applies selected-row style
+- `expanded` — applies expanded-row style
+
+### Slot contract (for future `columns + listSlot` adapters)
+
+- `ListItemTitle` → `title`
+- `ListItemSubTitle` → `subTitle`
+- `ListItemMedia` → `avatar`
+- `ListItemDescription` → `description`
+- `ListItemContent` → `content`
+- `ListItemActions` → `actions`
+- `ListItemAside` → `aside`
+- `ListItemType` → `type`

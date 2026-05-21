@@ -1287,6 +1287,79 @@ export const Contents: Record<string, DocEntry> = {
     }
 ]
   },
+  "components/list": {
+    component: lazy(() => import("@docs/content/docs/components/list.mdx")),
+    data: {
+    "title": "List",
+    "description": "Composable list primitives for feed, catalog, and task-style item layouts.",
+    "navTitle": "List",
+    "section": "Components",
+    "order": 0,
+    "toc": true
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "exports",
+        "text": "Exports"
+    },
+    {
+        "depth": 2,
+        "slug": "examples",
+        "text": "Examples"
+    },
+    {
+        "depth": 3,
+        "slug": "default",
+        "text": "Default"
+    },
+    {
+        "depth": 3,
+        "slug": "layout",
+        "text": "Layout"
+    },
+    {
+        "depth": 3,
+        "slug": "variants",
+        "text": "Variants"
+    },
+    {
+        "depth": 3,
+        "slug": "interactive-states",
+        "text": "Interactive States"
+    },
+    {
+        "depth": 3,
+        "slug": "toolbar-loading-and-empty",
+        "text": "Toolbar, Loading, and Empty"
+    },
+    {
+        "depth": 2,
+        "slug": "api",
+        "text": "API"
+    },
+    {
+        "depth": 3,
+        "slug": "listprops",
+        "text": "ListProps"
+    },
+    {
+        "depth": 3,
+        "slug": "listitemprops",
+        "text": "ListItemProps"
+    },
+    {
+        "depth": 3,
+        "slug": "slot-contract-for-future-columns--listslot-adapters",
+        "text": "Slot contract (for future columns + listSlot adapters)"
+    }
+]
+  },
   "components/menubar": {
     component: lazy(() => import("@docs/content/docs/components/menubar.mdx")),
     data: {
@@ -5297,6 +5370,11 @@ export const docsNavigation: DocsNavSection[] = [
         "title": "Kbd",
         "href": "/docs/components/kbd",
         "description": "Keyboard shortcut styling for inline hints."
+      },
+      {
+        "title": "List",
+        "href": "/docs/components/list",
+        "description": "Composable list primitives for feed, catalog, and task-style item layouts."
       },
       {
         "title": "Menubar",

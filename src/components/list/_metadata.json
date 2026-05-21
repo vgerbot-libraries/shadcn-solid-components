@@ -1,0 +1,14 @@
+{
+  "name": "components/list",
+  "displayName": "List",
+  "description": "A composable list primitive for building content feeds, task lists, and catalog-style rows with slot-based item structure. Supports visual variants, density sizing, horizontal or vertical item layout, split lines, and helper states for selected or expanded rows.",
+  "category": "components",
+  "useCases": [
+    "Activity feeds and notification timelines with custom item media and actions",
+    "File and project lists that need compact, default, or large density options",
+    "Card-like vertical list items with description, metadata, and aside content",
+    "Loading and empty states with consistent list skeleton and empty placeholders"
+  ],
+  "usage": "import { List, ListBody, ListItem, ListItemMain, ListItemTitle } from \"shadcn-solid-components/components/list\"",
+  "tags": ["components", "list", "solidjs", "ui", "feed", "slots"]
+}
