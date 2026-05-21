@@ -61,6 +61,7 @@
     "./components/file-field": "./src/components/file-field/index.tsx",
     "./components/hover-card": "./src/components/hover-card/index.tsx",
     "./components/icons": "./src/components/icons/index.tsx",
+    "./components/item": "./src/components/item/index.tsx",
     "./components/kbd": "./src/components/kbd/index.tsx",
     "./components/list": "./src/components/list/index.tsx",
     "./components/landing-hero": "./src/components/landing-hero/index.tsx",

@@ -1254,6 +1254,94 @@ export const Contents: Record<string, DocEntry> = {
     }
 ]
   },
+  "components/item": {
+    component: lazy(() => import("@docs/content/docs/components/item.mdx")),
+    data: {
+    "title": "Item",
+    "description": "Composable row primitive for list items, menu rows, contacts, media entries, and settings layouts.",
+    "navTitle": "Item",
+    "section": "Components",
+    "order": 0,
+    "toc": true
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "exports",
+        "text": "Exports"
+    },
+    {
+        "depth": 2,
+        "slug": "examples",
+        "text": "Examples"
+    },
+    {
+        "depth": 3,
+        "slug": "default",
+        "text": "Default"
+    },
+    {
+        "depth": 3,
+        "slug": "avatar",
+        "text": "Avatar"
+    },
+    {
+        "depth": 3,
+        "slug": "dropdown",
+        "text": "Dropdown"
+    },
+    {
+        "depth": 3,
+        "slug": "group",
+        "text": "Group"
+    },
+    {
+        "depth": 3,
+        "slug": "header",
+        "text": "Header"
+    },
+    {
+        "depth": 3,
+        "slug": "icon",
+        "text": "Icon"
+    },
+    {
+        "depth": 3,
+        "slug": "image",
+        "text": "Image"
+    },
+    {
+        "depth": 3,
+        "slug": "link",
+        "text": "Link"
+    },
+    {
+        "depth": 3,
+        "slug": "size",
+        "text": "Size"
+    },
+    {
+        "depth": 3,
+        "slug": "variant",
+        "text": "Variant"
+    },
+    {
+        "depth": 2,
+        "slug": "api",
+        "text": "API"
+    },
+    {
+        "depth": 3,
+        "slug": "itemprops",
+        "text": "ItemProps"
+    }
+]
+  },
   "components/kbd": {
     component: lazy(() => import("@docs/content/docs/components/kbd.mdx")),
     data: {
@@ -5481,6 +5569,11 @@ export const docsNavigation: DocsNavSection[] = [
         "title": "Icons",
         "href": "/docs/components/icons",
         "description": "Inline SVG icon components used across the design system."
+      },
+      {
+        "title": "Item",
+        "href": "/docs/components/item",
+        "description": "Composable row primitive for list items, menu rows, contacts, media entries, and settings layouts."
       },
       {
         "title": "Kbd",

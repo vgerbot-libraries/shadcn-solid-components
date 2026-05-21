@@ -26,6 +26,7 @@ import type { DrawerProps } from '../components/drawer'
 import type { DropdownMenuProps } from '../components/dropdown-menu'
 import type { FileFieldProps } from '../components/file-field'
 import type { HoverCardProps } from '../components/hover-card'
+import type { ItemProps } from '../components/item'
 import type { KbdProps } from '../components/kbd'
 import type { ListProps } from '../components/list'
 import type { MarqueeProps } from '../components/marquee'
@@ -92,6 +93,7 @@ export interface ComponentPropsMap {
   [ComponentName.FileField]: FileFieldProps
   [ComponentName.HoverCard]: HoverCardProps
   [ComponentName.Icons]: ComponentProps<'svg'>
+  [ComponentName.Item]: ItemProps
   [ComponentName.Kbd]: KbdProps
   [ComponentName.List]: ListProps
   [ComponentName.Marquee]: MarqueeProps

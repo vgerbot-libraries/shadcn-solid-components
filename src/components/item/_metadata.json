@@ -1,0 +1,14 @@
+{
+  "name": "components/item",
+  "displayName": "Item",
+  "description": "Composable row primitive for list items, menu rows, contacts, media entries, and settings-style layouts.",
+  "category": "components",
+  "useCases": [
+    "Contact and team member rows with avatar, title, description, and actions",
+    "Clickable navigation rows and settings entries with leading icons or trailing controls",
+    "Media, product, and notification list items with consistent spacing",
+    "Dropdown menu rows and grouped item sections"
+  ],
+  "usage": "import { Item, ItemContent, ItemTitle, ItemDescription, ItemMedia, ItemActions } from \"shadcn-solid-components/components/item\"",
+  "tags": ["components", "item", "list", "row", "solidjs", "ui"]
+}

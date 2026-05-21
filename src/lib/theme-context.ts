@@ -35,6 +35,7 @@ export const ComponentName = {
   FileField: 'FileField',
   HoverCard: 'HoverCard',
   Icons: 'Icons',
+  Item: 'Item',
   Kbd: 'Kbd',
   List: 'List',
   Marquee: 'Marquee',

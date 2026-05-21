@@ -1,0 +1,133 @@
+---
+title: Item
+description: Composable row primitive for list items, menu rows, contacts, media entries, and settings layouts.
+section: Components
+toc: true
+---
+
+import ItemAvatarDemo from "../../../examples/item-avatar-demo"
+import ItemDemo from "../../../examples/item-demo"
+import ItemDropdownDemo from "../../../examples/item-dropdown-demo"
+import ItemGroupDemo from "../../../examples/item-group-demo"
+import ItemHeaderDemo from "../../../examples/item-header-demo"
+import ItemIconDemo from "../../../examples/item-icon-demo"
+import ItemImageDemo from "../../../examples/item-image-demo"
+import ItemLinkDemo from "../../../examples/item-link-demo"
+import ItemSizeDemo from "../../../examples/item-size-demo"
+import ItemVariantDemo from "../../../examples/item-variant-demo"
+
+`Item` provides a flexible row layout for content lists, settings rows, dropdown entries, contacts, notifications, and media lists. Compose media, content, and actions slots to keep spacing and alignment consistent across simple and interactive item UIs.
+
+## Usage
+
+```tsx
+import {
+  Item,
+  ItemActions,
+  ItemContent,
+  ItemDescription,
+  ItemGroup,
+  ItemHeader,
+  ItemMedia,
+  ItemTitle,
+} from "shadcn-solid-components/components/item"
+```
+
+Use `Item` as a standalone row or set `as="a"` for clickable link rows. Pair `ItemGroup` and `ItemHeader` when rows belong to a labeled section.
+
+## Exports
+
+- `Item`, `ItemContent`, `ItemTitle`, `ItemDescription`, `ItemMedia`, `ItemActions`, `ItemGroup`, `ItemHeader`, `itemVariants`
+- Types: `ItemProps`, `ItemContentProps`, `ItemTitleProps`, `ItemDescriptionProps`, `ItemMediaProps`, `ItemActionsProps`, `ItemGroupProps`, `ItemHeaderProps`, `ItemVariant`, `ItemSize`
+
+## Examples
+
+### Default
+
+<ComponentPreview name="Item Default" source="examples/item-demo.tsx">
+  <div class="mb-4 w-full">
+    <ItemDemo />
+  </div>
+</ComponentPreview>
+
+### Avatar
+
+<ComponentPreview name="Item Avatar" source="examples/item-avatar-demo.tsx">
+  <div class="mb-4 w-full">
+    <ItemAvatarDemo />
+  </div>
+</ComponentPreview>
+
+### Dropdown
+
+<ComponentPreview name="Item Dropdown" source="examples/item-dropdown-demo.tsx">
+  <div class="mb-4 w-full">
+    <ItemDropdownDemo />
+  </div>
+</ComponentPreview>
+
+### Group
+
+<ComponentPreview name="Item Group" source="examples/item-group-demo.tsx">
+  <div class="mb-4 w-full">
+    <ItemGroupDemo />
+  </div>
+</ComponentPreview>
+
+### Header
+
+<ComponentPreview name="Item Header" source="examples/item-header-demo.tsx">
+  <div class="mb-4 w-full">
+    <ItemHeaderDemo />
+  </div>
+</ComponentPreview>
+
+### Icon
+
+<ComponentPreview name="Item Icon" source="examples/item-icon-demo.tsx">
+  <div class="mb-4 w-full">
+    <ItemIconDemo />
+  </div>
+</ComponentPreview>
+
+### Image
+
+<ComponentPreview name="Item Image" source="examples/item-image-demo.tsx">
+  <div class="mb-4 w-full">
+    <ItemImageDemo />
+  </div>
+</ComponentPreview>
+
+### Link
+
+<ComponentPreview name="Item Link" source="examples/item-link-demo.tsx">
+  <div class="mb-4 w-full">
+    <ItemLinkDemo />
+  </div>
+</ComponentPreview>
+
+### Size
+
+<ComponentPreview name="Item Size" source="examples/item-size-demo.tsx">
+  <div class="mb-4 w-full">
+    <ItemSizeDemo />
+  </div>
+</ComponentPreview>
+
+### Variant
+
+<ComponentPreview name="Item Variant" source="examples/item-variant-demo.tsx">
+  <div class="mb-4 w-full">
+    <ItemVariantDemo />
+  </div>
+</ComponentPreview>
+
+## API
+
+### `ItemProps`
+
+Extends props for the rendered element. Notable fields:
+
+- `as` — rendered element or component, such as `"div"` or `"a"`
+- `variant` — `"default"` | `"outline"` | `"muted"` | `"destructive"`
+- `size` — `"sm"` | `"default"` | `"lg"`
