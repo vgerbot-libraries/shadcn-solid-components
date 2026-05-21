@@ -14,8 +14,10 @@ import ButtonGhostDemo from "../../../examples/button-ghost-demo"
 import ButtonLinkDemo from "../../../examples/button-link-demo"
 import ButtonWithIconDemo from "../../../examples/button-with-icon-demo"
 import ButtonLoadingDemo from "../../../examples/button-loading-demo"
+import ButtonAsyncSubmitDemo from "../../../examples/button-async-submit-demo"
+import ButtonIconLoadingDemo from "../../../examples/button-icon-loading-demo"
 
-The button component supports multiple visual variants and sizes through `buttonVariants`. It can render as different underlying elements via the polymorphic `as` prop.
+The button component supports multiple visual variants and sizes through `buttonVariants`. It can render as different underlying elements via the polymorphic `as` prop and includes built-in loading state semantics.
 
 ## Usage
 
@@ -91,7 +93,23 @@ Use `Button` for interactive actions. Import `buttonVariants` when you need the 
   </div>
 </ComponentPreview>
 
+### Async Submit Loading
+
+<ComponentPreview name="Button Async Submit" source="examples/button-async-submit-demo.tsx">
+  <div class="mb-4">
+    <ButtonAsyncSubmitDemo />
+  </div>
+</ComponentPreview>
+
+### Icon Loading
+
+<ComponentPreview name="Button Icon Loading" source="examples/button-icon-loading-demo.tsx">
+  <div class="mb-4">
+    <ButtonIconLoadingDemo />
+  </div>
+</ComponentPreview>
+
 ## Exports
 
 - `Button`, `buttonVariants`
-- Types: `ButtonProps`
+- Types: `ButtonProps`, `ButtonLoadingPlacement`, `ButtonLoadingDisabledBehavior`

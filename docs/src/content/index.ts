@@ -345,6 +345,16 @@ export const Contents: Record<string, DocEntry> = {
         "text": "Loading"
     },
     {
+        "depth": 3,
+        "slug": "async-submit-loading",
+        "text": "Async Submit Loading"
+    },
+    {
+        "depth": 3,
+        "slug": "icon-loading",
+        "text": "Icon Loading"
+    },
+    {
         "depth": 2,
         "slug": "exports",
         "text": "Exports"
