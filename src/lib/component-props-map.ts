@@ -40,6 +40,7 @@ import type { ProgressProps } from '../components/progress'
 import type { QrCodeProps } from '../components/qr-code'
 import type { RadioGroupProps } from '../components/radio-group'
 import type { ResizableProps } from '../components/resizable'
+import type { ScrollAreaProps } from '../components/scroll-area'
 import type { SearchProps } from '../components/search'
 import type { SegmentedControlProps } from '../components/segmented-control'
 import type { SelectProps } from '../components/select'
@@ -107,6 +108,7 @@ export interface ComponentPropsMap {
   [ComponentName.QrCode]: QrCodeProps
   [ComponentName.RadioGroup]: RadioGroupProps
   [ComponentName.Resizable]: ResizableProps
+  [ComponentName.ScrollArea]: ScrollAreaProps
   [ComponentName.Search]: SearchProps<any>
   [ComponentName.SegmentedControl]: SegmentedControlProps
   [ComponentName.Select]: SelectProps<any>

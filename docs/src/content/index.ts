@@ -1833,6 +1833,54 @@ export const Contents: Record<string, DocEntry> = {
     }
 ]
   },
+  "components/scroll-area": {
+    component: lazy(() => import("@docs/content/docs/components/scroll-area.mdx")),
+    data: {
+    "title": "Scroll Area",
+    "description": "Custom scrollbar container primitives for vertical, horizontal, and two-axis overflow content.",
+    "navTitle": "Scroll Area",
+    "section": "Components",
+    "order": 0,
+    "toc": true
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "installation",
+        "text": "Installation"
+    },
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "exports",
+        "text": "Exports"
+    },
+    {
+        "depth": 2,
+        "slug": "examples",
+        "text": "Examples"
+    },
+    {
+        "depth": 3,
+        "slug": "default",
+        "text": "Default"
+    },
+    {
+        "depth": 3,
+        "slug": "horizontal",
+        "text": "Horizontal"
+    },
+    {
+        "depth": 3,
+        "slug": "both-axis",
+        "text": "Both Axis"
+    }
+]
+  },
   "components/search": {
     component: lazy(() => import("@docs/content/docs/components/search.mdx")),
     data: {
@@ -5634,6 +5682,11 @@ export const docsNavigation: DocsNavSection[] = [
         "title": "Resizable",
         "href": "/docs/components/resizable",
         "description": "Split layout with draggable panel handles."
+      },
+      {
+        "title": "Scroll Area",
+        "href": "/docs/components/scroll-area",
+        "description": "Custom scrollbar container primitives for vertical, horizontal, and two-axis overflow content."
       },
       {
         "title": "Search",

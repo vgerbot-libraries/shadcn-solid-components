@@ -49,6 +49,7 @@ export const ComponentName = {
   QrCode: 'QrCode',
   RadioGroup: 'RadioGroup',
   Resizable: 'Resizable',
+  ScrollArea: 'ScrollArea',
   Search: 'Search',
   SegmentedControl: 'SegmentedControl',
   Select: 'Select',

@@ -1,0 +1,64 @@
+---
+title: Scroll Area
+description: Custom scrollbar container primitives for vertical, horizontal, and two-axis overflow content.
+section: Components
+toc: true
+---
+
+import ScrollAreaDemo from "../../../examples/scroll-area-demo"
+import ScrollAreaHorizontalDemo from "../../../examples/scroll-area-horizontal-demo"
+import ScrollAreaBothAxisDemo from "../../../examples/scroll-area-both-axis-demo"
+
+`ScrollArea` wraps Ark UI scroll-area primitives into a theme-friendly container with styled scrollbar parts. Use it to keep long content regions constrained while preserving accessible scroll behavior.
+
+## Installation
+
+```bash
+pnpm add @ark-ui/solid
+```
+
+## Usage
+
+```tsx
+import { ScrollArea, ScrollAreaScrollbar } from "shadcn-solid-components/components/scroll-area"
+```
+
+```tsx
+<ScrollArea class="h-72 w-56 rounded-md border">
+  <div class="p-4">...</div>
+  <ScrollAreaScrollbar orientation="horizontal" />
+</ScrollArea>
+```
+
+Use the default vertical scrollbar from `ScrollArea` and append `ScrollAreaScrollbar` with `orientation="horizontal"` when the content also overflows on the x-axis.
+
+## Exports
+
+- `ScrollArea`, `ScrollAreaViewport`, `ScrollAreaScrollbar`, `ScrollAreaThumb`, `ScrollAreaCorner`
+- Types: `ScrollAreaProps`, `ScrollAreaViewportProps`, `ScrollAreaScrollbarProps`, `ScrollAreaThumbProps`, `ScrollAreaCornerProps`
+
+## Examples
+
+### Default
+
+<ComponentPreview name="Scroll Area Default" source="examples/scroll-area-demo.tsx">
+  <div class="mb-4 w-full">
+    <ScrollAreaDemo />
+  </div>
+</ComponentPreview>
+
+### Horizontal
+
+<ComponentPreview name="Scroll Area Horizontal" source="examples/scroll-area-horizontal-demo.tsx">
+  <div class="mb-4 w-full">
+    <ScrollAreaHorizontalDemo />
+  </div>
+</ComponentPreview>
+
+### Both Axis
+
+<ComponentPreview name="Scroll Area Both Axis" source="examples/scroll-area-both-axis-demo.tsx">
+  <div class="mb-4 w-full">
+    <ScrollAreaBothAxisDemo />
+  </div>
+</ComponentPreview>

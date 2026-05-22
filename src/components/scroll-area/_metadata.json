@@ -1,0 +1,14 @@
+{
+  "name": "components/scroll-area",
+  "displayName": "Scroll Area",
+  "description": "A composable scroll container primitive with custom scrollbar styling for vertical, horizontal, or two-axis overflow content. Includes ScrollArea, ScrollAreaViewport, ScrollAreaScrollbar, ScrollAreaThumb, and ScrollAreaCorner for building consistent scrolling regions in lists, galleries, and code panels.",
+  "category": "components",
+  "useCases": [
+    "Constrain long lists in cards or side panels while preserving layout stability",
+    "Enable horizontal browsing for media strips and dense data rows",
+    "Provide consistent themed scrollbar visuals across app sections",
+    "Support both-axis overflow for large canvases or grid-like content"
+  ],
+  "usage": "import { ScrollArea, ScrollAreaScrollbar } from \"shadcn-solid-components/components/scroll-area\"",
+  "tags": ["components", "scroll-area", "solidjs", "ui", "overflow", "scroll"]
+}

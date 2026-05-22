@@ -13,7 +13,10 @@
   "bugs": {
     "url": "https://github.com/vgerbot-libraries/shadcn-solid-components/issues"
   },
-  "files": ["src", "bin"],
+  "files": [
+    "src",
+    "bin"
+  ],
   "private": false,
   "sideEffects": false,
   "type": "module",
@@ -63,8 +66,8 @@
     "./components/icons": "./src/components/icons/index.tsx",
     "./components/item": "./src/components/item/index.tsx",
     "./components/kbd": "./src/components/kbd/index.tsx",
-    "./components/list": "./src/components/list/index.tsx",
     "./components/landing-hero": "./src/components/landing-hero/index.tsx",
+    "./components/list": "./src/components/list/index.tsx",
     "./components/marquee": "./src/components/marquee/index.tsx",
     "./components/menubar": "./src/components/menubar/index.tsx",
     "./components/navigation-menu": "./src/components/navigation-menu/index.tsx",
@@ -77,6 +80,7 @@
     "./components/qr-code": "./src/components/qr-code/index.tsx",
     "./components/radio-group": "./src/components/radio-group/index.tsx",
     "./components/resizable": "./src/components/resizable/index.tsx",
+    "./components/scroll-area": "./src/components/scroll-area/index.tsx",
     "./components/search": "./src/components/search/index.tsx",
     "./components/segmented-control": "./src/components/segmented-control/index.tsx",
     "./components/select": "./src/components/select/index.tsx",
@@ -256,7 +260,9 @@
     "vite-tsconfig-paths": "^6.0.5",
     "vitest": "^1.6.0"
   },
-  "keywords": ["solid"],
+  "keywords": [
+    "solid"
+  ],
   "packageManager": "pnpm@9.1.1",
   "engines": {
     "node": ">=18",

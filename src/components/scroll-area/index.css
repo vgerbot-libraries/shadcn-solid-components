@@ -1,0 +1,8 @@
+[data-slot="scroll-area-viewport"] {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+[data-slot="scroll-area-viewport"]::-webkit-scrollbar {
+  display: none;
+}
