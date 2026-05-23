@@ -1,0 +1,14 @@
+{
+  "name": "components/virtual-scroll-area",
+  "displayName": "Virtual Scroll Area",
+  "description": "A data-driven virtualization primitive built on TanStack Virtual for rendering large datasets with smooth scrolling. Supports vertical, horizontal, and two-axis grid virtualization, fixed or dynamic sizing, and incremental load-more callbacks when approaching boundaries.",
+  "category": "components",
+  "useCases": [
+    "Render long activity or log streams with dynamic row heights",
+    "Build horizontally virtualized timelines or dense chip lanes",
+    "Display two-axis grids with large row and column counts",
+    "Implement infinite scrolling with reactive row or column counts"
+  ],
+  "usage": "import { VirtualScrollArea } from \"shadcn-solid-components/components/virtual-scroll-area\"",
+  "tags": ["components", "virtual-scroll-area", "virtualization", "solidjs", "performance", "tanstack"]
+}

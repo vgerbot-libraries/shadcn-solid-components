@@ -103,6 +103,7 @@
     "./components/toggle-button": "./src/components/toggle-button/index.tsx",
     "./components/toggle-group": "./src/components/toggle-group/index.tsx",
     "./components/tooltip": "./src/components/tooltip/index.tsx",
+    "./components/virtual-scroll-area": "./src/components/virtual-scroll-area/index.tsx",
     "./components/watermark": "./src/components/watermark/index.tsx",
     "./hoc/activity-feed": "./src/hoc/activity-feed/index.tsx",
     "./hoc/app-sidebar": "./src/hoc/app-sidebar/index.tsx",
@@ -176,6 +177,7 @@
     "@corvu/otp-field": "^0.1.4",
     "@corvu/resizable": "^0.2.5",
     "@tanstack/solid-table": "^8.21.3",
+    "@tanstack/solid-virtual": "^3.13.12",
     "@unovis/solid": "^1.6.2",
     "@unovis/ts": "^1.6.2",
     "cmdk-solid": "^1.1.2",
@@ -208,6 +210,9 @@
       "optional": true
     },
     "@tanstack/solid-table": {
+      "optional": true
+    },
+    "@tanstack/solid-virtual": {
       "optional": true
     },
     "@unovis/solid": {

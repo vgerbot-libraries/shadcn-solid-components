@@ -70,6 +70,7 @@ export const ComponentName = {
   ToggleButton: 'ToggleButton',
   ToggleGroup: 'ToggleGroup',
   Tooltip: 'Tooltip',
+  VirtualScrollArea: 'VirtualScrollArea',
   Watermark: 'Watermark',
 } as const
 

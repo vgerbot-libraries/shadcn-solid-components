@@ -1,0 +1,105 @@
+---
+title: Virtual Scroll Area
+description: Data-driven virtualization primitive for vertical, horizontal, and two-axis large datasets.
+section: Components
+toc: true
+---
+
+import VirtualScrollAreaVerticalDemo from "../../../examples/virtual-scroll-area-vertical-demo"
+import VirtualScrollAreaHorizontalDemo from "../../../examples/virtual-scroll-area-horizontal-demo"
+import VirtualScrollAreaBothAxisDemo from "../../../examples/virtual-scroll-area-both-axis-demo"
+import VirtualScrollAreaDynamicSizeDemo from "../../../examples/virtual-scroll-area-dynamic-size-demo"
+import VirtualScrollAreaLoadMoreDemo from "../../../examples/virtual-scroll-area-load-more-demo"
+
+`VirtualScrollArea` wraps TanStack Virtual with a data-driven API so you can render very large row and grid datasets while keeping DOM nodes small. It supports vertical, horizontal, and both-axis virtualization, fixed or dynamic size strategies, and incremental loading when nearing boundaries.
+
+## Installation
+
+```bash
+pnpm add @tanstack/solid-virtual
+```
+
+## Usage
+
+```tsx
+import { VirtualScrollArea } from "shadcn-solid-components/components/virtual-scroll-area"
+```
+
+```tsx
+<VirtualScrollArea
+  mode="both"
+  rowCount={10000}
+  columnCount={200}
+  estimateRowSize={() => 40}
+  estimateColumnSize={() => 120}
+  renderCell={({ rowIndex, columnIndex }) => (
+    <div>R{rowIndex + 1} / C{columnIndex + 1}</div>
+  )}
+/>
+```
+
+Use `measureRow` and `measureColumn` for dynamic sizing. Use `rowCount` and `columnCount` as reactive values (`number | Accessor<number>`) when totals grow over time.
+
+## Exports
+
+- `VirtualScrollArea`
+- Types: `VirtualScrollMode`, `VirtualScrollAreaProps`, `VirtualScrollRowRenderContext`, `VirtualScrollColumnRenderContext`, `VirtualScrollCellRenderContext`
+
+## Examples
+
+### Vertical
+
+<ComponentPreview name="Virtual Scroll Area Vertical" source="examples/virtual-scroll-area-vertical-demo.tsx">
+  <div class="mb-4 w-full">
+    <VirtualScrollAreaVerticalDemo />
+  </div>
+</ComponentPreview>
+
+### Horizontal
+
+<ComponentPreview name="Virtual Scroll Area Horizontal" source="examples/virtual-scroll-area-horizontal-demo.tsx">
+  <div class="mb-4 w-full">
+    <VirtualScrollAreaHorizontalDemo />
+  </div>
+</ComponentPreview>
+
+### Both Axis
+
+<ComponentPreview name="Virtual Scroll Area Both Axis" source="examples/virtual-scroll-area-both-axis-demo.tsx">
+  <div class="mb-4 w-full">
+    <VirtualScrollAreaBothAxisDemo />
+  </div>
+</ComponentPreview>
+
+### Dynamic Row Size
+
+<ComponentPreview name="Virtual Scroll Area Dynamic Size" source="examples/virtual-scroll-area-dynamic-size-demo.tsx">
+  <div class="mb-4 w-full">
+    <VirtualScrollAreaDynamicSizeDemo />
+  </div>
+</ComponentPreview>
+
+### Load More Rows
+
+<ComponentPreview name="Virtual Scroll Area Load More" source="examples/virtual-scroll-area-load-more-demo.tsx">
+  <div class="mb-4 w-full">
+    <VirtualScrollAreaLoadMoreDemo />
+  </div>
+</ComponentPreview>
+
+## API
+
+### `VirtualScrollAreaProps`
+
+Extends `div` props. Notable fields:
+
+- `mode` — `'vertical' | 'horizontal' | 'both'`
+- `rowCount`, `columnCount` — item counts, accepts `number | Accessor<number>`
+- `estimateRowSize`, `estimateColumnSize` — size estimators for virtualization
+- `measureRow`, `measureColumn` — enables dynamic DOM measurement
+- `overscan` — extra virtual items around viewport (default `8`)
+- `loadMoreThreshold` — trigger distance from end index (default `5`)
+- `hasMoreRows`, `hasMoreColumns` — indicates if incremental loading can continue
+- `onLoadMoreRows`, `onLoadMoreColumns` — callbacks triggered near row/column boundaries
+- `renderRow`, `renderColumn`, `renderCell` — render callbacks by mode
+- `empty` — empty state element or text

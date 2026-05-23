@@ -59,6 +59,7 @@ import type { TimelineProps } from '../components/timeline'
 import type { ToggleButtonProps } from '../components/toggle-button'
 import type { ToggleGroupProps } from '../components/toggle-group'
 import type { TooltipProps } from '../components/tooltip'
+import type { VirtualScrollAreaProps } from '../components/virtual-scroll-area'
 import type { WatermarkProps } from '../components/watermark'
 import type { ComponentName } from './theme-context'
 
@@ -129,6 +130,7 @@ export interface ComponentPropsMap {
   [ComponentName.ToggleButton]: ToggleButtonProps
   [ComponentName.ToggleGroup]: ToggleGroupProps
   [ComponentName.Tooltip]: TooltipProps
+  [ComponentName.VirtualScrollArea]: VirtualScrollAreaProps
   [ComponentName.Watermark]: WatermarkProps
 }
 

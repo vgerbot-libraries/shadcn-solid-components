@@ -2754,6 +2754,74 @@ export const Contents: Record<string, DocEntry> = {
     }
 ]
   },
+  "components/virtual-scroll-area": {
+    component: lazy(() => import("@docs/content/docs/components/virtual-scroll-area.mdx")),
+    data: {
+    "title": "Virtual Scroll Area",
+    "description": "Data-driven virtualization primitive for vertical, horizontal, and two-axis large datasets.",
+    "navTitle": "Virtual Scroll Area",
+    "section": "Components",
+    "order": 0,
+    "toc": true
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "installation",
+        "text": "Installation"
+    },
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "exports",
+        "text": "Exports"
+    },
+    {
+        "depth": 2,
+        "slug": "examples",
+        "text": "Examples"
+    },
+    {
+        "depth": 3,
+        "slug": "vertical",
+        "text": "Vertical"
+    },
+    {
+        "depth": 3,
+        "slug": "horizontal",
+        "text": "Horizontal"
+    },
+    {
+        "depth": 3,
+        "slug": "both-axis",
+        "text": "Both Axis"
+    },
+    {
+        "depth": 3,
+        "slug": "dynamic-row-size",
+        "text": "Dynamic Row Size"
+    },
+    {
+        "depth": 3,
+        "slug": "load-more-rows",
+        "text": "Load More Rows"
+    },
+    {
+        "depth": 2,
+        "slug": "api",
+        "text": "API"
+    },
+    {
+        "depth": 3,
+        "slug": "virtualscrollareaprops",
+        "text": "VirtualScrollAreaProps"
+    }
+]
+  },
   "components/watermark": {
     component: lazy(() => import("@docs/content/docs/components/watermark.mdx")),
     data: {
@@ -5792,6 +5860,11 @@ export const docsNavigation: DocsNavSection[] = [
         "title": "Tooltip",
         "href": "/docs/components/tooltip",
         "description": "Tooltip root, trigger, portal, and styled content with arrow on Kobalte."
+      },
+      {
+        "title": "Virtual Scroll Area",
+        "href": "/docs/components/virtual-scroll-area",
+        "description": "Data-driven virtualization primitive for vertical, horizontal, and two-axis large datasets."
       },
       {
         "title": "Watermark",

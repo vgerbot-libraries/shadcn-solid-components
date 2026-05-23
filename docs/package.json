@@ -17,6 +17,7 @@
     "@kobalte/core": "^0.13.11",
     "@solidjs/router": "^0.15.4",
     "@tanstack/solid-table": "^8.21.3",
+    "@tanstack/solid-virtual": "^3.13.12",
     "@unovis/solid": "^1.6.4",
     "@unovis/ts": "^1.6.4",
     "cmdk-solid": "^1.1.2",
