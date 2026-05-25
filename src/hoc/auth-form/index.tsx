@@ -85,7 +85,9 @@ export interface AuthSubmitPayload {
 
 export interface AuthValidationResult {
   valid: boolean
-  errors?: Partial<Record<AuthFieldErrorKey, string>>
+  errors?: {
+    [key in AuthFieldErrorKey]?: string
+  }
 }
 
 export interface AuthFormProps extends Omit<ComponentProps<'div'>, 'onSubmit'> {
