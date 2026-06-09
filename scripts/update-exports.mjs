@@ -1,4 +1,4 @@
-import { readFileSync, readdirSync, statSync, writeFileSync } from 'node:fs'
+import { readdirSync, readFileSync, statSync, writeFileSync } from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 
@@ -40,19 +40,26 @@ function getFileEntry(itemName) {
   return itemName.slice(0, -extension.length)
 }
 
-function getEntries(sourceDir, exportPrefix = '') {
+function getEntries(sourceDir, exportPrefix = '', includeFileEntries = true) {
   const absoluteDir = path.join(rootDir, sourceDir)
   const entries = []
 
   for (const item of readdirSync(absoluteDir, { withFileTypes: true })) {
     if (item.isDirectory()) {
+      const childSourceDir = path.join(sourceDir, item.name)
+      const childExportPrefix = exportPrefix ? `${exportPrefix}/${item.name}` : item.name
       const entryFile = getEntryExtension(path.join(absoluteDir, item.name))
       if (!entryFile) {
+        entries.push(...getEntries(childSourceDir, childExportPrefix, false))
         continue
       }
 
-      const exportName = exportPrefix ? `${exportPrefix}/${item.name}` : item.name
-      entries.push([`./${exportName}`, `./${sourceDir}/${item.name}/${entryFile}`])
+      entries.push([`./${childExportPrefix}`, `./${childSourceDir}/${entryFile}`])
+      entries.push(...getEntries(childSourceDir, childExportPrefix, false))
+      continue
+    }
+
+    if (!includeFileEntries) {
       continue
     }
 

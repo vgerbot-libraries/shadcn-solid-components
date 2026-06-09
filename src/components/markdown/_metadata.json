@@ -1,0 +1,14 @@
+{
+  "name": "components/markdown",
+  "displayName": "Markdown",
+  "description": "A markdown rendering component with a plugin architecture and optional plugin packs for Mermaid diagrams, syntax highlighting, copy actions, KaTeX math, and SMILES chemical structures.",
+  "category": "components",
+  "useCases": [
+    "Render user-authored markdown content with consistent shadcn styling",
+    "Attach enhancement plugins such as code copy and diagram rendering",
+    "Display technical docs that include code fences and math formulas",
+    "Render chemistry-focused notes with SMILES notation support"
+  ],
+  "usage": "import { Markdown } from \"shadcn-solid-components/components/markdown\"",
+  "tags": ["components", "markdown", "plugin", "mermaid", "katex", "smiles", "solidjs", "ui"]
+}

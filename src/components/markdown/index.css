@@ -1,0 +1,43 @@
+.shadcn-markdown-mermaid {
+  margin: 1rem 0;
+  overflow-x: auto;
+}
+
+.shadcn-markdown-mermaid-fallback {
+  margin: 1rem 0;
+  border: 1px solid hsl(var(--border));
+  border-radius: 0.75rem;
+  background: hsl(var(--muted) / 0.6);
+  padding: 1rem;
+}
+
+.shadcn-markdown-mermaid-fallback pre {
+  margin: 0;
+}
+
+.shadcn-markdown-code-container {
+  position: relative;
+}
+
+.shadcn-markdown-copy-button {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  border: 1px solid hsl(var(--border));
+  border-radius: 0.5rem;
+  background: hsl(var(--background));
+  color: hsl(var(--foreground));
+  font-size: 0.75rem;
+  line-height: 1;
+  padding: 0.375rem 0.5rem;
+  cursor: pointer;
+}
+
+.shadcn-markdown-copy-button:hover {
+  background: hsl(var(--muted));
+}
+
+.shadcn-markdown-copy-button:focus-visible {
+  outline: 2px solid hsl(var(--ring));
+  outline-offset: 2px;
+}

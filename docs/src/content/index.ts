@@ -1458,6 +1458,84 @@ export const Contents: Record<string, DocEntry> = {
     }
 ]
   },
+  "components/markdown": {
+    component: lazy(() => import("@docs/content/docs/components/markdown.mdx")),
+    data: {
+    "title": "Markdown",
+    "description": "Markdown renderer with composable plugin architecture for diagrams, syntax highlighting, copy actions, math, and chemistry notation.",
+    "navTitle": "Markdown",
+    "section": "Components",
+    "order": 0,
+    "toc": true
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "installation",
+        "text": "Installation"
+    },
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "exports",
+        "text": "Exports"
+    },
+    {
+        "depth": 2,
+        "slug": "examples",
+        "text": "Examples"
+    },
+    {
+        "depth": 3,
+        "slug": "default",
+        "text": "Default"
+    },
+    {
+        "depth": 3,
+        "slug": "highlight-and-copy",
+        "text": "Highlight And Copy"
+    },
+    {
+        "depth": 3,
+        "slug": "mermaid",
+        "text": "Mermaid"
+    },
+    {
+        "depth": 3,
+        "slug": "katex",
+        "text": "KaTeX"
+    },
+    {
+        "depth": 3,
+        "slug": "smiles",
+        "text": "SMILES"
+    },
+    {
+        "depth": 3,
+        "slug": "custom-plugin",
+        "text": "Custom Plugin"
+    },
+    {
+        "depth": 2,
+        "slug": "api",
+        "text": "API"
+    },
+    {
+        "depth": 3,
+        "slug": "markdownprops",
+        "text": "MarkdownProps"
+    },
+    {
+        "depth": 2,
+        "slug": "notes",
+        "text": "Notes"
+    }
+]
+  },
   "components/menubar": {
     component: lazy(() => import("@docs/content/docs/components/menubar.mdx")),
     data: {
@@ -5700,6 +5778,11 @@ export const docsNavigation: DocsNavSection[] = [
         "title": "List",
         "href": "/docs/components/list",
         "description": "Composable list primitives for feed, catalog, and task-style item layouts."
+      },
+      {
+        "title": "Markdown",
+        "href": "/docs/components/markdown",
+        "description": "Markdown renderer with composable plugin architecture for diagrams, syntax highlighting, copy actions, math, and chemistry notation."
       },
       {
         "title": "Menubar",

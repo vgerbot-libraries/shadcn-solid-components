@@ -38,6 +38,7 @@ export const ComponentName = {
   Item: 'Item',
   Kbd: 'Kbd',
   List: 'List',
+  Markdown: 'Markdown',
   Marquee: 'Marquee',
   Menubar: 'Menubar',
   NavigationMenu: 'NavigationMenu',

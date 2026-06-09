@@ -1,22 +1,3 @@
-/// <reference types="vite/client" />
-/// <reference types="solid-mdx" />
-
-declare module '*.mdx' {
-  import { Component } from 'solid-js'
-  const MDXComponent: Component<any>
-  export default MDXComponent
-  export const frontmatter: Record<string, any>
-}
-
-declare module '@docs/components/mdx' {
-  export const mdxCustomComponents: Record<string, any>
-}
-
-declare module '@docs/content' {
-  export const Contents: Record<string, any>
-  export const docsNavigation: any[]
-}
-
 declare module 'markdown-it' {
   export interface MarkdownItBlockRuler {
     before: (
@@ -55,6 +36,12 @@ declare module 'markdown-it-katex' {
 
 declare module 'markdown-it-smiles' {
   export const MarkdownItSmiles: any
+}
+
+declare module 'smiles-drawer' {
+  const smilesDrawer: any
+  export default smilesDrawer
+  export const SmiDrawer: any
 }
 
 declare module 'mermaid' {

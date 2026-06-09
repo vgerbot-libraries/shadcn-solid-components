@@ -1,0 +1,116 @@
+---
+title: Markdown
+description: Markdown renderer with composable plugin architecture for diagrams, syntax highlighting, copy actions, math, and chemistry notation.
+section: Components
+toc: true
+---
+
+import MarkdownDemo from "../../../examples/markdown-demo"
+import MarkdownHighlightCopyDemo from "../../../examples/markdown-highlight-copy-demo"
+import MarkdownMermaidDemo from "../../../examples/markdown-mermaid-demo"
+import MarkdownKatexDemo from "../../../examples/markdown-katex-demo"
+import MarkdownSmilesDemo from "../../../examples/markdown-smiles-demo"
+import MarkdownCustomPluginDemo from "../../../examples/markdown-custom-plugin-demo"
+
+`Markdown` renders markdown content using `markdown-it` and supports a composable plugin system. The default package includes plugin factories for Mermaid, syntax highlight, copy actions, KaTeX, and SMILES rendering.
+
+## Installation
+
+```bash
+pnpm add markdown-it markdown-it-highlightjs mermaid markdown-it-katex katex markdown-it-smiles
+```
+
+## Usage
+
+```tsx
+import { Markdown } from "shadcn-solid-components/components/markdown"
+import { createMarkdownHighlightPlugin } from "shadcn-solid-components/components/markdown/plugins/highlight"
+
+const source = "```ts\nconsole.log('hello')\n```"
+
+<Markdown value={source} plugins={[createMarkdownHighlightPlugin()]} />
+```
+
+Use `plugins` to control feature activation and order. Keep the base component minimal when only plain Markdown rendering is needed.
+
+## Exports
+
+- `Markdown`, `markdownVariants`, `createMarkdownPlugin`, `createMarkdownRenderer`
+- Types: `MarkdownProps`, `MarkdownPlugin`, `MarkdownPluginRenderContext`, `MarkdownPluginSetupContext`, `MarkdownPluginCleanup`
+
+Plugin subpaths:
+
+- `createMarkdownHighlightPlugin` from `shadcn-solid-components/components/markdown/plugins/highlight`
+- `createMarkdownCopyPlugin` from `shadcn-solid-components/components/markdown/plugins/copy`
+- `createMarkdownMermaidPlugin` from `shadcn-solid-components/components/markdown/plugins/mermaid`
+- `createMarkdownKatexPlugin` from `shadcn-solid-components/components/markdown/plugins/katex`
+- `createMarkdownSmilesPlugin` from `shadcn-solid-components/components/markdown/plugins/smiles`
+
+## Examples
+
+### Default
+
+<ComponentPreview name="Markdown Default" source="examples/markdown-demo.tsx">
+  <div class="mb-4 w-full">
+    <MarkdownDemo />
+  </div>
+</ComponentPreview>
+
+### Highlight And Copy
+
+<ComponentPreview name="Markdown Highlight And Copy" source="examples/markdown-highlight-copy-demo.tsx">
+  <div class="mb-4 w-full">
+    <MarkdownHighlightCopyDemo />
+  </div>
+</ComponentPreview>
+
+### Mermaid
+
+<ComponentPreview name="Markdown Mermaid" source="examples/markdown-mermaid-demo.tsx">
+  <div class="mb-4 w-full">
+    <MarkdownMermaidDemo />
+  </div>
+</ComponentPreview>
+
+### KaTeX
+
+<ComponentPreview name="Markdown KaTeX" source="examples/markdown-katex-demo.tsx">
+  <div class="mb-4 w-full">
+    <MarkdownKatexDemo />
+  </div>
+</ComponentPreview>
+
+### SMILES
+
+<ComponentPreview name="Markdown SMILES" source="examples/markdown-smiles-demo.tsx">
+  <div class="mb-4 w-full">
+    <MarkdownSmilesDemo />
+  </div>
+</ComponentPreview>
+
+### Custom Plugin
+
+<ComponentPreview name="Markdown Custom Plugin" source="examples/markdown-custom-plugin-demo.tsx">
+  <div class="mb-4 w-full">
+    <MarkdownCustomPluginDemo />
+  </div>
+</ComponentPreview>
+
+## API
+
+### `MarkdownProps`
+
+Extends `div` props.
+
+- `value` — markdown string source
+- `children` — fallback markdown string when `value` is undefined
+- `plugins` — ordered plugin list
+- `markdownItOptions` — forwarded options for `markdown-it`
+- `allowHtml` — enables markdown HTML rendering (`false` by default)
+- `sanitize` — optional post-render sanitizer
+- `size` — typography scale (`sm | default | lg`)
+
+## Notes
+
+- Draw.io plugin is intentionally deferred and can be added later through the same plugin architecture.
+- The KaTeX plugin injects KaTeX styles into the Markdown shadow root automatically.

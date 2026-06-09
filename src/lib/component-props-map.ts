@@ -29,6 +29,7 @@ import type { HoverCardProps } from '../components/hover-card'
 import type { ItemProps } from '../components/item'
 import type { KbdProps } from '../components/kbd'
 import type { ListProps } from '../components/list'
+import type { MarkdownProps } from '../components/markdown'
 import type { MarqueeProps } from '../components/marquee'
 import type { MenubarProps } from '../components/menubar'
 import type { NavigationMenuProps } from '../components/navigation-menu'
@@ -98,6 +99,7 @@ export interface ComponentPropsMap {
   [ComponentName.Item]: ItemProps
   [ComponentName.Kbd]: KbdProps
   [ComponentName.List]: ListProps
+  [ComponentName.Markdown]: MarkdownProps
   [ComponentName.Marquee]: MarqueeProps
   [ComponentName.Menubar]: MenubarProps
   [ComponentName.NavigationMenu]: NavigationMenuProps
