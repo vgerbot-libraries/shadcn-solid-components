@@ -3,7 +3,7 @@ import { createMarkdownKatexPlugin } from 'shadcn-solid-components/components/ma
 
 const source = `## KaTeX Math
 
-Inline equation: $\\sum_{n=1}^{\\infty}\\frac{1}{n}$
+Inline equation: $\\displaystyle\\sum_{n=1}^{\\infty}\\frac{1}{n}$
 
 Block equation:
 
