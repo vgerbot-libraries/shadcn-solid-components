@@ -1,3 +1,116 @@
+@reference "../../themes/base.css";
+
+/* ===== Markdown content typography (rendered inside shadow DOM) ===== */
+
+.markdown-content {
+  color: var(--foreground);
+  line-height: 1.75;
+}
+
+/* Size variants */
+.markdown-content--sm {
+  @apply text-sm;
+}
+.markdown-content--default {
+  @apply text-base;
+}
+.markdown-content--lg {
+  @apply text-lg;
+}
+
+/* Links */
+.markdown-content a {
+  color: var(--primary);
+  text-underline-offset: 4px;
+}
+.markdown-content a:hover {
+  @apply underline;
+}
+
+/* Blockquote */
+.markdown-content blockquote {
+  border-left: 2px solid var(--border);
+  color: var(--muted-foreground);
+  @apply my-6 pl-6 italic;
+}
+
+/* Inline code */
+.markdown-content code {
+  background: var(--muted);
+  @apply relative rounded px-[0.3rem] py-[0.2rem] font-mono text-sm;
+}
+
+/* Headings */
+.markdown-content h1 {
+  @apply mt-2 scroll-m-20 text-4xl font-bold tracking-tight;
+}
+.markdown-content h2 {
+  border-bottom: 1px solid var(--border);
+  @apply mt-10 scroll-m-20 pb-1 text-3xl font-semibold tracking-tight;
+}
+.markdown-content h3 {
+  @apply mt-8 scroll-m-20 text-2xl font-semibold tracking-tight;
+}
+.markdown-content h4 {
+  @apply mt-8 scroll-m-20 text-xl font-semibold tracking-tight;
+}
+
+/* Lists */
+.markdown-content li {
+  @apply mt-2;
+}
+.markdown-content ol {
+  @apply my-6 ml-6 list-decimal;
+}
+.markdown-content ul {
+  @apply my-6 ml-6 list-disc;
+}
+
+/* Paragraphs */
+.markdown-content p {
+  line-height: 1.75;
+}
+.markdown-content p:not(:first-child) {
+  @apply mt-6;
+}
+
+/* Pre / code blocks */
+.markdown-content pre {
+  background: var(--muted);
+  border: 1px solid var(--border);
+  color: var(--foreground);
+  @apply my-4 overflow-x-auto rounded-lg p-4;
+}
+.markdown-content pre code {
+  background: transparent;
+  @apply p-0;
+}
+
+/* Tables */
+.markdown-content table {
+  @apply my-6 w-full border-collapse overflow-y-auto;
+}
+.markdown-content tbody tr:last-child {
+  border-bottom: none;
+}
+.markdown-content td {
+  border: 1px solid var(--border);
+  @apply px-4 py-2 text-left align-top;
+}
+.markdown-content th {
+  border: 1px solid var(--border);
+  @apply px-4 py-2 text-left font-bold;
+}
+.markdown-content tr {
+  border-top: 1px solid var(--border);
+  @apply m-0 p-0;
+}
+.markdown-content tr:nth-child(even) {
+  background: color-mix(in oklch, var(--muted) 50%, transparent);
+}
+
+/* ===== Plugin-specific styles ===== */
+
 .shadcn-markdown-mermaid {
   margin: 1rem 0;
   overflow-x: auto;

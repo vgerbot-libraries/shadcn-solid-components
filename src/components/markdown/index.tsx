@@ -42,33 +42,12 @@ export type MarkdownPluginFactory = (plugin: MarkdownPlugin) => MarkdownPlugin
 export const createMarkdownPlugin: MarkdownPluginFactory = plugin => plugin
 
 export const markdownVariants = cva({
-  base: [
-    'text-foreground',
-    'leading-7',
-    '[&_a]:text-primary [&_a]:underline-offset-4 [&_a:hover]:underline',
-    '[&_blockquote]:border-border [&_blockquote]:text-muted-foreground [&_blockquote]:my-6 [&_blockquote]:border-l-2 [&_blockquote]:pl-6 [&_blockquote]:italic',
-    '[&_code]:bg-muted [&_code]:relative [&_code]:rounded [&_code]:px-[0.3rem] [&_code]:py-[0.2rem] [&_code]:font-mono [&_code]:text-sm',
-    '[&_h1]:mt-2 [&_h1]:scroll-m-20 [&_h1]:text-4xl [&_h1]:font-bold [&_h1]:tracking-tight',
-    '[&_h2]:mt-10 [&_h2]:scroll-m-20 [&_h2]:border-b [&_h2]:pb-1 [&_h2]:text-3xl [&_h2]:font-semibold [&_h2]:tracking-tight',
-    '[&_h3]:mt-8 [&_h3]:scroll-m-20 [&_h3]:text-2xl [&_h3]:font-semibold [&_h3]:tracking-tight',
-    '[&_h4]:mt-8 [&_h4]:scroll-m-20 [&_h4]:text-xl [&_h4]:font-semibold [&_h4]:tracking-tight',
-    '[&_li]:mt-2',
-    '[&_ol]:my-6 [&_ol]:ml-6 [&_ol]:list-decimal',
-    '[&_p]:leading-7 [&_p:not(:first-child)]:mt-6',
-    '[&_pre]:bg-muted [&_pre]:border-border [&_pre]:text-foreground [&_pre]:my-4 [&_pre]:overflow-x-auto [&_pre]:rounded-lg [&_pre]:border [&_pre]:p-4',
-    '[&_pre_code]:bg-transparent [&_pre_code]:p-0',
-    '[&_table]:my-6 [&_table]:w-full [&_table]:border-collapse [&_table]:overflow-y-auto',
-    '[&_tbody_tr:last-child]:border-0',
-    '[&_td]:border-border [&_td]:border [&_td]:px-4 [&_td]:py-2 [&_td]:text-left [&_td]:align-top',
-    '[&_th]:border-border [&_th]:border [&_th]:px-4 [&_th]:py-2 [&_th]:text-left [&_th]:font-bold',
-    '[&_tr]:m-0 [&_tr]:border-t [&_tr]:p-0 even:[&_tr]:bg-muted/50',
-    '[&_ul]:my-6 [&_ul]:ml-6 [&_ul]:list-disc',
-  ],
+  base: 'markdown-content',
   variants: {
     size: {
-      sm: 'text-sm',
-      default: 'text-base',
-      lg: 'text-lg',
+      sm: 'markdown-content--sm',
+      default: 'markdown-content--default',
+      lg: 'markdown-content--lg',
     },
   },
   defaultVariants: {
@@ -183,7 +162,6 @@ export const Markdown = (props: MarkdownProps) => {
     contentContainer = document.createElement('div')
     contentContainer.className = cx(
       markdownVariants({ size: local.size }),
-      'rounded-component',
       componentClass,
       local.class,
     )
@@ -258,7 +236,6 @@ export const Markdown = (props: MarkdownProps) => {
     if (contentContainer) {
       contentContainer.className = cx(
         markdownVariants({ size: local.size }),
-        'rounded-component',
         componentClass,
         local.class,
       )
