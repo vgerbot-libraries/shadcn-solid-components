@@ -10,5 +10,6 @@
     "Command or settings search within large applications to surface actions and preferences"
   ],
   "usage": "import { Search, SearchIcon, SearchInput, SearchClearButton, SearchListbox, SearchNoResult, SearchSection, SearchItem, SearchItemLabel, SearchItemDescription, SearchItemIndicator, SearchPortal } from \"shadcn-solid-components/components/search\"",
-  "tags": ["components", "search", "solidjs", "ui"]
+  "tags": ["components", "search", "solidjs", "ui"],
+  "dependencies": ["@kobalte/core"]
 }

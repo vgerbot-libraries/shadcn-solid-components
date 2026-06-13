@@ -10,5 +10,6 @@
     "CRM opportunity pipelines showing multi-select checkboxes and inline status dropdown edits"
   ],
   "usage": "import { DataTable, type DataTableProps } from \"shadcn-solid-components/hoc/data-table\"",
-  "tags": ["hoc", "data-table", "solidjs", "ui"]
+  "tags": ["hoc", "data-table", "solidjs", "ui"],
+  "dependencies": ["@kobalte/core", "@tanstack/solid-table", "cva"]
 }

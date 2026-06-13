@@ -10,5 +10,6 @@
     "Admin tables after applying restrictive filters, prompting the user to broaden their criteria"
   ],
   "usage": "import { EmptyState, EmptyStateIcon, EmptyStateTitle, EmptyStateDescription, EmptyStateAction } from \"shadcn-solid-components/hoc/empty-state\"",
-  "tags": ["hoc", "empty-state", "solidjs", "ui"]
+  "tags": ["hoc", "empty-state", "solidjs", "ui"],
+  "dependencies": []
 }

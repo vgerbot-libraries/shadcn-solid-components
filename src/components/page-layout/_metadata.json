@@ -10,5 +10,6 @@
     "Any page that needs a standard header + scrollable body structure without opinionated context resolution"
   ],
   "usage": "import { PageLayout, PageLayoutHeader } from \"shadcn-solid-components/components/page-layout\"",
-  "tags": ["components", "page-layout", "solidjs", "ui"]
+  "tags": ["components", "page-layout", "solidjs", "ui"],
+  "dependencies": []
 }

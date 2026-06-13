@@ -1,13 +1,27 @@
 #!/usr/bin/env node
 
-import { accessSync, existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
-import path from 'node:path'
+import { execFileSync } from 'node:child_process'
+import {
+  accessSync,
+  existsSync,
+  mkdirSync,
+  readdirSync,
+  readFileSync,
+  statSync,
+  writeFileSync,
+} from 'node:fs'
 import { createRequire } from 'node:module'
+import path from 'node:path'
 import inquirer from 'inquirer'
 
 const PACKAGE_NAME = 'shadcn-solid-components'
 const DEFAULT_OUT_DIR = 'src/lib/ssc'
 const CODE_EXTENSIONS = new Set(['.ts', '.tsx', '.js', '.jsx', '.mjs', '.cjs'])
+const LOCKFILE_BY_MANAGER = {
+  pnpm: 'pnpm-lock.yaml',
+  npm: 'package-lock.json',
+  yarn: 'yarn.lock',
+}
 const RESOLVABLE_EXTENSIONS = ['.ts', '.tsx', '.js', '.jsx', '.mjs', '.cjs', '.css', '.json']
 const REQUIRED_METADATA_FIELDS = ['name', 'description', 'usage']
 
@@ -49,8 +63,25 @@ function loadJson(filePath) {
   try {
     return JSON.parse(readFileSync(filePath, 'utf8'))
   } catch (error) {
-    fail(`Unable to parse JSON: ${filePath}\n${error instanceof Error ? error.message : String(error)}`)
+    fail(
+      `Unable to parse JSON: ${filePath}\n${error instanceof Error ? error.message : String(error)}`,
+    )
   }
+}
+
+function readMetadataDependencies(metadataPath, metadata) {
+  if (metadata.dependencies == null) {
+    return []
+  }
+
+  if (
+    !Array.isArray(metadata.dependencies) ||
+    metadata.dependencies.some(item => typeof item !== 'string')
+  ) {
+    fail(`Metadata field 'dependencies' must be string[]: ${metadataPath}`)
+  }
+
+  return metadata.dependencies
 }
 
 function resolvePackageRoot(cwd) {
@@ -90,7 +121,12 @@ function buildRegistry(packageRoot) {
     }
 
     const specifier = exportKey.slice(2)
-    if (!specifier.startsWith('components/') && !specifier.startsWith('hoc/') && !specifier.startsWith('lib/') && !specifier.startsWith('i18n/')) {
+    if (
+      !specifier.startsWith('components/') &&
+      !specifier.startsWith('hoc/') &&
+      !specifier.startsWith('lib/') &&
+      !specifier.startsWith('i18n/')
+    ) {
       continue
     }
 
@@ -100,16 +136,17 @@ function buildRegistry(packageRoot) {
     }
 
     const sourceAbs = path.join(packageRoot, sourceRel)
-    const kind = specifier.split('/')[0]
+    const segments = specifier.split('/')
+    const kind = segments[0]
+    const isTopLevelInstallable = (kind === 'components' || kind === 'hoc') && segments.length === 2
 
     const entry = {
       specifier,
       kind,
       sourceAbs,
-      metadataAbs:
-        kind === 'components' || kind === 'hoc'
-          ? path.join(path.dirname(sourceAbs), '_metadata.json')
-          : null,
+      metadataAbs: isTopLevelInstallable
+        ? path.join(path.dirname(sourceAbs), '_metadata.json')
+        : null,
     }
 
     registry.set(specifier, entry)
@@ -142,7 +179,9 @@ function readMetadataForEntry(entry) {
 
 function listInstallableEntries(registry) {
   const entries = Array.from(registry.values()).filter(
-    entry => entry.kind === 'components' || entry.kind === 'hoc',
+    entry =>
+      (entry.kind === 'components' || entry.kind === 'hoc') &&
+      entry.specifier.split('/').length === 2,
   )
 
   entries.sort((a, b) => {
@@ -201,7 +240,276 @@ function parseArgs(argv) {
     return { command: 'add', names, outDir, dryRun }
   }
 
-  fail(`Unknown command '${command}'. Available commands: list, add`)
+  if (command === 'install') {
+    const names = []
+    let scanDir = '.'
+    let dryRun = false
+
+    for (let index = 3; index < argv.length; index += 1) {
+      const arg = argv[index]
+
+      if (arg === '--dry-run') {
+        dryRun = true
+        continue
+      }
+
+      if (arg === '--scan-dir' || arg === '-s') {
+        const next = argv[index + 1]
+        if (!next) {
+          fail(`${arg} requires a path argument`)
+        }
+
+        scanDir = next
+        index += 1
+        continue
+      }
+
+      if (arg.startsWith('--scan-dir=')) {
+        scanDir = arg.slice('--scan-dir='.length)
+        continue
+      }
+
+      names.push(arg)
+    }
+
+    return { command: 'install', names, scanDir, dryRun }
+  }
+
+  fail(`Unknown command '${command}'. Available commands: list, add, install`)
+}
+
+function normalizeModuleSpecifier(specifier) {
+  return specifier.split(/[?#]/u)[0] ?? specifier
+}
+
+function extractThirdPartyPackageName(specifier) {
+  const normalized = normalizeModuleSpecifier(specifier)
+
+  if (!normalized || normalized.startsWith('.') || normalized.startsWith('/')) {
+    return null
+  }
+
+  if (
+    normalized.startsWith('node:') ||
+    normalized.startsWith('http://') ||
+    normalized.startsWith('https://')
+  ) {
+    return null
+  }
+
+  if (normalized === PACKAGE_NAME || normalized.startsWith(`${PACKAGE_NAME}/`)) {
+    return null
+  }
+
+  if (normalized.startsWith('@')) {
+    const parts = normalized.split('/')
+    if (parts.length < 2) {
+      return null
+    }
+
+    return `${parts[0]}/${parts[1]}`
+  }
+
+  const [name] = normalized.split('/')
+  return name || null
+}
+
+function collectThirdPartyDependenciesFromFiles(files) {
+  const deps = new Set()
+
+  for (const filePath of files) {
+    if (!CODE_EXTENSIONS.has(path.extname(filePath))) {
+      continue
+    }
+
+    const content = readFileSync(filePath, 'utf8')
+    const moduleSpecifiers = parseModuleSpecifiers(content)
+    for (const specifier of moduleSpecifiers) {
+      const packageName = extractThirdPartyPackageName(specifier)
+      if (packageName) {
+        deps.add(packageName)
+      }
+    }
+  }
+
+  return Array.from(deps)
+}
+
+function collectDependenciesFromEntries(entries, registry) {
+  const deps = new Set()
+
+  for (const entry of entries) {
+    const metadata = readMetadataForEntry(entry)
+    const metadataDeps = readMetadataDependencies(entry.metadataAbs, metadata)
+
+    if (metadataDeps.length > 0) {
+      for (const dep of metadataDeps) {
+        deps.add(dep)
+      }
+      continue
+    }
+
+    const files = collectCopyFiles([entry], registry)
+    const fallbackDeps = collectThirdPartyDependenciesFromFiles(files)
+    for (const dep of fallbackDeps) {
+      deps.add(dep)
+    }
+  }
+
+  return Array.from(deps).sort((a, b) => a.localeCompare(b))
+}
+
+function scanFilesFallback(scanDirAbs, ignoredDirNames) {
+  const files = []
+  const queue = [scanDirAbs]
+
+  while (queue.length > 0) {
+    const current = queue.shift()
+
+    let stats
+    try {
+      stats = statSync(current)
+    } catch {
+      continue
+    }
+
+    if (stats.isDirectory()) {
+      const baseName = path.basename(current)
+      if (ignoredDirNames.has(baseName)) {
+        continue
+      }
+
+      const children = readdirSync(current)
+      for (const child of children) {
+        queue.push(path.join(current, child))
+      }
+      continue
+    }
+
+    if (stats.isFile() && CODE_EXTENSIONS.has(path.extname(current))) {
+      files.push(current)
+    }
+  }
+
+  return files
+}
+
+function listCodeFilesWithGitIgnore(cwd, scanDirAbs) {
+  const gitArgs = ['ls-files', '--cached', '--others', '--exclude-standard', scanDirAbs]
+
+  try {
+    const output = execFileSync('git', gitArgs, {
+      cwd,
+      encoding: 'utf8',
+      stdio: ['ignore', 'pipe', 'ignore'],
+    })
+
+    return output
+      .split(/\r?\n/u)
+      .filter(Boolean)
+      .map(item => path.resolve(cwd, item))
+      .filter(filePath => CODE_EXTENSIONS.has(path.extname(filePath)))
+  } catch {
+    return scanFilesFallback(scanDirAbs, new Set(['.git', 'node_modules', 'dist', 'temp']))
+  }
+}
+
+function collectUsedInstallableEntriesFromProject({
+  scanDirAbs,
+  cwd,
+  registry,
+  installableEntries,
+}) {
+  const entries = []
+  const seen = new Set()
+  const installableMap = new Map(installableEntries.map(entry => [entry.specifier, entry]))
+  const codeFiles = listCodeFilesWithGitIgnore(cwd, scanDirAbs)
+
+  for (const filePath of codeFiles) {
+    const content = readFileSync(filePath, 'utf8')
+    const moduleSpecifiers = parseModuleSpecifiers(content)
+
+    for (const rawSpecifier of moduleSpecifiers) {
+      const specifier = normalizeModuleSpecifier(rawSpecifier)
+      let installSpecifier = null
+
+      if (specifier.startsWith(`${PACKAGE_NAME}/`)) {
+        installSpecifier = specifier.slice(`${PACKAGE_NAME}/`.length)
+      } else {
+        const match = specifier.match(/(?:^|\/)(components|hoc)\/([^/]+)/u)
+        if (match) {
+          installSpecifier = `${match[1]}/${match[2]}`
+        }
+      }
+
+      if (!installSpecifier) {
+        continue
+      }
+
+      const entry = registry.get(installSpecifier)
+      if (!entry || !installableMap.has(installSpecifier)) {
+        continue
+      }
+
+      if (!seen.has(entry.specifier)) {
+        seen.add(entry.specifier)
+        entries.push(entry)
+      }
+    }
+  }
+
+  return entries
+}
+
+function detectPackageManager(cwd) {
+  const packageJsonPath = path.join(cwd, 'package.json')
+
+  if (existsSync(packageJsonPath)) {
+    const packageJson = loadJson(packageJsonPath)
+    if (typeof packageJson.packageManager === 'string') {
+      const value = packageJson.packageManager.toLowerCase()
+      for (const manager of ['pnpm', 'npm', 'yarn']) {
+        if (value.startsWith(manager)) {
+          return manager
+        }
+      }
+    }
+  }
+
+  for (const [manager, lockfile] of Object.entries(LOCKFILE_BY_MANAGER)) {
+    if (existsSync(path.join(cwd, lockfile))) {
+      return manager
+    }
+  }
+
+  fail(
+    'Cannot detect package manager. Set package.json.packageManager or add a lock file (pnpm-lock.yaml / package-lock.json / yarn.lock).',
+  )
+}
+
+function runInstall({ cwd, manager, packages, dryRun }) {
+  const commandByManager = {
+    pnpm: { command: 'pnpm', args: ['add', ...packages] },
+    npm: { command: 'npm', args: ['install', ...packages] },
+    yarn: { command: 'yarn', args: ['add', ...packages] },
+  }
+
+  const command = commandByManager[manager]
+  if (!command) {
+    fail(`Unsupported package manager '${manager}'`)
+  }
+
+  const commandLine = `${command.command} ${command.args.join(' ')}`
+
+  if (dryRun) {
+    writeStdout(`[ssc] dry-run install command: ${commandLine}\n`)
+    return
+  }
+
+  execFileSync(command.command, command.args, {
+    cwd,
+    stdio: 'inherit',
+  })
 }
 
 function resolveInstallSelection(names, installableEntries) {
@@ -445,10 +753,7 @@ function rewritePackageImports(content, sourceFile, srcRootAbs, outRootAbs, regi
   }
 
   let next = content
-  next = next.replace(
-    /(from\s+['"])(shadcn-solid-components\/[^'"]+)(['"])/gu,
-    replacer,
-  )
+  next = next.replace(/(from\s+['"])(shadcn-solid-components\/[^'"]+)(['"])/gu, replacer)
   next = next.replace(/(import\s+['"])(shadcn-solid-components\/[^'"]+)(['"])/gu, replacer)
 
   return next
@@ -495,7 +800,13 @@ function executeCopy({ files, srcRootAbs, outRootAbs, cwd, dryRun, registry }) {
 
     if (CODE_EXTENSIONS.has(extension)) {
       const original = readFileSync(op.sourceAbs, 'utf8')
-      const rewritten = rewritePackageImports(original, op.sourceAbs, srcRootAbs, outRootAbs, registry)
+      const rewritten = rewritePackageImports(
+        original,
+        op.sourceAbs,
+        srcRootAbs,
+        outRootAbs,
+        registry,
+      )
       writeFileSync(op.destAbs, rewritten)
       continue
     }
@@ -546,6 +857,11 @@ Commands:
 
   ssc add
     Enter interactive multi-select mode when no arguments are provided
+
+  ssc install [name...] [--scan-dir <path>] [--dry-run]
+    Install third-party dependencies from metadata.
+    - with names: install dependencies for specified components/hoc
+    - without names: scan project usage and install matched dependencies
 `)
 }
 
@@ -596,13 +912,74 @@ async function main() {
     const outDisplay = toPosix(path.relative(cwd, outRootAbs) || outDir)
 
     if (parsed.dryRun) {
-      writeStdout(`\n[ssc] dry-run complete: ${copiedCount} files will be written to ${outDisplay}\n`)
+      writeStdout(
+        `\n[ssc] dry-run complete: ${copiedCount} files will be written to ${outDisplay}\n`,
+      )
       writeStdout(`[ssc] Components: ${selectedNames}\n\n`)
       return
     }
 
     writeStdout(`\n[ssc] Add complete: ${copiedCount} files written to ${outDisplay}\n`)
     writeStdout(`[ssc] Components: ${selectedNames}\n\n`)
+    return
+  }
+
+  if (parsed.command === 'install') {
+    let selectedEntries = []
+
+    if (parsed.names.length > 0) {
+      selectedEntries = resolveInstallSelection(parsed.names, installableEntries)
+    } else {
+      const scanDirAbs = path.resolve(cwd, parsed.scanDir)
+      if (!existsSync(scanDirAbs)) {
+        fail(`Scan directory does not exist: ${scanDirAbs}`)
+      }
+
+      selectedEntries = collectUsedInstallableEntriesFromProject({
+        scanDirAbs,
+        cwd,
+        registry,
+        installableEntries,
+      })
+    }
+
+    if (selectedEntries.length === 0) {
+      if (parsed.names.length > 0) {
+        fail('No matching components/hoc found for installation')
+      }
+
+      writeStdout('[ssc] No used components/hoc detected; nothing to install.\n')
+      return
+    }
+
+    const packages = collectDependenciesFromEntries(selectedEntries, registry)
+    if (packages.length === 0) {
+      writeStdout('[ssc] No third-party dependencies found in selected metadata.\n')
+      return
+    }
+
+    const manager = detectPackageManager(cwd)
+    const selectedNames = selectedEntries
+      .map(entry => entry.specifier)
+      .sort((a, b) => a.localeCompare(b))
+
+    writeStdout(`[ssc] Package manager: ${manager}\n`)
+    writeStdout(`[ssc] Components: ${selectedNames.join(', ')}\n`)
+    writeStdout(`[ssc] Dependencies: ${packages.join(', ')}\n`)
+
+    runInstall({
+      cwd,
+      manager,
+      packages,
+      dryRun: parsed.dryRun,
+    })
+
+    if (parsed.dryRun) {
+      writeStdout('[ssc] dry-run complete.\n')
+      return
+    }
+
+    writeStdout('[ssc] Install complete.\n')
   }
 }
 

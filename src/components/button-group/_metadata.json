@@ -10,5 +10,6 @@
     "Input-button combinations such as a search field with a submit button"
   ],
   "usage": "import { ButtonGroup, ButtonText, ButtonSeparator } from \"shadcn-solid-components/components/button-group\"",
-  "tags": ["components", "button-group", "solidjs", "ui"]
+  "tags": ["components", "button-group", "solidjs", "ui"],
+  "dependencies": ["@kobalte/core", "cva"]
 }

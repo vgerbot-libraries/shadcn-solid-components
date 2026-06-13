@@ -10,5 +10,6 @@
     "Settings pages with labelled and described multiline fields"
   ],
   "usage": "import { Textarea, TextareaCount, TextareaDescription, TextareaField, TextareaLabel } from \"shadcn-solid-components/components/textarea\"",
-  "tags": ["components", "textarea", "form", "input", "solidjs", "ui"]
+  "tags": ["components", "textarea", "form", "input", "solidjs", "ui"],
+  "dependencies": ["cva"]
 }

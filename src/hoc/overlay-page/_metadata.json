@@ -10,5 +10,6 @@
     "Mobile drawer-style forms triggered from map pins or calendar events for rapid data entry"
   ],
   "usage": "import { OverlayPage, OverlayPageHeader, OverlayPageContent, OverlayPageFooter } from \"shadcn-solid-components/hoc/overlay-page\"",
-  "tags": ["hoc", "overlay-page", "solidjs", "ui"]
+  "tags": ["hoc", "overlay-page", "solidjs", "ui"],
+  "dependencies": ["@kobalte/core", "cva"]
 }

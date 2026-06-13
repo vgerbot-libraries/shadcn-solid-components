@@ -5,5 +5,6 @@
   "category": "components",
   "useCases": ["Render a scannable QR code for URLs, tokens, or arbitrary text in SolidJS apps."],
   "usage": "import { QrCode } from \"shadcn-solid-components/components/qr-code\"",
-  "tags": ["components", "qr-code", "qrcode", "svg", "solidjs", "ui"]
+  "tags": ["components", "qr-code", "qrcode", "svg", "solidjs", "ui"],
+  "dependencies": ["qrcode"]
 }

@@ -10,5 +10,6 @@
     "Create continuously scrolling card rails for feature teasers"
   ],
   "usage": "import { Marquee } from \"shadcn-solid-components/components/marquee\"",
-  "tags": ["components", "marquee", "animation", "solidjs", "ui"]
+  "tags": ["components", "marquee", "animation", "solidjs", "ui"],
+  "dependencies": []
 }

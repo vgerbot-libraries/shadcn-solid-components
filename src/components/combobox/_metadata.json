@@ -10,5 +10,6 @@
     "Product-code lookups in inventory management where typing a SKU narrows the dropdown"
   ],
   "usage": "import { Combobox, ComboboxInput, ComboboxTrigger, ComboboxContent, ComboboxListbox, ComboboxItem, ComboboxItemLabel, ComboboxItemIndicator, ComboboxSection, ComboboxHiddenSelect, ComboboxPortal } from \"shadcn-solid-components/components/combobox\"",
-  "tags": ["components", "combobox", "solidjs", "ui"]
+  "tags": ["components", "combobox", "solidjs", "ui"],
+  "dependencies": ["@kobalte/core"]
 }

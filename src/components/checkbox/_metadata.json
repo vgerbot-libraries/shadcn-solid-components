@@ -10,5 +10,6 @@
     "Feature toggles in settings forms where multiple options can be enabled simultaneously"
   ],
   "usage": "import { Checkbox, CheckboxLabel, CheckboxDescription, CheckboxInput, CheckboxControl } from \"shadcn-solid-components/components/checkbox\"",
-  "tags": ["components", "checkbox", "solidjs", "ui"]
+  "tags": ["components", "checkbox", "solidjs", "ui"],
+  "dependencies": ["@kobalte/core"]
 }

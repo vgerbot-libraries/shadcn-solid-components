@@ -10,5 +10,6 @@
     "Design systems that need a slot-based brand/nav/actions header primitive"
   ],
   "usage": "import { LandingHero } from \"shadcn-solid-components/components/landing-hero\"",
-  "tags": ["components", "landing-hero", "navigation", "responsive", "solidjs", "ui"]
+  "tags": ["components", "landing-hero", "navigation", "responsive", "solidjs", "ui"],
+  "dependencies": ["@corvu/drawer"]
 }

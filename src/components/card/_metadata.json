@@ -10,5 +10,6 @@
     "Authentication forms (login, register, forgot-password) using CardHeader and CardFooter"
   ],
   "usage": "import { Card, CardHeader, CardTitle, CardDescription, CardAction, CardContent, CardFooter } from \"shadcn-solid-components/components/card\"",
-  "tags": ["components", "card", "solidjs", "ui"]
+  "tags": ["components", "card", "solidjs", "ui"],
+  "dependencies": []
 }

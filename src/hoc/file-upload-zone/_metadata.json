@@ -10,5 +10,6 @@
     "Profile-avatar and cover-photo uploaders with single-file constraints and crop suggestions"
   ],
   "usage": "import { FileUploadZone, FileUploadZoneTrigger, FileUploadZoneList, FileUploadZoneItem, FileUploadZoneProgress } from \"shadcn-solid-components/hoc/file-upload-zone\"",
-  "tags": ["hoc", "file-upload-zone", "solidjs", "ui"]
+  "tags": ["hoc", "file-upload-zone", "solidjs", "ui"],
+  "dependencies": ["@kobalte/core", "cva"]
 }

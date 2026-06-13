@@ -10,5 +10,6 @@
     "Product forms that need nested object and array editing with extensible widgets"
   ],
   "usage": "import { SchemaForm, type SchemaFormSchema, type SchemaFormProps } from \"shadcn-solid-components/hoc/schema-form\"",
-  "tags": ["hoc", "schema-form", "json-schema", "zod", "dynamic-form", "solidjs"]
+  "tags": ["hoc", "schema-form", "json-schema", "zod", "dynamic-form", "solidjs"],
+  "dependencies": ["@kobalte/core", "cva"]
 }

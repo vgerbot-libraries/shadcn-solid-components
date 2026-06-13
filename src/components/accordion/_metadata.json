@@ -19,5 +19,6 @@
     "a11y",
     "animation",
     "collapsible"
-  ]
+  ],
+  "dependencies": ["@kobalte/core"]
 }

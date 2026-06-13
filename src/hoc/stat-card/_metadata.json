@@ -10,5 +10,6 @@
     "Marketing campaign dashboards summarizing impressions, clicks, CTR, and cost-per-conversion"
   ],
   "usage": "import { StatCard, StatCardValue, StatCardLabel, StatCardTrend, StatCardIcon } from \"shadcn-solid-components/hoc/stat-card\"",
-  "tags": ["hoc", "stat-card", "solidjs", "ui"]
+  "tags": ["hoc", "stat-card", "solidjs", "ui"],
+  "dependencies": []
 }

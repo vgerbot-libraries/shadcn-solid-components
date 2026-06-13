@@ -10,5 +10,6 @@
     "Dropdown menu rows and grouped item sections"
   ],
   "usage": "import { Item, ItemContent, ItemTitle, ItemDescription, ItemMedia, ItemActions } from \"shadcn-solid-components/components/item\"",
-  "tags": ["components", "item", "list", "row", "solidjs", "ui"]
+  "tags": ["components", "item", "list", "row", "solidjs", "ui"],
+  "dependencies": ["cva"]
 }

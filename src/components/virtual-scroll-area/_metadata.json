@@ -10,5 +10,13 @@
     "Implement infinite scrolling with reactive row or column counts"
   ],
   "usage": "import { VirtualScrollArea } from \"shadcn-solid-components/components/virtual-scroll-area\"",
-  "tags": ["components", "virtual-scroll-area", "virtualization", "solidjs", "performance", "tanstack"]
+  "tags": [
+    "components",
+    "virtual-scroll-area",
+    "virtualization",
+    "solidjs",
+    "performance",
+    "tanstack"
+  ],
+  "dependencies": ["@tanstack/solid-virtual"]
 }

@@ -10,5 +10,6 @@
     "Mobile navigation drawers that house theme selection alongside language and region options"
   ],
   "usage": "import { ModeToggleDropdown } from \"shadcn-solid-components/hoc/mode-toggle-dropdown\"",
-  "tags": ["hoc", "mode-toggle-dropdown", "solidjs", "ui"]
+  "tags": ["hoc", "mode-toggle-dropdown", "solidjs", "ui"],
+  "dependencies": ["@kobalte/core", "cva"]
 }

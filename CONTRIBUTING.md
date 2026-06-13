@@ -380,7 +380,8 @@ Every component and HOC must include a `_metadata.json` file with these fields:
     "Ghost and link variants for low-emphasis actions"
   ],
   "usage": "import { Button, buttonVariants } from \"shadcn-solid-components/components/button\"",
-  "tags": ["components", "button", "solidjs", "ui"]
+  "tags": ["components", "button", "solidjs", "ui"],
+  "dependencies": ["@kobalte/core", "cva"]
 }
 ```
 
@@ -393,6 +394,7 @@ Every component and HOC must include a `_metadata.json` file with these fields:
 | `useCases` | `string[]` | 3–4 typical usage scenarios |
 | `usage` | `string` | Import example code |
 | `tags` | `string[]` | Searchable tags |
+| `dependencies` | `string[]` | Third-party npm package names the component depends on (no relative imports, no version specifiers) |
 
 ---
 

@@ -10,5 +10,6 @@
     "Client-facing order receipts with tax, shipping, discounts, and payment method information"
   ],
   "usage": "import { Invoice, type InvoiceProps } from \"shadcn-solid-components/hoc/invoice\"",
-  "tags": ["hoc", "invoice", "billing", "print", "solidjs", "ui"]
+  "tags": ["hoc", "invoice", "billing", "print", "solidjs", "ui"],
+  "dependencies": ["@kobalte/core", "cva"]
 }

@@ -10,5 +10,6 @@
     "Scheduling tools where users click a calendar cell to create or edit an event"
   ],
   "usage": "import { Calendar, CalendarNav, CalendarGrid, CalendarGridHeader, CalendarGridBody, CalendarHeaderCell, CalendarCell, CalendarCellTrigger } from \"shadcn-solid-components/components/calendar\"",
-  "tags": ["components", "calendar", "solidjs", "ui"]
+  "tags": ["components", "calendar", "solidjs", "ui"],
+  "dependencies": ["@corvu/calendar"]
 }

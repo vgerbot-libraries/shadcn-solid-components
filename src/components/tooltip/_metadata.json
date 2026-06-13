@@ -10,5 +10,6 @@
     "Data-visualization charts where hovering a data point shows exact values and dates"
   ],
   "usage": "import { Tooltip, TooltipTrigger, TooltipContent, TooltipPortal } from \"shadcn-solid-components/components/tooltip\"",
-  "tags": ["components", "tooltip", "solidjs", "ui"]
+  "tags": ["components", "tooltip", "solidjs", "ui"],
+  "dependencies": ["@kobalte/core"]
 }

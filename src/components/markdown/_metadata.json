@@ -10,5 +10,6 @@
     "Render chemistry-focused notes with SMILES notation support"
   ],
   "usage": "import { Markdown } from \"shadcn-solid-components/components/markdown\"",
-  "tags": ["components", "markdown", "plugin", "mermaid", "katex", "smiles", "solidjs", "ui"]
+  "tags": ["components", "markdown", "plugin", "mermaid", "katex", "smiles", "solidjs", "ui"],
+  "dependencies": ["cva", "markdown-it", "markdown-it-smiles", "smiles-drawer", "katex", "markdown-it-highlightjs", "highlight.js"]
 }

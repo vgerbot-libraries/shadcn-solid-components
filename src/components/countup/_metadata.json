@@ -10,5 +10,6 @@
     "Apply product-specific number labels via custom format callback"
   ],
   "usage": "import { Countup } from \"shadcn-solid-components/components/countup\"",
-  "tags": ["components", "countup", "counter", "animation", "dashboard", "solidjs", "ui"]
+  "tags": ["components", "countup", "counter", "animation", "dashboard", "solidjs", "ui"],
+  "dependencies": []
 }

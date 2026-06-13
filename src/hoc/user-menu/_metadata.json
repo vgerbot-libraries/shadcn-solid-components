@@ -10,5 +10,6 @@
     "E-commerce storefronts showing order history, saved addresses, and loyalty-status badges"
   ],
   "usage": "import { UserMenu, UserMenuTrigger, UserMenuContent, UserMenuItem, UserMenuLabel, UserMenuSeparator, UserMenuGroup } from \"shadcn-solid-components/hoc/user-menu\"",
-  "tags": ["hoc", "user-menu", "solidjs", "ui"]
+  "tags": ["hoc", "user-menu", "solidjs", "ui"],
+  "dependencies": ["@kobalte/core"]
 }

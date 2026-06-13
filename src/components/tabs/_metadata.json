@@ -10,5 +10,6 @@
     "Documentation sites with language or version switchers using tab triggers"
   ],
   "usage": "import { Tabs, TabsList, TabsTrigger, TabsContent, TabsIndicator } from \"shadcn-solid-components/components/tabs\"",
-  "tags": ["components", "tabs", "solidjs", "ui"]
+  "tags": ["components", "tabs", "solidjs", "ui"],
+  "dependencies": ["@kobalte/core"]
 }

@@ -10,5 +10,6 @@
     "Compact state chips in dense tables where full text badges are too large"
   ],
   "usage": "import { StatusDot, StatusIndicator, statusIndicatorVariants } from \"shadcn-solid-components/components/status-indicator\"",
-  "tags": ["components", "status", "indicator", "dot", "presence", "avatar", "solidjs", "ui"]
+  "tags": ["components", "status", "indicator", "dot", "presence", "avatar", "solidjs", "ui"],
+  "dependencies": ["cva"]
 }

@@ -10,5 +10,6 @@
     "Single-answer survey questions where only one choice is allowed per question"
   ],
   "usage": "import { RadioGroup, RadioGroupItems, RadioGroupItem, RadioGroupItemControl, RadioGroupItemIndicator, RadioGroupLabel, RadioGroupItemLabel, RadioGroupDescription, RadioGroupErrorMessage } from \"shadcn-solid-components/components/radio-group\"",
-  "tags": ["components", "radio-group", "solidjs", "ui"]
+  "tags": ["components", "radio-group", "solidjs", "ui"],
+  "dependencies": ["@kobalte/core"]
 }

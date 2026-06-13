@@ -10,5 +10,6 @@
     "Rating or score inputs where arrow keys increment a value within a 1–10 range"
   ],
   "usage": "import { NumberField, NumberFieldGroup, NumberFieldInput, NumberFieldLabel, NumberFieldDescription, NumberFieldErrorMessage, NumberFieldDecrementTrigger, NumberFieldIncrementTrigger } from \"shadcn-solid-components/components/number-field\"",
-  "tags": ["components", "number-field", "solidjs", "ui"]
+  "tags": ["components", "number-field", "solidjs", "ui"],
+  "dependencies": ["@kobalte/core"]
 }

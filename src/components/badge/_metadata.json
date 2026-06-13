@@ -10,5 +10,6 @@
     "Destructive badges for critical alerts such as 'Overdue' or 'Failed' process states"
   ],
   "usage": "import { Badge, badgeVariants } from \"shadcn-solid-components/components/badge\"",
-  "tags": ["components", "badge", "solidjs", "ui", "kobalte", "label", "status", "tag"]
+  "tags": ["components", "badge", "solidjs", "ui", "kobalte", "label", "status", "tag"],
+  "dependencies": ["@kobalte/core", "cva"]
 }

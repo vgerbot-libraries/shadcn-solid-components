@@ -10,5 +10,6 @@
     "Internationalized auth screens with configurable methods and provider-specific OAuth entry points"
   ],
   "usage": "import { AuthForm, type AuthFormProps, type AdvancedAuthMode, type AdvancedAuthMethod, type AdvancedAuthOtpFlow, type AdvancedAuthProvider, type AdvancedAuthValidationResult, type AdvancedAuthSubmitPayload } from \"shadcn-solid-components/hoc/auth-form\"",
-  "tags": ["hoc", "auth", "login", "register", "otp", "oauth", "solidjs", "ui"]
+  "tags": ["hoc", "auth", "login", "register", "otp", "oauth", "solidjs", "ui"],
+  "dependencies": ["@kobalte/core", "cva"]
 }

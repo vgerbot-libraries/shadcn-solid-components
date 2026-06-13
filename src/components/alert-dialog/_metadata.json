@@ -10,5 +10,6 @@
     "Legal or compliance consent dialogs that block further interaction until confirmed"
   ],
   "usage": "import { AlertDialog, AlertDialogTrigger, AlertDialogOverlay, AlertDialogContent, AlertDialogHeader, AlertDialogFooter, AlertDialogTitle, AlertDialogDescription, AlertDialogAction, AlertDialogCancel, AlertDialogPortal } from \"shadcn-solid-components/components/alert-dialog\"",
-  "tags": ["components", "alert-dialog", "solidjs", "ui"]
+  "tags": ["components", "alert-dialog", "solidjs", "ui"],
+  "dependencies": ["@kobalte/core", "cva"]
 }

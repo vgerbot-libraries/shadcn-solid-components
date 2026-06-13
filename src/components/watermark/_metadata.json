@@ -10,5 +10,6 @@
     "Apply custom image-based security marks on sensitive operation pages"
   ],
   "usage": "import { Watermark } from \"shadcn-solid-components/components/watermark\"",
-  "tags": ["components", "watermark", "security", "solidjs", "overlay", "enterprise"]
+  "tags": ["components", "watermark", "security", "solidjs", "overlay", "enterprise"],
+  "dependencies": []
 }

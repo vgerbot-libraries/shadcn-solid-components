@@ -10,5 +10,6 @@
     "Analytics log viewers with faceted filters for severity, source, and date-range"
   ],
   "usage": "import { DataTableToolbar, type DataTableToolbarProps } from \"shadcn-solid-components/hoc/data-table-toolbar\"",
-  "tags": ["hoc", "data-table-toolbar", "solidjs", "ui"]
+  "tags": ["hoc", "data-table-toolbar", "solidjs", "ui"],
+  "dependencies": ["@kobalte/core", "@tanstack/solid-table", "cva"]
 }

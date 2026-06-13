@@ -10,5 +10,6 @@
     "Loading and empty states with consistent list skeleton and empty placeholders"
   ],
   "usage": "import { List, ListBody, ListItem, ListItemMain, ListItemTitle } from \"shadcn-solid-components/components/list\"",
-  "tags": ["components", "list", "solidjs", "ui", "feed", "slots"]
+  "tags": ["components", "list", "solidjs", "ui", "feed", "slots"],
+  "dependencies": ["cva"]
 }

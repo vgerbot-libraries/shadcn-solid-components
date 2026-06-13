@@ -10,5 +10,6 @@
     "Documentation portals with persistent rail and per-area sub-trees plus a main reading pane"
   ],
   "usage": "import { DualAppSidebar, type DualAppSidebarProps, type DualAppSidebarSection, type DualAppSidebarRailFooterItem } from \"shadcn-solid-components/hoc/dual-app-sidebar\"",
-  "tags": ["hoc", "dual-app-sidebar", "navigation", "layout", "solidjs", "ui"]
+  "tags": ["hoc", "dual-app-sidebar", "navigation", "layout", "solidjs", "ui"],
+  "dependencies": []
 }

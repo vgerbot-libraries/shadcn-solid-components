@@ -10,5 +10,6 @@
     "API-documentation parameter tables rendered as readable definition lists instead of HTML tables"
   ],
   "usage": "import { DescriptionList, DescriptionTerm, DescriptionDetails } from \"shadcn-solid-components/hoc/description-list\"",
-  "tags": ["hoc", "description-list", "solidjs", "ui"]
+  "tags": ["hoc", "description-list", "solidjs", "ui"],
+  "dependencies": ["@kobalte/core"]
 }

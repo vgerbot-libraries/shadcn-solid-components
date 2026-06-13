@@ -10,5 +10,6 @@
     "Applications needing format-agnostic color input (HEX, RGB, HSL) with live switching"
   ],
   "usage": "import { ColorPicker } from \"shadcn-solid-components/components/color-picker\"",
-  "tags": ["components", "color-picker", "color-picker", "solidjs", "ui"]
+  "tags": ["components", "color-picker", "color-picker", "solidjs", "ui"],
+  "dependencies": ["@kobalte/core", "cva"]
 }

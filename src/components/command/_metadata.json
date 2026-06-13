@@ -10,5 +10,6 @@
     "Documentation search overlays combining page titles, headings, and command shortcuts"
   ],
   "usage": "import { Command, CommandDialog, CommandInput, CommandList, CommandEmpty, CommandGroup, CommandItem, CommandSeparator, CommandShortcut } from \"shadcn-solid-components/components/command\"",
-  "tags": ["components", "command", "solidjs", "ui"]
+  "tags": ["components", "command", "solidjs", "ui"],
+  "dependencies": ["cmdk-solid"]
 }

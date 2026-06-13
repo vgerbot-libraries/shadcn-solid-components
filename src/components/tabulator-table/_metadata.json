@@ -10,5 +10,6 @@
     "Scientific data browsers with nested row trees, movable columns, and CSV export"
   ],
   "usage": "import { TabulatorTable } from \"shadcn-solid-components/components/tabulator-table\"",
-  "tags": ["components", "tabulator-table", "solidjs", "ui"]
+  "tags": ["components", "tabulator-table", "solidjs", "ui"],
+  "dependencies": [ "tabulator-tables"]
 }

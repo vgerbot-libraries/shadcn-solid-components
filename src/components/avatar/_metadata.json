@@ -10,5 +10,6 @@
     "Collaborator stacks on files, docs, and pull request review UIs"
   ],
   "usage": "import { Avatar, AvatarFallback, AvatarGroup, AvatarImage } from \"shadcn-solid-components/components/avatar\"",
-  "tags": ["components", "avatar", "avatar-group", "solidjs", "ui", "user", "profile", "dashboard"]
+  "tags": ["components", "avatar", "avatar-group", "solidjs", "ui", "user", "profile", "dashboard"],
+  "dependencies": []
 }

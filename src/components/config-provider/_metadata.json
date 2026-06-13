@@ -10,5 +10,6 @@
     "Date-picker and number-field components that require localized formatting and month names"
   ],
   "usage": "import { ConfigProvider, useLocale } from \"shadcn-solid-components/components/config-provider\"",
-  "tags": ["components", "config-provider", "solidjs", "ui"]
+  "tags": ["components", "config-provider", "solidjs", "ui"],
+  "dependencies": []
 }

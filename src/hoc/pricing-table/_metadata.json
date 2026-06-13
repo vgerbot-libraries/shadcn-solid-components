@@ -10,5 +10,6 @@
     "E-commerce bundle pages displaying package tiers with included services and add-on options"
   ],
   "usage": "import { PricingTable, PricingTier, PricingTierHeader, PricingTierFeatures, PricingTierAction } from \"shadcn-solid-components/hoc/pricing-table\"",
-  "tags": ["hoc", "pricing-table", "solidjs", "ui"]
+  "tags": ["hoc", "pricing-table", "solidjs", "ui"],
+  "dependencies": ["@kobalte/core", "cva"]
 }

@@ -10,5 +10,6 @@
     "Support both-axis overflow for large canvases or grid-like content"
   ],
   "usage": "import { ScrollArea, ScrollAreaScrollbar } from \"shadcn-solid-components/components/scroll-area\"",
-  "tags": ["components", "scroll-area", "solidjs", "ui", "overflow", "scroll"]
+  "tags": ["components", "scroll-area", "solidjs", "ui", "overflow", "scroll"],
+  "dependencies": ["@ark-ui/solid"]
 }

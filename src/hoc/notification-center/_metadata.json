@@ -10,5 +10,6 @@
     "E-commerce order-tracking notifications for shipping, delivery, and return status updates"
   ],
   "usage": "import { NotificationCenter, type NotificationCenterProps, type NotificationItem, type NotificationCategory } from \"shadcn-solid-components/hoc/notification-center\"",
-  "tags": ["hoc", "notification-center", "solidjs", "ui"]
+  "tags": ["hoc", "notification-center", "solidjs", "ui"],
+  "dependencies": ["@kobalte/core", "cva"]
 }

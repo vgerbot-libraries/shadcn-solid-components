@@ -10,5 +10,6 @@
     "Card-based recommendation carousels for related articles, products, or videos"
   ],
   "usage": "import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext, CarouselDots } from \"shadcn-solid-components/components/carousel\"",
-  "tags": ["components", "carousel", "solidjs", "ui"]
+  "tags": ["components", "carousel", "solidjs", "ui"],
+  "dependencies": ["@kobalte/core", "embla-carousel-solid"]
 }

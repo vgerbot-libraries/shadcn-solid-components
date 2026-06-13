@@ -10,5 +10,6 @@
     "Multi-step wizards where each step reuses the same field structure across different input types"
   ],
   "usage": "import { FormField, FormFieldLabel, FormFieldInput, FormFieldDescription, FormFieldErrorMessage } from \"shadcn-solid-components/hoc/form-field\"",
-  "tags": ["hoc", "form-field", "solidjs", "ui"]
+  "tags": ["hoc", "form-field", "solidjs", "ui"],
+  "dependencies": []
 }

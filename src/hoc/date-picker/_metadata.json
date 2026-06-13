@@ -10,5 +10,6 @@
     "Filter panels in analytics dashboards for custom date-range pickers with quick presets"
   ],
   "usage": "import { DatePickerField, type DatePickerFieldProps } from \"shadcn-solid-components/hoc/date-picker\"",
-  "tags": ["hoc", "date-picker", "solidjs", "ui"]
+  "tags": ["hoc", "date-picker", "solidjs", "ui"],
+  "dependencies": ["@ark-ui/solid", "@kobalte/core", "cva"]
 }

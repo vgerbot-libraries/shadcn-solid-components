@@ -105,6 +105,26 @@ Run `ssc add` without component names to enter keyboard-driven selection mode:
 npx ssc add
 ```
 
+### Install third-party dependencies
+
+Use `ssc install` to install third-party dependencies declared in component/HOC `_metadata.json` files.
+
+```bash
+# auto-detect used components/hoc by scanning current project
+npx ssc install
+
+# scan a specific directory
+npx ssc install --scan-dir src
+
+# install dependencies for specific components/hoc
+npx ssc install button markdown auth-form
+
+# preview install command only
+npx ssc install button --dry-run
+```
+
+`ssc install` automatically detects package manager from `package.json.packageManager` and lock files.
+
 ## Import conventions
 
 - Base components: `shadcn-solid-components/components/<name>`

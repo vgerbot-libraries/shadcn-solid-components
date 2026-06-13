@@ -10,5 +10,6 @@
     "Data-analysis tools with Data, Transform, Visualize, and Export top-level menus"
   ],
   "usage": "import { Menubar, MenubarMenu, MenubarTrigger, MenubarContent, MenubarItem, MenubarSeparator, MenubarCheckboxItem, MenubarRadioGroup, MenubarRadioItem, MenubarSub, MenubarSubTrigger, MenubarSubContent } from \"shadcn-solid-components/components/menubar\"",
-  "tags": ["components", "menubar", "solidjs", "ui"]
+  "tags": ["components", "menubar", "solidjs", "ui"],
+  "dependencies": ["@kobalte/core"]
 }

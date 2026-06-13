@@ -10,5 +10,6 @@
     "Keyboard-first workflow apps that expose every action via a searchable command dialog"
   ],
   "usage": "import { CommandPalette, type CommandPaletteProps, type CommandPaletteItem, type CommandPaletteGroup } from \"shadcn-solid-components/hoc/command-palette\"",
-  "tags": ["hoc", "command-palette", "solidjs", "ui"]
+  "tags": ["hoc", "command-palette", "solidjs", "ui"],
+  "dependencies": []
 }

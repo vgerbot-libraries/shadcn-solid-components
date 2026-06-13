@@ -10,5 +10,6 @@
     "Analytics report pages showing the report name, date-range subtitle, and export/share controls"
   ],
   "usage": "import { PageHeader, PageHeaderTitle, PageHeaderDescription, PageHeaderAction } from \"shadcn-solid-components/hoc/page-header\"",
-  "tags": ["hoc", "page-header", "solidjs", "ui"]
+  "tags": ["hoc", "page-header", "solidjs", "ui"],
+  "dependencies": ["@kobalte/core"]
 }

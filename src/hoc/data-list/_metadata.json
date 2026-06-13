@@ -10,5 +10,6 @@
     "Operational task boards with row selection and inline expanded details"
   ],
   "usage": "import { DataList, type DataListProps, type DataListColumn } from \"shadcn-solid-components/hoc/data-list\"",
-  "tags": ["hoc", "data-list", "list", "request", "solidjs", "ui"]
+  "tags": ["hoc", "data-list", "list", "request", "solidjs", "ui"],
+  "dependencies": ["@kobalte/core", "cva"]
 }

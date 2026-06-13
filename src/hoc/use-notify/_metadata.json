@@ -10,5 +10,6 @@
     "Real-time collaboration apps broadcasting incoming messages, mentions, or system alerts"
   ],
   "usage": "import { useNotify, NotificationProvider } from \"shadcn-solid-components/hoc/use-notify\"",
-  "tags": ["hoc", "use-notify", "solidjs", "ui"]
+  "tags": ["hoc", "use-notify", "solidjs", "ui"],
+  "dependencies": [ "somoto"]
 }

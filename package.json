@@ -13,10 +13,7 @@
   "bugs": {
     "url": "https://github.com/vgerbot-libraries/shadcn-solid-components/issues"
   },
-  "files": [
-    "src",
-    "bin"
-  ],
+  "files": ["src", "bin"],
   "private": false,
   "sideEffects": false,
   "type": "module",
@@ -165,6 +162,7 @@
     "docs:build": "pnpm --dir docs build",
     "docs:preview": "pnpm --dir docs preview",
     "build": "node scripts/update-exports.mjs",
+    "metadata:deps": "node scripts/backfill-metadata-dependencies.mjs",
     "postbuild": "chmod +x ./bin/ssc.mjs",
     "test": "concurrently pnpm:test:*",
     "test:client": "vitest",
@@ -303,9 +301,7 @@
     "vite-tsconfig-paths": "^6.0.5",
     "vitest": "^1.6.0"
   },
-  "keywords": [
-    "solid"
-  ],
+  "keywords": ["solid"],
   "packageManager": "pnpm@9.1.1",
   "engines": {
     "node": ">=18",

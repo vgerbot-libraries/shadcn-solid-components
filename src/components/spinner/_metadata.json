@@ -10,5 +10,6 @@
     "General asynchronous state feedback without layout shift"
   ],
   "usage": "import { Spinner } from \"shadcn-solid-components/components/spinner\"",
-  "tags": ["components", "spinner", "loading", "variants", "animation", "solidjs", "ui"]
+  "tags": ["components", "spinner", "loading", "variants", "animation", "solidjs", "ui"],
+  "dependencies": []
 }

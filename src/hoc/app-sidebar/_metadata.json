@@ -10,5 +10,6 @@
     "Internal tooling applications where the sidebar adapts between desktop and mobile drawer modes"
   ],
   "usage": "import { AppSidebar, type AppSidebarProps, type AppSidebarMenuGroup, type AppSidebarHeaderProps } from \"shadcn-solid-components/hoc/app-sidebar\"",
-  "tags": ["hoc", "app-sidebar", "solidjs", "ui"]
+  "tags": ["hoc", "app-sidebar", "solidjs", "ui"],
+  "dependencies": []
 }

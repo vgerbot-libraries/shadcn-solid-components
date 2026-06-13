@@ -10,5 +10,6 @@
     "Form skeletons for SSR or slow connections so the layout does not jump on hydration"
   ],
   "usage": "import { Skeleton } from \"shadcn-solid-components/components/skeleton\"",
-  "tags": ["components", "skeleton", "solidjs", "ui"]
+  "tags": ["components", "skeleton", "solidjs", "ui"],
+  "dependencies": ["@kobalte/core"]
 }

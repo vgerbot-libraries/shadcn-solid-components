@@ -10,5 +10,6 @@
     "Expandable grouped tables that collapse/expand category summaries with nested detail rows"
   ],
   "usage": "import { DataTable, DataTablePagination, DataTableToolbar, DataTableViewOptions, DataTableColumnHeader, createSolidTable, flexRender } from \"shadcn-solid-components/components/tanstack-table\"",
-  "tags": ["components", "tanstack-table", "solidjs", "ui"]
+  "tags": ["components", "tanstack-table", "solidjs", "ui"],
+  "dependencies": ["@kobalte/core", "cva"]
 }

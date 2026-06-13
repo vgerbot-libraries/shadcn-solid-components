@@ -10,5 +10,6 @@
     "Undo-action toasts that allow users to reverse a destructive operation within a timeout"
   ],
   "usage": "import { Toaster, toast } from \"shadcn-solid-components/components/sonner\"",
-  "tags": ["components", "sonner", "solidjs", "ui"]
+  "tags": ["components", "sonner", "solidjs", "ui"],
+  "dependencies": ["@kobalte/core", "somoto"]
 }
