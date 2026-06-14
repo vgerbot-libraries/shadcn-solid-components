@@ -44,13 +44,10 @@ const notePlugin = createMarkdownPlugin({
 
         if (!silent) {
           const open = state.push('div_open', 'div', 1)
-          open.attrSet(
-            'class',
-            'my-4 rounded-md border border-primary/30 bg-primary/5 px-4 py-3 text-sm',
-          )
+          open.attrSet('class', 'custom-note-block')
 
           const paragraphOpen = state.push('paragraph_open', 'p', 1)
-          paragraphOpen.attrSet('class', 'm-0')
+          paragraphOpen.attrSet('class', 'custom-note-text')
 
           const inline = state.push('inline', '', 0)
           inline.content = lines.join('\n').trim()
@@ -64,6 +61,29 @@ const notePlugin = createMarkdownPlugin({
         return true
       },
     )
+  },
+  onRendered: ({ shadowRoot }) => {
+    // Inject custom styles into shadow DOM
+    const styleId = 'custom-note-styles'
+    if (!shadowRoot.getElementById(styleId)) {
+      const style = document.createElement('style')
+      style.id = styleId
+      style.textContent = `
+        .custom-note-block {
+          margin: 1rem 0;
+          border-radius: 0.375rem;
+          border: 1px solid color-mix(in oklch, var(--primary) 30%, transparent);
+          background: color-mix(in oklch, var(--primary) 5%, transparent);
+          padding: 0.75rem 1rem;
+          font-size: 0.875rem;
+          line-height: 1.25rem;
+        }
+        .custom-note-text {
+          margin: 0;
+        }
+      `
+      shadowRoot.appendChild(style)
+    }
   },
 })
 
