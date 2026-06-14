@@ -1,0 +1,31 @@
+.mermaid {
+  margin: 1rem 0;
+  overflow-x: auto;
+}
+
+.markdown-mermaid-error {
+  margin: 1rem 0;
+  border: 1px solid rgb(248 113 113 / 0.4);
+  border-radius: 0.5rem;
+  background: rgb(127 29 29 / 0.08);
+  padding: 0.75rem;
+  color: rgb(185 28 28);
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.markdown-mermaid-error-title {
+  font-weight: 600;
+}
+
+.markdown-mermaid-error-message,
+.markdown-mermaid-error-source {
+  margin: 0.5rem 0 0;
+  white-space: pre-wrap;
+  word-break: break-word;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+.markdown-mermaid-error details {
+  margin-top: 0.5rem;
+}

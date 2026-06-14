@@ -13,7 +13,10 @@
   "bugs": {
     "url": "https://github.com/vgerbot-libraries/shadcn-solid-components/issues"
   },
-  "files": ["src", "bin"],
+  "files": [
+    "src",
+    "bin"
+  ],
   "private": false,
   "sideEffects": false,
   "type": "module",
@@ -190,7 +193,8 @@
     "katex": "^0.16.22",
     "markdown-it": "^14.1.0",
     "markdown-it-highlightjs": "^4.2.0",
-    "markdown-it-smiles": "^2.1.2",
+    "markdown-it-mermaid": "^0.2.5",
+    "markdown-it-smiles": "^2.1.3",
     "mermaid": "^11.12.1",
     "qrcode": "^1.5.4",
     "shadcn": "^3.7.0",
@@ -250,6 +254,9 @@
     "markdown-it-highlightjs": {
       "optional": true
     },
+    "markdown-it-mermaid": {
+      "optional": true
+    },
     "markdown-it-katex": {
       "optional": true
     },
@@ -301,11 +308,18 @@
     "vite-tsconfig-paths": "^6.0.5",
     "vitest": "^1.6.0"
   },
-  "keywords": ["solid"],
+  "keywords": [
+    "solid"
+  ],
   "packageManager": "pnpm@9.1.1",
   "engines": {
     "node": ">=18",
     "pnpm": ">=9.0.0"
+  },
+  "pnpm": {
+    "overrides": {
+      "markdown-it-mermaid>mermaid": "^11.12.1"
+    }
   },
   "dependencies": {
     "cva": "1.0.0-beta.4",

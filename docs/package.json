@@ -28,6 +28,7 @@
     "katex": "^0.16.22",
     "markdown-it": "^14.1.0",
     "markdown-it-highlightjs": "^4.2.0",
+    "markdown-it-mermaid": "^0.2.5",
     "markdown-it-katex": "^2.0.3",
     "markdown-it-smiles": "^2.0.0",
     "mermaid": "^11.12.1",

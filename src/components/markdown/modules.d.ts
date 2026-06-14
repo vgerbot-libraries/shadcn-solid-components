@@ -34,6 +34,11 @@ declare module 'markdown-it-katex' {
   export default markdownItKatex
 }
 
+declare module 'markdown-it-mermaid' {
+  const markdownItMermaid: any
+  export default markdownItMermaid
+}
+
 declare module 'markdown-it-smiles' {
   export const MarkdownItSmiles: any
 }

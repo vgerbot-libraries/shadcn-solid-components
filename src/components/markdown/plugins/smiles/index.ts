@@ -31,14 +31,15 @@ export const createMarkdownSmilesPlugin = (options?: MarkdownSmilesPluginOptions
     },
     onRendered: async ({ shadowRoot }) => {
       // Scope SmiDrawer to shadow DOM container only
-      const docQueryDescriptor = Object.getOwnPropertyDescriptor(document, 'querySelectorAll');
+      const docQueryDescriptor = Object.getOwnPropertyDescriptor(Document.prototype, 'querySelectorAll')!;
       try {
         Object.defineProperty(document, 'querySelectorAll', {
-          value: shadowRoot.querySelectorAll.bind(shadowRoot)
+          value: shadowRoot.querySelectorAll.bind(shadowRoot),
+          configurable: true
         })
         SmilesDrawer.SmiDrawer.apply()
       } finally {
-        Object.defineProperty(document, 'querySelectorAll', docQueryDescriptor!);
+        Object.defineProperty(document, 'querySelectorAll', docQueryDescriptor);
       }
     },
   })
