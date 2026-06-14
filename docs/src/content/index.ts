@@ -1491,8 +1491,8 @@ export const Contents: Record<string, DocEntry> = {
     },
     {
         "depth": 3,
-        "slug": "default",
-        "text": "Default"
+        "slug": "full-feature-showcase",
+        "text": "Full feature showcase"
     },
     {
         "depth": 3,

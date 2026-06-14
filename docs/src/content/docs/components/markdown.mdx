@@ -12,12 +12,12 @@ import MarkdownKatexDemo from "../../../examples/markdown-katex-demo"
 import MarkdownSmilesDemo from "../../../examples/markdown-smiles-demo"
 import MarkdownCustomPluginDemo from "../../../examples/markdown-custom-plugin-demo"
 
-`Markdown` renders markdown content using `markdown-it` and supports a composable plugin system. The default package includes plugin factories for Mermaid, syntax highlight, copy actions, KaTeX, and SMILES rendering.
+`Markdown` renders markdown content using `markdown-it` and supports a composable plugin system. The default package includes plugin factories for Mermaid, syntax highlight, copy actions, KaTeX, SMILES, table of contents, footnotes, emoji, task lists, annotations, containers, and sanitizer flows.
 
 ## Installation
 
 ```bash
-pnpm add markdown-it markdown-it-highlightjs markdown-it-mermaid mermaid markdown-it-katex katex markdown-it-smiles
+pnpm add markdown-it markdown-it-highlightjs markdown-it-mermaid mermaid markdown-it-katex katex markdown-it-smiles markdown-it-anchor markdown-it-table-of-contents markdown-it-footnote markdown-it-emoji markdown-it-task-lists markdown-it-deflist markdown-it-ins markdown-it-del markdown-it-mark markdown-it-container markdown-it-link-attributes markdown-it-collapsible markdown-it-sanitizer @traptitech/markdown-it-spoiler
 ```
 
 ## Usage
@@ -42,15 +42,29 @@ Plugin subpaths:
 
 - `createMarkdownHighlightPlugin` from `shadcn-solid-components/components/markdown/plugins/highlight`
 - `createMarkdownCopyPlugin` from `shadcn-solid-components/components/markdown/plugins/copy`
+- `createMarkdownAnchorPlugin` from `shadcn-solid-components/components/markdown/plugins/anchor`
+- `createMarkdownCollapsiblePlugin` from `shadcn-solid-components/components/markdown/plugins/collapsible`
+- `createMarkdownContainerPlugin` from `shadcn-solid-components/components/markdown/plugins/container`
+- `createMarkdownDeflistPlugin` from `shadcn-solid-components/components/markdown/plugins/deflist`
+- `createMarkdownDelPlugin` from `shadcn-solid-components/components/markdown/plugins/del`
+- `createMarkdownEmojiPlugin` from `shadcn-solid-components/components/markdown/plugins/emoji`
+- `createMarkdownFootnotePlugin` from `shadcn-solid-components/components/markdown/plugins/footnote`
 - `createMarkdownMermaidPlugin` from `shadcn-solid-components/components/markdown/plugins/mermaid`
 - `createMarkdownKatexPlugin` from `shadcn-solid-components/components/markdown/plugins/katex`
+- `createMarkdownInsPlugin` from `shadcn-solid-components/components/markdown/plugins/ins`
+- `createMarkdownLinkAttributesPlugin` from `shadcn-solid-components/components/markdown/plugins/link-attributes`
+- `createMarkdownMarkPlugin` from `shadcn-solid-components/components/markdown/plugins/mark`
+- `createMarkdownSanitizerPlugin` from `shadcn-solid-components/components/markdown/plugins/sanitizer`
 - `createMarkdownSmilesPlugin` from `shadcn-solid-components/components/markdown/plugins/smiles`
+- `createMarkdownSpoilerPlugin` from `shadcn-solid-components/components/markdown/plugins/spoiler`
+- `createMarkdownTableOfContentsPlugin` from `shadcn-solid-components/components/markdown/plugins/table-of-contents`
+- `createMarkdownTaskListsPlugin` from `shadcn-solid-components/components/markdown/plugins/task-lists`
 
 ## Examples
 
-### Default
+### Full feature showcase
 
-<ComponentPreview name="Markdown Default" source="examples/markdown-demo.tsx">
+<ComponentPreview name="Markdown Full Feature Showcase" source="examples/markdown-demo.tsx">
   <div class="mb-4 w-full">
     <MarkdownDemo />
   </div>
@@ -114,3 +128,4 @@ Extends `div` props.
 
 - Draw.io plugin is intentionally deferred and can be added later through the same plugin architecture.
 - The KaTeX plugin injects KaTeX styles into the Markdown shadow root automatically.
+- Plugins that require runtime styling inject styles into the Markdown shadow root instead of global CSS.

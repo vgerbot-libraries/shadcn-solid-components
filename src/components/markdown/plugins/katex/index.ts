@@ -37,6 +37,10 @@ const mathInline = (state: any, silent: boolean) => {
     return false
   }
 
+  if (state.src.startsWith('$smiles{', state.pos)) {
+    return false
+  }
+
   const openDelim = isValidDelim(state, state.pos)
   if (!openDelim.can_open) {
     if (!silent) {

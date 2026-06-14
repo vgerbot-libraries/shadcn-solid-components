@@ -1,7 +1,7 @@
 {
   "name": "components/markdown",
   "displayName": "Markdown",
-  "description": "A markdown rendering component with a plugin architecture and optional plugin packs for Mermaid diagrams, syntax highlighting, copy actions, KaTeX math, and SMILES chemical structures.",
+  "description": "A markdown rendering component with a plugin architecture and plugin packs for diagrams, syntax highlighting, copy actions, math, chemistry notation, TOC, annotations, task lists, containers, and sanitizer flows.",
   "category": "components",
   "useCases": [
     "Render user-authored markdown content with consistent shadcn styling",
@@ -10,6 +10,40 @@
     "Render chemistry-focused notes with SMILES notation support"
   ],
   "usage": "import { Markdown } from \"shadcn-solid-components/components/markdown\"",
-  "tags": ["components", "markdown", "plugin", "mermaid", "katex", "smiles", "solidjs", "ui"],
-  "dependencies": ["cva", "markdown-it", "markdown-it-smiles", "smiles-drawer", "katex", "markdown-it-highlightjs", "highlight.js"]
+  "tags": [
+    "components",
+    "markdown",
+    "plugin",
+    "mermaid",
+    "katex",
+    "smiles",
+    "toc",
+    "task-list",
+    "sanitizer",
+    "solidjs",
+    "ui"
+  ],
+  "dependencies": [
+    "cva",
+    "markdown-it",
+    "markdown-it-anchor",
+    "markdown-it-table-of-contents",
+    "markdown-it-footnote",
+    "markdown-it-emoji",
+    "markdown-it-task-lists",
+    "markdown-it-deflist",
+    "markdown-it-ins",
+    "markdown-it-del",
+    "markdown-it-mark",
+    "markdown-it-container",
+    "markdown-it-link-attributes",
+    "markdown-it-collapsible",
+    "markdown-it-sanitizer",
+    "@traptitech/markdown-it-spoiler",
+    "markdown-it-smiles",
+    "smiles-drawer",
+    "katex",
+    "markdown-it-highlightjs",
+    "highlight.js"
+  ]
 }

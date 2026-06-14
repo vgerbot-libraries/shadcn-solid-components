@@ -70,10 +70,24 @@
     "./components/list": "./src/components/list/index.tsx",
     "./components/markdown": "./src/components/markdown/index.tsx",
     "./components/markdown/plugins/copy": "./src/components/markdown/plugins/copy/index.ts",
+    "./components/markdown/plugins/anchor": "./src/components/markdown/plugins/anchor/index.ts",
+    "./components/markdown/plugins/collapsible": "./src/components/markdown/plugins/collapsible/index.ts",
+    "./components/markdown/plugins/container": "./src/components/markdown/plugins/container/index.ts",
+    "./components/markdown/plugins/deflist": "./src/components/markdown/plugins/deflist/index.ts",
+    "./components/markdown/plugins/del": "./src/components/markdown/plugins/del/index.ts",
+    "./components/markdown/plugins/emoji": "./src/components/markdown/plugins/emoji/index.ts",
+    "./components/markdown/plugins/footnote": "./src/components/markdown/plugins/footnote/index.ts",
     "./components/markdown/plugins/highlight": "./src/components/markdown/plugins/highlight/index.ts",
+    "./components/markdown/plugins/ins": "./src/components/markdown/plugins/ins/index.ts",
     "./components/markdown/plugins/katex": "./src/components/markdown/plugins/katex/index.ts",
+    "./components/markdown/plugins/link-attributes": "./src/components/markdown/plugins/link-attributes/index.ts",
+    "./components/markdown/plugins/mark": "./src/components/markdown/plugins/mark/index.ts",
     "./components/markdown/plugins/mermaid": "./src/components/markdown/plugins/mermaid/index.ts",
+    "./components/markdown/plugins/sanitizer": "./src/components/markdown/plugins/sanitizer/index.ts",
     "./components/markdown/plugins/smiles": "./src/components/markdown/plugins/smiles/index.ts",
+    "./components/markdown/plugins/spoiler": "./src/components/markdown/plugins/spoiler/index.ts",
+    "./components/markdown/plugins/table-of-contents": "./src/components/markdown/plugins/table-of-contents/index.ts",
+    "./components/markdown/plugins/task-lists": "./src/components/markdown/plugins/task-lists/index.ts",
     "./components/marquee": "./src/components/marquee/index.tsx",
     "./components/menubar": "./src/components/menubar/index.tsx",
     "./components/navigation-menu": "./src/components/navigation-menu/index.tsx",
@@ -185,16 +199,31 @@
     "@corvu/resizable": "^0.2.5",
     "@tanstack/solid-table": "^8.21.3",
     "@tanstack/solid-virtual": "^3.13.12",
+    "@traptitech/markdown-it-spoiler": "^1.1.6",
     "@unovis/solid": "^1.6.2",
     "@unovis/ts": "^1.6.2",
     "cmdk-solid": "^1.1.2",
+    "dompurify": "^3.4.10",
     "embla-carousel-solid": "^8.6.0",
     "highlight.js": "^11.11.1",
     "katex": "^0.16.22",
     "markdown-it": "^14.1.0",
+    "markdown-it-anchor": "^9.2.0",
+    "markdown-it-collapsible": "^2.0.2",
+    "markdown-it-container": "^4.0.0",
+    "markdown-it-deflist": "^3.0.1",
+    "markdown-it-del": "^0.1.0",
+    "markdown-it-emoji": "^3.0.0",
+    "markdown-it-footnote": "^4.0.0",
     "markdown-it-highlightjs": "^4.2.0",
+    "markdown-it-ins": "^4.0.0",
+    "markdown-it-link-attributes": "^4.0.1",
+    "markdown-it-mark": "^4.0.0",
     "markdown-it-mermaid": "^0.2.5",
+    "markdown-it-sanitizer": "^0.4.3",
     "markdown-it-smiles": "^2.1.3",
+    "markdown-it-table-of-contents": "^1.2.0",
+    "markdown-it-task-lists": "^2.1.1",
     "mermaid": "^11.12.1",
     "qrcode": "^1.5.4",
     "shadcn": "^3.7.0",
@@ -251,7 +280,37 @@
     "markdown-it": {
       "optional": true
     },
+    "markdown-it-anchor": {
+      "optional": true
+    },
+    "markdown-it-collapsible": {
+      "optional": true
+    },
+    "markdown-it-container": {
+      "optional": true
+    },
+    "markdown-it-deflist": {
+      "optional": true
+    },
+    "markdown-it-del": {
+      "optional": true
+    },
+    "markdown-it-emoji": {
+      "optional": true
+    },
+    "markdown-it-footnote": {
+      "optional": true
+    },
     "markdown-it-highlightjs": {
+      "optional": true
+    },
+    "markdown-it-ins": {
+      "optional": true
+    },
+    "markdown-it-link-attributes": {
+      "optional": true
+    },
+    "markdown-it-mark": {
       "optional": true
     },
     "markdown-it-mermaid": {
@@ -260,7 +319,19 @@
     "markdown-it-katex": {
       "optional": true
     },
+    "markdown-it-sanitizer": {
+      "optional": true
+    },
     "markdown-it-smiles": {
+      "optional": true
+    },
+    "@traptitech/markdown-it-spoiler": {
+      "optional": true
+    },
+    "markdown-it-table-of-contents": {
+      "optional": true
+    },
+    "markdown-it-task-lists": {
       "optional": true
     },
     "mermaid": {
@@ -287,18 +358,33 @@
     "@microsoft/api-extractor": "^7.58.0",
     "@solidjs/router": "^0.15.4",
     "@tailwindcss/vite": "^4.1.18",
+    "@traptitech/markdown-it-spoiler": "^1.1.6",
     "@types/node": "^20.12.12",
     "@types/qrcode": "^1.5.6",
     "@types/tabulator-tables": "^6.3.1",
     "concurrently": "^8.2.2",
+    "dompurify": "^3.4.10",
     "esbuild": "^0.21.3",
     "esbuild-plugin-solid": "^0.6.0",
     "jsdom": "^24.0.0",
+    "markdown-it-anchor": "^9.2.0",
+    "markdown-it-collapsible": "^2.0.2",
+    "markdown-it-container": "^4.0.0",
+    "markdown-it-deflist": "^3.0.1",
+    "markdown-it-del": "^0.1.0",
+    "markdown-it-emoji": "^3.0.0",
+    "markdown-it-footnote": "^4.0.0",
+    "markdown-it-ins": "^4.0.0",
+    "markdown-it-link-attributes": "^4.0.1",
+    "markdown-it-mark": "^4.0.0",
+    "markdown-it-sanitizer": "^0.4.3",
+    "markdown-it-table-of-contents": "^1.2.0",
+    "markdown-it-task-lists": "^2.1.1",
     "qrcode": "^1.5.4",
+    "smiles-drawer": "^2.3.0",
     "solid-devtools": "^0.34.5",
     "solid-js": "^1.8.17",
     "solid-sonner": "^0.3.1",
-    "smiles-drawer": "^2.3.0",
     "tailwindcss": "^4.1.18",
     "tw-animate-css": "^1.4.0",
     "typescript": "^5.4.5",
@@ -322,9 +408,9 @@
     }
   },
   "dependencies": {
+    "@kobalte/core": "^0.13.11",
     "cva": "1.0.0-beta.4",
     "inquirer": "^9.3.7",
-    "tailwind-merge": "^3.4.0",
-    "@kobalte/core": "^0.13.11"
+    "tailwind-merge": "^3.4.0"
   }
 }

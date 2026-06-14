@@ -29,6 +29,77 @@ declare module 'markdown-it-highlightjs' {
   export default markdownItHighlightjs
 }
 
+declare module 'markdown-it-anchor' {
+  const markdownItAnchor: any
+  export default markdownItAnchor
+}
+
+declare module 'markdown-it-table-of-contents' {
+  const markdownItTableOfContents: any
+  export default markdownItTableOfContents
+}
+
+declare module 'markdown-it-footnote' {
+  const markdownItFootnote: any
+  export default markdownItFootnote
+}
+
+declare module 'markdown-it-emoji' {
+  export const full: any
+  export const light: any
+  export const bare: any
+}
+
+declare module 'markdown-it-task-lists' {
+  const markdownItTaskLists: any
+  export default markdownItTaskLists
+}
+
+declare module 'markdown-it-deflist' {
+  const markdownItDeflist: any
+  export default markdownItDeflist
+}
+
+declare module 'markdown-it-ins' {
+  const markdownItIns: any
+  export default markdownItIns
+}
+
+declare module 'markdown-it-del' {
+  const markdownItDel: any
+  export default markdownItDel
+}
+
+declare module 'markdown-it-mark' {
+  const markdownItMark: any
+  export default markdownItMark
+}
+
+declare module 'markdown-it-container' {
+  const markdownItContainer: any
+  export default markdownItContainer
+}
+
+declare module 'markdown-it-link-attributes' {
+  const markdownItLinkAttributes: any
+  export default markdownItLinkAttributes
+}
+
+declare module 'markdown-it-collapsible' {
+  const markdownItCollapsible: any
+  export default markdownItCollapsible
+}
+
+declare module 'markdown-it-sanitizer' {
+  const markdownItSanitizer: any
+  export default markdownItSanitizer
+}
+
+declare module '@traptitech/markdown-it-spoiler' {
+  const markdownItSpoiler: any
+  export default markdownItSpoiler
+}
+
 declare module 'markdown-it-katex' {
   const markdownItKatex: any
   export default markdownItKatex
