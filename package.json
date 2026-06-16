@@ -13,10 +13,7 @@
   "bugs": {
     "url": "https://github.com/vgerbot-libraries/shadcn-solid-components/issues"
   },
-  "files": [
-    "src",
-    "bin"
-  ],
+  "files": ["src", "bin"],
   "private": false,
   "sideEffects": false,
   "type": "module",
@@ -228,6 +225,7 @@
     "qrcode": "^1.5.4",
     "shadcn": "^3.7.0",
     "smiles-drawer": "^2.3.0",
+    "svg-pan-zoom": "^3.6.2",
     "solid-js": "^1.6.0",
     "somoto": "^0.0.2",
     "tabulator-tables": "^6.3.1",
@@ -343,6 +341,9 @@
     "smiles-drawer": {
       "optional": true
     },
+    "svg-pan-zoom": {
+      "optional": true
+    },
     "shadcn": {
       "optional": true
     },
@@ -382,6 +383,7 @@
     "markdown-it-task-lists": "^2.1.1",
     "qrcode": "^1.5.4",
     "smiles-drawer": "^2.3.0",
+    "svg-pan-zoom": "^3.6.2",
     "solid-devtools": "^0.34.5",
     "solid-js": "^1.8.17",
     "solid-sonner": "^0.3.1",
@@ -394,9 +396,7 @@
     "vite-tsconfig-paths": "^6.0.5",
     "vitest": "^1.6.0"
   },
-  "keywords": [
-    "solid"
-  ],
+  "keywords": ["solid"],
   "packageManager": "pnpm@9.1.1",
   "engines": {
     "node": ">=18",

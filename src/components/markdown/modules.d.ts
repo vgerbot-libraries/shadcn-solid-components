@@ -128,3 +128,8 @@ declare module 'mermaid' {
 
   export default mermaid
 }
+
+declare module 'svg-pan-zoom' {
+  const svgPanZoom: any
+  export default svgPanZoom
+}

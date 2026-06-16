@@ -1,31 +1,117 @@
-.mermaid {
-  margin: 1rem 0;
-  overflow-x: auto;
+@reference "../../../../themes/base.css";
+
+button {
+  @apply border-0;
+}
+
+.markdown-mermaid {
+  @apply my-4;
+}
+
+.markdown-mermaid__root {
+  @apply border border-[rgb(148_163_184/0.3)] rounded-xl bg-[rgb(15_23_42/0.04)] overflow-hidden;
+}
+
+.markdown-mermaid__header {
+  @apply flex items-center justify-between gap-3 px-3 py-2 border-b border-b-[rgb(148_163_184/0.22)] bg-[rgb(15_23_42/0.03)];
+}
+
+.markdown-mermaid__tabs,
+.markdown-mermaid__actions {
+  @apply inline-flex items-center gap-1.5 flex-wrap;
+}
+
+.markdown-mermaid__tabs {
+  @apply bg-muted text-muted-foreground ring-muted relative h-[calc(var(--spacing)*7.5)] w-fit justify-center rounded-component ring-[3px];
+  @apply gap-0;
+}
+
+.markdown-mermaid__tab {
+  @apply text-muted-foreground dark:text-muted-foreground relative z-10 inline-flex h-[calc(100%-1px)] flex-1 items-center justify-center gap-1.5 px-2 py-1 text-sm font-medium whitespace-nowrap bg-transparent transition-[color];
+  @apply focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] focus-visible:outline-none;
+  @apply disabled:pointer-events-none disabled:opacity-50;
+  @apply cursor-pointer;
+}
+
+.markdown-mermaid__action-button {
+  @apply text-foreground inline-flex size-8 items-center justify-center rounded-component p-0 outline-none transition-all;
+  @apply hover:bg-accent hover:text-accent-foreground hover:dark:bg-accent/50;
+  @apply focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px];
+  @apply disabled:pointer-events-none disabled:opacity-50;
+  @apply cursor-pointer;
+}
+
+.markdown-mermaid__tab.is-active {
+  @apply text-foreground;
+}
+
+.markdown-mermaid__tab-indicator {
+  @apply bg-background dark:bg-input/30 dark:border-input absolute inset-0 border border-transparent shadow-sm rounded-component;
+  @apply transition-[box-shadow,transform,width,height] duration-200;
+}
+
+.markdown-mermaid__action-button svg {
+  @apply size-4;
+}
+
+.markdown-mermaid__body {
+  @apply relative min-h-[220px];
+}
+
+.markdown-mermaid__code,
+.markdown-mermaid__image {
+  @apply m-0 min-h-[220px] p-3;
+}
+
+.markdown-mermaid__code {
+  @apply overflow-auto whitespace-pre font-mono text-[0.8125rem] leading-[1.6];
+}
+
+.markdown-mermaid__image {
+  @apply flex h-[220px] items-stretch justify-stretch overflow-hidden;
+}
+
+.markdown-mermaid__image-inner {
+  @apply flex-1 w-full h-[220px] min-h-[220px] flex items-center justify-center overflow-hidden;
+}
+
+.markdown-mermaid__image-inner svg {
+  @apply w-full max-w-full h-full max-h-[70vh];
+}
+
+.markdown-mermaid__root[data-view="image"] .markdown-mermaid__code {
+  @apply hidden;
+}
+
+.markdown-mermaid__root[data-view="code"] .markdown-mermaid__image {
+  @apply hidden;
+}
+
+.markdown-mermaid__image:fullscreen {
+  @apply h-full bg-[rgb(15_23_42/0.92)] p-5;
+}
+
+.markdown-mermaid__image:fullscreen .markdown-mermaid__image-inner {
+  @apply h-full;
+}
+
+.markdown-mermaid__image:fullscreen .markdown-mermaid__image-inner svg {
+  @apply max-h-[calc(100vh-2.5rem)];
 }
 
 .markdown-mermaid-error {
-  margin: 1rem 0;
-  border: 1px solid rgb(248 113 113 / 0.4);
-  border-radius: 0.5rem;
-  background: rgb(127 29 29 / 0.08);
-  padding: 0.75rem;
-  color: rgb(185 28 28);
-  font-size: 0.875rem;
-  line-height: 1.5;
+  @apply my-4 border border-[rgb(248_113_113/0.4)] rounded-lg bg-[rgb(127_29_29/0.08)] p-3 text-[rgb(185_28_28)] text-sm leading-6;
 }
 
 .markdown-mermaid-error-title {
-  font-weight: 600;
+  @apply font-semibold;
 }
 
 .markdown-mermaid-error-message,
 .markdown-mermaid-error-source {
-  margin: 0.5rem 0 0;
-  white-space: pre-wrap;
-  word-break: break-word;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  @apply mt-2 whitespace-pre-wrap break-words font-mono;
 }
 
 .markdown-mermaid-error details {
-  margin-top: 0.5rem;
+  @apply mt-2;
 }
