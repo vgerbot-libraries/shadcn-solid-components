@@ -1,4 +1,5 @@
 import { createMarkdownPlugin } from '../../index'
+import copyIconSvg from './copy.svg?raw'
 
 export type MarkdownCopyPluginOptions = {
   buttonText?: string
@@ -37,8 +38,9 @@ export const createMarkdownCopyPlugin = (options?: MarkdownCopyPluginOptions) =>
         const button = document.createElement('button')
         button.type = 'button'
         button.className = 'shadcn-markdown-copy-button'
-        button.textContent = config.buttonText
+        button.title = config.buttonText
         button.setAttribute('aria-label', config.buttonText)
+        button.innerHTML = copyIconSvg
 
         let timer = 0
         const onClick = async () => {
@@ -52,10 +54,12 @@ export const createMarkdownCopyPlugin = (options?: MarkdownCopyPluginOptions) =>
           }
 
           await navigator.clipboard.writeText(text)
-          button.textContent = config.copiedText
+          button.title = config.copiedText
+          button.setAttribute('aria-label', config.copiedText)
           window.clearTimeout(timer)
           timer = window.setTimeout(() => {
-            button.textContent = config.buttonText
+            button.title = config.buttonText
+            button.setAttribute('aria-label', config.buttonText)
           }, config.copyTimeoutMs)
         }
 

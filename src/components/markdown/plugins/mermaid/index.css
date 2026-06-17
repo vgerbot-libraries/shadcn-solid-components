@@ -9,11 +9,11 @@ button {
 }
 
 .markdown-mermaid__root {
-  @apply border border-[rgb(148_163_184/0.3)] rounded-xl bg-[rgb(15_23_42/0.04)] overflow-hidden;
+  @apply border border-[rgb(148_163_184/0.3)] rounded-xl bg-muted/40 overflow-hidden;
 }
 
 .markdown-mermaid__header {
-  @apply flex items-center justify-between gap-3 px-3 py-2 border-b border-b-[rgb(148_163_184/0.22)] bg-[rgb(15_23_42/0.03)];
+  @apply flex items-center justify-between gap-3 px-3 py-2 border-b border-b-[rgb(148_163_184/0.22)] bg-muted/20;
 }
 
 .markdown-mermaid__tabs,
@@ -34,7 +34,7 @@ button {
 }
 
 .markdown-mermaid__action-button {
-  @apply text-foreground inline-flex size-8 items-center justify-center rounded-component p-0 outline-none transition-all;
+  @apply text-foreground inline-flex size-8 items-center justify-center rounded-component p-0 outline-none transition-all bg-transparent;
   @apply hover:bg-accent hover:text-accent-foreground hover:dark:bg-accent/50;
   @apply focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px];
   @apply disabled:pointer-events-none disabled:opacity-50;
@@ -87,16 +87,42 @@ button {
   @apply hidden;
 }
 
-.markdown-mermaid__image:fullscreen {
-  @apply h-full bg-[rgb(15_23_42/0.92)] p-5;
+.markdown-mermaid__modal-overlay {
+  @apply fixed inset-0 z-[1200] flex items-stretch justify-stretch;
 }
 
-.markdown-mermaid__image:fullscreen .markdown-mermaid__image-inner {
-  @apply h-full;
+.markdown-mermaid__modal-backdrop {
+  @apply absolute inset-0 bg-black/90;
 }
 
-.markdown-mermaid__image:fullscreen .markdown-mermaid__image-inner svg {
-  @apply max-h-[calc(100vh-2.5rem)];
+.markdown-mermaid__modal-panel {
+  @apply relative z-10 h-full w-full;
+}
+
+.markdown-mermaid__modal-controls {
+  @apply pointer-events-auto absolute right-4 top-4 z-20 inline-flex items-center gap-2;
+}
+
+.markdown-mermaid__modal-control-button {
+  @apply text-foreground inline-flex size-9 items-center justify-center rounded-component bg-background/90 backdrop-blur-sm;
+  @apply hover:bg-accent hover:text-accent-foreground hover:dark:bg-accent/50;
+  @apply focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] focus-visible:outline-none;
+}
+
+.markdown-mermaid__modal-control-button svg {
+  @apply size-4;
+}
+
+.markdown-mermaid__modal-viewer {
+  @apply h-full w-full overflow-hidden;
+}
+
+.markdown-mermaid__modal-viewer-inner {
+  @apply flex h-full w-full items-center justify-center overflow-hidden;
+}
+
+.markdown-mermaid__modal-viewer-inner svg {
+  @apply h-full w-full max-h-full max-w-full;
 }
 
 .markdown-mermaid-error {

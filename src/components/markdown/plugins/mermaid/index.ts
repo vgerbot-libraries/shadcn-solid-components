@@ -2,6 +2,12 @@ import * as markdownItMermaidModule from 'markdown-it-mermaid'
 import mermaid from 'mermaid'
 import svgPanZoom from 'svg-pan-zoom'
 import { createMarkdownPlugin } from '../../index'
+import copyIconSvg from '../copy/copy.svg?raw'
+import downloadIconSvg from './icons/download.svg?raw'
+import fitIconSvg from './icons/fit.svg?raw'
+import fullscreenIconSvg from './icons/fullscreen.svg?raw'
+import zoomInIconSvg from './icons/zoom-in.svg?raw'
+import zoomOutIconSvg from './icons/zoom-out.svg?raw'
 import mermaidStyles from './index.css?inline'
 
 const markdownItMermaid =
@@ -48,7 +54,7 @@ type MermaidViewOptions = {
   enableFullscreen?: boolean
 }
 
-type MermaidActionIcon = 'copy' | 'download' | 'zoomIn' | 'zoomOut' | 'fit' | 'fullscreen'
+type MermaidActionIcon = 'copy' | 'download' | 'zoomIn' | 'zoomOut' | 'fit' | 'fullscreen' | 'close'
 
 export type MarkdownMermaidPluginOptions = {
   mermaidOptions?: Record<string, unknown>
@@ -68,6 +74,18 @@ const defaultLabels: MermaidActionLabels = {
   zoomOut: 'Zoom Out',
   fitToScreen: 'Fit',
   fullscreen: 'Fullscreen',
+}
+
+const closeIconSvg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>`
+
+const mermaidActionIconSvgs: Record<MermaidActionIcon, string> = {
+  copy: copyIconSvg,
+  download: downloadIconSvg,
+  zoomIn: zoomInIconSvg,
+  zoomOut: zoomOutIconSvg,
+  fit: fitIconSvg,
+  fullscreen: fullscreenIconSvg,
+  close: closeIconSvg,
 }
 
 const ensureStyles = (shadowRoot: ShadowRoot) => {
@@ -181,57 +199,20 @@ const createActionButton = (label: string, variant: 'tab' | 'icon') => {
 }
 
 const createIconElement = (icon: MermaidActionIcon) => {
-  const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg')
-  svg.setAttribute('viewBox', '0 0 24 24')
-  svg.setAttribute('fill', 'none')
-  svg.setAttribute('stroke', 'currentColor')
-  svg.setAttribute('stroke-width', '1.8')
-  svg.setAttribute('stroke-linecap', 'round')
-  svg.setAttribute('stroke-linejoin', 'round')
-  svg.setAttribute('aria-hidden', 'true')
+  const template = document.createElement('template')
+  template.innerHTML = mermaidActionIconSvgs[icon].trim()
+  const svg = template.content.firstElementChild
 
-  const path = (d: string) => {
-    const p = document.createElementNS('http://www.w3.org/2000/svg', 'path')
-    p.setAttribute('d', d)
-    svg.append(p)
+  if (svg instanceof SVGSVGElement) {
+    return svg
   }
 
-  switch (icon) {
-    case 'copy':
-      path('M9 9h10v10H9z')
-      path('M5 5h10v10')
-      break
-    case 'download':
-      path('M12 3v12')
-      path('M7 10l5 5 5-5')
-      path('M5 21h14')
-      break
-    case 'zoomIn':
-      path('M11 6v10')
-      path('M6 11h10')
-      path('M21 21l-4.35-4.35')
-      path('M10.5 18a7.5 7.5 0 1 1 0-15 7.5 7.5 0 0 1 0 15z')
-      break
-    case 'zoomOut':
-      path('M6 11h10')
-      path('M21 21l-4.35-4.35')
-      path('M10.5 18a7.5 7.5 0 1 1 0-15 7.5 7.5 0 0 1 0 15z')
-      break
-    case 'fit':
-      path('M9 4H4v5')
-      path('M15 4h5v5')
-      path('M9 20H4v-5')
-      path('M15 20h5v-5')
-      break
-    case 'fullscreen':
-      path('M8 3H3v5')
-      path('M16 3h5v5')
-      path('M8 21H3v-5')
-      path('M16 21h5v-5')
-      break
-  }
-
-  return svg
+  const fallback = document.createElementNS('http://www.w3.org/2000/svg', 'svg')
+  fallback.setAttribute('viewBox', '0 0 24 24')
+  fallback.setAttribute('width', '16')
+  fallback.setAttribute('height', '16')
+  fallback.setAttribute('aria-hidden', 'true')
+  return fallback
 }
 
 const createIconButton = (label: string, icon: MermaidActionIcon) => {
@@ -315,18 +296,33 @@ const createSvgBlob = (svgElement: SVGSVGElement) => {
   return new Blob([markup], { type: 'image/svg+xml;charset=utf-8' })
 }
 
+const isTaintedCanvasError = (error: unknown) => {
+  if (error instanceof DOMException && error.name === 'SecurityError') {
+    return true
+  }
+
+  if (error instanceof Error) {
+    return /tainted canvas/i.test(error.message)
+  }
+
+  if (typeof error === 'string') {
+    return /tainted canvas/i.test(error)
+  }
+
+  return false
+}
+
 const renderPngBlob = async (svgElement: SVGSVGElement) => {
   const { width, height } = getSvgSize(svgElement)
   const svgMarkup = toSvgMarkup(svgElement)
-  const svgBlob = new Blob([svgMarkup], { type: 'image/svg+xml;charset=utf-8' })
-  const objectUrl = URL.createObjectURL(svgBlob)
+  const dataUrl = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svgMarkup)}`
 
   try {
     const image = await new Promise<HTMLImageElement>((resolve, reject) => {
       const img = new Image()
       img.onload = () => resolve(img)
       img.onerror = () => reject(new Error('Failed to decode SVG for PNG export.'))
-      img.src = objectUrl
+      img.src = dataUrl
     })
 
     const canvas = document.createElement('canvas')
@@ -340,11 +336,19 @@ const renderPngBlob = async (svgElement: SVGSVGElement) => {
 
     context.drawImage(image, 0, 0, canvas.width, canvas.height)
 
-    return await new Promise<Blob | null>(resolve => {
-      canvas.toBlob(blob => resolve(blob), 'image/png')
+    return await new Promise<Blob | null>((resolve, reject) => {
+      try {
+        canvas.toBlob(blob => resolve(blob), 'image/png')
+      } catch (error) {
+        reject(error)
+      }
     })
-  } finally {
-    URL.revokeObjectURL(objectUrl)
+  } catch (error) {
+    if (isTaintedCanvasError(error)) {
+      return null
+    }
+
+    throw error
   }
 }
 
@@ -362,18 +366,33 @@ const copySvgAsImage = async (svgElement: SVGSVGElement) => {
     return
   }
 
-  const pngBlob = await renderPngBlob(svgElement)
+  const svgMarkup = toSvgMarkup(svgElement)
+  const svgBlob = new Blob([svgMarkup], { type: 'image/svg+xml;charset=utf-8' })
 
-  if (pngBlob && 'ClipboardItem' in window && navigator.clipboard.write) {
-    const clipboardItem = new ClipboardItem({
-      [pngBlob.type]: pngBlob,
-    })
-    await navigator.clipboard.write([clipboardItem])
-    return
+  try {
+    const pngBlob = await renderPngBlob(svgElement)
+
+    if (pngBlob && 'ClipboardItem' in window && navigator.clipboard.write) {
+      const clipboardItem = new ClipboardItem({
+        [pngBlob.type]: pngBlob,
+      })
+      await navigator.clipboard.write([clipboardItem])
+      return
+    }
+
+    if ('ClipboardItem' in window && navigator.clipboard.write) {
+      const clipboardItem = new ClipboardItem({
+        [svgBlob.type]: svgBlob,
+      })
+      await navigator.clipboard.write([clipboardItem])
+      return
+    }
+  } catch {
+    // fall through to text fallback
   }
 
   if (navigator.clipboard.writeText) {
-    await navigator.clipboard.writeText(toSvgMarkup(svgElement))
+    await navigator.clipboard.writeText(svgMarkup)
   }
 }
 
@@ -561,27 +580,19 @@ export const createMarkdownMermaidPlugin = (options?: MarkdownMermaidPluginOptio
               zoomScaleSensitivity: 0.3,
             }) as SvgPanZoomInstance
 
-            const zoomInButton = createIconButton(labels.zoomIn, 'zoomIn')
-            const zoomOutButton = createIconButton(labels.zoomOut, 'zoomOut')
             const fitButton = createIconButton(labels.fitToScreen, 'fit')
 
-            const onZoomIn = () => panZoomInstance?.zoomIn?.()
-            const onZoomOut = () => panZoomInstance?.zoomOut?.()
             const onFit = () => {
               panZoomInstance?.fit?.()
               panZoomInstance?.center?.()
               panZoomInstance?.resize?.()
             }
 
-            zoomInButton.addEventListener('click', onZoomIn)
-            zoomOutButton.addEventListener('click', onZoomOut)
             fitButton.addEventListener('click', onFit)
 
-            actions.append(zoomInButton, zoomOutButton, fitButton)
+            actions.append(fitButton)
 
             cleanupFns.push(() => {
-              zoomInButton.removeEventListener('click', onZoomIn)
-              zoomOutButton.removeEventListener('click', onZoomOut)
               fitButton.removeEventListener('click', onFit)
             })
           }
@@ -606,11 +617,15 @@ export const createMarkdownMermaidPlugin = (options?: MarkdownMermaidPluginOptio
 
             const onDownload = async () => {
               const baseName = options?.exportFileName?.(index) ?? `mermaid-diagram-${index + 1}`
-              const pngBlob = await renderPngBlob(svgElement)
+              try {
+                const pngBlob = await renderPngBlob(svgElement)
 
-              if (pngBlob) {
-                triggerDownload(pngBlob, `${baseName}.png`)
-                return
+                if (pngBlob) {
+                  triggerDownload(pngBlob, `${baseName}.png`)
+                  return
+                }
+              } catch {
+                // fall through to svg fallback
               }
 
               triggerDownload(createSvgBlob(svgElement), `${baseName}.svg`)
@@ -630,14 +645,117 @@ export const createMarkdownMermaidPlugin = (options?: MarkdownMermaidPluginOptio
 
           if (viewConfig.enableFullscreen) {
             const fullscreenButton = createIconButton(labels.fullscreen, 'fullscreen')
+            let closeModal: (() => void) | null = null
 
             const onFullscreen = async () => {
-              if (document.fullscreenElement === imageContainer) {
-                await document.exitFullscreen()
+              if (!svgElement) {
                 return
               }
 
-              await imageContainer.requestFullscreen()
+              if (closeModal) {
+                closeModal()
+                return
+              }
+
+              const overlay = document.createElement('div')
+              overlay.className = 'markdown-mermaid__modal-overlay'
+              overlay.setAttribute('role', 'dialog')
+              overlay.setAttribute('aria-modal', 'true')
+              overlay.setAttribute('aria-label', labels.fullscreen)
+
+              const backdrop = document.createElement('div')
+              backdrop.className = 'markdown-mermaid__modal-backdrop'
+
+              const panel = document.createElement('div')
+              panel.className = 'markdown-mermaid__modal-panel'
+
+              const controls = document.createElement('div')
+              controls.className = 'markdown-mermaid__modal-controls'
+
+              const closeButton = createIconButton('Close', 'close')
+              closeButton.classList.add('markdown-mermaid__modal-control-button')
+
+              const modalDownloadButton = createIconButton(labels.downloadImage, 'download')
+              modalDownloadButton.classList.add('markdown-mermaid__modal-control-button')
+
+              const viewer = document.createElement('div')
+              viewer.className = 'markdown-mermaid__modal-viewer'
+
+              const viewerInner = document.createElement('div')
+              viewerInner.className = 'markdown-mermaid__modal-viewer-inner'
+
+              const modalSvg = svgElement.cloneNode(true) as SVGSVGElement
+              normalizeSvgLayout(modalSvg)
+              viewerInner.append(modalSvg)
+
+              controls.append(closeButton)
+              if (viewConfig.enableDownload) {
+                controls.append(modalDownloadButton)
+              }
+
+              viewer.append(viewerInner)
+              panel.append(controls, viewer)
+              overlay.append(backdrop, panel)
+              shadowRoot.append(overlay)
+
+              rendered.bindFunctions?.(viewerInner)
+
+              const modalPanZoom = svgPanZoom(modalSvg, {
+                controlIconsEnabled: false,
+                fit: true,
+                center: true,
+                minZoom: 0.25,
+                maxZoom: 16,
+                zoomScaleSensitivity: 0.3,
+              }) as SvgPanZoomInstance
+
+              modalPanZoom.fit?.()
+              modalPanZoom.center?.()
+
+              const onModalDownload = async () => {
+                const baseName = options?.exportFileName?.(index) ?? `mermaid-diagram-${index + 1}`
+                try {
+                  const pngBlob = await renderPngBlob(modalSvg)
+
+                  if (pngBlob) {
+                    triggerDownload(pngBlob, `${baseName}.png`)
+                    return
+                  }
+                } catch {
+                  // fall through to svg fallback
+                }
+
+                triggerDownload(createSvgBlob(modalSvg), `${baseName}.svg`)
+              }
+
+              const closeHandler = () => {
+                closeModal?.()
+              }
+
+              const keydownHandler = (event: KeyboardEvent) => {
+                if (event.key === 'Escape') {
+                  event.preventDefault()
+                  closeModal?.()
+                }
+              }
+
+              const downloadHandler = () => {
+                void onModalDownload()
+              }
+
+              closeModal = () => {
+                document.removeEventListener('keydown', keydownHandler)
+                closeButton.removeEventListener('click', closeHandler)
+                modalDownloadButton.removeEventListener('click', downloadHandler)
+                modalPanZoom.destroy?.()
+                overlay.remove()
+                closeModal = null
+                fullscreenButton.focus()
+              }
+
+              closeButton.addEventListener('click', closeHandler)
+              modalDownloadButton.addEventListener('click', downloadHandler)
+              document.addEventListener('keydown', keydownHandler)
             }
 
             const onFullscreenClick = () => {
@@ -649,6 +767,7 @@ export const createMarkdownMermaidPlugin = (options?: MarkdownMermaidPluginOptio
 
             cleanupFns.push(() => {
               fullscreenButton.removeEventListener('click', onFullscreenClick)
+              closeModal?.()
             })
           }
 
