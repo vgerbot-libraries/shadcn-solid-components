@@ -1,6 +1,17 @@
 import type { ComponentProps, JSX } from 'solid-js'
 import { Match, Show, Switch, splitProps } from 'solid-js'
 
+const routerBase =
+  import.meta.env.BASE_URL === '/' ? '' : import.meta.env.BASE_URL.replace(/\/$/, '')
+
+const resolveInternalHref = (href?: string) => {
+  if (!href || !href.startsWith('/') || href.startsWith('//')) {
+    return href
+  }
+
+  return `${routerBase}${href}`
+}
+
 const sourceFileMap = import.meta.glob('/src/examples/**/*.{ts,tsx,js,jsx,css,json,md,mdx}', {
   query: '?raw',
   import: 'default',
@@ -153,7 +164,17 @@ const ComponentSource = (props: ComponentProps<'div'>) => {
 }
 
 export const mdxCustomComponents: MDXComponents | Record<string, unknown> = {
-  a: props => <a class="text-foreground font-medium underline underline-offset-4" {...props} />,
+  a: (props: ComponentProps<'a'>) => {
+    const [local, rest] = splitProps(props, ['href', 'class'])
+
+    return (
+      <a
+        href={resolveInternalHref(local.href)}
+        class={`text-foreground font-medium underline underline-offset-4 ${local.class ?? ''}`}
+        {...rest}
+      />
+    )
+  },
   h1: props => (
     <h1 class="mt-2 scroll-m-28 text-4xl font-semibold tracking-tight sm:text-3xl" {...props} />
   ),

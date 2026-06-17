@@ -4,6 +4,9 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+overrides:
+  markdown-it-mermaid>mermaid: ^11.12.1
+
 importers:
 
   .:

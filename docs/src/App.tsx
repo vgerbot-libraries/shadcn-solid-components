@@ -1,12 +1,11 @@
-import { A, Navigate, Route, Router, useLocation, useParams } from "@solidjs/router"
-// @ts-expect-error solid-mdx does not expose compatible types here.
-import { MDXProvider } from "solid-mdx"
-import MiniSearch from "minisearch"
-import { For, Show, createEffect, createMemo, createSignal } from "solid-js"
+import { mdxCustomComponents } from '@docs/components/mdx'
+import { Contents, docsNavigation } from '@docs/content'
+import { A, Navigate, Route, Router, useLocation, useParams } from '@solidjs/router'
+import MiniSearch from 'minisearch'
 
-import { Button, buttonVariants } from "shadcn-solid-components/components/button"
-import { LandingHero } from "shadcn-solid-components/components/landing-hero"
-import { Separator } from "shadcn-solid-components/components/separator"
+import { Button, buttonVariants } from 'shadcn-solid-components/components/button'
+import { LandingHero } from 'shadcn-solid-components/components/landing-hero'
+import { Separator } from 'shadcn-solid-components/components/separator'
 import {
   Sidebar,
   SidebarContent,
@@ -17,21 +16,21 @@ import {
   SidebarProvider,
   SidebarTrigger,
   useSidebar,
-} from "shadcn-solid-components/components/sidebar"
-import { TextField, TextFieldInput } from "shadcn-solid-components/components/text-field"
-import { ModeToggleDropdown } from "shadcn-solid-components/hoc/mode-toggle-dropdown"
-import { SidebarMenuTree } from "shadcn-solid-components/hoc/sidebar-menu-tree"
-import { cx } from "shadcn-solid-components/lib/cva"
+} from 'shadcn-solid-components/components/sidebar'
+import { TextField, TextFieldInput } from 'shadcn-solid-components/components/text-field'
+import { ModeToggleDropdown } from 'shadcn-solid-components/hoc/mode-toggle-dropdown'
+import { SidebarMenuTree } from 'shadcn-solid-components/hoc/sidebar-menu-tree'
+import { cx } from 'shadcn-solid-components/lib/cva'
+import { createEffect, createMemo, createSignal, For, Show } from 'solid-js'
+// @ts-expect-error solid-mdx does not expose compatible types here.
+import { MDXProvider } from 'solid-mdx'
 
-import { mdxCustomComponents } from "@docs/components/mdx"
-import { Contents, docsNavigation } from "@docs/content"
-
-import AccordionDemo from "./examples/accordion-demo"
-import AuthFormDemo from "./examples/auth-form-demo"
-import CalendarDemo from "./examples/calendar-demo"
-import CardDemo from "./examples/card-demo"
-import CommandDemo from "./examples/command-demo"
-import TabsDemo from "./examples/tabs-demo"
+import AccordionDemo from './examples/accordion-demo'
+import AuthFormDemo from './examples/auth-form-demo'
+import CalendarDemo from './examples/calendar-demo'
+import CardDemo from './examples/card-demo'
+import CommandDemo from './examples/command-demo'
+import TabsDemo from './examples/tabs-demo'
 
 type DocRouteParams = {
   slug?: string
@@ -47,25 +46,34 @@ type DocsSearchItem = {
   headings: string
 }
 
-const siteTitle = "shadcn-solid-components Docs"
+const siteTitle = 'shadcn-solid-components Docs'
 const siteDescription =
-  "Documentation infrastructure for shadcn-solid-components. Content can be added incrementally with MDX."
-const routerBase = import.meta.env.BASE_URL === "/" ? "" : import.meta.env.BASE_URL.replace(/\/$/, "")
+  'Documentation infrastructure for shadcn-solid-components. Content can be added incrementally with MDX.'
+const routerBase =
+  import.meta.env.BASE_URL === '/' ? '' : import.meta.env.BASE_URL.replace(/\/$/, '')
+
+const resolveInternalHref = (href: string) => {
+  if (!href.startsWith('/')) {
+    return href
+  }
+
+  return `${routerBase}${href}`
+}
 
 const setDocumentMeta = (title: string, description: string) => {
   document.title = title
 
   const metaDescription =
     document.querySelector('meta[name="description"]') ??
-    document.head.appendChild(document.createElement("meta"))
+    document.head.appendChild(document.createElement('meta'))
 
-  metaDescription.setAttribute("name", "description")
-  metaDescription.setAttribute("content", description)
+  metaDescription.setAttribute('name', 'description')
+  metaDescription.setAttribute('content', description)
 }
 
 const docsSearchItems: DocsSearchItem[] = docsNavigation.flatMap((section: any) =>
   section.items.map((item: any) => {
-    const slug = item.href.replace(/^\/docs\//, "")
+    const slug = item.href.replace(/^\/docs\//, '')
     const entry = Contents[slug]
 
     return {
@@ -75,22 +83,22 @@ const docsSearchItems: DocsSearchItem[] = docsNavigation.flatMap((section: any) 
       description: item.description,
       section: section.title,
       status: item.status,
-      headings: entry?.headings?.map((heading: any) => heading.text).join(" ") ?? "",
+      headings: entry?.headings?.map((heading: any) => heading.text).join(' ') ?? '',
     }
   }),
 )
 
 const docsSearch = new MiniSearch<DocsSearchItem>({
-  idField: "id",
-  fields: ["title", "description", "section", "headings"],
-  storeFields: ["title", "href", "description", "section", "status"],
+  idField: 'id',
+  fields: ['title', 'description', 'section', 'headings'],
+  storeFields: ['title', 'href', 'description', 'section', 'status'],
 })
 
 docsSearch.addAll(docsSearchItems)
 
 const topNavItems = [
-  { label: "Home", href: "/" },
-  { label: "Docs", href: "/docs" },
+  { label: 'Home', href: resolveInternalHref('/') },
+  { label: 'Docs', href: resolveInternalHref('/docs') },
 ]
 
 const HomePage = () => {
@@ -109,45 +117,49 @@ const HomePage = () => {
           The Foundation for your Design System
         </h1>
         <p class="max-w-[750px] text-center text-lg text-muted-foreground sm:text-xl">
-          A set of beautifully designed components that you can customize, extend, and build on. Start here then make it your own. Open Source. Open Code.
+          A set of beautifully designed components that you can customize, extend, and build on.
+          Start here then make it your own. Open Source. Open Code.
         </p>
         <div class="flex items-center gap-4 mt-4 justify-center">
-          <A href="/docs" class={buttonVariants({ size: "lg" })}>
+          <A href={resolveInternalHref('/docs')} class={buttonVariants({ size: 'lg' })}>
             Get Started
           </A>
-          <A href="/docs/components/accordion" class={buttonVariants({ size: "lg", variant: "outline" })}>
+          <A
+            href={resolveInternalHref('/docs/components/accordion')}
+            class={buttonVariants({ size: 'lg', variant: 'outline' })}
+          >
             View Components
           </A>
         </div>
       </div>
 
       <div class="mt-16 w-full max-w-5xl items-start justify-center relative">
-         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-left">
-            <div class="flex flex-col gap-6 items-center">
-              <div class="w-full max-w-sm relative">
-                <CardDemo />
-              </div>
-              <div class="w-full max-w-sm relative">
-                 <TabsDemo />
-              </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-left">
+          <div class="flex flex-col gap-6 items-center">
+            <div class="w-full max-w-sm relative">
+              <CardDemo />
             </div>
-            <div class="hidden md:flex md:flex-col gap-6 md:items-center">
-              <div class="w-full max-w-sm relative">
-                 <CalendarDemo />
-              </div>
-              <div class="w-full max-w-sm relative bg-card text-card-foreground shadow-sm rounded-xl">
-                 <AuthFormDemo />
-              </div>
+            <div class="w-full max-w-sm relative">
+              <TabsDemo />
             </div>
-            <div class="hidden lg:flex lg:flex-col gap-6 lg:items-center">
-              <div class="w-full max-w-sm relative">
-                 <CommandDemo />
-              </div>
-              <div class="p-4 border rounded-xl w-full max-w-sm relative bg-card text-card-foreground shadow-sm">
-                 <AccordionDemo />
-              </div>
+          </div>
+          <div class="hidden md:flex md:flex-col gap-6 md:items-center">
+            <div class="w-full max-w-sm relative">
+              <CalendarDemo />
             </div>
-         </div>
+            <div class="w-full max-w-sm relative bg-card text-card-foreground shadow-sm rounded-xl">
+              <AuthFormDemo />
+            </div>
+          </div>
+          <div class="hidden lg:flex lg:flex-col gap-6 lg:items-center">
+            <div class="w-full max-w-sm relative">
+              <CommandDemo />
+            </div>
+            <div class="p-4 border rounded-xl w-full max-w-sm relative bg-card text-card-foreground shadow-sm">
+              <AccordionDemo />
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   )
@@ -165,8 +177,12 @@ const DocsEmptyState = () => {
   )
 }
 
-const TableOfContents = (props: { headings: Array<{ depth: number; slug: string; text: string }> }) => {
-  const items = createMemo(() => props.headings.filter((heading) => heading.depth >= 2 && heading.depth <= 3))
+const TableOfContents = (props: {
+  headings: Array<{ depth: number; slug: string; text: string }>
+}) => {
+  const items = createMemo(() =>
+    props.headings.filter(heading => heading.depth >= 2 && heading.depth <= 3),
+  )
 
   return (
     <Show when={items().length}>
@@ -174,12 +190,12 @@ const TableOfContents = (props: { headings: Array<{ depth: number; slug: string;
         <p class="text-foreground text-sm font-semibold">On this page</p>
         <nav class="space-y-2">
           <For each={items()}>
-            {(heading) => (
+            {heading => (
               <a
                 href={`#${heading.slug}`}
                 class={cx(
-                  "text-muted-foreground hover:text-foreground block text-sm transition-colors",
-                  heading.depth === 3 && "pl-4",
+                  'text-muted-foreground hover:text-foreground block text-sm transition-colors',
+                  heading.depth === 3 && 'pl-4',
                 )}
               >
                 {heading.text}
@@ -193,7 +209,7 @@ const TableOfContents = (props: { headings: Array<{ depth: number; slug: string;
 }
 
 const DocsSidebar = () => {
-  const [query, setQuery] = createSignal("")
+  const [query, setQuery] = createSignal('')
   const trimmedQuery = createMemo(() => query().trim())
 
   const filteredSections = createMemo(() => {
@@ -204,10 +220,10 @@ const DocsSidebar = () => {
     const matches = docsSearch.search(trimmedQuery(), {
       prefix: true,
       fuzzy: 0.2,
-      fields: ["title", "description", "section", "headings"],
+      fields: ['title', 'description', 'section', 'headings'],
     }) as unknown as DocsSearchItem[]
 
-    const matchingHrefs = new Set(matches.map((item) => item.href))
+    const matchingHrefs = new Set(matches.map(item => item.href))
 
     return docsNavigation
       .map((section: any) => ({
@@ -224,24 +240,28 @@ const DocsSidebar = () => {
   const toSidebarItems = (items: any[]) =>
     items.map((item: any) => ({
       title: item.title,
-      url: item.href,
+      url: resolveInternalHref(item.href),
       badge: item.status
         ? {
             content: item.status,
-            class: "text-[10px] uppercase tracking-[0.18em]",
+            class: 'text-[10px] uppercase tracking-[0.18em]',
           }
         : undefined,
     }))
 
   return (
-    <Sidebar class="top-16 h-[calc(100svh-4rem)] border-r" variant="sidebar" collapsible="offcanvas">
+    <Sidebar
+      class="top-16 h-[calc(100svh-4rem)] border-r"
+      variant="sidebar"
+      collapsible="offcanvas"
+    >
       <SidebarHeader class="px-4 py-4">
         <div class="space-y-3">
           <TextField>
             <TextFieldInput
               type="search"
               value={query()}
-              onInput={(event) => setQuery(event.currentTarget.value)}
+              onInput={event => setQuery(event.currentTarget.value)}
               placeholder="Search docs..."
               aria-label="Search documentation"
             />
@@ -249,12 +269,12 @@ const DocsSidebar = () => {
           <Show when={trimmedQuery()}>
             <div class="text-muted-foreground flex items-center justify-between gap-3 px-1 text-xs">
               <span>
-                {resultCount()} result{resultCount() === 1 ? "" : "s"}
+                {resultCount()} result{resultCount() === 1 ? '' : 's'}
               </span>
               <button
                 type="button"
                 class="hover:text-foreground transition-colors"
-                onClick={() => setQuery("")}
+                onClick={() => setQuery('')}
               >
                 Clear
               </button>
@@ -277,7 +297,7 @@ const DocsSidebar = () => {
             }
           >
             <For each={filteredSections()}>
-              {(section) => (
+              {section => (
                 <SidebarGroup>
                   <SidebarGroupLabel>{section.title}</SidebarGroupLabel>
                   <SidebarGroupContent>
@@ -311,13 +331,16 @@ const DocsIndexPage = () => {
           <div class="pt-4 space-y-4">
             <h2 class="text-2xl font-semibold tracking-tight">Installation</h2>
             <p class="text-muted-foreground">
-              Install the package, then make sure the required peer dependencies are already configured in your app.
+              Install the package, then make sure the required peer dependencies are already
+              configured in your app.
             </p>
             <pre class="bg-muted p-4 rounded-md overflow-x-auto text-sm">
               <code>pnpm add github:vgerbot-libraries/shadcn-solid-components</code>
             </pre>
             <p class="text-muted-foreground">
-              Peer dependencies: <code class="bg-muted px-1 py-0.5 rounded text-sm">solid-js</code>, <code class="bg-muted px-1 py-0.5 rounded text-sm">tailwindcss</code> (v4), and <code class="bg-muted px-1 py-0.5 rounded text-sm">tw-animate-css</code>.
+              Peer dependencies: <code class="bg-muted px-1 py-0.5 rounded text-sm">solid-js</code>,{' '}
+              <code class="bg-muted px-1 py-0.5 rounded text-sm">tailwindcss</code> (v4), and{' '}
+              <code class="bg-muted px-1 py-0.5 rounded text-sm">tw-animate-css</code>.
             </p>
           </div>
         </div>
@@ -325,16 +348,19 @@ const DocsIndexPage = () => {
         <Show when={docsNavigation.length} fallback={<DocsEmptyState />}>
           <div class="grid gap-4 sm:grid-cols-2">
             <For each={docsNavigation}>
-              {(section) => (
+              {section => (
                 <section class="border-border rounded-2xl border p-5">
                   <h2 class="text-lg font-semibold">{section.title}</h2>
                   <p class="text-muted-foreground mt-2 text-sm">
-                    {section.items.length} page{section.items.length === 1 ? "" : "s"}
+                    {section.items.length} page{section.items.length === 1 ? '' : 's'}
                   </p>
                   <div class="mt-4 space-y-2">
                     <For each={section.items.slice(0, 4)}>
-                      {(item) => (
-                        <A href={item.href} class="text-foreground hover:text-primary block text-sm underline-offset-4 hover:underline">
+                      {item => (
+                        <A
+                          href={resolveInternalHref(item.href)}
+                          class="text-foreground hover:text-primary block text-sm underline-offset-4 hover:underline"
+                        >
                           {item.title}
                         </A>
                       )}
@@ -352,16 +378,22 @@ const DocsIndexPage = () => {
 
 const DocsPage = () => {
   const params = useParams<DocRouteParams>()
-  const slug = createMemo(() => params.slug ?? "")
+  const slug = createMemo(() => params.slug ?? '')
   const doc = createMemo(() => Contents[slug()])
 
   createEffect(() => {
     if (!doc()) {
-      setDocumentMeta(`${siteTitle} | Not Found`, "The requested documentation page does not exist.")
+      setDocumentMeta(
+        `${siteTitle} | Not Found`,
+        'The requested documentation page does not exist.',
+      )
       return
     }
 
-    setDocumentMeta(`${doc()!.data.title} | ${siteTitle}`, doc()!.data.description || siteDescription)
+    setDocumentMeta(
+      `${doc()!.data.title} | ${siteTitle}`,
+      doc()!.data.description || siteDescription,
+    )
   })
 
   const DocComponent = createMemo(() => doc()?.component)
@@ -377,20 +409,22 @@ const DocsPage = () => {
         </div>
       }
     >
-      {(entry) => (
+      {entry => (
         <div class="flex-1 xl:grid xl:grid-cols-[minmax(0,1fr)_16rem] xl:gap-12">
           <div class="min-w-0 px-6 py-10 sm:px-8 lg:px-12">
             <div class="mx-auto max-w-3xl">
               <div class="space-y-4">
                 <h1 class="text-4xl font-semibold tracking-tight">{entry().data.title}</h1>
                 <Show when={entry().data.description}>
-                  <p class="text-muted-foreground max-w-2xl leading-7">{entry().data.description}</p>
+                  <p class="text-muted-foreground max-w-2xl leading-7">
+                    {entry().data.description}
+                  </p>
                 </Show>
               </div>
               <div class="docs-content mt-10 min-w-0">
                 <MDXProvider components={mdxCustomComponents}>
                   <Show when={DocComponent()} keyed>
-                    {(Component) => <Component />}
+                    {Component => <Component />}
                   </Show>
                 </MDXProvider>
               </div>
@@ -409,7 +443,7 @@ const DocsPage = () => {
   )
 }
 
-const DocsLayout = (props: { children?: import("solid-js").JSX.Element }) => {
+const DocsLayout = (props: { children?: import('solid-js').JSX.Element }) => {
   return (
     <div class="flex w-full flex-1 min-h-0">
       <DocsSidebar />
@@ -423,8 +457,8 @@ const AppFooter = (props: { isDocsRoute: boolean }) => {
 
   const footerClass = createMemo(() =>
     cx(
-      "border-border border-t transition-[margin] duration-200 ease-linear",
-      props.isDocsRoute && !isMobile() && open() && "md:ml-[var(--sidebar-width)]",
+      'border-border border-t transition-[margin] duration-200 ease-linear',
+      props.isDocsRoute && !isMobile() && open() && 'md:ml-[var(--sidebar-width)]',
     ),
   )
 
@@ -434,7 +468,7 @@ const AppFooter = (props: { isDocsRoute: boolean }) => {
         <span>Docs infrastructure ready for incremental MDX content.</span>
         <Button
           as="a"
-          href="/docs"
+          href={resolveInternalHref('/docs')}
           variant="ghost"
           size="sm"
           class="hidden sm:inline-flex"
@@ -446,9 +480,9 @@ const AppFooter = (props: { isDocsRoute: boolean }) => {
   )
 }
 
-const AppShell = (props: { children?: import("solid-js").JSX.Element }) => {
+const AppShell = (props: { children?: import('solid-js').JSX.Element }) => {
   const location = useLocation()
-  const isDocsRoute = createMemo(() => location.pathname.startsWith("/docs"))
+  const isDocsRoute = createMemo(() => location.pathname.startsWith('/docs'))
 
   return (
     <SidebarProvider>
@@ -456,7 +490,7 @@ const AppShell = (props: { children?: import("solid-js").JSX.Element }) => {
         <LandingHero
           class="sticky top-0 z-40 border-border bg-background/80 backdrop-blur"
           containerClass={cx(
-            isDocsRoute() ? "max-w-none px-4" : "mx-auto max-w-9xl px-4 sm:px-8 lg:px-12",
+            isDocsRoute() ? 'max-w-none px-4' : 'mx-auto max-w-9xl px-4 sm:px-8 lg:px-12',
           )}
           brandLeading={
             <Show when={isDocsRoute()}>
@@ -464,8 +498,8 @@ const AppShell = (props: { children?: import("solid-js").JSX.Element }) => {
             </Show>
           }
           brand={{
-            title: "shadcn-solid-components",
-            href: "/",
+            title: 'shadcn-solid-components',
+            href: resolveInternalHref('/'),
           }}
           navItems={topNavItems}
           secondaryActions={
@@ -479,16 +513,11 @@ const AppShell = (props: { children?: import("solid-js").JSX.Element }) => {
                 rel="noreferrer"
                 aria-label="GitHub repository"
               >
-                <svg
-                  aria-hidden="true"
-                  viewBox="0 0 24 24"
-                  class="size-5"
-                  fill="currentColor"
-                >
+                <svg aria-hidden="true" viewBox="0 0 24 24" class="size-5" fill="currentColor">
                   <path d="M12 2C6.477 2 2 6.59 2 12.253c0 4.53 2.865 8.374 6.839 9.73.5.095.682-.22.682-.49 0-.238-.009-.868-.014-1.703-2.782.615-3.369-1.372-3.369-1.372-.455-1.185-1.11-1.5-1.11-1.5-.909-.637.069-.624.069-.624 1.004.072 1.532 1.058 1.532 1.058.892 1.56 2.341 1.11 2.91.85.092-.665.35-1.11.636-1.366-2.22-.258-4.555-1.14-4.555-5.075 0-1.122.39-2.039 1.029-2.758-.103-.26-.446-1.303.098-2.716 0 0 .84-.274 2.75 1.054A9.325 9.325 0 0 1 12 6.844a9.29 9.29 0 0 1 2.504.348c1.909-1.328 2.747-1.054 2.747-1.054.546 1.413.203 2.456.1 2.716.64.719 1.027 1.636 1.027 2.758 0 3.945-2.339 4.814-4.566 5.067.359.318.678.946.678 1.907 0 1.376-.012 2.485-.012 2.823 0 .272.18.59.688.49C19.138 20.623 22 16.781 22 12.253 22 6.59 17.523 2 12 2Z" />
                 </svg>
               </Button>
-              <ModeToggleDropdown trigger={{ class: "w-9 px-0" }} />
+              <ModeToggleDropdown trigger={{ class: 'w-9 px-0' }} />
             </>
           }
         />
