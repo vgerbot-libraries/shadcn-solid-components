@@ -149,3 +149,4 @@ Extends `div` props.
 - Draw.io plugin is intentionally deferred and can be added later through the same plugin architecture.
 - The KaTeX plugin injects KaTeX styles into the Markdown shadow root automatically.
 - Plugins that require runtime styling inject styles into the Markdown shadow root instead of global CSS.
+- The highlight, SMILES, and Mermaid plugins automatically sync with the app's color mode (light/dark). When color mode changes, highlight.js switches between `default` (light) and `atom-one-dark` (dark) themes, SMILES molecules re-render with the matching theme, and Mermaid diagrams re-render with `dark`/`default` theme. Override via `themeStyles`/`darkThemeStyles` (highlight) or `mermaidOptions.theme` (mermaid).

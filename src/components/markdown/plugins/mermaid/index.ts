@@ -1,6 +1,7 @@
 import * as markdownItMermaidModule from 'markdown-it-mermaid'
 import mermaid from 'mermaid'
 import { createMarkdownPlugin } from '../../index'
+import { getColorMode, watchColorMode } from '../_shared/color-mode'
 import {
   createMarkdownDiagramViewer,
   defaultMarkdownDiagramViewerLabels,
@@ -244,114 +245,131 @@ export const createMarkdownMermaidPlugin = (options?: MarkdownMermaidPluginOptio
         return
       }
 
-      const runtimeMermaidOptions = {
-        startOnLoad: false,
-        ...mermaidOptions,
-      }
-      const optionsKey = createOptionsKey(runtimeMermaidOptions)
+      const renderMermaidNodes = async () => {
+        const colorMode = getColorMode()
+        const runtimeMermaidOptions = {
+          startOnLoad: false,
+          theme: colorMode === 'dark' ? 'dark' : 'default',
+          ...mermaidOptions,
+        }
+        const optionsKey = createOptionsKey(runtimeMermaidOptions)
 
-      if (optionsKey !== initializedMermaidOptionsKey) {
-        mermaid.initialize(runtimeMermaidOptions)
-        initializedMermaidOptionsKey = optionsKey
-      }
-
-      const cleanupFns: Array<() => void> = []
-      const renderIdPrefix = `markdown-mermaid-${Date.now()}`
-
-      for (const [index, node] of mermaidNodes.entries()) {
-        const source = normalizeSource(node)
-        if (!source) {
-          continue
+        if (optionsKey !== initializedMermaidOptionsKey) {
+          mermaid.initialize(runtimeMermaidOptions)
+          initializedMermaidOptionsKey = optionsKey
         }
 
-        const renderId = `${renderIdPrefix}-${index}`
+        const cleanupFns: Array<() => void> = []
+        const renderIdPrefix = `markdown-mermaid-${Date.now()}`
 
-        try {
-          const rendered = await mermaidRuntime.render(renderId, source)
-
-          node.innerHTML = ''
-          node.classList.add('markdown-diagram')
-          node.setAttribute('data-processed', 'true')
-
-          const imageContent = document.createElement('div')
-          imageContent.innerHTML = rendered.svg
-          const svgElement = imageContent.querySelector<SVGSVGElement>('svg')
-
-          if (svgElement) {
-            normalizeSvgLayout(svgElement)
-            requestAnimationFrame(() => normalizeSvgLayout(svgElement))
+        for (const [index, node] of mermaidNodes.entries()) {
+          const source = normalizeSource(node)
+          if (!source) {
+            continue
           }
 
-          const exportBaseName = options?.exportFileName?.(index) ?? `mermaid-diagram-${index + 1}`
+          const renderId = `${renderIdPrefix}-${index}`
 
-          const copyImage = svgElement
-            ? () => {
-                void copySvgAsImage(svgElement)
-              }
-            : undefined
+          try {
+            const rendered = await mermaidRuntime.render(renderId, source)
 
-          const downloadImage = svgElement
-            ? async () => {
-                try {
-                  const pngBlob = await renderPngBlob(svgElement)
-                  if (pngBlob) {
-                    triggerDownload(pngBlob, `${exportBaseName}.png`)
-                    return
-                  }
-                } catch {
-                  // fall through to svg fallback
-                }
-                triggerDownload(createSvgBlob(svgElement), `${exportBaseName}.svg`)
-              }
-            : undefined
+            node.innerHTML = ''
+            node.classList.add('markdown-diagram')
+            node.setAttribute('data-processed', 'true')
 
-          const modalImageContent = () => {
-            const wrapper = document.createElement('div')
+            const imageContent = document.createElement('div')
+            imageContent.innerHTML = rendered.svg
+            const svgElement = imageContent.querySelector<SVGSVGElement>('svg')
+
             if (svgElement) {
-              const clone = svgElement.cloneNode(true) as SVGSVGElement
-              normalizeSvgLayout(clone)
-              wrapper.append(clone)
+              normalizeSvgLayout(svgElement)
+              requestAnimationFrame(() => normalizeSvgLayout(svgElement))
             }
-            return wrapper
+
+            const exportBaseName =
+              options?.exportFileName?.(index) ?? `mermaid-diagram-${index + 1}`
+
+            const copyImage = svgElement
+              ? () => {
+                  void copySvgAsImage(svgElement)
+                }
+              : undefined
+
+            const downloadImage = svgElement
+              ? async () => {
+                  try {
+                    const pngBlob = await renderPngBlob(svgElement)
+                    if (pngBlob) {
+                      triggerDownload(pngBlob, `${exportBaseName}.png`)
+                      return
+                    }
+                  } catch {
+                    // fall through to svg fallback
+                  }
+                  triggerDownload(createSvgBlob(svgElement), `${exportBaseName}.svg`)
+                }
+              : undefined
+
+            const modalImageContent = () => {
+              const wrapper = document.createElement('div')
+              if (svgElement) {
+                const clone = svgElement.cloneNode(true) as SVGSVGElement
+                normalizeSvgLayout(clone)
+                wrapper.append(clone)
+              }
+              return wrapper
+            }
+
+            const bindModalImage = (element: HTMLElement) => {
+              rendered.bindFunctions?.(element)
+            }
+
+            const viewer = createMarkdownDiagramViewer({
+              shadowRoot,
+              source,
+              imageContent,
+              codeLanguage: 'mermaid',
+              labels,
+              view: options?.view,
+              exportFileName: exportBaseName,
+              copyImage,
+              downloadImage,
+              modalImageContent,
+              bindModalImage,
+            })
+
+            node.append(viewer.element)
+
+            rendered.bindFunctions?.(viewer.imageInner)
+
+            cleanupFns.push(() => viewer.cleanup())
+          } catch (error) {
+            renderMarkdownDiagramError(
+              node,
+              'Mermaid render failed',
+              source,
+              extractErrorMessage(error),
+            )
           }
+        }
 
-          const bindModalImage = (element: HTMLElement) => {
-            rendered.bindFunctions?.(element)
+        return () => {
+          for (const cleanup of cleanupFns) {
+            cleanup()
           }
-
-          const viewer = createMarkdownDiagramViewer({
-            shadowRoot,
-            source,
-            imageContent,
-            codeLanguage: 'mermaid',
-            labels,
-            view: options?.view,
-            exportFileName: exportBaseName,
-            copyImage,
-            downloadImage,
-            modalImageContent,
-            bindModalImage,
-          })
-
-          node.append(viewer.element)
-
-          rendered.bindFunctions?.(viewer.imageInner)
-
-          cleanupFns.push(() => viewer.cleanup())
-        } catch (error) {
-          renderMarkdownDiagramError(
-            node,
-            'Mermaid render failed',
-            source,
-            extractErrorMessage(error),
-          )
         }
       }
+
+      let currentCleanup = await renderMermaidNodes()
+
+      const stopWatching = watchColorMode(async () => {
+        currentCleanup()
+        currentCleanup = await renderMermaidNodes()
+      })
 
       return () => {
-        for (const cleanup of cleanupFns) {
-          cleanup()
-        }
+        stopWatching()
+        currentCleanup()
       }
     },
   })

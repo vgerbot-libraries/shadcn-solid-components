@@ -75,7 +75,9 @@ button {
   @apply flex-1 w-full h-[320px] min-h-[260px] flex items-center justify-center overflow-hidden;
 }
 
-.markdown-diagram__image-inner > *{
+.markdown-diagram__image-inner > *,
+.markdown-diagram__vega-renderer
+{
   @apply w-full h-full overflow-hidden;
 }
 
