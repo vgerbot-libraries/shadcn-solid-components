@@ -3,8 +3,15 @@ import { createMarkdownPlugin } from '../../index'
 
 export type MarkdownEmojiPluginOptions = Record<string, unknown>
 
+type MarkdownItEmojiModule = {
+  full?: unknown
+  light?: unknown
+  bare?: unknown
+}
+
 export const createMarkdownEmojiPlugin = (options?: MarkdownEmojiPluginOptions) => {
-  const emojiPlugin = markdownItEmoji.full ?? markdownItEmoji.light ?? markdownItEmoji.bare
+  const emojiModule = markdownItEmoji as MarkdownItEmojiModule
+  const emojiPlugin = emojiModule.full ?? emojiModule.light ?? emojiModule.bare
 
   return createMarkdownPlugin({
     name: 'emoji',

@@ -1,11 +1,11 @@
 {
   "name": "components/markdown",
   "displayName": "Markdown",
-  "description": "A markdown rendering component with a plugin architecture and plugin packs for diagrams, syntax highlighting, copy actions, math, chemistry notation, TOC, annotations, task lists, containers, and sanitizer flows.",
+  "description": "A markdown rendering component with a plugin architecture and plugin packs for diagrams, Vega charts, Vega-Lite charts, syntax highlighting, copy actions, math, chemistry notation, TOC, annotations, task lists, containers, and sanitizer flows.",
   "category": "components",
   "useCases": [
     "Render user-authored markdown content with consistent shadcn styling",
-    "Attach enhancement plugins such as code copy and diagram rendering",
+    "Attach enhancement plugins such as code copy, diagram rendering, and data visualization",
     "Display technical docs that include code fences and math formulas",
     "Render chemistry-focused notes with SMILES notation support"
   ],
@@ -15,6 +15,8 @@
     "markdown",
     "plugin",
     "mermaid",
+    "vega",
+    "vega-lite",
     "katex",
     "smiles",
     "toc",
@@ -42,6 +44,9 @@
     "@traptitech/markdown-it-spoiler",
     "markdown-it-smiles",
     "smiles-drawer",
+    "vega",
+    "vega-embed",
+    "vega-lite",
     "katex",
     "markdown-it-highlightjs",
     "highlight.js"

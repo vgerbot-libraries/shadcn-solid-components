@@ -1462,7 +1462,7 @@ export const Contents: Record<string, DocEntry> = {
     component: lazy(() => import("@docs/content/docs/components/markdown.mdx")),
     data: {
     "title": "Markdown",
-    "description": "Markdown renderer with composable plugin architecture for diagrams, syntax highlighting, copy actions, math, and chemistry notation.",
+    "description": "Markdown renderer with composable plugin architecture for diagrams, Vega charts, syntax highlighting, copy actions, math, and chemistry notation.",
     "navTitle": "Markdown",
     "section": "Components",
     "order": 0,
@@ -1503,6 +1503,16 @@ export const Contents: Record<string, DocEntry> = {
         "depth": 3,
         "slug": "mermaid",
         "text": "Mermaid"
+    },
+    {
+        "depth": 3,
+        "slug": "vega",
+        "text": "Vega"
+    },
+    {
+        "depth": 3,
+        "slug": "vega-lite",
+        "text": "Vega-Lite"
     },
     {
         "depth": 3,
@@ -5782,7 +5792,7 @@ export const docsNavigation: DocsNavSection[] = [
       {
         "title": "Markdown",
         "href": "/docs/components/markdown",
-        "description": "Markdown renderer with composable plugin architecture for diagrams, syntax highlighting, copy actions, math, and chemistry notation."
+        "description": "Markdown renderer with composable plugin architecture for diagrams, Vega charts, syntax highlighting, copy actions, math, and chemistry notation."
       },
       {
         "title": "Menubar",

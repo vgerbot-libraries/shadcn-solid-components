@@ -18,6 +18,8 @@ import { createMarkdownSmilesPlugin } from 'shadcn-solid-components/components/m
 import { createMarkdownSpoilerPlugin } from 'shadcn-solid-components/components/markdown/plugins/spoiler'
 import { createMarkdownTableOfContentsPlugin } from 'shadcn-solid-components/components/markdown/plugins/table-of-contents'
 import { createMarkdownTaskListsPlugin } from 'shadcn-solid-components/components/markdown/plugins/task-lists'
+import { createMarkdownVegaPlugin } from 'shadcn-solid-components/components/markdown/plugins/vega'
+import { createMarkdownVegaLitePlugin } from 'shadcn-solid-components/components/markdown/plugins/vega-lite'
 
 const source = `# Quantum Chemistry Markdown Notebook
 
@@ -67,6 +69,42 @@ flowchart LR
   B --> C[Apply Basis Set]
   C --> D[Solve Eigenproblem]
   D --> E[Interpret Observables]
+\`\`\`
+
+## Data Visualization
+
+\`\`\`vega-lite
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "width": 420,
+  "height": 220,
+  "data": {
+    "values": [
+      { "phase": "Prepare", "value": 28 },
+      { "phase": "Model", "value": 64 },
+      { "phase": "Solve", "value": 91 },
+      { "phase": "Validate", "value": 53 }
+    ]
+  },
+  "mark": { "type": "bar", "tooltip": true },
+  "encoding": {
+    "x": { "field": "phase", "type": "ordinal", "title": "Phase" },
+    "y": { "field": "value", "type": "quantitative", "title": "Score" },
+    "color": { "field": "phase", "type": "nominal", "legend": null }
+  }
+}
+\`\`\`
+
+\`\`\`vega
+{
+  "$schema": "https://vega.github.io/schema/vega/v6.json",
+  "width": 420,
+  "height": 180,
+  "padding": 5,
+  "data": [{ "name": "points", "values": [{ "x": 20, "y": 90 }, { "x": 90, "y": 45 }, { "x": 180, "y": 70 }, { "x": 280, "y": 30 }, { "x": 380, "y": 55 }] }],
+  "scales": [{ "name": "x", "domain": [0, 420], "range": "width" }, { "name": "y", "domain": [0, 100], "range": "height" }],
+  "marks": [{ "type": "symbol", "from": { "data": "points" }, "encode": { "enter": { "x": { "scale": "x", "field": "x" }, "y": { "scale": "y", "field": "y" }, "size": { "value": 180 }, "fill": { "value": "#7c3aed" } } } }]
+}
 \`\`\`
 
 ## Equations
@@ -127,6 +165,8 @@ const MarkdownDemo = () => {
         createMarkdownHighlightPlugin(),
         createMarkdownCopyPlugin(),
         createMarkdownMermaidPlugin(),
+        createMarkdownVegaPlugin(),
+        createMarkdownVegaLitePlugin(),
         createMarkdownKatexPlugin(),
         createMarkdownSmilesPlugin(),
       ]}

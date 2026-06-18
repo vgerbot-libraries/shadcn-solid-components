@@ -4,36 +4,36 @@ button {
   @apply border-0;
 }
 
-.markdown-mermaid {
+.markdown-diagram {
   @apply my-4;
 }
 
-.markdown-mermaid__root {
+.markdown-diagram__root {
   @apply border border-[rgb(148_163_184/0.3)] rounded-xl bg-muted/40 overflow-hidden;
 }
 
-.markdown-mermaid__header {
+.markdown-diagram__header {
   @apply flex items-center justify-between gap-3 px-3 py-2 border-b border-b-[rgb(148_163_184/0.22)] bg-muted/20;
 }
 
-.markdown-mermaid__tabs,
-.markdown-mermaid__actions {
+.markdown-diagram__tabs,
+.markdown-diagram__actions {
   @apply inline-flex items-center gap-1.5 flex-wrap;
 }
 
-.markdown-mermaid__tabs {
+.markdown-diagram__tabs {
   @apply bg-muted text-muted-foreground ring-muted relative h-[calc(var(--spacing)*7.5)] w-fit justify-center rounded-component ring-[3px];
   @apply gap-0;
 }
 
-.markdown-mermaid__tab {
+.markdown-diagram__tab {
   @apply text-muted-foreground dark:text-muted-foreground relative z-10 inline-flex h-[calc(100%-1px)] flex-1 items-center justify-center gap-1.5 px-2 py-1 text-sm font-medium whitespace-nowrap bg-transparent transition-[color];
   @apply focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] focus-visible:outline-none;
   @apply disabled:pointer-events-none disabled:opacity-50;
   @apply cursor-pointer;
 }
 
-.markdown-mermaid__action-button {
+.markdown-diagram__action-button {
   @apply text-foreground inline-flex size-8 items-center justify-center rounded-component p-0 outline-none transition-all bg-transparent;
   @apply hover:bg-accent hover:text-accent-foreground hover:dark:bg-accent/50;
   @apply focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px];
@@ -41,103 +41,104 @@ button {
   @apply cursor-pointer;
 }
 
-.markdown-mermaid__tab.is-active {
+.markdown-diagram__tab.is-active {
   @apply text-foreground;
 }
 
-.markdown-mermaid__tab-indicator {
+.markdown-diagram__tab-indicator {
   @apply bg-background dark:bg-input/30 dark:border-input absolute inset-0 border border-transparent shadow-sm rounded-component;
   @apply transition-[box-shadow,transform,width,height] duration-200;
 }
 
-.markdown-mermaid__action-button svg {
+.markdown-diagram__action-button svg {
   @apply size-4;
 }
 
-.markdown-mermaid__body {
-  @apply relative min-h-[220px];
+.markdown-diagram__body {
+  @apply relative min-h-[260px];
 }
 
-.markdown-mermaid__code,
-.markdown-mermaid__image {
-  @apply m-0 min-h-[220px] p-3;
+.markdown-diagram__code,
+.markdown-diagram__image {
+  @apply m-0 min-h-[260px] p-3;
 }
 
-.markdown-mermaid__code {
+.markdown-diagram__code {
   @apply overflow-auto whitespace-pre font-mono text-[0.8125rem] leading-[1.6];
 }
 
-.markdown-mermaid__image {
-  @apply flex h-[220px] items-stretch justify-stretch overflow-hidden;
+.markdown-diagram__image {
+  @apply flex h-[320px] items-stretch justify-stretch overflow-hidden;
 }
 
-.markdown-mermaid__image-inner {
-  @apply flex-1 w-full h-[220px] min-h-[220px] flex items-center justify-center overflow-hidden;
+.markdown-diagram__image-inner {
+  @apply flex-1 w-full h-[320px] min-h-[260px] flex items-center justify-center overflow-hidden;
 }
 
-.markdown-mermaid__image-inner svg {
-  @apply w-full max-w-full h-full max-h-[70vh];
+.markdown-diagram__image-inner > *{
+  @apply w-full h-full overflow-hidden;
 }
 
-.markdown-mermaid__root[data-view="image"] .markdown-mermaid__code {
+.markdown-diagram__root[data-view="image"] .markdown-diagram__code {
   @apply hidden;
 }
 
-.markdown-mermaid__root[data-view="code"] .markdown-mermaid__image {
+.markdown-diagram__root[data-view="code"] .markdown-diagram__image {
   @apply hidden;
 }
 
-.markdown-mermaid__modal-overlay {
+.markdown-diagram__modal-overlay {
   @apply fixed inset-0 z-[1200] flex items-stretch justify-stretch;
 }
 
-.markdown-mermaid__modal-backdrop {
+.markdown-diagram__modal-backdrop {
   @apply absolute inset-0 bg-black/90;
 }
 
-.markdown-mermaid__modal-panel {
+.markdown-diagram__modal-panel {
   @apply relative z-10 h-full w-full;
 }
 
-.markdown-mermaid__modal-controls {
+.markdown-diagram__modal-controls {
   @apply pointer-events-auto absolute right-4 top-4 z-20 inline-flex items-center gap-2;
 }
 
-.markdown-mermaid__modal-control-button {
+.markdown-diagram__modal-control-button {
   @apply text-foreground inline-flex size-9 items-center justify-center rounded-component bg-background/90 backdrop-blur-sm;
   @apply hover:bg-accent hover:text-accent-foreground hover:dark:bg-accent/50;
   @apply focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] focus-visible:outline-none;
 }
 
-.markdown-mermaid__modal-control-button svg {
+.markdown-diagram__modal-control-button svg {
   @apply size-4;
 }
 
-.markdown-mermaid__modal-viewer {
+.markdown-diagram__modal-viewer {
   @apply h-full w-full overflow-hidden;
 }
 
-.markdown-mermaid__modal-viewer-inner {
+.markdown-diagram__modal-viewer-inner {
   @apply flex h-full w-full items-center justify-center overflow-hidden;
 }
 
-.markdown-mermaid__modal-viewer-inner svg {
-  @apply h-full w-full max-h-full max-w-full;
+.markdown-diagram__modal-viewer-inner svg,
+.markdown-diagram__modal-viewer-inner canvas {
+  @apply max-h-full max-w-full;
 }
 
-.markdown-mermaid-error {
+.markdown-diagram-error {
   @apply my-4 border border-[rgb(248_113_113/0.4)] rounded-lg bg-[rgb(127_29_29/0.08)] p-3 text-[rgb(185_28_28)] text-sm leading-6;
 }
 
-.markdown-mermaid-error-title {
+.markdown-diagram-error-title {
   @apply font-semibold;
 }
 
-.markdown-mermaid-error-message,
-.markdown-mermaid-error-source {
+.markdown-diagram-error-message,
+.markdown-diagram-error-source {
   @apply mt-2 whitespace-pre-wrap break-words font-mono;
 }
 
-.markdown-mermaid-error details {
+.markdown-diagram-error details {
   @apply mt-2;
 }

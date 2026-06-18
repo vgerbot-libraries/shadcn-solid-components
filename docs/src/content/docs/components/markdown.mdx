@@ -1,6 +1,6 @@
 ---
 title: Markdown
-description: Markdown renderer with composable plugin architecture for diagrams, syntax highlighting, copy actions, math, and chemistry notation.
+description: Markdown renderer with composable plugin architecture for diagrams, Vega charts, syntax highlighting, copy actions, math, and chemistry notation.
 section: Components
 toc: true
 ---
@@ -8,16 +8,18 @@ toc: true
 import MarkdownDemo from "../../../examples/markdown-demo"
 import MarkdownHighlightCopyDemo from "../../../examples/markdown-highlight-copy-demo"
 import MarkdownMermaidDemo from "../../../examples/markdown-mermaid-demo"
+import MarkdownVegaDemo from "../../../examples/markdown-vega-demo"
+import MarkdownVegaLiteDemo from "../../../examples/markdown-vega-lite-demo"
 import MarkdownKatexDemo from "../../../examples/markdown-katex-demo"
 import MarkdownSmilesDemo from "../../../examples/markdown-smiles-demo"
 import MarkdownCustomPluginDemo from "../../../examples/markdown-custom-plugin-demo"
 
-`Markdown` renders markdown content using `markdown-it` and supports a composable plugin system. The default package includes plugin factories for Mermaid, syntax highlight, copy actions, KaTeX, SMILES, table of contents, footnotes, emoji, task lists, annotations, containers, and sanitizer flows.
+`Markdown` renders markdown content using `markdown-it` and supports a composable plugin system. The default package includes plugin factories for Mermaid, Vega, Vega-Lite, syntax highlight, copy actions, KaTeX, SMILES, table of contents, footnotes, emoji, task lists, annotations, containers, and sanitizer flows.
 
 ## Installation
 
 ```bash
-pnpm add markdown-it markdown-it-highlightjs markdown-it-mermaid mermaid svg-pan-zoom markdown-it-katex katex markdown-it-smiles markdown-it-anchor markdown-it-table-of-contents markdown-it-footnote markdown-it-emoji markdown-it-task-lists markdown-it-deflist markdown-it-ins markdown-it-del markdown-it-mark markdown-it-container markdown-it-link-attributes markdown-it-collapsible markdown-it-sanitizer @traptitech/markdown-it-spoiler
+pnpm add markdown-it markdown-it-highlightjs markdown-it-mermaid mermaid svg-pan-zoom vega vega-lite vega-embed markdown-it-katex katex markdown-it-smiles markdown-it-anchor markdown-it-table-of-contents markdown-it-footnote markdown-it-emoji markdown-it-task-lists markdown-it-deflist markdown-it-ins markdown-it-del markdown-it-mark markdown-it-container markdown-it-link-attributes markdown-it-collapsible markdown-it-sanitizer @traptitech/markdown-it-spoiler
 ```
 
 ## Usage
@@ -50,6 +52,8 @@ Plugin subpaths:
 - `createMarkdownEmojiPlugin` from `shadcn-solid-components/components/markdown/plugins/emoji`
 - `createMarkdownFootnotePlugin` from `shadcn-solid-components/components/markdown/plugins/footnote`
 - `createMarkdownMermaidPlugin` from `shadcn-solid-components/components/markdown/plugins/mermaid`
+- `createMarkdownVegaPlugin` from `shadcn-solid-components/components/markdown/plugins/vega`
+- `createMarkdownVegaLitePlugin` from `shadcn-solid-components/components/markdown/plugins/vega-lite`
 - `createMarkdownKatexPlugin` from `shadcn-solid-components/components/markdown/plugins/katex`
 - `createMarkdownInsPlugin` from `shadcn-solid-components/components/markdown/plugins/ins`
 - `createMarkdownLinkAttributesPlugin` from `shadcn-solid-components/components/markdown/plugins/link-attributes`
@@ -83,6 +87,22 @@ Plugin subpaths:
 <ComponentPreview name="Markdown Mermaid" source="examples/markdown-mermaid-demo.tsx">
   <div class="mb-4 w-full">
     <MarkdownMermaidDemo />
+  </div>
+</ComponentPreview>
+
+### Vega
+
+<ComponentPreview name="Markdown Vega" source="examples/markdown-vega-demo.tsx">
+  <div class="mb-4 w-full">
+    <MarkdownVegaDemo />
+  </div>
+</ComponentPreview>
+
+### Vega-Lite
+
+<ComponentPreview name="Markdown Vega-Lite" source="examples/markdown-vega-lite-demo.tsx">
+  <div class="mb-4 w-full">
+    <MarkdownVegaLiteDemo />
   </div>
 </ComponentPreview>
 
