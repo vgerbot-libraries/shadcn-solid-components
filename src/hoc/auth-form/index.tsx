@@ -624,15 +624,20 @@ export function AuthForm(props: AuthFormProps) {
               </FormField>
 
               <FormField label={locale().otpCodeLabel} error={fieldErrors().otpCode}>
-                <div class="flex items-center gap-2">
-                  <TextField name="otpCode" required class="flex-1">
-                    <TextFieldInput type="text" placeholder={locale().otpCodePlaceholder} />
+                <div class="flex w-full items-center gap-2 min-w-0">
+                  <TextField name="otpCode" required class="min-w-0">
+                    <TextFieldInput
+                      type="text"
+                      placeholder={locale().otpCodePlaceholder}
+                      class="w-full"
+                    />
                   </TextField>
                   <Button
                     type="button"
                     variant="outline"
                     onClick={handleSendOtp}
                     disabled={sendingOtp()}
+                    class="shrink-0"
                   >
                     <Show when={sendingOtp()}>
                       <IconLoader class="mr-2 size-4 animate-spin" />
