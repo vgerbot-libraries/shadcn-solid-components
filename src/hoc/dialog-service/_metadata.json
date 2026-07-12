@@ -1,0 +1,15 @@
+{
+  "name": "hoc/dialog-service",
+  "displayName": "Dialog Service",
+  "description": "A global queue-driven dialog service HOC that provides imperative alert, confirm, and prompt APIs from anywhere in the app. DialogServiceHost mounts once at the top layer and guarantees only one dialog is shown at a time while preserving semantic action keys for business-specific user intents.",
+  "category": "hoc",
+  "useCases": [
+    "Global confirm flows for destructive operations without repeating dialog templates in each page",
+    "Prompt dialogs for collecting short user input such as rename, reason, or approval notes",
+    "Workflow dialogs that return semantic custom action keys like save-draft, publish, or reject",
+    "Queueing multiple async-triggered dialogs to avoid overlapping modals and broken focus"
+  ],
+  "usage": "import { DialogServiceHost, alert, confirm, prompt } from \"shadcn-solid-components/hoc/dialog-service\"",
+  "tags": ["hoc", "dialog", "alert", "confirm", "prompt", "queue", "solidjs", "ui"],
+  "dependencies": ["@kobalte/core", "cva"]
+}

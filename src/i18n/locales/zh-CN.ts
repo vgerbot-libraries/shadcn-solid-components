@@ -9,6 +9,7 @@ import { zhCN as DataTable } from '../../hoc/data-table/locales/zh-CN'
 import { zhCN as DataTableToolbar } from '../../hoc/data-table-toolbar/locales/zh-CN'
 import { zhCN as DatePickerField } from '../../hoc/date-picker/locales/zh-CN'
 import { zhCN as DescriptionList } from '../../hoc/description-list/locales/zh-CN'
+import { zhCN as DialogService } from '../../hoc/dialog-service/locales/zh-CN'
 import { zhCN as ErrorPage } from '../../hoc/error-page/locales/zh-CN'
 import { zhCN as FaqSection } from '../../hoc/faq-section/locales/zh-CN'
 import { zhCN as FileUploadZone } from '../../hoc/file-upload-zone/locales/zh-CN'
@@ -44,6 +45,7 @@ export const zhCN: Locale = {
   DescriptionList,
   Timeline,
   ConfirmDialog,
+  DialogService,
   TransferList,
   CommandPalette,
   UserMenu,

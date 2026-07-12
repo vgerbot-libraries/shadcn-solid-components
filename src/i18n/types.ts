@@ -157,6 +157,13 @@ export interface ConfirmDialogLocale {
   cancel: string
 }
 
+export interface DialogServiceLocale {
+  confirm: string
+  cancel: string
+  close: string
+  promptRequired: string
+}
+
 export interface TransferListLocale {
   sourceTitle: string
   targetTitle: string
@@ -308,6 +315,7 @@ export interface Locale {
   DescriptionList: DescriptionListLocale
   Timeline: TimelineLocale
   ConfirmDialog: ConfirmDialogLocale
+  DialogService: DialogServiceLocale
   TransferList: TransferListLocale
   CommandPalette: CommandPaletteLocale
   UserMenu: UserMenuLocale

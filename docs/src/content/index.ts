@@ -3775,6 +3775,94 @@ export const Contents: Record<string, DocEntry> = {
     }
 ]
   },
+  "hoc/dialog-service": {
+    component: lazy(() => import("@docs/content/docs/hoc/dialog-service.mdx")),
+    data: {
+    "title": "Dialog service",
+    "description": "Queue-driven global alert, confirm, and prompt APIs with a single top-layer host.",
+    "navTitle": "Dialog service",
+    "section": "HOC",
+    "order": 0,
+    "toc": true
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "exports",
+        "text": "Exports"
+    },
+    {
+        "depth": 2,
+        "slug": "examples",
+        "text": "Examples"
+    },
+    {
+        "depth": 3,
+        "slug": "alert",
+        "text": "Alert"
+    },
+    {
+        "depth": 3,
+        "slug": "confirm-with-non-dismissible-mode",
+        "text": "Confirm with non-dismissible mode"
+    },
+    {
+        "depth": 3,
+        "slug": "prompt-input-types",
+        "text": "Prompt input types"
+    },
+    {
+        "depth": 3,
+        "slug": "custom-semantic-actions",
+        "text": "Custom semantic actions"
+    },
+    {
+        "depth": 3,
+        "slug": "queue-behavior",
+        "text": "Queue behavior"
+    },
+    {
+        "depth": 2,
+        "slug": "api",
+        "text": "API"
+    },
+    {
+        "depth": 3,
+        "slug": "alertoptions-alertdialogserviceoptions-promisedialogactionresult",
+        "text": "alert(options: AlertDialogServiceOptions): Promise<DialogActionResult>"
+    },
+    {
+        "depth": 3,
+        "slug": "confirmoptions-confirmdialogserviceoptions-promisedialogactionresult",
+        "text": "confirm(options: ConfirmDialogServiceOptions): Promise<DialogActionResult>"
+    },
+    {
+        "depth": 3,
+        "slug": "promptoptions-promptdialogserviceoptions-promisepromptdialogresult",
+        "text": "prompt(options: PromptDialogServiceOptions): Promise<PromptDialogResult>"
+    },
+    {
+        "depth": 3,
+        "slug": "dialogserviceaction",
+        "text": "DialogServiceAction"
+    },
+    {
+        "depth": 3,
+        "slug": "common-options",
+        "text": "Common options"
+    },
+    {
+        "depth": 3,
+        "slug": "prompt-options",
+        "text": "Prompt options"
+    }
+]
+  },
   "hoc/dual-app-sidebar": {
     component: lazy(() => import("@docs/content/docs/hoc/dual-app-sidebar.mdx")),
     data: {
@@ -6038,6 +6126,11 @@ export const docsNavigation: DocsNavSection[] = [
         "title": "Description list",
         "href": "/docs/hoc/description-list",
         "description": "Key-value grid for detail pages with optional card wrapper and copy-to-clipboard."
+      },
+      {
+        "title": "Dialog service",
+        "href": "/docs/hoc/dialog-service",
+        "description": "Queue-driven global alert, confirm, and prompt APIs with a single top-layer host."
       },
       {
         "title": "Dual App Sidebar",

@@ -132,6 +132,7 @@
     "./hoc/auth-form": "./src/hoc/auth-form/index.tsx",
     "./hoc/command-palette": "./src/hoc/command-palette/index.tsx",
     "./hoc/confirm-dialog": "./src/hoc/confirm-dialog/index.tsx",
+    "./hoc/dialog-service": "./src/hoc/dialog-service/index.tsx",
     "./hoc/data-list": "./src/hoc/data-list/index.tsx",
     "./hoc/data-table": "./src/hoc/data-table/index.tsx",
     "./hoc/data-table-toolbar": "./src/hoc/data-table-toolbar/index.tsx",

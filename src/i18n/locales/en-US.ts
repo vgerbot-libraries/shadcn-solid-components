@@ -9,6 +9,7 @@ import { enUS as DataTable } from '../../hoc/data-table/locales/en-US'
 import { enUS as DataTableToolbar } from '../../hoc/data-table-toolbar/locales/en-US'
 import { enUS as DatePickerField } from '../../hoc/date-picker/locales/en-US'
 import { enUS as DescriptionList } from '../../hoc/description-list/locales/en-US'
+import { enUS as DialogService } from '../../hoc/dialog-service/locales/en-US'
 import { enUS as ErrorPage } from '../../hoc/error-page/locales/en-US'
 import { enUS as FaqSection } from '../../hoc/faq-section/locales/en-US'
 import { enUS as FileUploadZone } from '../../hoc/file-upload-zone/locales/en-US'
@@ -44,6 +45,7 @@ export const enUS: Locale = {
   DescriptionList,
   Timeline,
   ConfirmDialog,
+  DialogService,
   TransferList,
   CommandPalette,
   UserMenu,

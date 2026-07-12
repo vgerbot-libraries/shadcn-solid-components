@@ -9,6 +9,7 @@ import { zhTW as DataTable } from '../../hoc/data-table/locales/zh-TW'
 import { zhTW as DataTableToolbar } from '../../hoc/data-table-toolbar/locales/zh-TW'
 import { zhTW as DatePickerField } from '../../hoc/date-picker/locales/zh-TW'
 import { zhTW as DescriptionList } from '../../hoc/description-list/locales/zh-TW'
+import { zhTW as DialogService } from '../../hoc/dialog-service/locales/zh-TW'
 import { zhTW as ErrorPage } from '../../hoc/error-page/locales/zh-TW'
 import { zhTW as FaqSection } from '../../hoc/faq-section/locales/zh-TW'
 import { zhTW as FileUploadZone } from '../../hoc/file-upload-zone/locales/zh-TW'
@@ -44,6 +45,7 @@ export const zhTW: Locale = {
   DescriptionList,
   Timeline,
   ConfirmDialog,
+  DialogService,
   TransferList,
   CommandPalette,
   UserMenu,

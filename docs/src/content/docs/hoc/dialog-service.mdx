@@ -1,0 +1,134 @@
+---
+title: Dialog service
+description: Queue-driven global alert, confirm, and prompt APIs with a single top-layer host.
+section: HOC
+toc: true
+---
+
+import DialogServiceAlertDemo from "../../../examples/dialog-service-alert-demo"
+import DialogServiceConfirmDemo from "../../../examples/dialog-service-confirm-demo"
+import DialogServicePromptInputTypesDemo from "../../../examples/dialog-service-prompt-input-types-demo"
+import DialogServiceCustomActionsDemo from "../../../examples/dialog-service-custom-actions-demo"
+import DialogServiceQueueDemo from "../../../examples/dialog-service-queue-demo"
+
+`dialog-service` provides global `alert()`, `confirm()`, and `prompt()` APIs that resolve promises and are rendered by one shared host at the app top layer.
+
+## Usage
+
+```tsx
+import { DialogServiceHost, alert, confirm, prompt } from "shadcn-solid-components/hoc/dialog-service"
+
+// Option A: manual host
+<DialogServiceHost />
+
+// Option B: zero-config host via ShadcnRoot
+<ShadcnRoot>
+  <App />
+</ShadcnRoot>
+
+const a = await alert({ title: "Saved" })
+const c = await confirm({ title: "Delete item?", variant: "destructive" })
+const p = await prompt({
+  title: "Rename",
+  required: true,
+  input: "text", // default, also supports: password | textarea | datetime | date | time
+})
+
+const p2 = await prompt({
+  title: "Rename with custom input",
+  input: (set, value) => (
+    <input
+      class="border-input rounded-component h-9 w-full border px-3"
+      value={value}
+      onInput={(e) => set(e.currentTarget.value)}
+    />
+  ),
+})
+```
+
+Only one dialog is visible at any moment. Calls are enqueued in FIFO order and shown sequentially.
+
+## Exports
+
+- `DialogServiceHost`, `alert`, `confirm`, `prompt`
+- Types: `DialogServiceKind`, `DialogServiceAction`, `DialogServiceActionKey`, `DialogServiceDefaultActionKey`, `PromptInputType`, `PromptInputRenderer`, `DialogServiceConfirmVariant`, `AlertDialogServiceOptions`, `ConfirmDialogServiceOptions`, `PromptDialogServiceOptions`, `DialogActionResult`, `PromptDialogResult`
+
+## Examples
+
+### Alert
+
+<ComponentPreview name="Dialog Service Alert Demo" source="examples/dialog-service-alert-demo.tsx">
+  <div class="mb-4 w-full">
+    <DialogServiceAlertDemo />
+  </div>
+</ComponentPreview>
+
+### Confirm with non-dismissible mode
+
+<ComponentPreview name="Dialog Service Confirm Demo" source="examples/dialog-service-confirm-demo.tsx">
+  <div class="mb-4 w-full">
+    <DialogServiceConfirmDemo />
+  </div>
+</ComponentPreview>
+
+### Prompt input types
+
+<ComponentPreview name="Dialog Service Prompt Input Types Demo" source="examples/dialog-service-prompt-input-types-demo.tsx">
+  <div class="mb-4 w-full">
+    <DialogServicePromptInputTypesDemo />
+  </div>
+</ComponentPreview>
+
+### Custom semantic actions
+
+<ComponentPreview name="Dialog Service Custom Actions Demo" source="examples/dialog-service-custom-actions-demo.tsx">
+  <div class="mb-4 w-full">
+    <DialogServiceCustomActionsDemo />
+  </div>
+</ComponentPreview>
+
+### Queue behavior
+
+<ComponentPreview name="Dialog Service Queue Demo" source="examples/dialog-service-queue-demo.tsx">
+  <div class="mb-4 w-full">
+    <DialogServiceQueueDemo />
+  </div>
+</ComponentPreview>
+
+## API
+
+### `alert(options: AlertDialogServiceOptions): Promise<DialogActionResult>`
+
+Resolves on user action with `{ actionKey, confirmed }`.
+
+### `confirm(options: ConfirmDialogServiceOptions): Promise<DialogActionResult>`
+
+Resolves on user action with semantic action key support. `confirmed` is `true` only when `actionKey === "confirm"`.
+
+### `prompt(options: PromptDialogServiceOptions): Promise<PromptDialogResult>`
+
+Resolves with `{ actionKey, confirmed, value }`. Prompt input is configured by `input`.
+
+### `DialogServiceAction`
+
+- `actionKey` — default keys (`confirm`, `cancel`, `close`) or any custom semantic key
+- `label` — button content
+- `variant`, `class` — visual styling
+- `disabled`, `autofocus` — behavior controls
+
+### Common options
+
+- `title`, `description`
+- `dismissible` — allow overlay/esc close (default `true`)
+- `locale` — per-call label override
+- `actions` — custom buttons
+- `mergeDefaultActions` — keep defaults and append custom actions
+
+### Prompt options
+
+- `input` — prompt input config:
+  - built-in input type string: `"text"` (default), `"password"`, `"textarea"`, `"datetime"`, `"date"`, `"time"`
+  - or custom renderer: `(setValue, value) => JSX.Element`
+- `defaultValue`, `placeholder`
+- `required` — blocks confirm when empty
+- `validate` — custom validation callback returning an error message
