@@ -28,6 +28,7 @@ export const ComponentName = {
   Countup: 'Countup',
   ColorPicker: 'ColorPicker',
   ContextMenu: 'ContextMenu',
+  DateTimePicker: 'DateTimePicker',
   DatePicker: 'DatePicker',
   Dialog: 'Dialog',
   Drawer: 'Drawer',

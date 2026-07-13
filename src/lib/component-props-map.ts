@@ -21,6 +21,7 @@ import type { ComboboxProps } from '../components/combobox'
 import type { CommandProps } from '../components/command'
 import type { ContextMenuProps } from '../components/context-menu'
 import type { CountupProps } from '../components/countup'
+import type { DateTimePickerProps } from '../components/date-time-picker'
 import type { DialogProps } from '../components/dialog'
 import type { DrawerProps } from '../components/drawer'
 import type { DropdownMenuProps } from '../components/dropdown-menu'
@@ -89,6 +90,7 @@ export interface ComponentPropsMap {
   [ComponentName.Countup]: CountupProps
   [ComponentName.ColorPicker]: ColorPickerProps
   [ComponentName.ContextMenu]: ContextMenuProps
+  [ComponentName.DateTimePicker]: DateTimePickerProps
   [ComponentName.DatePicker]: ComponentProps<'div'>
   [ComponentName.Dialog]: DialogProps
   [ComponentName.Drawer]: DrawerProps

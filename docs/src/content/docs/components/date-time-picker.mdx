@@ -1,0 +1,81 @@
+---
+title: Date Time Picker
+description: Date and time selection with single or range mode and 12h/24h hour cycles.
+section: Components
+toc: true
+---
+
+import DateTimePickerDemo from "../../../examples/date-time-picker-demo"
+import DateTimePicker24hDemo from "../../../examples/date-time-picker-24h-demo"
+import DateTimePickerRangeDemo from "../../../examples/date-time-picker-range-demo"
+import DateTimePickerMinuteStepDemo from "../../../examples/date-time-picker-minute-step-demo"
+
+`DateTimePicker` is a standalone datetime primitive built on Ark UI date-picker behavior, combining calendar selection with integrated hour and minute selectors in one panel. It supports both single and range datetime workflows and exposes an hour-cycle switch for 12h/24h display.
+
+## Installation
+
+```bash
+pnpm add @ark-ui/solid
+```
+
+## Usage
+
+```tsx
+import { DateTimePicker } from "shadcn-solid-components/components/date-time-picker"
+```
+
+Use `selectionMode="range"` for range picking, `hourCycle={24}` for 24-hour display, and `minuteStep` to control minute option increments.
+
+## Exports
+
+- `DateTimePicker`
+- Types: `DateTimePickerProps`, `DateTimePickerHourCycle`
+
+## Examples
+
+### Default
+
+<ComponentPreview name="Date Time Picker Default" source="examples/date-time-picker-demo.tsx">
+  <div class="mb-4 w-full max-w-md">
+    <DateTimePickerDemo />
+  </div>
+</ComponentPreview>
+
+### 24 Hour
+
+<ComponentPreview name="Date Time Picker 24 Hour" source="examples/date-time-picker-24h-demo.tsx">
+  <div class="mb-4 w-full max-w-md">
+    <DateTimePicker24hDemo />
+  </div>
+</ComponentPreview>
+
+### Range
+
+<ComponentPreview name="Date Time Picker Range" source="examples/date-time-picker-range-demo.tsx">
+  <div class="mb-4 w-full max-w-xl">
+    <DateTimePickerRangeDemo />
+  </div>
+</ComponentPreview>
+
+### Minute Step
+
+<ComponentPreview name="Date Time Picker Minute Step" source="examples/date-time-picker-minute-step-demo.tsx">
+  <div class="mb-4 w-full max-w-md">
+    <DateTimePickerMinuteStepDemo />
+  </div>
+</ComponentPreview>
+
+## API
+
+### `DateTimePickerProps`
+
+Extends Ark UI `DatePickerRootProps`.
+
+Notable fields:
+
+- `hourCycle` — `12 | 24`, controls 12h/24h display mode (`12` by default)
+- `minuteStep` — minute option interval (`1` by default)
+- `placeholder` — single-mode input placeholder override
+- `rangeStartPlaceholder`, `rangeEndPlaceholder` — placeholders for range inputs
+- `clearable` — shows clear trigger button
+- `showMonthYearSelect` — enables month/year dropdowns in day view header

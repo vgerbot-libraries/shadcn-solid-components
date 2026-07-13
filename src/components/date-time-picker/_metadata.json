@@ -1,0 +1,15 @@
+{
+  "name": "components/date-time-picker",
+  "displayName": "Date Time Picker",
+  "description": "A standalone datetime picker built on Ark UI date-picker primitives, combining calendar selection with integrated hour/minute controls. Supports single and range datetime modes, 12h/24h display, configurable minute stepping, inline and popover rendering, and locale-aware formatting.",
+  "category": "components",
+  "useCases": [
+    "Schedule creation flows requiring exact start date and time selection",
+    "Analytics filters that compare datetime ranges for reports",
+    "Booking and reservation forms with date and clock precision",
+    "Workflow automation forms requiring 12h and 24h entry variants"
+  ],
+  "usage": "import { DateTimePicker } from \"shadcn-solid-components/components/date-time-picker\"",
+  "tags": ["components", "date-time-picker", "datetime", "solidjs", "ui"],
+  "dependencies": ["@ark-ui/solid", "cva", "tailwind-merge"]
+}

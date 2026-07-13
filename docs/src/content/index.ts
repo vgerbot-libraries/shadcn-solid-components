@@ -963,6 +963,69 @@ export const Contents: Record<string, DocEntry> = {
     }
 ]
   },
+  "components/date-time-picker": {
+    component: lazy(() => import("@docs/content/docs/components/date-time-picker.mdx")),
+    data: {
+    "title": "Date Time Picker",
+    "description": "Date and time selection with single or range mode and 12h/24h hour cycles.",
+    "navTitle": "Date Time Picker",
+    "section": "Components",
+    "order": 0,
+    "toc": true
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "installation",
+        "text": "Installation"
+    },
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "exports",
+        "text": "Exports"
+    },
+    {
+        "depth": 2,
+        "slug": "examples",
+        "text": "Examples"
+    },
+    {
+        "depth": 3,
+        "slug": "default",
+        "text": "Default"
+    },
+    {
+        "depth": 3,
+        "slug": "24-hour",
+        "text": "24 Hour"
+    },
+    {
+        "depth": 3,
+        "slug": "range",
+        "text": "Range"
+    },
+    {
+        "depth": 3,
+        "slug": "minute-step",
+        "text": "Minute Step"
+    },
+    {
+        "depth": 2,
+        "slug": "api",
+        "text": "API"
+    },
+    {
+        "depth": 3,
+        "slug": "datetimepickerprops",
+        "text": "DateTimePickerProps"
+    }
+]
+  },
   "components/dialog": {
     component: lazy(() => import("@docs/content/docs/components/dialog.mdx")),
     data: {
@@ -5826,6 +5889,11 @@ export const docsNavigation: DocsNavSection[] = [
         "title": "Date Picker",
         "href": "/docs/components/date-picker",
         "description": "Date or range selection with calendar views and inputs."
+      },
+      {
+        "title": "Date Time Picker",
+        "href": "/docs/components/date-time-picker",
+        "description": "Date and time selection with single or range mode and 12h/24h hour cycles."
       },
       {
         "title": "Dialog",
