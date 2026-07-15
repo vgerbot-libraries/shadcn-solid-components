@@ -56,6 +56,69 @@ function normalizeMinuteStep(step?: number): number {
   return Math.min(30, Math.max(1, Math.floor(step ?? 1)))
 }
 
+function getDateValueTime(value?: DateValue): { hour: number; minute: number } | null {
+  if (!value || typeof value !== 'object') {
+    return null
+  }
+
+  if (!('hour' in value) || !('minute' in value)) {
+    return null
+  }
+
+  if (typeof value.hour !== 'number' || typeof value.minute !== 'number') {
+    return null
+  }
+
+  return {
+    hour: value.hour,
+    minute: value.minute,
+  }
+}
+
+function getDateKey(value?: DateValue): string | null {
+  if (!value || typeof value !== 'object') {
+    return null
+  }
+
+  if (!('year' in value) || !('month' in value) || !('day' in value)) {
+    return null
+  }
+
+  if (
+    typeof value.year !== 'number' ||
+    typeof value.month !== 'number' ||
+    typeof value.day !== 'number'
+  ) {
+    return null
+  }
+
+  return `${value.year}-${value.month}-${value.day}`
+}
+
+function getDateParts(value?: DateValue): { year: number; month: number; day: number } | null {
+  if (!value || typeof value !== 'object') {
+    return null
+  }
+
+  if (!('year' in value) || !('month' in value) || !('day' in value)) {
+    return null
+  }
+
+  if (
+    typeof value.year !== 'number' ||
+    typeof value.month !== 'number' ||
+    typeof value.day !== 'number'
+  ) {
+    return null
+  }
+
+  return {
+    year: value.year,
+    month: value.month,
+    day: value.day,
+  }
+}
+
 function DayViewTable(props: {
   weeks: DateValue[][]
   weekDays: { short: string }[]
@@ -151,6 +214,8 @@ function TimePanel(props: {
   minuteStep: number
   activeRangeIndex: number
   onActiveRangeIndexChange: (index: number) => void
+  resolveTimeForValue: (value?: DateValue) => { hour: number; minute: number } | null
+  setTimeForValue: (value: DateValue, time: { hour: number; minute: number }) => void
 }) {
   const minuteOptions = createMemo(() => {
     const values: number[] = []
@@ -173,31 +238,45 @@ function TimePanel(props: {
       {api => {
         const selectedIndex = () => (api().selectionMode === 'range' ? props.activeRangeIndex : 0)
         const fallbackDate = () => new Date()
-        const selectedDate = () => api().valueAsDate[selectedIndex()]
-        const selectedHour = () => selectedDate()?.getHours() ?? fallbackDate().getHours()
-        const selectedMinute = () => selectedDate()?.getMinutes() ?? fallbackDate().getMinutes()
+        const selectedValue = () => api().value[selectedIndex()]
+        const selectedTime = () => props.resolveTimeForValue(selectedValue())
+        const selectedHour = () => selectedTime()?.hour ?? fallbackDate().getHours()
+        const selectedMinute = () => selectedTime()?.minute ?? fallbackDate().getMinutes()
+        const nowAsCalendarDateTime = () => {
+          const now = new Date()
+
+          return new CalendarDateTime(
+            now.getFullYear(),
+            now.getMonth() + 1,
+            now.getDate(),
+            now.getHours(),
+            now.getMinutes(),
+          )
+        }
 
         const setTime = (hour: number, minute: number) => {
           const index = selectedIndex()
           const current = api().value[index]
-          const fallback = api().focusedValue
+          const focusedValue = api().focusedValue
+          const fallback = focusedValue ?? nowAsCalendarDateTime()
+          const base = current ?? focusedValue ?? fallback
 
-          if (!current && !fallback) {
-            return
-          }
-
-          const base = current ?? fallback
           const nextValue =
             base instanceof CalendarDateTime
               ? base.set({ hour, minute })
               : new CalendarDateTime(base.year, base.month, base.day, hour, minute)
 
           const nextValues = [...api().value]
-          if (api().selectionMode === 'range' && index === 1 && !nextValues[0] && fallback) {
-            nextValues[0] = fallback
+          if (api().selectionMode === 'range' && index === 1 && !nextValues[0] && focusedValue) {
+            nextValues[0] = focusedValue
           }
           nextValues[index] = nextValue
-          api().setValue(nextValues)
+          props.setTimeForValue(nextValue, { hour, minute })
+
+          api().setValue([])
+          queueMicrotask(() => {
+            api().setValue(nextValues)
+          })
         }
 
         const selectHour = (hourOption: number) => {
@@ -238,7 +317,7 @@ function TimePanel(props: {
         }
 
         const isHourSelected = (hour: number) => {
-          if (!selectedDate()) {
+          if (!selectedValue()) {
             return false
           }
 
@@ -250,7 +329,10 @@ function TimePanel(props: {
         }
 
         return (
-          <div data-slot="date-time-picker-time-panel" class="w-full min-w-[13.5rem] space-y-2 sm:h-[320px] overflow-hidden">
+          <div
+            data-slot="date-time-picker-time-panel"
+            class="w-full min-w-[13.5rem] space-y-2 sm:h-[320px] overflow-hidden"
+          >
             <Show when={api().selectionMode === 'range'}>
               <div class="grid grid-cols-2 gap-1">
                 <button
@@ -277,7 +359,10 @@ function TimePanel(props: {
             </Show>
 
             <div
-              class={cx('grid gap-2 h-full', props.hourCycle === 12 ? 'grid-cols-3' : 'grid-cols-2')}
+              class={cx(
+                'grid gap-2 h-full',
+                props.hourCycle === 12 ? 'grid-cols-3' : 'grid-cols-2',
+              )}
             >
               <ScrollArea class="rounded-component border">
                 <div class="grid gap-1 p-1">
@@ -307,7 +392,7 @@ function TimePanel(props: {
                         type="button"
                         class={buttonVariants({
                           variant:
-                            selectedDate() && selectedMinute() === minute ? 'default' : 'ghost',
+                            selectedValue() && selectedMinute() === minute ? 'default' : 'ghost',
                           size: 'icon',
                           class: 'h-8 w-full',
                         })}
@@ -329,7 +414,7 @@ function TimePanel(props: {
                           type="button"
                           class={buttonVariants({
                             variant:
-                              selectedDate() &&
+                              selectedValue() &&
                               ((period === 'AM' && selectedHour() < 12) ||
                                 (period === 'PM' && selectedHour() >= 12))
                                 ? 'default'
@@ -382,7 +467,19 @@ export const DateTimePicker = (props: DateTimePickerProps) => {
   )
 
   const defaultFormat = (date: DateValue) => {
-    const parsedDate = new Date(Date.parse(date.toString()))
+    const dateParts = getDateParts(date)
+    if (!dateParts) {
+      return date.toString()
+    }
+
+    const time = resolveTimeForValue(date) ?? { hour: 0, minute: 0 }
+    const parsedDate = new Date(
+      dateParts.year,
+      dateParts.month - 1,
+      dateParts.day,
+      time.hour,
+      time.minute,
+    )
 
     return new Intl.DateTimeFormat(local.locale ?? globalLocale.locale ?? 'en-US', {
       year: 'numeric',
@@ -395,6 +492,35 @@ export const DateTimePicker = (props: DateTimePickerProps) => {
   }
 
   const [activeRangeIndex, setActiveRangeIndex] = createSignal(0)
+  const [timeByDateKey, setTimeByDateKey] = createSignal<
+    Record<string, { hour: number; minute: number }>
+  >({})
+
+  const resolveTimeForValue = (value?: DateValue) => {
+    const valueTime = getDateValueTime(value)
+    if (valueTime) {
+      return valueTime
+    }
+
+    const key = getDateKey(value)
+    if (!key) {
+      return null
+    }
+
+    return timeByDateKey()[key] ?? null
+  }
+
+  const setTimeForValue = (value: DateValue, time: { hour: number; minute: number }) => {
+    const key = getDateKey(value)
+    if (!key) {
+      return
+    }
+
+    setTimeByDateKey(prev => ({
+      ...prev,
+      [key]: time,
+    }))
+  }
 
   return (
     <DatePicker
@@ -458,6 +584,8 @@ export const DateTimePicker = (props: DateTimePickerProps) => {
                 onActiveRangeIndexChange={index => {
                   setActiveRangeIndex(index)
                 }}
+                resolveTimeForValue={resolveTimeForValue}
+                setTimeForValue={setTimeForValue}
               />
             </div>
           </DatePickerContent>
@@ -475,6 +603,8 @@ export const DateTimePicker = (props: DateTimePickerProps) => {
               onActiveRangeIndexChange={index => {
                 setActiveRangeIndex(index)
               }}
+              resolveTimeForValue={resolveTimeForValue}
+              setTimeForValue={setTimeForValue}
             />
           </div>
         </DatePickerContent>
