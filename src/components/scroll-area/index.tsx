@@ -12,10 +12,12 @@ import { useComponentClass } from 'shadcn-solid-components/lib/theme-helpers'
 import { mergeProps, splitProps } from 'solid-js'
 import './index.css'
 
-export type ScrollAreaProps = ScrollAreaRootProps
+export type ScrollAreaProps = ScrollAreaRootProps & {
+  orientation?: ScrollAreaScrollbarProps['orientation']
+}
 
 export const ScrollArea = (props: ScrollAreaProps) => {
-  const [local, rest] = splitProps(props, ['class', 'children'])
+  const [local, rest] = splitProps(props, ['class', 'children', 'orientation'])
   const componentClass = useComponentClass(ComponentName.ScrollArea, props)
 
   return (
@@ -25,7 +27,7 @@ export const ScrollArea = (props: ScrollAreaProps) => {
       {...rest}
     >
       <ScrollAreaViewport>{local.children}</ScrollAreaViewport>
-      <ScrollAreaScrollbar />
+      <ScrollAreaScrollbar orientation={local.orientation ?? 'vertical'} />
       <ScrollAreaCorner />
     </ScrollAreaPrimitive.Root>
   )

@@ -209,6 +209,30 @@ function CalendarViews(props: { showMonthYearSelect?: boolean }) {
   )
 }
 
+function DateTimePickerPanel(props: {
+  showMonthYearSelect?: boolean
+  hourCycle: DateTimePickerHourCycle
+  minuteStep: number
+  activeRangeIndex: number
+  onActiveRangeIndexChange: (index: number) => void
+  resolveTimeForValue: (value?: DateValue) => { hour: number; minute: number } | null
+  setTimeForValue: (value: DateValue, time: { hour: number; minute: number }) => void
+}) {
+  return (
+    <div class="flex max-w-full min-w-0 flex-col gap-3 lg:flex-row">
+      <CalendarViews showMonthYearSelect={props.showMonthYearSelect} />
+      <TimePanel
+        hourCycle={props.hourCycle}
+        minuteStep={props.minuteStep}
+        activeRangeIndex={props.activeRangeIndex}
+        onActiveRangeIndexChange={props.onActiveRangeIndexChange}
+        resolveTimeForValue={props.resolveTimeForValue}
+        setTimeForValue={props.setTimeForValue}
+      />
+    </div>
+  )
+}
+
 function TimePanel(props: {
   hourCycle: DateTimePickerHourCycle
   minuteStep: number
@@ -328,10 +352,13 @@ function TimePanel(props: {
           return (selectedHour() % 12 || 12) === hour
         }
 
+        const mobileTimeListClass = 'flex w-max gap-1 p-1'
+        const desktopTimeListClass = 'hidden lg:grid gap-1 p-1'
+
         return (
           <div
             data-slot="date-time-picker-time-panel"
-            class="w-full min-w-[13.5rem] space-y-2 sm:h-[320px] overflow-hidden"
+            class="w-full min-w-0 space-y-2 overflow-hidden sm:max-w-[13.5rem] sm:self-start lg:h-[320px]"
           >
             <Show when={api().selectionMode === 'range'}>
               <div class="grid grid-cols-2 gap-1">
@@ -360,12 +387,35 @@ function TimePanel(props: {
 
             <div
               class={cx(
-                'grid gap-2 h-full',
-                props.hourCycle === 12 ? 'grid-cols-3' : 'grid-cols-2',
+                'flex flex-col gap-2 lg:h-full lg:grid',
+                props.hourCycle === 12 ? 'lg:grid-cols-3' : 'lg:grid-cols-2',
               )}
             >
-              <ScrollArea class="rounded-component border">
-                <div class="grid gap-1 p-1">
+              <ScrollArea
+                orientation="horizontal"
+                class="rounded-component border min-w-0 lg:hidden"
+              >
+                <div class={mobileTimeListClass}>
+                  <For each={hourOptions()}>
+                    {hour => (
+                      <button
+                        type="button"
+                        class={buttonVariants({
+                          variant: isHourSelected(hour) ? 'default' : 'ghost',
+                          size: 'icon',
+                          class: 'h-8 min-w-9 px-3 shrink-0',
+                        })}
+                        onClick={() => selectHour(hour)}
+                      >
+                        {hourLabel(hour)}
+                      </button>
+                    )}
+                  </For>
+                </div>
+              </ScrollArea>
+
+              <ScrollArea class="hidden rounded-component border lg:block">
+                <div class={desktopTimeListClass}>
                   <For each={hourOptions()}>
                     {hour => (
                       <button
@@ -384,8 +434,32 @@ function TimePanel(props: {
                 </div>
               </ScrollArea>
 
-              <ScrollArea class="rounded-component border">
-                <div class="grid gap-1 p-1">
+              <ScrollArea
+                orientation="horizontal"
+                class="rounded-component border min-w-0 lg:hidden"
+              >
+                <div class={mobileTimeListClass}>
+                  <For each={minuteOptions()}>
+                    {minute => (
+                      <button
+                        type="button"
+                        class={buttonVariants({
+                          variant:
+                            selectedValue() && selectedMinute() === minute ? 'default' : 'ghost',
+                          size: 'icon',
+                          class: 'h-8 min-w-9 px-3 shrink-0',
+                        })}
+                        onClick={() => selectMinute(minute)}
+                      >
+                        {minute.toString().padStart(2, '0')}
+                      </button>
+                    )}
+                  </For>
+                </div>
+              </ScrollArea>
+
+              <ScrollArea class="hidden rounded-component border lg:block">
+                <div class={desktopTimeListClass}>
                   <For each={minuteOptions()}>
                     {minute => (
                       <button
@@ -406,8 +480,36 @@ function TimePanel(props: {
               </ScrollArea>
 
               <Show when={props.hourCycle === 12}>
-                <ScrollArea class="rounded-component border">
-                  <div class="grid gap-1 p-1">
+                <ScrollArea
+                  orientation="horizontal"
+                  class="rounded-component border min-w-0 lg:hidden"
+                >
+                  <div class={mobileTimeListClass}>
+                    <For each={['AM', 'PM'] as const}>
+                      {period => (
+                        <button
+                          type="button"
+                          class={buttonVariants({
+                            variant:
+                              selectedValue() &&
+                              ((period === 'AM' && selectedHour() < 12) ||
+                                (period === 'PM' && selectedHour() >= 12))
+                                ? 'default'
+                                : 'ghost',
+                            size: 'icon',
+                            class: 'h-8 min-w-12 px-3 shrink-0',
+                          })}
+                          onClick={() => selectPeriod(period)}
+                        >
+                          {period}
+                        </button>
+                      )}
+                    </For>
+                  </div>
+                </ScrollArea>
+
+                <ScrollArea class="hidden rounded-component border lg:block">
+                  <div class={desktopTimeListClass}>
                     <For each={['AM', 'PM'] as const}>
                       {period => (
                         <button
@@ -574,29 +676,9 @@ export const DateTimePicker = (props: DateTimePickerProps) => {
         </DatePickerControl>
 
         <DatePickerPositioner>
-          <DatePickerContent class={local.contentClass}>
-            <div class="flex flex-col gap-3 lg:flex-row">
-              <CalendarViews showMonthYearSelect={local.showMonthYearSelect} />
-              <TimePanel
-                hourCycle={resolvedHourCycle()}
-                minuteStep={resolvedMinuteStep()}
-                activeRangeIndex={activeRangeIndex()}
-                onActiveRangeIndexChange={index => {
-                  setActiveRangeIndex(index)
-                }}
-                resolveTimeForValue={resolveTimeForValue}
-                setTimeForValue={setTimeForValue}
-              />
-            </div>
-          </DatePickerContent>
-        </DatePickerPositioner>
-      </Show>
-
-      <Show when={rest.inline}>
-        <DatePickerContent class={cx('shadow-none border-0 p-0', local.contentClass)}>
-          <div class="flex flex-col gap-3 lg:flex-row">
-            <CalendarViews showMonthYearSelect={local.showMonthYearSelect} />
-            <TimePanel
+          <DatePickerContent class={cx('max-w-[calc(100vw-1rem)]', local.contentClass)}>
+            <DateTimePickerPanel
+              showMonthYearSelect={local.showMonthYearSelect}
               hourCycle={resolvedHourCycle()}
               minuteStep={resolvedMinuteStep()}
               activeRangeIndex={activeRangeIndex()}
@@ -606,7 +688,23 @@ export const DateTimePicker = (props: DateTimePickerProps) => {
               resolveTimeForValue={resolveTimeForValue}
               setTimeForValue={setTimeForValue}
             />
-          </div>
+          </DatePickerContent>
+        </DatePickerPositioner>
+      </Show>
+
+      <Show when={rest.inline}>
+        <DatePickerContent class={cx('max-w-full shadow-none border-0 p-0', local.contentClass)}>
+          <DateTimePickerPanel
+            showMonthYearSelect={local.showMonthYearSelect}
+            hourCycle={resolvedHourCycle()}
+            minuteStep={resolvedMinuteStep()}
+            activeRangeIndex={activeRangeIndex()}
+            onActiveRangeIndexChange={index => {
+              setActiveRangeIndex(index)
+            }}
+            resolveTimeForValue={resolveTimeForValue}
+            setTimeForValue={setTimeForValue}
+          />
         </DatePickerContent>
       </Show>
     </DatePicker>
