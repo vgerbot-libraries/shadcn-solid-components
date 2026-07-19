@@ -358,7 +358,7 @@ function TimePanel(props: {
         return (
           <div
             data-slot="date-time-picker-time-panel"
-            class="w-full min-w-0 space-y-2 overflow-hidden sm:max-w-[13.5rem] sm:self-start lg:h-[320px]"
+            class="min-w-0 space-y-2 overflow-hidden lg:h-[320px]"
           >
             <Show when={api().selectionMode === 'range'}>
               <div class="grid grid-cols-2 gap-1">
@@ -414,7 +414,7 @@ function TimePanel(props: {
                 </div>
               </ScrollArea>
 
-              <ScrollArea class="hidden rounded-component border lg:block">
+              <ScrollArea class="hidden rounded-component border lg:block lg:w-12">
                 <div class={desktopTimeListClass}>
                   <For each={hourOptions()}>
                     {hour => (
@@ -458,7 +458,7 @@ function TimePanel(props: {
                 </div>
               </ScrollArea>
 
-              <ScrollArea class="hidden rounded-component border lg:block">
+              <ScrollArea class="hidden rounded-component border lg:block lg:w-12">
                 <div class={desktopTimeListClass}>
                   <For each={minuteOptions()}>
                     {minute => (
@@ -508,7 +508,7 @@ function TimePanel(props: {
                   </div>
                 </ScrollArea>
 
-                <ScrollArea class="hidden rounded-component border lg:block">
+                <ScrollArea class="hidden rounded-component border lg:block lg:w-12">
                   <div class={desktopTimeListClass}>
                     <For each={['AM', 'PM'] as const}>
                       {period => (
