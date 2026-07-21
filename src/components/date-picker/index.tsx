@@ -31,6 +31,7 @@ export const DatePickerMonthSelect = DatePickerPrimitive.MonthSelect
 export const DatePickerContext = DatePickerPrimitive.Context
 export const DatePickerRootProvider = DatePickerPrimitive.RootProvider
 export const DatePickerPositioner = DatePickerPrimitive.Positioner
+export const DatePickerPresetTrigger = DatePickerPrimitive.PresetTrigger
 
 export const DatePicker = (props: DatePickerRootProps) => {
   const [local, rest] = splitProps(props, ['format', 'locale'])

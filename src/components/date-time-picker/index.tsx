@@ -11,6 +11,7 @@ import {
   DatePickerInput,
   DatePickerMonthSelect,
   DatePickerPositioner,
+  DatePickerPresetTrigger,
   DatePickerRangeText,
   DatePickerTable,
   DatePickerTableBody,
@@ -29,9 +30,29 @@ import { ScrollArea } from 'shadcn-solid-components/components/scroll-area'
 import { cx } from 'shadcn-solid-components/lib/cva'
 import { ComponentName } from 'shadcn-solid-components/lib/theme-context'
 import { useComponentClass } from 'shadcn-solid-components/lib/theme-helpers'
-import { createMemo, createSignal, For, Show, splitProps } from 'solid-js'
+import { createMemo, createSignal, For, type JSX, Show, splitProps } from 'solid-js'
 
 export type DateTimePickerHourCycle = 12 | 24
+
+export type DateRangePreset =
+  | 'thisWeek'
+  | 'lastWeek'
+  | 'thisMonth'
+  | 'lastMonth'
+  | 'thisQuarter'
+  | 'lastQuarter'
+  | 'thisYear'
+  | 'lastYear'
+  | 'last3Days'
+  | 'last7Days'
+  | 'last14Days'
+  | 'last30Days'
+  | 'last90Days'
+
+export interface DateTimePickerPreset {
+  label: string
+  value: DateValue[] | DateRangePreset
+}
 
 export interface DateTimePickerProps extends DatePickerRootProps {
   hourCycle?: DateTimePickerHourCycle
@@ -43,6 +64,11 @@ export interface DateTimePickerProps extends DatePickerRootProps {
   contentClass?: string
   class?: string
   showMonthYearSelect?: boolean
+  presets?: DateTimePickerPreset[]
+  showTodayButton?: boolean
+  todayLabel?: string
+  calendarHeader?: JSX.Element
+  calendarFooter?: JSX.Element
 }
 
 const selectClass =
@@ -541,6 +567,80 @@ function TimePanel(props: {
   )
 }
 
+function TodayButton(props: { label: string }) {
+  return (
+    <DatePickerContext>
+      {api => (
+        <button
+          type="button"
+          class={cx(buttonVariants({ variant: 'outline', size: 'sm' }), 'w-full mt-2')}
+          onClick={() => api().selectToday()}
+        >
+          {props.label}
+        </button>
+      )}
+    </DatePickerContext>
+  )
+}
+
+function PanelContent(props: {
+  presets?: DateTimePickerPreset[]
+  hasPresets: boolean
+  showMonthYearSelect?: boolean
+  hourCycle: DateTimePickerHourCycle
+  minuteStep: number
+  activeRangeIndex: number
+  onActiveRangeIndexChange: (index: number) => void
+  resolveTimeForValue: (value?: DateValue) => { hour: number; minute: number } | null
+  setTimeForValue: (value: DateValue, time: { hour: number; minute: number }) => void
+  showTodayButton?: boolean
+  todayLabel: string
+  calendarHeader?: JSX.Element
+  calendarFooter?: JSX.Element
+}) {
+  const inner = () => (
+    <div>
+      {props.calendarHeader}
+      <DateTimePickerPanel
+        showMonthYearSelect={props.showMonthYearSelect}
+        hourCycle={props.hourCycle}
+        minuteStep={props.minuteStep}
+        activeRangeIndex={props.activeRangeIndex}
+        onActiveRangeIndexChange={props.onActiveRangeIndexChange}
+        resolveTimeForValue={props.resolveTimeForValue}
+        setTimeForValue={props.setTimeForValue}
+      />
+      <Show when={props.showTodayButton}>
+        <TodayButton label={props.todayLabel} />
+      </Show>
+      {props.calendarFooter}
+    </div>
+  )
+
+  return (
+    <Show when={props.hasPresets} fallback={inner()}>
+      <div class="flex gap-3">
+        <div class="flex flex-col gap-1 border-r pr-3">
+          <For each={props.presets}>
+            {preset => (
+              <DatePickerPresetTrigger
+                value={preset.value}
+                class={cx(
+                  buttonVariants({ variant: 'ghost' }),
+                  'justify-start h-8 px-3 text-sm font-normal',
+                )}
+              >
+                {preset.label}
+              </DatePickerPresetTrigger>
+            )}
+          </For>
+        </div>
+        {inner()}
+      </div>
+    </Show>
+  )
+}
+
 export const DateTimePicker = (props: DateTimePickerProps) => {
   const [local, rest] = splitProps(props, [
     'class',
@@ -554,6 +654,11 @@ export const DateTimePicker = (props: DateTimePickerProps) => {
     'format',
     'locale',
     'showMonthYearSelect',
+    'presets',
+    'showTodayButton',
+    'todayLabel',
+    'calendarHeader',
+    'calendarFooter',
   ])
 
   const globalLocale = useLocale()
@@ -677,7 +782,9 @@ export const DateTimePicker = (props: DateTimePickerProps) => {
 
         <DatePickerPositioner>
           <DatePickerContent class={cx('max-w-[calc(100vw-1rem)]', local.contentClass)}>
-            <DateTimePickerPanel
+            <PanelContent
+              presets={local.presets}
+              hasPresets={!!local.presets && local.presets.length > 0}
               showMonthYearSelect={local.showMonthYearSelect}
               hourCycle={resolvedHourCycle()}
               minuteStep={resolvedMinuteStep()}
@@ -687,6 +794,10 @@ export const DateTimePicker = (props: DateTimePickerProps) => {
               }}
               resolveTimeForValue={resolveTimeForValue}
               setTimeForValue={setTimeForValue}
+              showTodayButton={local.showTodayButton}
+              todayLabel={local.todayLabel ?? 'Today'}
+              calendarHeader={local.calendarHeader}
+              calendarFooter={local.calendarFooter}
             />
           </DatePickerContent>
         </DatePickerPositioner>
@@ -694,7 +805,9 @@ export const DateTimePicker = (props: DateTimePickerProps) => {
 
       <Show when={rest.inline}>
         <DatePickerContent class={cx('max-w-full shadow-none border-0 p-0', local.contentClass)}>
-          <DateTimePickerPanel
+          <PanelContent
+            presets={local.presets}
+            hasPresets={!!local.presets && local.presets.length > 0}
             showMonthYearSelect={local.showMonthYearSelect}
             hourCycle={resolvedHourCycle()}
             minuteStep={resolvedMinuteStep()}
@@ -704,6 +817,10 @@ export const DateTimePicker = (props: DateTimePickerProps) => {
             }}
             resolveTimeForValue={resolveTimeForValue}
             setTimeForValue={setTimeForValue}
+            showTodayButton={local.showTodayButton}
+            todayLabel={local.todayLabel ?? 'Today'}
+            calendarHeader={local.calendarHeader}
+            calendarFooter={local.calendarFooter}
           />
         </DatePickerContent>
       </Show>

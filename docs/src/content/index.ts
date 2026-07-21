@@ -3790,6 +3790,69 @@ export const Contents: Record<string, DocEntry> = {
     }
 ]
   },
+  "hoc/date-time-picker": {
+    component: lazy(() => import("@docs/content/docs/hoc/date-time-picker.mdx")),
+    data: {
+    "title": "Date time picker field",
+    "description": "Pre-composed datetime picker with label, validation, presets, time panel, and calendar chrome.",
+    "navTitle": "Date time picker field",
+    "section": "HOC",
+    "order": 0,
+    "toc": true
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "examples",
+        "text": "Examples"
+    },
+    {
+        "depth": 3,
+        "slug": "default-clearable-and-preset-ranges",
+        "text": "Default, clearable, and preset ranges"
+    },
+    {
+        "depth": 3,
+        "slug": "24-hour-with-minute-step",
+        "text": "24-hour with minute step"
+    },
+    {
+        "depth": 3,
+        "slug": "range-with-presets",
+        "text": "Range with presets"
+    },
+    {
+        "depth": 2,
+        "slug": "api",
+        "text": "API"
+    },
+    {
+        "depth": 3,
+        "slug": "datetimepickerfieldprops",
+        "text": "DateTimePickerFieldProps"
+    },
+    {
+        "depth": 3,
+        "slug": "datetimepickerpreset",
+        "text": "DateTimePickerPreset"
+    },
+    {
+        "depth": 3,
+        "slug": "daterangepreset",
+        "text": "DateRangePreset"
+    },
+    {
+        "depth": 2,
+        "slug": "exports",
+        "text": "Exports"
+    }
+]
+  },
   "hoc/description-list": {
     component: lazy(() => import("@docs/content/docs/hoc/description-list.mdx")),
     data: {
@@ -6189,6 +6252,11 @@ export const docsNavigation: DocsNavSection[] = [
         "title": "Date picker field",
         "href": "/docs/hoc/date-picker",
         "description": "Pre-composed date picker with label, validation, presets, and calendar panel."
+      },
+      {
+        "title": "Date time picker field",
+        "href": "/docs/hoc/date-time-picker",
+        "description": "Pre-composed datetime picker with label, validation, presets, time panel, and calendar chrome."
       },
       {
         "title": "Description list",

@@ -72,6 +72,15 @@ export interface DatePickerFieldLocale {
   today: string
 }
 
+export interface DateTimePickerFieldLocale {
+  placeholder: string
+  rangePlaceholder: string
+  rangeStartPlaceholder: string
+  rangeEndPlaceholder: string
+  clear: string
+  today: string
+}
+
 export interface OTPFieldLocale {
   label: string
   description: string
@@ -303,6 +312,7 @@ export interface Locale {
   AuthForm: AuthFormLocale
   TanstackTable: TanstackTableLocale
   DatePickerField: DatePickerFieldLocale
+  DateTimePickerField: DateTimePickerFieldLocale
   OTPField: OTPFieldLocale
   FileUploadZone: FileUploadZoneLocale
   NotificationCenter: NotificationCenterLocale

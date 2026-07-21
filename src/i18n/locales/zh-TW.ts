@@ -8,6 +8,7 @@ import { zhTW as DataList } from '../../hoc/data-list/locales/zh-TW'
 import { zhTW as DataTable } from '../../hoc/data-table/locales/zh-TW'
 import { zhTW as DataTableToolbar } from '../../hoc/data-table-toolbar/locales/zh-TW'
 import { zhTW as DatePickerField } from '../../hoc/date-picker/locales/zh-TW'
+import { zhTW as DateTimePickerField } from '../../hoc/date-time-picker/locales/zh-TW'
 import { zhTW as DescriptionList } from '../../hoc/description-list/locales/zh-TW'
 import { zhTW as DialogService } from '../../hoc/dialog-service/locales/zh-TW'
 import { zhTW as ErrorPage } from '../../hoc/error-page/locales/zh-TW'
@@ -33,6 +34,7 @@ export const zhTW: Locale = {
   AuthForm,
   TanstackTable,
   DatePickerField,
+  DateTimePickerField,
   OTPField,
   FileUploadZone,
   NotificationCenter,

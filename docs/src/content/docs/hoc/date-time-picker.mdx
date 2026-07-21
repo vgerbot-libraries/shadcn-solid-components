@@ -1,0 +1,80 @@
+---
+title: Date time picker field
+description: Pre-composed datetime picker with label, validation, presets, time panel, and calendar chrome.
+section: HOC
+toc: true
+---
+
+import DateTimePickerFieldDemo from "../../../examples/date-time-picker-field-demo"
+import DateTimePickerField24hDemo from "../../../examples/date-time-picker-field-24h-demo"
+import DateTimePickerFieldRangeDemo from "../../../examples/date-time-picker-field-range-demo"
+
+`DateTimePickerField` wraps the lower-level `DateTimePicker` component from `shadcn-solid-components/components/date-time-picker` with form-style labeling, errors, optional presets sidebar, today button, and an integrated time panel with 12h/24h hour cycle support.
+
+## Usage
+
+```tsx
+import { DateTimePickerField } from "shadcn-solid-components/hoc/date-time-picker"
+
+<DateTimePickerField label="Appointment" hourCycle={24} />
+```
+
+Root props such as `value`, `defaultValue`, `onValueChange`, `selectionMode`, `inline`, and locale-related options are forwarded to the underlying `DateTimePicker`. `DateValue` is re-exported for typing preset values.
+
+`presets` can assign `value` from a `DateRangePreset` string such as `last7Days` for quick range selection. When validation fails, pass `error` so the field switches to error styling and hides the description text.
+
+## Examples
+
+### Default, clearable, and preset ranges
+
+<ComponentPreview name="Date Time Picker Field Demo" source="examples/date-time-picker-field-demo.tsx">
+  <div class="mb-4 w-full">
+    <DateTimePickerFieldDemo />
+  </div>
+</ComponentPreview>
+
+### 24-hour with minute step
+
+<ComponentPreview name="Date Time Picker Field 24 Hour" source="examples/date-time-picker-field-24h-demo.tsx">
+  <div class="mb-4 w-full max-w-md">
+    <DateTimePickerField24hDemo />
+  </div>
+</ComponentPreview>
+
+### Range with presets
+
+<ComponentPreview name="Date Time Picker Field Range" source="examples/date-time-picker-field-range-demo.tsx">
+  <div class="mb-4 w-full max-w-xl">
+    <DateTimePickerFieldRangeDemo />
+  </div>
+</ComponentPreview>
+
+## API
+
+### `DateTimePickerFieldProps`
+
+Extends `div` props (minus `onChange`) plus a picked subset of Ark `DatePickerRootProps` (value, selection mode, views, locale, `inline`, etc.—see `src/hoc/date-time-picker/index.tsx` for the full picked list).
+
+HOC-specific fields include:
+
+- `label`, `description`, `error`, `required`, `placeholder`, `clearable`
+- `rangeStartPlaceholder`, `rangeEndPlaceholder` — placeholders for range inputs
+- `hourCycle` — `12 | 24`, controls 12h/24h display mode (`12` by default)
+- `minuteStep` — minute option interval (`1` by default)
+- `presets` — `{ label, value }[]` where `value` is `DateValue[]` or a `DateRangePreset` string key
+- `i18n` — partial locale for HOC strings
+- `contentClass`, `showMonthYearSelect`, `showTodayButton`, `calendarHeader`, `calendarFooter`
+
+### `DateTimePickerPreset`
+
+- `label`, `value` — `DateValue[]` or `DateRangePreset`
+
+### `DateRangePreset`
+
+String union such as `'thisWeek'`, `'last7Days'`, `'thisMonth'`, etc. (see source for the full set).
+
+## Exports
+
+- `DateTimePickerField` — component
+- Types: `DateTimePickerFieldProps`, `DateTimePickerPreset`, `DateRangePreset`
+- `DateValue` — re-export from Ark UI date picker

@@ -26,6 +26,9 @@ importers:
       '@corvu/resizable':
         specifier: ^0.2.5
         version: 0.2.5(solid-js@1.8.17)
+      '@internationalized/date':
+        specifier: ^3.10.0
+        version: 3.10.0
       '@kobalte/core':
         specifier: ^0.13.11
         version: 0.13.11(solid-js@1.8.17)
@@ -125,7 +128,7 @@ importers:
         version: 0.6.0(esbuild@0.21.3)(solid-js@1.8.17)
       jsdom:
         specifier: ^24.0.0
-        version: 24.0.0(canvas@3.2.3)
+        version: 24.0.0
       markdown-it-anchor:
         specifier: ^9.2.0
         version: 9.2.0(@types/markdown-it@14.1.2)(markdown-it@14.2.0)
@@ -215,7 +218,7 @@ importers:
         version: 6.0.5(typescript@5.4.5)(vite@5.2.11(@types/node@20.12.12)(lightningcss@1.32.0))
       vitest:
         specifier: ^1.6.0
-        version: 1.6.0(@types/node@20.12.12)(jsdom@24.0.0(canvas@3.2.3))(lightningcss@1.32.0)
+        version: 1.6.0(@types/node@20.12.12)(jsdom@24.0.0)(lightningcss@1.32.0)
 
   docs:
     dependencies:
@@ -335,7 +338,7 @@ importers:
         version: 7.2.0
       shadcn-solid-components:
         specifier: file:..
-        version: file:(@ark-ui/solid@5.36.2(solid-js@1.8.17))(@corvu/calendar@0.1.2(solid-js@1.8.17))(@corvu/drawer@0.2.4(solid-js@1.8.17))(@corvu/otp-field@0.1.4(solid-js@1.8.17))(@corvu/resizable@0.2.5(solid-js@1.8.17))(@tanstack/solid-table@8.21.3(solid-js@1.8.17))(@tanstack/solid-virtual@3.13.25(solid-js@1.8.17))(@traptitech/markdown-it-spoiler@1.1.6)(@types/node@20.12.12)(@unovis/solid@1.6.5(@unovis/ts@1.6.5)(solid-js@1.8.17))(@unovis/ts@1.6.5)(cmdk-solid@1.1.2(solid-js@1.8.17))(dompurify@3.4.10)(embla-carousel-solid@8.6.0(solid-js@1.8.17))(highlight.js@11.11.1)(katex@0.16.47)(markdown-it-anchor@9.2.0(@types/markdown-it@14.1.2)(markdown-it@14.2.0))(markdown-it-collapsible@2.0.2(markdown-it@14.2.0))(markdown-it-container@4.0.0)(markdown-it-deflist@3.0.1)(markdown-it-del@0.1.0)(markdown-it-emoji@3.0.0)(markdown-it-footnote@4.0.0)(markdown-it-highlightjs@4.3.0)(markdown-it-ins@4.0.0)(markdown-it-katex@2.0.3)(markdown-it-link-attributes@4.0.1)(markdown-it-mark@4.0.0)(markdown-it-mermaid@0.2.5)(markdown-it-sanitizer@0.4.3)(markdown-it-smiles@2.1.1)(markdown-it-table-of-contents@1.2.0)(markdown-it-task-lists@2.1.1)(markdown-it@14.2.0)(mermaid@11.15.0)(qrcode@1.5.4)(shadcn@3.7.0(@types/node@20.12.12)(babel-plugin-macros@3.1.0)(hono@4.11.7)(typescript@5.9.3))(smiles-drawer@2.3.0)(solid-js@1.8.17)(somoto@0.0.2(solid-js@1.8.17))(svg-pan-zoom@3.6.2)(tabulator-tables@6.4.0)(tailwindcss@4.1.18)(tw-animate-css@1.4.0)(typescript@5.9.3)
+        version: file:(@ark-ui/solid@5.36.2(solid-js@1.8.17))(@corvu/calendar@0.1.2(solid-js@1.8.17))(@corvu/drawer@0.2.4(solid-js@1.8.17))(@corvu/otp-field@0.1.4(solid-js@1.8.17))(@corvu/resizable@0.2.5(solid-js@1.8.17))(@tanstack/solid-table@8.21.3(solid-js@1.8.17))(@tanstack/solid-virtual@3.13.25(solid-js@1.8.17))(@traptitech/markdown-it-spoiler@1.1.6)(@types/node@20.12.12)(@unovis/solid@1.6.5(@unovis/ts@1.6.5)(solid-js@1.8.17))(@unovis/ts@1.6.5)(cmdk-solid@1.1.2(solid-js@1.8.17))(dompurify@3.4.10)(embla-carousel-solid@8.6.0(solid-js@1.8.17))(highlight.js@11.11.1)(katex@0.16.47)(markdown-it-anchor@9.2.0(@types/markdown-it@14.1.2)(markdown-it@14.2.0))(markdown-it-collapsible@2.0.2(markdown-it@14.2.0))(markdown-it-container@4.0.0)(markdown-it-deflist@3.0.1)(markdown-it-del@0.1.0)(markdown-it-emoji@3.0.0)(markdown-it-footnote@4.0.0)(markdown-it-highlightjs@4.3.0)(markdown-it-ins@4.0.0)(markdown-it-katex@2.0.3)(markdown-it-link-attributes@4.0.1)(markdown-it-mark@4.0.0)(markdown-it-mermaid@0.2.5)(markdown-it-sanitizer@0.4.3)(markdown-it-smiles@2.1.1)(markdown-it-table-of-contents@1.2.0)(markdown-it-task-lists@2.1.1)(markdown-it@14.2.0)(mermaid@11.15.0)(qrcode@1.5.4)(shadcn@3.7.0(@types/node@20.12.12)(typescript@5.9.3))(smiles-drawer@2.3.0)(solid-js@1.8.17)(somoto@0.0.2(solid-js@1.8.17))(svg-pan-zoom@3.6.2)(tabulator-tables@6.4.0)(tailwindcss@4.1.18)(tw-animate-css@1.4.0)(typescript@5.9.3)(vega-embed@7.1.0(vega-lite@6.4.3(vega@6.2.0))(vega@6.2.0))(vega-lite@6.4.3(vega@6.2.0))(vega@6.2.0)
       solid-js:
         specifier: ^1.8.17
         version: 1.8.17
@@ -1382,9 +1385,6 @@ packages:
 
   '@internationalized/date@3.10.0':
     resolution: {integrity: sha512-oxDR/NTEJ1k+UFVQElaNIk65E/Z83HK1z1WI3lQyhTtnNg4R5oVXaPzK3jcpKG8UHKDVuDQHzn+wsxSz8RP3aw==}
-
-  '@internationalized/date@3.10.1':
-    resolution: {integrity: sha512-oJrXtQiAXLvT9clCf1K4kxp3eKsQhIaZqxEyowkBcsvZDdZkbWrVmnGknxs5flTD0VGsxrxKgBCZty1EzoiMzA==}
 
   '@internationalized/date@3.12.0':
     resolution: {integrity: sha512-/PyIMzK29jtXaGU23qTvNZxvBXRtKbNnGDFD+PY6CZw/Y8Ex8pFUzkuCJCG9aOqmShjqhS9mPqP6Dk5onQY8rQ==}
@@ -5206,6 +5206,9 @@ packages:
       tabulator-tables: ^6.3.1
       tailwindcss: ^4.0.0
       tw-animate-css: ^1.4.0
+      vega: ^6.2.0
+      vega-embed: ^7.1.0
+      vega-lite: ^6.4.3
     peerDependenciesMeta:
       '@ark-ui/solid':
         optional: true
@@ -5284,6 +5287,12 @@ packages:
       svg-pan-zoom:
         optional: true
       tabulator-tables:
+        optional: true
+      vega:
+        optional: true
+      vega-embed:
+        optional: true
+      vega-lite:
         optional: true
 
   shadcn@3.7.0:
@@ -7118,6 +7127,9 @@ snapshots:
 
   '@floating-ui/utils@0.2.11': {}
 
+  '@hono/node-server@1.19.9':
+    optional: true
+
   '@hono/node-server@1.19.9(hono@4.11.7)':
     dependencies:
       hono: 4.11.7
@@ -7265,10 +7277,6 @@ snapshots:
     dependencies:
       '@swc/helpers': 0.5.18
 
-  '@internationalized/date@3.10.1':
-    dependencies:
-      '@swc/helpers': 0.5.18
-
   '@internationalized/date@3.12.0':
     dependencies:
       '@swc/helpers': 0.5.18
@@ -7320,7 +7328,7 @@ snapshots:
   '@kobalte/core@0.12.6(solid-js@1.8.17)':
     dependencies:
       '@floating-ui/dom': 1.7.5
-      '@internationalized/date': 3.10.1
+      '@internationalized/date': 3.12.0
       '@internationalized/number': 3.6.5
       '@kobalte/utils': 0.9.1(solid-js@1.8.17)
       solid-js: 1.8.17
@@ -7329,7 +7337,7 @@ snapshots:
   '@kobalte/core@0.13.11(solid-js@1.8.17)':
     dependencies:
       '@floating-ui/dom': 1.7.5
-      '@internationalized/date': 3.10.1
+      '@internationalized/date': 3.12.0
       '@internationalized/number': 3.6.5
       '@kobalte/utils': 0.9.1(solid-js@1.8.17)
       '@solid-primitives/props': 3.2.2(solid-js@1.8.17)
@@ -7471,6 +7479,29 @@ snapshots:
     transitivePeerDependencies:
       - hono
       - supports-color
+
+  '@modelcontextprotocol/sdk@1.25.3(zod@3.25.76)':
+    dependencies:
+      '@hono/node-server': 1.19.9
+      ajv: 8.18.0
+      ajv-formats: 3.0.1(ajv@8.18.0)
+      content-type: 1.0.5
+      cors: 2.8.6
+      cross-spawn: 7.0.6
+      eventsource: 3.0.7
+      eventsource-parser: 3.0.6
+      express: 5.2.1
+      express-rate-limit: 7.5.1(express@5.2.1)
+      jose: 6.1.3
+      json-schema-typed: 8.0.2
+      pkce-challenge: 5.0.1
+      raw-body: 3.0.2
+      zod: 3.25.76
+      zod-to-json-schema: 3.25.1(zod@3.25.76)
+    transitivePeerDependencies:
+      - hono
+      - supports-color
+    optional: true
 
   '@mswjs/interceptors@0.40.0':
     dependencies:
@@ -10067,6 +10098,9 @@ snapshots:
     dependencies:
       mimic-response: 3.1.0
 
+  dedent@1.7.1:
+    optional: true
+
   dedent@1.7.1(babel-plugin-macros@3.1.0):
     optionalDependencies:
       babel-plugin-macros: 3.1.0
@@ -10839,7 +10873,7 @@ snapshots:
     dependencies:
       argparse: 2.0.1
 
-  jsdom@24.0.0(canvas@3.2.3):
+  jsdom@24.0.0:
     dependencies:
       cssstyle: 4.0.1
       data-urls: 5.0.0
@@ -10862,8 +10896,6 @@ snapshots:
       whatwg-url: 14.0.0
       ws: 8.17.0
       xml-name-validator: 5.0.0
-    optionalDependencies:
-      canvas: 3.2.3
     transitivePeerDependencies:
       - bufferutil
       - supports-color
@@ -12385,8 +12417,9 @@ snapshots:
 
   setprototypeof@1.2.0: {}
 
-  ? shadcn-solid-components@file:(@ark-ui/solid@5.36.2(solid-js@1.8.17))(@corvu/calendar@0.1.2(solid-js@1.8.17))(@corvu/drawer@0.2.4(solid-js@1.8.17))(@corvu/otp-field@0.1.4(solid-js@1.8.17))(@corvu/resizable@0.2.5(solid-js@1.8.17))(@tanstack/solid-table@8.21.3(solid-js@1.8.17))(@tanstack/solid-virtual@3.13.25(solid-js@1.8.17))(@traptitech/markdown-it-spoiler@1.1.6)(@types/node@20.12.12)(@unovis/solid@1.6.5(@unovis/ts@1.6.5)(solid-js@1.8.17))(@unovis/ts@1.6.5)(cmdk-solid@1.1.2(solid-js@1.8.17))(dompurify@3.4.10)(embla-carousel-solid@8.6.0(solid-js@1.8.17))(highlight.js@11.11.1)(katex@0.16.47)(markdown-it-anchor@9.2.0(@types/markdown-it@14.1.2)(markdown-it@14.2.0))(markdown-it-collapsible@2.0.2(markdown-it@14.2.0))(markdown-it-container@4.0.0)(markdown-it-deflist@3.0.1)(markdown-it-del@0.1.0)(markdown-it-emoji@3.0.0)(markdown-it-footnote@4.0.0)(markdown-it-highlightjs@4.3.0)(markdown-it-ins@4.0.0)(markdown-it-katex@2.0.3)(markdown-it-link-attributes@4.0.1)(markdown-it-mark@4.0.0)(markdown-it-mermaid@0.2.5)(markdown-it-sanitizer@0.4.3)(markdown-it-smiles@2.1.1)(markdown-it-table-of-contents@1.2.0)(markdown-it-task-lists@2.1.1)(markdown-it@14.2.0)(mermaid@11.15.0)(qrcode@1.5.4)(shadcn@3.7.0(@types/node@20.12.12)(babel-plugin-macros@3.1.0)(hono@4.11.7)(typescript@5.9.3))(smiles-drawer@2.3.0)(solid-js@1.8.17)(somoto@0.0.2(solid-js@1.8.17))(svg-pan-zoom@3.6.2)(tabulator-tables@6.4.0)(tailwindcss@4.1.18)(tw-animate-css@1.4.0)(typescript@5.9.3)
+  ? shadcn-solid-components@file:(@ark-ui/solid@5.36.2(solid-js@1.8.17))(@corvu/calendar@0.1.2(solid-js@1.8.17))(@corvu/drawer@0.2.4(solid-js@1.8.17))(@corvu/otp-field@0.1.4(solid-js@1.8.17))(@corvu/resizable@0.2.5(solid-js@1.8.17))(@tanstack/solid-table@8.21.3(solid-js@1.8.17))(@tanstack/solid-virtual@3.13.25(solid-js@1.8.17))(@traptitech/markdown-it-spoiler@1.1.6)(@types/node@20.12.12)(@unovis/solid@1.6.5(@unovis/ts@1.6.5)(solid-js@1.8.17))(@unovis/ts@1.6.5)(cmdk-solid@1.1.2(solid-js@1.8.17))(dompurify@3.4.10)(embla-carousel-solid@8.6.0(solid-js@1.8.17))(highlight.js@11.11.1)(katex@0.16.47)(markdown-it-anchor@9.2.0(@types/markdown-it@14.1.2)(markdown-it@14.2.0))(markdown-it-collapsible@2.0.2(markdown-it@14.2.0))(markdown-it-container@4.0.0)(markdown-it-deflist@3.0.1)(markdown-it-del@0.1.0)(markdown-it-emoji@3.0.0)(markdown-it-footnote@4.0.0)(markdown-it-highlightjs@4.3.0)(markdown-it-ins@4.0.0)(markdown-it-katex@2.0.3)(markdown-it-link-attributes@4.0.1)(markdown-it-mark@4.0.0)(markdown-it-mermaid@0.2.5)(markdown-it-sanitizer@0.4.3)(markdown-it-smiles@2.1.1)(markdown-it-table-of-contents@1.2.0)(markdown-it-task-lists@2.1.1)(markdown-it@14.2.0)(mermaid@11.15.0)(qrcode@1.5.4)(shadcn@3.7.0(@types/node@20.12.12)(typescript@5.9.3))(smiles-drawer@2.3.0)(solid-js@1.8.17)(somoto@0.0.2(solid-js@1.8.17))(svg-pan-zoom@3.6.2)(tabulator-tables@6.4.0)(tailwindcss@4.1.18)(tw-animate-css@1.4.0)(typescript@5.9.3)(vega-embed@7.1.0(vega-lite@6.4.3(vega@6.2.0))(vega@6.2.0))(vega-lite@6.4.3(vega@6.2.0))(vega@6.2.0)
   : dependencies:
+      '@internationalized/date': 3.12.0
       '@kobalte/core': 0.13.11(solid-js@1.8.17)
       cva: 1.0.0-beta.4(typescript@5.9.3)
       dompurify: 3.4.10
@@ -12430,11 +12463,14 @@ snapshots:
       markdown-it-task-lists: 2.1.1
       mermaid: 11.15.0
       qrcode: 1.5.4
-      shadcn: 3.7.0(@types/node@20.12.12)(babel-plugin-macros@3.1.0)(hono@4.11.7)(typescript@5.9.3)
+      shadcn: 3.7.0(@types/node@20.12.12)(typescript@5.9.3)
       smiles-drawer: 2.3.0
       somoto: 0.0.2(solid-js@1.8.17)
       svg-pan-zoom: 3.6.2
       tabulator-tables: 6.4.0
+      vega: 6.2.0
+      vega-embed: 7.1.0(vega-lite@6.4.3(vega@6.2.0))(vega@6.2.0)
+      vega-lite: 6.4.3(vega@6.2.0)
     transitivePeerDependencies:
       - '@types/node'
       - typescript
@@ -12483,20 +12519,20 @@ snapshots:
       - supports-color
       - typescript
 
-  shadcn@3.7.0(@types/node@20.12.12)(babel-plugin-macros@3.1.0)(hono@4.11.7)(typescript@5.9.3):
+  shadcn@3.7.0(@types/node@20.12.12)(typescript@5.9.3):
     dependencies:
       '@antfu/ni': 25.0.0
       '@babel/core': 7.28.6
-      '@babel/parser': 7.28.6
+      '@babel/parser': 7.29.2
       '@babel/plugin-transform-typescript': 7.28.6(@babel/core@7.28.6)
       '@babel/preset-typescript': 7.28.5(@babel/core@7.28.6)
       '@dotenvx/dotenvx': 1.52.0
-      '@modelcontextprotocol/sdk': 1.25.3(hono@4.11.7)(zod@3.25.76)
+      '@modelcontextprotocol/sdk': 1.25.3(zod@3.25.76)
       '@types/validate-npm-package-name': 4.0.2
       browserslist: 4.28.1
       commander: 14.0.2
       cosmiconfig: 9.0.0(typescript@5.9.3)
-      dedent: 1.7.1(babel-plugin-macros@3.1.0)
+      dedent: 1.7.1
       deepmerge: 4.3.1
       diff: 8.0.3
       execa: 9.6.1
@@ -13410,7 +13446,7 @@ snapshots:
     optionalDependencies:
       vite: 5.2.11(@types/node@20.12.12)(lightningcss@1.32.0)
 
-  vitest@1.6.0(@types/node@20.12.12)(jsdom@24.0.0(canvas@3.2.3))(lightningcss@1.32.0):
+  vitest@1.6.0(@types/node@20.12.12)(jsdom@24.0.0)(lightningcss@1.32.0):
     dependencies:
       '@vitest/expect': 1.6.0
       '@vitest/runner': 1.6.0
@@ -13434,7 +13470,7 @@ snapshots:
       why-is-node-running: 2.2.2
     optionalDependencies:
       '@types/node': 20.12.12
-      jsdom: 24.0.0(canvas@3.2.3)
+      jsdom: 24.0.0
     transitivePeerDependencies:
       - less
       - lightningcss

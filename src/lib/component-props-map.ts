@@ -63,6 +63,7 @@ import type { ToggleGroupProps } from '../components/toggle-group'
 import type { TooltipProps } from '../components/tooltip'
 import type { VirtualScrollAreaProps } from '../components/virtual-scroll-area'
 import type { WatermarkProps } from '../components/watermark'
+import type { DateTimePickerFieldProps } from '../hoc/date-time-picker'
 import type { ComponentName } from './theme-context'
 
 /**
@@ -91,6 +92,7 @@ export interface ComponentPropsMap {
   [ComponentName.ColorPicker]: ColorPickerProps
   [ComponentName.ContextMenu]: ContextMenuProps
   [ComponentName.DateTimePicker]: DateTimePickerProps
+  [ComponentName.DateTimePickerField]: DateTimePickerFieldProps
   [ComponentName.DatePicker]: ComponentProps<'div'>
   [ComponentName.Dialog]: DialogProps
   [ComponentName.Drawer]: DrawerProps

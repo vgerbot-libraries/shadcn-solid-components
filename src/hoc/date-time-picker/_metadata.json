@@ -1,0 +1,15 @@
+{
+  "name": "hoc/date-time-picker",
+  "displayName": "Date Time Picker",
+  "description": "A higher-order datetime picker component that combines a DateTimePicker input with an integrated calendar and time panel, form-field semantics (label, description, error), locale-aware formatting, optional presets, and a today button. Wraps the DateTimePicker component with full i18n support via ConfigProvider.",
+  "category": "hoc",
+  "useCases": [
+    "Schedule creation forms requiring exact start date and time with field validation",
+    "Booking and reservation systems with date and clock precision and quick-select presets",
+    "Analytics dashboard filters comparing datetime ranges with locale-aware display",
+    "Workflow automation forms requiring 12h/24h entry with form-field integration"
+  ],
+  "usage": "import { DateTimePickerField, type DateTimePickerFieldProps } from \"shadcn-solid-components/hoc/date-time-picker\"",
+  "tags": ["hoc", "date-time-picker", "datetime", "solidjs", "ui"],
+  "dependencies": ["@ark-ui/solid", "cva", "tailwind-merge"]
+}

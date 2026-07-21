@@ -8,6 +8,7 @@ import { jaJP as DataList } from '../../hoc/data-list/locales/ja-JP'
 import { jaJP as DataTable } from '../../hoc/data-table/locales/ja-JP'
 import { jaJP as DataTableToolbar } from '../../hoc/data-table-toolbar/locales/ja-JP'
 import { jaJP as DatePickerField } from '../../hoc/date-picker/locales/ja-JP'
+import { jaJP as DateTimePickerField } from '../../hoc/date-time-picker/locales/ja-JP'
 import { jaJP as DescriptionList } from '../../hoc/description-list/locales/ja-JP'
 import { jaJP as DialogService } from '../../hoc/dialog-service/locales/ja-JP'
 import { jaJP as ErrorPage } from '../../hoc/error-page/locales/ja-JP'
@@ -33,6 +34,7 @@ export const jaJP: Locale = {
   AuthForm,
   TanstackTable,
   DatePickerField,
+  DateTimePickerField,
   OTPField,
   FileUploadZone,
   NotificationCenter,

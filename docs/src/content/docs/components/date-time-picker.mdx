@@ -29,7 +29,7 @@ Use `selectionMode="range"` for range picking, `hourCycle={24}` for 24-hour disp
 ## Exports
 
 - `DateTimePicker`
-- Types: `DateTimePickerProps`, `DateTimePickerHourCycle`
+- Types: `DateTimePickerProps`, `DateTimePickerHourCycle`, `DateTimePickerPreset`, `DateRangePreset`
 
 ## Examples
 
@@ -79,3 +79,8 @@ Notable fields:
 - `rangeStartPlaceholder`, `rangeEndPlaceholder` — placeholders for range inputs
 - `clearable` — shows clear trigger button
 - `showMonthYearSelect` — enables month/year dropdowns in day view header
+- `presets` — `{ label, value }[]` where `value` is `DateValue[]` or a `DateRangePreset` string key; rendered as a sidebar of quick-select buttons
+- `showTodayButton` — shows a "Today" button below the calendar (`false` by default)
+- `todayLabel` — label text for the today button (defaults to `"Today"`)
+- `calendarHeader` — custom JSX rendered above the calendar views inside the content panel
+- `calendarFooter` — custom JSX rendered below the calendar views inside the content panel
