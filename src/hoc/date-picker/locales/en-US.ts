@@ -1,6 +1,6 @@
-import type { DatePickerFieldLocale } from 'shadcn-solid-components/i18n/types'
+import type { DatePickerLocale } from 'shadcn-solid-components/i18n/types'
 
-export const enUS: DatePickerFieldLocale = {
+export const enUS: DatePickerLocale = {
   placeholder: 'Pick a date',
   rangePlaceholder: 'Pick a date range',
   multiplePlaceholder: 'Pick dates',

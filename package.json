@@ -13,10 +13,7 @@
   "bugs": {
     "url": "https://github.com/vgerbot-libraries/shadcn-solid-components/issues"
   },
-  "files": [
-    "src",
-    "bin"
-  ],
+  "files": ["src", "bin"],
   "private": false,
   "sideEffects": false,
   "type": "module",
@@ -137,7 +134,6 @@
     "./hoc/data-table": "./src/hoc/data-table/index.tsx",
     "./hoc/data-table-toolbar": "./src/hoc/data-table-toolbar/index.tsx",
     "./hoc/date-picker": "./src/hoc/date-picker/index.tsx",
-    "./hoc/date-time-picker": "./src/hoc/date-time-picker/index.tsx",
     "./hoc/description-list": "./src/hoc/description-list/index.tsx",
     "./hoc/dialog-service": "./src/hoc/dialog-service/index.tsx",
     "./hoc/dual-app-sidebar": "./src/hoc/dual-app-sidebar/index.tsx",
@@ -419,9 +415,7 @@
     "vite-tsconfig-paths": "^6.0.5",
     "vitest": "^1.6.0"
   },
-  "keywords": [
-    "solid"
-  ],
+  "keywords": ["solid"],
   "packageManager": "pnpm@9.1.1",
   "engines": {
     "node": ">=18",

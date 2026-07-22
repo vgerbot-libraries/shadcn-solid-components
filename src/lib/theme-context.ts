@@ -29,7 +29,6 @@ export const ComponentName = {
   ColorPicker: 'ColorPicker',
   ContextMenu: 'ContextMenu',
   DateTimePicker: 'DateTimePicker',
-  DateTimePickerField: 'DateTimePickerField',
   DatePicker: 'DatePicker',
   Dialog: 'Dialog',
   Drawer: 'Drawer',

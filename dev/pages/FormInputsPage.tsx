@@ -1,4 +1,3 @@
-import { type Component, createSignal, For } from 'solid-js'
 import {
   Calendar,
   CalendarCell,
@@ -20,6 +19,7 @@ import {
   CheckboxControl,
   CheckboxLabel,
 } from 'shadcn-solid-components/components/checkbox'
+import { ColorPicker } from 'shadcn-solid-components/components/color-picker'
 import {
   Combobox,
   ComboboxContent,
@@ -29,7 +29,6 @@ import {
   ComboboxItemLabel,
   ComboboxTrigger,
 } from 'shadcn-solid-components/components/combobox'
-import { ColorPicker } from 'shadcn-solid-components/components/color-picker'
 import {
   DatePicker,
   DatePickerContent,
@@ -106,9 +105,11 @@ import {
 import { TextField, TextFieldInput } from 'shadcn-solid-components/components/text-field'
 import { ToggleButton } from 'shadcn-solid-components/components/toggle-button'
 import { ToggleGroup, ToggleGroupItem } from 'shadcn-solid-components/components/toggle-group'
-import { DatePickerField } from 'shadcn-solid-components/hoc/date-picker'
+import { DatePicker as DatePickerHOC } from 'shadcn-solid-components/hoc/date-picker'
+import { FormField } from 'shadcn-solid-components/hoc/form-field'
 import { OTPFieldGroup as OTPFieldGroupHOC } from 'shadcn-solid-components/hoc/otp-field'
 import { zhCN } from 'shadcn-solid-components/i18n/locales/zh-CN'
+import { type Component, createSignal, For } from 'solid-js'
 import { PageLayout } from '../components/PageLayout'
 
 const fruits = ['Apple', 'Banana', 'Cherry', 'Date', 'Elderberry', 'Fig', 'Grape']
@@ -609,15 +610,15 @@ const FormInputsPage: Component = () => {
         <Card>
           <CardHeader>
             <CardTitle>Date Picker (HOC)</CardTitle>
-            <CardDescription>Pre-composed date picker with label and description.</CardDescription>
+            <CardDescription>Pre-composed date picker paired with FormField.</CardDescription>
           </CardHeader>
           <CardContent class="flex flex-col gap-6">
-            <DatePickerField
-              label="Date of Birth"
-              required
-              description="Select your date of birth."
-            />
-            <DatePickerField label="Deadline" clearable error="This field is required" />
+            <FormField label="Date of Birth" required description="Select your date of birth.">
+              <DatePickerHOC />
+            </FormField>
+            <FormField label="Deadline" error="This field is required">
+              <DatePickerHOC clearable invalid />
+            </FormField>
           </CardContent>
         </Card>
 
@@ -627,17 +628,18 @@ const FormInputsPage: Component = () => {
             <CardDescription>Range selection with preset quick-select options.</CardDescription>
           </CardHeader>
           <CardContent class="flex flex-col gap-6">
-            <DatePickerField
-              label="Date Range"
-              selectionMode="range"
-              numOfMonths={2}
-              presets={[
-                { label: 'Last 7 Days', value: 'last7Days' },
-                { label: 'Last 30 Days', value: 'last30Days' },
-                { label: 'This Month', value: 'thisMonth' },
-                { label: 'Last Month', value: 'lastMonth' },
-              ]}
-            />
+            <FormField label="Date Range">
+              <DatePickerHOC
+                selectionMode="range"
+                numOfMonths={2}
+                presets={[
+                  { label: 'Last 7 Days', value: 'last7Days' },
+                  { label: 'Last 30 Days', value: 'last30Days' },
+                  { label: 'This Month', value: 'thisMonth' },
+                  { label: 'Last Month', value: 'lastMonth' },
+                ]}
+              />
+            </FormField>
           </CardContent>
         </Card>
 
@@ -647,7 +649,9 @@ const FormInputsPage: Component = () => {
             <CardDescription>Select multiple dates, displayed as removable tags.</CardDescription>
           </CardHeader>
           <CardContent>
-            <DatePickerField label="Select dates" selectionMode="multiple" clearable />
+            <FormField label="Select dates">
+              <DatePickerHOC selectionMode="multiple" clearable />
+            </FormField>
           </CardContent>
         </Card>
 
@@ -657,7 +661,7 @@ const FormInputsPage: Component = () => {
             <CardDescription>Always-visible inline calendar, no popover.</CardDescription>
           </CardHeader>
           <CardContent>
-            <DatePickerField inline />
+            <DatePickerHOC inline />
           </CardContent>
         </Card>
 
@@ -667,12 +671,9 @@ const FormInputsPage: Component = () => {
             <CardDescription>Chinese locale with 2-month display.</CardDescription>
           </CardHeader>
           <CardContent>
-            <DatePickerField
-              label="日期"
-              locale="zh-CN"
-              i18n={zhCN.DatePickerField}
-              numOfMonths={2}
-            />
+            <FormField label="日期">
+              <DatePickerHOC locale="zh-CN" i18n={zhCN.DatePicker} numOfMonths={2} />
+            </FormField>
           </CardContent>
         </Card>
 
@@ -682,7 +683,9 @@ const FormInputsPage: Component = () => {
             <CardDescription>Dropdown selects for quick month/year navigation.</CardDescription>
           </CardHeader>
           <CardContent>
-            <DatePickerField label="Event Date" showMonthYearSelect showTodayButton />
+            <FormField label="Event Date">
+              <DatePickerHOC showMonthYearSelect showTodayButton />
+            </FormField>
           </CardContent>
         </Card>
 
@@ -692,7 +695,9 @@ const FormInputsPage: Component = () => {
             <CardDescription>Select by month only, using minView and defaultView.</CardDescription>
           </CardHeader>
           <CardContent>
-            <DatePickerField label="Billing Month" defaultView="month" minView="month" />
+            <FormField label="Billing Month">
+              <DatePickerHOC defaultView="month" minView="month" />
+            </FormField>
           </CardContent>
         </Card>
 
@@ -702,7 +707,9 @@ const FormInputsPage: Component = () => {
             <CardDescription>Select by year only, using minView and defaultView.</CardDescription>
           </CardHeader>
           <CardContent>
-            <DatePickerField label="Fiscal Year" defaultView="year" minView="year" />
+            <FormField label="Fiscal Year">
+              <DatePickerHOC defaultView="year" minView="year" />
+            </FormField>
           </CardContent>
         </Card>
 
@@ -714,19 +721,20 @@ const FormInputsPage: Component = () => {
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <DatePickerField
-              label="Appointment"
-              showTodayButton
-              calendarFooter={
-                <p class="text-xs text-muted-foreground mt-2 text-center">
-                  Weekends are unavailable
-                </p>
-              }
-              isDateUnavailable={date => {
-                const d = new Date(date.year, date.month - 1, date.day)
-                return d.getDay() === 0 || d.getDay() === 6
-              }}
-            />
+            <FormField label="Appointment">
+              <DatePickerHOC
+                showTodayButton
+                calendarFooter={
+                  <p class="text-xs text-muted-foreground mt-2 text-center">
+                    Weekends are unavailable
+                  </p>
+                }
+                isDateUnavailable={date => {
+                  const d = new Date(date.year, date.month - 1, date.day)
+                  return d.getDay() === 0 || d.getDay() === 6
+                }}
+              />
+            </FormField>
           </CardContent>
         </Card>
       </div>

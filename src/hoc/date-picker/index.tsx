@@ -1,7 +1,7 @@
 import type { DatePickerRootProps } from '@ark-ui/solid/date-picker'
 import { DatePicker as DatePickerPrimitive } from '@ark-ui/solid/date-picker'
 import { useLocale } from 'shadcn-solid-components/components/config-provider'
-import type { DatePickerFieldLocale } from 'shadcn-solid-components/i18n/types'
+import type { DatePickerLocale } from 'shadcn-solid-components/i18n/types'
 import { type ComponentProps, For, type JSX, Match, Show, Switch, splitProps } from 'solid-js'
 import { enUS as defaultLocale } from './locales/en-US'
 
@@ -11,7 +11,6 @@ import type { DateValue } from '@ark-ui/solid/date-picker'
 import { Badge } from 'shadcn-solid-components/components/badge'
 import { buttonVariants } from 'shadcn-solid-components/components/button'
 import {
-  DatePicker,
   DatePickerClearTrigger,
   DatePickerContent,
   DatePickerContext,
@@ -20,6 +19,7 @@ import {
   DatePickerMonthSelect,
   DatePickerPositioner,
   DatePickerRangeText,
+  DatePicker as DatePickerRoot,
   DatePickerTable,
   DatePickerTableBody,
   DatePickerTableCell,
@@ -63,6 +63,8 @@ export interface DatePickerPreset {
 type PickedRootProps = Pick<
   DatePickerRootProps,
   | 'selectionMode'
+  | 'required'
+  | 'invalid'
   | 'value'
   | 'defaultValue'
   | 'focusedValue'
@@ -98,17 +100,7 @@ type PickedRootProps = Pick<
   | 'ids'
 >
 
-export interface DatePickerFieldProps
-  extends Omit<ComponentProps<'div'>, 'onChange'>,
-    PickedRootProps {
-  /** Field label. */
-  label?: string | JSX.Element
-  /** Help text shown below the input (hidden when `error` is present). */
-  description?: string | JSX.Element
-  /** Validation error message. */
-  error?: string | string[]
-  /** Show a required indicator (*) next to the label. */
-  required?: boolean
+export interface DatePickerProps extends Omit<ComponentProps<'div'>, 'onChange'>, PickedRootProps {
   /** Input placeholder override. */
   placeholder?: string
   /** Show a clear button. @default false */
@@ -116,7 +108,7 @@ export interface DatePickerFieldProps
   /** Preset options displayed as quick-select buttons alongside the calendar. */
   presets?: DatePickerPreset[]
   /** i18n text overrides for HOC-level strings. */
-  i18n?: Partial<DatePickerFieldLocale>
+  i18n?: Partial<DatePickerLocale>
   /** Class applied to the calendar content panel. */
   contentClass?: string
   /** Show Month/Year dropdown selects in the day-view header for quick navigation. @default false */
@@ -345,29 +337,24 @@ function CalendarPanel(props: CalendarPanelProps) {
 // ============================================================================
 
 /**
- * A pre-composed date picker with input, calendar popover, presets,
- * and optional form-field integration (label, description, error).
+ * A pre-composed date picker with input, calendar popover, and optional presets.
  *
  * Wraps the lower-level `DatePicker*` primitives so you don't have to
  * assemble day/month/year views manually.
  *
  * @example
  * ```tsx
- * <DatePickerField />
+ * <DatePicker />
  * ```
  *
  * @example
  * ```tsx
- * <DatePickerField
- *   label="Birthday"
- *   required
- *   description="Select your date of birth."
- * />
+ * <DatePicker selectionMode="single" placeholder="Choose a date" clearable showTodayButton />
  * ```
  *
  * @example
  * ```tsx
- * <DatePickerField
+ * <DatePicker
  *   selectionMode="range"
  *   presets={[
  *     { label: "Last 7 Days", value: "last7Days" },
@@ -379,18 +366,14 @@ function CalendarPanel(props: CalendarPanelProps) {
  *
  * @example
  * ```tsx
- * <DatePickerField inline />
+ * <DatePicker inline />
  * ```
  */
-export function DatePickerField(props: DatePickerFieldProps) {
+export function DatePicker(props: DatePickerProps) {
   const [local, rootProps, rest] = splitProps(
     props,
     [
       'class',
-      'label',
-      'description',
-      'error',
-      'required',
       'placeholder',
       'clearable',
       'presets',
@@ -403,6 +386,8 @@ export function DatePickerField(props: DatePickerFieldProps) {
     ],
     [
       'selectionMode',
+      'required',
+      'invalid',
       'value',
       'defaultValue',
       'focusedValue',
@@ -440,21 +425,11 @@ export function DatePickerField(props: DatePickerFieldProps) {
   )
 
   const globalLocale = useLocale()
-  const i18n = (): DatePickerFieldLocale => ({
+  const i18n = (): DatePickerLocale => ({
     ...defaultLocale,
-    ...globalLocale.DatePickerField,
+    ...globalLocale.DatePicker,
     ...local.i18n,
   })
-
-  const hasError = () => {
-    if (Array.isArray(local.error)) return local.error.length > 0
-    return !!local.error
-  }
-
-  const errorMessages = () => {
-    if (!local.error) return []
-    return Array.isArray(local.error) ? local.error : [local.error]
-  }
 
   const placeholderText = () =>
     local.placeholder ??
@@ -468,30 +443,12 @@ export function DatePickerField(props: DatePickerFieldProps) {
 
   return (
     <div
-      data-slot="date-picker-field"
-      data-invalid={hasError() || undefined}
+      data-slot="date-picker"
+      data-invalid={rootProps.invalid || undefined}
       class={cx('grid w-full gap-2', local.class)}
       {...rest}
     >
-      <Show when={local.label}>
-        {typeof local.label === 'string' ? (
-          <label class={cx('text-sm font-medium select-none', hasError() && 'text-destructive')}>
-            {local.label}
-            <Show when={local.required}>
-              <span class="text-destructive ml-0.5">*</span>
-            </Show>
-          </label>
-        ) : (
-          local.label
-        )}
-      </Show>
-
-      <DatePicker
-        {...rootProps}
-        invalid={hasError() || undefined}
-        required={local.required}
-        placeholder={placeholderText()}
-      >
+      <DatePickerRoot {...rootProps} placeholder={placeholderText()}>
         <Show when={!rootProps.inline}>
           <DatePickerControl>
             <Switch fallback={<DatePickerInput />}>
@@ -578,23 +535,7 @@ export function DatePickerField(props: DatePickerFieldProps) {
             />
           </DatePickerContent>
         </Show>
-      </DatePicker>
-
-      <Show when={hasError()}>
-        <div class="text-destructive text-sm">
-          <Show when={errorMessages().length > 1} fallback={errorMessages()[0]}>
-            <ul class="ml-4 list-disc">
-              {errorMessages().map(msg => (
-                <li>{msg}</li>
-              ))}
-            </ul>
-          </Show>
-        </div>
-      </Show>
-
-      <Show when={!hasError() && local.description}>
-        <p class="text-muted-foreground text-sm">{local.description}</p>
-      </Show>
+      </DatePickerRoot>
     </div>
   )
 }

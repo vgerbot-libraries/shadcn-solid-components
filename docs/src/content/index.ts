@@ -3740,9 +3740,9 @@ export const Contents: Record<string, DocEntry> = {
   "hoc/date-picker": {
     component: lazy(() => import("@docs/content/docs/hoc/date-picker.mdx")),
     data: {
-    "title": "Date picker field",
-    "description": "Pre-composed date picker with label, validation, presets, and calendar panel.",
-    "navTitle": "Date picker field",
+    "title": "Date picker",
+    "description": "Pre-composed date picker HOC with presets, calendar views, and inline/popover modes.",
+    "navTitle": "Date picker",
     "section": "HOC",
     "order": 0,
     "toc": true
@@ -3755,13 +3755,18 @@ export const Contents: Record<string, DocEntry> = {
     },
     {
         "depth": 2,
+        "slug": "exports",
+        "text": "Exports"
+    },
+    {
+        "depth": 2,
         "slug": "examples",
         "text": "Examples"
     },
     {
         "depth": 3,
-        "slug": "single-date-clearable-and-preset-ranges",
-        "text": "Single date, clearable, and preset ranges"
+        "slug": "form-field-composition-with-single-and-range-modes",
+        "text": "Form field composition with single and range modes"
     },
     {
         "depth": 2,
@@ -3770,8 +3775,8 @@ export const Contents: Record<string, DocEntry> = {
     },
     {
         "depth": 3,
-        "slug": "datepickerfieldprops",
-        "text": "DatePickerFieldProps"
+        "slug": "datepickerprops",
+        "text": "DatePickerProps"
     },
     {
         "depth": 3,
@@ -3782,74 +3787,6 @@ export const Contents: Record<string, DocEntry> = {
         "depth": 3,
         "slug": "daterangepreset",
         "text": "DateRangePreset"
-    },
-    {
-        "depth": 2,
-        "slug": "exports",
-        "text": "Exports"
-    }
-]
-  },
-  "hoc/date-time-picker": {
-    component: lazy(() => import("@docs/content/docs/hoc/date-time-picker.mdx")),
-    data: {
-    "title": "Date time picker field",
-    "description": "Pre-composed datetime picker with label, validation, presets, time panel, and calendar chrome.",
-    "navTitle": "Date time picker field",
-    "section": "HOC",
-    "order": 0,
-    "toc": true
-},
-    headings: [
-    {
-        "depth": 2,
-        "slug": "usage",
-        "text": "Usage"
-    },
-    {
-        "depth": 2,
-        "slug": "examples",
-        "text": "Examples"
-    },
-    {
-        "depth": 3,
-        "slug": "default-clearable-and-preset-ranges",
-        "text": "Default, clearable, and preset ranges"
-    },
-    {
-        "depth": 3,
-        "slug": "24-hour-with-minute-step",
-        "text": "24-hour with minute step"
-    },
-    {
-        "depth": 3,
-        "slug": "range-with-presets",
-        "text": "Range with presets"
-    },
-    {
-        "depth": 2,
-        "slug": "api",
-        "text": "API"
-    },
-    {
-        "depth": 3,
-        "slug": "datetimepickerfieldprops",
-        "text": "DateTimePickerFieldProps"
-    },
-    {
-        "depth": 3,
-        "slug": "datetimepickerpreset",
-        "text": "DateTimePickerPreset"
-    },
-    {
-        "depth": 3,
-        "slug": "daterangepreset",
-        "text": "DateRangePreset"
-    },
-    {
-        "depth": 2,
-        "slug": "exports",
-        "text": "Exports"
     }
 ]
   },
@@ -6249,14 +6186,9 @@ export const docsNavigation: DocsNavSection[] = [
         "description": "Search, filter slot, column visibility, and actions for a TanStack `Table` instance."
       },
       {
-        "title": "Date picker field",
+        "title": "Date picker",
         "href": "/docs/hoc/date-picker",
-        "description": "Pre-composed date picker with label, validation, presets, and calendar panel."
-      },
-      {
-        "title": "Date time picker field",
-        "href": "/docs/hoc/date-time-picker",
-        "description": "Pre-composed datetime picker with label, validation, presets, time panel, and calendar chrome."
+        "description": "Pre-composed date picker HOC with presets, calendar views, and inline/popover modes."
       },
       {
         "title": "Description list",

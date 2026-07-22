@@ -64,19 +64,10 @@ export interface TanstackTableLocale {
   lastPage: string
 }
 
-export interface DatePickerFieldLocale {
+export interface DatePickerLocale {
   placeholder: string
   rangePlaceholder: string
   multiplePlaceholder: string
-  clear: string
-  today: string
-}
-
-export interface DateTimePickerFieldLocale {
-  placeholder: string
-  rangePlaceholder: string
-  rangeStartPlaceholder: string
-  rangeEndPlaceholder: string
   clear: string
   today: string
 }
@@ -311,8 +302,7 @@ export interface Locale {
   locale: string
   AuthForm: AuthFormLocale
   TanstackTable: TanstackTableLocale
-  DatePickerField: DatePickerFieldLocale
-  DateTimePickerField: DateTimePickerFieldLocale
+  DatePicker: DatePickerLocale
   OTPField: OTPFieldLocale
   FileUploadZone: FileUploadZoneLocale
   NotificationCenter: NotificationCenterLocale

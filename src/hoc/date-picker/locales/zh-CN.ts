@@ -1,6 +1,6 @@
-import type { DatePickerFieldLocale } from 'shadcn-solid-components/i18n/types'
+import type { DatePickerLocale } from 'shadcn-solid-components/i18n/types'
 
-export const zhCN: DatePickerFieldLocale = {
+export const zhCN: DatePickerLocale = {
   placeholder: '选择日期',
   rangePlaceholder: '选择日期范围',
   multiplePlaceholder: '选择多个日期',

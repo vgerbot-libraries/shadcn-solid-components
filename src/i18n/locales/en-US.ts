@@ -7,8 +7,7 @@ import { enUS as ConfirmDialog } from '../../hoc/confirm-dialog/locales/en-US'
 import { enUS as DataList } from '../../hoc/data-list/locales/en-US'
 import { enUS as DataTable } from '../../hoc/data-table/locales/en-US'
 import { enUS as DataTableToolbar } from '../../hoc/data-table-toolbar/locales/en-US'
-import { enUS as DatePickerField } from '../../hoc/date-picker/locales/en-US'
-import { enUS as DateTimePickerField } from '../../hoc/date-time-picker/locales/en-US'
+import { enUS as DatePicker } from '../../hoc/date-picker/locales/en-US'
 import { enUS as DescriptionList } from '../../hoc/description-list/locales/en-US'
 import { enUS as DialogService } from '../../hoc/dialog-service/locales/en-US'
 import { enUS as ErrorPage } from '../../hoc/error-page/locales/en-US'
@@ -33,8 +32,7 @@ export const enUS: Locale = {
   locale: 'en-US',
   AuthForm,
   TanstackTable,
-  DatePickerField,
-  DateTimePickerField,
+  DatePicker,
   OTPField,
   FileUploadZone,
   NotificationCenter,
