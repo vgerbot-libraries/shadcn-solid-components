@@ -103,9 +103,31 @@ let hasPrimaryHost = false
 const [isHostMounted, setIsHostMounted] = createSignal(false)
 const [, setQueue] = createSignal<DialogServiceRequest[]>([])
 const [activeRequest, setActiveRequest] = createSignal<DialogServiceRequest | null>(null)
+const [portalMount, setPortalMount] = createSignal<HTMLDivElement | null>(null)
 
 const [promptValue, setPromptValue] = createSignal('')
 const [promptError, setPromptError] = createSignal<string | undefined>(undefined)
+
+const createPortalMount = (): HTMLDivElement | null => {
+  if (typeof document === 'undefined') {
+    return null
+  }
+
+  const mount = document.createElement('div')
+  mount.setAttribute('data-slot', 'dialog-service-layer')
+
+  return mount
+}
+
+const bringPortalMountToFront = (mount: HTMLElement | null | undefined) => {
+  if (!mount || typeof document === 'undefined') {
+    return
+  }
+
+  if (mount.parentElement !== document.body || document.body.lastElementChild !== mount) {
+    document.body.appendChild(mount)
+  }
+}
 
 const isPromptRequest = (
   request: DialogServiceRequest | null,
@@ -187,8 +209,12 @@ export function DialogServiceHost() {
       return
     }
 
+    const mount = createPortalMount()
+    bringPortalMountToFront(mount)
+
     hasPrimaryHost = true
     setIsPrimaryHost(true)
+    setPortalMount(mount)
     setIsHostMounted(true)
     processQueue()
   })
@@ -201,6 +227,21 @@ export function DialogServiceHost() {
     hasPrimaryHost = false
     setIsPrimaryHost(false)
     setIsHostMounted(false)
+
+    const mount = portalMount()
+    if (mount?.parentElement) {
+      mount.parentElement.removeChild(mount)
+    }
+    setPortalMount(null)
+  })
+
+  createEffect(() => {
+    const request = activeRequest()
+    if (!request || !isPrimaryHost()) {
+      return
+    }
+
+    bringPortalMountToFront(portalMount())
   })
 
   createEffect(() => {
@@ -355,7 +396,7 @@ export function DialogServiceHost() {
 
   return (
     <Show when={isPrimaryHost()}>
-      <Portal>
+      <Portal mount={portalMount() ?? undefined}>
         <AlertDialog
           open={activeRequest() !== null}
           onOpenChange={open => {
