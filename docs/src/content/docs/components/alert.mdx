@@ -7,7 +7,10 @@ toc: true
 
 import AlertDemo from "../../../examples/alert-demo"
 import AlertDestructiveDemo from "../../../examples/alert-destructive-demo"
+import AlertInfoDemo from "../../../examples/alert-info-demo"
 import AlertStaticDemo from "../../../examples/alert-static-demo"
+import AlertSuccessDemo from "../../../examples/alert-success-demo"
+import AlertWarningDemo from "../../../examples/alert-warning-demo"
 
 Use `Alert` for inline, persistent feedback inside a page or section. Combine it with `AlertTitle` and `AlertDescription` when you need more structure than plain text.
 
@@ -34,8 +37,11 @@ Use `as="div"` when the alert is informational and should not be interactive. Ke
 
 ## Variants
 
-- `default`: General information, neutral status, or success-style messaging.
-- `destructive`: Error, warning, or destructive state that needs stronger emphasis.
+- `default`: General information or neutral status.
+- `info`: Informational messaging that deserves accent color.
+- `success`: Positive confirmation or completion state.
+- `warning`: Cautionary state that needs attention but is not an error.
+- `destructive`: Error or destructive state that needs stronger emphasis.
 
 ## Custom Styling
 
@@ -68,6 +74,30 @@ import { alertVariants } from "shadcn-solid-components/components/alert"
 <ComponentPreview name="Alert Destructive" source="examples/alert-destructive-demo.tsx">
   <div class="mb-4 w-full max-w-xl">
     <AlertDestructiveDemo />
+  </div>
+</ComponentPreview>
+
+### Info
+
+<ComponentPreview name="Alert Info" source="examples/alert-info-demo.tsx">
+  <div class="mb-4 w-full max-w-xl">
+    <AlertInfoDemo />
+  </div>
+</ComponentPreview>
+
+### Success
+
+<ComponentPreview name="Alert Success" source="examples/alert-success-demo.tsx">
+  <div class="mb-4 w-full max-w-xl">
+    <AlertSuccessDemo />
+  </div>
+</ComponentPreview>
+
+### Warning
+
+<ComponentPreview name="Alert Warning" source="examples/alert-warning-demo.tsx">
+  <div class="mb-4 w-full max-w-xl">
+    <AlertWarningDemo />
   </div>
 </ComponentPreview>
 
