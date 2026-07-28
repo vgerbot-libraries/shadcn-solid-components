@@ -7,6 +7,9 @@ toc: true
 
 import AuthFormDemo from "../../../examples/auth-form-demo"
 import AuthFormCredentialMethodControlDemo from "../../../examples/auth-form-credential-method-control-demo"
+import AuthFormMessageDemo from "../../../examples/auth-form-message-demo"
+import AuthFormMessageFallbackDemo from "../../../examples/auth-form-message-fallback-demo"
+import AuthFormRenderMessageDemo from "../../../examples/auth-form-render-message-demo"
 
 `AuthForm` provides a unified authentication workflow with mode switching (`login`, `register`, `reset`) and method switching (`password`, `phone-otp`, `email-otp`, `oauth`) in a single card.
 
@@ -49,6 +52,36 @@ import { AuthForm } from "shadcn-solid-components/hoc/auth-form"
   </div>
 </ComponentPreview>
 
+### Global form message
+
+Use the controlled `message` prop to surface form-level feedback (submit failures, account locks, hints). If a callback (`onSendOtp` / `onVerifyOtp` / `onValidate` / `onSubmit`) throws and `message` is not provided, the error is rendered automatically as a fallback.
+
+<ComponentPreview name="Auth Form Message Demo" source="examples/auth-form-message-demo.tsx">
+  <div class="mb-4 w-full">
+    <AuthFormMessageDemo />
+  </div>
+</ComponentPreview>
+
+### Automatic error fallback
+
+When `message` is not controlled, any error thrown from `onSendOtp` / `onVerifyOtp` / `onValidate` / `onSubmit` is rendered as an error alert automatically, and `onError` is notified. Errors without a message fall back to the `operationFailed` locale entry.
+
+<ComponentPreview name="Auth Form Message Fallback Demo" source="examples/auth-form-message-fallback-demo.tsx">
+  <div class="mb-4 w-full">
+    <AuthFormMessageFallbackDemo />
+  </div>
+</ComponentPreview>
+
+### Custom message rendering
+
+Use `renderMessage` to replace the built-in alert with fully custom UI.
+
+<ComponentPreview name="Auth Form Render Message Demo" source="examples/auth-form-render-message-demo.tsx">
+  <div class="mb-4 w-full">
+    <AuthFormRenderMessageDemo />
+  </div>
+</ComponentPreview>
+
 ## API
 
 ### `AuthFormProps`
@@ -71,6 +104,9 @@ Extends `div` props (without `onSubmit`).
 - `onVerifyOtp` — verify code callback before submit
 - `onValidate` — custom validation hook before submit
 - `onSubmit` — final submit callback with `AuthSubmitPayload`
+- `message` — controlled global message (`AuthFormMessage | null`); pass `null` to hide
+- `renderMessage` — custom renderer for the global message slot
+- `onError` — called when an internal callback throws; without a controlled `message`, the error is also shown via the built-in alert
 - `loading` — submit loading state
 - `locale` — partial locale overrides
 
@@ -85,6 +121,11 @@ Extends `div` props (without `onSubmit`).
 - `valid` — boolean
 - `errors` — field-level errors keyed by `AuthFieldErrorKey`
 
+### `AuthFormMessage`
+
+- `type?` — `"error" | "info" | "success" | "warning"` (defaults to `"error"`); maps to the matching `Alert` variant, with `"error"` rendered as `destructive`
+- `content` — `JSX.Element`
+
 ### `AuthCredentialMethodConfig`
 
 - `key` — `"password" | "phone-otp" | "email-otp"`
@@ -94,4 +135,4 @@ Extends `div` props (without `onSubmit`).
 ## Exports
 
 - `AuthForm` — component
-- `AuthFormProps`, `AuthMode`, `AuthMethod`, `AuthCredentialMethod`, `AuthCredentialMethodConfig`, `AuthCredentialMethodControl`, `AuthProvider`, `AuthSubmitPayload`, `AuthValidationResult` — types
+- `AuthFormProps`, `AuthMode`, `AuthMethod`, `AuthCredentialMethod`, `AuthCredentialMethodConfig`, `AuthCredentialMethodControl`, `AuthFormMessage`, `AuthFormMessageType`, `AuthProvider`, `AuthSubmitPayload`, `AuthValidationResult` — types

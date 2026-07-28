@@ -46,6 +46,7 @@ export interface AuthFormLocale {
   confirmPasswordMismatch: string
   otpCodeRequired: string
   otpVerifyFailed: string
+  operationFailed: string
 }
 
 export interface TanstackTableLocale {

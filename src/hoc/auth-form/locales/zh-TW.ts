@@ -48,4 +48,5 @@ export const zhTW: AuthFormLocale = {
   confirmPasswordMismatch: '兩次輸入的密碼不一致',
   otpCodeRequired: '請輸入驗證碼',
   otpVerifyFailed: '驗證碼校驗失敗，請重試',
+  operationFailed: '操作失敗，請稍後重試',
 }

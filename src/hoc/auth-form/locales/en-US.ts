@@ -48,4 +48,5 @@ export const enUS: AuthFormLocale = {
   confirmPasswordMismatch: 'Passwords do not match',
   otpCodeRequired: 'Verification code is required',
   otpVerifyFailed: 'Verification failed. Please check your code.',
+  operationFailed: 'Operation failed. Please try again later.',
 }

@@ -120,6 +120,21 @@ export const Contents: Record<string, DocEntry> = {
         "text": "Destructive"
     },
     {
+        "depth": 3,
+        "slug": "info",
+        "text": "Info"
+    },
+    {
+        "depth": 3,
+        "slug": "success",
+        "text": "Success"
+    },
+    {
+        "depth": 3,
+        "slug": "warning",
+        "text": "Warning"
+    },
+    {
         "depth": 2,
         "slug": "exports",
         "text": "Exports"
@@ -3386,6 +3401,21 @@ export const Contents: Record<string, DocEntry> = {
         "text": "Interactive credential method control slot"
     },
     {
+        "depth": 3,
+        "slug": "global-form-message",
+        "text": "Global form message"
+    },
+    {
+        "depth": 3,
+        "slug": "automatic-error-fallback",
+        "text": "Automatic error fallback"
+    },
+    {
+        "depth": 3,
+        "slug": "custom-message-rendering",
+        "text": "Custom message rendering"
+    },
+    {
         "depth": 2,
         "slug": "api",
         "text": "API"
@@ -3404,6 +3434,11 @@ export const Contents: Record<string, DocEntry> = {
         "depth": 3,
         "slug": "authvalidationresult",
         "text": "AuthValidationResult"
+    },
+    {
+        "depth": 3,
+        "slug": "authformmessage",
+        "text": "AuthFormMessage"
     },
     {
         "depth": 3,

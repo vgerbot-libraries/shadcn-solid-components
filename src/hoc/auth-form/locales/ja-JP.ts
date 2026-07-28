@@ -48,4 +48,5 @@ export const jaJP: AuthFormLocale = {
   confirmPasswordMismatch: 'パスワードが一致しません',
   otpCodeRequired: '認証コードを入力してください',
   otpVerifyFailed: '認証に失敗しました。コードを確認してください。',
+  operationFailed: '操作に失敗しました。もう一度お試しください。',
 }

@@ -48,4 +48,5 @@ export const zhCN: AuthFormLocale = {
   confirmPasswordMismatch: '两次输入的密码不一致',
   otpCodeRequired: '请输入验证码',
   otpVerifyFailed: '验证码校验失败，请重试',
+  operationFailed: '操作失败，请稍后重试',
 }

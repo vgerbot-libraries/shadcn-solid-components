@@ -1,3 +1,4 @@
+import { Alert, AlertDescription } from 'shadcn-solid-components/components/alert'
 import { Button } from 'shadcn-solid-components/components/button'
 import {
   Card,
@@ -56,6 +57,26 @@ const isAuthCredentialMethodConfigArray = (
   value: AuthCredentialMethodControl | undefined,
 ): value is AuthCredentialMethodConfig[] =>
   Array.isArray(value) && value.every(isAuthCredentialMethodConfig)
+
+export type AuthFormMessageType = 'error' | 'info' | 'success' | 'warning'
+
+export interface AuthFormMessage {
+  type?: AuthFormMessageType
+  content: JSX.Element
+}
+
+const messageAlertVariant = (
+  message: AuthFormMessage,
+): 'default' | 'destructive' | 'info' | 'success' | 'warning' => {
+  switch (message.type) {
+    case 'info':
+    case 'success':
+    case 'warning':
+      return message.type
+    default:
+      return 'destructive'
+  }
+}
 
 export type AuthFieldErrorKey =
   | 'email'
@@ -120,6 +141,9 @@ export interface AuthFormProps extends Omit<ComponentProps<'div'>, 'onSubmit'> {
   onValidate?: (payload: AuthSubmitPayload) => AuthValidationResult | Promise<AuthValidationResult>
   onSubmit?: (payload: AuthSubmitPayload) => void
   credentialMethodControl?: AuthCredentialMethodControl
+  message?: AuthFormMessage | null
+  renderMessage?: (message: AuthFormMessage) => JSX.Element
+  onError?: (error: unknown) => void
   footer?: JSX.Element
   locale?: Partial<AuthFormLocale>
 }
@@ -147,6 +171,9 @@ export function AuthForm(props: AuthFormProps) {
     'onValidate',
     'onSubmit',
     'credentialMethodControl',
+    'message',
+    'renderMessage',
+    'onError',
     'footer',
     'locale',
   ])
@@ -165,11 +192,13 @@ export function AuthForm(props: AuthFormProps) {
   const [sendingOtp, setSendingOtp] = createSignal(false)
   const [verifyingOtp, setVerifyingOtp] = createSignal(false)
   const [fieldErrors, setFieldErrors] = createSignal<Partial<Record<AuthFieldErrorKey, string>>>({})
+  const [internalMessage, setInternalMessage] = createSignal<AuthFormMessage | null>(null)
 
   let formRef: HTMLFormElement | undefined
 
   const mode = () => local.mode ?? internalMode()
   const method = () => local.method ?? internalMethod()
+  const message = () => (local.message !== undefined ? local.message : internalMessage())
 
   const enabledModes = () => {
     const source =
@@ -232,7 +261,16 @@ export function AuthForm(props: AuthFormProps) {
     mode()
     method()
     setFieldErrors({})
+    setInternalMessage(null)
   })
+
+  const reportError = (error: unknown) => {
+    local.onError?.(error)
+    if (local.message !== undefined) return
+    const content =
+      error instanceof Error && error.message ? error.message : locale().operationFailed
+    setInternalMessage({ type: 'error', content })
+  }
 
   const titleText = () => {
     if (local.title) return local.title
@@ -373,6 +411,8 @@ export function AuthForm(props: AuthFormProps) {
         target,
       })
       setFieldErrors(prev => ({ ...prev, email: undefined, phone: undefined }))
+    } catch (error) {
+      reportError(error)
     } finally {
       setSendingOtp(false)
     }
@@ -381,6 +421,7 @@ export function AuthForm(props: AuthFormProps) {
   const handleSubmit = async (event: SubmitEvent) => {
     event.preventDefault()
 
+    setInternalMessage(null)
     if (!formRef) return
     const formData = new FormData(formRef)
     const payload = readPayload(formData)
@@ -392,10 +433,15 @@ export function AuthForm(props: AuthFormProps) {
     }
 
     if (local.onValidate) {
-      const result = local.onValidate(payload)
-      const validation = result instanceof Promise ? await result : result
-      if (!validation.valid) {
-        setFieldErrors(validation.errors || {})
+      try {
+        const result = local.onValidate(payload)
+        const validation = result instanceof Promise ? await result : result
+        if (!validation.valid) {
+          setFieldErrors(validation.errors || {})
+          return
+        }
+      } catch (error) {
+        reportError(error)
         return
       }
     }
@@ -415,13 +461,20 @@ export function AuthForm(props: AuthFormProps) {
           setFieldErrors(prev => ({ ...prev, otpCode: locale().otpVerifyFailed }))
           return
         }
+      } catch (error) {
+        reportError(error)
+        return
       } finally {
         setVerifyingOtp(false)
       }
     }
 
     setFieldErrors({})
-    local.onSubmit?.(payload)
+    try {
+      local.onSubmit?.(payload)
+    } catch (error) {
+      reportError(error)
+    }
   }
 
   const showRememberMe = () => local.showRememberMe !== false && isLoginMode() && isPasswordMethod()
@@ -536,6 +589,18 @@ export function AuthForm(props: AuthFormProps) {
                 </span>
               </div>
             </Show>
+          </Show>
+          <Show when={message()}>
+            {currentMessage =>
+              local.renderMessage?.(currentMessage()) ?? (
+                <Alert
+                  data-slot="auth-form-message"
+                  variant={messageAlertVariant(currentMessage())}
+                >
+                  <AlertDescription>{currentMessage().content}</AlertDescription>
+                </Alert>
+              )
+            }
           </Show>
           <Show when={!isOauthMethod()}>{renderCredentialMethodControl()}</Show>
           <Show when={!isOauthMethod()}>
