@@ -121,11 +121,11 @@ const HomePage = () => {
           Start here then make it your own. Open Source. Open Code.
         </p>
         <div class="flex items-center gap-4 mt-4 justify-center">
-          <A href={resolveInternalHref('/docs')} class={buttonVariants({ size: 'lg' })}>
+          <A href="/docs" class={buttonVariants({ size: 'lg' })}>
             Get Started
           </A>
           <A
-            href={resolveInternalHref('/docs/components/accordion')}
+            href="/docs/components/accordion"
             class={buttonVariants({ size: 'lg', variant: 'outline' })}
           >
             View Components
@@ -358,7 +358,7 @@ const DocsIndexPage = () => {
                     <For each={section.items.slice(0, 4)}>
                       {item => (
                         <A
-                          href={resolveInternalHref(item.href)}
+                          href={item.href}
                           class="text-foreground hover:text-primary block text-sm underline-offset-4 hover:underline"
                         >
                           {item.title}
