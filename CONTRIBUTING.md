@@ -21,6 +21,10 @@ src/
 │       ├── ja-JP.ts
 │       ├── zh-CN.ts
 │       └── zh-TW.ts
+├── mobile/<name>/         # Mobile-first modules
+│   ├── index.tsx          # Component code (required)
+│   ├── _metadata.json     # Metadata (required)
+│   └── locales/           # Locale files (required when module has user-facing text)
 ├── lib/                   # Utility functions, hooks, shared logic
 ├── i18n/                  # i18n type definitions and global locale aggregation
 │   ├── types.ts
@@ -33,8 +37,9 @@ src/
 
 ### Rules
 
-- **`components/`** — Primitive layer. Wraps headless primitives (`@kobalte/core`, `@ark-ui/solid`, `@corvu/*`, etc.) with styling. Must not depend on other `components/` or `hoc/` modules.
+- **`components/`** — Primitive layer. Wraps headless primitives (`@kobalte/core`, `@ark-ui/solid`, `@corvu/*`, etc.) with styling. Must not depend on other `components/`, `hoc/`, or `mobile/` modules.
 - **`hoc/`** — Composition layer. Composes multiple `components/` primitives into higher-level UI patterns. Must import from `components/`, not from headless primitives directly.
+- **`mobile/`** — Mobile-first layer. Modules may depend on each other and may import `components/` and `lib/`. Do not import `hoc/` unless a clear shared need appears later.
 - **`lib/`** — Shared utilities. No UI rendering logic.
 - **`themes/`** — CSS presets only. No TypeScript.
 
@@ -365,7 +370,7 @@ Add an export path:
 
 ## 6. _metadata.json Specification
 
-Every component and HOC must include a `_metadata.json` file with these fields:
+Every component, HOC, and mobile module must include a `_metadata.json` file with these fields:
 
 ```json
 {
@@ -387,10 +392,10 @@ Every component and HOC must include a `_metadata.json` file with these fields:
 
 | Field | Type | Description |
 |---|---|---|
-| `name` | `string` | Module path: `components/<name>` or `hoc/<name>` |
+| `name` | `string` | Module path: `components/<name>`, `hoc/<name>`, or `mobile/<name>` |
 | `displayName` | `string` | Human-readable name (PascalCase) |
 | `description` | `string` | English description of functionality |
-| `category` | `string` | `"components"` or `"hoc"` |
+| `category` | `string` | `"components"`, `"hoc"`, or `"mobile"` |
 | `useCases` | `string[]` | 3–4 typical usage scenarios |
 | `usage` | `string` | Import example code |
 | `tags` | `string[]` | Searchable tags |
@@ -500,9 +505,9 @@ When adding a new component, ensure all of the following are completed:
 - [ ] If the component has visual variants: export `xxxVariants` for external use
 - [ ] If the component needs custom CSS: create `index.css` in the component directory
 
-When adding a new HOC, additionally:
+When adding a new HOC or mobile module, additionally:
 
-- [ ] If the HOC has user-facing text: add locale type to `src/i18n/types.ts`
+- [ ] If the module has user-facing text: add locale type to `src/i18n/types.ts`
 - [ ] Create `locales/` directory with all four locale files (en-US, ja-JP, zh-CN, zh-TW)
 - [ ] Update all global locale files in `src/i18n/locales/`
 - [ ] Add the locale field to the `Locale` interface in `src/i18n/types.ts`

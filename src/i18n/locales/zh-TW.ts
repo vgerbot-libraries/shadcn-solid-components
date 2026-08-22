@@ -26,6 +26,7 @@ import { zhTW as Stepper } from '../../hoc/stepper/locales/zh-TW'
 import { zhTW as TagInput } from '../../hoc/tag-input/locales/zh-TW'
 import { zhTW as TransferList } from '../../hoc/transfer-list/locales/zh-TW'
 import { zhTW as UserMenu } from '../../hoc/user-menu/locales/zh-TW'
+import { zhTW as Cascade } from '../../mobile/cascade/locales/zh-TW'
 import type { Locale } from '../types'
 
 export const zhTW: Locale = {
@@ -58,4 +59,5 @@ export const zhTW: Locale = {
   ErrorPage,
   FaqSection,
   SchemaForm,
+  Cascade,
 }

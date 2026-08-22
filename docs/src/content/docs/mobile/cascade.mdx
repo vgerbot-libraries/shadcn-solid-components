@@ -1,0 +1,49 @@
+---
+title: Cascade
+description: Stepwise picker for hierarchical options on a phone-sized surface.
+section: Mobile
+toc: true
+demo: cascade
+order: 1
+---
+
+`Cascade` walks a tree one level at a time. The selected path stays visible as vertical steps; the current level is a scrollable list. Tap a step to re-choose from that level. A leaf completes the selection unless `changeOnSelect` is set.
+
+## Usage
+
+```tsx
+import { Cascade } from "shadcn-solid-components/mobile/cascade"
+```
+
+Pass a tree of `{ value, label, children }` options. Control the path with `value` and `onChange`, or seed it with `defaultValue`. The live demo on large viewports lives in the phone frame on the right.
+
+## Exports
+
+- `Cascade` — component
+- Types: `CascadeProps`, `CascadeOption`, `CascadeValue`
+
+## Examples
+
+The interactive tree is mounted in the phone preview. Source for that demo:
+
+<SourceFile path="examples/mobile/cascade-demo.tsx" />
+
+## API
+
+### `CascadeProps`
+
+Extends `div` props except `onChange`. Notable fields:
+
+- `name` — interpolated into the level title via the `selectName` locale pattern
+- `value` — controlled path of option values
+- `defaultValue` — uncontrolled initial path
+- `options` — `CascadeOption[]` tree
+- `changeOnSelect` — notify `onChange` on every level commit, not only on a leaf
+- `prompt` — `(levelIndex) => string` trailing hint on each selected step
+- `onChange` — `(value, selectedOptions, isLast) => void`
+
+### `CascadeOption`
+
+- `value` — `string | number`
+- `label` — option text or JSX
+- `children` — nested options; omit or pass an empty array for a leaf

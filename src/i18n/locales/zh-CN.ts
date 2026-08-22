@@ -26,6 +26,7 @@ import { zhCN as Stepper } from '../../hoc/stepper/locales/zh-CN'
 import { zhCN as TagInput } from '../../hoc/tag-input/locales/zh-CN'
 import { zhCN as TransferList } from '../../hoc/transfer-list/locales/zh-CN'
 import { zhCN as UserMenu } from '../../hoc/user-menu/locales/zh-CN'
+import { zhCN as Cascade } from '../../mobile/cascade/locales/zh-CN'
 import type { Locale } from '../types'
 
 export const zhCN: Locale = {
@@ -58,4 +59,5 @@ export const zhCN: Locale = {
   ErrorPage,
   FaqSection,
   SchemaForm,
+  Cascade,
 }

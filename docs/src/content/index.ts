@@ -16,6 +16,7 @@ export type DocData = {
   order?: number
   status?: string
   toc: boolean
+  demo?: string
 }
 
 export type DocEntry = {
@@ -5814,6 +5815,62 @@ export const Contents: Record<string, DocEntry> = {
     }
 ]
   },
+  "mobile": {
+    component: lazy(() => import("@docs/content/docs/mobile/index.mdx")),
+    data: {
+    "title": "Mobile",
+    "description": "Mobile-first components designed for phone-sized layouts.",
+    "navTitle": "Mobile",
+    "section": "Mobile",
+    "order": 0,
+    "toc": false
+},
+    headings: []
+  },
+  "mobile/cascade": {
+    component: lazy(() => import("@docs/content/docs/mobile/cascade.mdx")),
+    data: {
+    "title": "Cascade",
+    "description": "Stepwise picker for hierarchical options on a phone-sized surface.",
+    "navTitle": "Cascade",
+    "section": "Mobile",
+    "order": 1,
+    "toc": true,
+    "demo": "cascade"
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "exports",
+        "text": "Exports"
+    },
+    {
+        "depth": 2,
+        "slug": "examples",
+        "text": "Examples"
+    },
+    {
+        "depth": 2,
+        "slug": "api",
+        "text": "API"
+    },
+    {
+        "depth": 3,
+        "slug": "cascadeprops",
+        "text": "CascadeProps"
+    },
+    {
+        "depth": 3,
+        "slug": "cascadeoption",
+        "text": "CascadeOption"
+    }
+]
+  },
 }
 
 export const docsNavigation: DocsNavSection[] = [
@@ -6419,6 +6476,21 @@ export const docsNavigation: DocsNavSection[] = [
         "title": "Use Theme",
         "href": "/docs/lib/use-theme",
         "description": "Access theme state with `useTheme`, update radius, and map radius tokens to Tailwind `rounded-*` classes by component category."
+      }
+    ]
+  },
+  {
+    "title": "Mobile",
+    "items": [
+      {
+        "title": "Mobile",
+        "href": "/docs/mobile",
+        "description": "Mobile-first components designed for phone-sized layouts."
+      },
+      {
+        "title": "Cascade",
+        "href": "/docs/mobile/cascade",
+        "description": "Stepwise picker for hierarchical options on a phone-sized surface."
       }
     ]
   }

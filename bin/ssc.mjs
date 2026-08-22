@@ -124,6 +124,7 @@ function buildRegistry(packageRoot) {
     if (
       !specifier.startsWith('components/') &&
       !specifier.startsWith('hoc/') &&
+      !specifier.startsWith('mobile/') &&
       !specifier.startsWith('lib/') &&
       !specifier.startsWith('i18n/')
     ) {
@@ -138,7 +139,8 @@ function buildRegistry(packageRoot) {
     const sourceAbs = path.join(packageRoot, sourceRel)
     const segments = specifier.split('/')
     const kind = segments[0]
-    const isTopLevelInstallable = (kind === 'components' || kind === 'hoc') && segments.length === 2
+    const isTopLevelInstallable =
+      (kind === 'components' || kind === 'hoc' || kind === 'mobile') && segments.length === 2
 
     const entry = {
       specifier,
@@ -180,7 +182,7 @@ function readMetadataForEntry(entry) {
 function listInstallableEntries(registry) {
   const entries = Array.from(registry.values()).filter(
     entry =>
-      (entry.kind === 'components' || entry.kind === 'hoc') &&
+      (entry.kind === 'components' || entry.kind === 'hoc' || entry.kind === 'mobile') &&
       entry.specifier.split('/').length === 2,
   )
 
@@ -436,7 +438,7 @@ function collectUsedInstallableEntriesFromProject({
       if (specifier.startsWith(`${PACKAGE_NAME}/`)) {
         installSpecifier = specifier.slice(`${PACKAGE_NAME}/`.length)
       } else {
-        const match = specifier.match(/(?:^|\/)(components|hoc)\/([^/]+)/u)
+        const match = specifier.match(/(?:^|\/)(components|hoc|mobile)\/([^/]+)/u)
         if (match) {
           installSpecifier = `${match[1]}/${match[2]}`
         }
@@ -555,11 +557,11 @@ function resolveInstallSelection(names, installableEntries) {
 
   return selected
 }
-
 async function chooseEntriesWithKeyboard(installableEntries, initialOutDir) {
   const groups = {
     components: installableEntries.filter(entry => entry.kind === 'components'),
     hoc: installableEntries.filter(entry => entry.kind === 'hoc'),
+    mobile: installableEntries.filter(entry => entry.kind === 'mobile'),
   }
 
   const choices = []
@@ -581,6 +583,7 @@ async function chooseEntriesWithKeyboard(installableEntries, initialOutDir) {
 
   appendGroup('components', groups.components)
   appendGroup('hoc', groups.hoc)
+  appendGroup('mobile', groups.mobile)
 
   const { selectedSpecifiers } = await inquirer.prompt([
     {
@@ -817,11 +820,11 @@ function executeCopy({ files, srcRootAbs, outRootAbs, cwd, dryRun, registry }) {
 
   return operations.length
 }
-
 function printList(installableEntries) {
   const sections = {
     components: [],
     hoc: [],
+    mobile: [],
   }
 
   for (const entry of installableEntries) {
@@ -829,7 +832,7 @@ function printList(installableEntries) {
     sections[entry.kind].push({ entry, metadata })
   }
 
-  for (const key of ['components', 'hoc']) {
+  for (const key of ['components', 'hoc', 'mobile']) {
     const group = sections[key]
     if (!group || group.length === 0) {
       continue
@@ -850,7 +853,7 @@ ssc - shadcn-solid-components CLI
 
 Commands:
   ssc list
-    List available components/hoc (with descriptions)
+    List available components/hoc/mobile (with descriptions)
 
   ssc add <name...> [--out-dir <path>] [--dry-run]
     Add one or more components to the project directory
@@ -860,7 +863,7 @@ Commands:
 
   ssc install [name...] [--scan-dir <path>] [--dry-run]
     Install third-party dependencies from metadata.
-    - with names: install dependencies for specified components/hoc
+    - with names: install dependencies for specified components/hoc/mobile
     - without names: scan project usage and install matched dependencies
 `)
 }
@@ -945,10 +948,10 @@ async function main() {
 
     if (selectedEntries.length === 0) {
       if (parsed.names.length > 0) {
-        fail('No matching components/hoc found for installation')
+        fail('No matching components/hoc/mobile found for installation')
       }
 
-      writeStdout('[ssc] No used components/hoc detected; nothing to install.\n')
+      writeStdout('[ssc] No used components/hoc/mobile detected; nothing to install.\n')
       return
     }
 

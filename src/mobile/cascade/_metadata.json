@@ -1,0 +1,15 @@
+{
+  "name": "mobile/cascade",
+  "displayName": "Cascade",
+  "description": "A mobile-first stepwise picker that shows the selected path as vertical steps and a scrollable option list for the current level. Tap a step to re-choose from that level; drill into children until a leaf is selected.",
+  "category": "mobile",
+  "useCases": [
+    "Category trees such as department, product type, and SKU on a phone-sized form",
+    "Address pickers that walk region, city, and district one level at a time",
+    "Classification flows where the user should see the committed path while choosing the next level",
+    "Any hierarchical single-path selection that should fill its container instead of a fixed height"
+  ],
+  "usage": "import { Cascade } from \"shadcn-solid-components/mobile/cascade\"",
+  "tags": ["mobile", "cascade", "solidjs", "ui", "picker"],
+  "dependencies": ["cva"]
+}

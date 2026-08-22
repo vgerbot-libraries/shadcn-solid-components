@@ -14,6 +14,7 @@ docs/
 │   │   └── docs/
 │   │       ├── components/       # Primitive component docs (one .mdx per component)
 │   │       ├── hoc/              # HOC docs (one .mdx per HOC)
+│   │       ├── mobile/           # Mobile-first docs (one .mdx per module)
 │   │       └── lib/              # Library/utility docs (one .mdx per module)
 │   ├── examples/                 # Live example components (one .tsx per demo)
 │   ├── components/
@@ -47,10 +48,11 @@ Every documentation page must follow this exact structure:
 ---
 title: ComponentName
 description: One-sentence summary of what the component does.
-section: Components | HOC | Libraries
+section: Components | HOC | Libraries | Mobile
 toc: true
 order: <optional integer for nav sorting>
 status: <optional string, e.g. "beta", "deprecated">
+demo: <optional demo id for Mobile pages>
 ---
 
 import DemoName from "../../../examples/demo-name"
@@ -98,7 +100,7 @@ Sections must appear in this order. Omit sections that do not apply, but never r
 3. **Opening paragraph** — required
 4. **Usage** — required (import statement + brief prose)
 5. **Exports** — required (list all exported symbols and types)
-6. **Examples** — required (at least one `ComponentPreview`)
+6. **Examples** — required for Components/HOC/Libraries (at least one `ComponentPreview`). On Mobile pages, prefer a `SourceFile` in the article; the live demo belongs in the right phone frame.
 7. **API** — optional, for complex prop tables or imperative APIs
 8. **Installation** — optional, only when the component requires a peer dependency
 
@@ -121,11 +123,11 @@ toc: true
 | --- | --- | --- | --- |
 | `title` | `string` | Yes | Display title in the page and navigation. PascalCase for components. |
 | `description` | `string` | Yes | One-sentence summary. Shown in navigation tooltips and SEO. |
-| `section` | `string` | Yes | Must be `"Components"`, `"HOC"`, or `"Libraries"`. Determines nav grouping. |
+| `section` | `string` | Yes | Must be `"Components"`, `"HOC"`, `"Libraries"`, or `"Mobile"`. Determines nav grouping. |
 | `toc` | `boolean` | Yes | Whether to show the table of contents sidebar. Almost always `true`. |
 | `order` | `number` | No | Integer for sorting within a section. Lower values appear first. |
 | `navTitle` | `string` | No | Override title for navigation only (e.g. shorter form). |
-| `status` | `string` | No | Badge label such as `"beta"` or `"deprecated"`. Displayed next to the nav item. |
+| `demo` | `string` | No | Stable demo id for Mobile pages. Docs maps this to `docs/src/examples/mobile/<id>-demo.tsx` and mounts it in the phone frame. |
 
 ### Section Mapping
 
@@ -136,8 +138,10 @@ The `section` value determines both the navigation group and the subdirectory:
 | `"Components"` | `docs/src/content/docs/components/` | Components |
 | `"HOC"` | `docs/src/content/docs/hoc/` | HOC |
 | `"Libraries"` | `docs/src/content/docs/lib/` | Libraries |
+| `"Mobile"` | `docs/src/content/docs/mobile/` | Mobile |
 
----
+Mobile pages (`section: Mobile`) use a different docs chrome: desktop/tablet show a sticky phone preview instead of the TOC rail. Set `demo` to a stable id such as `cascade`. The live demo lives in `docs/src/examples/mobile/<id>-demo.tsx` and is mounted inside `MobileDeviceFrame`. On small viewports the preview column is omitted.
+
 
 ## 4. Writing Style
 
@@ -478,9 +482,9 @@ Do **not** add an Installation section for components that have no external peer
 
 ## 12. Adding a New Doc Page Checklist
 
-When adding documentation for a new component or HOC:
+When adding documentation for a new component, HOC, or mobile module:
 
-- [ ] Create `.mdx` file in the correct directory (`components/`, `hoc/`, or `lib/`)
+- [ ] Create `.mdx` file in the correct directory (`components/`, `hoc/`, `mobile/`, or `lib/`)
 - [ ] Frontmatter includes all required fields (`title`, `description`, `section`, `toc`)
 - [ ] Opening paragraph explains what the component is and when to use it
 - [ ] **Usage** section with the public import path

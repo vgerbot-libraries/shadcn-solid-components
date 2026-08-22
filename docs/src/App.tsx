@@ -1,4 +1,5 @@
 import { mdxCustomComponents } from '@docs/components/mdx'
+import { MobileDeviceFrame } from '@docs/components/mobile-device-frame'
 import { Contents, docsNavigation } from '@docs/content'
 import { A, Navigate, Route, Router, useLocation, useParams } from '@solidjs/router'
 import MiniSearch from 'minisearch'
@@ -30,6 +31,7 @@ import AuthFormDemo from './examples/auth-form-demo'
 import CalendarDemo from './examples/calendar-demo'
 import CardDemo from './examples/card-demo'
 import CommandDemo from './examples/command-demo'
+import { mobileDemos } from './examples/mobile'
 import TabsDemo from './examples/tabs-demo'
 
 type DocRouteParams = {
@@ -410,7 +412,14 @@ const DocsPage = () => {
       }
     >
       {entry => (
-        <div class="flex-1 xl:grid xl:grid-cols-[minmax(0,1fr)_16rem] xl:gap-12">
+        <div
+          class={cx(
+            'flex-1',
+            entry().data.section === 'Mobile'
+              ? 'md:grid md:grid-cols-[minmax(0,1fr)_24rem] md:gap-10 xl:grid-cols-[minmax(0,1fr)_26rem] xl:gap-12'
+              : 'xl:grid xl:grid-cols-[minmax(0,1fr)_16rem] xl:gap-12',
+          )}
+        >
           <div class="min-w-0 px-6 py-10 sm:px-8 lg:px-12">
             <div class="mx-auto max-w-3xl">
               <div class="space-y-4">
@@ -430,10 +439,30 @@ const DocsPage = () => {
               </div>
             </div>
           </div>
-          <Show when={entry().data.toc && entry().headings.length}>
-            <aside class="hidden xl:block">
+          <Show
+            when={
+              entry().data.section === 'Mobile'
+                ? entry().data.demo && mobileDemos[entry().data.demo]
+                : entry().data.toc && entry().headings.length
+            }
+          >
+            <aside
+              class={entry().data.section === 'Mobile' ? 'hidden md:block' : 'hidden xl:block'}
+            >
               <div class="sticky top-10 pr-8 pt-10">
-                <TableOfContents headings={entry().headings} />
+                <Show
+                  when={entry().data.section === 'Mobile' && entry().data.demo}
+                  fallback={<TableOfContents headings={entry().headings} />}
+                >
+                  {demoId => {
+                    const Demo = mobileDemos[demoId()]
+                    return Demo ? (
+                      <MobileDeviceFrame>
+                        <Demo />
+                      </MobileDeviceFrame>
+                    ) : null
+                  }}
+                </Show>
               </div>
             </aside>
           </Show>

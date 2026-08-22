@@ -20,6 +20,7 @@ export const ComponentName = {
   Calendar: 'Calendar',
   Card: 'Card',
   Carousel: 'Carousel',
+  Cascade: 'Cascade',
   Chart: 'Chart',
   Checkbox: 'Checkbox',
   Collapsible: 'Collapsible',

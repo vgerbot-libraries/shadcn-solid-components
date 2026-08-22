@@ -13,7 +13,10 @@
   "bugs": {
     "url": "https://github.com/vgerbot-libraries/shadcn-solid-components/issues"
   },
-  "files": ["src", "bin"],
+  "files": [
+    "src",
+    "bin"
+  ],
   "private": false,
   "sideEffects": false,
   "type": "module",
@@ -163,6 +166,7 @@
     "./hoc/transfer-list": "./src/hoc/transfer-list/index.tsx",
     "./hoc/use-notify": "./src/hoc/use-notify/index.ts",
     "./hoc/user-menu": "./src/hoc/user-menu/index.tsx",
+    "./mobile/cascade": "./src/mobile/cascade/index.tsx",
     "./i18n/types": "./src/i18n/types.ts",
     "./i18n/locales/en-US": "./src/i18n/locales/en-US.ts",
     "./i18n/locales/ja-JP": "./src/i18n/locales/ja-JP.ts",
@@ -415,7 +419,9 @@
     "vite-tsconfig-paths": "^6.0.5",
     "vitest": "^1.6.0"
   },
-  "keywords": ["solid"],
+  "keywords": [
+    "solid"
+  ],
   "packageManager": "pnpm@9.1.1",
   "engines": {
     "node": ">=18",

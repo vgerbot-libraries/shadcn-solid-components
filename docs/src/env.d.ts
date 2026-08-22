@@ -12,6 +12,11 @@ declare module '@docs/components/mdx' {
   export const mdxCustomComponents: Record<string, any>
 }
 
+declare module '@docs/components/mobile-device-frame' {
+  import type { Component, JSX } from 'solid-js'
+  export const MobileDeviceFrame: Component<{ class?: string; children?: JSX.Element }>
+}
+
 declare module '@docs/content' {
   export const Contents: Record<string, any>
   export const docsNavigation: any[]

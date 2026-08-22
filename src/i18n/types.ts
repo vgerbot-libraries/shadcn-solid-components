@@ -270,6 +270,10 @@ export interface ErrorPageLocale {
   goHome: string
 }
 
+export interface CascadeLocale {
+  selectName: string
+}
+
 export interface SchemaFormLocale {
   submit: string
   addItem: string
@@ -329,4 +333,5 @@ export interface Locale {
   FaqSection: FaqSectionLocale
   ErrorPage: ErrorPageLocale
   SchemaForm: SchemaFormLocale
+  Cascade: CascadeLocale
 }

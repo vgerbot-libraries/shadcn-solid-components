@@ -63,6 +63,7 @@ import type { ToggleGroupProps } from '../components/toggle-group'
 import type { TooltipProps } from '../components/tooltip'
 import type { VirtualScrollAreaProps } from '../components/virtual-scroll-area'
 import type { WatermarkProps } from '../components/watermark'
+import type { CascadeProps } from '../mobile/cascade'
 import type { ComponentName } from './theme-context'
 
 /**
@@ -81,6 +82,7 @@ export interface ComponentPropsMap {
   [ComponentName.ButtonGroup]: ButtonGroupProps
   [ComponentName.Calendar]: CalendarProps
   [ComponentName.Card]: CardProps
+  [ComponentName.Cascade]: CascadeProps
   [ComponentName.Carousel]: CarouselProps
   [ComponentName.Chart]: ChartContainerProps<any>
   [ComponentName.Checkbox]: CheckboxProps
