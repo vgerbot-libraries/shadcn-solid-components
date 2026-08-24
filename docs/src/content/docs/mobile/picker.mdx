@@ -1,0 +1,44 @@
+---
+title: Picker
+description: Bottom-sheet wheel picker that commits on Confirm.
+section: Mobile
+toc: true
+demo: picker
+order: 3
+---
+
+`Picker` opens a bottom drawer with one or more snap-scroll columns. Confirm commits the selected index or index array. Cancel and dismiss discard the draft.
+
+## Usage
+
+```tsx
+import { Picker } from "shadcn-solid-components/mobile/picker"
+```
+
+Pass a `range` of strings or objects. A nested array becomes multiple columns. Control the index with `value` and `onChange`, or seed it with `defaultValue`. The live demo on large viewports lives in the phone frame on the right.
+
+## Exports
+
+- `Picker` — component
+- Types: `PickerProps`, `PickerValue`, `PickerOption`
+
+## Examples
+
+The interactive wheel is mounted in the phone preview. Source for that demo:
+
+<SourceFile path="examples/mobile/picker-demo.tsx" />
+
+## API
+
+### `PickerProps`
+
+Extends `div` props except `onChange`. Notable fields:
+
+- `value` — controlled index, or one index per column
+- `defaultValue` — uncontrolled initial index
+- `range` — `PickerOption[]` or `PickerOption[][]`
+- `rangeKey` — object label key; default `'text'`
+- `placeholder` — trigger text when nothing is selected
+- `textAlign` — `left` (default), `right`, or `center`
+- `disabled` — blocks open
+- `onChange` — `(value) => void` on Confirm only

@@ -1,0 +1,15 @@
+{
+  "name": "mobile/image-picker",
+  "displayName": "ImagePicker",
+  "description": "A mobile-first image tile grid with an 85px add tile. Selecting files creates object URLs; delete revokes blob URLs created by this instance.",
+  "category": "mobile",
+  "useCases": [
+    "Attach photos to a phone form or report",
+    "Limit uploads with maxCount so the add tile disappears when full",
+    "Camera-hinted capture via action=\"camera\" and the capture attribute",
+    "Preview and remove selected images before submit"
+  ],
+  "usage": "import { ImagePicker } from \"shadcn-solid-components/mobile/image-picker\"",
+  "tags": ["mobile", "image-picker", "solidjs", "ui"],
+  "dependencies": ["cva"]
+}

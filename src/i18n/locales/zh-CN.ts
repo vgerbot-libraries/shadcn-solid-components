@@ -27,6 +27,9 @@ import { zhCN as TagInput } from '../../hoc/tag-input/locales/zh-CN'
 import { zhCN as TransferList } from '../../hoc/transfer-list/locales/zh-CN'
 import { zhCN as UserMenu } from '../../hoc/user-menu/locales/zh-CN'
 import { zhCN as Cascade } from '../../mobile/cascade/locales/zh-CN'
+import { zhCN as ImagePicker } from '../../mobile/image-picker/locales/zh-CN'
+import { zhCN as Picker } from '../../mobile/picker/locales/zh-CN'
+import { zhCN as QuantityStepper } from '../../mobile/stepper/locales/zh-CN'
 import type { Locale } from '../types'
 
 export const zhCN: Locale = {
@@ -60,4 +63,7 @@ export const zhCN: Locale = {
   FaqSection,
   SchemaForm,
   Cascade,
+  Picker,
+  ImagePicker,
+  QuantityStepper,
 }

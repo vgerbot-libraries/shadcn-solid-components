@@ -27,6 +27,9 @@ import { enUS as TagInput } from '../../hoc/tag-input/locales/en-US'
 import { enUS as TransferList } from '../../hoc/transfer-list/locales/en-US'
 import { enUS as UserMenu } from '../../hoc/user-menu/locales/en-US'
 import { enUS as Cascade } from '../../mobile/cascade/locales/en-US'
+import { enUS as ImagePicker } from '../../mobile/image-picker/locales/en-US'
+import { enUS as Picker } from '../../mobile/picker/locales/en-US'
+import { enUS as QuantityStepper } from '../../mobile/stepper/locales/en-US'
 import type { Locale } from '../types'
 
 export const enUS: Locale = {
@@ -60,4 +63,7 @@ export const enUS: Locale = {
   FaqSection,
   SchemaForm,
   Cascade,
+  Picker,
+  ImagePicker,
+  QuantityStepper,
 }

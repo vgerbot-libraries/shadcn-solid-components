@@ -27,6 +27,9 @@ import { zhTW as TagInput } from '../../hoc/tag-input/locales/zh-TW'
 import { zhTW as TransferList } from '../../hoc/transfer-list/locales/zh-TW'
 import { zhTW as UserMenu } from '../../hoc/user-menu/locales/zh-TW'
 import { zhTW as Cascade } from '../../mobile/cascade/locales/zh-TW'
+import { zhTW as ImagePicker } from '../../mobile/image-picker/locales/zh-TW'
+import { zhTW as Picker } from '../../mobile/picker/locales/zh-TW'
+import { zhTW as QuantityStepper } from '../../mobile/stepper/locales/zh-TW'
 import type { Locale } from '../types'
 
 export const zhTW: Locale = {
@@ -60,4 +63,7 @@ export const zhTW: Locale = {
   FaqSection,
   SchemaForm,
   Cascade,
+  Picker,
+  ImagePicker,
+  QuantityStepper,
 }

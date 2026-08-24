@@ -27,6 +27,9 @@ import { jaJP as TagInput } from '../../hoc/tag-input/locales/ja-JP'
 import { jaJP as TransferList } from '../../hoc/transfer-list/locales/ja-JP'
 import { jaJP as UserMenu } from '../../hoc/user-menu/locales/ja-JP'
 import { jaJP as Cascade } from '../../mobile/cascade/locales/ja-JP'
+import { jaJP as ImagePicker } from '../../mobile/image-picker/locales/ja-JP'
+import { jaJP as Picker } from '../../mobile/picker/locales/ja-JP'
+import { jaJP as QuantityStepper } from '../../mobile/stepper/locales/ja-JP'
 import type { Locale } from '../types'
 
 export const jaJP: Locale = {
@@ -60,4 +63,7 @@ export const jaJP: Locale = {
   FaqSection,
   SchemaForm,
   Cascade,
+  Picker,
+  ImagePicker,
+  QuantityStepper,
 }

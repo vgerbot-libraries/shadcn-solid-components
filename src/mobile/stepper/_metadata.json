@@ -1,0 +1,15 @@
+{
+  "name": "mobile/stepper",
+  "displayName": "QuantityStepper",
+  "description": "A compact mobile quantity control composed from NumberField. Decrement disables at min, increment disables at max, and empty input keeps the last valid number until blur then clamps to min.",
+  "category": "mobile",
+  "useCases": [
+    "Cart quantity rows on a phone checkout",
+    "Bounded counters such as party size or inventory count",
+    "Disabled read-only quantity display",
+    "Any compact − value + control that should not use the HOC stepper"
+  ],
+  "usage": "import { QuantityStepper } from \"shadcn-solid-components/mobile/stepper\"",
+  "tags": ["mobile", "stepper", "quantity", "solidjs", "ui"],
+  "dependencies": ["cva"]
+}

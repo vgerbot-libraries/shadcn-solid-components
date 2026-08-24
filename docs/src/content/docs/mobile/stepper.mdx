@@ -1,0 +1,44 @@
+---
+title: Quantity stepper
+navTitle: Stepper
+description: Compact − value + control for phone-sized quantity rows.
+section: Mobile
+toc: true
+demo: stepper
+order: 5
+---
+
+`QuantityStepper` is a compact quantity control composed from `NumberField`. Decrement disables at `min`. Increment disables at `max`. Empty input keeps the last valid number until blur, then clamps to `min`.
+
+## Usage
+
+```tsx
+import { QuantityStepper } from "shadcn-solid-components/mobile/stepper"
+```
+
+Control the number with `value` and `onChange`, or seed it with `defaultValue`. Uncontrolled start is `min` (default `1`). The live demo on large viewports lives in the phone frame on the right.
+
+## Exports
+
+- `QuantityStepper` — component
+- Types: `QuantityStepperProps`
+
+## Examples
+
+The interactive rows are mounted in the phone preview. Source for that demo:
+
+<SourceFile path="examples/mobile/stepper-demo.tsx" />
+
+## API
+
+### `QuantityStepperProps`
+
+Extends `div` props except `onChange`. Notable fields:
+
+- `value` — controlled number
+- `defaultValue` — uncontrolled initial number
+- `min` — lower bound; default `1`
+- `max` — optional upper bound
+- `step` — increment size; default `1`
+- `disabled` — disables ± and the input
+- `onChange` — `(value) => void` when the committed number changes

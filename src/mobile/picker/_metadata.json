@@ -1,0 +1,15 @@
+{
+  "name": "mobile/picker",
+  "displayName": "Picker",
+  "description": "A mobile-first wheel picker that opens a bottom drawer. Confirm commits the selected index or index array; cancel and dismiss discard the draft.",
+  "category": "mobile",
+  "useCases": [
+    "Single-column name or category selection on a phone form",
+    "Multi-column date-like or region-like index pickers",
+    "Compact triggers that show the current label or a placeholder",
+    "Any index-based choice that should not commit until Confirm"
+  ],
+  "usage": "import { Picker } from \"shadcn-solid-components/mobile/picker\"",
+  "tags": ["mobile", "picker", "solidjs", "ui"],
+  "dependencies": ["cva"]
+}

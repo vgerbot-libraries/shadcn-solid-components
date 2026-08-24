@@ -1,0 +1,51 @@
+---
+title: Checkbox
+description: Circular checkbox and group for phone-sized forms.
+section: Mobile
+toc: true
+demo: checkbox
+order: 2
+---
+
+`Checkbox` is a circular control composed from the primitive checkbox. The whole row toggles. `CheckboxGroup` tracks membership by `value` and reports the next array on every change.
+
+## Usage
+
+```tsx
+import { Checkbox, CheckboxGroup } from "shadcn-solid-components/mobile/checkbox"
+```
+
+Control a single box with `checked` and `onChange`, or seed it with `defaultChecked`. Place items with a `value` inside `CheckboxGroup` to manage an array. The live demo on large viewports lives in the phone frame on the right.
+
+## Exports
+
+- `Checkbox`, `CheckboxGroup` — components
+- Types: `CheckboxProps`, `CheckboxGroupProps`, `CheckboxValue`
+
+## Examples
+
+The interactive rows are mounted in the phone preview. Source for that demo:
+
+<SourceFile path="examples/mobile/checkbox-demo.tsx" />
+
+## API
+
+### `CheckboxProps`
+
+Extends `label` props except `onChange`. Notable fields:
+
+- `checked` — controlled checked state
+- `defaultChecked` — uncontrolled initial state
+- `value` — optional identity used by `CheckboxGroup`
+- `disabled` — blocks toggle and dims the row
+- `onChange` — `(checked, value) => void`
+
+### `CheckboxGroupProps`
+
+Extends `div` props except `onChange`. Notable fields:
+
+- `value` — controlled selected values
+- `defaultValue` — uncontrolled initial values
+- `orientation` — `horizontal` (default) or `vertical`
+- `disabled` — disables every child
+- `onChange` — `(value) => void` with the next array, including `[]`

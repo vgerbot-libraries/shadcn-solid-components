@@ -274,6 +274,23 @@ export interface CascadeLocale {
   selectName: string
 }
 
+export interface PickerLocale {
+  cancel: string
+  confirm: string
+  placeholder: string
+}
+
+export interface ImagePickerLocale {
+  upload: string
+  cameraUpload: string
+  remove: string
+}
+
+export interface QuantityStepperLocale {
+  decrement: string
+  increment: string
+}
+
 export interface SchemaFormLocale {
   submit: string
   addItem: string
@@ -334,4 +351,7 @@ export interface Locale {
   ErrorPage: ErrorPageLocale
   SchemaForm: SchemaFormLocale
   Cascade: CascadeLocale
+  Picker: PickerLocale
+  ImagePicker: ImagePickerLocale
+  QuantityStepper: QuantityStepperLocale
 }

@@ -5871,6 +5871,167 @@ export const Contents: Record<string, DocEntry> = {
     }
 ]
   },
+  "mobile/checkbox": {
+    component: lazy(() => import("@docs/content/docs/mobile/checkbox.mdx")),
+    data: {
+    "title": "Checkbox",
+    "description": "Circular checkbox and group for phone-sized forms.",
+    "navTitle": "Checkbox",
+    "section": "Mobile",
+    "order": 2,
+    "toc": true,
+    "demo": "checkbox"
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "exports",
+        "text": "Exports"
+    },
+    {
+        "depth": 2,
+        "slug": "examples",
+        "text": "Examples"
+    },
+    {
+        "depth": 2,
+        "slug": "api",
+        "text": "API"
+    },
+    {
+        "depth": 3,
+        "slug": "checkboxprops",
+        "text": "CheckboxProps"
+    },
+    {
+        "depth": 3,
+        "slug": "checkboxgroupprops",
+        "text": "CheckboxGroupProps"
+    }
+]
+  },
+  "mobile/picker": {
+    component: lazy(() => import("@docs/content/docs/mobile/picker.mdx")),
+    data: {
+    "title": "Picker",
+    "description": "Bottom-sheet wheel picker that commits on Confirm.",
+    "navTitle": "Picker",
+    "section": "Mobile",
+    "order": 3,
+    "toc": true,
+    "demo": "picker"
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "exports",
+        "text": "Exports"
+    },
+    {
+        "depth": 2,
+        "slug": "examples",
+        "text": "Examples"
+    },
+    {
+        "depth": 2,
+        "slug": "api",
+        "text": "API"
+    },
+    {
+        "depth": 3,
+        "slug": "pickerprops",
+        "text": "PickerProps"
+    }
+]
+  },
+  "mobile/image-picker": {
+    component: lazy(() => import("@docs/content/docs/mobile/image-picker.mdx")),
+    data: {
+    "title": "Image picker",
+    "description": "Tile grid that adds images from a file input.",
+    "navTitle": "Image picker",
+    "section": "Mobile",
+    "order": 4,
+    "toc": true,
+    "demo": "image-picker"
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "exports",
+        "text": "Exports"
+    },
+    {
+        "depth": 2,
+        "slug": "examples",
+        "text": "Examples"
+    },
+    {
+        "depth": 2,
+        "slug": "api",
+        "text": "API"
+    },
+    {
+        "depth": 3,
+        "slug": "imagepickerprops",
+        "text": "ImagePickerProps"
+    }
+]
+  },
+  "mobile/stepper": {
+    component: lazy(() => import("@docs/content/docs/mobile/stepper.mdx")),
+    data: {
+    "title": "Quantity stepper",
+    "description": "Compact − value + control for phone-sized quantity rows.",
+    "navTitle": "Stepper",
+    "section": "Mobile",
+    "order": 5,
+    "toc": true,
+    "demo": "stepper"
+},
+    headings: [
+    {
+        "depth": 2,
+        "slug": "usage",
+        "text": "Usage"
+    },
+    {
+        "depth": 2,
+        "slug": "exports",
+        "text": "Exports"
+    },
+    {
+        "depth": 2,
+        "slug": "examples",
+        "text": "Examples"
+    },
+    {
+        "depth": 2,
+        "slug": "api",
+        "text": "API"
+    },
+    {
+        "depth": 3,
+        "slug": "quantitystepperprops",
+        "text": "QuantityStepperProps"
+    }
+]
+  },
 }
 
 export const docsNavigation: DocsNavSection[] = [
@@ -6491,6 +6652,26 @@ export const docsNavigation: DocsNavSection[] = [
         "title": "Cascade",
         "href": "/docs/mobile/cascade",
         "description": "Stepwise picker for hierarchical options on a phone-sized surface."
+      },
+      {
+        "title": "Checkbox",
+        "href": "/docs/mobile/checkbox",
+        "description": "Circular checkbox and group for phone-sized forms."
+      },
+      {
+        "title": "Picker",
+        "href": "/docs/mobile/picker",
+        "description": "Bottom-sheet wheel picker that commits on Confirm."
+      },
+      {
+        "title": "Image picker",
+        "href": "/docs/mobile/image-picker",
+        "description": "Tile grid that adds images from a file input."
+      },
+      {
+        "title": "Stepper",
+        "href": "/docs/mobile/stepper",
+        "description": "Compact − value + control for phone-sized quantity rows."
       }
     ]
   }

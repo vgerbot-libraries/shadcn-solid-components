@@ -1,0 +1,44 @@
+---
+title: Image picker
+description: Tile grid that adds images from a file input.
+section: Mobile
+toc: true
+demo: image-picker
+order: 4
+---
+
+`ImagePicker` shows selected images as 85px tiles plus an add tile. Add opens a hidden file input. `action="camera"` sets `capture="environment"`; browsers that ignore `capture` still get a file picker.
+
+## Usage
+
+```tsx
+import { ImagePicker } from "shadcn-solid-components/mobile/image-picker"
+```
+
+Control the URL list with `files` and `onChange`, or seed it with `defaultFiles`. The add tile hides when `maxCount` is reached. The live demo on large viewports lives in the phone frame on the right.
+
+## Exports
+
+- `ImagePicker` — component
+- Types: `ImagePickerProps`
+
+## Examples
+
+The interactive grid is mounted in the phone preview. Source for that demo:
+
+<SourceFile path="examples/mobile/image-picker-demo.tsx" />
+
+## API
+
+### `ImagePickerProps`
+
+Extends `div` props except `onChange`. Notable fields:
+
+- `files` — controlled image URLs
+- `defaultFiles` — uncontrolled initial URLs
+- `action` — `mix` (default), `photos`, or `camera`
+- `maxCount` — hide the add tile when the list is full
+- `accept` — file input accept; default `image/*`
+- `disabled` — blocks add and delete
+- `onAddBefore` — return `false` to cancel the file dialog
+- `onChange` — `(files) => void`

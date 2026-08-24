@@ -64,6 +64,10 @@ import type { TooltipProps } from '../components/tooltip'
 import type { VirtualScrollAreaProps } from '../components/virtual-scroll-area'
 import type { WatermarkProps } from '../components/watermark'
 import type { CascadeProps } from '../mobile/cascade'
+import type { CheckboxProps as MobileCheckboxProps } from '../mobile/checkbox'
+import type { ImagePickerProps } from '../mobile/image-picker'
+import type { PickerProps } from '../mobile/picker'
+import type { QuantityStepperProps } from '../mobile/stepper'
 import type { ComponentName } from './theme-context'
 
 /**
@@ -100,19 +104,23 @@ export interface ComponentPropsMap {
   [ComponentName.FileField]: FileFieldProps
   [ComponentName.HoverCard]: HoverCardProps
   [ComponentName.Icons]: ComponentProps<'svg'>
+  [ComponentName.ImagePicker]: ImagePickerProps
   [ComponentName.Item]: ItemProps
   [ComponentName.Kbd]: KbdProps
   [ComponentName.List]: ListProps
   [ComponentName.Markdown]: MarkdownProps
   [ComponentName.Marquee]: MarqueeProps
+  [ComponentName.MobileCheckbox]: MobileCheckboxProps
   [ComponentName.Menubar]: MenubarProps
   [ComponentName.NavigationMenu]: NavigationMenuProps
   [ComponentName.NumberField]: NumberFieldProps
   [ComponentName.OtpField]: OTPFieldProps
   [ComponentName.Pagination]: PaginationProps
+  [ComponentName.Picker]: PickerProps
   [ComponentName.Popover]: PopoverProps
   [ComponentName.Progress]: ProgressProps
   [ComponentName.QrCode]: QrCodeProps
+  [ComponentName.QuantityStepper]: QuantityStepperProps
   [ComponentName.RadioGroup]: RadioGroupProps
   [ComponentName.Resizable]: ResizableProps
   [ComponentName.ScrollArea]: ScrollAreaProps

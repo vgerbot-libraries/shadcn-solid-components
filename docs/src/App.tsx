@@ -399,6 +399,11 @@ const DocsPage = () => {
   })
 
   const DocComponent = createMemo(() => doc()?.component)
+  const MobileDemo = createMemo(() => {
+    const current = doc()
+    if (current?.data.section !== 'Mobile' || !current.data.demo) return undefined
+    return mobileDemos[current.data.demo]
+  })
 
   return (
     <Show
@@ -451,17 +456,15 @@ const DocsPage = () => {
             >
               <div class="sticky top-10 pr-8 pt-10">
                 <Show
-                  when={entry().data.section === 'Mobile' && entry().data.demo}
+                  when={MobileDemo()}
                   fallback={<TableOfContents headings={entry().headings} />}
+                  keyed
                 >
-                  {demoId => {
-                    const Demo = mobileDemos[demoId()]
-                    return Demo ? (
-                      <MobileDeviceFrame>
-                        <Demo />
-                      </MobileDeviceFrame>
-                    ) : null
-                  }}
+                  {Demo => (
+                    <MobileDeviceFrame>
+                      <Demo />
+                    </MobileDeviceFrame>
+                  )}
                 </Show>
               </div>
             </aside>

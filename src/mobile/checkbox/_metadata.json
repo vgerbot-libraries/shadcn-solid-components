@@ -1,0 +1,15 @@
+{
+  "name": "mobile/checkbox",
+  "displayName": "Checkbox",
+  "description": "A mobile-first circular checkbox and checkbox group for phone-sized forms. The whole row toggles. Group membership is tracked by value without inverting sibling state.",
+  "category": "mobile",
+  "useCases": [
+    "Agree-to-terms and single boolean rows on a phone form",
+    "Multi-select filters such as tags or categories on a compact surface",
+    "Settings lists where the entire row should be the tap target",
+    "Grouped options that report the selected value array on every change"
+  ],
+  "usage": "import { Checkbox, CheckboxGroup } from \"shadcn-solid-components/mobile/checkbox\"",
+  "tags": ["mobile", "checkbox", "solidjs", "ui"],
+  "dependencies": ["cva"]
+}
